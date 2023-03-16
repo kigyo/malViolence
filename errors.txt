@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script/puzzles/match3.rpy", line 52: invalid syntax
+            if match3[row][col]==match3[row][col+1]==match3[row][col+2]
+    
+
+Ren'Py Version: Ren'Py 8.0.3.22090809
+Sun Mar 12 09:21:42 2023

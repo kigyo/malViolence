@@ -1,0 +1,34 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script/puzzles/match3.rpy", line 174, in script
+    $match3_scoring()
+  File "game/script/puzzles/match3.rpy", line 174, in <module>
+    $match3_scoring()
+  File "game/script/puzzles/match3.rpy", line 109, in match3_scoring
+    match3_T_or_L(row, col, "horizontal")
+  File "game/script/puzzles/match3.rpy", line 62, in match3_T_or_L
+    print("looping "+ kind + ": " + str(i+ "," +j))
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script/puzzles/match3.rpy", line 174, in script
+    $match3_scoring()
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 1131, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\python.py", line 1061, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script/puzzles/match3.rpy", line 174, in <module>
+    $match3_scoring()
+  File "game/script/puzzles/match3.rpy", line 109, in match3_scoring
+    match3_T_or_L(row, col, "horizontal")
+  File "game/script/puzzles/match3.rpy", line 62, in match3_T_or_L
+    print("looping "+ kind + ": " + str(i+ "," +j))
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.0.3.22090809
+All-In-One GUI Template 2.6
+Sun Mar 12 09:51:42 2023
