@@ -13,7 +13,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("All-In-One GUI Template")
+define config.name = _("malViolence")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -24,7 +24,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "2.6"
+define config.version = "1.0"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -127,6 +127,7 @@ define config.end_game_transition = dissolve
 
 define config.window = "auto"
 
+define config.choice_empty_window = extend
 
 ## Transitions used to show and hide the dialogue window
 

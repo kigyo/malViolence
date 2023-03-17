@@ -15,7 +15,7 @@ init python:
     # character is not.
     def while_speaking(name, speak_d, done_d, st, at):
         global speaking
-        if speaking == name:
+        if speaking == name and not _menu:
             return speak_d, 0.1
         else:
             return done_d, None
@@ -39,7 +39,9 @@ init python:
     # Curried form of the same.
     speaker = renpy.curry(speaker_callback)
 
-define c = Character(_("Cautionne"), color="#d03333", image="cautionne", callback=speaker("cautionne"))
+define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"))
+define c = Character(_("Cautionne"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"))
+define p = Character(_("Protagonist"), color="#ffffff", image="protagonist", callback=speaker("protagonist"))
 
 image bg cautionne_screen = "cautionne_screen_background.png"
 
@@ -115,7 +117,9 @@ image cautionne_lean_speaking:
     pause 0.12
     repeat
 
-image cautionne oops = "cautionne_oops.png"
+layeredimage cautionne oops:
+    zoom 0.5
+    always "cautionne_oopsie"
 
 layeredimage cautionne pencil:
     zoom 0.5
@@ -153,7 +157,9 @@ image cautionne_shoot_speaking:
     pause 0.12
     repeat
 
-image cautionne shot = "cautionne_shot.png"
+layeredimage cautionne shot:
+    zoom 0.5
+    always "cautionne_shot"
 
 layeredimage cautionne stunned:
     zoom 0.5

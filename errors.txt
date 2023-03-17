@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script/puzzles/match3.rpy", line 52: invalid syntax
-            if match3[row][col]==match3[row][col+1]==match3[row][col+2]
-    
+File "game/characters.rpy", line 122: ATL statement contains two expressions in a row; is one of them a misspelled property? If not, separate them with pass.
+    always "cautionne_oopsie"
+                             ^
+
+File "game/characters.rpy", line 162: ATL statement contains two expressions in a row; is one of them a misspelled property? If not, separate them with pass.
+    always "cautionne_shot"
+                           ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Sun Mar 12 09:21:42 2023
+Fri Mar 17 13:52:05 2023

@@ -19,7 +19,8 @@ init -1:
     image bg corridor1 = "images/BG/Corridor 1.png"
     image bg bedroom = "images/BG/Prison bedroom.png"
     image bg room1 = "images/BG/Room 1.png"
-    
+transform half:
+    zoom 0.5 xalign 0.5 yalign 0.5
 ## Music:
 # init -2 python:
     # Careless-Summer_Looping = "audio/music/Careless-Summer_Looping.mp3"

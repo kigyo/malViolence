@@ -1,34 +1,42 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script/puzzles/match3.rpy", line 174, in script
-    $match3_scoring()
-  File "game/script/puzzles/match3.rpy", line 174, in <module>
-    $match3_scoring()
-  File "game/script/puzzles/match3.rpy", line 109, in match3_scoring
-    match3_T_or_L(row, col, "horizontal")
-  File "game/script/puzzles/match3.rpy", line 62, in match3_T_or_L
-    print("looping "+ kind + ": " + str(i+ "," +j))
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
+While processing the align property of style quick_button_text:
+  File "renpy/common/00start.rpy", line 83, in _init_language
+    renpy.change_language(language)
+  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
+    __update()
+  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
+    renpy.style.rebuild()
+TypeError: 'float' object is not subscriptable
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script/puzzles/match3.rpy", line 174, in script
-    $match3_scoring()
-  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 1131, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\python.py", line 1061, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script/puzzles/match3.rpy", line 174, in <module>
-    $match3_scoring()
-  File "game/script/puzzles/match3.rpy", line 109, in match3_scoring
-    match3_T_or_L(row, col, "horizontal")
-  File "game/script/puzzles/match3.rpy", line 62, in match3_T_or_L
-    print("looping "+ kind + ": " + str(i+ "," +j))
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
+  File "E:\Development\renpy-8.0.0-sdk\renpy\bootstrap.py", line 277, in bootstrap
+    renpy.main.main()
+  File "E:\Development\renpy-8.0.0-sdk\renpy\main.py", line 660, in main
+    run(restart)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\main.py", line 76, in run
+    renpy.translation.init_translation()
+  File "E:\Development\renpy-8.0.0-sdk\renpy\translation\__init__.py", line 583, in init_translation
+    renpy.store._init_language() # type: ignore
+  File "renpy/common/00start.rpy", line 83, in _init_language
+    renpy.change_language(language)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\translation\__init__.py", line 672, in change_language
+    i()
+  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
+    __update()
+  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
+    renpy.style.rebuild()
+  File "style.pyx", line 796, in renpy.style.rebuild
+  File "style.pyx", line 789, in renpy.style.build_styles
+  File "style.pyx", line 710, in renpy.style.build_style
+  File "style.pyx", line 707, in renpy.style.build_style
+  File "gen3-static/style_functions.pyx", line 1764, in style_functions.align_property
+  File "include/style_common.pxi", line 30, in style_functions.index_0
+TypeError: 'float' object is not subscriptable
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.0.3.22090809
-All-In-One GUI Template 2.6
-Sun Mar 12 09:51:42 2023
+malViolence 1.0
+Thu Mar 16 21:53:47 2023

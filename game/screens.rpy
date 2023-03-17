@@ -111,7 +111,7 @@ screen say(who, what):
             window:
                 id "namebox"
                 style "namebox"
-                text who id "who"
+                text "> " + who.upper() id "who"
 
         text what id "what"
 
@@ -254,18 +254,25 @@ screen quick_menu():
 
         hbox:
             style_prefix "quick"
+            spacing -32
 
-            xalign 0.5
-            yalign 1.0
-
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            xpos 812
+            ypos 723
+            button background "gui/button/quick_menu_idle.png":
+                text _("HISTORY")
+                action ShowMenu('history')
+            button background "gui/button/quick_menu_idle.png":
+                text _("SAVE")
+                action ShowMenu('save')
+            button background "gui/button/quick_menu_idle.png":
+                text _("OPTIONS")
+                action ShowMenu('preferences')
+            button background "gui/button/quick_menu_idle.png":
+                text _("AUTO")
+                action Preference("auto-forward", "toggle")
+            button background "gui/button/quick_menu_idle.png":
+                text _("SKIP")
+                action Skip() alternate Skip(fast=True, confirm=True)
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -284,6 +291,9 @@ style quick_button_text is button_text
 style quick_button:
     properties gui.button_properties("quick_button")
 
+style quick_text is button_text:
+    properties gui.button_text_properties("quick_button")
+    xpos 0.5 ypos 0.5 
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
 
