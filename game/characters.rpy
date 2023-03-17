@@ -41,7 +41,7 @@ init python:
 
 define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"))
 define c = Character(_("Cautionne"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"))
-define p = Character(_("Protagonist"), color="#ffffff", image="protagonist", callback=speaker("protagonist"))
+define narrator = Character(color="#ffffff", callback=speaker("protagonist"))
 
 image bg cautionne_screen = "cautionne_screen_background.png"
 

@@ -1,7 +1,7 @@
 
 label start:
     scene bg bedroom
-    show cautionne oops
+    show cautionne serious
     with fade
     #[static plays as the game begins. the screen is black, since the protagonist is recovering from being knocked out] 
     pause 1
@@ -9,7 +9,7 @@ label start:
     pause 1
     x "Hello?"
     pause 1
-    x "HEY! WAKE THE HELL UP!!!"
+    x "{size=+35}{i}HEY! WAKE THE HELL UP!!!{/i}{/size}"
     #[the camera moves to show the protag waking up quickly in the cell room] 
     "(GAH! What the-)"
     "(...Huh? Where are you?)"
@@ -20,7 +20,7 @@ label start:
     "(...and then something hit your back, and... you, uh...) "
     "(You...)"
     x "Oh dear, looks like the anaesthesia hasn't worn off, has it?"
-    x "Must've given them the wrong dose of ketamine..."
+    x "{size=-3}Must've given them the wrong dose of ketamine...{/size}"
     x "Just give it a couple more minutes. Soon, you'll be right as rain!"
     "(Where... where's that voice coming from?)"
     "(It's giving you a migraine. You just wanna shut it-)"
