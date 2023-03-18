@@ -30,3 +30,7 @@ label splashscreen:
         pass
  
     return
+
+default inspect = None
+
+define eyeopen = ImageDissolve("images/open.png", 0.5, 0)

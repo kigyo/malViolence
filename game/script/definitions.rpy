@@ -6,19 +6,13 @@ init -1:
     $ redefine_resources = False
     ## When you add, delete or rename an image or music resource, change redefine_resources to True and launch the project
 
-## Sprites:
-    image eileen_base_casual = "images/sprites/eileen_base_casual.png"
-    # image eileen_base_summer = "images/sprites/eileen_base_summer.png"
-    # image eileen_face_angry = "images/sprites/eileen_face_angry.png"
-    # image eileen_face_happy = "images/sprites/eileen_face_happy.png"
-    # image eileen_face_neutral = "images/sprites/eileen_face_neutral.png"
-    # image eileen_face_surprised = "images/sprites/eileen_face_surprised.png"
-    # image eileen_face_upset = "images/sprites/eileen_face_upset.png"
-    # image eileen_headband = "images/sprites/eileen_headband.png"
 ## BGs:
     image bg corridor1 = "images/BG/Corridor 1.png"
-    image bg bedroom = "images/BG/Prison bedroom.png"
+    image bg corridor2 = "images/BG/Corridor 2.png"
+    image bg tutorial1 = "images/BG/Tutorial room v1.png"
+    image bg tutorial2 = "images/BG/Tutorial room v2.png"
     image bg room1 = "images/BG/Room 1.png"
+    image bg room2 = "images/BG/Room 2.png"
 transform half:
     zoom 0.5 xalign 0.5 yalign 0.5
 ## Music:

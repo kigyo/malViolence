@@ -1,15 +1,15 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While processing text tag {size=+-3} in "{size=+-3}Must've given them the wrong dose of ketamine...{/size}".:
-  File "game/script/1 - intro.rpy", line 23, in script
-    x "{size=+-3}Must've given them the wrong dose of ketamine...{/size}"
-ValueError: invalid literal for int() with base 10: '+-3'
+While running game code:
+  File "game/script/1 - intro.rpy", line 10, in script
+    x "{size=+35}{i}HEY! WAKE THE HELL UP!!!{/i}{/size}" with shake
+TypeError: shake() got an unexpected keyword argument 'old_widget'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script/1 - intro.rpy", line 23, in script
-    x "{size=+-3}Must've given them the wrong dose of ketamine...{/size}"
+  File "game/script/1 - intro.rpy", line 10, in script
+    x "{size=+35}{i}HEY! WAKE THE HELL UP!!!{/i}{/size}" with shake
   File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 921, in execute
     renpy.exports.say(who, what, *args, **kwargs)
   File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 1373, in say
@@ -24,49 +24,11 @@ Full traceback:
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3377, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3912, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 2602, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 495, in renpy.display.render.render_screen
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 704, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1334, in render
-    surf = render(child,
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\text\text.py", line 2115, in render
-    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\text\text.py", line 627, in __init__
-    self.paragraphs = self.segment(text.tokens, style, renders, text)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\text\text.py", line 1186, in segment
-    push().size += int(value)
-ValueError: invalid literal for int() with base 10: '+-3'
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3752, in interact_core
+    trans = self.ongoing_transition[None](
+TypeError: shake() got an unexpected keyword argument 'old_widget'
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.0.3.22090809
 malViolence 1.0
-Fri Mar 17 14:43:53 2023
+Sat Mar 18 21:30:00 2023

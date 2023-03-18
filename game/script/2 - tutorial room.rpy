@@ -1,19 +1,23 @@
 default tutorial = {"vent":0, }
 
+screen tutorial_room():
+    viewport:
+        child_size (3840, 1080) mousewheel "horizontal" edgescroll (700, 1000)
+        add "bg tutorial1"
+
 label tutorial_room:
     if inspect == "painting":
         $ tutorial["vent"] = 1
-        #You can only see the painting at first; shouldn't you be more surprised that there's something behind it?
         "(There's a weird stock photo on the cover, but otherwise it's your average vent. Cautionne won't be winning any awards for home decor anytime soon.)"
         #[the vent opens with a creak]
         "(Guess he wasn't kidding about the LabScrip. It's right there, neatly served in a metal bowl.)"
-        #[pause]
+        pause 1
         "(...)"
         "(To be honest, you could use something to fill your empty stomach. You made the smart decision to skip lunch on your way here.)"
         "(You pick up the bowl and shove a fistful of pellets into your mouth. They taste like...)"
         "(...well, you don't know what you expected. They're grainy, if nothing else.)"
         "(You try not to think about Cautionne laughing at you from the other side of the screen.)"
-        #[pause]
+        pause 1
         #TODO: potential interactive screen with removing food
         "(...Huh? What's this?)"
         "(There's something at the bottom of the bowl. Something colorful.)"
@@ -50,7 +54,7 @@ label tutorial_room:
                 "(In fact, the more you chew on them, the bitterer they- )"
                 "(-HURK!)"
                 #[screen shakes and camera moves down to the floor] 
-                #[pause]
+                pause 1
                 "(...Aw, crap.)"
                 #[screen begins to distort]
                 "(Of course there was something in the food.)"

@@ -213,7 +213,7 @@ init python:
 
     ## To archive files, classify them as 'archive'.
 
-    # build.classify('game/**.png', 'archive')
+    build.classify('game/**', 'archive')
     # build.classify('game/**.jpg', 'archive')
     # build.classify('game/**.webp', 'archive')
     # build.classify('game/**.webm', 'archive')

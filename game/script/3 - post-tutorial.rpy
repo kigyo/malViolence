@@ -30,7 +30,7 @@ label post_tutorial:
 
   "(Is he telling you to smile more?)"
 
-  "(He is, isn't he? Guess you'll give him the ol' “passport photo.”)"
+  "(He is, isn't he? Guess you'll give him the ol' \"passport photo.\")"
 
   #"{b}[pause as {/b}{b}Cautionne{/b}{b} looks surprised, before going back to his smug look]{/b}"
 
@@ -42,7 +42,7 @@ label post_tutorial:
 
   c "After all, I'm the {i}Great Cautionne, Emperor of MalViolence{/i}. I'm not the type of man to go-all out on a scrub like yourself."
 
-  c "But alas, even my {i}limitless{/i} generosity has an expiration date. And you're creeping up fast on the “Sell-By.”"
+  c "But alas, even my {i}limitless{/i} generosity has an expiration date. And you're creeping up fast on the \"Sell-By.\""
 
   c "...Anyhoo, you {i}do{/i} want to escape, don't you?"
 
