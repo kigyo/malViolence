@@ -1,4 +1,4 @@
-default tutorial = {"vent":0, }
+default tutorial = {"vent":0, "investigated":[]}
 
 screen tutorial_room():
     sensitive not inspect
@@ -15,39 +15,43 @@ screen tutorial_room():
             imagebutton idle Null(340, 560) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (840, 715)
         else:
             add "bg tutorial2"
-            imagebutton idle Null(270, 450) action [SetVariable("inspect", "bowl"), Jump("tutorial_room")] pos (880, 780)
+            imagebutton idle Null(270, 450) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (880, 780)
             imagebutton idle Null(730, 225) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1075, 1715)
     use arrow_controls
+    text str(len(tutorial["investigated"])) xalign 0.99 yalign 0.01 size 100
 
 label tutorial_room:
+    if inspect not in tutorial["investigated"]:
+        $tutorial["investigated"].append(inspect)
     show screen tutorial_room
     if inspect == "painting":
-        "(There's a weird stock photo on the cover, but otherwise it's your average vent. Cautionne won't be winning any awards for home decor anytime soon.)"
-        $ tutorial["vent"] = 1
-        #[the vent opens with a creak]
-        "(Guess he wasn't kidding about the LabScrip. It's right there, neatly served in a metal bowl.)"
-        pause 1
-        "(...)"
-        "(To be honest, you could use something to fill your empty stomach. You made the smart decision to skip lunch on your way here.)"
-        "(You pick up the bowl and shove a fistful of pellets into your mouth. They taste like...)"
-        "(...well, you don't know what you expected. They're grainy, if nothing else.)"
-        "(You try not to think about Cautionne laughing at you from the other side of the screen.)"
-        pause 1
-        "(...Huh? What's this?)"
-        "(There's something at the bottom of the bowl. Something colorful.)"
-        "(To get a better look, you dump the rest of the pellets on the floor.)"
-        #[sound of pellets falling]
-        show tutorial_bowl with dissolve:
-            yalign 0.2 xalign 0.5
-        pause 1
-        "(It's... a Venn diagram. One with weird shapes?)"
-        "(Wonder if it means anything...)"
-        hide tutorial_bowl with dissolve
-    elif inspect == "bowl":
-        show tutorial_bowl with dissolve:
-            yalign 0.5 xalign 0.5
-        pause
-        hide tutorial_bowl with dissolve
+        if tutorial["vent"] == 0:
+            "(There's a weird stock photo on the cover, but otherwise it's your average vent. Cautionne won't be winning any awards for home decor anytime soon.)"
+            $ tutorial["vent"] = 1
+            #[the vent opens with a creak]
+            "(Guess he wasn't kidding about the LabScrip. It's right there, neatly served in a metal bowl.)"
+            pause 1
+            "(...)"
+            "(To be honest, you could use something to fill your empty stomach. You made the smart decision to skip lunch on your way here.)"
+            "(You pick up the bowl and shove a fistful of pellets into your mouth. They taste like...)"
+            "(...well, you don't know what you expected. They're grainy, if nothing else.)"
+            "(You try not to think about Cautionne laughing at you from the other side of the screen.)"
+            pause 1
+            "(...Huh? What's this?)"
+            "(There's something at the bottom of the bowl. Something colorful.)"
+            "(To get a better look, you dump the rest of the pellets on the floor.)"
+            #[sound of pellets falling]
+            show tutorial_bowl with dissolve:
+                yalign 0.2 xalign 0.5
+            pause 1
+            "(It's... a Venn diagram. One with weird shapes?)"
+            "(Wonder if it means anything...)"
+            hide tutorial_bowl with dissolve
+        else:
+            show tutorial_bowl with dissolve:
+                yalign 0.5 xalign 0.5
+            pause
+            hide tutorial_bowl with dissolve
     elif inspect == "vent":
         if tutorial["vent"] < 2:
             $ tutorial["vent"] = 2
