@@ -1,7 +1,8 @@
 screen debugging():
-    vbox:
-        text testvar
-        text str(speaking)
+    if config.developer:
+        vbox:
+            text testvar
+            text str(speaking)
 
 default testvar = "0"
 

@@ -125,7 +125,7 @@ define config.end_game_transition = dissolve
 ## After the game has started, this can be changed with the "window show",
 ## "window hide", and "window auto" statements.
 
-define config.window = "auto"
+define config.window = "hide"
 
 define config.choice_empty_window = extend
 

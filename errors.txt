@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/characters.rpy", line 122: ATL statement contains two expressions in a row; is one of them a misspelled property? If not, separate them with pass.
-    always "cautionne_oopsie"
-                             ^
-
-File "game/characters.rpy", line 162: ATL statement contains two expressions in a row; is one of them a misspelled property? If not, separate them with pass.
-    always "cautionne_shot"
-                           ^
+File "game/script/2 - tutorial room.rpy", line 7: expected a keyword argument, colon, or end of line.
+    mousearea (840, 715, 340, 560) action [SetVariable("inspect", "painting"), Jump("tutorial_room")]
+              ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri Mar 17 13:52:05 2023
+Sun Mar 19 08:41:16 2023

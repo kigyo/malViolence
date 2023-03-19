@@ -34,3 +34,17 @@ label splashscreen:
 default inspect = None
 
 define eyeopen = ImageDissolve("images/open.png", 0.5, 0)
+
+init python:
+    def roomchangedx(i):
+        global roomval
+        roomval[0] = i/(3840-1920)
+        return
+    def roomchangedy(i):
+        global roomval
+        roomval[1] = i/(2160-1080)
+        return
+
+default roomval = [0.5, 0.5]
+define roomadjustmentx = ui.adjustment(range=1.0, changed=roomchangedx)
+define roomadjustmenty = ui.adjustment(range=1.0, changed=roomchangedy)

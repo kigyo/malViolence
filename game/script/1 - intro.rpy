@@ -78,7 +78,7 @@ label start:
     c "Now, I'm still tidying up a couple of things on my end."
     c "So, before I get back to work..."
     
-    scene bg tutorial1 at half with fade
+    scene bg tutorial1 at zoomed with fade
     ##[the screen transitions back to the prison room bg]
     c "...welcome to your new home, lab rat!"
     c "Cozy, isn't it? It's got everything you need to live a normal human life."
@@ -90,4 +90,4 @@ label start:
     c "...Well, what's the holdup? Get up, look around, beg for mercy, or make yourself comfortable."
     c "After all... you'll be here for a while."
     #[mic mute sound]
-    call screen tutorial_room
+    call screen tutorial_room with dissolve
