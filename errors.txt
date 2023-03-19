@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script/2 - tutorial room.rpy", line 7: expected a keyword argument, colon, or end of line.
-    mousearea (840, 715, 340, 560) action [SetVariable("inspect", "painting"), Jump("tutorial_room")]
-              ^
+File "game/screens.rpy", line 395: 'size' is not a keyword argument or valid child for the button statement.
+    size (242, 64)
+        ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Sun Mar 19 08:41:16 2023
+Sun Mar 19 11:09:43 2023

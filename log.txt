@@ -1,4 +1,4 @@
-Sun Mar 19 10:12:15 2023
+Sun Mar 19 11:05:46 2023
 Windows-10-10.0.19045
 Ren'Py 8.0.3.22090809
  
@@ -7,8 +7,8 @@ Bootstrap to the start of init.init took 0.05s
 Early init took 0.00s
 Loader init took 0.11s
 Loading error handling took 0.03s
-Loading script took 0.38s
-Loading save slot metadata. took 0.02s
+Loading script took 0.49s
+Loading save slot metadata. took 0.03s
 Loading persistent took 0.00s
 Faled to initialize steam: Exception('Init returned false.')
 Running init code took 0.22s
@@ -23,19 +23,19 @@ Initial gc. took 0.03s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.30s
+Creating interface object took 0.31s
 Cleaning stores took 0.00s
 Init translation took 0.04s
 Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.01s
 Save screen analysis took 0.02s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.03s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.04s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.16s
+Interface start took 0.15s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 2560, 1440)
@@ -48,155 +48,65 @@ Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init took 287.24s
+Bootstrap to the start of init.init took 11.68s
 Early init took 0.00s
-Loader init took 0.12s
+Loader init took 0.11s
 Loading error handling took 0.03s
-Loading script took 0.32s
+Loading script took 0.37s
 Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
+Running init code took 0.06s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.08s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.32s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 41.06s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.02s
+Loading script took 0.28s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.08s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.09s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.30s
-Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 290.72s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.26s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.31s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 362.55s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.28s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.31s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 434.98s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.28s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
+Dump and make backups. took 0.10s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.05s
@@ -228,11 +138,443 @@ Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init took 478.36s
+Bootstrap to the start of init.init took 116.39s
+Early init took 0.00s
+Loader init took 0.11s
+Loading error handling took 0.03s
+Loading script took 0.42s
+Loading save slot metadata. took 0.03s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.08s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.08s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.30s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 150.34s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.02s
+Loading script took 0.38s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.07s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.08s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.31s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 236.47s
 Early init took 0.00s
 Loader init took 0.11s
 Loading error handling took 0.02s
-Loading script took 0.28s
+Loading script took 0.38s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+
+File "game/screens.rpy", line 395: 'size' is not a keyword argument or valid child for the button statement.
+    size (242, 64)
+        ^
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 291.37s
+Early init took 0.00s
+Loader init took 0.13s
+Loading error handling took 0.02s
+Loading script took 0.44s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.08s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.08s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.30s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.05s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 317.77s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.02s
+Loading script took 0.43s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.07s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.08s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.30s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 327.34s
+Early init took 0.00s
+Loader init took 0.11s
+Loading error handling took 0.02s
+Loading script took 0.43s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.07s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.09s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.31s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 342.99s
+Early init took 0.00s
+Loader init took 0.11s
+Loading error handling took 0.02s
+Loading script took 0.41s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.07s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.08s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.30s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 367.77s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.02s
+Loading script took 0.38s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.07s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.09s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.29s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 407.92s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.02s
+Loading script took 0.44s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.07s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.09s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.31s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 457.22s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.02s
+Loading script took 0.40s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.07s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.08s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.33s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 540.28s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.02s
+Loading script took 0.44s
 Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Faled to initialize steam: Exception('Init returned false.')
@@ -272,578 +614,11 @@ Version: b'4.6.0 NVIDIA 474.14'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
 Maximum texture size: 4096x4096
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.03s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
 Resetting cache.
-Bootstrap to the start of init.init took 934.54s
+Bootstrap to the start of init.init took 826.42s
 Early init took 0.00s
 Loader init took 0.11s
 Loading error handling took 0.02s
-Loading script took 0.28s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.06s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.30s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1003.91s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.27s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.01s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.06s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.31s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.07s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1113.16s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.26s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.31s
-Cleaning stores took 0.00s
-Init translation took 0.06s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1121.14s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.29s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.30s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.07s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1179.82s
-Early init took 0.00s
-Loader init took 0.12s
-Loading error handling took 0.02s
-Loading script took 0.27s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.31s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.07s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1186.31s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.27s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.09s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.30s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.03s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1205.03s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.26s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.30s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.03s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1330.96s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.28s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.34s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1462.89s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.28s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.30s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-
-Full traceback:
-  File "game/script/2 - tutorial room.rpy", line 110, in script
-    if tutorial_room["vent"] == 0:
-  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2115, in execute
-    if renpy.python.py_eval(condition):
-  File "E:\Development\renpy-8.0.0-sdk\renpy\python.py", line 1092, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\python.py", line 1085, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script/2 - tutorial room.rpy", line 110, in <module>
-    if tutorial_room["vent"] == 0:
-NameError: name 'tutorial_room' is not defined
-
-While running game code:
-  File "game/script/2 - tutorial room.rpy", line 110, in script
-    if tutorial_room["vent"] == 0:
-  File "game/script/2 - tutorial room.rpy", line 110, in <module>
-    if tutorial_room["vent"] == 0:
-NameError: name 'tutorial_room' is not defined
-Resetting cache.
-Bootstrap to the start of init.init took 1486.30s
-Early init took 0.00s
-Loader init took 0.12s
-Loading error handling took 0.02s
-Loading script took 0.27s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.29s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.07s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1509.67s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.30s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.08s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.29s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.06s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1539.46s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.02s
-Loading script took 0.28s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.09s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.05s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.29s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.07s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 474.14'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1367, 769) drawable=(1367, 769)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 1586.10s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.03s
 game/script/text tags/atl_text_tag.rpy:243: SyntaxWarning: "is not" with a literal. Did you mean "!="?
   if preferences.text_cps is not 0:
 game/script/text tags/gradient_tags.rpy:117: SyntaxWarning: "is" with a literal. Did you mean "=="?
@@ -854,7 +629,7 @@ game/script/text tags/kinetic_text_tags.rpy:760: SyntaxWarning: "is not" with a 
   if value is not "":
 game/script/text tags/kinetic_text_tags.rpy:765: SyntaxWarning: "is not" with a literal. Did you mean "!="?
   if value is not "":
-Loading script took 0.94s
+Loading script took 1.15s
 Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Faled to initialize steam: Exception('Init returned false.')
@@ -862,14 +637,14 @@ Running init code took 0.09s
 Loading analysis data took 0.00s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Dump and make backups. took 0.06s
+Dump and make backups. took 0.07s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.05s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.29s
+Creating interface object took 0.28s
 Cleaning stores took 0.00s
 Init translation took 0.04s
 Build styles took 0.00s

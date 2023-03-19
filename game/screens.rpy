@@ -380,32 +380,32 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
-
-    ## This empty frame darkens the main menu.
-    ## Don't want that sidebar on the left? Change the image associated
-    ## with it or comment this out.
-    frame:
-        style "main_menu_frame"
+    add gui.main_menu_background xalign 0.5 yalign 0.5 at zoomed(0.5)
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
     ## Personally, I usually make a separate set of menu buttons so I can
     ## control placement better.
-    use navigation
+    #use navigation
+    add "gui/logo.png" xalign 0.5 yalign 0.15
 
-    ## Note: I've found that turning this off in options.rpy actually
-    ## doesn't do anything. Comment it out if you don't want this.
-    if gui.show_name:
+    vbox xalign 0.5 yalign 0.6:
+        style_prefix "main_menu"
+        button:
+            text _("START") style "main_menu_button_text"
+            action Start()
+        textbutton _("LOAD") action ShowMenu("load")
+        textbutton _("OPTIONS") action ShowMenu("preferences")
+        textbutton _("ABOUT") action ShowMenu("about")
+        if main_menu and persistent.extras_unlocked:
+            textbutton _("EXTRAS") action ShowMenu("achievements") alt "Extras"
+        if renpy.variant("pc"):
+            textbutton _("QUIT") action Quit(confirm=not main_menu)
 
-        vbox:
-            style "main_menu_vbox"
+    add "gui/main_menu_accent.png" xalign 0.5 yalign 0.85
 
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
+    text "[config.version]" xalign 0.99 yalign 0.99:
+        style "main_menu_version"
 
 
 style main_menu_frame is empty
@@ -413,19 +413,6 @@ style main_menu_vbox is vbox
 style main_menu_text is gui_text
 style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
-
-style main_menu_frame:
-    xsize 420
-    yfill True
-
-    background "gui/overlay/main_menu.png"
-
-style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
@@ -435,6 +422,14 @@ style main_menu_title:
 
 style main_menu_version:
     properties gui.text_properties("version")
+
+style main_menu_button:
+    xalign 0.5 xysize (242, 64)
+    hover_background "gui/button/main_menu_hover.png"
+    idle_background Null()
+style main_menu_button_text:
+    idle_color "#ffffff" hover_color gui.accent_color# bold True
+    size gui.text_size+25 yalign 0.5
 
 
 ## Game Menu screen ############################################################
