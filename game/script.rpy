@@ -46,6 +46,12 @@ init python:
         roomval[1] = i/(2160-1080)
         return
 
-default roomval = [0.5, 0.5]
+default roomval = [960,540]
 define roomadjustmentx = ui.adjustment(range=1.0, changed=roomchangedx)
 define roomadjustmenty = ui.adjustment(range=1.0, changed=roomchangedy)
+
+screen arrow_controls():
+    textbutton "RIGHT" action [Function(roomadjustmentx.change, roomval[0]+200),SetVariable("roomval", [roomval[0]+200, roomval[1]])] xalign 1.0 yalign 0.5 text_size 150
+    textbutton "LEFT" action [Function(roomadjustmentx.change, roomval[0]-200),SetVariable("roomval", [roomval[0]-200, roomval[1]])] xalign 0.0 yalign 0.5 text_size 150
+    textbutton "UP" action [Function(roomadjustmenty.change, roomval[1]-200),SetVariable("roomval", [roomval[0], roomval[1]-200])] xalign 0.5 yalign 0.0 text_size 150
+    textbutton "DOWN" action [Function(roomadjustmenty.change, roomval[1]+200),SetVariable("roomval", [roomval[0], roomval[1]+200])] xalign 0.5 yalign 1.0 text_size 150

@@ -5,7 +5,7 @@ screen tutorial_room():
     layer "master"
     viewport:
         xinitial roomval[0] yinitial roomval[1] xadjustment roomadjustmentx yadjustment roomadjustmenty
-        child_size (3840, 2160) arrowkeys True edgescroll (300, 700)
+        child_size (3840, 2160) arrowkeys True #edgescroll (300, 700)
         imagebutton idle Null(1410, 395) action [SetVariable("inspect", "bed"), Jump("tutorial_room")] pos (560, 1760)
         imagebutton idle Null(700, 280) action [SetVariable("inspect", "desk"), Jump("tutorial_room")] pos (2315, 1370)
         imagebutton idle Null(380, 800) action [SetVariable("inspect", "handle"), Jump("tutorial_room")] pos (1750, 680)
@@ -17,6 +17,7 @@ screen tutorial_room():
             add "bg tutorial2"
             imagebutton idle Null(270, 450) action [SetVariable("inspect", "bowl"), Jump("tutorial_room")] pos (880, 780)
             imagebutton idle Null(730, 225) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1075, 1715)
+    use arrow_controls
 
 label tutorial_room:
     show screen tutorial_room
