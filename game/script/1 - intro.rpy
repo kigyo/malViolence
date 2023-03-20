@@ -52,9 +52,12 @@ label start:
     x "Some call me a simple sidekick."
     x "Others call me the \"Disciple of Danger.\""
     x "But if you asked me, I prefer..."
-    show cautionne hairtwirl with dissolve:
+    show cautionne hairtwirl:
         parallel:
             function WaveShader(amp=0.05, period=17.219, speed=4, direction="horizontal", damp=(0.999,0.043))
+    show crt:
+        blend "multiply" alpha 0.5
+    with dissolve
     x "\"...The Great Cautionne, Emperor of MalViolence!\"" 
     c "Or \"Cautionne\", for your convenience."
     "(...Seriously? A kid?)"

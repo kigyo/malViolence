@@ -10,7 +10,7 @@ default testvar = "0"
 init python:
     config.overlay_screens.append("debugging")
 
-default speaking =None
+default speaking = None
 init python:
 
     # This returns speaking if the character is speaking, and done if the

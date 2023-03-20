@@ -33,6 +33,7 @@ label splashscreen:
     return
 
 default inspect = None
+default minigame = False
 
 define eyeopen = ImageDissolve("images/open.png", 0.5, 0)
 define eyeclose = ImageDissolve("images/open.png", 0.5, 0, reverse=True)

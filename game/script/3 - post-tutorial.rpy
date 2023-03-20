@@ -1,6 +1,7 @@
 label post_tutorial:
+  scene bg corridor1 at bg with wipeleft
   #"{b}[static as {/b}{b}Cautionne{/b}{b} gets back on screen. {/b}{b}Maybe an{/b}{b} ATL animation that makes it look like his CRT screen's turning on again?]{/b}
-  c "{size=+35}{i}WHAT?!?{/i}{/size}"
+  c "{size=+35}{i}WHAT?!?{/i}{/size}" with small_shake
   c "How the {i}hell{/i} did you break the lock? "
   c "There's no way you could've-"
   c "...gotten out on..."
