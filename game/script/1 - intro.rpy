@@ -52,8 +52,9 @@ label start:
     x "Some call me a simple sidekick."
     x "Others call me the \"Disciple of Danger.\""
     x "But if you asked me, I prefer..."
-    pause 1
-    #[cautionne finally appears] 
+    show cautionne hairtwirl with dissolve:
+        parallel:
+            function WaveShader(amp=0.05, period=17.219, speed=4, direction="horizontal", damp=(0.999,0.043))
     x "\"...The Great Cautionne, Emperor of MalViolence!\"" 
     c "Or \"Cautionne\", for your convenience."
     "(...Seriously? A kid?)"
@@ -78,7 +79,7 @@ label start:
     c "Now, I'm still tidying up a couple of things on my end."
     c "So, before I get back to work..."
     
-    scene bg tutorial1 at zoomed with fade
+    scene bg tutorial1 at bg with fade
     ##[the screen transitions back to the prison room bg]
     c "...welcome to your new home, lab rat!"
     c "Cozy, isn't it? It's got everything you need to live a normal human life."

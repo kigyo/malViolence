@@ -1,15 +1,13 @@
-default tutorial = {"vent":0, "investigated":[]}
+default tutorial = {"vent":0, "investigated":[], "lock": [0,0,0,0,0,0,0,0]}
 
 screen tutorial_room():
     sensitive not inspect
     layer "master"
-    viewport:
-        xinitial roomval[0] yinitial roomval[1] xadjustment roomadjustmentx yadjustment roomadjustmenty
-        child_size (3840, 2160) arrowkeys True #edgescroll (300, 700)
+    fixed at zoomed:
         imagebutton idle Null(1410, 395) action [SetVariable("inspect", "bed"), Jump("tutorial_room")] pos (560, 1760)
         imagebutton idle Null(700, 280) action [SetVariable("inspect", "desk"), Jump("tutorial_room")] pos (2315, 1370)
         imagebutton idle Null(380, 800) action [SetVariable("inspect", "handle"), Jump("tutorial_room")] pos (1750, 680)
-        imagebutton idle Null(880, 610) action [SetVariable("inspect", "tap"), Jump("tutorial_room")] align (1.0, 1.0)
+        imagebutton idle Null(880, 610) action [SetVariable("inspect", "tap"), Jump("tutorial_room")] pos (2960, 1550)
         if tutorial["vent"] == 0:
             add "bg tutorial1"
             imagebutton idle Null(340, 560) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (840, 715)
@@ -17,13 +15,30 @@ screen tutorial_room():
             add "bg tutorial2"
             imagebutton idle Null(270, 450) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (880, 780)
             imagebutton idle Null(730, 225) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1075, 1715)
-    use arrow_controls
-    text str(len(tutorial["investigated"])) xalign 0.99 yalign 0.01 size 100
+            imagebutton idle "placeholder" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1580, 1480) at zoomed(0.3)
+
+init python:
+    def set_tutorial_lock(idx):
+        store.tutorial["lock"][idx] += 1
+        if tutorial["lock"][idx] == 6:
+            store.tutorial["lock"][idx] = 0
+
+screen tutorial_lock():
+    sensitive not inspect
+    layer "master"
+    if config.developer:
+        hbox yalign 0.1 xalign 0.5:
+            for i in range(8):
+                text str(tutorial["lock"][i]) + " "
+    add "puzzles/tutorial_circle.png" align (0.5,0.5)
+    for i in range(8):
+        imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(set_tutorial_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
 
 label tutorial_room:
     if inspect not in tutorial["investigated"]:
         $tutorial["investigated"].append(inspect)
     show screen tutorial_room
+    hide screen tutorial_lock
     if inspect == "painting":
         if tutorial["vent"] == 0:
             "(There's a weird stock photo on the cover, but otherwise it's your average vent. Cautionne won't be winning any awards for home decor anytime soon.)"
@@ -79,17 +94,21 @@ label tutorial_room:
                 #[crunching sounds]
                 "(...Why did you do that?)"
                 "(Those pellets still don't taste great.)"
-                "(In fact, the more you chew on them, the bitterer they- )"
+                "(In fact, the more you chew on them, the bitterer they-)"
+                scene bg tutorial2 with small_shake:
+                    parallel:
+                        zoom 0.5 xalign 0.5 yalign 0.5
+                        linear 0.5 yalign 1.0 xalign 0.5 zoom 0.75
+                    parallel:
+                        function WaveShader(amp=(1,1), period=(1,2), speed=(1.5,1.5), direction="horizontal", damp=(1,0), double="horizontal")
                 "(-HURK!)"
-                #[screen shakes and camera moves down to the floor] 
-                pause 1
                 "(...Aw, crap.)"
                 #[screen begins to distort]
                 "(Of course there was something in the food.)"
                 "(Whatever it was... it's making everything throb like crazy. Your chest, your head, your eyes...)"
                 "(But your throat's clammed up. You can't scream, or cry, or moan. And breathing's getting harder and harder...)"
                 "(Soon..."
-                #[screen cuts black]
+                scene black with eyeclose
                 extend " your vision goes black.)"
                 "Lab Report 310: Subject expired shortly after ingesting higher than recommended daily serving of cyanide-laced rodent feed."           
                 "Contributing factors to death: Their stomach was bigger than their brain, evidently. May need to re-avaluate STOP agents' dietary preferences."
@@ -114,21 +133,20 @@ label tutorial_room:
     elif inspect == "handle":
         if tutorial["vent"] == 0:
             "(A door handle.)"
-            show tutorial_lock with dissolve:
-                yalign 0.2 xalign 0.5
+            show screen tutorial_lock with dissolve
             "(But what's with the lock? You've never seen anything like it.)"
         elif tutorial["vent"] == 2:
-            show tutorial_lock with dissolve:
-                yalign 0.2 xalign 0.5
+            show screen tutorial_lock with dissolve
             "(Oh, this is your ticket out of here.)"
             "(The wheel's just like the wheels on the vent cover!)"
             "(With a little time and effort... you think you can crack it.)"
+            $ inspect = None
+            call screen tutorial_lock
             #TODO: Puzzle
             #[If puzzle is solved, play a solving/unlocking sound and then go to the post-tutorial cautionne scene]
         else:
             "(A door handle.)"
-            show tutorial_lock with dissolve:
-                yalign 0.2 xalign 0.5
+            show screen tutorial_lock with dissolve
             "(For some reason, you want to look around the room again...)"
         hide tutorial_lock with dissolve
     $ inspect = None

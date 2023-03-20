@@ -94,6 +94,28 @@ image cautionne_gun_speaking:
     pause 0.12
     repeat
 
+layeredimage cautionne hairtwirl:
+    zoom 0.5
+    always "cautionne_hairtwirl"
+    group mouth:
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_hairtwirl_speaking", "cautionne_hairtwirl_mouth_closed")
+image cautionne_hairtwirl_speaking:
+    "cautionne_hairtwirl_mouth_open"
+    pause 0.12
+    "cautionne_hairtwirl_mouth_closed"
+    pause 0.12
+    repeat
+image cautionne_hairtwirl:
+    "cautionne_hairtwirl_base_0001"
+    pause 0.1
+    "cautionne_hairtwirl_base_0002"
+    pause 0.1
+    "cautionne_hairtwirl_base_0003"
+    pause 0.1
+    "cautionne_hairtwirl_base_0004"
+    pause 0.1
+    repeat
+
 layeredimage cautionne laugh:
     zoom 0.5
     always "cautionne_laugh_1"

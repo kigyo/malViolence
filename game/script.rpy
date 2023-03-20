@@ -35,6 +35,7 @@ label splashscreen:
 default inspect = None
 
 define eyeopen = ImageDissolve("images/open.png", 0.5, 0)
+define eyeclose = ImageDissolve("images/open.png", 0.5, 0, reverse=True)
 
 init python:
     def roomchangedx(i):

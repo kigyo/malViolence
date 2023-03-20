@@ -13,8 +13,12 @@ init -1:
     image bg tutorial2 = "images/BG/Tutorial room v2.png"
     image bg room1 = "images/BG/Room 1.png"
     image bg room2 = "images/BG/Room 2.png"
-transform zoomed(z=0.5):
+transform bg(z=0.5):
     zoom z xalign 0.5 yalign 0.5
+transform zoomed(z=0.5):
+    zoom z
+transform rotated(z=90):
+    rotate z
 ## Music:
 # init -2 python:
     # Careless-Summer_Looping = "audio/music/Careless-Summer_Looping.mp3"

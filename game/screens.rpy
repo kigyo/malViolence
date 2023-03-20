@@ -380,7 +380,7 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background xalign 0.5 yalign 0.5 at zoomed(0.5)
+    add gui.main_menu_background at bg(0.5)
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
@@ -389,7 +389,7 @@ screen main_menu():
     #use navigation
     add "gui/logo.png" xalign 0.5 yalign 0.15
 
-    vbox xalign 0.5 yalign 0.6:
+    vbox xalign 0.5 yalign 0.6 spacing 15:
         style_prefix "main_menu"
         button:
             text _("START") style "main_menu_button_text"
