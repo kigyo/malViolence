@@ -57,3 +57,37 @@ screen arrow_controls():
     textbutton "LEFT" action [Function(roomadjustmentx.change, roomval[0]-200),SetVariable("roomval", [roomval[0]-200, roomval[1]])] xalign 0.0 yalign 0.5 text_size 150
     textbutton "UP" action [Function(roomadjustmenty.change, roomval[1]-200),SetVariable("roomval", [roomval[0], roomval[1]-200])] xalign 0.5 yalign 0.0 text_size 150
     textbutton "DOWN" action [Function(roomadjustmenty.change, roomval[1]+200),SetVariable("roomval", [roomval[0], roomval[1]+200])] xalign 0.5 yalign 1.0 text_size 150
+
+transform crt:
+    parallel:
+        function WaveShader(amp=0.05, period=17.219, speed=4, direction="horizontal", damp=(0.999,0.043))
+
+transform dizzy:
+    parallel:
+        function WaveShader(amp=(1,1), period=(1,2), speed=(1.5,1.5), direction="horizontal", damp=(1,0), double="horizontal")
+
+transform crt_effects:
+    parallel:
+        blend "multiply" alpha 0.5
+    parallel:
+        function WaveShader(amp=0.05, period=17.219, speed=4, direction="vertical", damp=(0.043,1.0))
+
+image crt = At("crt.png", crt_effects)
+
+image ctc:
+    "gui/ctc1.png"
+    alpha 0.0 yalign 1.0 yoffset 9 xoffset 10
+    block:
+        ease 0.5 alpha 1.0 rotate 0
+        ease 0.5 alpha 1.0 rotate 90
+        ease 0.5 alpha 1.0 rotate 180
+        ease 0.5 alpha 0.5 rotate 270
+        rotate 0
+        repeat
+    #block:
+    #    ease 0.5 alpha 1.0 rotate 180
+    #    ease 0.5 alpha 1.0 rotate 90
+    #    ease 0.5 alpha 1.0 rotate 0
+    #    ease 0.5 alpha 0.5 rotate 270
+    #    
+    #    repeat

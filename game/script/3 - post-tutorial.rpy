@@ -1,5 +1,9 @@
 label post_tutorial:
-  scene bg corridor1 at bg with wipeleft
+  scene black with dissolve
+  show cautionne annoyed at crt
+  show crt
+  with eyeopen
+  pause 1
   #"{b}[static as {/b}{b}Cautionne{/b}{b} gets back on screen. {/b}{b}Maybe an{/b}{b} ATL animation that makes it look like his CRT screen's turning on again?]{/b}
   c "{size=+35}{i}WHAT?!?{/i}{/size}" with small_shake
   c "How the {i}hell{/i} did you break the lock? "
@@ -25,8 +29,7 @@ label post_tutorial:
   c "...Anyhoo, you {i}do{/i} want to escape, don't you?"
   c "Well, then. Allow me to give you a final pearl of wisdom..."
   c "Stop making mistakes."
-  c "Because the next time you screw up,"
+  c "Because the next time you screw up, "
   #"{b}[{/b}{b}cautionne's{/b}{b} expression changes to a serious one]{/b}"
   extend "{i}you're not gonna like what happens next.{/i}"
-
-
+  jump dr_danger_1

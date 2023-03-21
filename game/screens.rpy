@@ -63,8 +63,8 @@ style vscrollbar:
 
 style slider:
     ysize gui.slider_size
-    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/slider/horizontal_[prefix_]thumb.png"
+    right_bar Frame("gui/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
+    left_bar Frame("gui/scrollbar/horizontal_[prefix_]thumb.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
 
 style vslider:
     xsize gui.slider_size
@@ -127,7 +127,7 @@ screen say(who, what):
 init python:
     config.character_id_prefixes.append('namebox')
 
-default persistent.say_window_alpha = 0.75
+default persistent.say_window_alpha = 1.0
 
 style window is default
 style say_label is default
@@ -313,49 +313,47 @@ screen navigation():
         style_prefix "navigation"
 
         xpos gui.navigation_xpos
-        yalign 0.5
+        ypos gui.navigation_ypos
 
         spacing gui.navigation_spacing
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            textbutton _("START") action Start()
 
         else:
 
             ## We're using the Separated History Screen, so we'll comment this out
             # textbutton _("History") action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
+            textbutton _("SAVE") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        textbutton _("LOAD") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("PREFERENCES") action ShowMenu("preferences")
 
         if _in_replay:
 
-            textbutton _("End Replay") action EndReplay(confirm=True)
+            textbutton _("END REPLAY") action EndReplay(confirm=True)
 
         elif not main_menu:
 
-            textbutton _("Main Menu") action MainMenu()
+            textbutton _("MAIN MENU") action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
+        textbutton _("ABOUT") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+            textbutton _("HELP") action ShowMenu("help")
 
         if main_menu:
 
-            textbutton _("Extras") action ShowMenu("achievements") alt "Extras"
+            textbutton _("EXTRAS") action ShowMenu("achievement_menu") alt "Extras"
 
-        if renpy.variant("pc"):
-
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+        null height 20
+        textbutton _("RETURN") action Return()
+        
 
 
 style navigation_button is gui_button
@@ -367,6 +365,7 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.button_text_properties("navigation_button")
+    size 45 xalign 0.0
 
 
 ## Main Menu screen ############################################################
@@ -429,7 +428,7 @@ style main_menu_button:
     idle_background Null()
 style main_menu_button_text:
     idle_color "#ffffff" hover_color gui.accent_color# bold True
-    size gui.text_size+25 yalign 0.5
+    size 60 yalign 0.5
 
 
 ## Game Menu screen ############################################################
@@ -497,11 +496,6 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
     use navigation
 
-    textbutton _("Return"):
-        style "return_button"
-
-        action Return()
-
     label title
 
     if main_menu:
@@ -522,42 +516,38 @@ style return_button is navigation_button
 style return_button_text is navigation_button_text
 
 style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
+    bottom_padding 200
+    top_padding 200
 
     background "gui/overlay/game_menu.png"
 
 style game_menu_navigation_frame:
-    xsize 420
+    xsize 590
     yfill True
 
 style game_menu_content_frame:
-    left_margin 60
-    right_margin 30
+    left_margin 90
+    right_margin 150
     top_margin 15
 
 style game_menu_viewport:
-    xsize 1380
+    xsize 1050
 
 style game_menu_vscrollbar:
-    unscrollable gui.unscrollable
+    unscrollable gui.unscrollable xoffset 80
 
 style game_menu_side:
     spacing 15
 
 style game_menu_label:
-    xpos 75
+    xpos 140
+    ypos 90
     ysize 180
 
 style game_menu_label_text:
     size gui.title_text_size
     color gui.accent_color
     yalign 0.5
-
-style return_button:
-    xpos gui.navigation_xpos
-    yalign 1.0
-    yoffset -45
 
 
 ## About screen ################################################################
@@ -745,7 +735,7 @@ screen preferences():
 
     use game_menu(_("Preferences"), scroll="viewport"):
 
-        vbox:
+        vbox xoffset 30:
 
             hbox:
                 box_wrap True
@@ -770,7 +760,7 @@ screen preferences():
                 vbox:
                     style_prefix "check"
                     label _("Toggles")
-                    textbutton _("Image Descriptions") action ToggleVariable("persistent.image_captions") alt "Toggle Image Descriptions"
+                    #textbutton _("Image Descriptions") action ToggleVariable("persistent.image_captions") alt "Toggle Image Descriptions"
                     textbutton _("Audio Titles") action ToggleVariable("persistent.sound_captions") alt "Toggle Sound Captions"
                     if renpy.variant("pc"):
                         ## Self-voicing does not work on smartphone devices, so this
@@ -781,18 +771,18 @@ screen preferences():
                 vbox:
                     style_prefix "radio"
                     label _("Typeface")
-                    textbutton _("DejaVu Sans") action [gui.SetPreference("font", "DejaVuSans.ttf"), gui.SetPreference("size", 31), SetVariable("persistent.typeface", "DejaVuSans")] alt "Change font to DejaVu Sans"
-                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=40}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 32), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
+                    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 35), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
+                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 36), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
 
                 vbox:
                     style_prefix "radio"
                     label _("Font Size")
-                    if persistent.typeface == "DejaVuSans":
-                        textbutton _("Large") action gui.SetPreference("size", 40) alt "Change to Large Size Text"
-                        textbutton _("Regular") action gui.SetPreference("size", 31) alt "Change to Regular Size Text"
+                    if persistent.typeface == "TitilliumWeb":
+                        textbutton _("Large") action gui.SetPreference("size", 44) alt "Change to Large Size Text"
+                        textbutton _("Regular") action gui.SetPreference("size", 35) alt "Change to Regular Size Text"
                     elif persistent.typeface == "Hyperlegible":
-                        textbutton _("Large") action gui.SetPreference("size", 38) alt "Change to Large Size Text"
-                        textbutton _("Regular") action gui.SetPreference("size", 32) alt "Change to Regular Size Text"
+                        textbutton _("Large") action gui.SetPreference("size", 43) alt "Change to Large Size Text"
+                        textbutton _("Regular") action gui.SetPreference("size", 36) alt "Change to Regular Size Text"
 
                 vbox:
                     style_prefix "radio"
@@ -800,17 +790,17 @@ screen preferences():
                     textbutton _("White") action gui.SetPreference("color", "#ffffff") alt "Change text color to white" 
                     textbutton _("Cream") action gui.SetPreference("color", "#FFFDD0") alt "Change text color to cream" 
 
-                vbox:
-                    style_prefix "radio"
-                    label _("Line Spacing")
-                    textbutton _("Taller") action gui.SetPreference("dialogue_spacing", 4) alt "Change the height of the space between lines of dialogue to be taller"
-                    textbutton _("Regular") action gui.SetPreference("dialogue_spacing", 2) alt "Change the height of the space between lines of dialogue to the regular height"
+                #vbox:
+                #    style_prefix "radio"
+                #    label _("Line Spacing")
+                #    textbutton _("Taller") action gui.SetPreference("dialogue_spacing", 4) alt "Change the height of the space between lines of dialogue to be taller"
+                #    textbutton _("Regular") action gui.SetPreference("dialogue_spacing", 2) alt "Change the height of the space between lines of dialogue to the regular height"
 
 
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
 
-            null height (4 * gui.pref_spacing)
+            null height (2 * gui.pref_spacing)
 
             hbox:
                 style_prefix "slider"
@@ -828,13 +818,15 @@ screen preferences():
 
                     label _("Textbox Opacity")
 
-                    bar value FieldValue(persistent, 'say_window_alpha', 1.0, max_is_zero=False, offset=0, step=.2) xmaximum 525 style "slider" alt "Textbox Opacity"
+                    bar value FieldValue(persistent, 'say_window_alpha', 1.0, max_is_zero=False, offset=0, step=.2) xmaximum 400 style "slider" alt "Textbox Opacity"
 
 
                 vbox:
 
                     if config.has_music:
-                        label _("Music Volume")
+                        hbox xsize 400:
+                            label _("Music Volume")
+                            textbutton _("Mute All") action Preference("all mute", "toggle") xalign 1.0 yalign 1.0
 
                         hbox:
                             bar value Preference("music volume")
@@ -858,13 +850,6 @@ screen preferences():
 
                             if config.sample_voice:
                                 textbutton _("Test") action Play("voice", config.sample_voice)
-
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
-
-                        textbutton _("Mute All"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
 
 
 style pref_label is gui_label
@@ -901,7 +886,7 @@ style pref_label_text:
     yalign 1.0
 
 style pref_vbox:
-    xsize 338
+    xsize 348
 
 style radio_vbox:
     spacing gui.pref_button_spacing
@@ -924,7 +909,7 @@ style check_button_text:
     properties gui.button_text_properties("check_button")
 
 style slider_slider:
-    xsize 525
+    xsize 400
 
 style slider_button:
     properties gui.button_properties("slider_button")
@@ -935,7 +920,7 @@ style slider_button_text:
     properties gui.button_text_properties("slider_button")
 
 style slider_vbox:
-    xsize 675
+    xsize 520
 
 
 ## History screen ##############################################################
@@ -1581,114 +1566,3 @@ style nvl_button:
 
 style nvl_button_text:
     properties gui.button_text_properties("nvl_button")
-
-
-
-################################################################################
-## Mobile Variants
-################################################################################
-
-style pref_vbox:
-    variant "medium"
-    xsize 675
-
-## Since a mouse may not be present, we replace the quick menu with a version
-## that uses fewer and bigger buttons that are easier to touch.
-screen quick_menu():
-    variant "touch"
-
-    zorder 100
-
-    if quick_menu:
-
-        hbox:
-            style_prefix "quick"
-
-            xalign 0.5
-            yalign 1.0
-
-            textbutton _("Back") action Rollback()
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Menu") action ShowMenu()
-
-
-style window:
-    variant "small"
-    background "gui/phone/textbox.png"
-
-style radio_button:
-    variant "small"
-    foreground "gui/phone/button/radio_[prefix_]foreground.png"
-
-style check_button:
-    variant "small"
-    foreground "gui/phone/button/check_[prefix_]foreground.png"
-
-style nvl_window:
-    variant "small"
-    background "gui/phone/nvl.png"
-
-style main_menu_frame:
-    variant "small"
-    background "gui/phone/overlay/main_menu.png"
-
-style game_menu_outer_frame:
-    variant "small"
-    background "gui/phone/overlay/game_menu.png"
-
-style game_menu_navigation_frame:
-    variant "small"
-    xsize 510
-
-style game_menu_content_frame:
-    variant "small"
-    top_margin 0
-
-style pref_vbox:
-    variant "small"
-    xsize 600
-
-style bar:
-    variant "small"
-    ysize gui.bar_size
-    left_bar Frame("gui/phone/bar/left.png", gui.bar_borders, tile=gui.bar_tile)
-    right_bar Frame("gui/phone/bar/right.png", gui.bar_borders, tile=gui.bar_tile)
-
-style vbar:
-    variant "small"
-    xsize gui.bar_size
-    top_bar Frame("gui/phone/bar/top.png", gui.vbar_borders, tile=gui.bar_tile)
-    bottom_bar Frame("gui/phone/bar/bottom.png", gui.vbar_borders, tile=gui.bar_tile)
-
-style scrollbar:
-    variant "small"
-    ysize gui.scrollbar_size
-    base_bar Frame("gui/phone/scrollbar/horizontal_[prefix_]bar.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/phone/scrollbar/horizontal_[prefix_]thumb.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
-
-style vscrollbar:
-    variant "small"
-    xsize gui.scrollbar_size
-    base_bar Frame("gui/phone/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/phone/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
-
-style slider:
-    variant "small"
-    ysize gui.slider_size
-    base_bar Frame("gui/phone/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/phone/slider/horizontal_[prefix_]thumb.png"
-
-style vslider:
-    variant "small"
-    xsize gui.slider_size
-    base_bar Frame("gui/phone/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
-    thumb "gui/phone/slider/vertical_[prefix_]thumb.png"
-
-style slider_vbox:
-    variant "small"
-    xsize None
-
-style slider_slider:
-    variant "small"
-    xsize 900

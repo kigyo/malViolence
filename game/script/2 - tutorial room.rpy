@@ -110,10 +110,11 @@ label tutorial_room:
                     parallel:
                         zoom 0.5 xalign 0.5 yalign 0.5
                         linear 0.5 yalign 1.0 xalign 0.5 zoom 0.75
-                    parallel:
-                        function WaveShader(amp=(1,1), period=(1,2), speed=(1.5,1.5), direction="horizontal", damp=(1,0), double="horizontal")
                 "(-HURK!)"
                 "(...Aw, crap.)"
+                scene bg tutorial2 at dizzy with dissolve:
+                    parallel:
+                        yalign 1.0 xalign 0.5 zoom 0.75
                 #[screen begins to distort]
                 "(Of course there was something in the food.)"
                 "(Whatever it was... it's making everything throb like crazy. Your chest, your head, your eyes...)"
