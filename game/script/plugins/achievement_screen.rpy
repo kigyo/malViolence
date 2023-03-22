@@ -200,8 +200,8 @@ screen achievement_notification_catcher():
     if not achievement_is_done:
         timer 4.0 repeat True:
             action If(len(achievement_notification_list) > 0,
-                      true=[Hide("achievement_notification"), Function(achievement_notification_show)],
-                      false=[Function(achievement_notification_done)])
+                true=[Hide("achievement_notification"), Function(achievement_notification_show)],
+                false=[Function(achievement_notification_done)])
 
 
 screen achievement_notification():

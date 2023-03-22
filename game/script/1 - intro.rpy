@@ -11,7 +11,6 @@ label start:
     x "Hello?"
     pause 1
     x "{size=+35}{i}HEY! WAKE THE HELL UP!!!{/i}{/size}" with small_shake
-    #[the camera moves to show the protag waking up quickly in the cell room]
     scene bg tutorial1 with eyeopen:
         zoom 1.2 yalign 0.8 xalign 0.5
         ease 0.8 zoom 1 yalign 0.5
@@ -83,7 +82,6 @@ label start:
     c "So, before I get back to work..."
     
     scene bg tutorial1 at bg with fade
-    ##[the screen transitions back to the prison room bg]
     c "...welcome to your new home, lab rat!"
     c "Cozy, isn't it? It's got everything you need to live a normal human life."
     c "A comfy bed... Well, not comfy, but... a bed. A tap with running water, a desk for... desk things."

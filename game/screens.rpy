@@ -335,7 +335,7 @@ screen navigation():
 
         textbutton _("LOAD") action ShowMenu("load")
 
-        textbutton _("PREFERENCES") action ShowMenu("preferences")
+        textbutton _("OPTIONS") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -726,7 +726,7 @@ screen preferences():
 
     tag menu
 
-    use game_menu(_("Preferences"), scroll="viewport"):
+    use game_menu(_("Options"), scroll="viewport"):
 
         vbox xoffset 30:
 

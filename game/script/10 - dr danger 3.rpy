@@ -2,15 +2,15 @@ label dr_danger_3:
 
   #"{b}[pause as the TV shuts off, and room 2 is shown again]{/b}"
 
-  "(…Again with the temper tantrum, huh.)"
+  "(...Again with the temper tantrum, huh.)"
 
   "(Seriously, why's he so pissed off at you?)"
 
-  "(He and Dr Danger have fought against STOP field agents in the past, but that's not your department.)"
+  "(He and Dr. Danger have fought against STOP field agents in the past, but that's not your department.)"
 
   "(What right does he have to act all high and mighty towards {i}you?{/i})"
 
-  "(…)"
+  "(...)"
 
   "(Right - {i}supervillain.{/i} Big ego, no self-awareness. Don't overthink it)"
 
@@ -20,7 +20,7 @@ label dr_danger_3:
 
   "(Yes, it's darker here - but not in an unpleasant way. It's warmer than the previous rooms, literally and figuratively.)"
 
-  "(The wooden floorboards and the decorated wallpaper feel… welcoming. Nostalgic, even.)"
+  "(The wooden floorboards and the decorated wallpaper feel... welcoming. Nostalgic, even.)"
 
   "(If you viewed this hall alone, you'd assume it'd belong to a family household. Not to a scheming terrorist and her kooky sidekick.)"
 
@@ -30,7 +30,7 @@ label dr_danger_3:
 
   "[pause]"
 
-  "(Um… Would Cautionne allow you to take a quick breather?)"
+  "(Um... Would Cautionne allow you to take a quick breather?)"
 
   #"{b}[animate camera movements to simulate the protagonist slowly crouching down to the floor] {/b}"
 
@@ -42,9 +42,9 @@ label dr_danger_3:
 
   dr "{i}Heated flooring.{/i} My work has always been stressful, so I've always strived to maximize comfort wherever I could."
 
-  dr "Of course, when your work is done, you can sleep here all you like. But before then, you've got dishes to clean, washes to run, bedrooms to vacuum…"
+  dr "Of course, when your work is done, you can sleep here all you like. But before then, you've got dishes to clean, washes to run, bedrooms to vacuum..."
 
-  dr "…and of course, Cautionne to take care of."
+  dr "...and of course, Cautionne to take care of."
 
   dr "He represents a unique challenge, I know. But you wouldn't have gotten this far if you and I didn't believe you could do it."
 

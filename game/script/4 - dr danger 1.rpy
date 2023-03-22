@@ -1,7 +1,7 @@
 label dr_danger_1:
   scene bg tutorial2 with dissolve:
     align (0.5,0.5) zoom 0.8
-  "(…Well. That was unnerving.)"
+  "(...Well. That was unnerving.)"
 
   "(It's hard to tell when he's being serious, but his hatred for \"STOP freaks\" is clearly no joke.)"
 
@@ -29,7 +29,11 @@ label dr_danger_1:
 
   "(What the-?!)" with small_shake
 
-  "({i}Another {/i}voice? And all the screens in the room lit up, too…)"
+  "({i}Another {/i}voice? And all the screens in the room lit up, too...)"
+
+  scene bg corridor1:
+    zoom 0.5 yalign 0.5 xalign 0.5
+    ease 4 zoom 1 xalign 0.0 yalign 0.45
 
   #"{b}[pause as the player goes over to one screen, which has {/b}{b}dr.{/b}{b} danger in the room. {/b}{b}it's{/b}{b} {/b}{b}similar to{/b}{b} {/b}{b}cautionne's{/b}{b} tv screen, but the room is less messy.]{/b}"
 
@@ -47,7 +51,7 @@ label dr_danger_1:
 
   dr "You are here because you're under my temporary employment."
 
-  "(Uh… no?)"
+  "(Uh... no?)"
 
   "(Last time you checked, you were a STOP agent. By default, Dr. Danger was your sworn enemy.)"
 
@@ -65,7 +69,10 @@ label dr_danger_1:
 
   "(So what if there are more puzzles to solve and locked rooms to explore? To someone like you, they should be child's play.)"
 
-  #"{b}[pause]{/b}"
+  scene bg corridor1:
+    zoom 1 xalign 0.0 yalign 0.45
+    ease 1 zoom 0.5 yalign 0.5 xalign 0.5
+  pause 1
 
   "({i}...Should{/i} be.)"
   scene bg corridor1:

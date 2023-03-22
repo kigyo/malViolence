@@ -16,7 +16,7 @@ label post_room_2:
 
   c "Not that you'd know it from looking at your face, but I've got a good eye for this kind of thing!"
 
-  c "I bet you've got that bubbly feeling buzzing under your skin… Like sweet, sparkling Limonata in your veins?"
+  c "I bet you've got that bubbly feeling buzzing under your skin... Like sweet, sparkling Limonata in your veins?"
 
   "(What a colorful turn of phrase.)"
 
@@ -24,7 +24,7 @@ label post_room_2:
 
   c "You must be {i}salivating {/i}at the mountain of evidence beneath your fingertips. "
 
-  c "Weapons, corkboards, secret evil notes… All the classics are here, and {i}we both know{/i} you know you want to rub your grubby paws all over them."
+  c "Weapons, corkboards, secret evil notes... All the classics are here, and {i}we both know{/i} you know you want to rub your grubby paws all over them."
 
   c "Even if you copied half of one blueprint onto a bar napkin and threw it through the washing machine, you'd still have enough evidence to net you a promotion from HQ."
 
@@ -34,15 +34,15 @@ label post_room_2:
 
   #"{b}[pause]{/b}"
 
-  c "…"
+  c "..."
 
   c "Hey lab rat. Can I ask you something?"
 
   c "You {i}are {/i}just getting evidence, right?"
 
-  c "I've watched you with my drones… Tailored these puzzles to your specific, sub-par problem-solving skills… Carried out quasi-legal research…"
+  c "I've watched you with my drones... Tailored these puzzles to your specific, sub-par problem-solving skills... Carried out quasi-legal research..."
 
-  c "So, I know what you are. You're an agent for STOP… nothing more, nothing less."
+  c "So, I know what you are. You're an agent for STOP... nothing more, nothing less."
 
   c "...Am I right?"
 

@@ -15,7 +15,7 @@ screen tutorial_room():
             add "bg tutorial2"
             imagebutton idle Null(270, 450) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (880, 780)
             imagebutton idle Null(730, 225) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1075, 1715)
-            imagebutton idle "placeholder" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1580, 1480) at zoomed(0.3)
+            imagebutton idle "tutorial_food" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1580, 1480) at zoomed(0.3)
 
 init python:
     def tutorial_set_lock(idx):
@@ -115,7 +115,6 @@ label tutorial_room:
                 scene bg tutorial2 at dizzy with dissolve:
                     parallel:
                         yalign 1.0 xalign 0.5 zoom 0.75
-                #[screen begins to distort]
                 "(Of course there was something in the food.)"
                 "(Whatever it was... it's making everything throb like crazy. Your chest, your head, your eyes...)"
                 "(But your throat's clammed up. You can't scream, or cry, or moan. And breathing's getting harder and harder...)"
@@ -156,7 +155,6 @@ label tutorial_room:
             "(With a little time and effort... you think you can crack it.)"
             $ inspect = None
             call screen tutorial_lock
-            #TODO: Puzzle
             #[If puzzle is solved, play a solving/unlocking sound and then go to the post-tutorial cautionne scene]
         elif tutorial["vent"] == 3:
             $ inspect = None

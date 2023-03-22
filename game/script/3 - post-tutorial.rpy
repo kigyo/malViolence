@@ -31,5 +31,5 @@ label post_tutorial:
   c "Stop making mistakes."
   c "Because the next time you screw up, "
   #"{b}[{/b}{b}cautionne's{/b}{b} expression changes to a serious one]{/b}"
-  extend "{i}you're not gonna like what happens next.{/i}"
+  extend serious "{i}you're not gonna like what happens next.{/i}"
   jump dr_danger_1
