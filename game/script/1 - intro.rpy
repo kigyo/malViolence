@@ -1,5 +1,8 @@
 
 label start:
+    #starts with the first track, then continues looping the second one
+    #play music ending_intro
+    #queue music ending_kill
     scene black
     #[static plays as the game begins. the screen is black, since the protagonist is recovering from being knocked out] 
     pause 1

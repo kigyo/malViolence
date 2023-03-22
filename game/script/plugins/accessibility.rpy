@@ -151,8 +151,8 @@ init python:
 # TODO: Add your own music files.
 
     # example = "audio/examplefile.ogg"
-    business = "audio/music/Future-Business_v001.mp3"
-    concrete = "audio/music/The-Concrete-Bakes_Looping.mp3"
+    ending_intro = "audio/music/EndingIntro.wav"
+    ending_kill = "audio/music/KillEndingV1.mp3"
     garden = "audio/music/Sculpture-Garden_Looping.mp3"
     summer = "audio/music/Careless-Summer_Looping.mp3"
 
@@ -162,8 +162,8 @@ init python:
 
     music_list = {
     # example: _("Example text here"),
-    business : _("Future Business"),
-    concrete : _("The Concrete Bakes"),
+    ending_intro : _("Future Business"),
+    ending_kill : _("The Concrete Bakes"),
     garden : _("Sculpture Garden"),
     summer : _("Careless Summer")
     }

@@ -113,7 +113,7 @@ screen say(who, what):
                 style "namebox"
                 text "> " + who.upper() id "who"
 
-        text what id "what"
+        text what id "what" outlines [(1.5, "#000000", 1, 1)]
 
     use quick_menu
 
@@ -258,23 +258,27 @@ screen quick_menu():
 
             xpos 812
             ypos 723
-            button background "gui/button/quick_menu_idle.png":
+            button at quick_hover:
                 text _("HISTORY")
                 action ShowMenu('history')
-            button background "gui/button/quick_menu_idle.png":
+            button at quick_hover:
                 text _("SAVE")
                 action ShowMenu('save')
-            button background "gui/button/quick_menu_idle.png":
+            button at quick_hover:
                 text _("OPTIONS")
                 action ShowMenu('preferences')
-            button background "gui/button/quick_menu_idle.png":
+            button at quick_hover:
                 text _("AUTO")
                 action Preference("auto-forward", "toggle")
-            button background "gui/button/quick_menu_idle.png":
+            button at quick_hover:
                 text _("SKIP")
                 action Skip() alternate Skip(fast=True, confirm=True)
 
-
+transform quick_hover:
+    on hover:
+        ease 0.1 yoffset -3
+    on idle:
+        ease 0.1 yoffset 0
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.
 # init python:
@@ -290,6 +294,7 @@ style quick_button_text is button_text
 
 style quick_button:
     properties gui.button_properties("quick_button")
+    background "gui/button/quick_menu_idle.png"
 
 style quick_text is button_text:
     properties gui.button_text_properties("quick_button")
@@ -624,67 +629,54 @@ screen file_slots(title):
             order_reverse True
 
             ## The page name, which can be edited by clicking on a button.
-            button:
-                style "page_label"
-
-                key_events True
-                xalign 0.5
-                action page_name_value.Toggle()
-
-                input:
-                    style "page_label_text"
-                    value page_name_value
-
-            ## The grid of file slots.
-            grid gui.file_slot_cols gui.file_slot_rows:
-                style_prefix "slot"
-
-                xalign 0.5
+            vbox:
+                xalign 0.4
                 yalign 0.5
+                hbox xalign 1.0:
+                    style_prefix "page"
+                    #label _("SAVE YOUR FILE") xalign 0.0
 
-                spacing gui.slot_spacing
+                    spacing gui.page_spacing
 
-                for i in range(gui.file_slot_cols * gui.file_slot_rows):
+                    #textbutton _("<") action FilePagePrevious()
 
-                    $ slot = i + 1
+                    if config.has_autosave:
+                        textbutton _("{#auto_page}A") action FilePage("auto")
 
-                    button:
-                        action FileAction(slot)
+                    if config.has_quicksave:
+                        textbutton _("{#quick_page}Q") action FilePage("quick")
 
-                        has vbox
+                    ## range(1, 10) gives the numbers from 1 to 9.
+                    for page in range(1, 10):
+                        textbutton "[page]" action FilePage(page)
 
-                        add FileScreenshot(slot) xalign 0.5
+                    #textbutton _(">") action FilePageNext()
 
-                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
-                            style "slot_time_text"
+                ## The grid of file slots.
+                grid gui.file_slot_cols gui.file_slot_rows:
+                    style_prefix "slot"
 
-                        text FileSaveName(slot):
-                            style "slot_name_text"
 
-                        key "save_delete" action FileDelete(slot)
+                    spacing gui.slot_spacing
 
-            ## Buttons to access other pages.
-            hbox:
-                style_prefix "page"
+                    for i in range(gui.file_slot_cols * gui.file_slot_rows):
 
-                xalign 0.5
-                yalign 1.0
+                        $ slot = i + 1
 
-                spacing gui.page_spacing
+                        button:
+                            action FileAction(slot)
 
-                textbutton _("<") action FilePagePrevious()
+                            has vbox
 
-                if config.has_autosave:
-                    textbutton _("{#auto_page}A") action FilePage("auto")
+                            add FileScreenshot(slot, empty="gui/button/save_empty.png") xalign 0.5
 
-                if config.has_quicksave:
-                    textbutton _("{#quick_page}Q") action FilePage("quick")
+                            text FileTime(slot, format=_("{#file_time}%d/%m/%Y, %H:%M"), empty=""):
+                                style "slot_time_text"
 
-                ## range(1, 10) gives the numbers from 1 to 9.
-                for page in range(1, 10):
-                    textbutton "[page]" action FilePage(page)
+                            text FileSaveName(slot):
+                                style "slot_name_text"
 
-                textbutton _(">") action FilePageNext()
+                            key ["save_delete"] action FileDelete(slot)
 
 ## Set these to false if you wish to remove the Auto or Quick file pages
 define config.has_autosave = True
@@ -720,6 +712,7 @@ style slot_button:
 
 style slot_button_text:
     properties gui.button_text_properties("slot_button")
+    yoffset 12
 
 
 ## Preferences screen ##########################################################
@@ -850,6 +843,8 @@ screen preferences():
 
                             if config.sample_voice:
                                 textbutton _("Test") action Play("voice", config.sample_voice)
+                                
+            null height gui.pref_spacing
 
 
 style pref_label is gui_label

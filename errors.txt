@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 370: style property gui is not known.
-    gui.text_size+25
-       ^
+File "game/script/plugins/achievement_screen.rpy", line 30: grid statement expects 2 positional arguments, got 1.
+    grid 2:
+           ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Tue Mar 21 17:12:50 2023
+Wed Mar 22 17:25:42 2023

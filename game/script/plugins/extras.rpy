@@ -175,6 +175,7 @@ screen extras_navigation():
         spacing gui.navigation_spacing
 
         textbutton _("ACHIEVEMENTS") action ShowMenu("achievement_menu") alt "Achievements"
+        textbutton _("FAILURES") action ShowMenu("failchievement_menu") alt "Failures"
 
         #textbutton _("SPRITE GALLERY") action ShowMenu("sprite_gallery") alt "Sprite Gallery"
 

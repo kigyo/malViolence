@@ -54,7 +54,7 @@ default achievements = Achievement()
 
 init python:
 
-    achievement.steam_position = "bottom right"
+    achievement.steam_position = "top right"
 
     achievement_name = {
 
@@ -77,6 +77,8 @@ init python:
         "secret": [_("Shh... My little secret."), _("Discover the secret."), 'gui/trophy_icon.png', 'hidden'],
         "wow": [_("Outstanding!"), _("Get all achievements."), 'gui/trophy_icon.png', 'platinum'],
 
+        "dead1": [_("Uh oh."), _("Die some way."), 'gui/trophy_icon.png', 'dead'],
+        "dead2": [_("Stinky!"), _("Die another way."), 'gui/trophy_icon.png', 'dead'],
         ## More of this is explained in 'achievement_screen.rpy'.
 
     }
@@ -93,4 +95,6 @@ init python:
 default achievement_welcome = Achievement(name=achievement_name['welcome'][0], message=achievement_name['welcome'][1], image=achievement_name['welcome'][2])
 default achievement_secret = Achievement(name=achievement_name['secret'][0], message=achievement_name['secret'][1], image=achievement_name['secret'][2])
 default achievement_platinum = Achievement(name=achievement_name['wow'][0], message=achievement_name['wow'][1], image=achievement_name['wow'][2])
+default achievement_dead1 = Achievement(name=achievement_name['dead1'][0], message=achievement_name['dead1'][1], image=achievement_name['dead1'][2])
+default achievement_dead2 = Achievement(name=achievement_name['dead2'][0], message=achievement_name['dead2'][1], image=achievement_name['dead2'][2])
 

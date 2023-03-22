@@ -34,7 +34,7 @@ screen achievement_menu():
                 ## Granted achievements
                 for t in persistent.my_achievements:
                     
-                    if achievement.has(t.name):
+                    if achievement.has(t.name) and "dead" != t[3]:
                         
                         frame:
                             
@@ -95,6 +95,61 @@ screen achievement_menu():
                                         else:
                                         
                                             text _('Hidden Achievement') style 'achievements_label' color '#FFFFFF33'
+
+screen failchievement_menu():
+
+    tag menu
+
+    # variant "small"
+
+    ## If you'd like to display a number and total of achievements you can use this...
+    # use extras_menu(_("Achievements | {:01d}/{}".format(len(persistent.my_achievements), len(achievement_name) if len(persistent.my_achievements) == len(achievement_name) else len(achievement_name) - 1)), scroll="viewport"):
+    ## Else, use this.
+    use extras_menu(_("Failures"), scroll="viewport"):
+
+        style_prefix "achievements"
+
+        frame:
+            
+            background None
+            padding (20, 20, 20, 20)
+            align (0.0, 0.0)
+
+            vpgrid:
+                
+                cols 2 ## You can change this number depending on the width of your achievements.
+                spacing 10
+                for v in achievement_name.values():
+                    if v[3] == 'dead':
+                        
+                        frame:
+                            
+                            hbox:
+                                
+                                yalign 0.5
+                                xysize (100, 100)
+                                
+                                ## This will display a locked icon.
+                                add 'gui/locked_achievement.png' size (100, 100) yalign 0.5
+
+                                null width 20
+
+                                vbox:
+                                    
+                                    spacing 0
+                                    yfill False
+
+                                    ## We're setting the data feedback to represent
+                                    ## the None and 'hidden' achievements.
+                                    if v[3] is None:
+                                        ## Index '1' is the description of the achievemnt.
+                                    
+                                        text str(v[0]) style 'achievements_label' color '#FFFFFF33'
+                                        text str(v[1]) color '#FFFFFF33'
+                                    
+                                    else:
+                                    
+                                        text _('Hidden Avoidable Death') style 'achievements_label' color '#FFFFFF33'
 
 
 init python:
