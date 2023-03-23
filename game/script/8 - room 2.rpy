@@ -1,5 +1,4 @@
-default room2 = {"investigated":[], 
-    "panopticon":[0,0,0,0,0], "panopticon_pos":[0,0,0,0,0], "panopticon_reverse":[], "panopticon_moves":0, "panopticon_effects":{0:[1,3], 1:[2], 2:[0,4], 3:[2], 4:[1,3]}}
+default room2 = {"investigated":[], }
 
 screen room2():
     sensitive not inspect
