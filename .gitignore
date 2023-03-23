@@ -9,3 +9,6 @@ game/saves/navigation.json
 game/saves/persistent
 log.txt
 traceback.txt
+*.rpyc
+*.rpyc
+*.rpyc

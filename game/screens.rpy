@@ -324,40 +324,39 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("START") action Start()
+            textbutton _("START") action Start() at navigation_move
 
         else:
 
             ## We're using the Separated History Screen, so we'll comment this out
             # textbutton _("History") action ShowMenu("history")
 
-            textbutton _("SAVE") action ShowMenu("save")
+            textbutton _("SAVE") action ShowMenu("save") at navigation_move
 
-        textbutton _("LOAD") action ShowMenu("load")
+        textbutton _("LOAD") action ShowMenu("load") at navigation_move
 
-        textbutton _("OPTIONS") action ShowMenu("preferences")
+        textbutton _("OPTIONS") action ShowMenu("preferences") at navigation_move
 
         if _in_replay:
 
-            textbutton _("END REPLAY") action EndReplay(confirm=True)
+            textbutton _("END REPLAY") action EndReplay(confirm=True) at navigation_move
 
         elif not main_menu:
 
-            textbutton _("MAIN MENU") action MainMenu()
+            textbutton _("MAIN MENU") action MainMenu() at navigation_move
 
-        textbutton _("ABOUT") action ShowMenu("about")
+        textbutton _("ABOUT") action ShowMenu("about") at navigation_move
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("HELP") action ShowMenu("help")
+            textbutton _("HELP") action ShowMenu("help") at navigation_move
 
         if main_menu:
 
-            textbutton _("EXTRAS") action ShowMenu("achievement_menu") alt "Extras"
+            textbutton _("EXTRAS") action ShowMenu("achievement_menu") alt "Extras" at navigation_move
 
-        null height 20
-        textbutton _("RETURN") action Return()
+    textbutton _("RETURN") + "                             " action Return() xpos gui.navigation_xpos ypos 0.75 text_size 40 at navigation_move
         
 
 
@@ -372,6 +371,12 @@ style navigation_button_text:
     properties gui.button_text_properties("navigation_button")
     size 45 xalign 0.0
 
+transform navigation_move:
+    on hover:
+        ease 0.15 xoffset 5
+    on idle:
+        ease 0.15 xoffset 0
+
 
 ## Main Menu screen ############################################################
 ##
@@ -383,14 +388,9 @@ screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
-
     add gui.main_menu_background at bg(0.5)
-
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
-    ## Personally, I usually make a separate set of menu buttons so I can
-    ## control placement better.
-    #use navigation
+    #add "gui/scroller.png" at scroll_skew
+    
     add "gui/logo.png" xalign 0.5 yalign 0.15
 
     vbox xalign 0.5 yalign 0.6 spacing 15:
@@ -411,6 +411,13 @@ screen main_menu():
     text "[config.version]" xalign 0.99 yalign 0.99:
         style "main_menu_version"
 
+transform scroll_skew:
+    perspective True
+    matrixtransform RotateMatrix(80, 0, 0)* OffsetMatrix(-300, 300, 0)
+    block:
+        linear 1 xoffset -40
+        xoffset 0
+        repeat
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox

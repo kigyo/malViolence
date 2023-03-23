@@ -1,15 +1,22 @@
-default room2 = {"investigated":[]}
+default room2 = {"investigated":[], 
+    "panopticon":[0,0,0,0,0], "panopticon_pos":[0,0,0,0,0], "panopticon_reverse":[], "panopticon_moves":0, "panopticon_effects":{0:[1,3], 1:[2], 2:[0,4], 3:[2], 4:[1,3]}}
 
 screen room2():
     sensitive not inspect
     layer "master"
     fixed at zoomed(0.35):
+        add "bg room2"
         imagebutton idle Null(1570, 650) action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (1175, 1150)
+        imagebutton idle "room2_blueprints" action [SetVariable("inspect", "blueprints"), Jump("room_2")] pos (1575, 1150) at zoomed(0.2)
+        imagebutton idle "room2_postits" action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (1575, 1550) at zoomed(0.2)
+        imagebutton idle "room2_limbs" action [SetVariable("inspect", "limbs"), Jump("room_2")] pos (1575, 2150) at zoomed(0.2)
+        imagebutton idle "room2_clippings" action [SetVariable("inspect", "clippings"), Jump("room_2")] pos (2575, 2150) at zoomed(0.2)
 
 label room_2:
     if inspect not in room2["investigated"]:
         $room2["investigated"].append(inspect)
     show screen room2
+    hide screen room2_panopticon
     if inspect == "blueprints":
         "(You survey the diagrams before you.)"
         "(From a distance, they seem to be your average blueprints. Blueprints for weapons of all makes, shapes and sizes.)"
@@ -36,10 +43,14 @@ label room_2:
     elif inspect == "clippings":
         "(Printouts and clippings of various news articles - all related to Dr. Danger's exploits... with a certain colorful sidekick occasionally breaking into the opening paragraphs.)"
         "(In fact, when you look at them all together, Cautionne seems to show up more over time. Dr. Danger must've been pleased with her pupil's growth.)"
-        "(At the bottom of the pile, a heavily weathered photo peeks out. Based on what you can make out of the caption - it seems to be of some kind of commemorative occasion" "(At the bottom of the pile, a heavily weathered photo peeks out. Based on what you can make out of the caption - it seems to be“__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity”.)"
+        "(At the bottom of the pile, a heavily weathered photo peeks out. Based on what you can make out of the caption - it seems to be of some kind of commemorative occasion: \"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
         "(You can't recognize any of the faces, but you do recognize the logo as-)"
         #"{b}[pause as the clippings disappear]{/b}"
         "(...Never mind. It's just similar, that's all.)"
+        $ inspect = None
+        call screen room2_panopticon
+    elif inspect == "panopticon solved":
+        "(Solved the panopticon.)"
     $ inspect = None
     call screen room2
 
