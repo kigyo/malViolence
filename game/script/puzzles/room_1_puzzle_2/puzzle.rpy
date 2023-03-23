@@ -1,11 +1,3 @@
-default persistent.puzzle_width = 6
-default persistent.puzzle_height = 6
-default persistent.puzzle_move_cap = 20
-default persistent.puzzle_shuffle_matches = True
-default persistent.puzzle_show_solution = False
-default persistent.puzzle_reticle_timeout = 0.5
-default persistent.puzzle_piece_count = 4
-
 init python:
     class PuzzleBoard(Board):
         def __init__(self, width=7, height=7,

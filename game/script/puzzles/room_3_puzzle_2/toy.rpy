@@ -1,12 +1,3 @@
-default persistent.toy_width = 5
-default persistent.toy_height = 5
-default persistent.toy_move_cap = 12
-default persistent.toy_shuffle_matches = True
-default persistent.toy_show_solution = False
-default persistent.toy_reticle_timeout = 1.0
-
-default persistent.toy_piece_count = 3
-
 init python:
     import random
     class ToyBoard(Board):
