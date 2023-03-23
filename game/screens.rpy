@@ -337,14 +337,6 @@ screen navigation():
 
         textbutton _("OPTIONS") action ShowMenu("preferences") at navigation_move
 
-        if _in_replay:
-
-            textbutton _("END REPLAY") action EndReplay(confirm=True) at navigation_move
-
-        elif not main_menu:
-
-            textbutton _("MAIN MENU") action MainMenu() at navigation_move
-
         textbutton _("ABOUT") action ShowMenu("about") at navigation_move
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
@@ -355,6 +347,14 @@ screen navigation():
         if main_menu:
 
             textbutton _("EXTRAS") action ShowMenu("achievement_menu") alt "Extras" at navigation_move
+
+        if _in_replay:
+
+            textbutton _("END REPLAY") action EndReplay(confirm=True) at navigation_move
+
+        elif not main_menu:
+
+            textbutton _("MAIN MENU") action MainMenu() at navigation_move
 
     textbutton _("RETURN") + "                             " action Return() xpos gui.navigation_xpos ypos 0.75 text_size 40 at navigation_move
         
@@ -580,16 +580,51 @@ screen about():
 
         style_prefix "about"
 
-        vbox:
-
-            label "[config.name!t]"
-            text _("Version [config.version!t]\n")
+        vbox spacing 30:
+            add "gui/logo.png" at zoomed(0.4) xalign 0.5
 
             ## gui.about is usually set in options.rpy.
-            if gui.about:
-                text "[gui.about!t]\n"
+            text "This game was created within 31 days for NaNoRenO 2023, by:"
+            grid 2 6:
+                xspacing 0 yspacing 10 xoffset 50
+                hbox spacing 15:
+                    label _("Director & CG Artist:")
+                    text _("Mado") 
+                hbox spacing 15:
+                    label _("Scenario:")
+                    text _("Mado, Brian Mulholland, Z") 
+                hbox spacing 15:
+                    label _("Programmer:")
+                    text _("KigyoDev") 
+                hbox spacing 15:
+                    label _("Puzzle Designer:")
+                    text _("speck") 
+                hbox spacing 15:
+                    label _("UI & Logo:")
+                    text _("spicaze") 
+                hbox spacing 15:
+                    label _("Backgrounds:")
+                    text _("Reina") 
+                hbox spacing 15:
+                    label _("Cautionne VA:")
+                    text _("Carrick Inabnett") 
+                hbox spacing 15:
+                    label _("Dr. Danger VA:")
+                    text _("Vyn Vox") 
+                hbox spacing 15:
+                    label _("Voice Direction:")
+                    text _("Phebe Fabacher") 
+                hbox spacing 15:
+                    label _("Audio Mastering & SFX:")
+                    text _("D.ray") 
+                hbox spacing 15:
+                    label _("Music:")
+                    text _("Melo-dii, Doran") 
+                hbox spacing 15:
+                    label _("Promotion:")
+                    text _("Jennymhulla") 
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25
 
 
 style about_label is gui_label
@@ -599,6 +634,8 @@ style about_text is gui_text
 style about_label_text:
     size gui.label_text_size
 
+style about_text:
+    size gui.label_text_size
 
 ## Load and Save screens #######################################################
 ##

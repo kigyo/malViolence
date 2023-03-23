@@ -9,10 +9,16 @@ init -1:
 ## BGs:
     image bg corridor1 = "images/BG/Corridor 1.png"
     image bg corridor2 = "images/BG/Corridor 2.png"
+    image bg corridor3 = "images/BG/Corridor 3.png"
+    image bg corridor_exit = "images/BG/Corridor Exit.png"
     image bg tutorial1 = "images/BG/Tutorial room v1.png"
     image bg tutorial2 = "images/BG/Tutorial room v2.png"
     image bg room1 = "images/BG/Room 1.png"
     image bg room2 = "images/BG/Room 2.png"
+    image bg room3_upstairs = "images/BG/Room 3 upstairs.png"
+    image bg room3_downstairs = "images/BG/Room 3 downstairs.png"
+    image bg cautionne = "images/BG/cautionne_screen_bg.png"
+    image bg danger = "images/BG/drdanger_screenbg.png"
 transform bg(z=0.5):
     zoom z xalign 0.5 yalign 0.5
 transform zoomed(z=0.5):

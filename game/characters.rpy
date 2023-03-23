@@ -41,15 +41,17 @@ init python:
     # Curried form of the same.
     speaker = renpy.curry(speaker_callback)
 
-define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc")
-define c = Character(_("Cautionne"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc")
-define dr = Character(_("Dr. Danger"), color="#ffffff", image="danger", callback=speaker("danger"), ctc="ctc")
-define narrator = Character(color="#ffffff", callback=speaker("protagonist"), ctc="ctc")
+define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
+define c = Character(_("Cautionne"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
+define dr = Character(_("Dr. Danger"), color="#ffffff", image="danger", callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
+define narrator = Character(color="#ffffff", callback=speaker("protagonist"), ctc="ctc", ctc_position="nestled-close")
+define n = Character(kind=nvl, callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
 
 image bg cautionne_screen = "cautionne_screen_background.png"
 
 layeredimage cautionne annoyed:
     zoom 0.5
+    always "bg cautionne"
     always "cautionne_annoyed_closed_face"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_annoyed_speaking", "cautionne_annoyed_closed_face")
@@ -71,6 +73,7 @@ image cautionne_annoyed_hands_speaking:
 
 layeredimage cautionne block:
     zoom 0.5
+    always "bg cautionne"
     always "cautionne_block_closed"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_block_speaking", "cautionne_block_closed")
@@ -97,6 +100,7 @@ image cautionne_gun_speaking:
 
 layeredimage cautionne hairtwirl:
     zoom 0.5
+    always "bg cautionne"
     always "cautionne_hairtwirl"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_hairtwirl_speaking", "cautionne_hairtwirl_mouth_closed")
@@ -119,19 +123,20 @@ image cautionne_hairtwirl:
 
 layeredimage cautionne laugh:
     zoom 0.5
-    always "cautionne_laugh_1"
+    always "bg cautionne"
     group mouth:
         attribute idle "cautionne_laugh_1"
         attribute animate default "cautionne_laughing"
 image cautionne_laughing:
     "cautionne_laugh_2"
-    pause 0.2
+    pause 0.12
     "cautionne_laugh_1"
-    pause 0.2
+    pause 0.12
     repeat
 
 layeredimage cautionne lean:
     zoom 0.5
+    always "bg cautionne"
     always "cautionne_lean_closed"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_lean_speaking", "cautionne_lean_closed")
@@ -144,11 +149,12 @@ image cautionne_lean_speaking:
 
 layeredimage cautionne oops:
     zoom 0.5
+    always "bg cautionne"
     always "cautionne_oopsie"
 
 layeredimage cautionne pencil:
     zoom 0.5
-    always "cautionne_pencil_closed"
+    always "bg cautionne"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_pencil_speaking", "cautionne_pencil_closed")
 image cautionne_pencil_speaking:
@@ -160,6 +166,7 @@ image cautionne_pencil_speaking:
 
 layeredimage cautionne serious:
     zoom 0.5
+    always "bg cautionne"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_serious_speaking", "cautionne_serious_closed")
 image cautionne_serious_speaking:
@@ -229,6 +236,7 @@ image cautionne_sit_smug:
 
 layeredimage cautionne think:
     zoom 0.5
+    always "bg cautionne"
     always "cautionne_think_closed"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_think_speaking", "cautionne_think_closed")

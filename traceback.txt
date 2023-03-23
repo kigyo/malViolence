@@ -1,27 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script/8 - room 2.rpy", line 51, in script
-    call screen room2_panopticon
+  File "game/script/11 - room 3.rpy", line 138, in script
+    call screen room3
   File "renpy/common/000statements.rpy", line 609, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 27, in execute
-    screen room2_panopticon():
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 27, in execute
-    screen room2_panopticon():
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 40, in execute
-    for i in range(len(room2["panopticon"])):
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 41, in execute
-    if room2["panopticon_pos"][i] == room2["panopticon"][i] * 72:
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 43, in <module>
-    elif i in room2["panopticon_reverse"]:
-TypeError: argument of type 'NoneType' is not iterable
+  File "renpy/common/00action_data.rpy", line 79, in get_selected
+    return __get_field(self.object, self.field, self.kind) == self.value
+  File "renpy/common/00action_data.rpy", line 39, in _m1_00action_data__get_field
+    raise NameError("The {} {} does not exist.".format(kind, name))
+NameError: The field room does not exist.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script/8 - room 2.rpy", line 51, in script
-    call screen room2_panopticon
+  File "game/script/11 - room 3.rpy", line 138, in script
+    call screen room3
   File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2232, in execute
     self.call("execute")
   File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2220, in call
@@ -44,27 +38,31 @@ Full traceback:
     d.visit_all(callback, seen)
   File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
     d.visit_all(callback, seen)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 451, in visit_all
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 456, in visit_all
+    self.child.visit_all(callback, seen=None)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
+    d.visit_all(callback, seen)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
+    d.visit_all(callback, seen)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
+    d.visit_all(callback, seen)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 584, in visit_all
     callback(self)
   File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3810, in <lambda>
     root_widget.visit_all(lambda i : i.per_interact())
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 462, in per_interact
-    self.update()
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 653, in update
-    self.screen.function(**self.scope)
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 27, in execute
-    screen room2_panopticon():
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 27, in execute
-    screen room2_panopticon():
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 40, in execute
-    for i in range(len(room2["panopticon"])):
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 41, in execute
-    if room2["panopticon_pos"][i] == room2["panopticon"][i] * 72:
-  File "game/script/puzzles/room_2_puzzle_2.rpy", line 43, in <module>
-    elif i in room2["panopticon_reverse"]:
-TypeError: argument of type 'NoneType' is not iterable
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 968, in per_interact
+    if self.is_selected():
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 956, in is_selected
+    return is_selected(self.action)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 401, in is_selected
+    return action.get_selected()
+  File "renpy/common/00action_data.rpy", line 79, in get_selected
+    return __get_field(self.object, self.field, self.kind) == self.value
+  File "renpy/common/00action_data.rpy", line 39, in _m1_00action_data__get_field
+    raise NameError("The {} {} does not exist.".format(kind, name))
+NameError: The field room does not exist.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.0.3.22090809
 malViolence 1.0
-Thu Mar 23 18:18:47 2023
+Thu Mar 23 20:35:34 2023

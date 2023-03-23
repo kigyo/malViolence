@@ -7,8 +7,8 @@ screen room2():
     fixed at zoomed(0.35):
         add "bg room2"
         imagebutton idle Null(1570, 650) action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (1175, 1150)
-        imagebutton idle "room2_blueprints" action [SetVariable("inspect", "blueprints"), Jump("room_2")] pos (1575, 1150) at zoomed(0.2)
-        imagebutton idle "room2_postits" action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (1575, 1550) at zoomed(0.2)
+        imagebutton idle "room2_blueprints" action [SetVariable("inspect", "blueprints"), Jump("room_2")] pos (3575, 1150) at zoomed(0.2)
+        imagebutton idle "room2_postits" action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3575, 1550) at zoomed(0.2)
         imagebutton idle "room2_limbs" action [SetVariable("inspect", "limbs"), Jump("room_2")] pos (1575, 2150) at zoomed(0.2)
         imagebutton idle "room2_clippings" action [SetVariable("inspect", "clippings"), Jump("room_2")] pos (2575, 2150) at zoomed(0.2)
 
@@ -24,7 +24,7 @@ label room_2:
         "(That said, poor penmanship hasn't dulled the designs themselves. The least dangerous of these would be devastating out in the field.)"
         "(The oldest of the blueprints - the ones hidden at the bottom of the pile, look wildly different. Clearly, another person authored them.)"
         "(In fact, if you squint... you can still find the signatures at the bottom.)"
-        "(\"Destrange,\" they say. They\'re dated more than 15 years ago.)"
+        "(\"Destrange,\" they say. They're dated more than 15 years ago.)"
     elif inspect == "post-its":
         "(You eye over the mass of scrawled notes pinned in front of you. There're two distinct handwritings here, but the contents are mostly the same - and mostly {i}domestic{/i}.) "
         "(Notes on what to eat for breakfast and when to start preparing it. Notes on how much sleep to get and... what stories to read? Birthdays, exercises, meal plans and chores?)"
@@ -36,10 +36,10 @@ label room_2:
     elif inspect == "corkboard":
         "(As you look over the sprawling web of photos, documents, and diagrams, you realize everything in front of you is perfectly orderly.)"
         "(These are the notes of a hunter, and STOP was their prey. You recognize dozens of names, operations, and places; vital parts of STOP's organization that had suffered heavy blows in the last few years.)"
-        "(But you\'re disturbed by how many places you {i}don't{/i} recognize.)"
+        "(But you're disturbed by how many places you {i}don't{/i} recognize.)"
         "(Laboratories, factories and armories that must be high above your clearance level – crossed out like someone was just going down a checklist.)"
         "(All these top-secret sites share the same acronym: \"YTDI.\")"
-        "(...No, you don't recognize it. That's par for the course with STOP: If you don't know what an acronym means, it\'s probably above your paygrade.)"
+        "(...No, you don't recognize it. That's par for the course with STOP: If you don't know what an acronym means, it's probably above your paygrade.)"
     elif inspect == "clippings":
         "(Printouts and clippings of various news articles - all related to Dr. Danger's exploits... with a certain colorful sidekick occasionally breaking into the opening paragraphs.)"
         "(In fact, when you look at them all together, Cautionne seems to show up more over time. Dr. Danger must've been pleased with her pupil's growth.)"
@@ -63,7 +63,7 @@ label room2_deaths:
     (You carefully insert one more pin into the board, which leaves-)
     Whoa, you {i}suck {/i}at this!
     (Something about his unusually straightforward insult puts ice into your veins.)
-    It\'s like you're solving this puzzle with your eyes closed and your nose plugged.
+    It's like you're solving this puzzle with your eyes closed and your nose plugged.
     ...There some reason you don't want to look at the truth in front of you, lab rat?
     (...No, no, it's just-)
     I know you're not taking this seriously. Maybe we should just move on?
@@ -87,12 +87,12 @@ label room2_deaths:
     Seems like you've run out of time, lab rat.
     That's it. The jailbreak is broken. You screwed up.
     (So it {i}was {/i}a prison? Then-)
-    If it was just between you and me, I'd be “whatever” about it.
+    If it was just between you and me, I'd be \"whatever\" about it.
     We all make mistakes, y'know? So, I'm super forgiving and cool and mature about this kind of thing.
     ...But you just lost those kids a chance to get out before the operations start.
     (...Sorry, {i}operations?{/i})
     They could've gotten out clean. Now I'll have to step in and bust them out {i}dirty{/i}.
-    And it\'s all because of {i}you.{/i}
+    And it's all because of {i}you.{/i}
     Now, go sit in the corner and think about what you've done!
     {b}SFX LARGE SWITCH FLIPPING, CUT TO BLACK{/b}
     I'll come back for you when you're sorry enough."
@@ -156,7 +156,7 @@ label room2_deaths:
     I see you're the type who likes to gamble.
     Alas, you didn't hit the jackpot. Better luck next time!
     (You-)
-    But since you\'re here, I\'ve got another game for you to play.
+    But since you're here, I've got another game for you to play.
     Place your bet, lab rat! Is the gun next to you loaded or unloaded?
     (What gu-)
     {b}GUNSHOT SFX, CUT TO BLACK{/b}"
