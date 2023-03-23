@@ -1,10 +1,14 @@
 
 label start:
+
+    # Uncomment to test puzzles.
+    # jump test_puzzles
+
     #starts with the first track, then continues looping the second one
     #play music ending_intro
     #queue music ending_kill
     scene black
-    #[static plays as the game begins. the screen is black, since the protagonist is recovering from being knocked out] 
+    #[static plays as the game begins. the screen is black, since the protagonist is recovering from being knocked out]
     pause 1
     x "...llo?"
     pause 1
@@ -44,7 +48,7 @@ label start:
         ease 1 xalign 0.25 yalign 0.1
     extend "That monitor, in the corner...)"
     "(I'll just push myself up and make my way over to it.)"
-    #[Cautionne's monitor cg shows, but the screen is black] 
+    #[Cautionne's monitor cg shows, but the screen is black]
     "(...What? There's no volume button on the front panel.)"
     "(Maybe it's to the side, or...)"
     x "Too bad, lab rat! You won't find any volume buttons here."
@@ -57,7 +61,7 @@ label start:
     show cautionne hairtwirl at crt
     show crt
     with dissolve
-    x "\"...The Great Cautionne, Emperor of MalViolence!\"" 
+    x "\"...The Great Cautionne, Emperor of MalViolence!\""
     c "Or \"Cautionne\", for your convenience."
     "(...Seriously? A kid?)"
     "(You got locked up by a kid?)"
@@ -80,7 +84,7 @@ label start:
     "(You'd prefer to have some form of self-defense on-hand.)"
     c "Now, I'm still tidying up a couple of things on my end."
     c "So, before I get back to work..."
-    
+
     scene bg tutorial1 at bg with fade
     c "...welcome to your new home, lab rat!"
     c "Cozy, isn't it? It's got everything you need to live a normal human life."
