@@ -8,6 +8,8 @@ label test_puzzles:
             jump room_1_puzzle_2
         "Room 3 Puzzle 2":
             jump room_3_puzzle_2
+        "Room 3 Puzzle 3":
+            jump room_3_puzzle_3
 
 label room_1_puzzle_2:
     $ pb = PuzzleBoard(width=6, height=6, move_cap=20)
@@ -45,4 +47,22 @@ label failed_room_3_puzzle_2:
     show screen toy_playspace(tb, False)
     "You failed room_3_puzzle_2."
     hide screen toy_playspace
+    jump test_puzzles
+
+label room_3_puzzle_3:
+    call init_mise_en_place
+    show screen mise_en_place(False)
+    "<TODO: Insert intro script and rules.>"
+    pause 0.0
+    $ renpy.retain_after_load()
+    call screen mise_en_place
+
+label solved_room_3_puzzle_3:
+    show screen mise_en_place(False)
+    "You solved room_3_puzzle_2."
+    jump test_puzzles
+
+label failed_room_3_puzzle_3:
+    show screen mise_en_place(False)
+    "You failed room_3_puzzle_3."
     jump test_puzzles
