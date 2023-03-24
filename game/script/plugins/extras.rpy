@@ -170,31 +170,30 @@ screen extras_navigation():
         style_prefix "navigation"
 
         xpos gui.navigation_xpos
-        yalign 0.5
+        ypos gui.navigation_ypos
 
         spacing gui.navigation_spacing
 
-        textbutton _("ACHIEVEMENTS") action ShowMenu("achievement_menu") alt "Achievements"
-        textbutton _("FAILURES") action ShowMenu("failchievement_menu") alt "Failures"
+        textbutton _("ACHIEVEMENTS") action ShowMenu("achievement_menu") alt "Achievements" at navigation_move
+        textbutton _("FAILURES") action ShowMenu("failchievement_menu") alt "Failures" at navigation_move
 
         #textbutton _("SPRITE GALLERY") action ShowMenu("sprite_gallery") alt "Sprite Gallery"
 
-        textbutton _("CG GALLERY") action ShowMenu("bg_gallery") alt "Background Gallery"
+        textbutton _("CG GALLERY") action ShowMenu("bg_gallery") alt "Background Gallery" at navigation_move
 
-        textbutton _("MUSIC ROOM") action ShowMenu("music_gallery") alt "Music Room"
+        textbutton _("MUSIC ROOM") action ShowMenu("music_gallery") alt "Music Room" at navigation_move
 
-        #textbutton _("REPLAY ROOM") action ShowMenu("replay_gallery") alt "Replay Room"
+        #textbutton _("REPLAY ROOM") action ShowMenu("replay_gallery") alt "Replay Room" at navigation_move
 
         if persistent.game_clear:
 
-            textbutton _("DEVELOPER NOTES") action ShowMenu("dev_notes") alt "Developer Notes"
+            textbutton _("DEVELOPER NOTES") action ShowMenu("dev_notes") alt "Developer Notes" at navigation_move
 
         else:
 
-            textbutton _("???") action None alt "Locked Option"
+            textbutton _("???") action None alt "Locked Option" at navigation_move
 
-        null height 20
-        textbutton _("RETURN") action Return() alt "Return"
+    textbutton _("RETURN") + "                             " action ShowMenu("about") alt "Return" xpos gui.navigation_xpos ypos 0.75 text_size 40 at navigation_move
 
 ## Extras Menu screen #######################################
 ##

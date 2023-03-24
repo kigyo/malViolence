@@ -60,6 +60,7 @@ label start:
     x "But if you asked me, I prefer..."
     show cautionne hairtwirl at crt
     show crt
+    show cautionne_frame_glow at bg
     with dissolve
     x "\"...The Great Cautionne, Emperor of MalViolence!\""
     c "Or \"Cautionne\", for your convenience."

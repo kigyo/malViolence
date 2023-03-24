@@ -41,43 +41,46 @@ init python:
     # Curried form of the same.
     speaker = renpy.curry(speaker_callback)
 
-define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc")
-define c = Character(_("Cautionne"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc")
-define dr = Character(_("Dr. Danger"), color="#ffffff", image="danger", callback=speaker("danger"), ctc="ctc")
-define narrator = Character(color="#ffffff", callback=speaker("protagonist"), ctc="ctc")
+define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
+define c = Character(_("Cautionne"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
+define dr = Character(_("Dr. Danger"), color="#ffffff", image="danger", callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
+define narrator = Character(color="#ffffff", callback=speaker("protagonist"), ctc="ctc", ctc_position="nestled-close")
+define n = Character(kind=nvl, callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
 
 image bg cautionne_screen = "cautionne_screen_background.png"
 
 layeredimage cautionne annoyed:
     zoom 0.5
-    always "cautionne_annoyed_closed_face"
+    always "bg cautionne"
     group mouth:
-        attribute speaking default WhileSpeaking("cautionne", "cautionne_annoyed_speaking", "cautionne_annoyed_closed_face")
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_annoyed_speaking", "cautionne_closeup_face_close")
+        attribute silent "cautionne_closeup_face_close"
     group hands:
-        attribute hands default WhileSpeaking("cautionne", "cautionne_annoyed_hands_speaking", "cautionne_annoyed_closed_hands")
+        attribute hands default WhileSpeaking("cautionne", "cautionne_annoyed_hands_speaking", "cautionne_closeup_hands_close")
         attribute nohands Null()
 image cautionne_annoyed_speaking:
-    "cautionne_annoyed_open_face"
+    "cautionne_closeup_face_open"
     pause 0.12
-    "cautionne_annoyed_closed_face"
+    "cautionne_closeup_face_close"
     pause 0.12
     repeat
 image cautionne_annoyed_hands_speaking:
-    "cautionne_annoyed_open_hands"
+    "cautionne_closeup_hands_open"
     pause 0.12
-    "cautionne_annoyed_closed_hands"
+    "cautionne_closeup_hands_close"
     pause 0.12
     repeat
 
 layeredimage cautionne block:
     zoom 0.5
-    always "cautionne_block_closed"
+    always "bg cautionne"
+    always "cautionne_blocks_closed"
     group mouth:
-        attribute speaking default WhileSpeaking("cautionne", "cautionne_block_speaking", "cautionne_block_closed")
-image cautionne_block_speaking:
-    "cautionne_block_open"
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_blocks_speaking", "cautionne_blocks_closed")
+image cautionne_blocks_speaking:
+    "cautionne_blocks_open"
     pause 0.12
-    "cautionne_block_closed"
+    "cautionne_blocks_closed"
     pause 0.12
     repeat
 
@@ -97,13 +100,14 @@ image cautionne_gun_speaking:
 
 layeredimage cautionne hairtwirl:
     zoom 0.5
+    always "bg cautionne"
     always "cautionne_hairtwirl"
     group mouth:
-        attribute speaking default WhileSpeaking("cautionne", "cautionne_hairtwirl_speaking", "cautionne_hairtwirl_mouth_closed")
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_hairtwirl_speaking", "cautionne_hairtwirl_lipflap_close")
 image cautionne_hairtwirl_speaking:
-    "cautionne_hairtwirl_mouth_open"
+    "cautionne_hairtwirl_lipflap_open"
     pause 0.12
-    "cautionne_hairtwirl_mouth_closed"
+    "cautionne_hairtwirl_lipflap_close"
     pause 0.12
     repeat
 image cautionne_hairtwirl:
@@ -119,19 +123,20 @@ image cautionne_hairtwirl:
 
 layeredimage cautionne laugh:
     zoom 0.5
-    always "cautionne_laugh_1"
+    always "bg cautionne"
     group mouth:
-        attribute idle "cautionne_laugh_1"
+        attribute idle "cautionne_laugh_0002"
         attribute animate default "cautionne_laughing"
 image cautionne_laughing:
-    "cautionne_laugh_2"
-    pause 0.2
-    "cautionne_laugh_1"
-    pause 0.2
+    "cautionne_laugh_0003"
+    pause 0.12
+    "cautionne_laugh_0002"
+    pause 0.12
     repeat
 
 layeredimage cautionne lean:
     zoom 0.5
+    always "bg cautionne"
     always "cautionne_lean_closed"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_lean_speaking", "cautionne_lean_closed")
@@ -144,11 +149,12 @@ image cautionne_lean_speaking:
 
 layeredimage cautionne oops:
     zoom 0.5
+    always "bg cautionne"
     always "cautionne_oopsie"
 
 layeredimage cautionne pencil:
     zoom 0.5
-    always "cautionne_pencil_closed"
+    always "bg cautionne"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_pencil_speaking", "cautionne_pencil_closed")
 image cautionne_pencil_speaking:
@@ -160,12 +166,13 @@ image cautionne_pencil_speaking:
 
 layeredimage cautionne serious:
     zoom 0.5
+    always "bg cautionne"
     group mouth:
-        attribute speaking default WhileSpeaking("cautionne", "cautionne_serious_speaking", "cautionne_serious_closed")
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_serious_speaking", "cautionne_serious_close")
 image cautionne_serious_speaking:
     "cautionne_serious_open"
     pause 0.12
-    "cautionne_serious_closed"
+    "cautionne_serious_close"
     pause 0.12
     repeat
 
@@ -229,12 +236,13 @@ image cautionne_sit_smug:
 
 layeredimage cautionne think:
     zoom 0.5
-    always "cautionne_think_closed"
+    always "bg cautionne"
+    always "cautionne_think_close"
     group mouth:
-        attribute speaking default WhileSpeaking("cautionne", "cautionne_think_speaking", "cautionne_think_closed")
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_think_speaking", "cautionne_think_close")
 image cautionne_think_speaking:
     "cautionne_think_open"
     pause 0.12
-    "cautionne_think_closed"
+    "cautionne_think_close"
     pause 0.12
     repeat

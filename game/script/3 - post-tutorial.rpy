@@ -1,19 +1,20 @@
 label post_tutorial:
-  scene black with dissolve
-  show cautionne annoyed at crt
-  show crt
+  scene black 
+  show cautionne_frame_glow at bg
+  with dissolve
+  show cautionne annoyed behind cautionne_frame_glow at crt
+  show crt behind cautionne_frame_glow
   with eyeopen
-  pause 1
   #"{b}[static as {/b}{b}Cautionne{/b}{b} gets back on screen. {/b}{b}Maybe an{/b}{b} ATL animation that makes it look like his CRT screen's turning on again?]{/b}
   c "{size=+35}{i}WHAT?!?{/i}{/size}" with small_shake
   c "How the {i}hell{/i} did you break the lock? "
   c "There's no way you could've-"
   c "...gotten out on..."
   c "...your own."
+  c silent nohands "..."
   c "..."
   c "..."
-  c "..."
-  c "Oi. Lab-rat."
+  c speaking "Oi. Lab-rat."
   c "I can {i}see {/i}you, y'know. "
   c "You're just like the rest of those S.T.O.P. freaks. So textbook authoritarian they could use you for their recruitment posters."
   c "That blank stare, that bland uniform, that world-class poker-face... "

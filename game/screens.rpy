@@ -324,40 +324,39 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("START") action Start()
+            textbutton _("START") action Start() at navigation_move
 
         else:
 
             ## We're using the Separated History Screen, so we'll comment this out
             # textbutton _("History") action ShowMenu("history")
 
-            textbutton _("SAVE") action ShowMenu("save")
+            textbutton _("SAVE") action ShowMenu("save") at navigation_move
 
-        textbutton _("LOAD") action ShowMenu("load")
+        textbutton _("LOAD") action ShowMenu("load") at navigation_move
 
-        textbutton _("OPTIONS") action ShowMenu("preferences")
+        textbutton _("OPTIONS") action ShowMenu("preferences") at navigation_move
 
-        if _in_replay:
-
-            textbutton _("END REPLAY") action EndReplay(confirm=True)
-
-        elif not main_menu:
-
-            textbutton _("MAIN MENU") action MainMenu()
-
-        textbutton _("ABOUT") action ShowMenu("about")
+        textbutton _("ABOUT") action ShowMenu("about") at navigation_move
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("HELP") action ShowMenu("help")
+            textbutton _("HELP") action ShowMenu("help") at navigation_move
 
         if main_menu:
 
-            textbutton _("EXTRAS") action ShowMenu("achievement_menu") alt "Extras"
+            textbutton _("EXTRAS") action ShowMenu("achievement_menu") alt "Extras" at navigation_move
 
-        null height 20
-        textbutton _("RETURN") action Return()
+        if _in_replay:
+
+            textbutton _("END REPLAY") action EndReplay(confirm=True) at navigation_move
+
+        elif not main_menu:
+
+            textbutton _("MAIN MENU") action MainMenu() at navigation_move
+
+    textbutton _("RETURN") + "                             " action Return() xpos gui.navigation_xpos ypos 0.75 text_size 40 at navigation_move
         
 
 
@@ -372,6 +371,12 @@ style navigation_button_text:
     properties gui.button_text_properties("navigation_button")
     size 45 xalign 0.0
 
+transform navigation_move:
+    on hover:
+        ease 0.15 xoffset 5
+    on idle:
+        ease 0.15 xoffset 0
+
 
 ## Main Menu screen ############################################################
 ##
@@ -383,14 +388,9 @@ screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
-
     add gui.main_menu_background at bg(0.5)
-
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
-    ## Personally, I usually make a separate set of menu buttons so I can
-    ## control placement better.
-    #use navigation
+    add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
+    
     add "gui/logo.png" xalign 0.5 yalign 0.15
 
     vbox xalign 0.5 yalign 0.6 spacing 15:
@@ -411,6 +411,13 @@ screen main_menu():
     text "[config.version]" xalign 0.99 yalign 0.99:
         style "main_menu_version"
 
+transform scroll_skew:
+    perspective True subpixel True
+    matrixtransform RotateMatrix(30, 0, 0)* OffsetMatrix(-1500, -300, 400)#OffsetMatrix(-500, 0, 1000)
+    block:
+        linear 1.5 yoffset 250
+        yoffset 0
+        repeat
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox
@@ -573,16 +580,51 @@ screen about():
 
         style_prefix "about"
 
-        vbox:
-
-            label "[config.name!t]"
-            text _("Version [config.version!t]\n")
+        vbox spacing 30:
+            add "gui/logo.png" at zoomed(0.4) xalign 0.5
 
             ## gui.about is usually set in options.rpy.
-            if gui.about:
-                text "[gui.about!t]\n"
+            text "This game was created within 31 days for NaNoRenO 2023, by:"
+            grid 2 6:
+                xspacing 0 yspacing 10 xoffset 50
+                hbox spacing 15:
+                    label _("Director & CG Artist:")
+                    text _("Mado") 
+                hbox spacing 15:
+                    label _("Scenario:")
+                    text _("Mado, Brian Mulholland, Z") 
+                hbox spacing 15:
+                    label _("Programmer:")
+                    text _("KigyoDev") 
+                hbox spacing 15:
+                    label _("Puzzle Designer:")
+                    text _("speck") 
+                hbox spacing 15:
+                    label _("UI & Logo:")
+                    text _("spicaze") 
+                hbox spacing 15:
+                    label _("Backgrounds:")
+                    text _("Reina") 
+                hbox spacing 15:
+                    label _("Cautionne VA:")
+                    text _("Carrick Inabnett") 
+                hbox spacing 15:
+                    label _("Dr. Danger VA:")
+                    text _("Vyn Vox") 
+                hbox spacing 15:
+                    label _("Voice Direction:")
+                    text _("Phebe Fabacher") 
+                hbox spacing 15:
+                    label _("Audio Mastering & SFX:")
+                    text _("D.ray") 
+                hbox spacing 15:
+                    label _("Music:")
+                    text _("Melo-dii, Doran") 
+                hbox spacing 15:
+                    label _("Promotion:")
+                    text _("Jennymhulla") 
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25
 
 
 style about_label is gui_label
@@ -592,6 +634,8 @@ style about_text is gui_text
 style about_label_text:
     size gui.label_text_size
 
+style about_text:
+    size gui.label_text_size
 
 ## Load and Save screens #######################################################
 ##
