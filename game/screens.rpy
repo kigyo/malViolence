@@ -389,7 +389,7 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
     add gui.main_menu_background at bg(0.5)
-    #add "gui/scroller.png" at scroll_skew
+    add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
     
     add "gui/logo.png" xalign 0.5 yalign 0.15
 
@@ -412,11 +412,11 @@ screen main_menu():
         style "main_menu_version"
 
 transform scroll_skew:
-    perspective True
-    matrixtransform RotateMatrix(80, 0, 0)* OffsetMatrix(-300, 300, 0)
+    perspective True subpixel True
+    matrixtransform RotateMatrix(30, 0, 0)* OffsetMatrix(-1500, -300, 400)#OffsetMatrix(-500, 0, 1000)
     block:
-        linear 1 xoffset -40
-        xoffset 0
+        linear 1.5 yoffset 250
+        yoffset 0
         repeat
 
 style main_menu_frame is empty

@@ -2,7 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script/11 - room 3.rpy", line 32: Indentation mismatch.
+File "game/screens.rpy", line 392: is not terminated with a newline. (Check strings and parenthesis.)
+        add AlphaMask("gui/scroller.png", "gui/grid_opacity.png)" at scroll_skew
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Thu Mar 23 20:14:02 2023
+Fri Mar 24 10:24:22 2023
