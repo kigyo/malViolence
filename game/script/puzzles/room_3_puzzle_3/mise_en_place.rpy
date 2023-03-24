@@ -18,6 +18,16 @@ define ingredient_counts = {"bacon": 5,
                             "nut": 2,
                             "milk": 3}
 
+default bacon_count = 1
+default strawberry_count = 1
+default flour_count = 1
+default snapper_count = 1
+default butter_count = 1
+default blueberry_count = 1
+default egg_count = 1
+default nut_count = 1
+default milk_count = 1
+
 define cutting_board_input = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7],
                               [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
@@ -42,8 +52,12 @@ init python:
         if len(drag.drag_name) == 4:
             cutting_board_group.remove(drag)
             cutting_board_data[drag.drag_name[2]][drag.drag_name[1]] = 0
+            setattr(renpy.store, "%s_count" % drag.drag_name[0],
+                    getattr(renpy.store, "%s_count" % drag.drag_name[0], 0)-1)
         else:
             drag.snap(drag.drag_name[1]-50, drag.drag_name[2]-50)
+        renpy.retain_after_load()
+        renpy.restart_interaction()
 
     def cutting_board_dropped(drop, drags):
         drag = drags[0]
@@ -55,6 +69,8 @@ init python:
             x = drop.drag_name[0]
             y = drop.drag_name[1]
 
+        setattr(renpy.store, "%s_count" % drag.drag_name[0],
+                getattr(renpy.store, "%s_count" % drag.drag_name[0], 0)+1)
         cutting_board_data[y][x] = ingredients.index(drag.drag_name[0])+1
         d = Drag(drag.drag_name[0],
                  pos=(70+x*100, 205+y*100),
@@ -64,6 +80,9 @@ init python:
                  dropped=cutting_board_dropped)
         cutting_board_group.add(d)
         d.snap(70+x*100, 205+y*100)
+
+        renpy.retain_after_load()
+        renpy.restart_interaction()
 
     def check_board():
         win = True
@@ -78,7 +97,8 @@ init python:
         for y in range(len(cutting_board_input)):
             for x in range(len(cutting_board_input[0])):
                 if cutting_board_input[y][x]:
-                    win = check_sprawl(x, y)
+                    if not check_sprawl(x, y):
+                        win = False
 
         if win:
             renpy.jump("solved_room_3_puzzle_3")
@@ -119,6 +139,16 @@ init python:
                     return False
 
 label init_mise_en_place:
+    $ bacon_count = 1
+    $ strawberry_count = 1
+    $ flour_count = 1
+    $ snapper_count = 1
+    $ butter_count = 1
+    $ blueberry_count = 1
+    $ egg_count = 1
+    $ nut_count = 1
+    $ milk_count = 1
+
     $ cutting_board_group = DragGroup()
     python:
         cutting_board_data = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7],
@@ -178,15 +208,42 @@ screen mise_en_place(interactable=True):
             xalign 0.5
 
             label "Ingredients" xalign 0.5
-            text "5 pieces of bacon"
-            text "7 strawberries"
-            text "5 cups of flour"
-            text "6 snappers"
-            text "6 sticks of butter"
-            text "9 blue berries"
-            text "8 eggs"
-            text "2 nuts"
-            text "3 cartons of milk"
+            if bacon_count >= ingredient_counts["bacon"]:
+                text "{s}5 pieces of bacon{/s}"
+            else:
+                text "5 pieces of bacon"
+            if strawberry_count >= ingredient_counts["strawberry"]:
+                text "{s}7 strawberries{/s}"
+            else:
+                text "7 strawberries"
+            if flour_count >= ingredient_counts["flour"]:
+                text "{s}5 cups of flour{/s}"
+            else:
+                text "5 cups of flour"
+            if snapper_count >= ingredient_counts["snapper"]:
+                text "{s}6 snappers{/s}"
+            else:
+                text "6 snappers"
+            if butter_count >= ingredient_counts["butter"]:
+                text "{s}6 sticks of butter{/s}"
+            else:
+                text "6 sticks of butter"
+            if blueberry_count >= ingredient_counts["blueberry"]:
+                text "{s}9 blueberries{/s}"
+            else:
+                text "9 blue berries"
+            if egg_count >= ingredient_counts["egg"]:
+                text "{s}8 eggs{/s}"
+            else:
+                text "8 eggs"
+            if nut_count >= ingredient_counts["nut"]:
+                text "{s}2 nuts{/s}"
+            else:
+                text "2 nuts"
+            if milk_count >= ingredient_counts["milk"]:
+                text "{s}3 cartons of milk{/s}"
+            else:
+                text "3 cartons of milk"
 
             label "Instructions" xalign 0.5
             text "- Always begin cooking with {i}~mise en place~{/i}."
