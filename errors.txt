@@ -2,8 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 392: is not terminated with a newline. (Check strings and parenthesis.)
-        add AlphaMask("gui/scroller.png", "gui/grid_opacity.png)" at scroll_skew
+File "game/screens.rpy", line 1342: 'size' is not a keyword argument or valid child for the label statement.
+    label _("QUIT GAME?") size 100
+                              ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri Mar 24 10:24:22 2023
+Fri Mar 24 20:22:28 2023

@@ -62,7 +62,7 @@ label start:
     show crt
     show cautionne_frame_glow at bg
     with dissolve
-    x "\"...The Great Cautionne, Emperor of MalViolence!\""
+    c "\"...The Great Cautionne, Emperor of MalViolence!\""
     c "Or \"Cautionne\", for your convenience."
     "(...Seriously? A kid?)"
     "(You got locked up by a kid?)"
@@ -87,14 +87,14 @@ label start:
     c "So, before I get back to work..."
 
     scene bg tutorial1 at bg with fade
-    c "...welcome to your new home, lab rat!"
-    c "Cozy, isn't it? It's got everything you need to live a normal human life."
-    c "A comfy bed... Well, not comfy, but... a bed. A tap with running water, a desk for... desk things."
-    c "Quintessential five-star living, just like the famous Milton Hotels."
-    c "Oh, and if you get hungry, just lift the painting in the middle of the room."
-    c "The vent dispenses LabScrip 4053. Reviewers say its \"safe for human consumption,\" so don't be shy. It's got all the nutrients you need to live a good life!"
+    cr "...welcome to your new home, lab rat!"
+    cr "Cozy, isn't it? It's got everything you need to live a normal human life."
+    cr "A comfy bed... Well, not comfy, but... a bed. A tap with running water, a desk for... desk things."
+    cr "Quintessential five-star living, just like the famous Milton Hotels."
+    cr "Oh, and if you get hungry, just lift the painting in the middle of the room."
+    cr "The vent dispenses LabScrip 4053. Reviewers say its \"safe for human consumption,\" so don't be shy. It's got all the nutrients you need to live a good life!"
     pause 1
-    c "...Well, what's the holdup? Get up, look around, beg for mercy, or make yourself comfortable."
-    c "After all... you'll be here for a while."
+    cr "...Well, what's the holdup? Get up, look around, beg for mercy, or make yourself comfortable."
+    cr "After all... you'll be here for a while."
     #[mic mute sound]
     call screen tutorial_room with dissolve

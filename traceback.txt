@@ -1,21 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script/11 - room 3.rpy", line 138, in script
-    call screen room3
+  File "game/script/8 - room 2.rpy", line 51, in script
+    call screen room2_panopticon
   File "renpy/common/000statements.rpy", line 609, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-  File "renpy/common/00action_data.rpy", line 79, in get_selected
-    return __get_field(self.object, self.field, self.kind) == self.value
-  File "renpy/common/00action_data.rpy", line 39, in _m1_00action_data__get_field
-    raise NameError("The {} {} does not exist.".format(kind, name))
-NameError: The field room does not exist.
+  File "renpy/common/00action_other.rpy", line 578, in __call__
+    rv = self.callable(*self.args, **self.kwargs)
+  File "game/script/puzzles/room_2_puzzle_2.rpy", line 16, in room2_panopticon_set
+    store.panopticon_config[panopticon_selected] -= 1
+TypeError: list indices must be integers or slices, not NoneType
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script/11 - room 3.rpy", line 138, in script
-    call screen room3
+  File "game/script/8 - room 2.rpy", line 51, in script
+    call screen room2_panopticon
   File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2232, in execute
     self.call("execute")
   File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2220, in call
@@ -30,39 +30,37 @@ Full traceback:
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3377, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3810, in interact_core
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
-    d.visit_all(callback, seen)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
-    d.visit_all(callback, seen)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
-    d.visit_all(callback, seen)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 456, in visit_all
-    self.child.visit_all(callback, seen=None)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
-    d.visit_all(callback, seen)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
-    d.visit_all(callback, seen)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 582, in visit_all
-    d.visit_all(callback, seen)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 584, in visit_all
-    callback(self)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3810, in <lambda>
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 968, in per_interact
-    if self.is_selected():
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 956, in is_selected
-    return is_selected(self.action)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 401, in is_selected
-    return action.get_selected()
-  File "renpy/common/00action_data.rpy", line 79, in get_selected
-    return __get_field(self.object, self.field, self.kind) == self.value
-  File "renpy/common/00action_data.rpy", line 39, in _m1_00action_data__get_field
-    raise NameError("The {} {} does not exist.".format(kind, name))
-NameError: The field room does not exist.
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 4265, in interact_core
+    rv = root_widget.event(ev, x, y, 0)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 743, in event
+    rv = self.child.event(ev, x, y, st)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 1073, in event
+    return handle_click(self.clicked)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 1008, in handle_click
+    rv = run(action)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 322, in run
+    new_rv = run(i, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 329, in run
+    return action(*args, **kwargs)
+  File "renpy/common/00action_other.rpy", line 578, in __call__
+    rv = self.callable(*self.args, **self.kwargs)
+  File "game/script/puzzles/room_2_puzzle_2.rpy", line 16, in room2_panopticon_set
+    store.panopticon_config[panopticon_selected] -= 1
+  File "E:\Development\renpy-8.0.0-sdk\renpy\revertable.py", line 217, in __getitem__
+    rv = list.__getitem__(self, index)
+TypeError: list indices must be integers or slices, not NoneType
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.0.3.22090809
 malViolence 1.0
-Thu Mar 23 20:35:34 2023
+Fri Mar 24 20:11:48 2023

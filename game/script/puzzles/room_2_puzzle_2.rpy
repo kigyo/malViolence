@@ -21,7 +21,7 @@ init python:
                 store.panopticon_config[i] += 1
                 if panopticon_config[i] == 5:
                     store.panopticon_config[i] = 0
-
+        store.panopticon_selected = None
         if room2_panopticon_valid_solution():
             store.inspect = "panopticon solved"
             renpy.jump("room_2")
@@ -65,21 +65,22 @@ screen room2_panopticon():
 
     for i in range(len(panopticon_config)):
         if panopticon_pos[i] == panopticon_config[i] * 72:
-            imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i), ShowMenu("room2_panopticon_select")] focus_mask True align (0.5,0.5) at rotated(panopticon_pos[i])
+            imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i)] focus_mask True align (0.5,0.5) at rotated(panopticon_pos[i])
         elif i in panopticon_reverse:
-            imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i), ShowMenu("room2_panopticon_select")] focus_mask True align (0.5,0.5) at rotate_reverse(panopticon_pos[i])
+            imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i)] focus_mask True align (0.5,0.5) at rotate_reverse(panopticon_pos[i])
             $ panopticon_pos[i] = panopticon_config[i] * 72
         elif i not in panopticon_reverse:
-            imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i), ShowMenu("room2_panopticon_select")] focus_mask True align (0.5,0.5) at rotate_anim(panopticon_pos[i])
+            imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i)] focus_mask True align (0.5,0.5) at rotate_anim(panopticon_pos[i])
             $ panopticon_pos[i] = panopticon_config[i] * 72
     add "puzzles/room2_2_base.png" align (0.5,0.5)
-    textbutton "Return" action [Hide(), Call("room_2")] style "main_menu_button" xalign 0.8 yalign 0.5
+    
+    if panopticon_selected:
+        hbox xalign 0.5 yalign 0.9 spacing 20:
+            textbutton "COUNTERCLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "l")]
+            textbutton "CLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "r")]
 
-screen room2_panopticon_select():
-    modal True
-    hbox xalign 0.5 yalign 0.9 spacing 20:
-        textbutton "COUNTERCLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "l"), Hide()]
-        textbutton "CLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "r"), Hide()]
+    textbutton "Return" action [Hide(), SetVariable("panopticon_selected", None), Jump("room_2")] style "main_menu_button" xalign 0.8 yalign 0.5
+
 
 transform rotate_anim(val):
     rotate val

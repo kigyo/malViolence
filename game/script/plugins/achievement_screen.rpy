@@ -34,7 +34,7 @@ screen achievement_menu():
                 ## Granted achievements
                 for t in persistent.my_achievements:
                     
-                    if achievement.has(t.name) and "dead" != t[3]:
+                    if achievement.has(t.name) and "DEAD" not in t.name:
                         
                         frame:
                             
@@ -141,7 +141,7 @@ screen failchievement_menu():
 
                                     ## We're setting the data feedback to represent
                                     ## the None and 'hidden' achievements.
-                                    if v[3] is None:
+                                    if v[3] == "dead":
                                         ## Index '1' is the description of the achievemnt.
                                     
                                         text str(v[0]) style 'achievements_label' color '#FFFFFF33'
@@ -270,7 +270,7 @@ style achievements_label:
     yalign 0.5
 
 style achievements_text:
-    size 16
+    size 16 xoffset 2
     yalign 0.5
 
 style achievements_locked_text:

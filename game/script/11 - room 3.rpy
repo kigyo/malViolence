@@ -49,6 +49,8 @@ label room_3:
         "(Seems like someone handed their sewing books down to a more imaginative type.)"
         "(You're well-aware that sewing isn't just a simple hobby. Many of STOP's associated security forces take up the practice when they receive their first cybernetics. After such a big operation, the skill rehabilitates their hand-eye coordination.)"
         "(But you doubt they'd make such a large collection of fuzzy mittens.)"
+        $ inspect = None
+        call screen room3_quilt
     elif inspect == "locked container":
         "(After entering the combination, there's a small click. You give the handle a tug.)"
         "(There's no dust inside, but a stale odor wafts out. Clearly, this hasn't been opened for a long time.)"
@@ -66,6 +68,7 @@ label room_3:
         "(Personally, you wouldn't be caught dead speaking, writing, or even thinking in the third person.)"
         "(You only use the second person. And even then, only for gathering your thoughts in high-stakes scenarios.)"
     elif inspect == "diary":
+        $ nvl_heading = "Entry #" + str(room3["diary"])
         if room3["diary"] == 0:
             "(It's a loose page with handwriting on it. Judging by the page number in the corner and the heavily worn letters, it must be a small part of a much larger document.)"
         elif room3["diary"] == 1:
@@ -79,29 +82,38 @@ label room_3:
             n "\"I thought that things were moving fast before - but the growth we're seeing now makes those earlier years look glacial. STOP is doing good work that needs to get done, and it's making the countries that only paid for its formation as lip-service to international cooperation put the money where their mouth is. "
             n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.  This month we finalized our report on maximizing cybernetic synchronization for patients - confirming my earlier theory that said the younger the better. "
             n "The difference really was astounding. And I must admit, it felt good to shove that 19\%-point increase right in that stuffy old bastard's smug face.\""
+            nvl clear
             n "\"Dr. Tan asked if the trend would continue if we started surgery any earlier. A weird question, since this tech is only approved for anyone old enough to enlist, but I guess she was just being thorough. The theory is sound.\""
+            nvl clear
             n "\"The promotion was nice. I deserve it, and I was the only obvious choice, but still. It felt nice to be recognized.\""
         elif room3["diary"] == 3:
             #"STAGNATION, LOTS OF RESEARCH WORK DISILLUSIONMENT, PARANOIA"
             n "\"Another month where the Security Advisory Council looked completely lost. It's like they don't know what to do with peacetime. They do amazing work - obviously. The world is secure, and cybernetic technology is finally getting regulated. The laws are catching up with the science. That's a good thing, even if it makes their job a little less exciting. Or maybe a little less secure.\""
+            nvl clear
             n "\"I requested another transfer. My third in three years, but they didn't seem to mind. I just can't find work as engrossing as I used to. It probably doesn't help that I'm not sure what it is I do anymore. "
             n "I mean I know what I do - I research cybernetics. But I'm not sure what I do for STOP. They haven't had a major security incident in months- And the last \"incident\" they did respond to was just a protest outside the building that got a little rowdy.\""
+            nvl clear
             n "\"Staff morale's been down ever since. A little controversy's expected, given the power STOP has nowadays. They're being naive if they expect people to be grateful to the organization forever.\""
+            nvl clear
             n "\"I might've transferred a few times too many. "
             n "I came into work today and clocked out without recognizing a single face the entire time. New people, places, committees, projects, and always more acronyms. "
-            n "And for the first time in years, I was denied access to internal data. I didn't think anything was above my paygrade anymore. Note to self: look up \"YTDI \"\""
+            n "And for the first time in years, I was denied access to internal data. I didn't think anything was above my paygrade anymore. Note to self: look up \"YTDI \".\""
         elif room3["diary"] == 4:
             #"Meeting CAUTIONNE"
             n "\"\"I was very disappointed with the state of the Youth Training and Development Initiative.\""
             n "That's how I put it in writing. "
             n "I don't really have the right words to express my disgust with the fact that it exists at all. The idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline - assuming that we were talking about 18 vs 24. "
             n "It was never supposed to justify... whatever the hell they're doing now.\""
+            nvl clear
             n "\"They don't actually care about reducing rejection symptoms or making the cybernetics work more seamlessly. They care about cutting costs by experimenting on children that no one else cares about, and they care about producing \"Trainees\" that are unflinchingly obedient to authority. "
             n "They care about keeping the groups that fund STOP in power.\""
+            nvl clear
             n "\"I got a transfer to the YTDI. No one even seemed ashamed to give me full access.\""
+            nvl clear
             n "\"He smiled at me. "
             n "Even though everyone else he's seen - dressed like me, acting like me, working for the same people as me – has made him suffer. "
             n "He {i}smiled {/i}at me.\""
+            nvl clear
             n "\"I'm getting better at coming up with excuses to visit him, at least. "
             n "Or maybe my superiors aren't paying that close attention. That might be the most infuriating part for me - they don't even care that much about the success or failure of this program. "
             n "The implication I'm getting is that there are many, many others like it.\""
@@ -110,26 +122,33 @@ label room_3:
             n "\"I'm never going to be able to forget the look on his face when the convulsions started. "
             n "He knew it was coming, and he knew there was nothing he could do to even brace himself for the pain. "
             n "He's been through it countless times. I never want to see it ever again.\""
+            nvl clear
             n "\"They claimed that it was a clerical error that he didn't receive his anti-seizure medications that morning. "
             n "I know that it was a perfectly un-subtle punishment for his refusal to obey during yesterday's exercises. "
             n "You wouldn't treat an {i}animal{/i} like this. He's less than that, to them.\""
+            nvl clear
             n "\"I triggered the false alarm right on schedule, down to the second. My not-at-all false improvised explosive went off right on schedule as well, also down to the second. "
             n "Logically, I understood that the chemical reaction was very simple to set up and hard to get wrong, but I still expected my first felony to present more challenges than that. Maybe I have a knack for this kind of thing. "
             n "In all seriousness, what I'm really happy about is the look on his face when I rushed him through the fire exit. When I asked him to come with me, he didn't hesitate for one second.\""
+            nvl clear
             n "\"Maybe he should have hesitated. At least from now on, he'll have that choice.\""
         elif room3["diary"] == 6:
             #"FIGHTING BACK, CAUTIONNE WANTING TO HELP"
             n "\"I've no right to call myself a parent, but even so - parenthood is hard. "
             n "His rehab is going as well as can be expected, but this is no way to raise a child. I can educate him, and keep him fed, and care for him. "
             n "But I can't give him any kind of a future - not while STOP is trying to erase our very existence.\""
+            nvl clear
             n "\"I managed to section away enough resources to last us a while, but all my internal records within STOP were destroyed by the fire. "
             n "They still know I'm out here, but now I have no proof that I was ever as big a part of them as I say. It's my word against theirs, and they have a much, much, much larger audience.\""
+            nvl clear
             n "\"As I expected, bombs and sabotage and cryptic public addresses on shady message boards get much better traction than just sending my research notes to major news outlets. "
             n "No one cares what Deirdre Destrange has to say. But when \"Dr. Danger\" blows up an energy pipeline, people look up from their food and {i}watch.{/i}"
             n "He chose the name. It's got a nice, old-world appeal to it.\""
+            nvl clear
             n "\"Cautionne has always been eager to please and happy to spend time with me. Is it any wonder he wants to help the nefarious Dr. Danger in her fight against STOP? "
             n "I should tell him no. Revenge is poison, and he's already been through so much. "
             n "But I still can't even bear to calculate how much of what he's been through is my fault. I don't have the heart to tell him no - and I'd sooner die than judge him for how much he hates STOP.\""
+            nvl clear
             n "\"Dr Danger and Cautionne are becoming a household name, but that's about it. "
             n "STOP is still in power. People are still too scared to say no to them. And there are still YTDI centers all over the world. If I destroy one, they move the \"subjects\" to another. "
             n "That's horrible, but what if they don't? What if they just figure it's just not worth the cost? What'll happen to those kids afterwards?"

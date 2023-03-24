@@ -42,7 +42,8 @@ label room_2:
     elif inspect == "clippings":
         "(Printouts and clippings of various news articles - all related to Dr. Danger's exploits... with a certain colorful sidekick occasionally breaking into the opening paragraphs.)"
         "(In fact, when you look at them all together, Cautionne seems to show up more over time. Dr. Danger must've been pleased with her pupil's growth.)"
-        "(At the bottom of the pile, a heavily weathered photo peeks out. Based on what you can make out of the caption - it seems to be of some kind of commemorative occasion: \"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
+        "(At the bottom of the pile, a heavily weathered photo peeks out.)"
+        "(Based on what you can make out of the caption - it seems to be of some kind of commemorative occasion: \"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
         "(You can't recognize any of the faces, but you do recognize the logo as-)"
         #"{b}[pause as the clippings disappear]{/b}"
         "(...Never mind. It's just similar, that's all.)"

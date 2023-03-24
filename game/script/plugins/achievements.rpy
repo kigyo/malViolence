@@ -77,8 +77,8 @@ init python:
         "secret": [_("Shh... My little secret."), _("Discover the secret."), 'gui/trophy_icon.png', 'hidden'],
         "wow": [_("Outstanding!"), _("Get all achievements."), 'gui/trophy_icon.png', 'platinum'],
 
-        "dead1": [_("Uh oh."), _("Die some way."), 'gui/trophy_icon.png', 'dead'],
-        "dead2": [_("Stinky!"), _("Die another way."), 'gui/trophy_icon.png', 'dead'],
+        "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'],
+        "dead2": [_("DEAD END 02:"), _("Die another way."), 'gui/dead_icon.png', 'dead'],
         ## More of this is explained in 'achievement_screen.rpy'.
 
     }

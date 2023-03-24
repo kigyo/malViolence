@@ -43,7 +43,7 @@ screen tutorial_lock():
     add "puzzles/tutorial_circle.png" align (0.5,0.5)
     for i in range(8):
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
-    textbutton "Return" action [Hide(), Call("tutorial_room")] style "main_menu_button" xalign 0.8 yalign 0.5
+    textbutton "Return" action [Hide(), Jump("tutorial_room")] style "main_menu_button" xalign 0.8 yalign 0.5
 
 label tutorial_room:
     if inspect not in tutorial["investigated"]:
@@ -118,12 +118,16 @@ label tutorial_room:
                 "(Of course there was something in the food.)"
                 "(Whatever it was... it's making everything throb like crazy. Your chest, your head, your eyes...)"
                 "(But your throat's clammed up. You can't scream, or cry, or moan. And breathing's getting harder and harder...)"
-                "(Soon..."
+                "(Soon... {nw}"
                 scene black with eyeclose
                 extend " your vision goes black.)"
-                "Lab Report 310: Subject expired shortly after ingesting higher than recommended daily serving of cyanide-laced rodent feed."           
-                "Contributing factors to death: Their stomach was bigger than their brain, evidently. May need to re-avaluate STOP agents' dietary preferences."
-                #[DEAD END 01: Cheers! It's Cyanide.]
+                nvl clear
+                $nvl_heading = "Lab Report 310"
+                l "Subject expired shortly after ingesting higher than recommended daily serving of cyanide-laced rodent feed."           
+                l "Contributing factors to death: Their stomach was bigger than their brain, evidently. May need to re-evaluate STOP agents' dietary preferences."
+                $Achievement.add(achievement_dead1)
+                le "DEAD END 01: Cheers! It's Cyanide."
+                nvl clear
                 return
             "(Nah.)":
                 "(Nah, you're good.)"

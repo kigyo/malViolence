@@ -122,6 +122,15 @@ screen say(who, what):
     if not renpy.variant("small"):
         add SideImage() xalign 0.0 yalign 1.0
 
+screen subtitle(who, what):
+    style_prefix "say"
+
+    window:
+        background Null()
+        id "window"
+        text what id "what" outlines [(7, "#fff", 0, 0),(5, "#000", 0, 0)] xalign 0.5 layout "subtitle" size 56 text_align 0.5 yalign 0.5
+
+    #use quick_menu()
 
 ## Make the namebox available for styling through the Character object.
 init python:
@@ -245,14 +254,14 @@ style choice_button_text is default:
 ## The quick menu is displayed in-game to provide easy access to the out-of-game
 ## menus.
 
-screen quick_menu():
+screen quick_menu(yoff=0):
 
     ## Ensure this appears on top of other screens.
     zorder 100
 
     if quick_menu:
 
-        hbox:
+        hbox yoffset yoff:
             style_prefix "quick"
             spacing -32
 
@@ -415,7 +424,7 @@ transform scroll_skew:
     perspective True subpixel True
     matrixtransform RotateMatrix(30, 0, 0)* OffsetMatrix(-1500, -300, 400)#OffsetMatrix(-500, 0, 1000)
     block:
-        linear 1.5 yoffset 250
+        linear 3 yoffset 250
         yoffset 0
         repeat
 
@@ -823,9 +832,15 @@ screen preferences():
 
                 vbox:
                     style_prefix "radio"
-                    label _("Text Color")
-                    textbutton _("White") action gui.SetPreference("color", "#ffffff") alt "Change text color to white" 
-                    textbutton _("Cream") action gui.SetPreference("color", "#FFFDD0") alt "Change text color to cream" 
+                    label _("Game Overs")
+                    textbutton _("Infinite") action SetField(preferences, "infinite_game_over", True) alt "Change text color to white" 
+                    textbutton _("Once per Puzzle") action SetField(preferences, "infinite_game_over", False) alt "Change text color to cream"
+
+                #vbox:
+                #    style_prefix "radio"
+                #    label _("Text Color")
+                #    textbutton _("White") action gui.SetPreference("color", "#ffffff") alt "Change text color to white" 
+                #    textbutton _("Cream") action gui.SetPreference("color", "#FFFDD0") alt "Change text color to cream" 
 
                 #vbox:
                 #    style_prefix "radio"
@@ -986,8 +1001,10 @@ screen history():
     tag menu
 
     predict False
-
+    add "gui/history.png" align (0.5,0.5)
+    add "gui/history_decor.png" align (0.65,0.15)
     frame:
+        background Null()
 
         style_prefix "history"
 
@@ -1017,7 +1034,8 @@ screen history():
 
         ## ypadding essentially combines the top_padding and bottom_padding properties
         ## and sets them to the same value
-        ypadding 150
+        top_padding 150
+        bottom_padding 100
 
         vpgrid:
 
@@ -1040,7 +1058,7 @@ screen history():
 
                         if h.who:
 
-                            label h.who:
+                            label "> " + h.who.upper():
                                 style "history_name"
                                 substitute False
 
@@ -1053,6 +1071,7 @@ screen history():
                         text what:
                             line_spacing 5
                             substitute False
+                            outlines [(1.5, "#000000", 1, 1)]
 
                     ## This puts some space between entries so it's easier to read
                     null height 20
@@ -1069,48 +1088,9 @@ screen history():
             action Return()
             alt _("Return") 
 
-### The old version of the History screen, just for reference.
-# screen history():
-
-#     tag menu
-
-#     ## Avoid predicting this screen, as it can be very large.
-#     predict False
-
-#     use game_menu(_("History"), scroll=("vpgrid" if gui.history_height else "viewport"), yinitial=1.0):
-
-#         style_prefix "history"
-
-#         for h in _history_list:
-
-#             window:
-
-#                 ## This lays things out properly if history_height is None.
-#                 has fixed:
-#                     yfit True
-
-#                 if h.who:
-
-#                     label h.who:
-#                         style "history_name"
-#                         substitute False
-
-#                         ## Take the color of the who text from the Character, if
-#                         ## set.
-#                         if "color" in h.who_args:
-#                             text_color h.who_args["color"]
-
-#                 $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
-#                 text what:
-#                     substitute False
-
-#         if not _history_list:
-#             label _("The dialogue history is empty.")
-
-
 ## This determines what tags are allowed to be displayed on the history screen.
 
-define gui.history_allow_tags = { "alt", "noalt" }
+define gui.history_allow_tags = { "alt", "noalt", "size", "i" }
 
 
 style history_window is empty
@@ -1127,6 +1107,9 @@ style history_label_text is gui_label_text
 style history_window:
     xfill True
     ysize gui.history_height
+
+style history_vscrollbar:
+    xoffset -120 ysize 575
 
 style history_name:
     xpos gui.history_name_xpos
@@ -1146,19 +1129,19 @@ style history_text:
     min_width gui.history_text_width
     text_align gui.history_text_xalign
     layout ("subtitle" if gui.history_text_xalign else "tex")
+    font gui.text_font
 
 style history_label:
-    xfill True
-    top_margin -100
+    xfill True top_margin -70
 
 style history_label_text:
-    xalign 0.5
+    xalign 0.5 size 60
     ## Note: When altering the size of the label, you may need to increase the
     ## ypadding of the Frame, or separate it again into top_padding and bottom_padding
 
 style history_return_button:
     align(1.0,1.0)
-    yoffset 100
+    yoffset 50 xoffset 130
 
 
 ## Help screen #################################################################
@@ -1346,24 +1329,32 @@ screen confirm(message, yes_action, no_action):
     style_prefix "confirm"
 
     add "gui/overlay/confirm.png"
+    add "gui/quit.png" at bg(1)
 
     frame:
+        background Null()
 
         vbox:
             xalign .5
             yalign .5
             spacing 45
+            if message == "Are you sure you want to quit?":
+                label _("QUIT GAME?") text_size 80 xalign 0.5
 
-            label _(message):
-                style "confirm_prompt"
-                xalign 0.5
+                text _("Any unsaved progress will be lost."):
+                    style "confirm_prompt"
+                    xalign 0.5 xsize 450 text_align 0.5
+            else:
+                label _(message):
+                    style "confirm_prompt"
+                    xalign 0.5
 
             hbox:
                 xalign 0.5
-                spacing 150
+                spacing 50
 
-                textbutton _("Yes") action yes_action
-                textbutton _("No") action no_action
+                textbutton _("Yes").upper() action yes_action
+                textbutton _("No").upper() action no_action
 
     ## Right-click and escape answer "no".
     key "game_menu" action no_action
@@ -1387,9 +1378,13 @@ style confirm_prompt_text:
 
 style confirm_button:
     properties gui.button_properties("confirm_button")
+    background "gui/button/quit_button.png"
+    xsize 234
 
 style confirm_button_text:
     properties gui.button_text_properties("confirm_button")
+    color gui.interface_text_color size 55 text_align 0.5 yalign 0.5
+    hover_color gui.hover_color
 
 
 ## Skip indicator screen #######################################################
@@ -1493,9 +1488,11 @@ style notify_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#nvl
 
+default nvl_heading = ""
 
 screen nvl(dialogue, items=None):
 
+    add "gui/nvl.png" align (0.5, 0.5)
     window:
         style "nvl_window"
 
@@ -1525,7 +1522,10 @@ screen nvl(dialogue, items=None):
 
     add SideImage() xalign 0.0 yalign 1.0
 
-    use quick_menu
+    if nvl_heading:
+        label ("> " + nvl_heading).upper() pos (372, 90)
+
+    use quick_menu(-639)
 
 
 screen nvl_dialogue(dialogue):
@@ -1544,7 +1544,7 @@ screen nvl_dialogue(dialogue):
                         id d.who_id
 
                 text d.what:
-                    id d.what_id
+                    id d.what_id outlines [(1.5, "#000000", 1, 1)]
 
 
 ## This controls the maximum number of NVL-mode entries that can be displayed at
@@ -1563,8 +1563,7 @@ style nvl_button_text is button_text
 style nvl_window:
     xfill True
     yfill True
-
-    background "gui/nvl.png"
+    background Null()
     padding gui.nvl_borders.padding
 
 style nvl_entry:

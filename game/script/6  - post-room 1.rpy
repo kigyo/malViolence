@@ -4,6 +4,7 @@ label post_room_1:
   #"{b}[pause as the microphone turns on and {/b}{b}cautionne{/b}{b} appears on the screen]{/b}"
   show cautionne hairtwirl at crt
   show crt
+  show cautionne_frame_glow at bg
   with dissolve
   c "Well, well, well. If it isn't the {i}lab rat{/i}."
   c "For someone with chronic-resting- \"Blah\"-face, you look real proud of yourself."
