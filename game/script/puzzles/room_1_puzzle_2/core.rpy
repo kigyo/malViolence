@@ -617,3 +617,14 @@ screen reticle(b):
 
 default pb = None
 default tb = None
+
+label init_puzzle_board():
+    $ pb = PuzzleBoard(width=6, height=6, move_cap=20)
+    $ adt = 0.5
+    return
+
+
+label init_toy_board():
+    $ tb = ToyBoard(width=5, height=5)
+    $ adt = persistent.toy_reticle_timeout
+    return

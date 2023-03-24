@@ -12,8 +12,7 @@ label test_puzzles:
             jump room_3_puzzle_3
 
 label room_1_puzzle_2:
-    $ pb = PuzzleBoard(width=6, height=6, move_cap=20)
-    $ adt = 0.5
+    call init_puzzle_board
     show screen puzzle_playspace(pb, False)
     "<TODO: Insert intro script and rules.>"
     call screen puzzle_playspace(pb)
@@ -31,8 +30,7 @@ label failed_room_1_puzzle_2:
     jump test_puzzles
 
 label room_3_puzzle_2:
-    $ tb = ToyBoard(width=5, height=5)
-    $ adt = persistent.toy_reticle_timeout
+    call init_toy_board
     show screen toy_playspace(tb, False)
     "<TODO: Insert intro script and rules.>"
     call screen toy_playspace(tb)
