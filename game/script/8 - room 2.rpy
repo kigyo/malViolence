@@ -123,7 +123,7 @@ label panopticon_game_over:
     $nvl_heading = "Lab Report #893"
     l "Subject expired after 3 days due to lack of water, light, food, and mental stimulation. Scratched their nails bloody on the exit door before losing consciousness, so I'll have to clean {i}that {/i}mess up."
     l "Contributing Factors to Death: Didn't take the consequences of imprisonment very seriously."
-    $Achievement.add(achievement_dead8)
+    $deadend(achievement_dead8)
     #TODO: Fix name
     le "DEAD END 08: Cheers! It's Cyanide."
     nvl clear

@@ -1,5 +1,6 @@
 label post_room_2:
   #"{b} [The TV {/b}{b}isn't{/b}{b} on yet]{/b}"
+  $Achievement.add(achievement_room2)
   "(No message from the kid yet.)"
   "(Maybe if you're stealthy, you could sneak past without being subjected to another one of his-)"
   #"{b}[{/b}{b}pasue{/b}{b} as the TV TURNS ON and cautionne appears]{/b}"

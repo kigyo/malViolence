@@ -2,6 +2,7 @@ default room1 = {"investigated":[]}
 
 label post_room_1:
   #"{b}[pause as the microphone turns on and {/b}{b}cautionne{/b}{b} appears on the screen]{/b}"
+  $Achievement.add(achievement_room1)
   show cautionne hairtwirl at crt
   show crt
   show cautionne_frame_glow at bg

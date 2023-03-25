@@ -223,7 +223,7 @@ label quilt_game_over:
     l "Subject failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles."
     #"(NB" "{i}It needed to be a square number for the triggering mechanism to hit its mark){/i}"
     l "Contributing Factors to Death: Couldn't sew their way out of a wet paper bag."
-    $Achievement.add(achievement_dead11)
+    $deadend(achievement_dead11)
     #TODO: Fix name
     le "DEAD END 11: Cheers! It's Cyanide."
     nvl clear

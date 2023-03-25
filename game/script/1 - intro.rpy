@@ -18,6 +18,7 @@ label start:
     scene bg tutorial1 with eyeopen:
         zoom 1.2 yalign 0.8 xalign 0.5
         ease 0.8 zoom 1 yalign 0.5
+    $Achievement.add(achievement_start)
     "(GAH! What the-)"
     "(...Huh? Where are you?)"
     scene bg tutorial1:

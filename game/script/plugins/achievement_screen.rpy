@@ -119,7 +119,7 @@ screen failchievement_menu():
                 
                 cols 2 ## You can change this number depending on the width of your achievements.
                 spacing 10
-                for v in achievement_name.values():
+                for v in death_name.values():
                     if achievement.has(v[0]) and v[3] == 'dead':
                         
                         frame:
@@ -141,7 +141,7 @@ screen failchievement_menu():
                                     text v[0] style 'achievements_label' color '#000000'
                                     text v[1] color '#000000'
 
-                for v in achievement_name.values():
+                for v in death_name.values():
                     if not achievement.has(v[0]) and v[3] == 'dead':
                         
                         frame:
@@ -202,7 +202,14 @@ init python:
         ## This code here will grant the platinum achievement.
         if len(persistent.my_achievements) >= (len(achievement_name) - 1):
             Achievement.add(achievement_platinum)
+    
+    def deadend(cheevo):
+        Achievement.add(achievement_deadfirst)
+        Achievement.add(cheevo)
+        if len(persistent.dead_ends) >= (len(death_name)):
+            Achievement.add(achievement_deadall)
 
+default persistent.dead_ends = 0
 define config.periodic_callback = passive_function
 
 
@@ -305,107 +312,3 @@ style achievements_frame:
     minimum (500, 140)
     align (0.5, 0.5)
     padding (15, 15, 15, 15)
-
-
-## The mobile version of the achievement screen.
-screen achievement_menu():
-
-    tag menu
-
-    variant "touch"
-
-    ## If you'd like to display a number and total of achievements you can use this...
-    # use extras_menu(_("Achievements | {:01d}/{}".format(len(persistent.my_achievements), len(achievement_name) if len(persistent.my_achievements) == len(achievement_name) else len(achievement_name) - 1)), scroll="viewport"):
-    ## Else, use this.
-    use extras_menu(_("Achievements"), scroll="viewport"):
-
-        style_prefix "achievements"
-
-        frame:
-            
-            background None
-            padding (10, 10, 10, 10)
-            align (0.0, 0.0)
-
-            vpgrid:
-                
-                cols 1
-                spacing 3
-
-                ## Granted achievements
-                for t in persistent.my_achievements:
-                    
-                    if achievement.has(t.name):
-                        
-                        frame:
-                            
-                            background Solid('#0088AA')
-
-                            hbox:
-                                
-                                yalign 0.5
-                                xysize (50, 50)
-                                
-                                add t.image size (50, 50) yalign 0.5
-
-                                null width 15
-
-                                vbox:
-                                    
-                                    spacing 0
-                                    yfill False
-                                    
-                                    text t.name style 'achievements_label' color '#000000'
-                                    text t.message color '#000000'
-
-                ## Locked achievements
-                for v in achievement_name.values():
-
-                    if not achievement.has(v[0]):
-
-                        if v[3] != 'platinum':
-
-                            frame:
-
-                                hbox:
-
-                                    yalign 0.5
-                                    xysize (50, 50)
-
-                                    add 'gui/locked_achievement.png' size (50, 50) yalign 0.5
-
-                                    null width 15
-
-                                    vbox:
-                                        spacing 0
-                                        yfill False
-
-                                        if v[3] is None:
-                                            
-                                            text str(v[0]) style 'achievements_label' color '#FFFFFF33'
-                                            text str(v[1]) color '#FFFFFF33'
-                                        
-                                        else:
-                                        
-                                            text _('Hidden Achievement') style 'achievements_label' color '#FFFFFF33'
-
-
-style achievements_vbox:
-    variant 'small'
-    xysize (300, 80)
-
-style achievements_label:
-    variant 'small'
-    size 16
-
-style achievements_text:
-    variant 'small'
-    size 16
-
-style achievements_locked_text:
-    variant 'small'
-    size 16
-
-style achievements_frame:
-    variant 'small'
-    size 16

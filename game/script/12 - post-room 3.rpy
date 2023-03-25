@@ -1,4 +1,5 @@
 label post_room_3:
+    $Achievement.add(achievement_room3)
 
     "(Huh. You solved the puzzle, but the screen above you didn't turn on.)"
 
