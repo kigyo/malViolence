@@ -37,6 +37,7 @@ default minigame = False
 
 define eyeopen = ImageDissolve("images/open.png", 0.5, 0)
 define eyeclose = ImageDissolve("images/open.png", 0.5, 0, reverse=True)
+define screenon = ImageDissolve("images/open.png", 0.15, 0)
 
 init python:
     def roomchangedx(i):

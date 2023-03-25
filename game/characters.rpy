@@ -147,13 +147,29 @@ image cautionne_laughing:
 layeredimage cautionne lean:
     zoom 0.5
     always "bg cautionne"
-    always "cautionne_lean_closed"
+    always "cautionne_leanforward_base"
     group mouth:
-        attribute speaking default WhileSpeaking("cautionne", "cautionne_lean_speaking", "cautionne_lean_closed")
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_lean_speaking", "cautionne_leanforward_smile_close")
+        attribute eyeclosed WhileSpeaking("cautionne", "cautionne_lean_speaking_eyeclosed", "cautionne_leanforward_eyeclosed_close")
+        attribute frown WhileSpeaking("cautionne", "cautionne_lean_speaking_frown", "cautionne_leanforward_frown_close")
 image cautionne_lean_speaking:
-    "cautionne_lean_open"
+    "cautionne_leanforward_smile_open"
     pause 0.12
-    "cautionne_lean_closed"
+    "cautionne_leanforward_smile_close"
+    pause 0.12
+    repeat
+
+image cautionne_lean_speaking_eyeclosed:
+    "cautionne_leanforward_eyeclosed_open"
+    pause 0.12
+    "cautionne_leanforward_eyeclosed_close"
+    pause 0.12
+    repeat
+
+image cautionne_lean_speaking_frown:
+    "cautionne_leanforward_frown_open"
+    pause 0.12
+    "cautionne_leanforward_frown_close"
     pause 0.12
     repeat
 
@@ -225,6 +241,8 @@ layeredimage cautionne stunned:
         attribute hope default WhileSpeaking("cautionne", "cautionne_sit_hope", "cautionne_sit_hope_closed")
         attribute stunned WhileSpeaking("cautionne", "cautionne_sit_stunned", "cautionne_sit_stunned_closed")
         attribute smug WhileSpeaking("cautionne", "cautionne_sit_smug", "cautionne_sit_smug_closed")
+
+
 image cautionne_sit_hope:
     "cautionne_sit_hope_open"
     pause 0.12
@@ -244,12 +262,20 @@ image cautionne_sit_smug:
     pause 0.12
     repeat
 
+layeredimage cautionne thinkpause:
+    zoom 0.5
+    always "bg cautionne"
+    always "cautionne_think_close"
+
+
+
 layeredimage cautionne think:
     zoom 0.5
     always "bg cautionne"
     always "cautionne_think_close"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_think_speaking", "cautionne_think_close")
+
 image cautionne_think_speaking:
     "cautionne_think_open"
     pause 0.12

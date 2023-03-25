@@ -56,7 +56,7 @@ init python:
     #   If you need it to be instantly shown (such as on a screen), add a {cps=0} within the tag.
     def wavy_tag(tag, argument, contents):
         new_list = [ ]
-        amp, period, speed, dir, double, melt = 12, 20, 1, 'both', None, None
+        amp, period, speed, dir, double, melt = 25, 20, 1, 'both', None, None
         tag_shader = WaveShader()
         if len(argument) > 0 and argument[0] == 'n':
             shader_name = argument[1:]
