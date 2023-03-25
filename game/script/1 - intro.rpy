@@ -9,7 +9,7 @@ label start:
     #queue music ending_kill
     scene black
     #[static plays as the game begins. the screen is black, since the protagonist is recovering from being knocked out]
-    pause 1
+    pause 2
     x "...llo?"
     pause 2
     x "{bt}Hello?{/bt}"
@@ -20,7 +20,7 @@ label start:
         ease 0.4 zoom 1 yalign 0.5
     $Achievement.add(achievement_start)
     "(GAH! {w}What the-)"
-    "(...Huh? {w}Where are you?)"
+    "(...Huh? {w}Where {i}are{/i} you?)"
     scene bg tutorial1:
         yalign 0.5 xalign 0.5
         ease 1.5 yalign 0.3
@@ -129,10 +129,8 @@ label start:
 
     show cautionne thinkpause
 
-
     scene bg tutorial1 at bg with fade
-
-    pause 1
+    pause 0.5
     cr "...welcome to your new home!"
     cr "Cozy, isn't it? {w}It's got everything you need to live a normal human life."
     cr "A comfy bed... {w}Well, not comfy, but...{w=0.1} a bed."
