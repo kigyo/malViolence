@@ -5,9 +5,9 @@ While running game code:
     python:
   File "renpy/common/00start.rpy", line 193, in <module>
     renpy.execute_default_statement(True)
-  File "game/script/plugins/achievements.rpy", line 123, in set_default
-    default achievement_dead1 = Achievement(name=achievement_name['dead1'][0], message=achievement_name['dead1'][1], image=achievement_name['dead1'][2])
-Exception: store.achievement_dead1 is being given a default a second time.
+  File "game/screens.rpy", line 299, in set_default
+    default quick_menu = True
+Exception: store.quick_menu is being given a default a second time.
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -22,11 +22,11 @@ Full traceback:
     renpy.execute_default_statement(True)
   File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 3782, in execute_default_statement
     i.set_default(start)
-  File "game/script/plugins/achievements.rpy", line 123, in set_default
-    default achievement_dead1 = Achievement(name=achievement_name['dead1'][0], message=achievement_name['dead1'][1], image=achievement_name['dead1'][2])
-Exception: store.achievement_dead1 is being given a default a second time.
+  File "game/screens.rpy", line 299, in set_default
+    default quick_menu = True
+Exception: store.quick_menu is being given a default a second time.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.0.3.22090809
 malViolence 1.0
-Sat Mar 25 12:12:46 2023
+Sat Mar 25 13:12:38 2023
