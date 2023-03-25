@@ -14,8 +14,11 @@ screen room3():
         fixed at zoomed(0.35):
             add "bg room3_upstairs"
             imagebutton idle "room3_scrapbook" action [SetVariable("inspect", "scrapbook"), Jump("room_3")] pos (3575, 1150) at zoomed(0.2)
-            imagebutton idle "room3_sewing book" action [SetVariable("inspect", "sewing book"), Jump("room_3")] pos (1575, 1150) at zoomed(0.2)
+            imagebutton idle "room3_sewing" action [SetVariable("inspect", "sewing book"), Jump("room_3")] pos (1575, 1150) at zoomed(0.2)
             imagebutton idle "room3_diary" action [SetVariable("inspect", "diary"), Jump("room_3")] pos (2575, 2150) at zoomed(0.4)
+            imagebutton idle "room3_health" action [SetVariable("inspect", "health record"), Jump("room_3")] pos (2575, 1150) at zoomed(0.4)
+            imagebutton idle "room3_container" action [SetVariable("inspect", "locked container"), Jump("room_3")] pos (2575, 1450) at zoomed(0.4)
+            imagebutton idle "room3_confidence workbook" action [SetVariable("inspect", "confidence workbook"), Jump("room_3")] pos (1575, 1450) at zoomed(0.4)
         textbutton _("DOWN") action SetDict(room3, "room", "down") style "main_menu_button" xalign 0.97 yalign 0.97
         
     if config.developer:
@@ -23,7 +26,7 @@ screen room3():
             textbutton _("Skip Room") action [Jump("post_room_3")] style "main_menu_button"
 
 label room_3:
-    if inspect not in room3["investigated"]:
+    if inspect not in room3["investigated"] and inspect in ["sewing book", "scrapbook", "health record", "locked container", "confidence workbook", "mannequin"]:
         $room3["investigated"].append(inspect)
     show screen room3
     if inspect == "mannequin":
