@@ -77,7 +77,7 @@ image crt = At("crt.png", crt_effects)
 
 image ctc:
     "gui/ctc1.png"
-    alpha 0.0 yalign 1.0 yoffset 9 xoffset 10
+    alpha 0.0 yalign 1.0 yoffset 9 xoffset 10 subpixel True
     block:
         ease 0.5 alpha 1.0 rotate 0
         ease 0.5 alpha 1.0 rotate 90

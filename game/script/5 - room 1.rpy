@@ -1,4 +1,4 @@
-default room1 = {"investigated":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0,"decanting":0,"bomb":0,}
+default room1 = {"investigated":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0,}
 
 define panopticon_move_limit = 30
 

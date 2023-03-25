@@ -47,15 +47,15 @@ init python:
     # Curried form of the same.
     speaker = renpy.curry(speaker_callback)
 
-define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
-define c = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", screen="subtitle", what_color="#A3EC3D", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
+define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_position="nestled-close")
+define c = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", screen="subtitle", what_color="#A3EC3D", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_position="nestled-close")
 #no-subtitle cautionne
-define cr = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
-define dr = Character(_("Dr. Danger"), voice_tag="danger", color="#ffffff", image="danger", callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
-define narrator = Character(color="#ffffff", callback=speaker("protagonist"), ctc="ctc", ctc_position="nestled-close")
-define n = Character(kind=nvl, callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
-define l = Character(kind=nvl, what_color="#00e7ff", callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
-define le = Character(kind=nvl, what_color="#00e7ff", what_prefix="{size=+2}{b}> ", what_suffix="{/b}{/size}", what_italic=True, callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
+define cr = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_position="nestled-close")
+define dr = Character(_("Dr. Danger"), voice_tag="danger", color="#ffffff", image="danger", callback=speaker("danger"), ctc="ctc", ctc_pause="ctc", ctc_position="nestled-close")
+define narrator = Character(color="#ffffff", callback=speaker("protagonist"), ctc="ctc", ctc_pause="ctc", ctc_position="nestled-close")
+define n = Character(kind=nvl, callback=speaker("danger"), ctc="ctc", ctc_pause="ctc", ctc_position="nestled-close")
+define l = Character(kind=nvl, what_color="#00e7ff", callback=speaker("danger"), ctc="ctc", ctc_pause="ctc", ctc_position="nestled-close")
+define le = Character(kind=nvl, what_color="#00e7ff", what_prefix="{size=+2}{b}> ", what_suffix="{/b}{/size}", what_italic=True, callback=speaker("danger"), ctc="ctc", ctc_pause="ctc", ctc_position="nestled-close")
 
 image bg cautionne_screen = "cautionne_screen_background.png"
 

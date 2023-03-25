@@ -5,21 +5,24 @@ define panopticon_move_limit = 30
 screen room2():
     sensitive not inspect
     layer "master"
-    fixed at zoomed(0.35):
+    fixed at zoomed(0.34):
         add "bg room2"
-        imagebutton idle Null(1570, 650) action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (1175, 1150)
-        imagebutton idle "room2_blueprints" action [SetVariable("inspect", "blueprints"), Jump("room_2")] pos (3575, 1150) at zoomed(0.2)
-        imagebutton idle "room2_postits" action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3575, 1550) at zoomed(0.2)
-        imagebutton idle "room2_limbs" action [SetVariable("inspect", "limbs"), Jump("room_2")] pos (1575, 2150) at zoomed(0.2)
-        imagebutton idle "room2_clippings" action [SetVariable("inspect", "clippings"), Jump("room_2")] pos (2575, 2150) at zoomed(0.2)
-        imagebutton idle "room2_panopticon" action [SetVariable("inspect", "panopticon"), Jump("room_2")] pos (3575, 2150) at zoomed(0.2)
+        imagebutton idle "room2_corkboard" action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (4575, 1550)
+        imagebutton idle "room2_blueprints" action [SetVariable("inspect", "blueprints"), Jump("room_2")] pos (800, 1550) at zoomed(0.3)
+        imagebutton idle "room2_postits" action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3475, 1450) at zoomed(0.3)
+        imagebutton idle "room2_limbs" action [SetVariable("inspect", "limbs"), Jump("room_2")] pos (1775, 2950) at zoomed(0.3)
+        imagebutton idle "room2_clippings" action [SetVariable("inspect", "clippings"), Jump("room_2")] pos (2875, 1250) at zoomed(0.3)
+        imagebutton idle "room2_panopticon" action [SetVariable("inspect", "panopticon"), Jump("room_2")] pos (3875, 2150) at zoomed(0.3)
+        imagebutton idle "room2_evidence" action [SetVariable("inspect", "evidence"), Jump("room_2")] pos (1175, 1150)
+        imagebutton idle "room2_recalibration" action [SetVariable("inspect", "recalibration"), Jump("room_2")] pos (2175, 1150)
+        imagebutton idle "room2_word" action [SetVariable("inspect", "word"), Jump("room_2")] pos (275, 2350)
         
     if config.developer:
         frame:
             textbutton _("Skip Room") action [Jump("post_room_2")] style "main_menu_button"
 
 label room_2:
-    if inspect not in room2["investigated"]:
+    if inspect not in room2["investigated"] and inspect in ["blueprints", "limbs", "clippings", "post-its", "corkboard"]:
         $room2["investigated"].append(inspect)
     show screen room2
     hide screen room2_panopticon
@@ -98,6 +101,42 @@ label room_2:
             $ room2["panopticon"] += 1
             $ inspect = None
             call screen room2_panopticon
+
+    elif inspect == "evidence":
+        if room2["evidence"] == "solved":
+            "(You already solved the evidence board puzzle.)"
+        else:
+            if room2["evidence"] == 0:
+                #evidence introduction
+                pass
+            else:
+                #evidence investigation
+                pass
+            $ room2["evidence"] += 1
+            $ inspect = None
+
+    elif inspect == "recalibration":
+        if room2["recalibration"] == "solved":
+            "(You already solved the recalibration puzzle.)"
+        else:
+            if room2["recalibration"] == 0:
+                #recalibration introduction
+                pass
+            else:
+                #repeated investigation
+                pass
+            $ room2["recalibration"] += 1
+            $ inspect = None
+
+    elif inspect == "word":
+        if room2["word"] == 0:
+            #word introduction
+            pass
+        else:
+            #repeated investigation
+            pass
+        $ room2["word"] += 1
+        $ inspect = None
 
     $ inspect = None
     call screen room2

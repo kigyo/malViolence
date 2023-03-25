@@ -24,6 +24,17 @@ label post_room_2:
   c "..."
   c "Hey lab rat. Can I ask you something?"
   c "You {i}are {/i}just getting evidence, right?"
+  if len(room2["investigated"]) == 5:
+    "(...Does he not approve of your investigation style?)"
+    "(You're being thorough, just to be cautio-)"
+    "({i}...You're just being thorough.{/i})"
+  elif len(room2["investigated"]) == 0:
+    "(You're sticking to the mission objective, just as you're trained to do.)"
+    "(He's calling the shots right now - but if you stay focused, he'll run out of rooms.)"
+    "(Then, you'll have the chance to close this case for good.)"
+  else:
+    "(First, he holds you prisoner. Now, he complains about how much you look around?)"
+    "(Well, screw him. You'll snoop as much or as little as you please.)"
   c "I've watched you with my drones... Tailored these puzzles to your specific, sub-par problem-solving skills... Carried out quasi-legal research..."
   c "So, I know what you are. You're an agent for STOP... nothing more, nothing less."
   c "...Am I right?"
