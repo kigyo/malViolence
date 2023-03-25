@@ -70,4 +70,4 @@ label dr_danger_1:
   "(...Wait. There's something else here.)"
   "(A lock with a strange puzzle. Kinda like the one you found in your cell.)"
   "(...Maybe you\'ll find the answer in this room?)"
-  jump post_room_1
+  call screen room1 with dissolve

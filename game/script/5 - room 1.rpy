@@ -1,4 +1,4 @@
-default room1 = {"investigated":[], "oil":0, "chair":0, "megaphone":0,}
+default room1 = {"investigated":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0,"decanting":0,"bomb":0,}
 
 define panopticon_move_limit = 30
 
@@ -7,16 +7,20 @@ screen room1():
     layer "master"
     fixed at zoomed(0.34):
         add "bg room1"
-        imagebutton idle "room1_oil" action [SetVariable("inspect", "oil"), Jump("room_1")] pos (1175, 1150)
+        imagebutton idle "room1_oil" action [SetVariable("inspect", "oil"), Jump("room_1")] pos (1175, 2650)
         imagebutton idle "room1_chair" action [SetVariable("inspect", "chair"), Jump("room_1")] pos (3800, 1850)
-        imagebutton idle "room1_megaphone" action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (2500, 1150)
-        
+        imagebutton idle "room1_megaphone" action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (2500, 1350)
+        imagebutton idle "room1_marble" action [SetVariable("inspect", "marble"), Jump("room_1")] pos (2000, 2550)
+        imagebutton idle "room1_hacking" action [SetVariable("inspect", "hacking"), Jump("room_1")] pos (2500, 2050)
+        imagebutton idle "room1_decanting" action [SetVariable("inspect", "decanting"), Jump("room_1")] pos (1500, 1550)
+        imagebutton idle "room1_bomb" action [SetVariable("inspect", "bomb"), Jump("room_1")] pos (575, 2850)
+
     if config.developer:
         frame:
             textbutton _("Skip Room") action [Jump("post_room_1")] style "main_menu_button"
 
 label room_1:
-    if inspect not in room1["investigated"]:
+    if inspect not in room1["investigated"] and inspect in ["oil", "chair", "megaphone"]:
         $room1["investigated"].append(inspect)
     show screen room1
     
@@ -56,6 +60,40 @@ label room_1:
             #repeated investigation
             pass
         $ room1["megaphone"] += 1
+
+    elif inspect == "marble":
+        if room1["marble"] == 0:
+            "<TODO: Marble puzzle.>"
+        else:
+            pass
+        $ room1["marble"] += 1
+
+    elif inspect == "hacking":
+        if room1["hacking"] == "solved":
+            "(You already solved the hacking puzzle.)"
+        else:
+            if room1["hacking"] == 0:
+                call init_puzzle_board
+                show screen puzzle_playspace(pb, False)
+                "<TODO: Insert intro script and rules.>"
+                call screen puzzle_playspace(pb)
+            else:
+                call screen puzzle_playspace(pb)
+        $ room1["hacking"] += 1
+        
+    elif inspect == "decanting":
+        if room1["decanting"] == 0:
+            "<TODO: decanting puzzle.>"
+        else:
+            pass
+        $ room1["decanting"] += 1
+
+    elif inspect == "bomb":
+        if room1["bomb"] == 0:
+            "<TODO: bomb puzzle.>"
+        else:
+            pass
+        $ room1["bomb"] += 1
 
     $ inspect = None
     call screen room1

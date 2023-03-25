@@ -1,4 +1,4 @@
-Sat Mar 25 15:17:26 2023
+Sat Mar 25 16:06:00 2023
 Windows-10-10.0.19045
 Ren'Py 8.0.3.22090809
  
@@ -6,36 +6,36 @@ Ren'Py 8.0.3.22090809
 Bootstrap to the start of init.init took 0.05s
 Early init took 0.00s
 Loader init took 0.16s
-Loading error handling took 0.03s
-Loading script took 0.38s
+Loading error handling took 0.04s
+Loading script took 1.17s
 Loading save slot metadata. took 0.04s
 Loading persistent took 0.00s
 Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.24s
+Running init code took 0.26s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
-Dump and make backups. took 0.09s
+Dump and make backups. took 0.16s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.05s
+Initial gc. took 0.06s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.35s
+Creating interface object took 0.38s
 Cleaning stores took 0.00s
 Init translation took 0.06s
 Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.02s
-Save screen analysis took 0.03s
-Prepare screens took 0.11s
-Save pyanalysis. took 0.03s
-Save bytecode. took 0.04s
+Save screen analysis took 0.07s
+Prepare screens took 0.14s
+Save pyanalysis. took 0.05s
+Save bytecode. took 0.05s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.25s
+Interface start took 0.20s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 2560, 1440)
@@ -47,120 +47,35 @@ Version: b'4.6.0 NVIDIA 474.14'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.04s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
-
-Full traceback:
-  File "game/script/2 - tutorial room.rpy", line 137, in script
-    le "DEAD END 01: Cheers! It's Cyanide."
-  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 921, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 1373, in say
-    who(what, *args, **kwargs)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\character.py", line 1266, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "renpy/common/00nvl_mode.rpy", line 377, in do_display
-    renpy.display_say(
-  File "E:\Development\renpy-8.0.0-sdk\renpy\character.py", line 666, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3377, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3912, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 2602, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 495, in renpy.display.render.render_screen
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 704, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\transform.py", line 747, in render
-    return transform_render(self, width, height, st, at)
-  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1334, in render
-    surf = render(child,
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1060, in render
-    surf = render(d, rw, height - y, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\transform.py", line 747, in render
-    return transform_render(self, width, height, st, at)
-  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\im.py", line 627, in render
-    return cache.get(self, render=True)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\im.py", line 295, in get
-    surf = image.load()
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\im.py", line 720, in load
-    raise e
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\im.py", line 685, in load
-    filelike = renpy.loader.load(self.filename)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\loader.py", line 820, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'gui/gui/dead_icon.png.png'.
-
-While loading <renpy.display.im.Image object ('gui/gui/dead_icon.png.png') at 0x00000000060ab730>:
-  File "game/script/2 - tutorial room.rpy", line 137, in script
-    le "DEAD END 01: Cheers! It's Cyanide."
-  File "renpy/common/00nvl_mode.rpy", line 377, in do_display
-    renpy.display_say(
-OSError: Couldn't find file 'gui/gui/dead_icon.png.png'.
 Resetting cache.
-Bootstrap to the start of init.init took 155.82s
+Bootstrap to the start of init.init took 70.26s
 Early init took 0.00s
-Loader init took 0.16s
+Loader init took 0.17s
 Loading error handling took 0.03s
 Loading script took 0.35s
 Loading save slot metadata. took 0.04s
 Loading persistent took 0.00s
 Faled to initialize steam: Exception('Init returned false.')
-Running init code took 0.07s
-Loading analysis data took 0.02s
+Running init code took 0.09s
+Loading analysis data took 0.05s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
 Dump and make backups. took 0.10s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.10s
+Initial gc. took 0.07s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.34s
+Creating interface object took 0.32s
 Cleaning stores took 0.00s
-Init translation took 0.08s
-Build styles took 0.00s
+Init translation took 0.10s
+Build styles took 0.01s
 Load screen analysis took 0.00s
-Analyze screens took 0.02s
+Analyze screens took 0.04s
 Save screen analysis took 0.03s
-Prepare screens took 0.10s
+Prepare screens took 0.11s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.02s
 Running _start took 0.00s
@@ -177,6 +92,464 @@ Version: b'4.6.0 NVIDIA 474.14'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 266.01s
+Early init took 0.00s
+Loader init took 0.17s
+Loading error handling took 0.02s
+Loading script took 0.39s
+Loading save slot metadata. took 0.04s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.08s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.10s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.39s
+Cleaning stores took 0.00s
+Init translation took 0.07s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.04s
+Prepare screens took 0.11s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.04s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 335.24s
+Early init took 0.00s
+Loader init took 0.17s
+Loading error handling took 0.02s
+Loading script took 0.38s
+Loading save slot metadata. took 0.04s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.09s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.10s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.39s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.13s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 357.15s
+Early init took 0.00s
+Loader init took 0.17s
+Loading error handling took 0.02s
+Loading script took 0.38s
+Loading save slot metadata. took 0.04s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.08s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.10s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.08s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.39s
+Cleaning stores took 0.00s
+Init translation took 0.10s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.13s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 375.94s
+Early init took 0.00s
+Loader init took 0.16s
+Loading error handling took 0.03s
+Loading script took 0.43s
+Loading save slot metadata. took 0.04s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.08s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.11s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.08s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.39s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.11s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 381.03s
+Early init took 0.00s
+Loader init took 0.16s
+Loading error handling took 0.02s
+Loading script took 0.39s
+Loading save slot metadata. took 0.04s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.09s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.11s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.37s
+Cleaning stores took 0.00s
+Init translation took 0.11s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.11s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 816.03s
+Early init took 0.00s
+Loader init took 0.17s
+Loading error handling took 0.02s
+Loading script took 0.40s
+Loading save slot metadata. took 0.04s
+Loading persistent took 0.00s
+Faled to initialize steam: Exception('Init returned false.')
+Running init code took 0.09s
+Loading analysis data took 0.04s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\W.Ohlin\\AppData\\Roaming/RenPy/backups\\malViolence':
+Dump and make backups. took 0.12s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.41s
+Cleaning stores took 0.00s
+Init translation took 0.07s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.13s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GT 640/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 474.14'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script/5 - room 1.rpy", line 92, in script
+    if room1["bomb"] == 0:
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2115, in execute
+    if renpy.python.py_eval(condition):
+  File "E:\Development\renpy-8.0.0-sdk\renpy\python.py", line 1092, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\python.py", line 1085, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script/5 - room 1.rpy", line 92, in <module>
+    if room1["bomb"] == 0:
+KeyError: 'bomb'
+
+While running game code:
+  File "game/script/5 - room 1.rpy", line 92, in script
+    if room1["bomb"] == 0:
+  File "game/script/5 - room 1.rpy", line 92, in <module>
+    if room1["bomb"] == 0:
+KeyError: 'bomb'
+
+Full traceback:
+  File "game/script/5 - room 1.rpy", line 96, in script
+    $ room1["bomb"] += 1
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 1131, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\python.py", line 1061, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script/5 - room 1.rpy", line 96, in <module>
+    $ room1["bomb"] += 1
+KeyError: 'bomb'
+
+While running game code:
+  File "game/script/5 - room 1.rpy", line 96, in script
+    $ room1["bomb"] += 1
+  File "game/script/5 - room 1.rpy", line 96, in <module>
+    $ room1["bomb"] += 1
+KeyError: 'bomb'
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.04s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+
+Full traceback:
+  File "game/script/puzzles/script.rpy", line 18, in script
+    call screen puzzle_playspace(pb)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2232, in execute
+    self.call("execute")
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2220, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\statements.py", line 281, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 609, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 3181, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 4265, in interact_core
+    rv = root_widget.event(ev, x, y, 0)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 743, in event
+    rv = self.child.event(ev, x, y, st)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 1073, in event
+    return handle_click(self.clicked)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 1008, in handle_click
+    rv = run(action)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 322, in run
+    new_rv = run(i, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 329, in run
+    return action(*args, **kwargs)
+  File "renpy/common/00action_other.rpy", line 578, in __call__
+    rv = self.callable(*self.args, **self.kwargs)
+  File "game/script/puzzles/room_1_puzzle_2/puzzle.rpy", line 63, in trigger_reticle
+    match = sorted(match)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\revertable.py", line 281, in revertable_sorted
+    return RevertableList(sorted(*args, **kwargs))
+TypeError: '<' not supported between instances of 'Piece' and 'Piece'
+
+While running game code:
+  File "game/script/puzzles/script.rpy", line 18, in script
+    call screen puzzle_playspace(pb)
+  File "renpy/common/000statements.rpy", line 609, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "renpy/common/00action_other.rpy", line 578, in __call__
+    rv = self.callable(*self.args, **self.kwargs)
+  File "game/script/puzzles/room_1_puzzle_2/puzzle.rpy", line 63, in trigger_reticle
+    match = sorted(match)
+TypeError: '<' not supported between instances of 'Piece' and 'Piece'
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.04s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+
+Full traceback:
+  File "game/script/puzzles/script.rpy", line 6, in script
+    menu:
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 1903, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 1010, in menu
+    rv = renpy.store.menu(new_items)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 1130, in display_menu
+    renpy.config.choice_empty_window("", interact=False)
+  File "renpy/common/00library.rpy", line 193, in extend
+    what = _last_say_what + config.extend_interjection + _last_raw_what
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+
+While running game code:
+  File "game/script/puzzles/script.rpy", line 6, in script
+    menu:
+  File "renpy/common/00library.rpy", line 193, in extend
+    what = _last_say_what + config.extend_interjection + _last_raw_what
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+
+Full traceback:
+  File "game/script/puzzles/script.rpy", line 18, in script
+    call screen puzzle_playspace(pb)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2232, in execute
+    self.call("execute")
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2220, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\statements.py", line 281, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 609, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 3181, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 4265, in interact_core
+    rv = root_widget.event(ev, x, y, 0)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 743, in event
+    rv = self.child.event(ev, x, y, st)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 1073, in event
+    return handle_click(self.clicked)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 1008, in handle_click
+    rv = run(action)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 322, in run
+    new_rv = run(i, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 329, in run
+    return action(*args, **kwargs)
+  File "renpy/common/00action_other.rpy", line 578, in __call__
+    rv = self.callable(*self.args, **self.kwargs)
+  File "game/script/puzzles/room_1_puzzle_2/puzzle.rpy", line 63, in trigger_reticle
+    match = sorted(match)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\revertable.py", line 281, in revertable_sorted
+    return RevertableList(sorted(*args, **kwargs))
+TypeError: '<' not supported between instances of 'Piece' and 'Piece'
+
+While running game code:
+  File "game/script/puzzles/script.rpy", line 18, in script
+    call screen puzzle_playspace(pb)
+  File "renpy/common/000statements.rpy", line 609, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "renpy/common/00action_other.rpy", line 578, in __call__
+    rv = self.callable(*self.args, **self.kwargs)
+  File "game/script/puzzles/room_1_puzzle_2/puzzle.rpy", line 63, in trigger_reticle
+    match = sorted(match)
+TypeError: '<' not supported between instances of 'Piece' and 'Piece'
 Cleaning stores took 0.00s
 Init translation took 0.00s
 Build styles took 0.00s

@@ -1,86 +1,66 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <renpy.display.im.Image object ('gui/gui/dead_icon.png.png') at 0x00000000060ab730>:
-  File "game/script/2 - tutorial room.rpy", line 137, in script
-    le "DEAD END 01: Cheers! It's Cyanide."
-  File "renpy/common/00nvl_mode.rpy", line 377, in do_display
-    renpy.display_say(
-OSError: Couldn't find file 'gui/gui/dead_icon.png.png'.
+While running game code:
+  File "game/script/puzzles/script.rpy", line 18, in script
+    call screen puzzle_playspace(pb)
+  File "renpy/common/000statements.rpy", line 609, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "renpy/common/00action_other.rpy", line 578, in __call__
+    rv = self.callable(*self.args, **self.kwargs)
+  File "game/script/puzzles/room_1_puzzle_2/puzzle.rpy", line 63, in trigger_reticle
+    match = sorted(match)
+TypeError: '<' not supported between instances of 'Piece' and 'Piece'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script/2 - tutorial room.rpy", line 137, in script
-    le "DEAD END 01: Cheers! It's Cyanide."
-  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 921, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 1373, in say
-    who(what, *args, **kwargs)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\character.py", line 1266, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "renpy/common/00nvl_mode.rpy", line 377, in do_display
-    renpy.display_say(
-  File "E:\Development\renpy-8.0.0-sdk\renpy\character.py", line 666, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "game/script/puzzles/script.rpy", line 18, in script
+    call screen puzzle_playspace(pb)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2232, in execute
+    self.call("execute")
+  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 2220, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\statements.py", line 281, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 609, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 3181, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
   File "E:\Development\renpy-8.0.0-sdk\renpy\ui.py", line 299, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3377, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 3912, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 2602, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 495, in renpy.display.render.render_screen
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 704, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\transform.py", line 747, in render
-    return transform_render(self, width, height, st, at)
-  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1334, in render
-    surf = render(child,
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1060, in render
-    surf = render(d, rw, height - y, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\transform.py", line 747, in render
-    return transform_render(self, width, height, st, at)
-  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\im.py", line 627, in render
-    return cache.get(self, render=True)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\im.py", line 295, in get
-    surf = image.load()
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\im.py", line 720, in load
-    raise e
-  File "E:\Development\renpy-8.0.0-sdk\renpy\display\im.py", line 685, in load
-    filelike = renpy.loader.load(self.filename)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\loader.py", line 820, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'gui/gui/dead_icon.png.png'.
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\core.py", line 4265, in interact_core
+    rv = root_widget.event(ev, x, y, 0)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\screen.py", line 743, in event
+    rv = self.child.event(ev, x, y, st)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 1073, in event
+    return handle_click(self.clicked)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 1008, in handle_click
+    rv = run(action)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 322, in run
+    new_rv = run(i, *args, **kwargs)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\display\behavior.py", line 329, in run
+    return action(*args, **kwargs)
+  File "renpy/common/00action_other.rpy", line 578, in __call__
+    rv = self.callable(*self.args, **self.kwargs)
+  File "game/script/puzzles/room_1_puzzle_2/puzzle.rpy", line 63, in trigger_reticle
+    match = sorted(match)
+  File "E:\Development\renpy-8.0.0-sdk\renpy\revertable.py", line 281, in revertable_sorted
+    return RevertableList(sorted(*args, **kwargs))
+TypeError: '<' not supported between instances of 'Piece' and 'Piece'
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.0.3.22090809
 malViolence 1.0
-Sat Mar 25 15:19:02 2023
+Sat Mar 25 16:25:58 2023

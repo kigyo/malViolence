@@ -13,7 +13,7 @@ label post_room_1:
   c "...That said, I actually expected you to die by now. I'm not sure how to reward you."
   c "Ooh – wait, wait. I have an idea!"
   c "How about a sticker? If you get out of here, I'll give you a fruit-scented one!"
-  if len(room1["investigated"]) == 8:
+  if len(room1["investigated"]) == 3:
     c "At the rate you're going, you might even get one of my suuuuuuuper special grape stickers."
     c "And I {i}never{/i}{i} {/i}give those out."
     pause 1
