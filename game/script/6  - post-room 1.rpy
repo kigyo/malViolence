@@ -1,9 +1,9 @@
-default room1 = {"investigated":[]}
-
 label post_room_1:
   #"{b}[pause as the microphone turns on and {/b}{b}cautionne{/b}{b} appears on the screen]{/b}"
+  $Achievement.add(achievement_room1)
   show cautionne hairtwirl at crt
   show crt
+  show cautionne_frame_glow at bg
   with dissolve
   c "Well, well, well. If it isn't the {i}lab rat{/i}."
   c "For someone with chronic-resting- \"Blah\"-face, you look real proud of yourself."
@@ -13,7 +13,7 @@ label post_room_1:
   c "...That said, I actually expected you to die by now. I'm not sure how to reward you."
   c "Ooh – wait, wait. I have an idea!"
   c "How about a sticker? If you get out of here, I'll give you a fruit-scented one!"
-  if len(room1["investigated"]) == 8:
+  if len(room1["investigated"]) == 3:
     c "At the rate you're going, you might even get one of my suuuuuuuper special grape stickers."
     c "And I {i}never{/i}{i} {/i}give those out."
     pause 1

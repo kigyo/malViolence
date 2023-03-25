@@ -23,6 +23,6 @@ screen colorized_frame(xysize=None, padding=None, xalign=None, offset=None):
 
 transform hover_brighten:
     on hover:
-        matrixcolor BrightnessMatrix(0.5)
+        ease 0.2 matrixcolor BrightnessMatrix(0.2)
     on idle:
-        matrixcolor BrightnessMatrix(0.0)
+        ease 0.2 matrixcolor BrightnessMatrix(0.0)

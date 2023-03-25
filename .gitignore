@@ -13,3 +13,7 @@ traceback.txt
 *.rpyc
 *.rpyc
 *.rpyc
+*.txt
+log.txt
+traceback.txt
+game/cache/shaders.txt

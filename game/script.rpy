@@ -37,6 +37,7 @@ default minigame = False
 
 define eyeopen = ImageDissolve("images/open.png", 0.5, 0)
 define eyeclose = ImageDissolve("images/open.png", 0.5, 0, reverse=True)
+define screenon = ImageDissolve("images/open.png", 0.15, 0)
 
 init python:
     def roomchangedx(i):
@@ -91,3 +92,6 @@ image ctc:
     #    ease 0.5 alpha 0.5 rotate 270
     #    
     #    repeat
+
+style puzzle_description_text:
+    size 37 justify True color gui.accent_color

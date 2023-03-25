@@ -1,8 +1,14 @@
 screen debugging():
     if config.developer:
         vbox:
+            #text "nesting level: " + str(renpy.context_nesting_level())
+            #text "call stack depth: " + str(renpy.call_stack_depth())
+            #hbox:
+            #    text "return stack: "
+            #    for i in renpy.get_return_stack():
+            #        text str(i) + " "
             null
-            #text testvar
+            text testvar xalign 0.5
             #text str(speaking)
 
 default testvar = "0"
@@ -42,10 +48,14 @@ init python:
     speaker = renpy.curry(speaker_callback)
 
 define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
-define c = Character(_("Cautionne"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
-define dr = Character(_("Dr. Danger"), color="#ffffff", image="danger", callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
+define c = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", screen="subtitle", what_color="#A3EC3D", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
+#no-subtitle cautionne
+define cr = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_position="nestled-close")
+define dr = Character(_("Dr. Danger"), voice_tag="danger", color="#ffffff", image="danger", callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
 define narrator = Character(color="#ffffff", callback=speaker("protagonist"), ctc="ctc", ctc_position="nestled-close")
 define n = Character(kind=nvl, callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
+define l = Character(kind=nvl, what_color="#00e7ff", callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
+define le = Character(kind=nvl, what_color="#00e7ff", what_prefix="{size=+2}{b}> ", what_suffix="{/b}{/size}", what_italic=True, callback=speaker("danger"), ctc="ctc", ctc_position="nestled-close")
 
 image bg cautionne_screen = "cautionne_screen_background.png"
 
@@ -137,13 +147,29 @@ image cautionne_laughing:
 layeredimage cautionne lean:
     zoom 0.5
     always "bg cautionne"
-    always "cautionne_lean_closed"
+    always "cautionne_leanforward_base"
     group mouth:
-        attribute speaking default WhileSpeaking("cautionne", "cautionne_lean_speaking", "cautionne_lean_closed")
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_lean_speaking", "cautionne_leanforward_smile_close")
+        attribute eyeclosed WhileSpeaking("cautionne", "cautionne_lean_speaking_eyeclosed", "cautionne_leanforward_eyeclosed_close")
+        attribute frown WhileSpeaking("cautionne", "cautionne_lean_speaking_frown", "cautionne_leanforward_frown_close")
 image cautionne_lean_speaking:
-    "cautionne_lean_open"
+    "cautionne_leanforward_smile_open"
     pause 0.12
-    "cautionne_lean_closed"
+    "cautionne_leanforward_smile_close"
+    pause 0.12
+    repeat
+
+image cautionne_lean_speaking_eyeclosed:
+    "cautionne_leanforward_eyeclosed_open"
+    pause 0.12
+    "cautionne_leanforward_eyeclosed_close"
+    pause 0.12
+    repeat
+
+image cautionne_lean_speaking_frown:
+    "cautionne_leanforward_frown_open"
+    pause 0.12
+    "cautionne_leanforward_frown_close"
     pause 0.12
     repeat
 
@@ -215,6 +241,8 @@ layeredimage cautionne stunned:
         attribute hope default WhileSpeaking("cautionne", "cautionne_sit_hope", "cautionne_sit_hope_closed")
         attribute stunned WhileSpeaking("cautionne", "cautionne_sit_stunned", "cautionne_sit_stunned_closed")
         attribute smug WhileSpeaking("cautionne", "cautionne_sit_smug", "cautionne_sit_smug_closed")
+
+
 image cautionne_sit_hope:
     "cautionne_sit_hope_open"
     pause 0.12
@@ -234,12 +262,20 @@ image cautionne_sit_smug:
     pause 0.12
     repeat
 
+layeredimage cautionne thinkpause:
+    zoom 0.5
+    always "bg cautionne"
+    always "cautionne_think_close"
+
+
+
 layeredimage cautionne think:
     zoom 0.5
     always "bg cautionne"
     always "cautionne_think_close"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_think_speaking", "cautionne_think_close")
+
 image cautionne_think_speaking:
     "cautionne_think_open"
     pause 0.12
