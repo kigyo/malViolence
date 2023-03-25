@@ -600,6 +600,36 @@ init python:
 
         return new_list
 
+
+
+    # Letters change position every frame randomly - but slower. Good for sick dialogue
+    # range: (int) Letters are confined to a square around their default location. Range determines length of the sides of that square.
+    #              Higher values will make it very chaotic while smaller values will make it quite minimal.
+    # Example: {si=[range]}Text{/si}
+    def sick_tag(tag, argument, contents):
+        new_list = [ ]
+        if argument == "":
+            argument = 2
+        my_style = DispTextStyle()
+        for kind,text in contents:
+            if kind == renpy.TEXT_TEXT:
+                for char in text:
+                    char_text = Text(my_style.apply_style(char))
+                    char_disp = ScareText(char_text, argument)
+                    new_list.append((renpy.TEXT_DISPLAYABLE, char_disp))
+            elif kind == renpy.TEXT_TAG:
+                if text.find("image") != -1:
+                    tag, _, value = text.partition("=")
+                    my_img = renpy.displayable(value)
+                    img_disp = ScareText(my_img, argument)
+                    new_list.append((renpy.TEXT_DISPLAYABLE, img_disp))
+                elif not my_style.add_tags(text):
+                    new_list.append((kind, text))
+            else:
+                new_list.append((kind,text))
+
+        return new_list
+
     # Letters change their font, color and size every frame.
     # Example: {chaos}Text{/chaos}
     # Honestly more a demonstration of what can be done than useful in it's own right.
@@ -831,6 +861,7 @@ init python:
     config.custom_text_tags["bt"] = bounce_tag
     config.custom_text_tags["fi"] = fade_in_tag
     config.custom_text_tags["sc"] = scare_tag
+    config.custom_text_tags["si"] = sick_tag
     config.custom_text_tags["rotat"] = rotate_tag
     config.custom_text_tags["chaos"] = chaos_tag
     config.custom_text_tags["swap"] = swap_tag

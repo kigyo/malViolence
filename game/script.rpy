@@ -35,8 +35,17 @@ label splashscreen:
 default inspect = None
 default minigame = False
 
+### custom transitions
+
 define eyeopen = ImageDissolve("images/open.png", 0.5, 0)
 define eyeclose = ImageDissolve("images/open.png", 0.5, 0, reverse=True)
+<<<<<<< Updated upstream
+=======
+define screenon = ImageDissolve("images/open.png", 0.15, 0)
+define screenoff = ImageDissolve("images/open.png", 0.15, 0, reverse=True)
+define placeintro = ImageDissolve("images/open.png", 3, 0)
+define placeexit = ImageDissolve("images/open.png", 3, 0, reverse=True)
+>>>>>>> Stashed changes
 
 init python:
     def roomchangedx(i):

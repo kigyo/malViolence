@@ -9,7 +9,7 @@ label start:
     #queue music ending_kill
     scene black
     #[static plays as the game begins. the screen is black, since the protagonist is recovering from being knocked out]
-    pause 1
+    pause 2
     x "...llo?"
     pause 1
     x "Hello?"
@@ -19,8 +19,13 @@ label start:
         zoom 1.2 yalign 0.8 xalign 0.5
         ease 0.8 zoom 1 yalign 0.5
     $Achievement.add(achievement_start)
+<<<<<<< Updated upstream
     "(GAH! What the-)"
     "(...Huh? Where are you?)"
+=======
+    "(GAH! {w}What the-)"
+    "(...Huh? {w}Where {i}are{/i} you?)"
+>>>>>>> Stashed changes
     scene bg tutorial1:
         yalign 0.5 xalign 0.5
         linear 1 yalign 0.3
@@ -88,9 +93,18 @@ label start:
     c "So, before I get back to work..."
 
     scene bg tutorial1 at bg with fade
+<<<<<<< Updated upstream
     cr "...welcome to your new home, lab rat!"
     cr "Cozy, isn't it? It's got everything you need to live a normal human life."
     cr "A comfy bed... Well, not comfy, but... a bed. A tap with running water, a desk for... desk things."
+=======
+
+    pause 0.5
+    cr "...welcome to your new home!"
+    cr "Cozy, isn't it? {w}It's got everything you need to live a normal human life."
+    cr "A comfy bed... {w}Well, not comfy, but...{w=0.1} a bed."
+    cr "A tap with running water,{w} a desk for...{w=0.1} desk things."
+>>>>>>> Stashed changes
     cr "Quintessential five-star living, just like the famous Milton Hotels."
     cr "Oh, and if you get hungry, just lift the painting in the middle of the room."
     cr "The vent dispenses LabScrip 4053. Reviewers say its \"safe for human consumption,\" so don't be shy. It's got all the nutrients you need to live a good life!"
