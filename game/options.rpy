@@ -155,7 +155,7 @@ define config.default_music_volume = 0.6
 define config.default_sfx_volume = 0.7
 define config.default_voice_volume = 0.7
 
-default preferences.infinite_game_over = True
+default preferences.hard_mode = True
 
 
 ## Save directory ##############################################################

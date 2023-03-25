@@ -1,17 +1,19 @@
-renpy.geometry renpy.solid
-renpy.geometry renpy.matrixcolor renpy.texture
-renpy.ftl
-watt.wave renpy.texture renpy.texture
-renpy.geometry renpy.imagedissolve
-renpy.geometry renpy.texture watt.wave
-renpy.dissolve renpy.dissolve
-renpy.alpha renpy.texture
-renpy.imagedissolve renpy.imagedissolve
-renpy.texture
 renpy.geometry renpy.texture
-renpy.alpha renpy.geometry renpy.texture
-renpy.matrixcolor renpy.texture
-renpy.alpha renpy.geometry renpy.texture watt.wave
-renpy.dissolve renpy.geometry
+renpy.imagedissolve renpy.imagedissolve
 renpy.alpha watt.wave renpy.texture renpy.texture
+renpy.ftl
+renpy.alpha renpy.geometry renpy.solid
 renpy.solid
+renpy.alpha renpy.texture
+renpy.alpha renpy.geometry renpy.texture watt.wave
+renpy.matrixcolor renpy.texture
+renpy.geometry renpy.matrixcolor renpy.texture
+renpy.geometry renpy.texture watt.wave
+renpy.geometry renpy.solid
+renpy.dissolve renpy.geometry
+watt.wave renpy.texture renpy.texture
+renpy.dissolve renpy.dissolve
+renpy.alpha renpy.geometry renpy.texture
+renpy.texture
+renpy.alpha renpy.solid
+renpy.geometry renpy.imagedissolve

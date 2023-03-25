@@ -8,7 +8,7 @@ screen debugging():
             #    for i in renpy.get_return_stack():
             #        text str(i) + " "
             null
-            #text testvar
+            text testvar xalign 0.5
             #text str(speaking)
 
 default testvar = "0"

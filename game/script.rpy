@@ -91,3 +91,6 @@ image ctc:
     #    ease 0.5 alpha 0.5 rotate 270
     #    
     #    repeat
+
+style puzzle_description_text:
+    size 37 justify True color gui.accent_color

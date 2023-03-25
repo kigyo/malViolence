@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 1342: 'size' is not a keyword argument or valid child for the label statement.
-    label _("QUIT GAME?") size 100
-                              ^
+File "game/script/puzzles/room_3_puzzle_1.rpy", line 38: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+                print("failed because " + str(col*11 + row) + " did not match horizontally". row = " + str(row) + ", col = " + str(col))
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri Mar 24 20:22:28 2023
+Sat Mar 25 11:35:11 2023

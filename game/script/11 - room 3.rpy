@@ -1,4 +1,5 @@
-default room3 = {"investigated":[], "diary":0, "room":"down"}
+default room3 = {"room":"down", "investigated":[], "diary":0, "mannequin":0, "scrapbook":0, "health record":0, "locked container":0, "confidence workbook":0, 
+    "sewing book":0, }
 
 screen room3():
     sensitive not inspect
@@ -13,6 +14,7 @@ screen room3():
         fixed at zoomed(0.35):
             add "bg room3_upstairs"
             imagebutton idle "room3_scrapbook" action [SetVariable("inspect", "scrapbook"), Jump("room_3")] pos (3575, 1150) at zoomed(0.2)
+            imagebutton idle "room3_sewing book" action [SetVariable("inspect", "sewing book"), Jump("room_3")] pos (1575, 1150) at zoomed(0.2)
             imagebutton idle "room3_diary" action [SetVariable("inspect", "diary"), Jump("room_3")] pos (2575, 2150) at zoomed(0.4)
         textbutton _("DOWN") action SetDict(room3, "room", "down") style "main_menu_button" xalign 0.97 yalign 0.97
 
@@ -21,52 +23,92 @@ label room_3:
         $room3["investigated"].append(inspect)
     show screen room3
     if inspect == "mannequin":
-        "(When you look at the bust in front of you, you recall a half-serious lesson on disguising yourself - back when you were a trainee. From what you remember, this appears to be a mannequin for a wig.)"
-        "(But Dr. Danger had a full head of hair.)"
-        "(Did she need to disguise herself? Intel's always suggested that her mastery over tech kept her off any camera she cared about.)"
+        if room3["mannequin"] == 0:
+            "(When you look at the bust in front of you, you recall a half-serious lesson on disguising yourself - back when you were a trainee. From what you remember, this appears to be a mannequin for a wig.)"
+            "(But Dr. Danger had a full head of hair.)"
+            "(Did she need to disguise herself? Intel's always suggested that her mastery over tech kept her off any camera she cared about.)"
+        else:
+            #repeated investigation
+            pass
+        $ room3["mannequin"] += 1
+
     elif inspect == "scrapbook":
-        "(You pick up what appears to be a generic scrapbook, like those shoved to the back shelves of charity stores. Looking closely, you can still see remnants of price sticker glue.)"
-        "(It feels normal. {i}Too{/i} normal. The book's clearly hiding some deep, dark secret.)"
-        "(But the inner contents are equally... {i}normal. {/i}All you find are photographs of a woman who looks a lot like Dr Danger, and a young boy with a crooked, toothy grin.)"
-        "(The craftsmanship on display isn't anything remarkable, with poorly cut edges and tacky glitter glue smeared across the cheap cardstock. At least the pages seem to be in chronological order.)"
-        "(In the earliest photos, the boy is bedridden. His skin is unnaturally pale, and his gaze is unfocused – empty, even.)"
-        "(But as you flick though the pages, he grows stronger. He gets out of bed. His eyes shine with inspiration and intelligence. He smiles.)"
-        "(The woman in these photos must've been taking good care of him.)"
-        "(The later photos are self-explanatory. Playing videogames, reading bedtime stories... and what seems to be a movie night.)"
-        "(You know the film they're watching. It's that one cartoon about an alien supervillain; one with a very big brain, but very little common sense.)"
-        "(...Hold on. Wasn't the film released in cinemas three months later?)"
-        "(Looks like STOP will have to add \"digital piracy\" to Dr. Danger's long list of crimes.)"
+        if room3["scrapbook"] == 0:
+            "(You pick up what appears to be a generic scrapbook, like those shoved to the back shelves of charity stores. Looking closely, you can still see remnants of price sticker glue.)"
+            "(It feels normal. {i}Too{/i} normal. The book's clearly hiding some deep, dark secret.)"
+            "(But the inner contents are equally... {i}normal. {/i}All you find are photographs of a woman who looks a lot like Dr Danger, and a young boy with a crooked, toothy grin.)"
+            "(The craftsmanship on display isn't anything remarkable, with poorly cut edges and tacky glitter glue smeared across the cheap cardstock. At least the pages seem to be in chronological order.)"
+            "(In the earliest photos, the boy is bedridden. His skin is unnaturally pale, and his gaze is unfocused – empty, even.)"
+            "(But as you flick though the pages, he grows stronger. He gets out of bed. His eyes shine with inspiration and intelligence. He smiles.)"
+            "(The woman in these photos must've been taking good care of him.)"
+            "(The later photos are self-explanatory. Playing videogames, reading bedtime stories... and what seems to be a movie night.)"
+            "(You know the film they're watching. It's that one cartoon about an alien supervillain; one with a very big brain, but very little common sense.)"
+            "(...Hold on. Wasn't the film released in cinemas three months later?)"
+            "(Looks like STOP will have to add \"digital piracy\" to Dr. Danger's long list of crimes.)"
+        else:
+            #repeated investigation
+            pass
+        $ room3["scrapbook"] += 1
+
     elif inspect == "health record":
-        "(You pick up a clipboard with a thick stack of charts and diagrams pinned to the front.)"
-        "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh, black lettering. At the bottom of the page, you spot an acronym: \"YTDI\".)"
-        "(You flip through the log. The recuperation described here is difficult to read.)"
-        "(Seizures, phantom pain, memory loss and brain damage are all expected results, not side effects. Scrawled notes speculate that these symptoms would last for several years, or decades - perhaps even permanently.)"
-        "(Implanting cybernetics in individuals under 18 isn't illegal, but it is frowned upon. And from the logbook, a lot of children were implanted" "(Implanting cybernetics in individuals under 18 isn't illegal, but it {i}is {/i}children well under the age of 18.)"
-        "(There's nothing here about informed consent or parental permissions. Evidently, parents weren't involved.)"
+        if room3["health record"] == 0:
+            "(You pick up a clipboard with a thick stack of charts and diagrams pinned to the front.)"
+            "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh, black lettering. At the bottom of the page, you spot an acronym: \"YTDI\".)"
+            "(You flip through the log. The recuperation described here is difficult to read.)"
+            "(Seizures, phantom pain, memory loss and brain damage are all expected results, not side effects. Scrawled notes speculate that these symptoms would last for several years, or decades - perhaps even permanently.)"
+            "(Implanting cybernetics in individuals under 18 isn't illegal, but it {i}is {/i} frowned upon. And from the logbook, a lot of children were implanted: children well under the age of 18.)"
+            "(There's nothing here about informed consent or parental permissions. Evidently, parents weren't involved.)"
+        else:
+            #repeated investigation
+            pass
+        $ room3["health record"] += 1
+
     elif inspect == "sewing book":
-        "(You find an assortment of patterns, books, and materials for sewing.)"
-        "(There's a little stack of half-finished items; a skirt and a blouse in conservative colors. Right next to it, there's a whole pile of hand-stitched garments in garish yellows, greens, and reds.)"
-        "(Seems like someone handed their sewing books down to a more imaginative type.)"
-        "(You're well-aware that sewing isn't just a simple hobby. Many of STOP's associated security forces take up the practice when they receive their first cybernetics. After such a big operation, the skill rehabilitates their hand-eye coordination.)"
-        "(But you doubt they'd make such a large collection of fuzzy mittens.)"
-        $ inspect = None
-        call screen room3_quilt
+        if room3["sewing book"] == "solved":
+            "(Solved the quilt puzzle.)"
+        else:
+            if room3["sewing book"] == 0:
+                "(You find an assortment of patterns, books, and materials for sewing.)"
+                "(There's a little stack of half-finished items; a skirt and a blouse in conservative colors. Right next to it, there's a whole pile of hand-stitched garments in garish yellows, greens, and reds.)"
+                "(Seems like someone handed their sewing books down to a more imaginative type.)"
+                "(You're well-aware that sewing isn't just a simple hobby. Many of STOP's associated security forces take up the practice when they receive their first cybernetics.)"
+                "(After such a big operation, the skill rehabilitates their hand-eye coordination.)"
+                "(But you doubt they'd make such a large collection of fuzzy mittens.)"
+            else:
+                #repeated investigation
+                pass
+            $ room3["sewing book"] += 1
+            $ inspect = None
+            call screen room3_quilt
+
     elif inspect == "locked container":
-        "(After entering the combination, there's a small click. You give the handle a tug.)"
-        "(There's no dust inside, but a stale odor wafts out. Clearly, this hasn't been opened for a long time.)"
-        "(You find a lab coat with an ID pinned above its breast pocket. There's no photo, but the name Deirdre Destrange is clearly printed alongside a worn barcode.)"
-        "(The coat itself is high-quality, but it's worn around the edges. Deirdre must've worn it for a long time, taking good care of it all the while.)"
-        "(You see framed photos, diplomas, certificates and awards - all of them belonging to this \"Deirdre Destrange\". In and of itself, a doctorate in cybernetic biology is impressive, but Deirdre received this years ago.)"
-        "(To be {i}that {/i}experienced at a young age, and when the science was still so {i}new...{/i} Deirdre must've been on the cutting edge of the field.)"
-        "(At the bottom of the pile, you find a dented medal. An award for \"continued service to the international security community\"?)"
-        "(The medal's name has been violently scratched out. And yet, you think you see the remnants of a familiar logo...)"
+        if room3["locked container"] == 0:
+            "(After entering the combination, there's a small click. You give the handle a tug.)"
+            "(There's no dust inside, but a stale odor wafts out. Clearly, this hasn't been opened for a long time.)"
+            "(You find a lab coat with an ID pinned above its breast pocket. There's no photo, but the name Deirdre Destrange is clearly printed alongside a worn barcode.)"
+            "(The coat itself is high-quality, but it's worn around the edges. Deirdre must've worn it for a long time, taking good care of it all the while.)"
+            "(You see framed photos, diplomas, certificates and awards - all of them belonging to this \"Deirdre Destrange\". In and of itself, a doctorate in cybernetic biology is impressive, but Deirdre received this years ago.)"
+            "(To be {i}that {/i}experienced at a young age, and when the science was still so {i}new...{/i} Deirdre must've been on the cutting edge of the field.)"
+            "(At the bottom of the pile, you find a dented medal. An award for \"continued service to the international security community\"?)"
+            "(The medal's name has been violently scratched out. And yet, you think you see the remnants of a familiar logo...)"
+        else:
+            #repeated investigation
+            pass
+        $ room3["locked container"] += 1
+
     elif inspect == "confidence workbook":
-        "(It's a crumpled, heavily-worked-over notebook filled with grandiose, third-person ramblings. Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
-        "(But the more you flip back through the pages, the more those writings grow negative. They're accompanied by notes on how to aim them in a more positive direction.)"
-        "(Even further back, the spidery handwriting disappears. Instead, there are grids and examples written by someone with clean, crisp penmanship.)"
-        "(It almost looks like a therapeutic exercise - or a homework assignment. Maybe it's both. What's clear is that the notebook's author hasn't used it for a long, long time.)"
-        "(Personally, you wouldn't be caught dead speaking, writing, or even thinking in the third person.)"
-        "(You only use the second person. And even then, only for gathering your thoughts in high-stakes scenarios.)"
+        if room3["confidence workbook"] == 0:
+            "(It's a crumpled, heavily-worked-over notebook filled with grandiose, third-person ramblings. Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
+            "(But the more you flip back through the pages, the more those writings grow negative. They're accompanied by notes on how to aim them in a more positive direction.)"
+            "(Even further back, the spidery handwriting disappears. Instead, there are grids and examples written by someone with clean, crisp penmanship.)"
+            "(It almost looks like a therapeutic exercise - or a homework assignment. Maybe it's both. What's clear is that the notebook's author hasn't used it for a long, long time.)"
+            "(Personally, you wouldn't be caught dead speaking, writing, or even thinking in the third person.)"
+            "(You only use the second person. And even then, only for gathering your thoughts in high-stakes scenarios.)"
+        else:
+            #repeated investigation
+            pass
+        $ room3["confidence workbook"] += 1
+
     elif inspect == "diary":
         $ nvl_heading = "Entry #" + str(room3["diary"])
         if room3["diary"] == 0:
@@ -159,26 +201,34 @@ label room_3:
             pass
         $ room3["diary"] += 1
         nvl clear
+
     $ inspect = None
     call screen room3
 
-    "{u}{b}Death Scenes{/b}{/u}
-    You are helping Cautionne finish a quilt that has some sentimental value (either it was started by Dr Danger and left unfinished by her death, or it is made from costume scraps from Dr Danger and Cautionne's old outfits, or something similar). If you mess up, Cautionne will trigger a trap that shoots a barrage so sewing needles at you, inducing death by a thousand pricks. "
+label quilt_game_over:
+    $ inspect = "game over"
+    show screen room3_quilt
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    cr "{i}Wow.{/i} You're no deft hand, are you?"
+    cr "I'd like to think of myself as a lenient kinda guy... But watching you butcher that sentimental quilt is pretty painful."
+    cr "Like, death by a thousand cuts..."
+    cr "...or needles, in this case."
+    scene black with Dissolve(0.3)
+    "(You hear a switch go off, and-)"
+    #{i}{b}[sound of protag getting stabbed with needles]{/b}{/i}
 
-    "Puzzle 1 Death Scene" "{u}{b}{/b}{/u}
-    {i}W{/i}{i}ow.{/i}{i} {/i}You're no deft hand, are you?
-    I'd like to think of myself as a lenient kinda guy... But watching you butcher that sentimental quilt is pretty painful.
-    Like, death by a thousand cuts...
-    ...or needles, in this case.
-    (You hear a switch go off, and-)
-    {i}{b}CUT TO BLACK{/b}{/i}
-    {i}{b}[sound of protag getting stabbed with needles]{/b}{/i}
+    nvl clear
+    $nvl_heading = "Lab Report #112"
+    l "Subject failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles."
+    #"(NB" "{i}It needed to be a square number for the triggering mechanism to hit its mark){/i}"
+    l "Contributing Factors to Death: Couldn't sew their way out of a wet paper bag."
+    $Achievement.add(achievement_dead11)
+    #TODO: Fix name
+    le "DEAD END 11: Cheers! It's Cyanide."
+    nvl clear
+    return
 
-    {i}{/i}{i}Lab rat failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles.{/i}"
-
-    "(NB" "{i}It needed to be a square number for the triggering mechanism to hit its mark){/i}"
-
-    "Contributing Factors to Death" "{i}{/i}{i} Couldn't sew their way out of a wet paper bag.{/i}"
 
     "Puzzle 2" "You are digging into a pile of toys/plushes you found in Dr Danger/Cautionne's room. You are helping Cautionne sort them. If you mess up sorting them Cautionne giggles and [death scene]"
 

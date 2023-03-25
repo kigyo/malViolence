@@ -1,4 +1,5 @@
 label post_tutorial:
+  #[If puzzle is solved, play a solving/unlocking sound]
   scene black 
   show cautionne_frame_glow at bg
   with dissolve

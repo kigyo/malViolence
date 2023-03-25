@@ -58,7 +58,7 @@ screen achievement_menu():
                 ## Locked achievements
                 for v in achievement_name.values():
                     ## Index '0' is the name of the achievement.
-                    if not achievement.has(v[0]):
+                    if not achievement.has(v[0]) and v[3] != 'dead':
 
                         ## We're doing a check for all achievements
                         ## that is not a 'platinum'.
@@ -120,7 +120,29 @@ screen failchievement_menu():
                 cols 2 ## You can change this number depending on the width of your achievements.
                 spacing 10
                 for v in achievement_name.values():
-                    if v[3] == 'dead':
+                    if achievement.has(v[0]) and v[3] == 'dead':
+                        
+                        frame:
+                            
+                            background Solid('#0088AA') ## Nice bright blue/turquoise.
+
+                            hbox:
+                                yalign 0.5
+                                xysize (100, 100)
+                                
+                                add v[2] size (100, 100) yalign 0.5
+
+                                null width 20
+
+                                vbox:
+                                    spacing 0
+                                    yfill False
+                                    
+                                    text v[0] style 'achievements_label' color '#000000'
+                                    text v[1] color '#000000'
+
+                for v in achievement_name.values():
+                    if not achievement.has(v[0]) and v[3] == 'dead':
                         
                         frame:
                             
@@ -145,7 +167,8 @@ screen failchievement_menu():
                                         ## Index '1' is the description of the achievemnt.
                                     
                                         text str(v[0]) style 'achievements_label' color '#FFFFFF33'
-                                        text str(v[1]) color '#FFFFFF33'
+                                        #text str(v[1]) color '#FFFFFF33'
+                                        text "???" color '#FFFFFF33'
                                     
                                     else:
                                     

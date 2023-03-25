@@ -91,19 +91,11 @@ style presplash_label_text:
 ## We let Ren'Py resize our images so we don't have to make buttons in another
 ## program.
 
-## These background buttons are 480x270
-image room_button = im.FactorScale("bg/room.jpg", 0.25)
-image office_button = im.FactorScale("bg/future_office.jpg", 0.25)
-image beach_button = im.FactorScale("bg/sort_of_beautiful_beach_day.jpg", 0.25)
-image bglock_button = "gui/button/bg_locked.jpg"
-
-## These sprite buttons are 290x290
-image ehappy_button = Crop((170, 245, 290, 290), "eileen happy")
-image eneutral_button = Crop((170, 245, 290, 290), "eileen neutral")
-image esurprised_button = Crop((170, 245, 290, 290), "eileen surprised")
-image eupset_button = Crop((170, 245, 290, 290), "eileen upset")
-image eangry_button = Crop((170, 245, 290, 290), "eileen angry")
-image spritelock_button = "gui/button/sprite_locked.jpg"
+## These background buttons are 384x216
+image room_button = im.FactorScale("bg/room.jpg", 0.2)
+image office_button = im.FactorScale("bg/future_office.jpg", 0.2)
+image beach_button = im.FactorScale("bg/sort_of_beautiful_beach_day.jpg", 0.2)
+image bglock_button = "gui/button/cg_locked.jpg"
 
 init python:
 
@@ -179,9 +171,9 @@ screen extras_navigation():
 
         #textbutton _("SPRITE GALLERY") action ShowMenu("sprite_gallery") alt "Sprite Gallery"
 
-        textbutton _("CG GALLERY") action ShowMenu("bg_gallery") alt "Background Gallery" at navigation_move
+        #textbutton _("CG GALLERY") action ShowMenu("bg_gallery") alt "Background Gallery" at navigation_move
 
-        textbutton _("MUSIC ROOM") action ShowMenu("music_gallery") alt "Music Room" at navigation_move
+        #textbutton _("MUSIC ROOM") action ShowMenu("music_gallery") alt "Music Room" at navigation_move
 
         #textbutton _("REPLAY ROOM") action ShowMenu("replay_gallery") alt "Replay Room" at navigation_move
 
@@ -293,9 +285,9 @@ screen bg_gallery():
     tag menu
 
     ## This use statement includes the extras_menu screen inside this one.
-    use extras_menu(_("Background Gallery")):
+    use extras_menu(_("CG Gallery")):
 
-        grid 1 3:
+        grid 2 2:
 
             xfill True
             yfill True

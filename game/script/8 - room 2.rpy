@@ -1,4 +1,6 @@
-default room2 = {"investigated":[], }
+default room2 = {"investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0}
+
+define panopticon_move_limit = 30
 
 screen room2():
     sensitive not inspect
@@ -10,49 +12,122 @@ screen room2():
         imagebutton idle "room2_postits" action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3575, 1550) at zoomed(0.2)
         imagebutton idle "room2_limbs" action [SetVariable("inspect", "limbs"), Jump("room_2")] pos (1575, 2150) at zoomed(0.2)
         imagebutton idle "room2_clippings" action [SetVariable("inspect", "clippings"), Jump("room_2")] pos (2575, 2150) at zoomed(0.2)
+        imagebutton idle "room2_panopticon" action [SetVariable("inspect", "panopticon"), Jump("room_2")] pos (3575, 2150) at zoomed(0.2)
 
 label room_2:
     if inspect not in room2["investigated"]:
         $room2["investigated"].append(inspect)
     show screen room2
     hide screen room2_panopticon
+
     if inspect == "blueprints":
-        "(You survey the diagrams before you.)"
-        "(From a distance, they seem to be your average blueprints. Blueprints for weapons of all makes, shapes and sizes.)"
-        "(But on closer inspection, they reveal a certain quirkiness that doesn't belong on a technical document. The handwriting is also... {i}distinct,{/i} for lack of a better word.)"
-        "(That said, poor penmanship hasn't dulled the designs themselves. The least dangerous of these would be devastating out in the field.)"
-        "(The oldest of the blueprints - the ones hidden at the bottom of the pile, look wildly different. Clearly, another person authored them.)"
-        "(In fact, if you squint... you can still find the signatures at the bottom.)"
-        "(\"Destrange,\" they say. They're dated more than 15 years ago.)"
+        if room2["blueprints"] == 0:
+            "(You survey the diagrams before you.)"
+            "(From a distance, they seem to be your average blueprints. Blueprints for weapons of all makes, shapes and sizes.)"
+            "(But on closer inspection, they reveal a certain quirkiness that doesn't belong on a technical document. The handwriting is also... {i}distinct,{/i} for lack of a better word.)"
+            "(That said, poor penmanship hasn't dulled the designs themselves. The least dangerous of these would be devastating out in the field.)"
+            "(The oldest of the blueprints - the ones hidden at the bottom of the pile, look wildly different. Clearly, another person authored them.)"
+            "(In fact, if you squint... you can still find the signatures at the bottom.)"
+            "(\"Destrange,\" they say. They're dated more than 15 years ago.)"
+        else:
+            #repeated investigation
+            pass
+        $ room2["blueprints"] += 1
+
     elif inspect == "post-its":
-        "(You eye over the mass of scrawled notes pinned in front of you. There're two distinct handwritings here, but the contents are mostly the same - and mostly {i}domestic{/i}.) "
-        "(Notes on what to eat for breakfast and when to start preparing it. Notes on how much sleep to get and... what stories to read? Birthdays, exercises, meal plans and chores?)"
-        "(Whoever left these notes for each other weren't just sharing the same space. They were {i}living{/i} together.)"
+        if room2["post-its"] == 0:
+            "(You eye over the mass of scrawled notes pinned in front of you. There're two distinct handwritings here, but the contents are mostly the same - and mostly {i}domestic{/i}.) "
+            "(Notes on what to eat for breakfast and when to start preparing it. Notes on how much sleep to get and... what stories to read? Birthdays, exercises, meal plans and chores?)"
+            "(Whoever left these notes for each other weren't just sharing the same space. They were {i}living{/i} together.)"
+        else:
+            #repeated investigation
+            pass
+        $ room2["post-its"] += 1
+
     elif inspect == "limbs":
-        "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP - at first glance. On closer inspection, there are more differences than there are similarities.) "
-        "(STOP's technology is more generalized, more efficient... and {i}angular.{/i} These plans are heavily customized. They could've only been suitable for a very small number of subjects - possibly as few as one.)"
-        "(Perhaps Dr. Danger based it off stolen data? You make a note to tell your superiors about possible reverse-engineering.)"
+        if room2["limbs"] == 0:
+            "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP - at first glance. On closer inspection, there are more differences than there are similarities.) "
+            "(STOP's technology is more generalized, more efficient... and {i}angular.{/i} These plans are heavily customized. They could've only been suitable for a very small number of subjects - possibly as few as one.)"
+            "(Perhaps Dr. Danger based it off stolen data? You make a note to tell your superiors about possible reverse-engineering.)"
+        else:
+            #repeated investigation
+            pass
+        $ room2["limbs"] += 1
+
     elif inspect == "corkboard":
-        "(As you look over the sprawling web of photos, documents, and diagrams, you realize everything in front of you is perfectly orderly.)"
-        "(These are the notes of a hunter, and STOP was their prey. You recognize dozens of names, operations, and places; vital parts of STOP's organization that had suffered heavy blows in the last few years.)"
-        "(But you're disturbed by how many places you {i}don't{/i} recognize.)"
-        "(Laboratories, factories and armories that must be high above your clearance level – crossed out like someone was just going down a checklist.)"
-        "(All these top-secret sites share the same acronym: \"YTDI.\")"
-        "(...No, you don't recognize it. That's par for the course with STOP: If you don't know what an acronym means, it's probably above your paygrade.)"
+        if room2["corkboard"] == 0:
+            "(As you look over the sprawling web of photos, documents, and diagrams, you realize everything in front of you is perfectly orderly.)"
+            "(These are the notes of a hunter, and STOP was their prey. You recognize dozens of names, operations, and places; vital parts of STOP's organization that had suffered heavy blows in the last few years.)"
+            "(But you're disturbed by how many places you {i}don't{/i} recognize.)"
+            "(Laboratories, factories and armories that must be high above your clearance level – crossed out like someone was just going down a checklist.)"
+            "(All these top-secret sites share the same acronym: \"YTDI.\")"
+            "(...No, you don't recognize it. That's par for the course with STOP: If you don't know what an acronym means, it's probably above your paygrade.)"
+        else:
+            #repeated investigation
+            pass
+        $ room2["corkboard"] += 1
+
     elif inspect == "clippings":
-        "(Printouts and clippings of various news articles - all related to Dr. Danger's exploits... with a certain colorful sidekick occasionally breaking into the opening paragraphs.)"
-        "(In fact, when you look at them all together, Cautionne seems to show up more over time. Dr. Danger must've been pleased with her pupil's growth.)"
-        "(At the bottom of the pile, a heavily weathered photo peeks out.)"
-        "(Based on what you can make out of the caption - it seems to be of some kind of commemorative occasion: \"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
-        "(You can't recognize any of the faces, but you do recognize the logo as-)"
-        #"{b}[pause as the clippings disappear]{/b}"
-        "(...Never mind. It's just similar, that's all.)"
-        $ inspect = None
-        call screen room2_panopticon
-    elif inspect == "panopticon solved":
-        "(Solved the panopticon.)"
+        if room2["clippings"] == 0:
+            "(Printouts and clippings of various news articles - all related to Dr. Danger's exploits... with a certain colorful sidekick occasionally breaking into the opening paragraphs.)"
+            "(In fact, when you look at them all together, Cautionne seems to show up more over time. Dr. Danger must've been pleased with her pupil's growth.)"
+            "(At the bottom of the pile, a heavily weathered photo peeks out.)"
+            "(Based on what you can make out of the caption - it seems to be of some kind of commemorative occasion: \"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
+            "(You can't recognize any of the faces, but you do recognize the logo as-)"
+            #"{b}[pause as the clippings disappear]{/b}"
+            "(...Never mind. It's just similar, that's all.)"
+        else:
+            #repeated investigation
+            pass
+        $ room2["clippings"] += 1
+
+    elif inspect == "panopticon":
+        if room2["panopticon"] == "solved":
+            "(Solved the panopticon.)"
+        else:
+            if room2["panopticon"] == 0:
+                #panopticon introduction
+                pass
+            else:
+                #repeated investigation
+                pass
+            $ room2["panopticon"] += 1
+            $ inspect = None
+            call screen room2_panopticon
+
     $ inspect = None
     call screen room2
+
+label panopticon_game_over:
+    $ inspect = "game over"
+    show screen room2_panopticon
+    show black with dissolve:
+        alpha 0.5
+    "(You re-arrange another set of cells and-)"
+    "(-and suddenly, your controls freeze up. There's a notification in the corner.)"
+    cr "Seems like you've run out of time, lab rat."
+    cr "That's it. The jailbreak is broken. You screwed up."
+    "(So it {i}was {/i}a prison? Then-)"
+    cr "If it was just between you and me, I'd be \"whatever\" about it."
+    cr "We all make mistakes, y'know? So, I'm super forgiving and cool and mature about this kind of thing."
+    cr "...But you just lost those kids a chance to get out before the operations start."
+    "(...Sorry, {i}operations?{/i})"
+    cr "They could've gotten out clean. Now I'll have to step in and bust them out {i}dirty{/i}."
+    cr "And it's all because of {i}you.{/i}"
+    cr "Now, go sit in the corner and think about what you've done!"
+    #"{b}SFX LARGE SWITCH FLIPPING, CUT TO BLACK{/b}"
+    scene black with Dissolve(0.3)
+    cr "I'll come back for you when you're sorry enough."
+
+    nvl clear
+    $nvl_heading = "Lab Report #893"
+    l "Subject expired after 3 days due to lack of water, light, food, and mental stimulation. Scratched their nails bloody on the exit door before losing consciousness, so I'll have to clean {i}that {/i}mess up."
+    l "Contributing Factors to Death: Didn't take the consequences of imprisonment very seriously."
+    $Achievement.add(achievement_dead8)
+    #TODO: Fix name
+    le "DEAD END 08: Cheers! It's Cyanide."
+    nvl clear
+    return
 
 label room2_deaths:
     "{u}{b}Death Scenes{/b}{/u}"
@@ -77,29 +152,6 @@ label room2_deaths:
 
     "Contributing Factors to Death" "{i}{b}{/b}{/i}{i}Couldn't put progress on the board.{/i}"
 
-    "Puzzle 2" "You are helping Cautionne break out young captives at a STOP panopticon like facility. "
-    "If you use too many \"turns\" to arrange the cells in the proper order, STOP will notice your interference and kick you out. "
-    "Cautionne, enraged at losing the opportunity to save the prisoners, will decide that if they cannot be free then you do not deserve to be either, and simply turn off the lights to the facility you are being held in and abandon you, locked in, to wither away and die a slow, isolated death. "
-
-    "Puzzle 2 Death Scene" "{b}{/b}
-    (You re-arrange another two cells and-)
-    (-and suddenly, your controls freeze up. There's a notification in the corner.)
-    Seems like you've run out of time, lab rat.
-    That's it. The jailbreak is broken. You screwed up.
-    (So it {i}was {/i}a prison? Then-)
-    If it was just between you and me, I'd be \"whatever\" about it.
-    We all make mistakes, y'know? So, I'm super forgiving and cool and mature about this kind of thing.
-    ...But you just lost those kids a chance to get out before the operations start.
-    (...Sorry, {i}operations?{/i})
-    They could've gotten out clean. Now I'll have to step in and bust them out {i}dirty{/i}.
-    And it's all because of {i}you.{/i}
-    Now, go sit in the corner and think about what you've done!
-    {b}SFX LARGE SWITCH FLIPPING, CUT TO BLACK{/b}
-    I'll come back for you when you're sorry enough."
-
-    "Lab Report #893" "{b}{/b}Subject expired after 3 days due to lack of water, light, food, and mental stimulation. Scratched their nails bloody on the exit door before losing consciousness, so I'll have to clean {i}that {/i}mess up."
-
-    "Contributing Factors to Death" "{i}{b}{/b}{/i}Didn't take the consequences of imprisonment very seriously."
 
     "Puzzle 3" "(NOTE"
 

@@ -77,10 +77,19 @@ init python:
         "secret": [_("Shh... My little secret."), _("Discover the secret."), 'gui/trophy_icon.png', 'hidden'],
         "wow": [_("Outstanding!"), _("Get all achievements."), 'gui/trophy_icon.png', 'platinum'],
 
-        "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'],
-        "dead2": [_("DEAD END 02:"), _("Die another way."), 'gui/dead_icon.png', 'dead'],
-        ## More of this is explained in 'achievement_screen.rpy'.
-
+        "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #tutorial
+        "dead2": [_("DEAD END 02:"), _("Die another way."), 'gui/dead_icon.png', 'dead'], #room1 meta
+        "dead3": [_("DEAD END 03:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room1 1
+        "dead4": [_("DEAD END 04:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room1 2
+        "dead5": [_("DEAD END 05:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room1 3
+        "dead6": [_("DEAD END 06:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room2 meta
+        "dead7": [_("DEAD END 07:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room2 1
+        "dead8": [_("DEAD END 08:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room2 2
+        "dead9": [_("DEAD END 09:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room2 3
+        "dead10": [_("DEAD END 10:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room3 meta
+        "dead11": [_("DEAD END 11:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room3 1
+        "dead12": [_("DEAD END 12:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room3 2
+        "dead13": [_("DEAD END 13:"), _("Cheers! It's Cyanide."), 'gui/dead_icon.png', 'dead'], #room3 3
     }
 
     ## Here we are simply registering the achievements.
@@ -95,6 +104,18 @@ init python:
 default achievement_welcome = Achievement(name=achievement_name['welcome'][0], message=achievement_name['welcome'][1], image=achievement_name['welcome'][2])
 default achievement_secret = Achievement(name=achievement_name['secret'][0], message=achievement_name['secret'][1], image=achievement_name['secret'][2])
 default achievement_platinum = Achievement(name=achievement_name['wow'][0], message=achievement_name['wow'][1], image=achievement_name['wow'][2])
+
 default achievement_dead1 = Achievement(name=achievement_name['dead1'][0], message=achievement_name['dead1'][1], image=achievement_name['dead1'][2])
 default achievement_dead2 = Achievement(name=achievement_name['dead2'][0], message=achievement_name['dead2'][1], image=achievement_name['dead2'][2])
+default achievement_dead3 = Achievement(name=achievement_name['dead3'][0], message=achievement_name['dead3'][1], image=achievement_name['dead3'][2])
+default achievement_dead4 = Achievement(name=achievement_name['dead4'][0], message=achievement_name['dead4'][1], image=achievement_name['dead4'][2])
+default achievement_dead5 = Achievement(name=achievement_name['dead5'][0], message=achievement_name['dead5'][1], image=achievement_name['dead5'][2])
+default achievement_dead6 = Achievement(name=achievement_name['dead6'][0], message=achievement_name['dead6'][1], image=achievement_name['dead6'][2])
+default achievement_dead7 = Achievement(name=achievement_name['dead7'][0], message=achievement_name['dead7'][1], image=achievement_name['dead7'][2])
+default achievement_dead8 = Achievement(name=achievement_name['dead8'][0], message=achievement_name['dead8'][1], image=achievement_name['dead8'][2])
+default achievement_dead9 = Achievement(name=achievement_name['dead9'][0], message=achievement_name['dead9'][1], image=achievement_name['dead9'][2])
+default achievement_dead10 = Achievement(name=achievement_name['dead10'][0], message=achievement_name['dead10'][1], image=achievement_name['dead10'][2])
+default achievement_dead11 = Achievement(name=achievement_name['dead11'][0], message=achievement_name['dead11'][1], image=achievement_name['dead11'][2])
+default achievement_dead12 = Achievement(name=achievement_name['dead12'][0], message=achievement_name['dead12'][1], image=achievement_name['dead12'][2])
+default achievement_dead13 = Achievement(name=achievement_name['dead13'][0], message=achievement_name['dead13'][1], image=achievement_name['dead13'][2])
 

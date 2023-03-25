@@ -40,16 +40,19 @@ screen tutorial_lock():
         hbox yalign 0.1 xalign 0.5:
             for i in range(8):
                 text str(tutorial["lock"][i]) + " "
+        frame:
+            textbutton _("Skip Puzzle") action [Hide(), Jump("post_tutorial")] style "main_menu_button"
     add "puzzles/tutorial_circle.png" align (0.5,0.5)
     for i in range(8):
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
-    textbutton "Return" action [Hide(), Jump("tutorial_room")] style "main_menu_button" xalign 0.8 yalign 0.5
+    textbutton _("Return") action [Return()] style "main_menu_button" xalign 0.8 yalign 0.5
 
 label tutorial_room:
     if inspect not in tutorial["investigated"]:
         $tutorial["investigated"].append(inspect)
     show screen tutorial_room
     hide screen tutorial_lock
+
     if inspect == "painting":
         if tutorial["vent"] == 0:
             "(There's a weird stock photo on the cover, but otherwise it's your average vent. Cautionne won't be winning any awards for home decor anytime soon.)"
@@ -69,7 +72,6 @@ label tutorial_room:
             #[sound of pellets falling]
             show tutorial_bowl with dissolve:
                 yalign 0.2 xalign 0.5
-            pause 1
             "(It's... a Venn diagram. One with weird shapes?)"
             "(Wonder if it means anything...)"
             hide tutorial_bowl with dissolve
@@ -78,6 +80,7 @@ label tutorial_room:
                 yalign 0.5 xalign 0.5
             pause
             hide tutorial_bowl with dissolve
+
     elif inspect == "vent":
         if tutorial["vent"] < 2:
             $ tutorial["vent"] = 2
@@ -85,7 +88,6 @@ label tutorial_room:
             "(-wait. Something's on the back side of that cover.)"
             show tutorial_painting with dissolve:
                 yalign 0.2 xalign 0.5
-            pause 1
             "(Again with those weird shapes!)"
             "(Yeah, they definitely mean something.)"
             "(Maybe... it's a way out?)"
@@ -95,6 +97,7 @@ label tutorial_room:
                 yalign 0.5 xalign 0.5
             pause
             hide tutorial_painting with dissolve
+
     elif inspect == "pellets":
         "(Rat pellets! Now on the floor.)"
         "(...To be honest, you're still pretty hungry.)"
@@ -122,7 +125,7 @@ label tutorial_room:
                 scene black with eyeclose
                 extend " your vision goes black.)"
                 nvl clear
-                $nvl_heading = "Lab Report 310"
+                $nvl_heading = "Lab Report #310"
                 l "Subject expired shortly after ingesting higher than recommended daily serving of cyanide-laced rodent feed."           
                 l "Contributing factors to death: Their stomach was bigger than their brain, evidently. May need to re-evaluate STOP agents' dietary preferences."
                 $Achievement.add(achievement_dead1)
@@ -133,19 +136,23 @@ label tutorial_room:
                 "(Nah, you're good.)"
                 "(Actually, you get drowsy when you eat too much.)"
                 "(You hate to admit it, but in the situation you're in, it's probably better to be alert and hungry.)"
+
     elif inspect == "desk":
         "(It's a desk. For desk things.)"
         "(What an evocative desk-ription!)"
+
     elif inspect == "bed":
         "(It's a bed!)"
         "(You're surprised you slept at all on something that lumpy.)"
         "(...Yeah, right. Back at home, you worshipped your crappy mattress.)"
+
     elif inspect == "tap":
         "(Your throat's dry and sore, but you can't find a cup anywhere.)"
         "(Does he expect you to drink out of the faucet?)"
         #[sound of dry squeaking]
         "(...Great. It doesn't even work.)"
         "(So much for quenching my thirst. Asshole.)"
+
     elif inspect == "handle":
         if tutorial["vent"] == 0:
             "(A door handle.)"
@@ -159,7 +166,6 @@ label tutorial_room:
             "(With a little time and effort... you think you can crack it.)"
             $ inspect = None
             call screen tutorial_lock
-            #[If puzzle is solved, play a solving/unlocking sound and then go to the post-tutorial cautionne scene]
         elif tutorial["vent"] == 3:
             $ inspect = None
             call screen tutorial_lock
@@ -168,5 +174,6 @@ label tutorial_room:
             show screen tutorial_lock with dissolve
             "(For some reason, you want to look around the room again...)"
         hide tutorial_lock with dissolve
+
     $ inspect = None
     call screen tutorial_room

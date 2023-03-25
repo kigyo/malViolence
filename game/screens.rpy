@@ -833,8 +833,8 @@ screen preferences():
                 vbox:
                     style_prefix "radio"
                     label _("Game Overs")
-                    textbutton _("Infinite") action SetField(preferences, "infinite_game_over", True) alt "Change text color to white" 
-                    textbutton _("Once per Puzzle") action SetField(preferences, "infinite_game_over", False) alt "Change text color to cream"
+                    textbutton _("Infinite") action SetField(preferences, "hard_mode", True) alt "Change text color to white" 
+                    textbutton _("Once per Puzzle") action SetField(preferences, "hard_mode", False) alt "Change text color to cream"
 
                 #vbox:
                 #    style_prefix "radio"
