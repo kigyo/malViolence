@@ -1,32 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 192, in script
-    python:
-  File "renpy/common/00start.rpy", line 193, in <module>
-    renpy.execute_default_statement(True)
-  File "game/screens.rpy", line 299, in set_default
-    default quick_menu = True
-Exception: store.quick_menu is being given a default a second time.
+  File "game/script/1 - intro.rpy", line 13, in script
+    x "{bt}...llo?"
+Exception: Text ended while the 'bt' text tag was still open.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 192, in script
-    python:
-  File "E:\Development\renpy-8.0.0-sdk\renpy\ast.py", line 1131, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\python.py", line 1061, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00start.rpy", line 193, in <module>
-    renpy.execute_default_statement(True)
-  File "E:\Development\renpy-8.0.0-sdk\renpy\exports.py", line 3782, in execute_default_statement
-    i.set_default(start)
-  File "game/screens.rpy", line 299, in set_default
-    default quick_menu = True
-Exception: store.quick_menu is being given a default a second time.
+  File "game/script/1 - intro.rpy", line 13, in script
+    x "{bt}...llo?"
+  File "/Users/carolinezeghibe/Desktop/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Users/carolinezeghibe/Desktop/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "/Users/carolinezeghibe/Desktop/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Users/carolinezeghibe/Desktop/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
+    display_say(who,
+  File "/Users/carolinezeghibe/Desktop/renpy-8.0.3-sdk/renpy/character.py", line 647, in display_say
+    what_text.update()
+  File "/Users/carolinezeghibe/Desktop/renpy-8.0.3-sdk/renpy/text/text.py", line 1815, in update
+    tokens = self.apply_custom_tags(tokens)
+  File "/Users/carolinezeghibe/Desktop/renpy-8.0.3-sdk/renpy/text/text.py", line 2359, in apply_custom_tags
+    raise Exception("Text ended while the '{}' text tag was still open.".format(tag))
+Exception: Text ended while the 'bt' text tag was still open.
 
-Windows-10-10.0.19045 AMD64
+macOS-10.16-x86_64-i386-64bit x86_64
 Ren'Py 8.0.3.22090809
 malViolence 1.0
-Sat Mar 25 13:12:38 2023
+Sat Mar 25 09:38:02 2023

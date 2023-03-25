@@ -127,7 +127,7 @@ init python:
     ### TEXT WRAPPER CLASSES ###
     # Basic text displacement demonstration
     class BounceText(renpy.Displayable):
-        def __init__(self, child, char_offset, amp=20, period=4.0, speed = 1.0, **kwargs):
+        def __init__(self, child, char_offset, amp=0.1, period=1.0, speed = 1.0, **kwargs):
 
             # Pass additional properties on to the renpy.Displayable
             # constructor.
