@@ -65,12 +65,15 @@ init python:
             x = drop.drag_name[1]
             y = drop.drag_name[2]
             cutting_board_group.remove(drop)
+            setattr(renpy.store, "%s_count" % drop.drag_name[0],
+                    getattr(renpy.store, "%s_count" % drop.drag_name[0], 0)-1)
         else:
             x = drop.drag_name[0]
             y = drop.drag_name[1]
 
         setattr(renpy.store, "%s_count" % drag.drag_name[0],
                 getattr(renpy.store, "%s_count" % drag.drag_name[0], 0)+1)
+
         cutting_board_data[y][x] = ingredients.index(drag.drag_name[0])+1
         d = Drag(drag.drag_name[0],
                  pos=(70+x*100, 205+y*100),
@@ -208,39 +211,39 @@ screen mise_en_place(interactable=True):
             xalign 0.5
 
             label "Ingredients" xalign 0.5
-            if bacon_count >= ingredient_counts["bacon"]:
+            if bacon_count == ingredient_counts["bacon"]:
                 text "{s}5 pieces of bacon{/s}"
             else:
                 text "5 pieces of bacon"
-            if strawberry_count >= ingredient_counts["strawberry"]:
+            if strawberry_count == ingredient_counts["strawberry"]:
                 text "{s}7 strawberries{/s}"
             else:
                 text "7 strawberries"
-            if flour_count >= ingredient_counts["flour"]:
+            if flour_count == ingredient_counts["flour"]:
                 text "{s}5 cups of flour{/s}"
             else:
                 text "5 cups of flour"
-            if snapper_count >= ingredient_counts["snapper"]:
+            if snapper_count == ingredient_counts["snapper"]:
                 text "{s}6 snappers{/s}"
             else:
                 text "6 snappers"
-            if butter_count >= ingredient_counts["butter"]:
+            if butter_count == ingredient_counts["butter"]:
                 text "{s}6 sticks of butter{/s}"
             else:
                 text "6 sticks of butter"
-            if blueberry_count >= ingredient_counts["blueberry"]:
+            if blueberry_count == ingredient_counts["blueberry"]:
                 text "{s}9 blueberries{/s}"
             else:
-                text "9 blue berries"
-            if egg_count >= ingredient_counts["egg"]:
+                text "9 blueberries"
+            if egg_count == ingredient_counts["egg"]:
                 text "{s}8 eggs{/s}"
             else:
                 text "8 eggs"
-            if nut_count >= ingredient_counts["nut"]:
+            if nut_count == ingredient_counts["nut"]:
                 text "{s}2 nuts{/s}"
             else:
                 text "2 nuts"
-            if milk_count >= ingredient_counts["milk"]:
+            if milk_count == ingredient_counts["milk"]:
                 text "{s}3 cartons of milk{/s}"
             else:
                 text "3 cartons of milk"
