@@ -5,11 +5,15 @@ define panopticon_move_limit = 30
 screen room1():
     sensitive not inspect
     layer "master"
-    fixed at zoomed(0.35):
+    fixed at zoomed(0.34):
         add "bg room1"
         imagebutton idle "room1_oil" action [SetVariable("inspect", "oil"), Jump("room_1")] pos (1175, 1150)
-        imagebutton idle "room1_chair" action [SetVariable("inspect", "chair"), Jump("room_1")] pos (3575, 1150)
-        imagebutton idle "room1_megaphone" action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (3575, 1550)
+        imagebutton idle "room1_chair" action [SetVariable("inspect", "chair"), Jump("room_1")] pos (3800, 1850)
+        imagebutton idle "room1_megaphone" action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (2500, 1150)
+        
+    if config.developer:
+        frame:
+            textbutton _("Skip Room") action [Jump("post_room_1")] style "main_menu_button"
 
 label room_1:
     if inspect not in room1["investigated"]:

@@ -17,6 +17,11 @@ screen tutorial_room():
             imagebutton idle Null(730, 225) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1075, 1715)
             imagebutton idle "tutorial_food" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1580, 1480) at zoomed(0.3)
 
+    if config.developer:
+        frame:
+            textbutton _("Skip Room") action [Jump("post_tutorial")] style "main_menu_button"
+
+
 init python:
     def tutorial_set_lock(idx):
         store.tutorial["lock"][idx] += 1

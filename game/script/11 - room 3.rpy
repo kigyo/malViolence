@@ -17,6 +17,10 @@ screen room3():
             imagebutton idle "room3_sewing book" action [SetVariable("inspect", "sewing book"), Jump("room_3")] pos (1575, 1150) at zoomed(0.2)
             imagebutton idle "room3_diary" action [SetVariable("inspect", "diary"), Jump("room_3")] pos (2575, 2150) at zoomed(0.4)
         textbutton _("DOWN") action SetDict(room3, "room", "down") style "main_menu_button" xalign 0.97 yalign 0.97
+        
+    if config.developer:
+        frame:
+            textbutton _("Skip Room") action [Jump("post_room_3")] style "main_menu_button"
 
 label room_3:
     if inspect not in room3["investigated"]:

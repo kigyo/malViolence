@@ -6,6 +6,7 @@ label post_room_2:
   #"{b}[{/b}{b}pasue{/b}{b} as the TV TURNS ON and cautionne appears]{/b}"
   show cautionne laugh
   show crt
+  show cautionne_frame_glow at bg
   with dissolve
   c "{i}Snooping as usual, {/i}I see?"
   "(...You spoke too soon.)"
