@@ -6,9 +6,9 @@ python early:
             self.name = name
             if image == '':
                 ## If image is None, we will give a default image.
-                self.image = Transform('gui/trophy_icon.png', fit='contain')
+                self.image = Transform('gui/gui/trophy_icon.png.png', fit='contain')
             else:
-                self.image = Transform("gui/" + image + ".png", fit='contain')
+                self.image = Transform(image, fit='contain')
             self.message = message
 
 
@@ -75,7 +75,7 @@ init python:
         ##       changes to be reflected. I.e. Delete persistent data.
 
         ## Example
-        #"welcome": [_("Welcome to My Game!"), _("Start the game"), "trophy_icon", None],
+        #"welcome": [_("Welcome to My Game!"), _("Start the game"), "gui/trophy_icon.png", None],
 
         ## The None, means that the achievement will be displayed greyed-out before it is granted (or achieved).
         ## I use these terms to describe the type of achievement it is;
@@ -83,19 +83,19 @@ init python:
         ##        'hidden' = Achievements with this label will be displayed as hidden.
         ##      'platinum' = The final achievement to be granted once all other achievements have been granted.
 
-        "start": [_("Rude Awakening"), _(""), "trophy_icon", None],
-        "tfng": [_("TFNG"), _(""), "trophy_icon", None],
-        "room1": [_("Lab Partner"), _(""), "trophy_icon", None],
-        "room2": [_("Private Study"), _(""), "trophy_icon", None],
-        "room3": [_("Housewarming"), _(""), "trophy_icon", None],
-        "deadfirst": [_("Trial and Error"), _("Get your first dead end."), "trophy_icon", None],
-        "deadall": [_("A for Effort"), _("Get all dead ends."), "trophy_icon", None],
-        "wrong": [_("Face, Meet Brick Wall"), _(""), "trophy_icon", None], #No idea what this one is
-        "end1": [_("Breakout Role"), _(""), "trophy_icon", None],
-        "end2": [_("Mission Accomplished"), _(""), "trophy_icon", None],
-        "end3": [_("Failure to Communicate"), _(""), "trophy_icon", None],
-        "investigate": [_("Busybody"), _(""), "trophy_icon", None],
-        "all": [_("Noble Laureate"), _(""), "trophy_icon", 'platinum'],
+        "start": [_("Rude Awakening"), _(""), "gui/trophy_icon.png", None],
+        "tfng": [_("TFNG"), _(""), "gui/trophy_icon.png", None],
+        "room1": [_("Lab Partner"), _(""), "gui/trophy_icon.png", None],
+        "room2": [_("Private Study"), _(""), "gui/trophy_icon.png", None],
+        "room3": [_("Housewarming"), _(""), "gui/trophy_icon.png", None],
+        "deadfirst": [_("Trial and Error"), _("Get your first dead end."), "gui/trophy_icon.png", None],
+        "deadall": [_("A for Effort"), _("Get all dead ends."), "gui/trophy_icon.png", None],
+        "wrong": [_("Face, Meet Brick Wall"), _(""), "gui/trophy_icon.png", None], #No idea what this one is
+        "end1": [_("Breakout Role"), _(""), "gui/trophy_icon.png", None],
+        "end2": [_("Mission Accomplished"), _(""), "gui/trophy_icon.png", None],
+        "end3": [_("Failure to Communicate"), _(""), "gui/trophy_icon.png", None],
+        "investigate": [_("Busybody"), _(""), "gui/trophy_icon.png", None],
+        "all": [_("Noble Laureate"), _(""), "gui/trophy_icon.png", 'platinum'],
     }
 
     death_name = {

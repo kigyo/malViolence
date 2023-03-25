@@ -13,6 +13,10 @@ screen room2():
         imagebutton idle "room2_limbs" action [SetVariable("inspect", "limbs"), Jump("room_2")] pos (1575, 2150) at zoomed(0.2)
         imagebutton idle "room2_clippings" action [SetVariable("inspect", "clippings"), Jump("room_2")] pos (2575, 2150) at zoomed(0.2)
         imagebutton idle "room2_panopticon" action [SetVariable("inspect", "panopticon"), Jump("room_2")] pos (3575, 2150) at zoomed(0.2)
+        
+    if config.developer:
+        frame:
+            textbutton _("Skip Room") action [Jump("post_room_2")] style "main_menu_button"
 
 label room_2:
     if inspect not in room2["investigated"]:

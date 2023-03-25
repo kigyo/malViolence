@@ -209,7 +209,6 @@ init python:
         if len(persistent.dead_ends) >= (len(death_name)):
             Achievement.add(achievement_deadall)
 
-default persistent.dead_ends = 0
 define config.periodic_callback = passive_function
 
 
