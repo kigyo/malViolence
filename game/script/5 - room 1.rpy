@@ -54,7 +54,7 @@ label room_1:
         if room1["megaphone"] == 0:
             "(You paused when you saw the silhouettes from across the room... but on closer inspection these aren't firearms at all. They're {i}megaphones.{/i})"
             "(So many colors, materials, variations… it's far from organized, but it does look like a collection. )"
-            "(It's hard to picture Dr Danger, the most wanted villain in the world, picking up such a quirky hobby. And yet, half of them are tagged with the initials \"DD\".)"
+            "(It's hard to picture Dr. Danger, the most wanted villain in the world, picking up such a quirky hobby. And yet, half of them are tagged with the initials \"DD\".)"
             "(...Every supervillain's bound to have a quirk or two.)"
         else:
             #repeated investigation
