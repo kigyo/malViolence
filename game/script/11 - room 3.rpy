@@ -1,4 +1,4 @@
-default room3 = {"room":"down", "investigated":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0, 
+default room3 = {"room":"down", "investigated":[], "solved":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0, 
     "confidence_workbook":0, "sewing_book":0, "quilt":0, "cooking":0, "scrapbook_new":0, "toys":0}
 
 screen room3():
@@ -232,7 +232,7 @@ label room_3:
         nvl clear
 
     elif inspect == "toys":
-        if room3["toys"] == "solved":
+        if "toys" in room3["solved"]:
             "(You already solved the plushie puzzle.)"
         else:
             if room3["toys"] == 0:
@@ -245,7 +245,7 @@ label room_3:
             $ inspect = None
 
     elif inspect == "quilt":
-        if room3["quilt"] == "solved":
+        if "quilt" in room3["solved"]:
             "(You already solved the quilt puzzle.)"
         else:
             if room3["quilt"] == 0:
@@ -254,13 +254,12 @@ label room_3:
             else:
                 #repeated investigation
                 pass
-            $ inspect = None
-            call screen room3_quilt
             $ room3["quilt"] += 1
             $ inspect = None
+            call screen room3_quilt
 
     elif inspect == "cooking":
-        if room3["cooking"] == "solved":
+        if "cooking" in room3["solved"]:
             "(You already solved the mise en place puzzle.)"
         else:
             if room3["cooking"] == 0:
@@ -274,14 +273,48 @@ label room_3:
 
     elif inspect == "scrapbook_new":
         if room3["scrapbook_new"] == 0:
+            $ room3["scrapbook_new"] = 1
             #scrapbook meta puzzle introduction
             pass
         else:
             #repeated investigation
             pass
-        $ room3["scrapbook_new"] += 1
         $ inspect = None
+        call screen room3_meta
+        jump room3_meta_solved
 
+    $ inspect = None
+    call screen room3
+
+label room3_meta_cutscene:
+    $ inspect = "quilt"
+    show screen room3_meta
+    #point out that all three photos are there.
+    #we need to buy time while the puzzle loads lmao
+    "(You hear a strange rumbling sound.){nw}" with small_shake
+    call jigsaw_puzzle
+    $ room3["scrapbook_new"] = 2
+    $ inspect = None
+    call screen room3_meta
+
+label room3_meta_solved:
+    $ inspect = "solved"
+    if room3["scrapbook_new"] == "solved":
+        jump post_room_3
+    $ inspect = None
+    call screen room3
+
+label quilt_solved:
+    $ inspect = "quilt"
+    show screen room3_quilt
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    $ room3["solved"].append("quilt")
+    #Show a note/picture/memento which will then show up on 
+    "(You solved the quilt puzzle.)"
+    hide black onlayer screens
+    hide screen room3_quilt 
+    with dissolve
     $ inspect = None
     call screen room3
 
