@@ -598,40 +598,40 @@ screen about():
                 xspacing 0 yspacing 10 xoffset 50
                 hbox spacing 15:
                     label _("Director & CG Artist:")
-                    text _("Mado") 
+                    text _("{a=https://madocallie.carrd.co/}Mado{/a}") 
                 hbox spacing 15:
                     label _("Scenario:")
-                    text _("Mado, Brian Mulholland, Z") 
+                    text _("{a=https://madocallie.carrd.co/}Mado{/a}, {a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}, {a=https://itch.io/profile/luoxyz}Z{/a}") 
                 hbox spacing 15:
                     label _("Programmer:")
-                    text _("KigyoDev") 
+                    text _("{a=https://kigyodev.com/}KigyoDev{/a}") 
                 hbox spacing 15:
                     label _("Puzzle Designer:")
-                    text _("speck") 
+                    text _("{a=https://omelette.itch.io/}speck{/a}") 
                 hbox spacing 15:
                     label _("UI & Logo:")
-                    text _("spicaze") 
+                    text _("{a=https://spicaze.itch.io/}spicaze{/a}") 
                 hbox spacing 15:
                     label _("Backgrounds:")
-                    text _("Reina") 
+                    text _("{a=https://twitter.com/ReinaTensei}Reina{/a}") 
                 hbox spacing 15:
                     label _("Cautionne VA:")
-                    text _("Carrick Inabnett") 
+                    text _("{a=https://www.carrickinabnett.com/}Carrick Inabnett{/a}") 
                 hbox spacing 15:
                     label _("Dr. Danger VA:")
-                    text _("Vyn Vox") 
+                    text _("{a=https://vynvox.com/}Vyn Vox{/a}") 
                 hbox spacing 15:
                     label _("Voice Direction:")
-                    text _("Phebe Fabacher") 
+                    text _("{a=https://twitter.com/pheberryfab}Phebe Fabacher{/a}") 
                 hbox spacing 15:
                     label _("Audio Mastering & SFX:")
-                    text _("D.ray") 
+                    text _("{a=https://twitter.com/DrayReedOFC}D.ray{/a}") 
                 hbox spacing 15:
                     label _("Music:")
-                    text _("Melo-dii, Doran") 
+                    text _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}, {a=https://twitter.com/doranthedoran}Doran{/a}") 
                 hbox spacing 15:
-                    label _("Promotion:")
-                    text _("Jennymhulla") 
+                    label _("Trailer:")
+                    text _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}") 
 
             text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25
 
@@ -642,6 +642,7 @@ style about_text is gui_text
 
 style about_label_text:
     size gui.label_text_size
+    color gui.idle_color
 
 style about_text:
     size gui.label_text_size
