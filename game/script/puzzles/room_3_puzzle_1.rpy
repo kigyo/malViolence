@@ -2,7 +2,7 @@ init python:
     def quilt_reset():
         store.quilt_input = {}
 
-    def quilt_checker():
+    def quilt_valid():
         quilts = quilt_presets.copy()
         quilts.update(quilt_input)
 
@@ -13,42 +13,17 @@ init python:
         
         for row in range(11):
             for col in range(6):
-                if row < 10 and not quilt_shared(quilts[col*11 + row], quilts[col*11 + row + 6]):
-                    store.testvar = ("failed because " + str(col*11 + row) + " did not match vertically down")
-                    return False
-                if row%2 == 0 and (col*11 + row)%2 == 0 and not quilt_shared(quilts[col*11 + row], quilts[(col*11 + row)+1]):
-                    store.testvar = ("failed because " + str(col*11 + row) + " did not match horizontally")
-                    return False
-                if row%2 == 1 and (col*11 + row)%2 == 1 and not quilt_shared(quilts[col*11 + row], quilts[(col*11 + row)+1]):
-                    store.testvar = ("failed because " + str(col*11 + row) + " did not match horizontally 2")
-                    return False
-        return True
-    
-    def quilt_hor_ver_check(col,row):
-        quilts = quilt_presets.copy()
-        quilts.update(quilt_input)
-
-        if row < 10 and (col*11 + row + 6) in quilts and not quilt_shared(quilts[col*11 + row], quilts[col*11 + row + 6]):
-            store.testvar = ("failed because " + str(col*11 + row) + " did not match vertically down. row = " + str(row) + ", col = " + str(col))
-            return False
-        if row > 0 and (col*11 + row - 6) in quilts and not quilt_shared(quilts[col*11 + row], quilts[col*11 + row - 6]):
-            store.testvar = ("failed because " + str(col*11 + row) + " did not match vertically up. row = " + str(row) + ", col = " + str(col))
-            return False
-        if row%2 == 0 and (col*11 + row)%2 == 0 and (col*11 + row)+1 in quilts and not quilt_shared(quilts[col*11 + row], quilts[(col*11 + row)+1]):
-            store.testvar = ("failed because " + str(col*11 + row) + " did not match horizontally. row = " + str(row) + ", col = " + str(col))
-            return False
-        if row%2 == 1 and (col*11 + row)%2 == 1 and (col*11 + row)+1 in quilts and not quilt_shared(quilts[col*11 + row], quilts[(col*11 + row)+1]):
-            store.testvar = ("failed because " + str(col*11 + row) + " did not match horizontally 2. row = " + str(row) + ", col = " + str(col))
-            return False
-        return True
-    
-    def quilt_current_move_valid(idx):
-        for col in range(6):
-            for row in range(11):
-                if (col*11) + row == idx:
-                    if not quilt_hor_ver_check(col,row):
+                i = row*6 + col
+                if i in quilts:
+                    if row < 10 and ((row+1)*6 + col) in quilts and not quilt_shared(quilts[i], quilts[(row+1)*6 + col]):
+                        store.testvar = ("failed because " + str(i) + " did not match vertically down")
                         return False
-                    store.testvar = ("current move all clear: " + str(idx)+ ". row = " + str(row) + ", col = " + str(col))
+                    if col < 5 and row%2 == 0 and i%2 == 0 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
+                        store.testvar = ("failed because " + str(crow*6 + col) + " did not match horizontally")
+                        return False
+                    if col < 5 and row%2 == 1 and i%2 == 1 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
+                        store.testvar = ("failed because " + str(row*6 + col) + " did not match horizontally 2")
+                        return False
         return True
 
     def quilt_shared(a,b):
@@ -62,16 +37,13 @@ init python:
         global quilt_input
         if idx not in quilt_presets:
             quilt_input[idx] = [quilt_color, quilt_shape, quilt_fill]
-        
-        if not quilt_current_move_valid(idx) and not (achievement_dead11 in persistent.my_achievements and not preferences.hard_mode):
+    
+    def quilt_submit():
+        if not quilt_valid() and not (achievement_dead11 in persistent.my_achievements and not preferences.hard_mode):
             renpy.jump("quilt_game_over")
         
-        if quilt_checker():
-            store.room3["sewing book"] = "solved"
-            renpy.jump("room_3")
-    
-        store.quilt_moves += 1
-        return
+        store.room3["quilt"] = "solved"
+        renpy.jump("room_3")
 
 
 define quilt_presets = {0:[1,2,2], 2:[2,1,1], 4:[1,2,0], 7:[1,1,1], 11:[1,1,1], 12:[2,1,2], 15:[0,0,0], 16:[2,2,1], 20:[1,0,1], 23:[0,2,1], 24:[2,0,2], 34:[2,1,1], 
@@ -93,36 +65,40 @@ screen room3_quilt():
     modal True
     layer "master"
     frame padding 50,40 xfill True yfill True:
-        fixed xsize 775 yfill True xalign 1.0:
-            vbox spacing 50 yalign 0.5:
-                text _("Each tile has three qualities (color, shape, and fill). In order to finish the pattern that was intended, each adjacent tile must share exactly 2 out of three qualities with the next tile. The player is given a collection of un-sewn tiles, and is presented with the incomplete quilt and must match already placed tiles."):
-                    style "puzzle_description_text"
-                frame yalign 0.3 xalign 0.5 padding 50,30:
-                    has vbox spacing 20
-                    label _("Currently placing piece:") xalign 0.5
-                    hbox xalign 0.5 spacing 50:
-                        add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_color]) + "/" + str(quilt_fills[quilt_fill]) + "_" + str(quilt_shapes[quilt_shape]) + ".png" yalign 0.5
-                        vbox:
-                            hbox spacing 5 xalign 0.5:
-                                textbutton "<" action If(quilt_color==0, SetVariable("quilt_color",2), SetVariable("quilt_color", quilt_color-1)) style "puzzle_nav_button"
-                                fixed ysize 50 xsize 95:
-                                    text "color" size 35 xalign 0.5
-                                textbutton ">" action If(quilt_color==2, SetVariable("quilt_color",0), SetVariable("quilt_color", quilt_color+1)) style "puzzle_nav_button"
-                            hbox spacing 5 xalign 0.5:
-                                textbutton "<" action If(quilt_shape==0, SetVariable("quilt_shape",3), SetVariable("quilt_shape", quilt_shape-1)) style "puzzle_nav_button"
-                                fixed ysize 50 xsize 95:
-                                    text "shape" size 35 xalign 0.5
-                                textbutton ">" action If(quilt_shape==3, SetVariable("quilt_shape",0), SetVariable("quilt_shape", quilt_shape+1)) style "puzzle_nav_button"
-                            hbox spacing 5 xalign 0.5:
-                                textbutton "<" action If(quilt_fill==0, SetVariable("quilt_fill",2), SetVariable("quilt_fill", quilt_fill-1)) style "puzzle_nav_button"
-                                fixed ysize 50 xsize 95:
-                                    text "fill" size 35 xalign 0.5
-                                textbutton ">" action If(quilt_fill==2, SetVariable("quilt_fill",0), SetVariable("quilt_fill", quilt_fill+1)) style "puzzle_nav_button"
+        fixed xsize 775 xalign 1.0:
+            fixed ysize 880:
+                vbox spacing 50 yalign 0.5:
+                    text _("Each tile has three qualities (color, shape, and fill). In order to finish the pattern that was intended, each adjacent tile must share exactly 2 out of three qualities with the next tile. The player is given a collection of un-sewn tiles, and is presented with the incomplete quilt and must match already placed tiles."):
+                        style "puzzle_description_text"
+                    text _("Below, you can construct the next motif you want to place by adjusting the color, shape, and fill with the arrows:") style "puzzle_description_text"
+                    frame yalign 0.3 xalign 0.5 padding 50,30:
+                        has vbox spacing 20
+                        label _("Currently placing motif") xalign 0.5
+                        hbox xalign 0.5 spacing 50:
+                            add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_color]) + "/" + str(quilt_fills[quilt_fill]) + "_" + str(quilt_shapes[quilt_shape]) + ".png" yalign 0.5
+                            vbox:
+                                hbox spacing 5 xalign 0.5:
+                                    textbutton "<" action If(quilt_color==0, SetVariable("quilt_color",2), SetVariable("quilt_color", quilt_color-1)) style "puzzle_nav_button"
+                                    fixed ysize 50 xsize 95:
+                                        text "color" size 35 xalign 0.5
+                                    textbutton ">" action If(quilt_color==2, SetVariable("quilt_color",0), SetVariable("quilt_color", quilt_color+1)) style "puzzle_nav_button"
+                                hbox spacing 5 xalign 0.5:
+                                    textbutton "<" action If(quilt_shape==0, SetVariable("quilt_shape",3), SetVariable("quilt_shape", quilt_shape-1)) style "puzzle_nav_button"
+                                    fixed ysize 50 xsize 95:
+                                        text "shape" size 35 xalign 0.5
+                                    textbutton ">" action If(quilt_shape==3, SetVariable("quilt_shape",0), SetVariable("quilt_shape", quilt_shape+1)) style "puzzle_nav_button"
+                                hbox spacing 5 xalign 0.5:
+                                    textbutton "<" action If(quilt_fill==0, SetVariable("quilt_fill",2), SetVariable("quilt_fill", quilt_fill-1)) style "puzzle_nav_button"
+                                    fixed ysize 50 xsize 95:
+                                        text "fill" size 35 xalign 0.5
+                                    textbutton ">" action If(quilt_fill==2, SetVariable("quilt_fill",0), SetVariable("quilt_fill", quilt_fill+1)) style "puzzle_nav_button"
                 
-            hbox xfill True yalign 1.0:
-                frame xalign 0.:
-                    textbutton "RESET" style "main_menu_button" action Function(quilt_reset)
-                frame xalign 1.0:
+            hbox xfill True yalign 1.0 ysize 100:
+                frame xalign 0. yalign 0.5:
+                    textbutton "RESET" style "main_menu_button" action Function(quilt_reset) at zoomed(0.75)
+                frame xalign 0.5 yalign 0.5:
+                    textbutton "SUBMIT" style "main_menu_button" action Function(quilt_submit)
+                frame xalign 1.0 yalign 0.5:
                     textbutton "RETURN" style "main_menu_button" action Return()
 
     fixed xoffset -400:
@@ -133,23 +109,27 @@ screen room3_quilt():
             vbox yalign 0.05 xalign 0.5:
                 text testy color "#000"
         grid 6 11 align (0.5, 0.5) yoffset -2 at zoomed(1.35):
-            for i in range(6*11):
-                fixed fit_first True:
-                    if i in quilt_presets:
-                        add Null(100,57)
-                        if (i < 1*6 or i >= 2*6 and i < 3*6 or i >= 4*6 and i < 5*6 or i >= 6*6 and i < 7*6 or i >= 8*6 and i < 9*6 or i >= 10*6) and i%2 or not (i < 1*6 or i >= 2*6 and i < 3*6 or i >= 4*6 and i < 5*6 or i >= 6*6 and i < 7*6 or i >= 8*6 and i < 9*6 or i >= 10*6) and not i%2:
-                            add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.25,0.4) at zoomed(0.4)
+            for row in range(11):
+                for col in range(6):
+                    $ i = row*6 + col
+                    fixed fit_first True:
+                        if i in quilt_presets:
+                            add Null(100,57)
+                            if not row%2 and i%2 or row%2 and not i%2:
+                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.25,0.4) at zoomed(0.4)
+                            else:
+                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.7,0.4) at zoomed(0.4)
+                        elif i in quilt_input:
+                            add Null(100,57)
+                            if not row%2 and i%2 or row%2 and not i%2:
+                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.25,0.4) at zoomed(0.4)
+                            else:
+                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.7,0.4) at zoomed(0.4)
                         else:
-                            add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.7,0.4) at zoomed(0.4)
-                    elif i in quilt_input:
-                        add Null(100,57)
-                        if (i < 1*6 or i >= 2*6 and i < 3*6 or i >= 4*6 and i < 5*6 or i >= 6*6 and i < 7*6 or i >= 8*6 and i < 9*6 or i >= 10*6) and i%2 or not (i < 1*6 or i >= 2*6 and i < 3*6 or i >= 4*6 and i < 5*6 or i >= 6*6 and i < 7*6 or i >= 8*6 and i < 9*6 or i >= 10*6) and not i%2:
-                            add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.25,0.4) at zoomed(0.4)
-                        else:
-                            add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.7,0.4) at zoomed(0.4)
-                    else:
-                        imagebutton idle Null(100,57) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i)
-                        #imagebutton idle "puzzles/room_3_puzzle_1/tile.png" action [Function(quilt_set, i), SetScreenVariable("testy", str(i))]
+                            imagebutton idle Null(100,57) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i)
+                            #imagebutton idle "puzzles/room_3_puzzle_1/tile.png" action [Function(quilt_set, i), SetScreenVariable("testy", str(i))]
+                        #if config.developer:
+                        #    text "(" + str(col) + "," + str(row) + ")" outlines [(1, "#000000", 0, 0)] size 24
 
 style puzzle_nav_button is main_menu_button:
     xysize (64, 64)
