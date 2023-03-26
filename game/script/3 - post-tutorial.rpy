@@ -56,6 +56,7 @@ label post_tutorial:
   pause 0.1
   hide cautionne leanfrown pause
   hide cautionne_frame_glow
+  hide crt
   show cautionne_frame_noglow:
     zoom 0.5
   with screenoff

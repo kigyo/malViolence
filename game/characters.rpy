@@ -49,10 +49,12 @@ init python:
 
 define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define xd = Character(_("???"), color="#00e7ff", image="drdanger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
-define c = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", screen="subtitle", what_color="#A3EC3D", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
+define c = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", screen="subtitle", what_color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 #no-subtitle cautionne
 define cr = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
-define dr = Character(_("Dr. Danger"), voice_tag="drdanger", color="#ffffff", image="drdanger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
+define dr = Character(_("Dr. Danger"), voice_tag="drdanger", color="#00e7ff", image="drdanger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
+define drs = Character(_("Dr. Danger"), voice_tag="drdanger", color="#00e7ff", screen="subtitle", what_color="#00e7ff", image="dr danger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
+define drx = Character(_("Dr. Danger"), voice_tag="drdanger", color="#00e7ff", screen="subtitle", what_color="#00e7ff", image="dr danger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define narrator = Character(color="#ffffff", callback=speaker("protagonist"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define n = Character(kind=nvl, callback=speaker("danger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define l = Character(kind=nvl, what_color="#00e7ff", callback=speaker("danger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
@@ -88,15 +90,16 @@ layeredimage drdanger stare:
 layeredimage drdanger tender:
     zoom 0.5
     always "bg drdanger"
+    always "drdanger_tender_closed"
     group mouth:
         attribute speaking default WhileSpeaking("drdanger", "drdanger_tender_speaking", "drdanger_tender_closed")
-        attribute silent "drdanger_tenderclosed"
+        attribute silent "drdanger_tender_closed"
 
 
 image drdanger_side_speaking:
     "drdanger_side_open"
     pause 0.12
-    "drdanger_side_close"
+    "drdanger_side_closed"
     pause 0.12
     repeat
 
@@ -153,15 +156,21 @@ image cautionne_annoyed_hands_speaking:
 layeredimage cautionne block:
     zoom 0.5
     always "bg cautionne"
-    always "cautionne_blocks_closed"
+    always "cautionne_blockscreen_close"
     group mouth:
-        attribute speaking default WhileSpeaking("cautionne", "cautionne_blocks_speaking", "cautionne_blocks_closed")
-image cautionne_blocks_speaking:
-    "cautionne_blocks_open"
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_blockscreen_speaking", "cautionne_blockscreen_close")
+
+image cautionne_blockscreen_speaking:
+    "cautionne_blockscreen_open"
     pause 0.12
-    "cautionne_blocks_closed"
+    "cautionne_blockscreen_close"
     pause 0.12
     repeat
+
+layeredimage cautionne blockscreen silent:
+    zoom 0.5
+    always "bg cautionne"
+    always "images/CG/cautionne_blockscreen_close.png"
 
 image cautionne dead = "cautionne_dead.png"
 
@@ -183,6 +192,7 @@ layeredimage cautionne hairtwirl:
     always "cautionne_hairtwirl"
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_hairtwirl_speaking", "cautionne_hairtwirl_lipflap_close")
+        attribute silent "cautionne_hairtwirl_lipflap_close"
 image cautionne_hairtwirl_speaking:
     "cautionne_hairtwirl_lipflap_open"
     pause 0.12
@@ -257,7 +267,7 @@ layeredimage cautionne leanfrown pause:
 layeredimage cautionne oops:
     zoom 0.5
     always "bg cautionne"
-    always "cautionne_oopsie"
+    always "cautionne_oops"
 
 layeredimage cautionne pencil:
     zoom 0.5

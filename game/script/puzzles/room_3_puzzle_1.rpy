@@ -41,9 +41,11 @@ init python:
     def quilt_submit():
         if not quilt_valid() and not (achievement_dead11 in persistent.my_achievements and not preferences.hard_mode):
             renpy.jump("quilt_game_over")
-        
-        store.room3["quilt"] = "solved"
-        renpy.jump("room_3")
+        elif not quilt_valid() and (achievement_dead11 in persistent.my_achievements and not preferences.hard_mode):
+            #TODO: error sound
+            narrator("(...Looks like this is not a valid solution.)")
+        else:
+            renpy.jump("quilt_solved")
 
 
 define quilt_presets = {0:[1,2,2], 2:[2,1,1], 4:[1,2,0], 7:[1,1,1], 11:[1,1,1], 12:[2,1,2], 15:[0,0,0], 16:[2,2,1], 20:[1,0,1], 23:[0,2,1], 24:[2,0,2], 34:[2,1,1], 
@@ -68,9 +70,9 @@ screen room3_quilt():
         fixed xsize 775 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
-                    text _("Each tile has three qualities (color, shape, and fill). In order to finish the pattern that was intended, each adjacent tile must share exactly 2 out of three qualities with the next tile. The player is given a collection of un-sewn tiles, and is presented with the incomplete quilt and must match already placed tiles."):
+                    text _("This quilt's unfinished, and you need to make it complete!\n\nEach tile has {color=#fff}three qualities (color, shape, and fill).\n\n{/color}In order to finish the intended pattern, each adjacent tile must share {color=#fff}exactly 2 out of 3 qualities with the next tile.{/color}"):
                         style "puzzle_description_text"
-                    text _("Below, you can construct the next motif you want to place by adjusting the color, shape, and fill with the arrows:") style "puzzle_description_text"
+                    text _("Below, construct the next motif you want to place by adjusting the color, shape, and fill with the arrows:") style "puzzle_description_text"
                     frame yalign 0.3 xalign 0.5 padding 50,30:
                         has vbox spacing 20
                         label _("Currently placing motif") xalign 0.5
@@ -120,7 +122,7 @@ screen room3_quilt():
                             else:
                                 add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.7,0.4) at zoomed(0.4)
                         elif i in quilt_input:
-                            add Null(100,57)
+                            imagebutton idle Null(100,57) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i)
                             if not row%2 and i%2 or row%2 and not i%2:
                                 add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.25,0.4) at zoomed(0.4)
                             else:
@@ -130,6 +132,13 @@ screen room3_quilt():
                             #imagebutton idle "puzzles/room_3_puzzle_1/tile.png" action [Function(quilt_set, i), SetScreenVariable("testy", str(i))]
                         #if config.developer:
                         #    text "(" + str(col) + "," + str(row) + ")" outlines [(1, "#000000", 0, 0)] size 24
+
+    if config.developer:
+        vbox:
+            frame:
+                textbutton _("Skip Puzzle") action [Jump("quilt_solved")] style "main_menu_button"
+            frame:
+                textbutton _("Game Over") action [Jump("quilt_game_over")] style "main_menu_button"
 
 style puzzle_nav_button is main_menu_button:
     xysize (64, 64)

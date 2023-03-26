@@ -65,14 +65,17 @@ label dr_danger_1:
   "(For years, this mysterious woman was the scourge of STOP.)"
   "(A saboteur who terrorized the public with bombs and cryptic threats. {w}A supervillain, through and through.)"
   "(A supervillain by the name of...)"
-  xd "From the top, then. {w=1}I am Dr. Danger."
-  dr "You are here because you're under my temporary employment."
+  drx "From the top, then. {w=1}I am Dr. Danger."
+  drs "You are here because you're under my temporary employment."
   "(Uh... {w}no?)"
-  "(Last time you checked, you were a STOP agent. {w}By default, Dr. Danger was your sworn enemy.)"
-  "(A sworn enemy who was ki-{nw})"
-  dr "Before you begin your task, please listen carefully."
-  dr "Due to my circumstances, I cannot repeat my instructions. {w=0.5}Nor will I be able to answer any of your questions."
-  "(...Oh, should've caught it earlier. {w}This is all pre-recorded.)"
+  "(Last time you checked, you were a STOP agent. {w}By default, Dr. Danger's a sworn enemy.)"
+  "(...{i}Was{/i} sworn enemy.{w} She died {i}weeks{/i} ago,{w=0.1} caught in her own explosion while trying to wipe another STOP facility off the map.)"
+  "(Wait.{w} Does this mean she survi-{nw})"
+  drs "Before you begin your task, please listen carefully."
+  drs "Due to my circumstances, I cannot repeat my instructions."
+  "(...No -{w=0.1} thinking back, her death was {i}very thoroughly{/i} confirmed.{w} Which means-{nw})" 
+  drs "Nor will I be able to answer any of your questions."
+  "(...This is just a recording.{w} A cheesy one,{w=0.1} at that.)" 
   "(Turns out even supervillains make the newbies watch employee training videos.)"
   "(Better tune her out.)"
 
@@ -106,10 +109,10 @@ label dr_danger_1:
   pause 1
   #"{b}[the camera mimics the player moving towards the door in the middle of the room. they enter the first puzzle room]{/b}"
   ##"{b}[pause. A sound plays as the doors close behind the player when they enter the room]{/b}"
-  "(Huh. Seems like a typical evil lab, straight out of a comic book.)"
+  "(Huh.{w} Seems like a typical evil lab,{w=0.1} straight out of a comic book.)"
 
   "(Let's see here... {w}Massive computers, {w=0.5}hi-tech gizmos, {w=0.5}and a \"Primary Source Extractor?\")"
-  "(...Eugh. {w}Looking at that thing gives you goosebumps.)"
+  "({i}...Eugh.{/i} {w}Looking at that thing gives you goosebumps.)"
   "(Do you {i}have{/i} to go through here?)"
   "(Maybe there's something you missed in the corridor...)"
   "(Yeah, you'll turn around and-)"
@@ -121,9 +124,9 @@ label dr_danger_1:
     zoom 0.4 yalign 0.7
     ease 4 zoom 0.8 xalign 0.15 yalign 0.65
 
-  extend " You'll just walk over, and it'll automatically..."
+  extend "You'll just walk over, and it'll automatically...)"
   #"{b}[pause as the camera moves to the door in the middle{/b}{b}]{/b}"
-  "...aaaaaaaaand it's shut too.)"
+  "(...aaaaaaaaand it's shut too.)"
   "(Great. {w}Off to a fantastic start already.)"
   pause 1
   "(...Wait. {w}There's something else here.)"
