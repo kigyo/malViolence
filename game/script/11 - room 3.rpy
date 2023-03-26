@@ -1,24 +1,45 @@
-default room3 = {"room":"down", "investigated":[], "diary":0, "mannequin":0, "scrapbook":0, "health record":0, "locked container":0, "confidence workbook":0, 
-    "sewing book":0, }
+default room3 = {"room":"down", "investigated":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0, 
+    "confidence_workbook":0, "sewing_book":0, "quilt":0, "cooking":0, "scrapbook_new":0, "toys":0}
 
 screen room3():
     sensitive not inspect
     layer "master"
     if room3["room"] == "down":
-        fixed at zoomed(0.35):
+        fixed at zoomed(0.34):
             add "bg room3_downstairs"
-            imagebutton idle "room3_mannequin" action [SetVariable("inspect", "mannequin"), Jump("room_3")] pos (3575, 1150) at zoomed(0.2)
+            imagebutton idle "room3_scrapbook" action [SetVariable("inspect", "scrapbook"), Jump("room_3")] pos (200, 2250) at zoomed(0.2)
+            imagebutton idle "room3_workbook" action [SetVariable("inspect", "confidence_workbook"), Jump("room_3")] pos (1575, 2050) at zoomed(0.4)
+            imagebutton idle "room3_container" action [SetVariable("inspect", "locked_container"), Jump("room_3")] pos (2575, 2750) at zoomed(0.4)
 
-        textbutton _("UP") action SetDict(room3, "room", "up") style "main_menu_button" xalign 0.97 yalign 0.6
+            imagebutton idle "room3_scrapbook_new" action [SetVariable("inspect", "scrapbook_new"), Jump("room_3")] pos (3875, 1450)
+            imagebutton idle "room3_cooking" action [SetVariable("inspect", "cooking"), Jump("room_3")] pos (2575, 2000)
+
+            if 1 in room3["pages"] and 1 not in room3["read_pages"]:
+                imagebutton idle "room3_page1" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (1175, 3050)
+            if 2 in room3["pages"] and 2 not in room3["read_pages"]:
+                imagebutton idle "room3_page2" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (4275, 1650)
+            if 6 in room3["pages"] and 6 not in room3["read_pages"]:
+                imagebutton idle "room3_page6" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 6), Jump("room_3")] pos (3775, 2650)
+
+        textbutton _("UP") action SetDict(room3, "room", "up") style "main_menu_button" xalign 0.97 yalign 0.4
+
     elif room3["room"] == "up":
-        fixed at zoomed(0.35):
+        fixed at zoomed(0.34):
             add "bg room3_upstairs"
-            imagebutton idle "room3_scrapbook" action [SetVariable("inspect", "scrapbook"), Jump("room_3")] pos (3575, 1150) at zoomed(0.2)
-            imagebutton idle "room3_sewing" action [SetVariable("inspect", "sewing book"), Jump("room_3")] pos (1575, 1150) at zoomed(0.2)
-            imagebutton idle "room3_diary" action [SetVariable("inspect", "diary"), Jump("room_3")] pos (2575, 2150) at zoomed(0.4)
-            imagebutton idle "room3_health" action [SetVariable("inspect", "health record"), Jump("room_3")] pos (2575, 1150) at zoomed(0.4)
-            imagebutton idle "room3_container" action [SetVariable("inspect", "locked container"), Jump("room_3")] pos (2575, 1450) at zoomed(0.4)
-            imagebutton idle "room3_confidence workbook" action [SetVariable("inspect", "confidence workbook"), Jump("room_3")] pos (1575, 1450) at zoomed(0.4)
+            imagebutton idle "room3_sewing" action [SetVariable("inspect", "sewing_book"), Jump("room_3")] pos (2175, 1850) at zoomed(0.2)
+            imagebutton idle "room3_mannequin" action [SetVariable("inspect", "mannequin"), Jump("room_3")] pos (100, 2450) at zoomed(0.2)
+            imagebutton idle "room3_health" action [SetVariable("inspect", "health_record"), Jump("room_3")] pos (3375, 1350) at zoomed(0.4)
+
+            imagebutton idle "room3_quilt" action [SetVariable("inspect", "quilt"), Jump("room_3")] pos (2175, 2750)
+            imagebutton idle "room3_toys" action [SetVariable("inspect", "toys"), Jump("room_3")] pos (575, 1800)
+
+            if 3 in room3["pages"] and 3 not in room3["read_pages"]:
+                imagebutton idle "room3_page3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 3), Jump("room_3")] pos (3575, 2950)
+            if 4 in room3["pages"] and 4 not in room3["read_pages"]:
+                imagebutton idle "room3_page3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 4), Jump("room_3")] pos (1575, 2750)
+            if 5 in room3["pages"] and 5 not in room3["read_pages"]:
+                imagebutton idle "room3_page3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 5), Jump("room_3")] pos (4575, 2050)
+
         textbutton _("DOWN") action SetDict(room3, "room", "down") style "main_menu_button" xalign 0.97 yalign 0.97
         
     if config.developer:
@@ -26,12 +47,14 @@ screen room3():
             textbutton _("Skip Room") action [Jump("post_room_3")] style "main_menu_button"
 
 label room_3:
-    if inspect not in room3["investigated"] and inspect in ["sewing book", "scrapbook", "health record", "locked container", "confidence workbook", "mannequin"]:
+    if inspect not in room3["investigated"] and inspect in ["sewing_book", "scrapbook", "health_record", "locked_container", "confidence_workbook", "mannequin"]:
         $room3["investigated"].append(inspect)
     show screen room3
+
     if inspect == "mannequin":
         if room3["mannequin"] == 0:
-            "(When you look at the bust in front of you, you recall a half-serious lesson on disguising yourself - back when you were a trainee. From what you remember, this appears to be a mannequin for a wig.)"
+            "(When you look at the bust in front of you, you recall a half-serious lesson on disguising yourself - back when you were a trainee.)"
+            "(From what you remember, this appears to be a mannequin for a wig.)"
             "(But Dr. Danger had a full head of hair.)"
             "(Did she need to disguise herself? Intel's always suggested that her mastery over tech kept her off any camera she cared about.)"
         else:
@@ -43,8 +66,9 @@ label room_3:
         if room3["scrapbook"] == 0:
             "(You pick up what appears to be a generic scrapbook, like those shoved to the back shelves of charity stores. Looking closely, you can still see remnants of price sticker glue.)"
             "(It feels normal. {i}Too{/i} normal. The book's clearly hiding some deep, dark secret.)"
-            "(But the inner contents are equally... {i}normal. {/i}All you find are photographs of a woman who looks a lot like Dr Danger, and a young boy with a crooked, toothy grin.)"
-            "(The craftsmanship on display isn't anything remarkable, with poorly cut edges and tacky glitter glue smeared across the cheap cardstock. At least the pages seem to be in chronological order.)"
+            "(But the inner contents are equally... {i}normal. {/i}All you find are photographs of a woman who looks a lot like Dr. Danger, and a young boy with a crooked, toothy grin.)"
+            "(The craftsmanship on display isn't anything remarkable, with poorly cut edges and tacky glitter glue smeared across the cheap cardstock.)"
+            "(At least the pages seem to be in chronological order.)"
             "(In the earliest photos, the boy is bedridden. His skin is unnaturally pale, and his gaze is unfocused – empty, even.)"
             "(But as you flick though the pages, he grows stronger. He gets out of bed. His eyes shine with inspiration and intelligence. He smiles.)"
             "(The woman in these photos must've been taking good care of him.)"
@@ -57,24 +81,25 @@ label room_3:
             pass
         $ room3["scrapbook"] += 1
 
-    elif inspect == "health record":
-        if room3["health record"] == 0:
+    elif inspect == "health_record":
+        if room3["health_record"] == 0:
             "(You pick up a clipboard with a thick stack of charts and diagrams pinned to the front.)"
             "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh, black lettering. At the bottom of the page, you spot an acronym: \"YTDI\".)"
             "(You flip through the log. The recuperation described here is difficult to read.)"
-            "(Seizures, phantom pain, memory loss and brain damage are all expected results, not side effects. Scrawled notes speculate that these symptoms would last for several years, or decades - perhaps even permanently.)"
+            "(Seizures, phantom pain, memory loss and brain damage are all expected results, not side effects.)"
+            "(Scrawled notes speculate that these symptoms would last for several years, or decades - perhaps even permanently.)"
             "(Implanting cybernetics in individuals under 18 isn't illegal, but it {i}is {/i} frowned upon. And from the logbook, a lot of children were implanted: children well under the age of 18.)"
             "(There's nothing here about informed consent or parental permissions. Evidently, parents weren't involved.)"
         else:
             #repeated investigation
             pass
-        $ room3["health record"] += 1
+        $ room3["health_record"] += 1
 
-    elif inspect == "sewing book":
-        if room3["sewing book"] == "solved":
+    elif inspect == "sewing_book":
+        if room3["sewing_book"] == "solved":
             "(Solved the quilt puzzle.)"
         else:
-            if room3["sewing book"] == 0:
+            if room3["sewing_book"] == 0:
                 "(You find an assortment of patterns, books, and materials for sewing.)"
                 "(There's a little stack of half-finished items; a skirt and a blouse in conservative colors. Right next to it, there's a whole pile of hand-stitched garments in garish yellows, greens, and reds.)"
                 "(Seems like someone handed their sewing books down to a more imaginative type.)"
@@ -84,28 +109,28 @@ label room_3:
             else:
                 #repeated investigation
                 pass
-            $ room3["sewing book"] += 1
-            $ inspect = None
-            call screen room3_quilt
+            $ room3["sewing_book"] += 1
 
-    elif inspect == "locked container":
-        if room3["locked container"] == 0:
+    elif inspect == "locked_container":
+        if room3["locked_container"] == 0:
             "(After entering the combination, there's a small click. You give the handle a tug.)"
             "(There's no dust inside, but a stale odor wafts out. Clearly, this hasn't been opened for a long time.)"
             "(You find a lab coat with an ID pinned above its breast pocket. There's no photo, but the name Deirdre Destrange is clearly printed alongside a worn barcode.)"
             "(The coat itself is high-quality, but it's worn around the edges. Deirdre must've worn it for a long time, taking good care of it all the while.)"
-            "(You see framed photos, diplomas, certificates and awards - all of them belonging to this \"Deirdre Destrange\". In and of itself, a doctorate in cybernetic biology is impressive, but Deirdre received this years ago.)"
+            "(You see framed photos, diplomas, certificates and awards - all of them belonging to this \"Deirdre Destrange\".)"
+            "(In and of itself, a doctorate in cybernetic biology is impressive, but Deirdre received this years ago.)"
             "(To be {i}that {/i}experienced at a young age, and when the science was still so {i}new...{/i} Deirdre must've been on the cutting edge of the field.)"
             "(At the bottom of the pile, you find a dented medal. An award for \"continued service to the international security community\"?)"
             "(The medal's name has been violently scratched out. And yet, you think you see the remnants of a familiar logo...)"
         else:
             #repeated investigation
             pass
-        $ room3["locked container"] += 1
+        $ room3["locked_container"] += 1
 
-    elif inspect == "confidence workbook":
-        if room3["confidence workbook"] == 0:
-            "(It's a crumpled, heavily-worked-over notebook filled with grandiose, third-person ramblings. Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
+    elif inspect == "confidence_workbook":
+        if room3["confidence_workbook"] == 0:
+            "(It's a crumpled, heavily-worked-over notebook filled with grandiose, third-person ramblings.)"
+            "(Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
             "(But the more you flip back through the pages, the more those writings grow negative. They're accompanied by notes on how to aim them in a more positive direction.)"
             "(Even further back, the spidery handwriting disappears. Instead, there are grids and examples written by someone with clean, crisp penmanship.)"
             "(It almost looks like a therapeutic exercise - or a homework assignment. Maybe it's both. What's clear is that the notebook's author hasn't used it for a long, long time.)"
@@ -114,7 +139,7 @@ label room_3:
         else:
             #repeated investigation
             pass
-        $ room3["confidence workbook"] += 1
+        $ room3["confidence_workbook"] += 1
 
     elif inspect == "diary":
         $ nvl_heading = "Entry #" + str(room3["diary"])
@@ -198,16 +223,64 @@ label room_3:
             n "I should tell him no. Revenge is poison, and he's already been through so much. "
             n "But I still can't even bear to calculate how much of what he's been through is my fault. I don't have the heart to tell him no - and I'd sooner die than judge him for how much he hates STOP.\""
             nvl clear
-            n "\"Dr Danger and Cautionne are becoming a household name, but that's about it. "
+            n "\"Dr. Danger and Cautionne are becoming a household name, but that's about it. "
             n "STOP is still in power. People are still too scared to say no to them. And there are still YTDI centers all over the world. If I destroy one, they move the \"subjects\" to another. "
             n "That's horrible, but what if they don't? What if they just figure it's just not worth the cost? What'll happen to those kids afterwards?"
             n "Something needs to change, but I'm not sure it's something that Dr. Danger can do. "
             n "...And I'm not sure that Deirdre Destrange is enough for him.\""
-        elif room3["diary"] > 6:
-            #text for when all entries have been read
-            pass
         $ room3["diary"] += 1
         nvl clear
+
+    elif inspect == "toys":
+        if room3["toys"] == "solved":
+            "(You already solved the plushie puzzle.)"
+        else:
+            if room3["toys"] == 0:
+                #toys introduction
+                pass
+            else:
+                #repeated investigation
+                pass
+            $ room3["toys"] += 1
+            $ inspect = None
+
+    elif inspect == "quilt":
+        if room3["quilt"] == "solved":
+            "(You already solved the quilt puzzle.)"
+        else:
+            if room3["quilt"] == 0:
+                #quilt introduction
+                pass
+            else:
+                #repeated investigation
+                pass
+            $ inspect = None
+            call screen room3_quilt
+            $ room3["quilt"] += 1
+            $ inspect = None
+
+    elif inspect == "cooking":
+        if room3["cooking"] == "solved":
+            "(You already solved the mise en place puzzle.)"
+        else:
+            if room3["cooking"] == 0:
+                #quilt introduction
+                pass
+            else:
+                #repeated investigation
+                pass
+            $ room3["cooking"] += 1
+            $ inspect = None
+
+    elif inspect == "scrapbook_new":
+        if room3["scrapbook_new"] == 0:
+            #scrapbook meta puzzle introduction
+            pass
+        else:
+            #repeated investigation
+            pass
+        $ room3["scrapbook_new"] += 1
+        $ inspect = None
 
     $ inspect = None
     call screen room3
@@ -237,7 +310,7 @@ label quilt_game_over:
     return
 
 
-    "Puzzle 2" "You are digging into a pile of toys/plushes you found in Dr Danger/Cautionne's room. You are helping Cautionne sort them. If you mess up sorting them Cautionne giggles and [death scene]"
+    "Puzzle 2" "You are digging into a pile of toys/plushes you found in Dr. Danger/Cautionne's room. You are helping Cautionne sort them. If you mess up sorting them Cautionne giggles and [death scene]"
 
     "Puzzle 2 Death Scene" "{b}{/b}"
 
@@ -248,7 +321,7 @@ label quilt_game_over:
     But whenever I got into a pickle, Dr. Danger always helped me out.
     {b}[pause]{/b}
     ...Hey, remind me. 
-    Where {i}is {/i}Dr Danger right now?
+    Where {i}is {/i}Dr. Danger right now?
     (The sudden quietness in his voice makes you freeze.)
     {i}Right.{/i}
     {i}{b}SLICING SFX, CUT TO BLACK{/b}{/i}"
@@ -257,7 +330,7 @@ label quilt_game_over:
 
     "Contributing Factors to Death" "{i}{/i}{i}Expected leniency where there was none to be found.{/i}"
 
-    "Puzzle 3" "WIP – The context of the third puzzle in the bedroom is that you are trying to recreate a recipe Dr Danger used to make for Cautionne and herself. The specifics of the ingredients and recipe can be remixed as would like to fit the script, so long as there are 9 ingredients total. While designing I wrote them with the idea that it was loosely based on a pancake recipe with some unique additions based on Dr Danger and Cautionne's personal tastes (the ingredients used were bacon, strawberries, flour, snappers, sticks of butter, blue berries, eggs, bolts, milk)."
+    "Puzzle 3" "WIP – The context of the third puzzle in the bedroom is that you are trying to recreate a recipe Dr. Danger used to make for Cautionne and herself. The specifics of the ingredients and recipe can be remixed as would like to fit the script, so long as there are 9 ingredients total. While designing I wrote them with the idea that it was loosely based on a pancake recipe with some unique additions based on Dr. Danger and Cautionne's personal tastes (the ingredients used were bacon, strawberries, flour, snappers, sticks of butter, blue berries, eggs, bolts, milk)."
 
     "Puzzle 3 Death Scene" "{b}{/b}
     {b}[PLAYER FAILS PUZZLE]{/b}
