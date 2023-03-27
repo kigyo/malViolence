@@ -6,6 +6,8 @@ label test_puzzles:
     menu:
         "Room 1 Puzzle 2":
             jump room_1_puzzle_2
+        "Room 2 Puzzle 3":
+            jump room_2_puzzle_3
         "Room 3 Puzzle 2":
             jump room_3_puzzle_2
         "Room 3 Puzzle 3":
@@ -27,6 +29,24 @@ label failed_room_1_puzzle_2:
     show screen puzzle_playspace(pb, False)
     "You failed room_1_puzzle_2."
     hide screen puzzle_playspace
+    jump test_puzzles
+
+label room_2_puzzle_3:
+    call init_cybernetics
+    show screen cybernetics(cyb, False)
+    "<TODO: Insert intro script and rules.>"
+    call screen cybernetics(cyb)
+
+label solved_room_2_puzzle_3:
+    show screen cybernetics(cyb, False)
+    "You solved room_2_puzzle_3."
+    hide screen cybernetics
+    jump test_puzzles
+
+label failed_room_2_puzzle_3:
+    show screen cybernetics(cyb, False)
+    "You failed room_2_puzzle_3."
+    hide screen cybernetics
     jump test_puzzles
 
 label room_3_puzzle_2:

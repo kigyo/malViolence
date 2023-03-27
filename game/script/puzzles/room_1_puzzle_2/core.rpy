@@ -17,8 +17,14 @@ init -1 python:
 
     class Enum(object):
         def __init__(self, *items):
-            pairs = dict(zip(items, items))
-            self.items = items
+            self.items = []
+            if type(items[0]) is tuple:
+                for i in items:
+                    self.items.append(i[0])
+                    pairs = items
+            else:
+                pairs = dict(zip(items, items))
+                self.items = items
             for (key, value) in pairs.items():
                 self.__setattr__(key, value)
 
