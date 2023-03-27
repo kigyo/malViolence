@@ -37,11 +37,13 @@ init python:
         global quilt_input
         if idx not in quilt_presets:
             quilt_input[idx] = [quilt_color, quilt_shape, quilt_fill]
+        renpy.retain_after_load()
     
     def quilt_erase(idx):
         global quilt_input
         if idx not in quilt_presets:
             del quilt_input[idx]
+        renpy.retain_after_load()
 
     def quilt_submit():
         if not quilt_valid() and not (achievement_dead11 in persistent.my_achievements and not preferences.hard_mode):
@@ -72,8 +74,9 @@ define quilt_fills = ["empty", "full", "striped"]
 screen room3_quilt():
     sensitive not inspect
     modal True
+    tag puzzle
     layer "master"
-    
+
     frame padding 50,40 xfill True yfill True:
         fixed xsize 775 xalign 1.0:
             fixed ysize 880:

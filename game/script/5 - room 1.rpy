@@ -1,4 +1,4 @@
-default room1 = {"investigated":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0,}
+default room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0,}
 
 define panopticon_move_limit = 30
 
@@ -73,7 +73,7 @@ label room_1:
         $ room1["marble"] += 1
 
     elif inspect == "hacking":
-        if room1["hacking"] == "solved":
+        if "hacking" in room1["solved"]:
             "(You already solved the hacking puzzle.)"
         else:
             if room1["hacking"] == 0:
@@ -86,11 +86,18 @@ label room_1:
         $ room1["hacking"] += 1
         
     elif inspect == "decanting":
-        if room1["decanting"] == 0:
-            "<TODO: decanting puzzle.>"
+        if "decanting" in room1["solved"]:
+            "(You already solved the decanting puzzle.)"
         else:
-            pass
-        $ room1["decanting"] += 1
+            if room1["decanting"] == 0:
+                #decanting introduction
+                pass
+            else:
+                #repeated investigation
+                pass
+            $ room1["decanting"] += 1
+            $ inspect = None
+            call screen room1_decanting with easeintop
 
     elif inspect == "bomb":
         if room1["bomb"] == 0:
@@ -101,6 +108,52 @@ label room_1:
 
     $ inspect = None
     call screen room1
+
+label decanting_solved:
+    $ inspect = "decanting"
+    show screen room1_decanting
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    $ room1["solved"].append("decanting")
+    #Show a note/picture/memento which will then show up on 
+    "(You solved the decanting puzzle.)"
+    hide black onlayer screens
+    hide screen room1_decanting
+    with dissolve
+    $ inspect = None
+    call screen room1
+
+label decanting_game_over:
+    $ inspect = "game over"
+    show screen room1_decanting
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    "(You're getting close, now... Right?)"
+    "(If you just pour {i}this{/i}{i} {/i}into {i}that-){/i}"
+    cr "Wow, lab rat – you've made quite the concoction!"
+    "(Really?! Did you find a solution that {i}he {/i}hadn't thought of?)"
+    cr "Y'know, I {i}did {/i}say that two doses would be lethal..."
+    "(...By the way, have your legs always been made of jelly?)"
+    cr "...But if your bio signs are anything to go by... it looks like overexposure to the vapors does the job too!"
+
+    hide black onlayer screens
+    hide screen room1_decanting 
+    with easeouttop
+    pause 1
+    #"{b}SFX OF PLAYER COLLAPSING ON GROUND{/b}"
+
+    nvl clear
+    pause 2
+
+    $nvl_heading = "Lab Report #786"
+    l "Subject experienced cardiac arrest after extended exposure to fumes in the workplace."
+    l "{b}Contributing Factors to Death:{/b} Didn't perform their duties under a fume hood. STOP will have to screen its employees for basic lab safety if they're gonna keep sending them my way."
+    $deadend(achievement_dead5)
+    #TODO: Add name
+    le "DEAD END 05: Quilt In Action."
+    pause 2
+    nvl clear
+    return
 
 label room1_deaths:
 
@@ -142,21 +195,6 @@ label room1_deaths:
     #"Lab Report #615" "{i}{b}{/b}{/i}{i} Subject died after computer shrapnel blew up into their face.{/i}"
 
     # "{b}Puzzle {/b}{b}{/b} Cautionne has presented you with three unmarked cups of irregular shape, and notes they hold 18, 10, and 7cc of liquid respectively. They need your help poisoning a top STOP official, but the poison they are using is very particular and must be administered in two separate doses of 9cc each. The 18cc cup is filled with the poison that will be used. Using only the cups present, Cautionne is asking you to measure the poison into two equal doses. Be careful though! The poison is quite volatile, and if disturbed too much may give off vapors which will not be good for your health in any way shape or form."
-
-    #"Puzzle 3 Death Scene" "{b}{/b}
-    #(You're getting close, now... Right?)
-    #(If you just pour {i}this{/i}{i} {/i}into {i}that-){/i}
-    #Cautionne Wow, lab rat – you\'ve made quite the concoction!
-    #(Really?! Did you find a solution that {i}he {/i}hadn't thought of?)
-    #CautionneY'know, I {i}did {/i}say that two doses would be lethal...
-    #(...By the way, have your legs always been made of jelly?)
-    #Cautionne...But if your bio signs are anything to go by... it looks like overexposure to the vapors does the job too!"
-
-    #"{b}SFX OF PLAYER COLLAPSING ON GROUND{/b}"
-
-    #"Lab Report #786" "{b}{/b} Subject experienced cardiac arrest after extended exposure to fumes in the workplace."
-
-    #"Contributing Factors to Death" "{b}{/b} Didn't perform their duties under a fume hood. STOP will have to screen its employees for basic lab safety if they\'re gonna keep sending them my way."
 
     #"Meta Puzzle" "{b}{/b}You are putting marbles into a marble machine to knock down effigies of STOP officials that Cautione has killed/plans to kill/or was in the process of killing and forced you to actively participate in killing. You must knock down the effigies in order of how the died/will die. If you get the order wrong Cautionne scolds you for not paying attention and activates a death trap (maybe a door in the ceiling opens up and a giant marble falls and crushes you)"
 

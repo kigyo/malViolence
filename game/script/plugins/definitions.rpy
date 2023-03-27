@@ -24,6 +24,8 @@ transform bg(z=0.5):
     zoom z xalign 0.5 yalign 0.5
 transform zoomed(z=0.5):
     zoom z
+transform xyzoomed(x=1.0,y=1.0):
+    xzoom x yzoom y
 transform rotated(z=90):
     rotate z
 ## Music:

@@ -354,6 +354,7 @@ label quilt_game_over:
     $deadend(achievement_dead11)
     #TODO: Fix name
     le "DEAD END 11: Quilt In Action."
+    pause 2
     nvl clear
     return
 
