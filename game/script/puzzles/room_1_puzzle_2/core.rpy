@@ -200,8 +200,6 @@ init -1 python:
                             break
                 if win:
                     renpy.jump('solved_room_3_puzzle_2')
-                glog('here')
-                glog(self.check_toy_path(self.player))
                 if not self.check_toy_path(self.player):
                     renpy.jump('failed_room_3_puzzle_2')
 
@@ -223,7 +221,6 @@ init -1 python:
                 else:
                     path.append((x, y))
                     if len(path) >= 4:
-                        glog(path)
                         return True
             else:
                 path = []
