@@ -8,30 +8,33 @@ Drag the vials in order to pour their contents into each other.""")
 
 init python:
     def decanting_dropped(drop, drags):
-        store.decanting_moves += 1
 
         drag = drags[0]
         drag.snap((drag.drag_name-1)*345,100,0.3)
 
         drag_filled = getattr(renpy.store, "decanting_vial%s" % str(drag.drag_name))
-        drop_filled = getattr(renpy.store, "decanting_vial%s" % str(drop.drag_name))
-        drop_size = getattr(renpy.store, "decanting_size_vial%s" % str(drop.drag_name))
-
-        transfer_amount = drag_filled
-        if drag_filled + drop_filled > drop_size:
-            transfer_amount = drop_size - drop_filled
-
-        setattr(renpy.store, "decanting_vial%s" % str(drop.drag_name), drop_filled + transfer_amount)
-        setattr(renpy.store, "decanting_vial%s" % str(drag.drag_name), drag_filled - transfer_amount)
-
-        renpy.retain_after_load()
-        renpy.restart_interaction()
-
-        if decanting_valid():
-            renpy.jump("decanting_solved")
         
-        if decanting_moves >= decanting_move_limit:
-            renpy.jump("decanting_game_over")
+        if drag_filled > 0:
+            store.decanting_moves += 1
+            
+            drop_filled = getattr(renpy.store, "decanting_vial%s" % str(drop.drag_name))
+            drop_size = getattr(renpy.store, "decanting_size_vial%s" % str(drop.drag_name))
+
+            transfer_amount = drag_filled
+            if drag_filled + drop_filled > drop_size:
+                transfer_amount = drop_size - drop_filled
+
+            setattr(renpy.store, "decanting_vial%s" % str(drop.drag_name), drop_filled + transfer_amount)
+            setattr(renpy.store, "decanting_vial%s" % str(drag.drag_name), drag_filled - transfer_amount)
+
+            renpy.retain_after_load()
+            renpy.restart_interaction()
+
+            if decanting_valid():
+                renpy.jump("decanting_solved")
+            
+            if decanting_moves >= decanting_move_limit and not (achievement_dead5 in persistent.my_achievements and not preferences.hard_mode):
+                renpy.jump("decanting_game_over")
 
     def decanting_valid():
         nines = 0
