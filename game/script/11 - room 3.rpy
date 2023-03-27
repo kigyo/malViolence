@@ -4,41 +4,43 @@ default room3 = {"room":"down", "investigated":[], "solved":[], "pages":[], "rea
 screen room3():
     sensitive not inspect
     layer "master"
+    tag room
+
     if room3["room"] == "down":
         fixed at zoomed(0.34):
             add "bg room3_downstairs"
-            imagebutton idle "room3_scrapbook" action [SetVariable("inspect", "scrapbook"), Jump("room_3")] pos (200, 2250) at zoomed(0.2)
-            imagebutton idle "room3_workbook" action [SetVariable("inspect", "confidence_workbook"), Jump("room_3")] pos (1575, 2050) at zoomed(0.4)
-            imagebutton idle "room3_container" action [SetVariable("inspect", "locked_container"), Jump("room_3")] pos (2575, 2750) at zoomed(0.4)
+            imagebutton idle "room3_scrapbook" action [SetVariable("inspect", "scrapbook"), Jump("room_3")] pos (200, 2250) mouse "inspect" at zoomed(0.2)
+            imagebutton idle "room3_workbook" action [SetVariable("inspect", "confidence_workbook"), Jump("room_3")] pos (1575, 2050) mouse "inspect" at zoomed(0.4)
+            imagebutton idle "room3_container" action [SetVariable("inspect", "locked_container"), Jump("room_3")] pos (2575, 2750) mouse "inspect" at zoomed(0.4)
 
-            imagebutton idle "room3_scrapbook_new" action [SetVariable("inspect", "scrapbook_new"), Jump("room_3")] pos (3875, 1450)
-            imagebutton idle "room3_cooking" action [SetVariable("inspect", "cooking"), Jump("room_3")] pos (2575, 2000)
+            imagebutton idle "room3_scrapbook_new" action [SetVariable("inspect", "scrapbook_new"), Jump("room_3")] pos (3875, 1450) mouse "puzzle"
+            imagebutton idle "room3_cooking" action [SetVariable("inspect", "cooking"), Jump("room_3")] pos (2575, 2000) mouse "puzzle"
 
             if 1 in room3["pages"] and 1 not in room3["read_pages"]:
-                imagebutton idle "room3_page1" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (1175, 3050)
+                imagebutton idle "room3_page1" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (1175, 3050) mouse "inspect"
             if 2 in room3["pages"] and 2 not in room3["read_pages"]:
-                imagebutton idle "room3_page2" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (4275, 1650)
+                imagebutton idle "room3_page2" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (4275, 1650) mouse "inspect"
             if 6 in room3["pages"] and 6 not in room3["read_pages"]:
-                imagebutton idle "room3_page6" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 6), Jump("room_3")] pos (3775, 2650)
+                imagebutton idle "room3_page6" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 6), Jump("room_3")] pos (3775, 2650) mouse "inspect"
 
         textbutton _("UP") action SetDict(room3, "room", "up") style "main_menu_button" xalign 0.97 yalign 0.4
 
     elif room3["room"] == "up":
         fixed at zoomed(0.34):
             add "bg room3_upstairs"
-            imagebutton idle "room3_sewing" action [SetVariable("inspect", "sewing_book"), Jump("room_3")] pos (2175, 1850) at zoomed(0.2)
-            imagebutton idle "room3_mannequin" action [SetVariable("inspect", "mannequin"), Jump("room_3")] pos (100, 2450) at zoomed(0.2)
-            imagebutton idle "room3_health" action [SetVariable("inspect", "health_record"), Jump("room_3")] pos (3375, 1350) at zoomed(0.4)
+            imagebutton idle "room3_sewing" action [SetVariable("inspect", "sewing_book"), Jump("room_3")] pos (2175, 1850) mouse "inspect" at zoomed(0.2)
+            imagebutton idle "room3_mannequin" action [SetVariable("inspect", "mannequin"), Jump("room_3")] pos (100, 2450) mouse "inspect" at zoomed(0.2)
+            imagebutton idle "room3_health" action [SetVariable("inspect", "health_record"), Jump("room_3")] pos (3375, 1350) mouse "inspect" at zoomed(0.4)
 
-            imagebutton idle "room3_quilt" action [SetVariable("inspect", "quilt"), Jump("room_3")] pos (2175, 2750)
-            imagebutton idle "room3_toys" action [SetVariable("inspect", "toys"), Jump("room_3")] pos (575, 1800)
+            imagebutton idle "room3_quilt" action [SetVariable("inspect", "quilt"), Jump("room_3")] pos (2175, 2750) mouse "puzzle"
+            imagebutton idle "room3_toys" action [SetVariable("inspect", "toys"), Jump("room_3")] pos (575, 1800) mouse "puzzle"
 
             if 3 in room3["pages"] and 3 not in room3["read_pages"]:
-                imagebutton idle "room3_page3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 3), Jump("room_3")] pos (3575, 2950)
+                imagebutton idle "room3_page3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 3), Jump("room_3")] pos (3575, 2950) mouse "inspect"
             if 4 in room3["pages"] and 4 not in room3["read_pages"]:
-                imagebutton idle "room3_page3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 4), Jump("room_3")] pos (1575, 2750)
+                imagebutton idle "room3_page3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 4), Jump("room_3")] pos (1575, 2750) mouse "inspect"
             if 5 in room3["pages"] and 5 not in room3["read_pages"]:
-                imagebutton idle "room3_page3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 5), Jump("room_3")] pos (4575, 2050)
+                imagebutton idle "room3_page3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 5), Jump("room_3")] pos (4575, 2050) mouse "inspect"
 
         textbutton _("DOWN") action SetDict(room3, "room", "down") style "main_menu_button" xalign 0.97 yalign 0.97
         

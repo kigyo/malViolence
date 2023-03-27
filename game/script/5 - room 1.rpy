@@ -5,20 +5,22 @@ define panopticon_move_limit = 30
 screen room1():
     sensitive not inspect
     layer "master"
+    tag room
+
     fixed at zoomed(0.34):
         add "bg room1"
-        imagebutton idle "room1_oil" action [SetVariable("inspect", "oil"), Jump("room_1")] pos (1175, 2650)
-        imagebutton idle "room1_chair" action [SetVariable("inspect", "chair"), Jump("room_1")] pos (3800, 1850)
-        imagebutton idle "room1_megaphone" action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (2500, 1350)
-        imagebutton idle "room1_marble" action [SetVariable("inspect", "marble"), Jump("room_1")] pos (2000, 2550)
-        imagebutton idle "room1_hacking" action [SetVariable("inspect", "hacking"), Jump("room_1")] pos (2500, 2050)
-        imagebutton idle "room1_decanting" action [SetVariable("inspect", "decanting"), Jump("room_1")] pos (1500, 1550)
-        imagebutton idle "room1_bomb" action [SetVariable("inspect", "bomb"), Jump("room_1")] pos (575, 2850)
+        imagebutton idle "room1_oil" action [SetVariable("inspect", "oil"), Jump("room_1")] pos (1175, 2650) mouse "inspect"
+        imagebutton idle "room1_chair" action [SetVariable("inspect", "chair"), Jump("room_1")] pos (3800, 1850) mouse "inspect"
+        imagebutton idle "room1_megaphone" action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (2500, 1350) mouse "inspect"
+        imagebutton idle "room1_marble" action [SetVariable("inspect", "marble"), Jump("room_1")] pos (2000, 2550) mouse "puzzle"
+        imagebutton idle "room1_hacking" action [SetVariable("inspect", "hacking"), Jump("room_1")] pos (2500, 2050) mouse "puzzle"
+        imagebutton idle "room1_decanting" action [SetVariable("inspect", "decanting"), Jump("room_1")] pos (1500, 1550) mouse "puzzle"
+        imagebutton idle "room1_bomb" action [SetVariable("inspect", "bomb"), Jump("room_1")] pos (575, 2850) mouse "puzzle"
 
     if config.developer:
         frame:
             textbutton _("Skip Room") action [Jump("post_room_1")] style "main_menu_button"
-
+            
 label room_1:
     if inspect not in room1["investigated"] and inspect in ["oil", "chair", "megaphone"]:
         $room1["investigated"].append(inspect)

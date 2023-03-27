@@ -5,17 +5,19 @@ define panopticon_move_limit = 30
 screen room2():
     sensitive not inspect
     layer "master"
+    tag room
+
     fixed at zoomed(0.34):
         add "bg room2"
-        imagebutton idle "room2_corkboard" action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (4575, 1550)
-        imagebutton idle "room2_blueprints" action [SetVariable("inspect", "blueprints"), Jump("room_2")] pos (800, 1550) at zoomed(0.3)
-        imagebutton idle "room2_postits" action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3475, 1450) at zoomed(0.3)
-        imagebutton idle "room2_limbs" action [SetVariable("inspect", "limbs"), Jump("room_2")] pos (1775, 2950) at zoomed(0.3)
-        imagebutton idle "room2_clippings" action [SetVariable("inspect", "clippings"), Jump("room_2")] pos (2875, 1250) at zoomed(0.3)
-        imagebutton idle "room2_panopticon" action [SetVariable("inspect", "panopticon"), Jump("room_2")] pos (3875, 2150) at zoomed(0.3)
-        imagebutton idle "room2_evidence" action [SetVariable("inspect", "evidence"), Jump("room_2")] pos (1175, 1150)
-        imagebutton idle "room2_recalibration" action [SetVariable("inspect", "recalibration"), Jump("room_2")] pos (2175, 1150)
-        imagebutton idle "room2_word" action [SetVariable("inspect", "word"), Jump("room_2")] pos (275, 2350)
+        imagebutton idle "room2_corkboard" action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (4575, 1550) mouse "inspect"
+        imagebutton idle "room2_blueprints" action [SetVariable("inspect", "blueprints"), Jump("room_2")] pos (800, 1550) mouse "inspect" at zoomed(0.3)
+        imagebutton idle "room2_postits" action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3475, 1450) mouse "inspect" at zoomed(0.3)
+        imagebutton idle "room2_limbs" action [SetVariable("inspect", "limbs"), Jump("room_2")] pos (1775, 2950) mouse "inspect" at zoomed(0.3)
+        imagebutton idle "room2_clippings" action [SetVariable("inspect", "clippings"), Jump("room_2")] pos (2875, 1250) mouse "inspect" at zoomed(0.3)
+        imagebutton idle "room2_panopticon" action [SetVariable("inspect", "panopticon"), Jump("room_2")] pos (3875, 2150) mouse "puzzle" at zoomed(0.3)
+        imagebutton idle "room2_evidence" action [SetVariable("inspect", "evidence"), Jump("room_2")] pos (1175, 1150) mouse "puzzle"
+        imagebutton idle "room2_recalibration" action [SetVariable("inspect", "recalibration"), Jump("room_2")] pos (2175, 1150) mouse "puzzle"
+        imagebutton idle "room2_word" action [SetVariable("inspect", "word"), Jump("room_2")] pos (275, 2350) mouse "puzzle"
         
     if config.developer:
         frame:
