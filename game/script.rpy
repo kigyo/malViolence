@@ -35,9 +35,14 @@ label splashscreen:
 default inspect = None
 default minigame = False
 
+### custom transitions
+
 define eyeopen = ImageDissolve("images/open.png", 0.5, 0)
 define eyeclose = ImageDissolve("images/open.png", 0.5, 0, reverse=True)
 define screenon = ImageDissolve("images/open.png", 0.15, 0)
+define screenoff = ImageDissolve("images/open.png", 0.15, 0, reverse=True)
+define placeintro = ImageDissolve("images/open.png", 3, 0)
+define placeexit = ImageDissolve("images/open.png", 3, 0, reverse=True)
 
 init python:
     def roomchangedx(i):
@@ -77,7 +82,7 @@ image crt = At("crt.png", crt_effects)
 
 image ctc:
     "gui/ctc1.png"
-    alpha 0.0 yalign 1.0 yoffset 9 xoffset 10
+    alpha 0.0 yalign 1.0 yoffset 9 xoffset 10 subpixel True
     block:
         ease 0.5 alpha 1.0 rotate 0
         ease 0.5 alpha 1.0 rotate 90
@@ -94,4 +99,4 @@ image ctc:
     #    repeat
 
 style puzzle_description_text:
-    size 37 justify True color gui.accent_color
+    size 28 justify True color gui.accent_color

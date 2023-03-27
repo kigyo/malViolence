@@ -63,7 +63,7 @@ screen room2_panopticon():
     frame padding 50,40 xfill True yfill True:
         fixed xsize 775 yfill True xalign 1.0:
             vbox spacing 50 yalign 0.5:
-                text _("Cautionne has managed to stealthily take control of a STOP holding center. Several young test subjects are being held in a futuristic panopticon. Cautionne can open their cell doors, but in order to give them the best chance of survival, he wants to first rearrange the cells such that each group of escaping testees is balanced based on the strengths resulting from their cybernetic augmentations. Help Cautionne properly arrange the cells according to the limitations of the system. Additionally, the bureaucratic systems have left only the bare minimum operating instructions on how to operate the panopticon."):
+                text _("In a stealthy campaign, Cautionne has managed to take control of a STOP holding center, where several young test subjects are being held in a futuristic panopticon.\n\nTo give them the best chance of survival, Cautionne needs to {color=#fff}rearrange the cells so that each group of escaping testees is balanced.{/color}\n\nThese groups are shown as {color=#fff}a circle, a triangle, a square{/color} and {color=#fff}an X.{/color}\n\nHowever, the bureaucratic systems have left only the bare minimum operating instructions on how to operate the panopticon.\n\n{color=#fff}Help Cautionne properly arrange the cells according to the limitations of the system.{/color}"):
                     style "puzzle_description_text"
 
         fixed xsize 1000:
