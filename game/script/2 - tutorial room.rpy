@@ -46,6 +46,7 @@ screen tutorial_lock():
     sensitive not inspect
     modal True
     layer "master"
+    zorder 5
     tag puzzle
 
     if config.developer:
@@ -57,7 +58,10 @@ screen tutorial_lock():
     add "puzzles/tutorial_circle.png" align (0.5,0.5)
     for i in range(8):
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
-    textbutton _("Return") action [Return()] style "main_menu_button" xalign 0.8 yalign 0.5
+        
+    if not inspect:
+        frame xalign 0.8 yalign 0.5:
+            textbutton "Return" action [Return()] style "main_menu_button"
 
 label tutorial_room:
     if inspect not in tutorial["investigated"]:

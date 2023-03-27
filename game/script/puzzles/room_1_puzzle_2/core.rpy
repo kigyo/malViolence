@@ -200,8 +200,6 @@ init -1 python:
                             break
                 if win:
                     renpy.jump('solved_room_3_puzzle_2')
-                glog('here')
-                glog(self.check_toy_path(self.player))
                 if not self.check_toy_path(self.player):
                     renpy.jump('failed_room_3_puzzle_2')
 
@@ -223,7 +221,6 @@ init -1 python:
                 else:
                     path.append((x, y))
                     if len(path) >= 4:
-                        glog(path)
                         return True
             else:
                 path = []
@@ -317,6 +314,20 @@ init -1 python:
                 return self.type == other.type
             elif isinstance(other, str):
                 return self.type == other
+            return False
+
+        def __lt__(self, other):
+            if isinstance(other, Piece):
+                return self.type < other.type
+            elif isinstance(other, str):
+                return self.type < other
+            return False
+
+        def __gt__(self, other):
+            if isinstance(other, Piece):
+                return self.type > other.type
+            elif isinstance(other, str):
+                return self.type > other
             return False
 
 transform next():
@@ -465,9 +476,9 @@ screen buttons(b):
             for x in range(max(h_buffer, 1)):
                 if b.pieces[y][x]:
                     imagebutton:
-                        pos ((cw*h_buffer)/2, y*ch)
+                        pos (int(cw*h_buffer/2), y*ch)
                         xysize(cw*(h_buffer+1), ch)
-                        align (0.5, 0.5)
+                        anchor (0.5, 0.5)
                         idle Null()
                         # idle "#ff00ff88"
                         if (x, y) == b.player:
@@ -497,7 +508,7 @@ screen buttons(b):
             for x in range(min(b.width-h_buffer, b.width-1), b.width):
                 if b.pieces[y][x]:
                     imagebutton:
-                        pos (b.width*cw-(cw*(h_buffer+1))+(cw*h_buffer)/2, y*ch)
+                        pos (int(b.width*cw-(cw*(h_buffer+1))+(cw*h_buffer)/2), y*ch)
                         xysize(cw*(h_buffer+1), ch)
                         align (0.5, 0.5)
                         idle Null()

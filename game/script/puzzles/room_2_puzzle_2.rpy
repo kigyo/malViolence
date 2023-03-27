@@ -27,7 +27,7 @@ init python:
         store.panopticon_selected = None
         if room2_panopticon_valid_solution():
             store.room2["panopticon"] = "solved"
-            renpy.jump("room_2")
+            return True
 
         if panopticon_moves >= panopticon_move_limit and not (achievement_dead8 in persistent.my_achievements and not preferences.hard_mode):
             renpy.jump("panopticon_game_over")
@@ -46,11 +46,13 @@ init python:
                 solution_list.append(temp)
         return True
 
+default panopticon_moves = 0
+define panopticon_move_limit = 20
+
 default panopticon_selected = None
 default panopticon_config = [0,0,0,0,0]
 default panopticon_pos = [0,0,0,0,0]
 default panopticon_reverse = []
-default panopticon_moves = 0
 define panopticon_effects = {0:[1,3], 1:[2], 2:[0,4], 3:[2], 4:[1,3]}
 #circle = 1, x = 2, triangle = 3, square = 4. starts at bottom
 define panopticon_values = {0:[4,2,3,4,3], 1:[4,3,1,2,0], 2:[0,0,1,3,0], 3:[4,1,2,1,4], 4:[2,1,2,3,0]}
@@ -59,6 +61,7 @@ screen room2_panopticon():
     sensitive not inspect
     modal True
     layer "master"
+    zorder 5
 
     frame padding 50,40 xfill True yfill True:
         fixed xsize 775 yfill True xalign 1.0:

@@ -106,20 +106,17 @@ label room_3:
         $ room3["health_record"] += 1
 
     elif inspect == "sewing_book":
-        if room3["sewing_book"] == "solved":
-            "(Solved the quilt puzzle.)"
+        if room3["sewing_book"] == 0:
+            "(You find an assortment of patterns,{w=0.1}  books,{w=0.1}  and materials for sewing.)"
+            "(There's a little stack of half-finished items;{w=0.5}  a skirt and a blouse in conservative colors.{w} Right next to it,{w=0.1}  there's a whole pile of hand-stitched garments in garish yellows,{w=0.1}  greens,{w=0.1}  and reds.)"
+            "(Seems like someone handed their sewing books down to a more imaginative type.)"
+            "(You're well-aware that sewing isn't just a simple hobby.{w} Many of STOP's associated security forces take up the practice when they receive their first cybernetics.)"
+            "(After such a big operation,{w=0.1}  the skill rehabilitates their hand-eye coordination.)"
+            "(But you doubt they'd make such a large collection of fuzzy mittens.)"
         else:
-            if room3["sewing_book"] == 0:
-                "(You find an assortment of patterns,{w=0.1}  books,{w=0.1}  and materials for sewing.)"
-                "(There's a little stack of half-finished items;{w=0.5}  a skirt and a blouse in conservative colors.{w} Right next to it,{w=0.1}  there's a whole pile of hand-stitched garments in garish yellows,{w=0.1}  greens,{w=0.1}  and reds.)"
-                "(Seems like someone handed their sewing books down to a more imaginative type.)"
-                "(You're well-aware that sewing isn't just a simple hobby.{w} Many of STOP's associated security forces take up the practice when they receive their first cybernetics.)"
-                "(After such a big operation,{w=0.1}  the skill rehabilitates their hand-eye coordination.)"
-                "(But you doubt they'd make such a large collection of fuzzy mittens.)"
-            else:
-                "(A superb sewing setup. {w}But what's with all the mittens? {w}It's not winter anymore.)"
-                pass
-            $ room3["sewing_book"] += 1
+            "(A superb sewing setup. {w}But what's with all the mittens? {w}It's not winter anymore.)"
+            pass
+        $ room3["sewing_book"] += 1
 
     elif inspect == "locked_container":
         if room3["locked_container"] == 0:
@@ -266,9 +263,12 @@ label room_3:
             else:
                 #repeated investigation
                 pass
+            show screen room3_quilt with easeintop
             $ room3["quilt"] += 1
             $ inspect = None
-            call screen room3_quilt with easeintop
+            call screen room3_quilt
+            if room3["quilt"] == "solved":
+                jump quilt_solved
 
     elif inspect == "cooking":
         if "cooking" in room3["solved"]:

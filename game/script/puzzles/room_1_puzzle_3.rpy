@@ -31,7 +31,8 @@ init python:
             renpy.restart_interaction()
 
             if decanting_valid():
-                renpy.jump("decanting_solved")
+                store.room1["decanting"] = "solved"
+                return True
             
             if decanting_moves >= decanting_move_limit and not (achievement_dead5 in persistent.my_achievements and not preferences.hard_mode):
                 renpy.jump("decanting_game_over")
@@ -101,7 +102,7 @@ screen room1_decanting():
     if config.developer:
         vbox:
             frame:
-                textbutton _("Skip Puzzle") action [Jump("decanting_solved")] style "main_menu_button"
+                textbutton _("Skip Puzzle") action [SetDict(room1, "decanting", "solved"), Return()] style "main_menu_button"
             frame:
                 textbutton _("Game Over") action [Jump("decanting_game_over")] style "main_menu_button"
 
