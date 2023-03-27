@@ -354,7 +354,6 @@ label quilt_game_over:
     l "{i}(NB: It needed to be a square number for the triggering mechanism to hit its mark){/i}"
     l "{b}Contributing Factors to Death:{/b} Couldn't sew their way out of a wet paper bag."
     $deadend(achievement_dead11)
-    #TODO: Fix name
     le "DEAD END 11: Quilt In Action."
     pause 2
     nvl clear

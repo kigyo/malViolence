@@ -65,7 +65,7 @@ screen room1_decanting():
     
     frame padding 50,40 xfill True yfill True:
 
-        fixed xsize 775 xalign 1.0:
+        fixed xsize 725 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
                     style_prefix "puzzle_description"
@@ -75,8 +75,8 @@ screen room1_decanting():
                 frame xalign 1.0 yalign 0.5:
                     textbutton "RETURN" style "main_menu_button" action Return()
 
-        fixed xsize 1920-775-50:
-            draggroup ysize 600 xsize 990 yalign 0.5 xalign 0.45:
+        fixed xsize 1920-775:
+            draggroup ysize 600 xsize 990 yalign 0.45 xalign 0.45:
                 drag yalign 1.0:
                     drag_name 1 dropped decanting_dropped
                     bar value AnimatedValue(decanting_vial1,18, 0.75) xalign 0.5 style "decanting_bar1"
@@ -86,7 +86,7 @@ screen room1_decanting():
                 drag yalign 1.0 xalign 1.0:
                     drag_name 3 dropped decanting_dropped
                     bar value AnimatedValue(decanting_vial3,7, 0.75) xalign 0.5 style "decanting_bar3"
-            hbox xalign 0.45 yalign 0.85 spacing 100:
+            hbox xalign 0.45 yalign 0.85 spacing 200:
                 hbox xsize 150:
                     text str(decanting_vial1) + "/" + str(decanting_size_vial1) xalign 0.5
                 hbox xsize 150:

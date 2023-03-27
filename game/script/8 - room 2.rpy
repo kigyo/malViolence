@@ -178,7 +178,6 @@ label panopticon_game_over:
     l "Scratched their nails bloody on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
     l "{b}Contributing Factors to Death:{/b} Didn't take the consequences of imprisonment very seriously."
     $deadend(achievement_dead8)
-    #TODO: Fix name
     le "DEAD END 08: A Taste of Sobering Punishment."
     nvl clear
     return

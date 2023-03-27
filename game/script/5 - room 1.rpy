@@ -165,7 +165,6 @@ label decanting_game_over:
     l "{b}Contributing Factors to Death:{/b} Didn't perform their duties under a fume hood."
     l "STOP will have to screen its employees for basic lab safety if they're gonna keep sending them my way."
     $deadend(achievement_dead5)
-    #TODO: Add name
     le "DEAD END 05: A Venom-enal End!"
     pause 2
     nvl clear
