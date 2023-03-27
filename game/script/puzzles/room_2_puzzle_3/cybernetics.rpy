@@ -13,6 +13,21 @@ define cybernetic_mask = [
     [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
+default loop_colors = ["#FFFFFF",
+                       "#31AFFF",
+                       "#FF2F53",
+                       "#FFF830",
+                       "#34FFC8",
+                       "#FF8C30",
+                       "#4530FF",
+                       "#CB30FF",
+                       "#42C87C",
+                       "#B262D7",
+                       "#4165DC"]
+
+default loop_data = None
+default loop_counter = 1
+
 define cybernetic_input = [
     [None, None, None, None, None, None, None, None, None, None, None, None],
     [None, None, None, None, None, None, None, None, None, None, None, None],
@@ -223,32 +238,70 @@ init -1 python:
             return broken
 
         def verify(self):
+            global loop_counter
             invalid = False
-            # We know from shenanigans that this tile will always go right.
-            start = (0, 0)
             for y in range(self.h):
                 for x in range(self.w):
-                    if cybernetic_mask[y][x] and sum(self.data[y][x]) in [0, 3]:
+                    if cybernetic_mask[y][x] and sum(self.data[y][x]) in [0, 1, 3]:
                         invalid = True
                         break
                 if invalid: break
             if invalid:
                 renpy.jump("failed_room_2_puzzle_3")
-            checked = [start]
-            next = (1, 0)
+
+            checked = []
+            next = (0, 0)
+
             while next:
-                pos = self.check_trace(checked, next)
-                checked.append(next)
-                next = pos
+                next, checked = self.check_trace(checked, next)
 
             if len(set(checked)) == 74:
                 renpy.jump("solved_room_2_puzzle_3")
             else:
-                loops = [checked]
+                tally = set(checked)
+                loop_counter += 1
+                for y in range(10):
+                    for x in range(12):
+                        if cybernetic_mask[y][x] and (x, y) not in tally:
+                            checked = []
+                            next = (x, y)
+                            while next:
+                                next, checked = self.check_trace(checked, next)
+                            tally.update(checked)
+                            loop_counter += 1
+
                 renpy.jump("failed_room_2_puzzle_3")
 
-        def check_trace(self, checked, pos):
+        def check_trace(self, checked, pos, tally_color=True):
             x, y = pos
+            if x < 0 or y < 0:
+                return (False, checked)
+            first = False
+            if not checked:
+                frist = True
+                checked = [pos]
+                d = self.data[y][x]
+                if d[0]:
+                    pos = (x+1, y)
+                    if tally_color:
+                        loop_data[y][x][0] = loop_counter
+                        loop_data[y][x+1][2] = loop_counter
+                elif d[1]:
+                    pos = (x, y+1)
+                    if tally_color:
+                        loop_data[y][x][1] = loop_counter
+                        loop_data[y+1][x][3] = loop_counter
+                elif d[2]:
+                    pos = (x-1, y)
+                    if tally_color:
+                        loop_data[y][x][2] = loop_counter
+                        loop_data[y][x-1][0] = loop_counter
+                elif d[3]:
+                    pos = (x, y-1)
+                    if tally_color:
+                        loop_data[y][x][3] = loop_counter
+                        loop_data[y-1][x][1] = loop_counter
+                x, y = pos
             ox, oy = checked[-1]
 
             dx = x - ox
@@ -276,8 +329,23 @@ init -1 python:
                     if self.data[y][x][0]: next = (1, 0)
                     else: next = (-1, 0)
 
-            next = (x+next[0], y+next[1])
-            return False if next == checked[0] else next
+            if tally_color:
+                if next[0] == 1:
+                    loop_data[y][x+1][2] = loop_counter
+                    loop_data[y][x][0] = loop_counter
+                elif next[0] == -1:
+                    loop_data[y][x-1][0] = loop_counter
+                    loop_data[y][x][2] = loop_counter
+                elif next[1] == -1:
+                    loop_data[y-1][x][1] = loop_counter
+                    loop_data[y][x][3] = loop_counter
+                elif next[1] == 1:
+                    loop_data[y+1][x][3] = loop_counter
+                    loop_data[y][x][1] = loop_counter
+
+            checked.append(pos)
+            next = ((x+next[0], y+next[1]), checked)
+            return (False, checked) if next[0] == checked[0] else next
 
         def verify_continuity(self, x1, y1, x2, y2):
             if not 0 < x1 < self.w or \
@@ -304,6 +372,8 @@ init -1 python:
 
 label init_cybernetics:
     $ cyb = Cybernetic()
+    $ loop_data = [[[0,0,0,0] for x in range(12)] for y in range(10)]
+    $ loop_counter = 1
     return
 
 screen cybernetics(cyb, interactable=True):
@@ -317,13 +387,21 @@ screen cybernetics(cyb, interactable=True):
                     frame:
                         xysize (65, 65)
                         if cyb.data[y][x][0]:
-                            add "right_piece" align (0.5, 0.5)
+                            add "right_piece":
+                                align (0.5, 0.5)
+                                at colorify(loop_colors[loop_data[y][x][0]])
                         if cyb.data[y][x][1]:
-                            add "down_piece" align (0.5, 0.5)
+                            add "down_piece":
+                                align (0.5, 0.5)
+                                at colorify(loop_colors[loop_data[y][x][1]])
                         if cyb.data[y][x][2]:
-                            add "left_piece" align (0.5, 0.5)
+                            add "left_piece":
+                                align (0.5, 0.5)
+                                at colorify(loop_colors[loop_data[y][x][2]])
                         if cyb.data[y][x][3]:
-                            add "up_piece" align (0.5, 0.5)
+                            add "up_piece":
+                                align (0.5, 0.5)
+                                at colorify(loop_colors[loop_data[y][x][3]])
                         if cyb.tracing and cyb.cursor == (x, y):
                             add "cursor" align (0.5, 0.5)
                         if cybernetic_input[y][x] is not None:
