@@ -316,6 +316,20 @@ init -1 python:
                 return self.type == other
             return False
 
+        def __lt__(self, other):
+            if isinstance(other, Piece):
+                return self.type < other.type
+            elif isinstance(other, str):
+                return self.type < other
+            return False
+
+        def __gt__(self, other):
+            if isinstance(other, Piece):
+                return self.type > other.type
+            elif isinstance(other, str):
+                return self.type > other
+            return False
+
 transform next():
     linear adt matrixcolor BrightnessMatrix(0.5)
     linear adt matrixcolor BrightnessMatrix(0.0)
