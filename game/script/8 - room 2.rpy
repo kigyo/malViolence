@@ -1,6 +1,4 @@
-default room2 = {"investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0}
-
-define panopticon_move_limit = 30
+default room2 = {"solved":[], "investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0, "recalibration":0, "evidence":0, "word":0}
 
 screen room2():
     sensitive not inspect
@@ -35,8 +33,8 @@ label room_2:
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
             "(That said,{w=0.1} poor penmanship hasn't dulled the designs themselves.{w} The {i}least{/i} dangerous of these would be devastating out in the field.)"
-            "(The oldest of the blueprints -{w=0.5} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person authored them.)"
-            "(In fact, if you squint...{w=0.5} you can still find the signatures at the bottom.)"
+            "(The oldest of the blueprints -{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person authored them.)"
+            "(In fact,{w=0.1} if you squint...{w=0.5} you can still find the signatures at the bottom.)"
             "(\"Destrange,\"{w=0.1} they say.{w} They're dated more than 15 years ago.)"
         else:
             "(Blueprints for a variety of dangerous weapons. {w}Honestly,{w=0.1} they're pretty scary.)"
@@ -45,7 +43,7 @@ label room_2:
 
     elif inspect == "post-its":
         if room2["post-its"] == 0:
-            "(You eye over the mass of scrawled notes pinned in front of you.{w} There're two distinct handwritings here, but the contents are mostly the same{w=0.5} - and mostly {i}domestic{/i}.) "
+            "(You eye over the mass of scrawled notes pinned in front of you.{w} There're two distinct handwritings here,{w=0.1} but the contents are mostly the same{w=0.5} - and mostly {i}domestic{/i}.) "
             "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and...{w=0.5} what {i}stories{/i} to read?)"
             "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and {i}chores?{/i})"
             "(Whoever left these notes for each other weren't just sharing the same space.\n{w}They were {i}living{/i} together.)"
@@ -86,7 +84,7 @@ label room_2:
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
             "(Based on what you can make out of the caption - {w=0.1}it seems to be of some kind of commemorative occasion.)" 
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
-            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as-{p=0.5}{nw})"
+            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as-{p=0.3}{nw})"
             pause 1
             #"{b}[pause as the clippings disappear]{/b}"
             "(...Never mind.{w} It's just similar,{w=0.1} that's all.)"
@@ -96,8 +94,8 @@ label room_2:
         $ room2["clippings"] += 1
 
     elif inspect == "panopticon":
-        if room2["panopticon"] == "solved":
-            "(Solved the panopticon puzzle.)"
+        if "panopticon" in room2["solved"]:
+            "(You've already solved the panopticon puzzle.)"
         else:
             if room2["panopticon"] == 0:
                 #panopticon introduction
@@ -105,12 +103,15 @@ label room_2:
             else:
                 #repeated investigation
                 pass
+            show screen room2_panopticon with easeintop
             $ room2["panopticon"] += 1
             $ inspect = None
-            call screen room2_panopticon with easeintop
+            call screen room2_panopticon 
+            if room2["panopticon"] == "solved":
+                jump panopticon_solved
 
     elif inspect == "evidence":
-        if room2["evidence"] == "solved":
+        if "evidence" in room2["solved"]:
             "(You already solved the evidence board puzzle.)"
         else:
             if room2["evidence"] == 0:
@@ -123,17 +124,20 @@ label room_2:
             $ inspect = None
 
     elif inspect == "recalibration":
-        if room2["recalibration"] == "solved":
+        if "recalibration" in room2["solved"]:
             "(You already solved the recalibration puzzle.)"
         else:
+            call init_cybernetics
             if room2["recalibration"] == 0:
-                #recalibration introduction
+                "<TODO: Insert intro script and rules.>"
                 pass
             else:
                 #repeated investigation
                 pass
+            show screen cybernetics(cyb) with easeintop
             $ room2["recalibration"] += 1
             $ inspect = None
+            call screen cybernetics(cyb)
 
     elif inspect == "word":
         if room2["word"] == 0:
@@ -148,6 +152,20 @@ label room_2:
     $ inspect = None
     call screen room2
 
+label panopticon_solved:
+    $ inspect = "panopticon"
+    show screen room2_panopticon
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    $ room2["solved"].append("panopticon")
+    #Show a note/picture/memento which will then show up on 
+    "(You solved the panopticon puzzle.)"
+    hide black onlayer screens
+    hide screen room2_panopticon
+    with dissolve
+    $ inspect = None
+    call screen room2
+
 label panopticon_game_over:
     $ inspect = "game over"
     show screen room2_panopticon
@@ -158,9 +176,9 @@ label panopticon_game_over:
     hide screen room2_panopticon with fade
     cr "Seems like you've run out of time,{w=0.1} lab rat."
     cr "That's it.{w=0.5} The jailbreak is broken.{w=0.5} You screwed up."
-    "(So it {i}was {/i}a prison? Then-)"
+    "(So it {i}was {/i}a prison?{w} Then-)"
     cr "If it was just between you and me,{w=0.1} I'd be \"whatever\" about it."
-    cr "We all make mistakes, y'know?{w=0.5} So, I'm super forgiving and cool and mature about this kind of thing."
+    cr "We all make mistakes,{w=0.1} y'know?{w=0.5} So,{w=0.1} I'm super forgiving and cool and mature about this kind of thing."
     cr "...But you just lost those kids a chance to get out before the {i}operations{/i} start."
     "(...Sorry,{w=0.1} {i}operations?{/i})"
     cr "They could've gotten out clean.{w=0.5} Now I'll have to step in and bust them out \n{i}dirty{/i}."
@@ -178,8 +196,37 @@ label panopticon_game_over:
     l "Scratched their nails bloody on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
     l "{b}Contributing Factors to Death:{/b} Didn't take the consequences of imprisonment very seriously."
     $deadend(achievement_dead8)
-    #TODO: Fix name
     le "DEAD END 08: A Taste of Sobering Punishment."
+    nvl clear
+    return
+
+label recalibration_game_over:
+    $ inspect = "game over"
+    show screen cybernetics(cyb, False)
+    show black with dissolve:
+        alpha 0.5
+    "(You confirm your choice, and a beeping starts.)"
+    "(It's tone sets the hairs on the back of your neck on edge.)"
+    cr "You're losing 'em, Doc."
+    "(...Wait. This is an actual {i}person?{/i})"
+    cr "As they are now, they can't be re-stabilized. Their own nervous system will rip them apart with spasming."
+    cr "...But they shouldn't be punished for your mistake, right?"
+    "(...Well, uh-)"
+    cr "Don't worry, I can fix this."
+    cr "But I'm gonna need a hand."
+    "(Suddenly, your body feels a lot heavier. Is that mist in the corner of the room?)"
+    cr "...And a liver. And a stomach. And a heart. And most of your spinal cord."
+    pause 1
+    cr "And I'm gonna need them {i}right now.{/i}"
+    #"{i}{b}COLLAPSE SFX{/b}"
+    nvl clear
+    pause 2
+    $nvl_heading = "Lab Report #062"
+    l "Patient was eventually re-stabilized and should wake up within the next few days."
+    l "On the other hand, the lab rat won't get up ever again. Seems like they're missing a few too many critical parts."
+    l "{b}Contributing Factors to Death:{/b} They gave too much of themselves to my cause."
+    $deadend(achievement_dead9)
+    le "DEAD END 09: A Taste of Sobering Punishment."
     nvl clear
     return
 
@@ -206,32 +253,6 @@ label panopticon_game_over:
 
 #    "Contributing Factors to Death" "{i}{b}{/b}{/i}{i}Couldn't put progress on the board.{/i}"
 
-
-#    "Puzzle 3" "(NOTE"
-
-#    "NB" "{i}Protagonist doesn't have cybernetic implants, so maybe Cautionne puts you under and uses your live limbs as transplants for the former test subject. Unfortunately(?), he doesn't have a lot of experience with surgery, so he ends up killing you in the process.{/i}"
-
-#    "Puzzle 3 Death Scene" "{b}{/b}
-#    (You confirm your choice, and a beeping starts.)
-#    (It's tone sets the hairs on the back of your neck on edge.)
-#    You're losing ‘em, Doc.
-#    (...Wait. This is an actual {i}person?{/i})
-#    As they are now, they can't be re-stabilized. Their own nervous system will rip them apart with spasming.
-#    ...But they shouldn't be punished for your mistake, right?
-#    (...Well, uh-)
-#    Don't worry, I can fix this.
-#    But I'm gonna need a hand.
-#   (Suddenly, your body feels a lot heavier. Is that mist in the corner of the room?)
-#    ...And a liver. And a stomach. And a heart. And most of your spinal cord.
-#    {b}[pause]{/b}
-#   {i} {/i}And I'm gonna need them{i} right now.{/i}
-#   {i}{b}COLLAPSE SFX{/b}{/i}"
-
-#   "Lab Report #062" "{b}{/b}{i}Patient was eventually re-stabilized and should wake up within the next few days. {/i}"
-
-#    "{i}On the other hand, the lab rat won't get up ever again. Seems like they're missing a few too many critical parts.{/i}"
-
-#    "Contributing Factors to Death" "{i}{b}{/b}{/i}{i}They gave too much of themselves to my cause.{/i}"
 
 #    "Meta Puzzle" "This is the acronym word puzzle. If you enter a valid word that is too short, Cautionne just kills you while making a terrible pun about the word you entered."
 

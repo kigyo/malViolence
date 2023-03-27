@@ -33,7 +33,7 @@ label room_1:
             "(Oil.{w} Most likely for some kind of machine.)"
             "(It's not unfamiliar.{w} STOP has a massive array of equipment and vehicles that need regular maintenance.)"
             "(An agent like you is expected to know how to repair and service them -{w=0.1} especially when your bosses are displeased with you.)"
-            "(But it's strange to see oil out in the open here.{w} Maybe it's a spill, or a leak?)"
+            "(But it's strange to see oil out in the open here.{w} Maybe it's a spill,{w=0.1} or a leak?)"
             "(Either way,{w=0.1} something {i}clearly{/i} isn't working.)"
         else:
             "(Oil.{w} Something clearly isn't working here.)"
@@ -43,10 +43,10 @@ label room_1:
     elif inspect == "chair":
         #"{b}Primary Source Extractor (Electric Chair){/b} "
         if room1["chair"] == 0:
-            "(From a comfortable distance, you eye over the \"Primary Source Extractor\".{w} You approach carefully, listening closely for any hints of it roaring to life.)"
-            "(Agents are expected to keep their wits about them and not jump to conclusions… {w}but it's hard to see the device in front of you as anything but an electric chair.)"
-            "(It looks crude and cruel, {w=0.1}like a child's re-imagining of something scary from a history book.)"
-            "(That may be exactly what it is.{w} Whatever its purpose, you give quiet thanks that it seems to be out of commission.)"
+            "(From a comfortable distance,{w=0.1} you eye over the \"Primary Source Extractor\".{w} You approach carefully,{w=0.1} listening closely for any hints of it roaring to life.)"
+            "(Agents are expected to keep their wits about them and not jump to conclusions…{w} but it's hard to see the device in front of you as anything but an electric chair.)"
+            "(It looks crude and cruel,{w=0.1} like a child's re-imagining of something scary from a history book.)"
+            "(That may be exactly what it is.{w} Whatever its purpose,{w=0.1} you give quiet thanks that it seems to be out of commission.)"
         else:
             "(You're thankful this {i}horrible{/i} device is out of commission.)"
             #repeated investigation
@@ -57,10 +57,11 @@ label room_1:
     elif inspect == "megaphone":
         #"{b}Megaphone Collection {/b}"
         if room1["megaphone"] == 0:
-            "(You paused when you saw the silhouettes from across the room... {w=0.1}but on closer inspection these aren't firearms at all.{w} They're {i}megaphones.{/i})"
-            "(So many colors, materials, variations… {w}It's far from organized, but it does look like a collection.)"
-            "(It's hard to picture Dr. Danger,{w=0.1} one of STOP's most wanted criminals,{w=0.1}  picking up such a quirky hobby.)"
-            "(And yet, half of them are tagged with the initials \"DD\".)"
+            "(You paused when you saw the silhouettes from across the room...{w=0.5} but on closer inspection these aren't firearms at all.{w} They're {i}megaphones.{/i})"
+            "(So many colors,{w=0.1} materials,{w=0.1} variations… {w}It's far from organized,{w=0.1} but it does look like a collection.)"
+            "(It's hard to picture Dr. Danger,{w=0.1} one of STOP's most wanted criminals,{w=0.1} picking up such a quirky hobby.)"
+            "(And yet,{w=0.1} half of them are tagged with the initials \"DD\".)"
+            pause 0.5
             "(...Every supervillain's bound to have a quirk or two.)"
         else:
             "(So many megaphones...{w} Every supervillain's bound to have a quirk or two.)"
@@ -97,9 +98,12 @@ label room_1:
             else:
                 #repeated investigation
                 pass
+            show screen room1_decanting with easeintop
             $ room1["decanting"] += 1
             $ inspect = None
-            call screen room1_decanting with easeintop
+            call screen room1_decanting
+            if room1["decanting"] == "solved":
+                jump decanting_solved
 
     elif inspect == "bomb":
         if room1["bomb"] == 0:
@@ -130,29 +134,41 @@ label decanting_game_over:
     show screen room1_decanting
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(You're getting close, now... Right?)"
+    show bg room1
+    "(You're getting close, now...{w=0.5} Right?)"
     "(If you just pour {i}this{/i}{i} {/i}into {i}that-){/i}"
-    cr "Wow, lab rat – you've made quite the concoction!"
-    "(Really?! Did you find a solution that {i}he {/i}hadn't thought of?)"
-    cr "Y'know, I {i}did {/i}say that two doses would be lethal..."
-    "(...By the way, have your legs always been made of jelly?)"
-    cr "...But if your bio signs are anything to go by... it looks like overexposure to the vapors does the job too!"
-
+    cr "Wow, lab rat – you've made {i}quite{/i} the concoction!"
     hide black onlayer screens
     hide screen room1_decanting 
+    hide screen room1
     with easeouttop
-    pause 1
-    #"{b}SFX OF PLAYER COLLAPSING ON GROUND{/b}"
+    "(Really?!{w} Did you find a solution that {i}he {/i}hadn't thought of?)"
+    cr "Y'know,{w=0.1} I {i}did {/i}say that two doses would be lethal..."
 
-    nvl clear
-    pause 2
+    "(...By the way,"
+
+    show bg room1 at dizzy with dissolve:
+        parallel:
+            yalign 0.0 xalign 0.0 zoom 0.34
+
+    extend " {cps=20}have your legs always been made of jelly?){/cps}"
+    cr "...But if your bio signs are anything to go by...{w=0.5} it looks like overexposure to the vapors does the job too!"
+
+    show bg room1 at dizzy:
+        zoom 0.34 yalign 0.0
+        easeout 0.4 zoom 1.0 xalign 0.2 yalign 1.0
+    pause 0.4
+
+    scene black with small_shake
+
+    pause 3
 
     $nvl_heading = "Lab Report #786"
     l "Subject experienced cardiac arrest after extended exposure to fumes in the workplace."
-    l "{b}Contributing Factors to Death:{/b} Didn't perform their duties under a fume hood. STOP will have to screen its employees for basic lab safety if they're gonna keep sending them my way."
+    l "{b}Contributing Factors to Death:{/b} Didn't perform their duties under a fume hood."
+    l "STOP will have to screen its employees for basic lab safety if they're gonna keep sending them my way."
     $deadend(achievement_dead5)
-    #TODO: Add name
-    le "DEAD END 05: Quilt In Action."
+    le "DEAD END 05: A Venom-enal End!"
     pause 2
     nvl clear
     return

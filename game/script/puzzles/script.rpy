@@ -44,6 +44,7 @@ label solved_room_2_puzzle_3:
     jump test_puzzles
 
 label failed_room_2_puzzle_3:
+    jump recalibration_game_over
     show screen cybernetics(cyb, False)
     "You failed room_2_puzzle_3."
     hide screen cybernetics

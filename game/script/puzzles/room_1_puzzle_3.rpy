@@ -1,10 +1,10 @@
-define decanting_description = _("""Cautionne has presented you with three unmarked vials of irregular shape, and notes they hold 18, 10, and 7cc of liquid respectively. 
+define decanting_description = _("""Cautionne needs your help poisoning a top STOP official, but his toxin of choice is pretty particular!
 
-    He needs your help poisoning a top STOP official, but the poison he is using is very particular and must be administered in two separate doses of 9cc each. The 18cc vial is filled with the poison that will be used. Using only the vials present, Cautionne is asking you to measure the poison into two equal doses.
+Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  - {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial contains the poison itself.{/color}
 
-    Be careful though! The poison is quite volatile, and if disturbed too much may give off vapors which will not be good for your health in any way shape or form.
+But be careful! {color=#fff}If the poison's disturbed too much, it'll give off nasty vapors...{/color}
     
-    Drag the vials in order to pour their contents into each other.""")
+Drag the vials in order to pour their contents into each other.""")
 
 init python:
     def decanting_dropped(drop, drags):
@@ -31,7 +31,8 @@ init python:
             renpy.restart_interaction()
 
             if decanting_valid():
-                renpy.jump("decanting_solved")
+                store.room1["decanting"] = "solved"
+                return True
             
             if decanting_moves >= decanting_move_limit and not (achievement_dead5 in persistent.my_achievements and not preferences.hard_mode):
                 renpy.jump("decanting_game_over")
@@ -65,7 +66,7 @@ screen room1_decanting():
     
     frame padding 50,40 xfill True yfill True:
 
-        fixed xsize 775 xalign 1.0:
+        fixed xsize 725 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
                     style_prefix "puzzle_description"
@@ -75,8 +76,8 @@ screen room1_decanting():
                 frame xalign 1.0 yalign 0.5:
                     textbutton "RETURN" style "main_menu_button" action Return()
 
-        fixed xsize 1920-775-50:
-            draggroup ysize 600 xsize 990 yalign 0.5 xalign 0.45:
+        fixed xsize 1920-775:
+            draggroup ysize 600 xsize 990 yalign 0.45 xalign 0.45:
                 drag yalign 1.0:
                     drag_name 1 dropped decanting_dropped
                     bar value AnimatedValue(decanting_vial1,18, 0.75) xalign 0.5 style "decanting_bar1"
@@ -86,7 +87,7 @@ screen room1_decanting():
                 drag yalign 1.0 xalign 1.0:
                     drag_name 3 dropped decanting_dropped
                     bar value AnimatedValue(decanting_vial3,7, 0.75) xalign 0.5 style "decanting_bar3"
-            hbox xalign 0.45 yalign 0.85 spacing 100:
+            hbox xalign 0.45 yalign 0.85 spacing 200:
                 hbox xsize 150:
                     text str(decanting_vial1) + "/" + str(decanting_size_vial1) xalign 0.5
                 hbox xsize 150:
@@ -101,7 +102,7 @@ screen room1_decanting():
     if config.developer:
         vbox:
             frame:
-                textbutton _("Skip Puzzle") action [Jump("decanting_solved")] style "main_menu_button"
+                textbutton _("Skip Puzzle") action [SetDict(room1, "decanting", "solved"), Return()] style "main_menu_button"
             frame:
                 textbutton _("Game Over") action [Jump("decanting_game_over")] style "main_menu_button"
 

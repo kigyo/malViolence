@@ -46,6 +46,7 @@ screen tutorial_lock():
     sensitive not inspect
     modal True
     layer "master"
+    zorder 5
     tag puzzle
 
     if config.developer:
@@ -57,7 +58,10 @@ screen tutorial_lock():
     add "puzzles/tutorial_circle.png" align (0.5,0.5)
     for i in range(8):
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
-    textbutton _("Return") action [Return()] style "main_menu_button" xalign 0.8 yalign 0.5
+        
+    if not inspect:
+        frame xalign 0.8 yalign 0.5:
+            textbutton "Return" action [Return()] style "main_menu_button"
 
 label tutorial_room:
     if inspect not in tutorial["investigated"]:
@@ -67,29 +71,29 @@ label tutorial_room:
 
     if inspect == "painting":
         if tutorial["vent"] == 0:
-            "(There's a weird stock photo on the cover, but otherwise it's your average vent.)"
+            "(There's a weird stock photo on the cover,{w=0.1} but otherwise it's your average vent.)"
             "(Cautionne won't be winning any awards for home decor anytime soon.)"
             $ tutorial["vent"] = 1
             with fade
             pause 0.5
             #[the vent opens with a creak]
-            "(Guess he wasn't kidding about the LabScrip. {w}It's right there, neatly served in a metal bowl.)"
+            "(Guess he wasn't kidding about the LabScrip.{w} It's right there,{w=0.1} neatly served in a metal bowl.)"
             pause 1
             "(...)"
-            "(To be honest, you {i}could{/i} use something to fill your empty stomach. {w}You made the smart decision to skip lunch on your way here.)"
+            "(To be honest,{w=0.1} you {i}could{/i} use something to fill your empty stomach.{w} You made the smart decision to skip lunch on your way here.)"
             "(You pick up the bowl and shove a fistful of pellets into your mouth.)"
             "(They taste like...)"
             pause 0.5
-            "(...Well, you don't know what you expected. {w}They're grainy, if nothing else.)"
+            "(...Well,{w=0.1} you don't know what you expected.{w} They're grainy,{w=0.1} if nothing else.)"
             "(You try not to think about Cautionne laughing at you from the other side of the screen.)"
             pause 1
-            "(...Huh? {w}What's this?)"
-            "(There's something at the bottom of the bowl. {w}Something colorful.)"
-            "(To get a better look, you dump the rest of the pellets on the floor.)"
+            "(...Huh?{w} What's this?)"
+            "(There's something at the bottom of the bowl.{w} Something colorful.)"
+            "(To get a better look,{w=0.1} you dump the rest of the pellets on the floor.)"
             #[sound of pellets falling]
             show tutorial_bowl with dissolve:
                 yalign 0.2 xalign 0.5
-            "(It's... {w=0.5}a Venn diagram. {w}One with weird shapes?)"
+            "(It's...{w=0.5} a Venn diagram.{w} One with weird shapes?)"
             "(Wonder if it means anything...)"
             hide tutorial_bowl with dissolve
         else:
@@ -101,13 +105,13 @@ label tutorial_room:
     elif inspect == "vent":
         if tutorial["vent"] < 2:
             $ tutorial["vent"] = 2
-            "(Again, it's just your average vent-{nw})"
-            "(-wait. {w}Something's on the back side of that cover.)"
+            "(Again,{w=0.1} it's just your average vent-){p=0.3}{nw}"
+            "(-wait.{w} Something's on the back side of that cover.)"
             show tutorial_painting with dissolve:
                 yalign 0.2 xalign 0.5
             "(Again with those weird shapes!)"
-            "(Yeah, they definitely mean something.)"
-            "(Maybe... {w=0.5}it's a way out?)"
+            "(Yeah,{w=0.1} they definitely mean something.)"
+            "(Maybe...{w=0.5} it's a way out?)"
             hide tutorial_painting with dissolve
         else:
             show tutorial_painting with dissolve:
@@ -116,10 +120,10 @@ label tutorial_room:
             hide tutorial_painting with dissolve
 
     elif inspect == "pellets":
-        "(Rat pellets! {w}Now on the floor.)"
+        "(Rat pellets!{w} Now on the floor.)"
         pause 0.5
-        "(...To be honest, you're still pretty hungry.)"
-        "(It wouldn't hurt to eat a little more, right? {w}You could see yourself getting used to the crunchy texture.)"
+        "(...To be honest,{w=0.1} you're still pretty hungry.)"
+        "(It wouldn't hurt to eat a little more, right?{w} You could see yourself getting used to the crunchy texture.)"
         menu:
             "(Sure!)":
                 "(You scoop up another fistful of pellets and eat them without a second thought.)"
@@ -127,7 +131,7 @@ label tutorial_room:
                 pause 1
                 "(...Why did you do that?)"
                 "(Those pellets still don't taste great.)"
-                "(In fact, the more you chew on them, the bitterer they-{nw})"
+                "(In fact,{w=0.1} the more you chew on them,{w=0.1} the bitterer they-){p=0.3}{nw}"
                 scene bg tutorial2 with small_shake:
                     parallel:
                         zoom 0.5 xalign 0.5 yalign 0.5
@@ -137,10 +141,11 @@ label tutorial_room:
                     parallel:
                         yalign 1.0 xalign 0.5 zoom 0.75
                 "{sc}({i}-HURK!{/i}){/sc}"
-                "{si}(...Aw, crap.){/si}"
+                "{si}(...Aw,{w=0.1} crap.){/si}"
                 "{si}(Of {i}course{/i} there was something in the food.){/si}"
-                "{si}(Whatever it was... {w=0.5}it's making everything throb like crazy.{/si} {si}{w}{p}Your chest, {w=0.5}your head, {w=0.5}your eyes...){/si}"
-                "{si}(But your throat's clammed up. {w}You can't scream, or cry, or moan. {w}{p}And breathing's getting harder and harder...){/si}"
+                "{si}(Whatever it was...{w=0.5} it's making everything throb like crazy.{/si} {si}{w}{p}Your chest,{w=0.5} your head,{w=0.5} your eyes...){/si}"
+                "{si}(But your throat's clammed up.{w} You can't scream,{w=0.1} or cry,{w=0.1} or moan.){/si}"
+                "{si}(And breathing's getting harder and harder...){/si}"
                 "{si}(And soon...{/si}"
                 scene black with eyeclose
                 pause 1
@@ -157,37 +162,38 @@ label tutorial_room:
                 nvl clear
                 return
             "(Nah.)":
-                "(Nah, you're good.)"
-                "(Actually, you get drowsy when you eat too much.)"
-                "(You hate to admit it, but in the situation you're in, it's probably better to be alert and hungry.)"
+                "(Nah,{w=0.1} you're good.)"
+                "(Actually,{w=0.1} you get drowsy when you eat too much.)"
+                "(You hate to admit it,{w=0.1} but in the situation you're in,{w=0.1} it's probably better to be alert and hungry.)"
 
     elif inspect == "desk":
-        "(It's a desk. {w}For desk things.)"
+        "(It's a desk.{w} For desk things.)"
         "(What an evocative desk-ription!)"
 
     elif inspect == "bed":
         "(It's a bed!)"
         "(You're surprised you slept at all on something that lumpy.)"
-        "(...Yeah, right. {w}Back at home, you worshipped your crappy mattress.)"
+        "(...Yeah, right.{w} Back at home,{w=0.1} you {i}worshipped{/i} your crappy mattress.)"
 
     elif inspect == "tap":
-        "(Your throat's dry and sore, but you can't find a cup anywhere.)"
+        "(Your throat's dry and sore,{w=0.1} but you can't find a cup anywhere.)"
         "(Does he expect you to drink out of the faucet?)"
+        pause 1
         #[sound of dry squeaking]
-        "(...Great. {w}It doesn't even work.)"
-        "(So much for quenching your thirst. {w}Asshole.)"
+        "(...Great.{w} It doesn't even work.)"
+        "(So much for quenching your thirst.{w} Asshole.)"
 
     elif inspect == "handle":
         if tutorial["vent"] == 0:
             "(A door handle.)"
             show screen tutorial_lock with dissolve
-            "(But what's with the lock? {w}You've never seen anything like it.)"
+            "(But what's with the lock?{w} You've never seen anything like it.)"
         elif tutorial["vent"] == 2:
             $ tutorial["vent"] = 3
             show screen tutorial_lock with dissolve
-            "(Oh, {i}this{/i} is your ticket out of here.)"
+            "(Oh,{w=0.1} {i}this{/i} is your ticket out of here.)"
             "(The wheel's just like the wheels on the vent cover!)"
-            "(With a little time and effort... {w}you think you can crack it.)"
+            "(With a little time and effort...{w} you think you can crack it.)"
             $ inspect = None
             call screen tutorial_lock
         elif tutorial["vent"] == 3:
@@ -196,7 +202,7 @@ label tutorial_room:
         else:
             "(A door handle.)"
             show screen tutorial_lock with dissolve
-            "(For some reason, you want to look around the room again...)"
+            "(For some reason,{w=0.1} you want to look around the room again...)"
         hide screen tutorial_lock with dissolve
 
     $ inspect = None
