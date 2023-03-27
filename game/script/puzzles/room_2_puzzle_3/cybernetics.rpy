@@ -208,11 +208,105 @@ init -1 python:
             elif ev.type == pygame_sdl2.MOUSEBUTTONUP and ev.button is 1:
                 self.stop_trace()
 
+        def check_broken(self):
+            broken = False
+            for y in range(self.h):
+                for x in range(self.w):
+                    if sum(self.data[y][x]) in [1, 3] or \
+                           not all([self.verify_continuity(x, y, x+1, y),
+                                    self.verify_continuity(x, y, x-1, y),
+                                    self.verify_continuity(x, y, x, y+1),
+                                    self.verify_continuity(x, y, x, y-1)]):
+                                        broken = True
+                                        break
+                if broken: break
+            return broken
+
+        def verify(self):
+            invalid = False
+            # We know from shenanigans that this tile will always go right.
+            start = (0, 0)
+            for y in range(self.h):
+                for x in range(self.w):
+                    if cybernetic_mask[y][x] and sum(self.data[y][x]) in [0, 3]:
+                        invalid = True
+                        break
+                if invalid: break
+            if invalid:
+                renpy.jump("failed_room_2_puzzle_3")
+            checked = [start]
+            next = (1, 0)
+            while next:
+                pos = self.check_trace(checked, next)
+                checked.append(next)
+                next = pos
+
+            if len(set(checked)) == 74:
+                renpy.jump("solved_room_2_puzzle_3")
+            else:
+                loops = [checked]
+                renpy.jump("failed_room_2_puzzle_3")
+
+        def check_trace(self, checked, pos):
+            x, y = pos
+            ox, oy = checked[-1]
+
+            dx = x - ox
+            dy = y - oy
+
+            next = None
+            if dx:
+                if dx == 1 and self.data[y][x][2] and self.data[oy][ox][0]:
+                    if self.data[y][x][0]:
+                        next = (1, 0)
+                elif dx == -1 and self.data[y][x][0] and self.data[oy][ox][2]:
+                    if self.data[y][x][2]:
+                        next = (-1, 0)
+                if not next:
+                    if self.data[y][x][1]: next = (0, 1)
+                    else: next = (0, -1)
+            elif dy:
+                if dy == 1 and self.data[y][x][3] and self.data[oy][ox][1]:
+                    if self.data[y][x][1]:
+                        next = (0, 1)
+                elif dy == -1 and self.data[y][x][1] and self.data[oy][ox][3]:
+                    if self.data[y][x][3]:
+                        next = (0, -1)
+                if not next:
+                    if self.data[y][x][0]: next = (1, 0)
+                    else: next = (-1, 0)
+
+            next = (x+next[0], y+next[1])
+            return False if next == checked[0] else next
+
+        def verify_continuity(self, x1, y1, x2, y2):
+            if not 0 < x1 < self.w or \
+               not 0 < x2 < self.w or \
+               not 0 < y1 < self.h or \
+               not 0 < y2 < self.h or \
+               not cybernetic_mask[y1][x1] or \
+               not cybernetic_mask[y2][x2]:
+                   return True
+
+            dx = x1 - x2
+            dy = y1 - y2
+            d1 = self.data[y1][x1]
+            d2 = self.data[y2][x2]
+
+            if dx == 1:
+                return (d1[2] and d2[0]) or (not d1[2] and not d2[0])
+            elif dy == -1:
+                return (d1[1] and d2[3]) or (not d1[1] and not d2[3])
+            elif dx == -1:
+                return (d1[0] and d2[2]) or (not d1[0] and not d2[2])
+            elif dy == 1:
+                return (d1[3] and d2[1]) or (not d1[3] and not d2[1])
+
 label init_cybernetics:
     $ cyb = Cybernetic()
     return
 
-screen cybernetics(cyb, interactables=True):
+screen cybernetics(cyb, interactable=True):
     if interactable:
         add cyb
     grid 12 10:
@@ -241,18 +335,23 @@ screen cybernetics(cyb, interactables=True):
     frame:
         xysize (650, 800)
         align (0.85, 0.35)
+        style_prefix "cybernetics"
         has vbox
         xsize 550
         xalign 0.5
         label "Instructions" xalign 0.5
         text "- Lay down new synthetic nerual pathways, but be mindful of the original peices that cannot be moved!"
         text "- Neural pathways must form one continuous loop and occupy every available space."
-        text "- Pathways can cross over themselves, but cannot retreace themselves. At any 4 way intersection, a neuron will always go straight."
-
+        text "- Pathways can cross over themselves, but cannot retreace themselves, so no T intersections!"
+        text "- At any 4 way intersection, a neuron will always go straight though and never turn at an intersection."
+        text "- You can only submit possible solutions where there are no open ended pathways (including T intersections)."
         frame:
             xalign 0.5
             ypos 50
-            textbutton "Submit" action NullAction()
+            textbutton "Submit" action If(cyb.check_broken(), false=Function(cyb.verify))
+
+style cybernetics_text:
+    size 30
 
 image cursor:
     "reticle"
