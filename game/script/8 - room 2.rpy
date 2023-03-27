@@ -127,7 +127,7 @@ label room_2:
         if "recalibration" in room2["solved"]:
             "(You already solved the recalibration puzzle.)"
         else:
-            call init_cybernetics
+            call init_cybernetics from _call_init_cybernetics
             if room2["recalibration"] == 0:
                 "<TODO: Insert intro script and rules.>"
                 pass
@@ -146,8 +146,10 @@ label room_2:
         else:
             #repeated investigation
             pass
+        show screen room2_word with easeintop
         $ room2["word"] += 1
         $ inspect = None
+        call screen room2_word 
 
     $ inspect = None
     call screen room2
