@@ -18,10 +18,10 @@ label post_room_2:
   show cautionne_frame_glow at bg
   with vpunch
   hide screen nodismiss
-  c "{i}Snooping as usual, {/i}I see?"
+  c "{i}Snooping as usual,{w=0.1} {/i}I see?"
   "(...You spoke too soon.)"
   show cautionne lean eyeclosed
-  c "Yeah, you're right in your element,{w=0.1} huh? "
+  c "Yeah,{w=0.1} you're right in your element,{w=0.1} huh? "
   show cautionne lean speaking
   c "Not that {i}you'd{/i} know it,{p=0.2}{nw}"
   show cautionne lean eyeclosed
@@ -35,18 +35,18 @@ label post_room_2:
   c "You must be {i}salivating {/i}at the mountain of evidence beneath your fingertips. "
   c "Weapons,{w=0.1} corkboards,{w=0.1} secret evil notes..."
   show cautionne hairtwirl
-  c "All the classics are here,{p=0.2}{nw}"
+  c "All the classics are here,{p=0.3}{nw}"
   c "and {i}we both know{/i} you know you want to rub your grubby paws all over them."
   show cautionne think
-  c "Even if you copied half of one blueprint onto a bar napkin{p=0.2}{nw}"
-  c "and threw it through the washing machine,{p=0.2}{nw}"
+  c "Even if you copied half of one blueprint onto a bar napkin{p=0.3}{nw}"
+  c "and threw it through the washing machine,{p=0.3}{nw}"
   c "you'd {i}still{/i} have enough evidence to net you a promotion from HQ."
   show cautionne lean speaking
   c "So, go ahead!{w=0.5} Take as much as you like!"
   show cautionne lean eyeclosed
   c "I won't touch a hair on your head."
   show cautionne hairtwirl
-  c "After all,{w=0.1} The Great Cautionne,{w=0.05} Emperor of MalViolence,{p=0.1}{nw}"
+  c "After all,{w=0.1} The Great Cautionne,{w=0.05} Emperor of MalViolence,{p=0.2}{nw}"
   c "knows that you only care about the truth."
   show cautionne lean eyeclosed
   c "He shall let you indulge."
@@ -56,7 +56,7 @@ label post_room_2:
   c "..."
   show cautionne lean frown
   c "Hey lab rat.{w=0.5} Can I ask you something?"
-  c "You {i}are {/i}just getting evidence, right?"
+  c "You {i}are {/i}just getting evidence,{w=0.1} right?"
   if len(room2["investigated"]) == 5:
     "(...Does he not approve of your investigation style?)"
     "(You're being thorough,{w=0.1} just to be cautio-){p=0.1}{nw}"
@@ -64,10 +64,10 @@ label post_room_2:
     "({i}...You're just being thorough.{/i})"
   elif len(room2["investigated"]) == 0:
     "(You're sticking to the mission objective,{w=0.1} just as you're trained to do.)"
-    "(He's calling the shots right now -{w=0.1}  but if you stay focused,{w=0.1}  he'll run out of rooms.)"
-    "(Then,{w=0.1}  you'll have the chance to close this case for good.)"
+    "(He's calling the shots right now -{w=0.1}  but if you stay focused,{w=0.1} he'll run out of rooms.)"
+    "(Then,{w=0.1} you'll have the chance to close this case for good.)"
   else:
-    "(First,  he holds you prisoner.{w} Now, he complains about how much you look around?)"
+    "(First, he holds you prisoner.{w} Now, he complains about how much you look around?)"
     "(Well, {i}screw him.{/i}{w} You'll snoop as much or as little as you please.)"
   show cautionne serious
   c "I've watched you with my drones..."

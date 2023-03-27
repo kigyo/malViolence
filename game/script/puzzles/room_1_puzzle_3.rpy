@@ -1,10 +1,10 @@
-define decanting_description = _("""Cautionne has presented you with three unmarked vials of irregular shape, and notes they hold 18, 10, and 7cc of liquid respectively. 
+define decanting_description = _("""Cautionne needs your help poisoning a top STOP official, but his toxin of choice is pretty particular!
 
-    He needs your help poisoning a top STOP official, but the poison he is using is very particular and must be administered in two separate doses of 9cc each. The 18cc vial is filled with the poison that will be used. Using only the vials present, Cautionne is asking you to measure the poison into two equal doses.
+Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  - {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial contains the poison itself.{/color}
 
-    Be careful though! The poison is quite volatile, and if disturbed too much may give off vapors which will not be good for your health in any way shape or form.
+But be careful! {color=#fff}If the poison's disturbed too much, it'll give off nasty vapors...{/color}
     
-    Drag the vials in order to pour their contents into each other.""")
+Drag the vials in order to pour their contents into each other.""")
 
 init python:
     def decanting_dropped(drop, drags):

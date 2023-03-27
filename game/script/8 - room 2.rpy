@@ -35,8 +35,8 @@ label room_2:
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
             "(That said,{w=0.1} poor penmanship hasn't dulled the designs themselves.{w} The {i}least{/i} dangerous of these would be devastating out in the field.)"
-            "(The oldest of the blueprints -{w=0.5} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person authored them.)"
-            "(In fact, if you squint...{w=0.5} you can still find the signatures at the bottom.)"
+            "(The oldest of the blueprints -{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person authored them.)"
+            "(In fact,{w=0.1} if you squint...{w=0.5} you can still find the signatures at the bottom.)"
             "(\"Destrange,\"{w=0.1} they say.{w} They're dated more than 15 years ago.)"
         else:
             "(Blueprints for a variety of dangerous weapons. {w}Honestly,{w=0.1} they're pretty scary.)"
@@ -45,7 +45,7 @@ label room_2:
 
     elif inspect == "post-its":
         if room2["post-its"] == 0:
-            "(You eye over the mass of scrawled notes pinned in front of you.{w} There're two distinct handwritings here, but the contents are mostly the same{w=0.5} - and mostly {i}domestic{/i}.) "
+            "(You eye over the mass of scrawled notes pinned in front of you.{w} There're two distinct handwritings here,{w=0.1} but the contents are mostly the same{w=0.5} - and mostly {i}domestic{/i}.) "
             "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and...{w=0.5} what {i}stories{/i} to read?)"
             "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and {i}chores?{/i})"
             "(Whoever left these notes for each other weren't just sharing the same space.\n{w}They were {i}living{/i} together.)"
@@ -86,7 +86,7 @@ label room_2:
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
             "(Based on what you can make out of the caption - {w=0.1}it seems to be of some kind of commemorative occasion.)" 
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
-            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as-{p=0.5}{nw})"
+            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as-{p=0.3}{nw})"
             pause 1
             #"{b}[pause as the clippings disappear]{/b}"
             "(...Never mind.{w} It's just similar,{w=0.1} that's all.)"
@@ -97,7 +97,7 @@ label room_2:
 
     elif inspect == "panopticon":
         if room2["panopticon"] == "solved":
-            "(Solved the panopticon puzzle.)"
+            "(You've already solved the panopticon puzzle.)"
         else:
             if room2["panopticon"] == 0:
                 #panopticon introduction
@@ -158,9 +158,9 @@ label panopticon_game_over:
     hide screen room2_panopticon with fade
     cr "Seems like you've run out of time,{w=0.1} lab rat."
     cr "That's it.{w=0.5} The jailbreak is broken.{w=0.5} You screwed up."
-    "(So it {i}was {/i}a prison? Then-)"
+    "(So it {i}was {/i}a prison?{w} Then-)"
     cr "If it was just between you and me,{w=0.1} I'd be \"whatever\" about it."
-    cr "We all make mistakes, y'know?{w=0.5} So, I'm super forgiving and cool and mature about this kind of thing."
+    cr "We all make mistakes,{w=0.1} y'know?{w=0.5} So,{w=0.1} I'm super forgiving and cool and mature about this kind of thing."
     cr "...But you just lost those kids a chance to get out before the {i}operations{/i} start."
     "(...Sorry,{w=0.1} {i}operations?{/i})"
     cr "They could've gotten out clean.{w=0.5} Now I'll have to step in and bust them out \n{i}dirty{/i}."
