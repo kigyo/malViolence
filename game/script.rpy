@@ -99,4 +99,4 @@ image ctc:
     #    repeat
 
 style puzzle_description_text:
-    size 28 justify True color gui.accent_color
+    size 28 justify True color gui.accent_color 

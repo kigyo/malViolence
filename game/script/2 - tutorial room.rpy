@@ -3,19 +3,24 @@ default tutorial = {"vent":0, "investigated":[], "lock": [0,0,0,0,0,0,0,0]}
 screen tutorial_room():
     sensitive not inspect
     layer "master"
+    tag room
+
     fixed at zoomed:
-        imagebutton idle Null(1410, 395) action [SetVariable("inspect", "bed"), Jump("tutorial_room")] pos (560, 1760)
-        imagebutton idle Null(700, 280) action [SetVariable("inspect", "desk"), Jump("tutorial_room")] pos (2315, 1370)
-        imagebutton idle Null(380, 800) action [SetVariable("inspect", "handle"), Jump("tutorial_room")] pos (1750, 680)
-        imagebutton idle Null(880, 610) action [SetVariable("inspect", "tap"), Jump("tutorial_room")] pos (2960, 1550)
+        imagebutton idle Null(1410, 395) action [SetVariable("inspect", "bed"), Jump("tutorial_room")] pos (560, 1760) mouse "inspect"
+        imagebutton idle Null(700, 280) action [SetVariable("inspect", "desk"), Jump("tutorial_room")] pos (2315, 1370) mouse "inspect"
+        imagebutton idle Null(380, 800) action [SetVariable("inspect", "handle"), Jump("tutorial_room")] pos (1750, 680) mouse "inspect":
+            if tutorial["vent"] == 2:
+                mouse "puzzle"
+        imagebutton idle Null(880, 610) action [SetVariable("inspect", "tap"), Jump("tutorial_room")] pos (2960, 1550) mouse "inspect"
+
         if tutorial["vent"] == 0:
             add "bg tutorial1"
-            imagebutton idle Null(340, 560) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (840, 715)
+            imagebutton idle Null(340, 560) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (840, 715) mouse "inspect"
         else:
             add "bg tutorial2"
-            imagebutton idle Null(270, 450) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (880, 780)
-            imagebutton idle Null(730, 225) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1075, 1715)
-            imagebutton idle "tutorial_food" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1580, 1480) at zoomed(0.3)
+            imagebutton idle Null(270, 450) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (880, 780) mouse "inspect"
+            imagebutton idle Null(730, 225) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1075, 1715) mouse "inspect"
+            imagebutton idle "tutorial_food" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1580, 1480) mouse "inspect" at zoomed(0.3)
 
     if config.developer:
         frame:
@@ -41,6 +46,8 @@ screen tutorial_lock():
     sensitive not inspect
     modal True
     layer "master"
+    tag puzzle
+
     if config.developer:
         hbox yalign 0.1 xalign 0.5:
             for i in range(8):
@@ -190,7 +197,7 @@ label tutorial_room:
             "(A door handle.)"
             show screen tutorial_lock with dissolve
             "(For some reason, you want to look around the room again...)"
-        hide tutorial_lock with dissolve
+        hide screen tutorial_lock with dissolve
 
     $ inspect = None
     call screen tutorial_room

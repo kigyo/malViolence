@@ -11,6 +11,8 @@ init offset = -2
 init python:
     gui.init(1920, 1080)
 
+define config.mouse = { "default": [("gui/cursor.png",0,0)] , "inspect": [("gui/cursor_inspect.png",18,18)], "puzzle": [("gui/cursor_puzzle.png",25,20)]}
+
 
 ################################################################################
 ## GUI Configuration Variables

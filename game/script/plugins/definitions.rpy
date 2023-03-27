@@ -20,12 +20,16 @@ init -1:
     image bg cautionne = "images/BG/cautionne_screen_bg.png"
     image bg danger = "images/BG/drdanger_screenbg.png"
     image bg garage = "images/BG/Garage.png"
+
 transform bg(z=0.5):
     zoom z xalign 0.5 yalign 0.5
+
 transform zoomed(z=0.5):
     zoom z
+
 transform rotated(z=90):
     rotate z
+
 ## Music:
 # init -2 python:
     # Careless-Summer_Looping = "audio/music/Careless-Summer_Looping.mp3"

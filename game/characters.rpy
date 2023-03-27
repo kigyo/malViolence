@@ -11,7 +11,7 @@ screen debugging():
             text testvar xalign 0.5
             #text str(speaking)
 
-default testvar = "0"
+default testvar = ""
 
 init python:
     config.overlay_screens.append("debugging")

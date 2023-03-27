@@ -37,7 +37,14 @@ init python:
         global quilt_input
         if idx not in quilt_presets:
             quilt_input[idx] = [quilt_color, quilt_shape, quilt_fill]
+        renpy.retain_after_load()
     
+    def quilt_erase(idx):
+        global quilt_input
+        if idx not in quilt_presets:
+            del quilt_input[idx]
+        renpy.retain_after_load()
+
     def quilt_submit():
         if not quilt_valid() and not (achievement_dead11 in persistent.my_achievements and not preferences.hard_mode):
             renpy.jump("quilt_game_over")
@@ -56,6 +63,8 @@ default quilt_color = 0
 default quilt_shape = 0
 default quilt_fill = 0
 
+default quilt_eraser = False
+
 default quilt_moves = 0
 
 define quilt_colors = ["blue", "red", "yellow"]
@@ -65,7 +74,9 @@ define quilt_fills = ["empty", "full", "striped"]
 screen room3_quilt():
     sensitive not inspect
     modal True
+    tag puzzle
     layer "master"
+
     frame padding 50,40 xfill True yfill True:
         fixed xsize 775 xalign 1.0:
             fixed ysize 880:
@@ -96,8 +107,11 @@ screen room3_quilt():
                                     textbutton ">" action If(quilt_fill==2, SetVariable("quilt_fill",0), SetVariable("quilt_fill", quilt_fill+1)) style "puzzle_nav_button"
                 
             hbox xfill True yalign 1.0 ysize 100:
-                frame xalign 0. yalign 0.5:
-                    textbutton "RESET" style "main_menu_button" action Function(quilt_reset) at zoomed(0.75)
+                vbox xalign 0. yalign 0.5 spacing 5:
+                    frame at zoomed(0.5):
+                        textbutton "ERASER" style "main_menu_button" action ToggleVariable("quilt_eraser") text_selected_idle_color gui.accent_color
+                    frame at zoomed(0.5):
+                        textbutton "RESET" style "main_menu_button" action Function(quilt_reset)
                 frame xalign 0.5 yalign 0.5:
                     textbutton "SUBMIT" style "main_menu_button" action Function(quilt_submit)
                 frame xalign 1.0 yalign 0.5:
@@ -122,13 +136,17 @@ screen room3_quilt():
                             else:
                                 add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.7,0.4) at zoomed(0.4)
                         elif i in quilt_input:
-                            imagebutton idle Null(100,57) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i)
+                            imagebutton idle Null(100,57) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
+                                if quilt_eraser == True:
+                                    action Function(quilt_erase, i)
                             if not row%2 and i%2 or row%2 and not i%2:
                                 add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.25,0.4) at zoomed(0.4)
                             else:
                                 add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.7,0.4) at zoomed(0.4)
                         else:
-                            imagebutton idle Null(100,57) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i)
+                            imagebutton idle Null(100,57) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
+                                if quilt_eraser == True:
+                                    action NullAction()
                             #imagebutton idle "puzzles/room_3_puzzle_1/tile.png" action [Function(quilt_set, i), SetScreenVariable("testy", str(i))]
                         #if config.developer:
                         #    text "(" + str(col) + "," + str(row) + ")" outlines [(1, "#000000", 0, 0)] size 24

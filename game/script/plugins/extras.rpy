@@ -158,6 +158,8 @@ init python:
 
 screen extras_navigation():
 
+    key "game_menu" action ShowMenu("about")
+
     vbox:
         style_prefix "navigation"
 
