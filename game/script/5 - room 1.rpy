@@ -98,9 +98,12 @@ label room_1:
             else:
                 #repeated investigation
                 pass
+            show screen room1_decanting with easeintop
             $ room1["decanting"] += 1
             $ inspect = None
-            call screen room1_decanting with easeintop
+            call screen room1_decanting
+            if room1["decanting"] == "solved":
+                jump decanting_solved
 
     elif inspect == "bomb":
         if room1["bomb"] == 0:

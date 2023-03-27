@@ -52,7 +52,8 @@ init python:
             #TODO: error sound
             narrator("(...Looks like this is not a valid solution.)")
         else:
-            renpy.jump("quilt_solved")
+            store.room3["quilt"] = "solved"
+            return True
 
 
 define quilt_presets = {0:[1,2,2], 2:[2,1,1], 4:[1,2,0], 7:[1,1,1], 11:[1,1,1], 12:[2,1,2], 15:[0,0,0], 16:[2,2,1], 20:[1,0,1], 23:[0,2,1], 24:[2,0,2], 34:[2,1,1], 
@@ -154,7 +155,7 @@ screen room3_quilt():
     if config.developer:
         vbox:
             frame:
-                textbutton _("Skip Puzzle") action [Jump("quilt_solved")] style "main_menu_button"
+                textbutton _("Skip Puzzle") action [SetDict(room3, "quilt", "solved"), Return()] style "main_menu_button"
             frame:
                 textbutton _("Game Over") action [Jump("quilt_game_over")] style "main_menu_button"
 
