@@ -436,7 +436,6 @@ screen board(b, pos=(100, 100)):
 
 
 screen board_piece(b, x, y):
-    $ glog(colors[b.pieces[y][x].type])
     $ transforms = [colorify(colors[b.pieces[y][x].type])]
     if isinstance(b, PuzzleBoard):
         if b.show_next and b.solution and (b.solution[0][0] == x and b.solution[0][1] == y):
@@ -644,7 +643,7 @@ default pb = None
 default tb = None
 
 label init_puzzle_board():
-    $ pb = PuzzleBoard(width=6, height=10, move_cap=20)
+    $ pb = PuzzleBoard(width=6, height=10, move_cap=12)
     $ adt = 0.5
     return
 

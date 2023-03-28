@@ -17,6 +17,10 @@ init python:
             self.player = (-1, -1)
 
         def populate_board(self):
+            seed = random.randint(0, 8000)
+            seed = 7637
+            # glog("Seed: %s" % seed)
+            random.seed(seed)
             # NOTE: For normal reticle only.
             moves = 0
             heights = []
@@ -29,7 +33,9 @@ init python:
                 pos = random.choice(possible_positions)
                 local_heights = heights[pos-1:pos+2]
                 if max(local_heights) < self.height:
-                    match = random_match(self.piece_limit, puzzle_pieces)
+                    # match = random_match(self.piece_limit, puzzle_pieces)
+                    # match = random.choices(["0, 1, carat, uwu"], cum_weights=[35, 35, 15, 15], k=3)
+                    match = random.choices(["0", "1", "carat", "uwu"], weights=[8, 8, 1, 1], k=3)
                     pieces = [Piece(m) for m in match]
                     y = self.height-1-random.randint(0, min(local_heights))
                     for ny in range(0, y+1):
@@ -42,6 +48,7 @@ init python:
                     moves += 1
                     self.solution.insert(0, (pos, y))
                     if self.shuffle_matches:
+
                         match = list(match)
                         random.shuffle(list(match))
                         match = tuple(match)
@@ -92,18 +99,18 @@ init python:
 screen puzzle_playspace(b, interactable=True):
     add "#000"
     if b.just_cleared:
-        use animated_board(b, (730, 150))
+        use animated_board(b, (735, 150))
     else:
-        use board(b, (730, 150))
+        use board(b, (735, 150))
     use puzzle_matches(b)
     if interactable:
-        use buttons(b, (730, 150))
-    use reticle(b, (730, 150))
+        use buttons(b, (735, 150))
+    use reticle(b, (735, 150))
     use menu
     if b.just_cleared:
         timer adt action Function(b.clear_anim)
 
-    use colorized_frame(padding=(10, 10), xysize=(600, 800), pos=(1250, 100), background="#000", accent="#fff"):
+    use colorized_frame(padding=(10, 10), xysize=(600, 800), pos=(1258, 100), background="#000", accent="#fff"):
         has vbox
         xalign 0.5
         label "Instructions" text_color "#fff" xalign 0.5
@@ -127,7 +134,7 @@ screen puzzle_matches(b):
         use colorized_frame(accent="#fff", background="#000"):
             has vbox
             label "Codes" text_color "#fff" xalign 0.5
-            null height 20
+            null height 24
             hbox:
                 spacing 50
                 vbox:
