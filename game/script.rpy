@@ -100,3 +100,21 @@ image ctc:
 
 style puzzle_description_text:
     size 28 justify True color gui.accent_color 
+
+
+################### for defining mini cgs in the game ################
+image tutorial_pellets = "images/tutorial_pellets.png"
+image room1_electricchair = "images/room1_electricchair.png"
+image room1_megaphones = "images/room1_megaphones.png"
+image room1_oil = "images/room1_oil.png"
+image room2_blueprintcollection = "images/room2_blueprintcollection.png"
+image room2_evidenceboard = "images/room2_evidenceboard.png"
+image room2_limbsdesigns = "images/room2_limbsdesigns.png"
+image room2_news = "images/room2_news.png"
+image room2_postitnotes = "images/room2_postitnotes.png"
+image room3_lockedbox = "images/room3_lockedbox.png"
+image room3_notebook = "images/room3_notebook.png"
+image room3_report = "images/room3_report.png"
+image room3_scrapbookcg = "images/room3_notebook.png"
+image room3_sewingsetup = "images/room3_sewingsetup.png"
+image room3_wig = "images/room3_wig.png"
