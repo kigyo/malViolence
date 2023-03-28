@@ -152,17 +152,17 @@ label neutral_ending:
             align(0.0,0.0)
         cr "No hard feelings.{w=0.5} I know you were just doing your job."
         cr "But see,{w=0.1} there's a little {i}conflict of interest{/i} between you and me."
-        scene cautionne shoot angryx2:
+        scene cautionne shoot angry:
             align(0.0,0.0)
         cr "Besides,{w=0.1} I've got to finish what Dr. Danger started.{w=0.5} That's {i}my {/i}{i}job{/i},{w=0.1} now that she's gone."
         #"{b}[the trigger clicks]{/b}"
-        scene cautionne shoot angrysilentx2:
+        scene cautionne shoot angrysilent:
             align(0.0,0.0)
         pause 0.1
-        scene cautionne shoot angrysilentx2 with dissolve:
+        scene cautionne shoot angrysilent with dissolve:
             zoom 2 align(0.0,0.07)
         pause 0.1
-        scene cautionne shoot angryx2:
+        scene cautionne shoot angry:
             zoom 2 align(0.0,0.07)
         cr "And by the time I'm finished,{w=0.1} they'll be {i}begging{/i} for her to come back."
         #"{b}[the gun fires]{/b}"
@@ -198,10 +198,10 @@ label neutral_ending:
         cr "You read Dr. Danger's diary,{w=0.1} right?{w=0.5} You {i}know{/i} what STOP did to me."
         cr "Getting up from my bed took weeks.{w=0.5} Walking with my new legs took months.{w=0.5} I still twitch and faint 'cause of the shit they put in my brain."
         cr "You'll never know what that's like.{w=0.5} Being a {i}real {/i}lab rat."
-        scene cautionne shoot angrysilentx2 with dissolve:
+        scene cautionne shoot angrysilent with dissolve:
             align(0.0,0.0)
         pause 1
-        scene cautionne shoot angryx2:
+        scene cautionne shoot angry:
             align(0.0,0.0)
         cr "I {i}won't{/i} let anyone else live through what I did."
         cr "You weren't there.{w=0.5} You weren't in charge. "
