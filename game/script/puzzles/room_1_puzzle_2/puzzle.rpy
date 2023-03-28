@@ -120,6 +120,7 @@ screen puzzle_playspace(b, interactable=True):
         text "    Using the given list of codes, break into the system, but be careful! Codes are only half the hack. They need to be used at the correct time and place otherwise you may end up locking yourself out of the system."
         text "    Use the mouse or keybaord to clear out codes as you see them in the system, but be aware of how clearing out codes rearranges the system and changes what codes will be available for you afterwards."
         text "    ALL the codes must be used to fully clear the fire wall and sucessfully break into the system."
+        text "    Codes are unodered, so long as the three individual components are the same, the codes count as the same."
 
 
 screen p_match(m):
