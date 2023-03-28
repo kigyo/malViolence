@@ -84,18 +84,18 @@ init python:
         ##      'platinum' = The final achievement to be granted once all other achievements have been granted.
 
         "start": [_("Rude Awakening"), _(""), "gui/trophy_icon.png", None],
-        "tfng": [_("TFNG"), _(""), "gui/trophy_icon.png", None],
-        "room1": [_("Lab Partner"), _(""), "gui/trophy_icon.png", None],
-        "room2": [_("Private Study"), _(""), "gui/trophy_icon.png", None],
-        "room3": [_("Housewarming"), _(""), "gui/trophy_icon.png", None],
+        "tfng": [_("TFNG"), _("Escape your holding cell."), "gui/trophy_icon.png", None],
+        "room1": [_("Lab Partner"), _("Escape the first puzzle room."), "gui/trophy_icon.png", None],
+        "room2": [_("Private Study"), _("Escape the second puzzle room."), "gui/trophy_icon.png", None],
+        "room3": [_("Housewarming"), _("Escape the third puzzle room."), "gui/trophy_icon.png", None],
         "deadfirst": [_("Trial and Error"), _("Get your first dead end."), "gui/trophy_icon.png", None],
         "deadall": [_("A for Effort"), _("Get all dead ends."), "gui/trophy_icon.png", None],
-        "wrong": [_("Face, Meet Brick Wall"), _(""), "gui/trophy_icon.png", None], #No idea what this one is
-        "end1": [_("Breakout Role"), _(""), "gui/trophy_icon.png", None],
-        "end2": [_("Mission Accomplished"), _(""), "gui/trophy_icon.png", None],
-        "end3": [_("Failure to Communicate"), _(""), "gui/trophy_icon.png", None],
-        "investigate": [_("Busybody"), _(""), "gui/trophy_icon.png", None],
-        "all": [_("Noble Laureate"), _(""), "gui/trophy_icon.png", 'platinum'],
+        #"wrong": [_("Face, Meet Brick Wall"), _(""), "gui/trophy_icon.png", None], #No idea what this one is
+        "end1": [_("Breakout Role"), _("Spare Cautionne."), "gui/trophy_icon.png", "hidden"],
+        "end2": [_("Mission Accomplished"), _("Get killed by Cautionne."), "gui/trophy_icon.png", "hidden"],
+        "end3": [_("Failure to Communicate"), _("Kill Cautionne."), "gui/trophy_icon.png", "hidden"],
+        "investigate": [_("Busybody"), _("Investigate all possible items."), "gui/trophy_icon.png", "hidden"],
+        "all": [_("Noble Laureate"), _("Earn all achievements."), "gui/trophy_icon.png", 'platinum'],
     }
 
     death_name = {
@@ -126,7 +126,7 @@ default achievement_room2 = Achievement(name=achievement_name['room2'][0], messa
 default achievement_room3 = Achievement(name=achievement_name['room3'][0], message=achievement_name['room3'][1], image=achievement_name['room3'][2])
 default achievement_deadfirst = Achievement(name=achievement_name['deadfirst'][0], message=achievement_name['deadfirst'][1], image=achievement_name['deadfirst'][2])
 default achievement_deadall = Achievement(name=achievement_name['deadall'][0], message=achievement_name['deadall'][1], image=achievement_name['deadall'][2])
-default achievement_wrong = Achievement(name=achievement_name['wrong'][0], message=achievement_name['wrong'][1], image=achievement_name['wrong'][2])
+#default achievement_wrong = Achievement(name=achievement_name['wrong'][0], message=achievement_name['wrong'][1], image=achievement_name['wrong'][2])
 default achievement_end1 = Achievement(name=achievement_name['end1'][0], message=achievement_name['end1'][1], image=achievement_name['end1'][2])
 default achievement_end2 = Achievement(name=achievement_name['end2'][0], message=achievement_name['end2'][1], image=achievement_name['end2'][2])
 default achievement_end3 = Achievement(name=achievement_name['end3'][0], message=achievement_name['end3'][1], image=achievement_name['end3'][2])

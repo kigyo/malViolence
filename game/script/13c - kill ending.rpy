@@ -36,13 +36,13 @@ label kill_ending:
 
     scene cautionne gun cu with dissolve
     cr "Don't need them.{w=0.5} Not if {i}I'm{/i} going to finish what Dr. Danger started."
-    "Using{i} that?{/i}{w} Kid,{w=0.1} you shouldn't be wielding-{p=0.1}{nw}"
+    "Using{i} that?{/i}{w} Kid,{w=0.1} you shouldn't be wielding-{p=0.5}{nw}"
     scene cautionne gun ecu with dissolve
     cr "Shut up and {i}let me improvise,{/i}{w=0.1} lab rat."
     cr "I didn't {i}actually {/i}think you'd make it this far."
     cr "But alas,{w=0.1} as it turns out...{w=0.5} your puzzle-solving skills are...{w=0.6} decent."
     cr "In another life,{w=0.1} you'd make {i}quite {/i}the sidekick."
-    "...Well,{w=0.1} maybe if you'd free me-{p=0.3}{nw}"
+    "...Well,{w=0.1} maybe if you'd free me-{p=0.5}{nw}"
     cr "No more hypotheticals."
     cr "You're {i}dangerous,{/i}{w=0.1} lab rat,{w=0.1} and I just can't let you go."
     scene cautionne gun ecu silent
@@ -118,6 +118,7 @@ label kill_ending:
     pause 5
 
     hide text
+    $Achievement.add(achievement_end3)
 
     pause 3
 

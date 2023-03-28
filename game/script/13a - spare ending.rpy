@@ -23,7 +23,7 @@ label spare_ending:
     "(Maybe you'll get a promotion.{w} A better salary.{w} Better benefits.{w} A better home.)"
     "(A better {i}life.{/i}{w} Something you've worked towards for {i}years.{/i})"
     "(...And...)"
-    "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole-{p=0.3}{nw})"
+    "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole-){p=0.5}{nw}"
     x "Finally going to take responsibility?"
     #"{b}[{/b}{b}Cautionne{/b}{b} appears with his gun]{/b}"
 
@@ -35,7 +35,7 @@ label spare_ending:
 
     scene cautionne gun far silent with fade
 
-    "(Not {i}now,{/i} kid!{w} The last thing you need is {i}him{/i} showing up and-{p=0.3}{nw})"
+    "(Not {i}now,{/i} kid!{w} The last thing you need is {i}him{/i} showing up and-){p=0.5}{nw}"
 
     scene cautionne gun cu with dissolve
     cr "I...{w=0.5} I see my escape rooms have worked their magic."
@@ -51,18 +51,18 @@ label spare_ending:
     cr "You...{w=0.5} Or your boss,{w=0.1} or the next agent..."
     cr "You'll storm in here and sweep away everything me and Dr. Danger fought for."
     cr "{si}S-someone better'll catch me and destroy this place.{/si}"
-    cr "{si}And STOP...{w=0.5} STOP'll turn me into a nameless drone,{w=0.1} like I was {i}supposed{/i} to be.{/si}"
+    cr "{si}And STOP...{w=0.5} STOP'll turn me into a nameless drone,{w=0.1} \nlike I was {i}supposed{/i} to be.{/si}"
     "(...He's shaking.{w} He's trying to put on a brave face,{w=0.1} but he's shaking.)"
     #"{b}[{/b}{b}cautionne{/b}{b} begins to break down]{/b}"
     cr "{si}B-but I don't {i}want {/i}that,{w=0.1} y'know?{/si}"
     cr "{si}I...{w=0.5} I don't {i}want {/i}to forget my home.{w=0.5} My books,{w=0.5} my bugs,{w=0.5} my bed...{/si}"
     cr "{si}And I don't {i}want {/i}to forget myself.{/si}"
-    cr "{si}I don't want to forget about collecting stickers,{w=0.5} or eating pudding,{w=0.5} or sewing\nmy first pair of mittens.{/si}"
+    cr "{si}I don't want to forget about collecting stickers,{w=0.5} or eating pudding,{w=0.5} \nor sewing my first pair of mittens.{/si}"
     #"{b}[{/b}{b}Cautionne{/b}{b} is yelling now]{/b}"
     cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}"
-    cr "{sc}She {i}saved {/i}me!{w=0.5} She {i}raised {/i}me!{w=0.5} She {i}stood up for me{/i} when no one else did!{/sc}"
+    cr "{sc}She {i}saved {/i}me!{w=0.5} She {i}raised {/i}me!{w=0.5} \nShe {i}stood up for me{/i} when no one else did!{/sc}"
     cr "{sc}And what did {i}STOP {/i}do?{/sc}"
-    cr "{sc}They MADE her a villain!{w=0.5} They took EVERYTHING away from her!{w=0.5} They KILLED\nher!{/sc}"
+    cr "{sc}They MADE her a villain!{w=0.5} They took EVERYTHING away from her!{w=0.5} \nThey KILLED her!{/sc}"
     scene cautionne gun ecu silent
     pause 1
     scene cautionne gun cu with dissolve
@@ -171,7 +171,7 @@ label spare_ending:
     scene bg garage with fade:
         zoom 1.4 align (0.5,0.55)
 
-    "(So, without another word,{w=0.1} you-{p=0.3}{nw})"
+    "(So, without another word,{w=0.1} you-){p=0.5}{nw}"
     cr "...Hey lab rat."
     "(You turn back,"
 
@@ -258,6 +258,7 @@ label spare_ending:
     hide text
 
     pause 3
+    $Achievement.add(achievement_end1)
 
     show text "{size=90}{color=#ffffff}spare end{/color}{/size}":
             xalign 0.5 yalign 0.5

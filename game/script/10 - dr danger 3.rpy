@@ -18,6 +18,7 @@ label dr_danger_3:
   show bg corridor3 with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
+  $Achievement.add(achievement_room2)
   pause 4
   show bg corridor3 with dissolve:
     zoom 0.5
@@ -34,7 +35,7 @@ label dr_danger_3:
   show bg corridor3:
     zoom 0.5 xalign 0.5 yalign 0.5
     ease 3 yalign 1.0 zoom 0.6
-  extend "{cps=20} then maybe the smart thing to do would be to-){p=0.1}{nw}"
+  extend "{cps=20} then maybe the smart thing to do would be to-){p=0.5}{nw}"
   dr "Very tempting for a wooden floor,{w=0.1} isn't it?"
   show bg corridor3:
     zoom 0.6 xalign 0.5 yalign 1.0
@@ -63,7 +64,7 @@ label dr_danger_3:
   show drdanger stare
   drs "While I'm away on business,{w=0.1} it's important that you keep him on his daily routine."
   drs "7am to 9pm –{w=0.5} regularity is key."
-  drs "Remember that all his dietary habits,{w=0.1} health regimens{w=0.1} and study exercises{p=0.1}{nw}"
+  drs "Remember that all his dietary habits,{w=0.1} health regimens{w=0.1} and study exercises{p=0.5}{nw}"
   drs "are detailed in the files that we went over together."
   show drdanger sidestare
   drs "I apologize if you'll have to decrypt them again,{w=0.1} but..."

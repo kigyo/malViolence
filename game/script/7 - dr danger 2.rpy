@@ -5,6 +5,7 @@ label dr_danger_2:
   show bg corridor2 with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
+  $Achievement.add(achievement_room1)
   #"{b}[pause as {/b}{b}Cautionne's{/b}{b} screen shuts off, and walking sounds are heard – showing the player move to the next corridor]{/b}"
   "(...)"
   "(This self-styled supervillain has got {i}world-class{/i} bad manners.{w} Where could he have picked up such a nasty personality,{w=0.1} anyway?)"
@@ -55,7 +56,7 @@ label dr_danger_2:
   pause 0.5
   show drdanger stare
   drs "No,{w=0.1} {i}that{/i} room belongs to my apprentice."
-  drs "Currently,{w=0.1} he is running an experiment -{p=0.2}{nw}"
+  drs "Currently,{w=0.1} he is running an experiment -{p=0.5}{nw}"
   show drdanger sidestare
   drs "even if he seems more interested in the process than the results."
   drs "Honestly,{w=0.1} I'm in no position to lecture him."

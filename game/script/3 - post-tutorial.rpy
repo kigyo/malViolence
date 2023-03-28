@@ -1,6 +1,5 @@
 label post_tutorial:
   #[If puzzle is solved, play a solving/unlocking sound]
-  $Achievement.add(achievement_tfng)
   scene black 
   show cautionne_frame_glow at bg
   with dissolve

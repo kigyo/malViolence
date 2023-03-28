@@ -105,7 +105,7 @@ label tutorial_room:
     elif inspect == "vent":
         if tutorial["vent"] < 2:
             $ tutorial["vent"] = 2
-            "(Again,{w=0.1} it's just your average vent-){p=0.3}{nw}"
+            "(Again,{w=0.1} it's just your average vent-){p=0.5}{nw}"
             "(-wait.{w} Something's on the back side of that cover.)"
             show tutorial_painting with dissolve:
                 yalign 0.2 xalign 0.5
@@ -131,7 +131,7 @@ label tutorial_room:
                 pause 1
                 "(...Why did you do that?)"
                 "(Those pellets still don't taste great.)"
-                "(In fact,{w=0.1} the more you chew on them,{w=0.1} the bitterer they-){p=0.3}{nw}"
+                "(In fact,{w=0.1} the more you chew on them,{w=0.1} the bitterer they-){p=0.5}{nw}"
                 scene bg tutorial2 with small_shake:
                     parallel:
                         zoom 0.5 xalign 0.5 yalign 0.5

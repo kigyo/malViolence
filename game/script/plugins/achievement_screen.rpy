@@ -207,7 +207,7 @@ init python:
         Achievement.add(achievement_deadfirst)
         Achievement.add(cheevo)
         if len(persistent.dead_ends) >= (len(death_name)):
-            Achievement.add(achievement_deadall)
+            Achievement.add_death(achievement_deadall)
 
 define config.periodic_callback = passive_function
 

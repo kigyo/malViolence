@@ -27,7 +27,7 @@ label neutral_ending:
     show bg garage with dissolve:
         zoom 0.5 align(0.5,0.5)
     "(...All that said,{w=0.1} you weren't expecting your escape to be so...{w=0.5} {i}straightforward.{/i})"
-    "(The exit's wide open.{w} If you walked through right now,{w=0.1} you'll-){p=0.3}{nw}"
+    "(The exit's wide open.{w} If you walked through right now,{w=0.1} you'll-){p=0.5}{nw}"
     #"{b}[quick footsteps sound out]{/b}"
     pause 1
     "(Aw,{w=0.1} crap.{w} You jinxed yourself.)"
@@ -52,7 +52,7 @@ label neutral_ending:
     "(No,{w=0.1} it's a fake,{w=0.1} isn't it?{w} Of course –{w=0.5} it's just a practical joke of his!)"
     pause 1
     "Um...{w=0.5} I'm glad you're having fun and all,{w=0.1} but I really should get going."
-    "See,{w=0.1} adults have these things called “jobs”,{w=0.1} and-{p=0.3}{nw}"
+    "See,{w=0.1} adults have these things called “jobs”,{w=0.1} and-{p=0.5}{nw}"
     scene black
     pause 2
     #"{b}[Pause – sound of {/b}{b}Cautionne{/b}{b} firing a bullet into your kneecap. Screen turns black for a pause. ]{/b}"
@@ -83,7 +83,7 @@ label neutral_ending:
     "{si}(All I can do...{w} is open my eyes...){/si}"
 
     scene cautionne shoot with eyeopen:
-        zoom 2 align(0.0,1.0)
+        align(0.0,1.0) subpixel True
         easein 45 align(0.0,0.0)
 
     pause 3
@@ -117,29 +117,6 @@ label neutral_ending:
             zoom 2 align(0.0,0.07)
         cr "But I wouldn't be much of a scientist if I didn't test my hypotheses."
 
-        scene black
-        pause 3
-
-        show text "{size=200}{color=#00e7ff}MALVIOLENCE{/color}{/size}":
-                xalign 0.5 yalign 0.5
-
-        pause 5
-
-        hide text
-
-        pause 3
-
-        show text "{size=90}{color=#ffffff}neutral end (a){/color}{/size}":
-                xalign 0.5 yalign 0.5
-
-        pause 5
-
-        hide text
-
-        pause 3
-
-        return
-
     elif most_explored == 2:
         cr "But as much as I sympathize...{w=0.5} I just can't let you go."
         cr "You got your muddy paws on some {i}confidential {/i}information.{w=0.5} Stuff {i}way{/i} above your paygrade."
@@ -166,28 +143,7 @@ label neutral_ending:
             zoom 2 align(0.0,0.07)
         cr "And by the time I'm finished,{w=0.1} they'll be {i}begging{/i} for her to come back."
         #"{b}[the gun fires]{/b}"
-        scene black
-        pause 3
 
-        show text "{size=200}{color=#00e7ff}MALVIOLENCE{/color}{/size}":
-                xalign 0.5 yalign 0.5
-
-        pause 5
-
-        hide text
-
-        pause 3
-
-        show text "{size=90}{color=#ffffff}neutral end (b){/color}{/size}":
-                xalign 0.5 yalign 0.5
-
-        pause 5
-
-        hide text
-
-        pause 3
-
-        return
         #"{b}[NEUTRAL END – ROOM 2 VARIANT]{/b}"
         #"{b}[{/b}{b}Cautionne{/b}{b} laughing more menacingly as the {/b}{b}endin{/b}{b} text pops up]{/b}"
         #"{b}[credits roll]{/b}"
@@ -226,30 +182,40 @@ label neutral_ending:
             zoom 2 align(0.0,0.07)
         #"{b}[the trigger clicks]{/b}"
         cr "...I just can't forgive someone who'd brush that aside."
-    
-
-        scene black
-        pause 2
-
-        show text "{size=200}{color=#00e7ff}MALVIOLENCE{/color}{/size}":
-                xalign 0.5 yalign 0.5
-
-        pause 5
-
-        hide text
-
-        pause 3
-
-        show text "{size=90}{color=#ffffff}neutral end (c){/color}{/size}":
-                xalign 0.5 yalign 0.5
-
-        pause 5
-
-        hide text
-
-        pause 3
-
-        return
         #"{b}[the gun fires]{/b}"
+
         #"{b}[{/b}{b}Cautionne{/b}{b} is heard crying softly as the ending text pops up]{/b}"
         #"{b}[NEUTRAL END – ROOM 3 VARIANT]{/b}"
+
+    scene black
+    pause 3
+
+    show text "{size=200}{color=#00e7ff}MALVIOLENCE{/color}{/size}":
+        xalign 0.5 yalign 0.5
+
+    pause 5
+
+    hide text
+
+    pause 3
+    $Achievement.add(achievement_end2)
+
+    if most_explored == 1:
+        show text "{size=90}{color=#ffffff}neutral end (a){/color}{/size}":
+            xalign 0.5 yalign 0.5
+
+    elif most_explored == 2:
+        show text "{size=90}{color=#ffffff}neutral end (b){/color}{/size}":
+            xalign 0.5 yalign 0.5
+
+    else:
+        show text "{size=90}{color=#ffffff}neutral end (c){/color}{/size}":
+            xalign 0.5 yalign 0.5
+
+    pause 5
+
+    hide text
+
+    pause 3
+
+    return

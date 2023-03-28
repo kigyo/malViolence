@@ -54,7 +54,8 @@ label room_2:
 
     elif inspect == "limbs":
         if room2["limbs"] == 0:
-            "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP -{w=0.5} at first glance.{w} On closer inspection,{w=0.1} there are more differences than there are similarities.) "
+            "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP -{w=0.5} at first glance.)"
+            "(On closer inspection,{w=0.1} there are more differences than there are similarities.) "
             "(STOP's technology is more generalized,{w=0.1} more efficient...{w=0.5} and {i}angular.{/i})"
             "(These plans are heavily customized.{w} They could've only been suitable for a very small number of subjects -{w=-0.5} possibly as few as {i}one.{/i})"
             "(Perhaps Dr. Danger based it off stolen data?{w} You make a note to tell your superiors about possible reverse-engineering.)"
@@ -66,14 +67,15 @@ label room_2:
     elif inspect == "corkboard":
         if room2["corkboard"] == 0:
             "(As you look over the sprawling web of photos,{w=0.1} documents,{w=0.1} and diagrams,{w=0.1} you realize everything in front of you is perfectly orderly.)"
-            "(These are the notes of a hunter,{w=0.1} and STOP was their prey.{w} You recognize dozens of names,{w=0.1} operations,{w=0.1} and places;{w=0.5} vital parts of STOP's organization that had suffered heavy blows in the last few years.)"
+            "(These are the notes of a hunter,{w=0.1} and STOP was their prey.)"
+            "(You recognize dozens of names,{w=0.1} operations,{w=0.1} and places;{w=0.5} vital parts of STOP's organization that had suffered heavy blows in the last few years.)"
             "(But you're disturbed by how many places you {i}don't{/i} recognize.)"
             "(Laboratories,{w=0.1} factories{w=0.1} and armories that must be high above your clearance level –{w=0.5} crossed out like someone was just going down a checklist.)"
             "(All these top-secret sites share the same acronym:{w=0.5} \"YTDI.\")"
             "(...No,{w=0.1} you {i}don't{/i} recognize it.)"
             "(That's par for the course with STOP.{w} If you don't know what an acronym means,{w=0.1} it's probably above your paygrade.)"
         else:
-            "(A sprawling web of photos,{w=0.1} documents{w=0.1}  and diagrams. {w}And they're all related to STOP..."
+            "(A sprawling web of photos,{w=0.1} documents{w=0.1}  and diagrams. {w}And they're all related to STOP...)"
             pass
         $ room2["corkboard"] += 1
 
@@ -84,7 +86,7 @@ label room_2:
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
             "(Based on what you can make out of the caption - {w=0.1}it seems to be of some kind of commemorative occasion.)" 
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
-            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as-{p=0.3}{nw})"
+            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as-{w=0.3}{nw})"
             pause 1
             #"{b}[pause as the clippings disappear]{/b}"
             "(...Never mind.{w} It's just similar,{w=0.1} that's all.)"
