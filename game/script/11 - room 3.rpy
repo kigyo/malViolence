@@ -61,7 +61,6 @@ label room_3:
             "(Did she need to disguise herself?{w} Intel's always suggested that her mastery over tech kept her off any camera she cared about.)"
         else:
             "(It's a wig mannequin.{w} But it doesn't seem to be Dr. Danger's...)"
-            pass
         $ room3["mannequin"] += 1
 
     elif inspect == "scrapbook":
@@ -85,8 +84,7 @@ label room_3:
             "(...)"
             "(Looks like STOP will have to add \"digital piracy\" to Dr. Danger's long list of crimes.)"
         else:
-            "(A surprisingly ordinary scrapbook.{w} Featuring crimes against copyright."
-            pass
+            "(A surprisingly ordinary scrapbook.{w} Featuring crimes against copyright.)"
         $ room3["scrapbook"] += 1
 
     elif inspect == "health_record":
@@ -101,8 +99,7 @@ label room_3:
             "(There's nothing here about informed consent or parental permissions.)"
             "(Evidently,{w=0.1} parents weren't involved.)"
         else:
-            "(You don't really want to touch that clipboard again.{w} It gives you...{w=0.5} a {i}sinking{/i} feeling."
-            pass
+            "(You don't really want to touch that clipboard again.{w} It gives you...{w=0.5} a {i}sinking{/i} feeling.)"
         $ room3["health_record"] += 1
 
     elif inspect == "sewing_book":
@@ -115,7 +112,6 @@ label room_3:
             "(But you doubt they'd make such a large collection of fuzzy mittens.)"
         else:
             "(A superb sewing setup. {w}But what's with all the mittens? {w}It's not winter anymore.)"
-            pass
         $ room3["sewing_book"] += 1
 
     elif inspect == "locked_container":
@@ -130,8 +126,7 @@ label room_3:
             "(At the bottom of the pile,{w=0.1}  you find a dented medal. {w}An award for \"continued service to the international security community\"?)"
             "(The medal's name has been violently scratched out. {w}And yet, {w=0.1}you think you see the remnants of a familiar logo...)"
         else:
-            "(Seems like the contents of this container were meant to be kept a secret.{w} Maybe it's better to leave it be."
-            pass
+            "(Seems like the contents of this container were meant to be kept a secret.{w} Maybe it's better to leave it be.)"
         $ room3["locked_container"] += 1
 
     elif inspect == "confidence_workbook":
@@ -147,7 +142,6 @@ label room_3:
             "({i}You{/i} only use the second person.{w} And even then,{w=0.1} only for gathering your thoughts in high-stakes scenarios.)"
         else:
             "(A crumpled,{w=0.1} heavily worked-over notebook.{w} It clearly hasn't been used in a while.)"
-            pass
         $ room3["confidence_workbook"] += 1
 
     elif inspect == "diary":
@@ -163,6 +157,8 @@ label room_3:
         elif room3["diary"] == 2:
             #"SUCCESS WITH LIMITING PROLIFERAITON OF TECH, PROMOTION, DISCOVERY OF POTENTIAL FOR YOUNGER SUBJECTS"
             n "\"I thought that things were moving fast before - but the growth we're seeing now makes those earlier years look glacial. STOP is doing good work that needs to get done, and it's making the countries that only paid for its formation as lip-service to international cooperation put the money where their mouth is. "
+            if gui.preference("size") > 40:
+                nvl clear
             n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.  This month we finalized our report on maximizing cybernetic synchronization for patients - confirming my earlier theory that said the younger the better. "
             n "The difference really was astounding. And I must admit, it felt good to shove that 19\%-point increase right in that stuffy old bastard's smug face.\""
             nvl clear
@@ -237,6 +233,7 @@ label room_3:
             n "That's horrible, but what if they don't? What if they just figure it's just not worth the cost? What'll happen to those kids afterwards?"
             n "Something needs to change, but I'm not sure it's something that Dr. Danger can do. "
             n "...And I'm not sure that Deirdre Destrange is enough for him.\""
+            $room3["investigated"].append("diary")
         $ room3["diary"] += 1
         nvl clear
 
@@ -295,6 +292,8 @@ label room_3:
         call screen room3_meta
         jump room3_meta_solved
 
+    $inspector_achievement()
+
     $ inspect = None
     call screen room3
 
@@ -343,7 +342,7 @@ label quilt_game_over:
     cr "I'd like to think of myself as a lenient kinda guy... {w}But watching you butcher that sentimental quilt is {i}pretty painful.{/i}"
     cr "Like,{w=0.1} death by a thousand cuts...{p=0.5}{nw}"
     cr "...or needles,{w=0.1} in this case."
-    "(You hear a switch go off,{w=0.1} and-){p=0.25}{nw}"
+    "(You hear a switch go off,{w=0.1} and-){p=0.5}{nw}"
     scene black
 
     #{i}{b}[sound of protag getting stabbed with needles]{/b}{/i}

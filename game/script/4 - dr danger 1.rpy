@@ -24,6 +24,7 @@ label dr_danger_1:
   show bg corridor1 with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
+  $Achievement.add(achievement_tfng)
 
 
   pause 1
@@ -42,7 +43,7 @@ label dr_danger_1:
     align (0.5,0.5) zoom 0.5
     ease 2.7 zoom 0.6
 
-  "(You take another cautious step ahead and-){p=0.3}{nw}"
+  "(You take another cautious step ahead and-){p=0.5}{nw}"
   #"{b}[the {/b}{b}dr.{/b}{b} danger screens go {/b}{b}on ]{/b}"
   "???" "Welcome.{w=0.5} I see you've arrived safely?"
 
@@ -79,10 +80,10 @@ label dr_danger_1:
   "(Uh... {w}no?)"
   "(Last time you checked,{w=0.1} you were a STOP agent.{w} By default, Dr. Danger's a sworn enemy.)"
   "(...{i}Was{/i} a sworn enemy.{w} She died {i}weeks{/i} ago,{w=0.1} caught in her own explosion while trying to wipe another STOP facility off the map.)"
-  "(Wait.{w} Does this mean she survi-){p=0.3}{nw}"
+  "(Wait.{w} Does this mean she survi-){p=0.5}{nw}"
   drs "Before you begin your task,{w=0.1} please listen carefully."
   drs "Due to my circumstances,{w=0.1} I cannot repeat my instructions."
-  "(...No -{w=0.5} thinking back,{w=0.1} her death was {i}very thoroughly{/i} confirmed.{w} Which means-){p=0.3}{nw}" 
+  "(...No -{w=0.5} thinking back,{w=0.1} her death was {i}very thoroughly{/i} confirmed.{w} Which means-){p=0.5}{nw}" 
   drs "Nor will I be able to answer any of your questions."
   "(...This is just a recording.{w} A cheesy one,{w=0.1} at that.)" 
   "(Turns out even supervillains make the newbies watch employee training videos.)"

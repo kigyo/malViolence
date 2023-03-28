@@ -1,12 +1,43 @@
 default route = "neutral"
 default most_explored = 1
 
+init python:
+    def inspection_sum():
+        return len(room1["investigated"]) + len(room2["investigated"]) + len(room3["investigated"])
+
+    def inspector_achievement():
+        if inspection_sum() >= 15:
+            Achievement.add(achievement_investigate)
+
+    def route_calculator():
+        global route, most_explored
+        if inspection_sum() < 6:
+            route = "kill"
+        elif inspection_sum() < 12 or len(room1["investigated"]) < 2 or len(room2["investigated"]) < 4 or len(room3["investigated"]) < 6:
+            route = "neutral"
+            most_explored = explored_ratio()
+        else:
+            route = "spare"
+    
+    def explored_ratio():
+        rooms = [len(room1["investigated"])/3, len(room2["investigated"])/5, len(room3["investigated"])/7]
+
+        highest = 1
+        highest_val = rooms[0]
+
+        for i in range(len(rooms)):
+            if rooms[i] > highest_val:
+                highest_val = rooms[i]
+                highest = i+1
+
+        return highest
+
+
 label post_room_3:
-    $Achievement.add(achievement_room3)
     "(Huh.{w} The screen above you didn't turn on.)"
     "(...Guess Cautionne really was serious about the whole \"silent treatment\" thing.)"
 
-    if len(room3["investigated"]) == 10: #TODO: fix amount
+    if len(room3["investigated"]) == 7:
         "(Well,{w=0.1} you did what he asked you to do,{w=0.1} right?{w} You solved his puzzle.)"
         "(You've been over the whole room with a fine comb.)"
         "(And you haven't overlooked or {i}looked away{/i} from anything.)"
@@ -31,6 +62,7 @@ label post_room_3:
     show bg corridor_exit with placeintro:
         zoom 0.8 xalign 0.0 yalign 0.5
         linear 20 xalign 1.0
+    $Achievement.add(achievement_room3)
     pause 3
     "(Looks like there're no screens in this corridor.{w} Guess Dr. Danger didn't make any more recordings...)"
 
@@ -40,8 +72,7 @@ label post_room_3:
     "(...There really isn't much else to say about this hall.)"
     "(If that's the case, then...{w=0.5} this is probably close to the exit.)"
 
-    #TODO: "Ending calculator"
-    #TODO: "Most explored calculator"
+    $ route_calculator()
 
     if route == "spare":
         pause
@@ -55,7 +86,7 @@ label post_room_3:
         "(Slowly,{w=0.1} you make your way forward –{w=0.5} each step heavier than the last.)"
         jump spare_ending
 
-    elif route == "spare":
+    elif route == "neutral":
         "(Can't say you miss his nasally jabbering.)"
         "(And yet...{w=0.5} you'd take it over the strange,{w=0.1} baleful{w=0.1} unease that hums at the back of your mind.{w} Like the \"silent\" air conditioner in your boss's office.)"
         "(It's not about your job.{w} You did what you were supposed to"
