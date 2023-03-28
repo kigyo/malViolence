@@ -1,13 +1,15 @@
 screen menu():
     pass
 
-screen colorized_frame(xysize=None, padding=None, xalign=None, offset=None):
+screen colorized_frame(xysize=None, padding=None, xalign=None, offset=None, accent=None, background=None, pos=None):
     frame:
-        background colors["accent"]
+        background accent or colors["accent"]
         if offset:
             offset offset
+        if pos:
+            pos pos
         frame:
-            background colors["background"]
+            background background or colors["background"]
             if xysize:
                 xysize xysize
             if padding:

@@ -42,8 +42,11 @@ init -1 python:
     Dir = Enum("up", "down", "left", "right")
     renpy.store.pieces = Pieces
 
-    def random_match(num=4):
-        return(Pieces.random(num), Pieces.random(num), Pieces.random(num))
+    def random_match(num=4, input=None):
+        if not input:
+            return(Pieces.random(num), Pieces.random(num), Pieces.random(num))
+        else:
+            return(random.choice(input), random.choice(input), random.choice(input))
 
     class Board(object):
         def __init__(self, width=7, height=7, piece_limit=4):
@@ -165,8 +168,8 @@ init -1 python:
             # TODO: Move this to inheriting classes.
             if isinstance(self, PuzzleBoard):
                 win = True
-                for y in range(self.width):
-                    for x in range(self.height):
+                for y in range(self.height):
+                    for x in range(self.width):
                         if self.pieces[y][x]:
                             win = False
                             break
@@ -410,14 +413,14 @@ transform matched():
     on replace:
         matrixcolor im.matrix.saturation(0.5)
 
-screen animated_board(b):
+screen animated_board(b, pos=(100, 100)):
     tag board
-    use board(b)
+    use board(b, pos)
 
-screen board(b):
+screen board(b, pos=(100, 100)):
     tag board
     fixed:
-        pos (100, 100)
+        pos pos
         for y in range(b.height):
             for x in range(b.width):
                 if b.pieces[y][x]:
@@ -433,6 +436,7 @@ screen board(b):
 
 
 screen board_piece(b, x, y):
+    $ glog(colors[b.pieces[y][x].type])
     $ transforms = [colorify(colors[b.pieces[y][x].type])]
     if isinstance(b, PuzzleBoard):
         if b.show_next and b.solution and (b.solution[0][0] == x and b.solution[0][1] == y):
@@ -457,6 +461,8 @@ screen board_piece(b, x, y):
         at transforms
         pos (x*ch, y*cw)
         align (0.5, 0.5)
+        if isinstance(b, PuzzleBoard):
+            xysize (65, 65)
 
 screen piece(p, transforms=None):
     $ transforms = transforms or []
@@ -465,13 +471,15 @@ screen piece(p, transforms=None):
         xysize (cw, ch)
         add p at transforms
         align (0.5, 0.5)
+        if isinstance(b, PuzzleBoard):
+            xysize (65, 65)
 
-screen buttons(b):
+screen buttons(b, pos=(100, 100)):
     default h_buffer = b.h_buffer
     if isinstance(b, ToyBoard):
         $ h_buffer = 0
     fixed:
-        pos (100, 100)
+        pos pos
         for y in range(b.height):
             for x in range(max(h_buffer, 1)):
                 if b.pieces[y][x]:
@@ -615,14 +623,14 @@ transform reticle_idle:
         linear 0.65 alpha 1.0
         repeat
 
-screen reticle(b):
+screen reticle(b, pos=(100, 100)):
     default ret = "default"
     if isinstance(b, ToyBoard):
         $ ret = "single"
     if isinstance(b, PuzzleBoard):
         $ ret = "default"
     fixed:
-        pos(100, 100)
+        pos pos
         if b.just_cleared:
             at reticle_insensitive
         else:
@@ -636,7 +644,7 @@ default pb = None
 default tb = None
 
 label init_puzzle_board():
-    $ pb = PuzzleBoard(width=6, height=6, move_cap=20)
+    $ pb = PuzzleBoard(width=6, height=10, move_cap=20)
     $ adt = 0.5
     return
 

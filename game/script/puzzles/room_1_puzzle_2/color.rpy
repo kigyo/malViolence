@@ -18,7 +18,11 @@ default colors = {
   "diamond": "#92dee4",
   "background": "#5A5375",
   "star": "#FDF247",
-  "circle": "#e6c0a1"
+  "circle": "#e6c0a1",
+  "0": "#0fc42d",
+  "1": "#0fc42d",
+  "carat": "#0fc42d",
+  "uwu": "#0fc42d"
 }
 
 default color = Color("#ff0000")

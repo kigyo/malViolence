@@ -1,3 +1,5 @@
+define puzzle_pieces = ["0", "1", "carat", "uwu"]
+
 init python:
     class PuzzleBoard(Board):
         def __init__(self, width=7, height=7,
@@ -27,7 +29,7 @@ init python:
                 pos = random.choice(possible_positions)
                 local_heights = heights[pos-1:pos+2]
                 if max(local_heights) < self.height:
-                    match = random_match(self.piece_limit)
+                    match = random_match(self.piece_limit, puzzle_pieces)
                     pieces = [Piece(m) for m in match]
                     y = self.height-1-random.randint(0, min(local_heights))
                     for ny in range(0, y+1):
@@ -88,20 +90,26 @@ init python:
             self.just_cleared = True
 
 screen puzzle_playspace(b, interactable=True):
-    add "#ffffff" at colorify(colors["background"])
+    add "#000"
     if b.just_cleared:
-        use animated_board(b)
+        use animated_board(b, (730, 150))
     else:
-        use board(b)
+        use board(b, (730, 150))
     use puzzle_matches(b)
     if interactable:
-        use buttons(b)
-    use reticle(b)
+        use buttons(b, (730, 150))
+    use reticle(b, (730, 150))
     use menu
     if b.just_cleared:
         timer adt action Function(b.clear_anim)
 
-screen match(m):
+    use colorized_frame(padding=(10, 10), xysize=(600, 800), pos=(1250, 100), background="#000", accent="#fff"):
+        has vbox
+        xalign 0.5
+        label "Instructions" text_color "#fff" xalign 0.5
+
+
+screen p_match(m):
     hbox:
         for p in m.pieces:
             fixed:
@@ -109,23 +117,27 @@ screen match(m):
                 $ transforms = [colorify(colors[p])]
                 if m.matched:
                     $ transforms.append(found_match)
-                add p at transforms
+                add p at transforms:
+                    xysize (65, 65)
 
 screen puzzle_matches(b):
     fixed:
-        pos (700, 100)
+        pos (50, 100)
         fit_first True
-        use colorized_frame(padding=(10, 10)):
-            has hbox
-            spacing 50
-            vbox:
-                spacing 10
-                for m in b.matches[:6]:
-                    use match(m)
-            if len(b.matches) > 6:
+        use colorized_frame(accent="#fff", background="#000"):
+            has vbox
+            label "Codes" text_color "#fff" xalign 0.5
+            null height 20
+            hbox:
+                spacing 50
                 vbox:
-                    for m in b.matches[6:]:
-                        use match(m)
+                    spacing 10
+                    for m in b.matches[:8]:
+                        use p_match(m)
+                if len(b.matches) > 8:
+                    vbox:
+                        for m in b.matches[8:]:
+                            use p_match(m)
 
 transform found_match:
     alpha 0.45
