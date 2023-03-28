@@ -27,7 +27,7 @@ screen room3():
 
     elif room3["room"] == "up":
         fixed at zoomed(0.34):
-            add "bg room3_upstairs"
+            add "bg room3_upstairs" 
             imagebutton idle "room3_sewing" action [SetVariable("inspect", "sewing_book"), Jump("room_3")] pos (2175, 1850) mouse "inspect" at zoomed(0.2)
             imagebutton idle "room3_mannequin" action [SetVariable("inspect", "mannequin"), Jump("room_3")] pos (100, 2450) mouse "inspect" at zoomed(0.2)
             imagebutton idle "room3_health" action [SetVariable("inspect", "health_record"), Jump("room_3")] pos (3375, 1350) mouse "inspect" at zoomed(0.4)
@@ -55,25 +55,25 @@ label room_3:
 
     if inspect == "mannequin":
         if room3["mannequin"] == 0:
-            "(When you look at the bust in front of you,{w=0.1} you recall a half-serious lesson on disguising yourself -{w=0.1} back when you were a trainee.)"
+            "(When you look at the bust in front of you,{w=0.1} you recall a half-serious lesson on disguising yourself back when you were a trainee.)"
             "(From what you remember,{w=0.1} this appears to be a mannequin for a wig.)"
             "(But Dr. Danger had a full head of hair.)"
             "(Did she need to disguise herself?{w} Intel's always suggested that her mastery over tech kept her off any camera she cared about.)"
         else:
-            "(It's a wig mannequin.{w} But who's it for?"
+            "(It's a wig mannequin.{w} But it doesn't seem to be Dr. Danger's...)"
             pass
         $ room3["mannequin"] += 1
 
     elif inspect == "scrapbook":
         if room3["scrapbook"] == 0:
             "(You pick up what appears to be a generic scrapbook,{w=0.1} like those shoved to the back shelves of charity stores.{w} Looking closely, you can still see remnants of price sticker glue.)"
-            "(It feels normal.{w} {i}Too{/i} normal.{w} The book's clearly hiding some deep, dark secret.)"
+            "(It feels normal.{w} {i}Too{/i} normal.{w} The book's clearly hiding some deep,{w=0.1} dark{w=0.1} secret.)"
             "(But the inner contents are equally...{w=0.5} {i}normal.{/i})"
-            "(All you find are photographs of a woman who looks a lot like Dr. Danger,{w=0.1} and a young boy with a crooked,{w=0.1} toothy grin.)"
+            "(All you find are photographs of a woman who looks a lot like Dr. Danger,{w=0.1} and a young boy with a crooked,{w=0.1} toothy{w=0.1} grin.)"
             "(The craftsmanship on display isn't anything remarkable,{w=0.1} with poorly cut edges and tacky glitter glue smeared across the cheap cardstock.)"
             "(At least the pages seem to be in chronological order.)"
-            "(In the earliest photos,{w=0.1} the boy is bedridden.{w} His skin is unnaturally pale, and his gaze is unfocused –{w=0.5} empty, even.)"
-            "(But as you flick though the pages, he grows stronger.)"
+            "(In the earliest photos,{w=0.1} the boy is bedridden.{w} His skin is unnaturally pale,{w=0.1} and his gaze is unfocused –{w=0.5} empty, even.)"
+            "(But as you flick though the pages,{w=0.1} he grows stronger.)"
             "(He gets out of bed.{w} His eyes shine with inspiration and intelligence.{w} He smiles.)"
             pause 1
             "(The woman in these photos must've been taking good care of him.)"
@@ -82,7 +82,7 @@ label room_3:
             "(You know the film they're watching.{w} It's that one cartoon about an alien supervillain;{w=0.5} one with a very big brain,{w=0.1} but very little common sense.)"
             pause 0.5
             "(...Hold on.{w} Wasn't the film released in cinemas three months later?)"
-            pause 0.5
+            "(...)"
             "(Looks like STOP will have to add \"digital piracy\" to Dr. Danger's long list of crimes.)"
         else:
             "(A surprisingly ordinary scrapbook.{w} Featuring crimes against copyright."
@@ -92,12 +92,14 @@ label room_3:
     elif inspect == "health_record":
         if room3["health_record"] == 0:
             "(You pick up a clipboard with a thick stack of charts and diagrams pinned to the front.)"
-            "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh,{w=0.1} black lettering.{w} At the bottom of the page,{w=0.1}  you spot an acronym:{w=0.5} \"YTDI\".)"
+            "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh,{w=0.1} black{w=0.1} lettering.{w} At the bottom of the page,{w=0.1} you spot an acronym:{w=0.5} \"YTDI\".)"
             "(You flip through the log.{w} The recuperation described here is difficult to read.)"
-            "(Seizures,{w=0.1}  phantom pain,{w=0.1}  memory loss{w=0.1}  and brain damage are all expected results,{w=0.1}  not side effects.)"
-            "(Scrawled notes speculate that these symptoms would last for several years,{w=0.1}  or decades -{w=0.5}  perhaps even permanently.)"
-            "(Implanting cybernetics in individuals under 18 isn't illegal,{w=0.1}  but it {i}is {/i} frowned upon.{w} And from the logbook,{w=0.1}  a lot of children were implanted:{w=0.5}  children well under the age of 18.)"
-            "(There's nothing here about informed consent or parental permissions.{w} Evidently, parents weren't involved.)"
+            "(Seizures,{w=0.1}  phantom pain,{w=0.1}  memory loss{w=0.1}  and brain damage are all expected results,{w=0.1} not side effects.)"
+            "(Scrawled notes speculate that these symptoms would last for several years,{w=0.1} or decades -{w=0.5}  perhaps even permanently.)"
+            "(Implanting cybernetics in individuals under 18 isn't illegal,{w=0.1} but it {i}is {/i} frowned upon.)"
+            "(And from the logbook,{w=0.1} a lot of children were implanted:{w=0.5} children well under the age of 18.)"
+            "(There's nothing here about informed consent or parental permissions.)"
+            "(Evidently,{w=0.1} parents weren't involved.)"
         else:
             "(You don't really want to touch that clipboard again.{w} It gives you...{w=0.5} a {i}sinking{/i} feeling."
             pass
@@ -120,7 +122,7 @@ label room_3:
         if room3["locked_container"] == 0:
             "(After entering the combination,{w=0.1}  there's a small click.{w} You give the handle a tug.)"
             "(There's no dust inside,{w=0.1}  but a stale odor wafts out.{w} Clearly, this hasn't been opened for a long time.)"
-            "(You find a lab coat with an ID pinned above its breast pocket.{w} There's no photo,{w=0.1}  but the name Deirdre Destrange is clearly printed alongside a worn barcode.)"
+            "(You find a lab coat with an ID pinned above its breast pocket.{w} There's no photo,{w=0.1}  but the name \"Deirdre Destrange\" is clearly printed alongside a worn barcode.)"
             "(The coat itself is high-quality,{w=0.1}  but it's worn around the edges.{w} Deirdre must've worn it for a long time,{w=0.1}  taking good care of it all the while.)"
             "(You see framed photos,{w=0.1}  diplomas,{w=0.1}  certificates and awards -{w=0.5}  all of them belonging to this \"Deirdre Destrange\".)"
             "(In and of itself,{w=0.1}  a doctorate in cybernetic biology is impressive,{w=0.1}  but Deirdre received this {i}years{/i} ago.)"
@@ -134,17 +136,17 @@ label room_3:
 
     elif inspect == "confidence_workbook":
         if room3["confidence_workbook"] == 0:
-            "(It's a crumpled,{w=0.1}  heavily-worked-over workbook filled with grandiose,{w=0.1}  third-person ramblings.)"
+            "(It's a crumpled,{w=0.1} heavily worked-over notebook filled with grandiose,{w=0.1}  third-person ramblings.)"
             "(Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
-            "(But the more you flip back through the pages,{w=0.1}  the more those writings grow negative.)"
+            "(But the more you flip back through the pages,{w=0.1} the more those writings grow negative.)"
             "(They're accompanied by notes on how to aim them in a more positive direction.)"
-            "(Even further back,{w=0.1}  the spidery handwriting disappears.{w} Instead, there are grids and examples written by someone with clean,{w=0.1}  crisp penmanship.)"
-            "(It almost looks like a therapeutic exercise -{w=0.5}  or a homework assignment.{w} Maybe it's both.)"
-            "(What's clear is that the notebook's author hasn't used it for a long,{w=0.1} long time.)"
-            "(Personally,{w=0.1}  you wouldn't be caught dead speaking,{w=0.1}  writing,{w=0.1}  or even thinking in the third person.)"
-            "({i}You{/i} only use the second person.{w} And even then,{w=0.1}  only for gathering your thoughts in high-stakes scenarios.)"
+            "(Even further back,{w=0.1} the spidery handwriting disappears.{w} Instead,{w=0.1} there are grids and examples written by someone with clean,{w=0.1} crisp penmanship.)"
+            "(It almost looks like a therapeutic exercise -{w=0.5} or a homework assignment.{w} Maybe it's both.)"
+            "(What's clear is that the notebook's author hasn't used it for a long,{w=0.1} long{w=0.1} time.)"
+            "(Personally,{w=0.1} you wouldn't be caught dead speaking,{w=0.1} writing,{w=0.1} or even thinking in the third person.)"
+            "({i}You{/i} only use the second person.{w} And even then,{w=0.1} only for gathering your thoughts in high-stakes scenarios.)"
         else:
-            "(A long-unused workbook. {w}Meant to boost a child's self-confidence.)"
+            "(A crumpled,{w=0.1} heavily worked-over notebook.{w} It clearly hasn't been used in a while.)"
             pass
         $ room3["confidence_workbook"] += 1
 
@@ -240,7 +242,7 @@ label room_3:
 
     elif inspect == "toys":
         if "toys" in room3["solved"]:
-            "(You already solved the plushie puzzle.)"
+            "(You've already solved the plushie puzzle.)"
         else:
             if room3["toys"] == 0:
                 #toys introduction
@@ -253,7 +255,7 @@ label room_3:
 
     elif inspect == "quilt":
         if "quilt" in room3["solved"]:
-            "(You already solved the quilt puzzle.)"
+            "(You've already solved the quilt puzzle.)"
         else:
             if room3["quilt"] == 0:
                 #quilt introduction
@@ -270,7 +272,7 @@ label room_3:
 
     elif inspect == "cooking":
         if "cooking" in room3["solved"]:
-            "(You already solved the mise en place puzzle.)"
+            "(You've already solved the {i}mise en place{/i} puzzle.)"
         else:
             if room3["cooking"] == 0:
                 #quilt introduction
@@ -333,15 +335,15 @@ label quilt_game_over:
     show screen room3_quilt
     show black onlayer screens with dissolve:
         alpha 0.5
-    cr "{i}Wow.{/i} You're no deft hand, are you?"
+    cr "{i}Wow.{/i}{w=0.5} You're no deft hand,{w=0.1} are you?"
     hide black onlayer screens
     hide screen room3_quilt 
     with easeouttop
     pause 1
     cr "I'd like to think of myself as a lenient kinda guy... {w}But watching you butcher that sentimental quilt is {i}pretty painful.{/i}"
-    cr "Like,{w=0.1} death by a thousand cuts..."
-    cr "...or needles, in this case."
-    "(You hear a switch go off, and-)"
+    cr "Like,{w=0.1} death by a thousand cuts...{p=0.5}{nw}"
+    cr "...or needles,{w=0.1} in this case."
+    "(You hear a switch go off,{w=0.1} and-){p=0.25}{nw}"
     scene black
 
     #{i}{b}[sound of protag getting stabbed with needles]{/b}{/i}
@@ -351,11 +353,11 @@ label quilt_game_over:
 
     $nvl_heading = "Lab Report #112"
     l "Subject failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles."
-    l "{i}(NB: It needed to be a square number for the triggering mechanism to hit its mark){/i}"
+    l "{i}(NB: It needed to be a square number for the triggering mechanism to hit its mark.){/i}"
     l "{b}Contributing Factors to Death:{/b} Couldn't sew their way out of a wet paper bag."
     $deadend(achievement_dead11)
     le "DEAD END 11: Quilt In Action."
-    pause 2
+    pause 3
     nvl clear
     return
 

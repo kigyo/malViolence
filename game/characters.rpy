@@ -172,19 +172,58 @@ layeredimage cautionne blockscreen silent:
     always "bg cautionne"
     always "images/CG/cautionne_blockscreen_close.png"
 
-image cautionne dead = "cautionne_dead.png"
 
-layeredimage cautionne gun:
+####### cautionne gun/ending related CGs
+
+layeredimage cautionne gun ecu:
     zoom 0.5
-    always "cautionne_gun_ECU_closed"
+    always "images/CG/cautionne_gun_ECU_closed.png"
     group mouth:
-        attribute speaking default WhileSpeaking("cautionne", "cautionne_gun_speaking", "cautionne_gun_ECU_closed")
-image cautionne_gun_speaking:
-    "cautionne_gun_ECU_open"
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_gun_speaking ecu", "images/CG/cautionne_gun_ECU_closed.png")
+        attribute silent "images/CG/cautionne_gun_ECU_closed.png"
+        attribute dead "images/CG/cautionne_gun_ECU_dead.png" 
+
+image cautionne_gun_speaking ecu:
+    "images/CG/cautionne_gun_ECU_open.png"
     pause 0.12
-    "cautionne_gun_ECU_closed"
+    "images/CG/cautionne_gun_ECU_closed.png"
     pause 0.12
     repeat
+
+layeredimage cautionne gun cu:
+    zoom 0.5
+    always "images/CG/cautionne_gun_CU_closed.png"
+    group mouth:
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_gun_speaking cu", "images/CG/cautionne_gun_CU_closed.png")
+        attribute silent "images/CG/cautionne_gun_CU_closed.png"
+        attribute dead "images/CG/cautionne_gun_CU_dead.png" 
+
+image cautionne_gun_speaking cu:
+    "images/CG/cautionne_gun_CU_open.png"
+    pause 0.12
+    "images/CG/cautionne_gun_CU_closed.png"
+    pause 0.12
+    repeat
+
+layeredimage cautionne gun far:
+    zoom 0.5
+    always "images/CG/cautionne_gun_FAR_closed.png"
+    group mouth:
+        attribute speaking default WhileSpeaking("cautionne", "cautionne_gun_speaking far", "images/CG/cautionne_gun_FAR_closed.png")
+        attribute silent "images/CG/cautionne_gun_FAR_closed.png"
+
+image cautionne_gun_speaking far:
+    "images/CG/cautionne_gun_FAR_open.png"
+    pause 0.12
+    "images/CG/cautionne_gun_FAR_closed.png"
+    pause 0.12
+    repeat
+
+image cautionne dead = "images/CG/cautionne_dead.png"
+
+
+
+##########################
 
 layeredimage cautionne hairtwirl:
     zoom 0.5
@@ -193,6 +232,7 @@ layeredimage cautionne hairtwirl:
     group mouth:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_hairtwirl_speaking", "cautionne_hairtwirl_lipflap_close")
         attribute silent "cautionne_hairtwirl_lipflap_close"
+
 image cautionne_hairtwirl_speaking:
     "cautionne_hairtwirl_lipflap_open"
     pause 0.12
@@ -305,8 +345,13 @@ layeredimage cautionne shoot:
     zoom 0.5
     group mouth:
         attribute angry default WhileSpeaking("cautionne", "cautionne_shoot_angry", "cautionne_shoot_angry_closed")
-        attribute cry WhileSpeaking("cautionne", "cautionne_shoot_cry", "cautionne_shoot_cry_closed")
-        attribute grin WhileSpeaking("cautionne", "cautionne_shoot_grin", "cautionne_shoot_grin_closed")
+        attribute cry WhileSpeaking("cautionne", "cautionne_shoot_cry", "images/CG/cautionne_shoot_cry_close.png")
+        attribute grin WhileSpeaking("cautionne", "cautionne_shoot_grin", "images/CG/cautionne_shoot_grin_close.png")
+        attribute angrysilent "cautionne_shoot_angry_closed"
+        attribute crysilent "images/CG/cautionne_shoot_cry_close.png"
+        attribute grinsilent "images/CG/cautionne_shoot_grin_close.png"
+
+
 image cautionne_shoot_angry:
     "cautionne_shoot_angry_open"
     pause 0.12
@@ -316,13 +361,13 @@ image cautionne_shoot_angry:
 image cautionne_shoot_cry:
     "cautionne_shoot_cry_open"
     pause 0.12
-    "cautionne_shoot_cry_closed"
+    "images/CG/cautionne_shoot_grin_close.png"
     pause 0.12
     repeat
 image cautionne_shoot_grin:
-    "cautionne_shoot_grin_open"
+    "images/CG/cautionne_shoot_grin_open.png"
     pause 0.12
-    "cautionne_shoot_grin_closed"
+    "images/CG/cautionne_shoot_grin_close.png"
     pause 0.12
     repeat
 
@@ -330,36 +375,49 @@ layeredimage cautionne shot:
     zoom 0.5
     always "cautionne_shot"
 
+#### CAUTIONNE SITTING CG SET
+
 layeredimage cautionne sit_far:
     zoom 0.5
     always "cautionne_sit_faraway"
 
-layeredimage cautionne stunned:
+layeredimage cautionne sit:
     zoom 0.5
     group mouth:
-        attribute hope default WhileSpeaking("cautionne", "cautionne_sit_hope", "cautionne_sit_hope_closed")
-        attribute stunned WhileSpeaking("cautionne", "cautionne_sit_stunned", "cautionne_sit_stunned_closed")
-        attribute smug WhileSpeaking("cautionne", "cautionne_sit_smug", "cautionne_sit_smug_closed")
-
+        attribute hope default WhileSpeaking("cautionne", "cautionne_sit_hope", "images/CG/cautionne_sit_hope_closed.png")
+        attribute stunned WhileSpeaking("cautionne", "cautionne_sit_stunned", "images/CG/cautionne_sit_stunned_closed.png")
+        attribute smug WhileSpeaking("cautionne", "cautionne_sit_smug", "images/CG/cautionne_smug_closed.png")
+        attribute stunnedsilent "images/CG/cautionne_sit_stunned_closed.png"
+        attribute hopesilent "images/CG/cautionne_sit_hope_closed.png"
+        attribute smugsilent "images/CG/cautionne_smug_closed.png"
 
 image cautionne_sit_hope:
-    "cautionne_sit_hope_open"
+    "images/CG/cautionne_sit_hope_open.png"
     pause 0.12
-    "cautionne_sit_hope_closed"
+    "images/CG/cautionne_sit_hope_closed.png"
     pause 0.12
     repeat
 image cautionne_sit_stunned:
-    "cautionne_sit_stunned_open"
+    "images/CG/cautionne_sit_stunned_open.png"
     pause 0.12
-    "cautionne_sit_stunned_closed"
+    "images/CG/cautionne_sit_stunned_closed.png"
     pause 0.12
     repeat
 image cautionne_sit_smug:
-    "cautionne_sit_smug_open"
+    "images/CG/cautionne_smug_open.png"
     pause 0.12
-    "cautionne_sit_smug_closed"
+    "images/CG/cautionne_smug_closed.png"
     pause 0.12
     repeat
+
+########################## HAIRCLIP SEQUENCE
+
+image hairclip1 = "images/CG/hairclip_001.png"
+image hairclip2 = "images/CG/hairclip_002.png"
+image hairclip3 = "images/CG/hairclip_003.png"
+
+
+########################## 
 
 layeredimage cautionne thinkpause:
     zoom 0.5
