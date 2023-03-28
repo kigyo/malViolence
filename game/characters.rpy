@@ -182,11 +182,29 @@ layeredimage cautionne gun ecu:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_gun_speaking ecu", "images/CG/cautionne_gun_ECU_closed.png")
         attribute silent "images/CG/cautionne_gun_ECU_closed.png"
         attribute dead "images/CG/cautionne_gun_ECU_dead.png" 
+        attribute cry WhileSpeaking("cautionne", "cautionne_gun_cry ecu", "images/CG/cautionne_gun_ECU_cry_closed.png")
+        attribute crysilent "images/CG/cautionne_gun_ECU_cry_closed.png"
+        attribute sob WhileSpeaking("cautionne", "cautionne_gun_sob ecu", "images/CG/cautionne_gun_ECU_sob_closed.png") 
+        attribute sobsilent "images/CG/cautionne_gun_ECU_sob_closed.png"      
 
 image cautionne_gun_speaking ecu:
     "images/CG/cautionne_gun_ECU_open.png"
     pause 0.12
     "images/CG/cautionne_gun_ECU_closed.png"
+    pause 0.12
+    repeat
+
+image cautionne_gun_cry ecu:
+    "images/CG/cautionne_gun_ECU_cry_open.png"
+    pause 0.12
+    "images/CG/cautionne_gun_ECU_cry_closed.png"
+    pause 0.12
+    repeat
+
+image cautionne_gun_sob ecu:
+    "images/CG/cautionne_gun_ECU_sob_open.png"
+    pause 0.12
+    "images/CG/cautionne_gun_ECU_sob_closed.png"
     pause 0.12
     repeat
 
@@ -197,11 +215,20 @@ layeredimage cautionne gun cu:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_gun_speaking cu", "images/CG/cautionne_gun_CU_closed.png")
         attribute silent "images/CG/cautionne_gun_CU_closed.png"
         attribute dead "images/CG/cautionne_gun_CU_dead.png" 
+        attribute cry WhileSpeaking("cautionne", "cautionne_gun_cry cu", "images/CG/cautionne_gun_CU_cry_closed.png")
+        attribute crysilent "images/CG/cautionne_gun_CU_cry_closed.png" 
 
 image cautionne_gun_speaking cu:
     "images/CG/cautionne_gun_CU_open.png"
     pause 0.12
     "images/CG/cautionne_gun_CU_closed.png"
+    pause 0.12
+    repeat
+
+image cautionne_gun_cry cu:
+    "images/CG/cautionne_gun_CU_cry_open.png"
+    pause 0.12
+    "images/CG/cautionne_gun_CU_cry_closed.png"
     pause 0.12
     repeat
 
