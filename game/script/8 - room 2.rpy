@@ -149,7 +149,9 @@ label room_2:
         show screen room2_word with easeintop
         $ room2["word"] += 1
         $ inspect = None
-        call screen room2_word 
+        call screen room2_word
+        if room2["word"] == "solved":
+            jump post_room_2
 
     $ inspect = None
     call screen room2
@@ -171,7 +173,7 @@ label panopticon_solved:
 label panopticon_game_over:
     $ inspect = "game over"
     show screen room2_panopticon
-    show black with dissolve:
+    show black onlayer screens with dissolve:
         alpha 0.5
     "(You re-arrange another set of cells and-)"
     "(-and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
@@ -205,7 +207,7 @@ label panopticon_game_over:
 label recalibration_game_over:
     $ inspect = "game over"
     show screen cybernetics(cyb, False)
-    show black with dissolve:
+    show black onlayer screens with dissolve:
         alpha 0.5
     "(You confirm your choice, and a beeping starts.)"
     "(It's tone sets the hairs on the back of your neck on edge.)"
@@ -227,10 +229,62 @@ label recalibration_game_over:
     l "Patient was eventually re-stabilized and should wake up within the next few days."
     l "On the other hand, the lab rat won't get up ever again. Seems like they're missing a few too many critical parts."
     l "{b}Contributing Factors to Death:{/b} They gave too much of themselves to my cause."
+
     $deadend(achievement_dead9)
     le "DEAD END 09: A Taste of Sobering Punishment."
     nvl clear
     return
+    
+label word_game_over:
+    $ inspect = "game over"
+    show screen room2_word
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    # [error sound effect]
+    $ random_choice = random.randint(1,5)
+    if random_choice == 1:
+        cr "Holy crap! Did you just manage to guess that right on your first try?"
+        "(Huh? Really?)"
+        cr "{i}Kidding!{/i}"
+        "(You-)"
+        cr "God, lighten up. Here, let me help!"
+        #"{b}ZAP SFX, CUT TO BLACK{/b}"
+
+    elif random_choice == 2:
+        cr "Whoa... You got it."
+        cr "...Are you looking up a walkthrough our something?"
+        "(You-)"
+        cr "If so, go back and complain in the comments. "
+        cr "They led you to a dead end!"
+        #"{b}SMASH SFX, CUT TO BLACK{/b}"
+
+    elif random_choice == 3:
+        cr "You're a fast one, aren't you?"
+        "(Huh? What do you-)"
+        cr "But next time, {i}do {/i}look before you leap."
+        #"{b}TRAP DOOR SFX, CUT TO BLACK{/b}"
+
+    elif random_choice == 4:
+        cr "I see you're the type who likes to gamble."
+        cr "Alas, you didn't hit the jackpot. Better luck next time!"
+        "(You-)"
+        cr "But since you're here, I've got another game for you to play."
+        cr "Place your bet, lab rat! Is the gun next to you loaded or unloaded?"
+        "(What gu-)"
+        #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
+
+    else:
+        cr "...Wow. That wasn't even {i}close. {/i}"
+        cr "You'd have better luck just smashing keys."
+        "(You-)"
+        cr "Like.{i} {/i}{i}So{/i}{i}.{/i}"
+        #"{b}SMASHING SFX, CUT TO BLACK{/b}"
+
+    $deadend(achievement_dead6)
+    le "DEAD END 06: <NAME>."
+    nvl clear
+    return
+   
 
 #label room2_deaths:
 #    "{u}{b}Death Scenes{/b}{/u}"
@@ -254,47 +308,3 @@ label recalibration_game_over:
 #    "{i}Guess they were worth the trouble of installation!{/i}"
 
 #    "Contributing Factors to Death" "{i}{b}{/b}{/i}{i}Couldn't put progress on the board.{/i}"
-
-
-#    "Meta Puzzle" "This is the acronym word puzzle. If you enter a valid word that is too short, Cautionne just kills you while making a terrible pun about the word you entered."
-
-#    "Meta Puzzle Death Scene" "{b}{/b}
-#    *Player enters wrong answer*
-#    Holy crap! Did you just manage to guess that right on your first try?
-#    (Huh? Really?)
-#    {b} {/b}{i}Kidding!{/i}{i} {/i}
-#    {i}{/i}(You-)
-#    God, lighten up. Here, let me help!
-#    {b}ZAP SFX, CUT TO BLACK{/b}"
-
-#    "*Player enters wrong answer*
-#    Whoa... You got it.
-#    ...Are you looking up a walkthrough our something?
-#    (You-)
-#    If so, go back and complain in the comments. 
-#    They led you to a dead end!
-#    {b}SMASH SFX, CUT TO BLACK{/b}"
-
-#    "*Player enters wrong answer*
-#    You're a fast one, aren't you?
-#    (Huh? What do you-)
-#    But next time, {i}do {/i}look before you leap.
-#    {b}TRAP DOOR SFX, CUT TO BLACK{/b}"
-#
-#    "*Player enters wrong answer*
-#    I see you're the type who likes to gamble.
-#    Alas, you didn't hit the jackpot. Better luck next time!
-#    (You-)
-#    But since you're here, I've got another game for you to play.
-#    Place your bet, lab rat! Is the gun next to you loaded or unloaded?
-#    (What gu-)
-#    {b}GUNSHOT SFX, CUT TO BLACK{/b}"
-
-#    "*Player enters wrong answer*
-#    ...Wow. That wasn't even {i}close. {/i}
-#    You'd have better luck just smashing keys.
-#    (You-)
-#    Like.{i} {/i}{i}So{/i}{i}.{/i}
-#    {b}SMASHING SFX, CUT TO BLACK{/b}"
-
-
