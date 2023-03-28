@@ -344,30 +344,38 @@ image cautionne_serious_speaking:
 layeredimage cautionne shoot:
     zoom 0.5
     group mouth:
-        attribute angry default WhileSpeaking("cautionne", "cautionne_shoot_angry", "cautionne_shoot_angry_closed")
-        attribute cry WhileSpeaking("cautionne", "cautionne_shoot_cry", "images/CG/cautionne_shoot_cry_close.png")
-        attribute grin WhileSpeaking("cautionne", "cautionne_shoot_grin", "images/CG/cautionne_shoot_grin_close.png")
-        attribute angrysilent "cautionne_shoot_angry_closed"
+        attribute angry default WhileSpeaking("cautionne", "cautionne_shoot_angry", "images/CG/cautionne_shoot_angry_closed.jpg")
+        attribute angryx2 WhileSpeaking("cautionne", "cautionne_shoot_angry_x2", "images/CG/cautionne_shoot_angry_closed_x2.jpg")
+        attribute cry WhileSpeaking("cautionne", "cautionne_shoot_cry", "images/CG/cautionne_shoot_cry_close.jpg")
+        attribute grin WhileSpeaking("cautionne", "cautionne_shoot_grin", "images/CG/cautionne_shoot_grin_close.jpg")
+        attribute angrysilent "images/CG/cautionne_shoot_angry_closed.jpg"
+        attribute angrysilentx2 "images/CG/cautionne_shoot_angry_closed_x2.jpg"
         attribute crysilent "images/CG/cautionne_shoot_cry_close.png"
         attribute grinsilent "images/CG/cautionne_shoot_grin_close.png"
 
 
 image cautionne_shoot_angry:
-    "cautionne_shoot_angry_open"
+    "images/CG/cautionne_shoot_angry_open.jpg"
     pause 0.12
-    "cautionne_shoot_angry_closed"
+    "images/CG/cautionne_shoot_angry_closed.jpg"
+    pause 0.12
+    repeat
+image cautionne_shoot_angry_x2:
+    "images/CG/cautionne_shoot_angry_open_x2.jpg"
+    pause 0.12
+    "images/CG/cautionne_shoot_angry_closed_x2.jpg"
     pause 0.12
     repeat
 image cautionne_shoot_cry:
     "cautionne_shoot_cry_open"
     pause 0.12
-    "images/CG/cautionne_shoot_grin_close.png"
+    "images/CG/cautionne_shoot_grin_close.jpg"
     pause 0.12
     repeat
 image cautionne_shoot_grin:
-    "images/CG/cautionne_shoot_grin_open.png"
+    "images/CG/cautionne_shoot_grin_open.jpg"
     pause 0.12
-    "images/CG/cautionne_shoot_grin_close.png"
+    "images/CG/cautionne_shoot_grin_close.jpg"
     pause 0.12
     repeat
 

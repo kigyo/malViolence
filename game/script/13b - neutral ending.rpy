@@ -83,7 +83,7 @@ label neutral_ending:
     "{si}(All I can do...{w} is open my eyes...){/si}"
 
     scene cautionne shoot with eyeopen:
-        align(0.0,1.0)
+        zoom 2 align(0.0,1.0)
         easein 45 align(0.0,0.0)
 
     pause 3
@@ -93,6 +93,7 @@ label neutral_ending:
     if most_explored == 1:
 
         cr "In fact,{w=0.1} it seems like you haven't experienced much of {i}anything.{/i}"
+        pause 0.5
         cr "If I let you go,{w=0.1} would your bosses even care?"
         cr "After all,{w=0.1} you're not much of an investigator."
         cr "So, how ‘bout I save you all the exit interviews and put things to an end here."
@@ -144,22 +145,24 @@ label neutral_ending:
         cr "You got your muddy paws on some {i}confidential {/i}information.{w=0.5} Stuff {i}way{/i} above your paygrade."
         cr "So,{w=0.1} I'm afraid I'll have to end things here."
         #"{b}[pan up to his face]{/b}"
-        scene cautionne shoot grin with dissolve:
+        scene cautionne shoot grinsilent with dissolve:
             align(0.0,0.0)
         pause 2
+        scene cautionne shoot grin:
+            align(0.0,0.0)
         cr "No hard feelings.{w=0.5} I know you were just doing your job."
         cr "But see,{w=0.1} there's a little {i}conflict of interest{/i} between you and me."
-        scene cautionne shoot angry:
+        scene cautionne shoot angryx2:
             align(0.0,0.0)
         cr "Besides,{w=0.1} I've got to finish what Dr. Danger started.{w=0.5} That's {i}my {/i}{i}job{/i},{w=0.1} now that she's gone."
         #"{b}[the trigger clicks]{/b}"
-        scene cautionne shoot angrysilent:
+        scene cautionne shoot angrysilentx2:
             align(0.0,0.0)
         pause 0.1
-        scene cautionne shoot angrysilent with dissolve:
+        scene cautionne shoot angrysilentx2 with dissolve:
             zoom 2 align(0.0,0.07)
         pause 0.1
-        scene cautionne shoot angry:
+        scene cautionne shoot angryx2:
             zoom 2 align(0.0,0.07)
         cr "And by the time I'm finished,{w=0.1} they'll be {i}begging{/i} for her to come back."
         #"{b}[the gun fires]{/b}"
@@ -191,14 +194,14 @@ label neutral_ending:
     else:
         cr "Want a fun fact?{w=0.5} You'll {i}definitely {/i}find it interesting."
         cr "The pain you're feeling right now...{w=0.5} is only a thousandth of the pain I went through."
-        cr "I {i}wish{/i} I was exaggerating,{w=0.1} but they came up with very accurate,{w=0.1} scientific measurements for this kind of thing.{w=0.5} {i}Only one thousandth.{/i}"
+        cr "I {i}wish{/i} I was exaggerating,{w=0.1} but they came up with very accurate,{w=0.1} scientific measurements for this kind of thing.{w=0.5} Only {i}one thousandth.{/i}"
         cr "You read Dr. Danger's diary,{w=0.1} right?{w=0.5} You {i}know{/i} what STOP did to me."
         cr "Getting up from my bed took weeks.{w=0.5} Walking with my new legs took months.{w=0.5} I still twitch and faint 'cause of the shit they put in my brain."
         cr "You'll never know what that's like.{w=0.5} Being a {i}real {/i}lab rat."
-        scene cautionne shoot angrysilent with dissolve:
+        scene cautionne shoot angrysilentx2 with dissolve:
             align(0.0,0.0)
         pause 1
-        scene cautionne shoot angry:
+        scene cautionne shoot angryx2:
             align(0.0,0.0)
         cr "I {i}won't{/i} let anyone else live through what I did."
         cr "You weren't there.{w=0.5} You weren't in charge. "
