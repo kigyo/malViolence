@@ -125,27 +125,27 @@ screen room3_quilt():
         if config.developer:
             vbox yalign 0.05 xalign 0.5:
                 text testy color "#000"
-        grid 6 11 align (0.5, 0.5) yoffset -2 at zoomed(1.35):
+        grid 6 11 align (0.5, 0.5) at zoomed(1.35):
             for row in range(11):
                 for col in range(6):
                     $ i = row*6 + col
                     fixed fit_first True:
                         if i in quilt_presets:
-                            add Null(100,57)
+                            add Null(104,61)
                             if not row%2 and i%2 or row%2 and not i%2:
-                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.25,0.4) at zoomed(0.4)
+                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.28,0.5) at zoomed(0.4)
                             else:
-                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.7,0.4) at zoomed(0.4)
+                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.75,0.5) at zoomed(0.4)
                         elif i in quilt_input:
-                            imagebutton idle Null(100,57) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
+                            imagebutton idle Null(104,61) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
                                 if quilt_eraser == True:
                                     action Function(quilt_erase, i)
                             if not row%2 and i%2 or row%2 and not i%2:
-                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.25,0.4) at zoomed(0.4)
+                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.28,0.5) at zoomed(0.4)
                             else:
-                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.7,0.4) at zoomed(0.4)
+                                add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.75,0.5) at zoomed(0.4)
                         else:
-                            imagebutton idle Null(100,57) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
+                            imagebutton idle Null(104,61) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
                                 if quilt_eraser == True:
                                     action NullAction()
                             #imagebutton idle "puzzles/room_3_puzzle_1/tile.png" action [Function(quilt_set, i), SetScreenVariable("testy", str(i))]
