@@ -77,10 +77,13 @@ label tutorial_room:
             with fade
             pause 0.5
             #[the vent opens with a creak]
+            show tutorial_bowl with dissolve:
+                yalign 0.2 xalign 0.5
             "(Guess he wasn't kidding about the LabScrip.{w} It's right there,{w=0.1} neatly served in a metal bowl.)"
             pause 1
             "(...)"
             "(To be honest,{w=0.1} you {i}could{/i} use something to fill your empty stomach.{w} You made the smart decision to skip lunch on your way here.)"
+            hide tutorial_bowl with dissolve
             "(You pick up the bowl and shove a fistful of pellets into your mouth.)"
             "(They taste like...)"
             pause 0.5
@@ -120,6 +123,8 @@ label tutorial_room:
             hide tutorial_painting with dissolve
 
     elif inspect == "pellets":
+        show tutorial_pellets with dissolve:
+            yalign 0.2 xalign 0.5
         "(Rat pellets!{w} Now on the floor.)"
         pause 0.5
         "(...To be honest,{w=0.1} you're still pretty hungry.)"
@@ -127,6 +132,7 @@ label tutorial_room:
         menu:
             "(Sure!)":
                 "(You scoop up another fistful of pellets and eat them without a second thought.)"
+                hide tutorial_pellets with dissolve
                 #[crunching sounds]
                 pause 1
                 "(...Why did you do that?)"
@@ -163,6 +169,7 @@ label tutorial_room:
                 return
             "(Nah.)":
                 "(Nah,{w=0.1} you're good.)"
+                hide tutorial_pellets with dissolve
                 "(Actually,{w=0.1} you get drowsy when you eat too much.)"
                 "(You hate to admit it,{w=0.1} but in the situation you're in,{w=0.1} it's probably better to be alert and hungry.)"
 

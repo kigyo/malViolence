@@ -118,74 +118,76 @@ label neutral_ending:
         cr "But I wouldn't be much of a scientist if I didn't test my hypotheses."
 
     elif most_explored == 2:
-        cr "But as much as I sympathize...{w=0.5} I just can't let you go."
-        cr "You got your muddy paws on some {i}confidential {/i}information.{w=0.5} Stuff {i}way{/i} above your paygrade."
-        cr "So,{w=0.1} I'm afraid I'll have to end things here."
-        #"{b}[pan up to his face]{/b}"
-        scene cautionne shoot grinsilent with dissolve:
-            align(0.0,0.0)
-        pause 2
-        scene cautionne shoot grin:
-            align(0.0,0.0)
-        cr "No hard feelings.{w=0.5} I know you were just doing your job."
-        cr "But see,{w=0.1} there's a little {i}conflict of interest{/i} between you and me."
-        scene cautionne shoot angry:
-            align(0.0,0.0)
-        cr "Besides,{w=0.1} I've got to finish what Dr. Danger started.{w=0.5} That's {i}my {/i}{i}job{/i},{w=0.1} now that she's gone."
-        #"{b}[the trigger clicks]{/b}"
-        scene cautionne shoot angrysilent:
-            align(0.0,0.0)
-        pause 0.1
-        scene cautionne shoot angrysilent with dissolve:
-            zoom 2 align(0.0,0.07)
-        pause 0.1
-        scene cautionne shoot angry:
-            zoom 2 align(0.0,0.07)
-        cr "And by the time I'm finished,{w=0.1} they'll be {i}begging{/i} for her to come back."
-        #"{b}[the gun fires]{/b}"
+        label neutral2:
+            cr "But as much as I sympathize...{w=0.5} I just can't let you go."
+            cr "You got your muddy paws on some {i}confidential {/i}information.{w=0.5} Stuff {i}way{/i} above your paygrade."
+            cr "So,{w=0.1} I'm afraid I'll have to end things here."
+            #"{b}[pan up to his face]{/b}"
+            scene cautionne shoot grinsilent with dissolve:
+                align(0.0,0.0)
+            pause 2
+            scene cautionne shoot grin:
+                align(0.0,0.0)
+            cr "No hard feelings.{w=0.5} I know you were just doing your job."
+            cr "But see,{w=0.1} there's a little {i}conflict of interest{/i} between you and me."
+            scene cautionne shoot angry:
+                align(0.0,0.0)
+            cr "Besides,{w=0.1} I've got to finish what Dr. Danger started.{w=0.5} That's {i}my {/i}{i}job{/i},{w=0.1} now that she's gone."
+            #"{b}[the trigger clicks]{/b}"
+            scene cautionne shoot angrysilent:
+                align(0.0,0.0)
+            pause 0.1
+            scene cautionne shoot angrysilent with dissolve:
+                zoom 2 align(0.0,0.07)
+            pause 0.1
+            scene cautionne shoot angry:
+                zoom 2 align(0.0,0.07)
+            cr "And by the time I'm finished,{w=0.1} they'll be {i}begging{/i} for her to come back."
+            #"{b}[the gun fires]{/b}"
 
-        #"{b}[NEUTRAL END – ROOM 2 VARIANT]{/b}"
-        #"{b}[{/b}{b}Cautionne{/b}{b} laughing more menacingly as the {/b}{b}endin{/b}{b} text pops up]{/b}"
-        #"{b}[credits roll]{/b}"
+            #"{b}[NEUTRAL END – ROOM 2 VARIANT]{/b}"
+            #"{b}[{/b}{b}Cautionne{/b}{b} laughing more menacingly as the {/b}{b}endin{/b}{b} text pops up]{/b}"
+            #"{b}[credits roll]{/b}"
     else:
-        cr "Want a fun fact?{w=0.5} You'll {i}definitely {/i}find it interesting."
-        cr "The pain you're feeling right now...{w=0.5} is only a thousandth of the pain I went through."
-        cr "I {i}wish{/i} I was exaggerating,{w=0.1} but they came up with very accurate,{w=0.1} scientific measurements for this kind of thing.{w=0.5} Only {i}one thousandth.{/i}"
-        cr "You read Dr. Danger's diary,{w=0.1} right?{w=0.5} You {i}know{/i} what STOP did to me."
-        cr "Getting up from my bed took weeks.{w=0.5} Walking with my new legs took months.{w=0.5} I still twitch and faint 'cause of the shit they put in my brain."
-        cr "You'll never know what that's like.{w=0.5} Being a {i}real {/i}lab rat."
-        scene cautionne shoot angrysilent with dissolve:
-            align(0.0,0.0)
-        pause 1
-        scene cautionne shoot angry:
-            align(0.0,0.0)
-        cr "I {i}won't{/i} let anyone else live through what I did."
-        cr "You weren't there.{w=0.5} You weren't in charge. "
-        scene cautionne shoot cry:
-            align(0.0,0.0)
-        cr "But after everything you people did to me...{w=0.5} No,{w=0.1} to {i}us...{/i}"
+        label neutral3:
+            cr "Want a fun fact?{w=0.5} You'll {i}definitely {/i}find it interesting."
+            cr "The pain you're feeling right now...{w=0.5} is only a thousandth of the pain I went through."
+            cr "I {i}wish{/i} I was exaggerating,{w=0.1} but they came up with very accurate,{w=0.1} scientific measurements for this kind of thing.{w=0.5} Only {i}one thousandth.{/i}"
+            cr "You read Dr. Danger's diary,{w=0.1} right?{w=0.5} You {i}know{/i} what STOP did to me."
+            cr "Getting up from my bed took weeks.{w=0.5} Walking with my new legs took months.{w=0.5} I still twitch and faint 'cause of the shit they put in my brain."
+            cr "You'll never know what that's like.{w=0.5} Being a {i}real {/i}lab rat."
+            scene cautionne shoot angrysilent with dissolve:
+                align(0.0,0.0)
+            pause 1
+            scene cautionne shoot angry:
+                align(0.0,0.0)
+            cr "I {i}won't{/i} let anyone else live through what I did."
+            cr "You weren't there.{w=0.5} You weren't in charge. "
+            scene cautionne shoot cry:
+                align(0.0,0.0)
+            cr "But after everything you people did to me...{w=0.5} No,{w=0.1} to {i}us...{/i}"
 
-        scene cautionne shoot crysilent:
-            align(0.0,0.0)
-        pause 0.1
-        scene cautionne shoot crysilent with dissolve:
-            zoom 2 align(0.0,0.07)
-        pause 0.1
-        scene cautionne shoot cry:
-            zoom 2 align(0.0,0.07)
-        #"{b}[{/b}{b}cautione{/b}{b} is on the verge of tears]{/b}"
-        cr "I...{w=0.5} I..."
-        scene cautionne shoot crysilent:
-            zoom 2 align(0.0,0.07)
-        pause 1
-        scene cautionne shoot cry:
-            zoom 2 align(0.0,0.07)
-        #"{b}[the trigger clicks]{/b}"
-        cr "...I just can't forgive someone who'd brush that aside."
-        #"{b}[the gun fires]{/b}"
+            scene cautionne shoot crysilent:
+                align(0.0,0.0)
+            pause 0.1
+            scene cautionne shoot crysilent with dissolve:
+                zoom 2 align(0.0,0.07)
+            pause 0.1
+            scene cautionne shoot cry:
+                zoom 2 align(0.0,0.07)
+            #"{b}[{/b}{b}cautione{/b}{b} is on the verge of tears]{/b}"
+            cr "I...{w=0.5} I..."
+            scene cautionne shoot crysilent:
+                zoom 2 align(0.0,0.07)
+            pause 1
+            scene cautionne shoot cry:
+                zoom 2 align(0.0,0.07)
+            #"{b}[the trigger clicks]{/b}"
+            cr "...I just can't forgive someone who'd brush that aside."
+            #"{b}[the gun fires]{/b}"
 
-        #"{b}[{/b}{b}Cautionne{/b}{b} is heard crying softly as the ending text pops up]{/b}"
-        #"{b}[NEUTRAL END – ROOM 3 VARIANT]{/b}"
+            #"{b}[{/b}{b}Cautionne{/b}{b} is heard crying softly as the ending text pops up]{/b}"
+            #"{b}[NEUTRAL END – ROOM 3 VARIANT]{/b}"
 
     scene black
     pause 3

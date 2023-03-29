@@ -371,10 +371,10 @@ image cautionne_serious_speaking:
 layeredimage cautionne shoot:
     zoom 0.5
     group mouth:
-        attribute angry default WhileSpeaking("cautionne", "cautionne_shoot_angry", "images/CG/cautionne_shoot_angry_closed.png")
+        attribute angry default WhileSpeaking("cautionne", "cautionne_shoot_angry", "images/CG/cautionne_shoot_angry_close.png")
         attribute cry WhileSpeaking("cautionne", "cautionne_shoot_cry", "images/CG/cautionne_shoot_cry_close.png")
         attribute grin WhileSpeaking("cautionne", "cautionne_shoot_grin", "images/CG/cautionne_shoot_grin_close.png")
-        attribute angrysilent "images/CG/cautionne_shoot_angry_closed.png"
+        attribute angrysilent "images/CG/cautionne_shoot_angry_close.png"
         attribute crysilent "images/CG/cautionne_shoot_cry_close.png"
         attribute grinsilent "images/CG/cautionne_shoot_grin_close.png"
 
@@ -382,13 +382,13 @@ layeredimage cautionne shoot:
 image cautionne_shoot_angry:
     "images/CG/cautionne_shoot_angry_open.png"
     pause 0.12
-    "images/CG/cautionne_shoot_angry_closed.png"
+    "images/CG/cautionne_shoot_angry_close.png"
     pause 0.12
     repeat
 image cautionne_shoot_cry:
     "cautionne_shoot_cry_open"
     pause 0.12
-    "images/CG/cautionne_shoot_grin_close.png"
+    "images/CG/cautionne_shoot_cry_close.png"
     pause 0.12
     repeat
 image cautionne_shoot_grin:
