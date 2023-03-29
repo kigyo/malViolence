@@ -29,6 +29,8 @@ label room_2:
 
     if inspect == "blueprints":
         if room2["blueprints"] == 0:
+            show room2_blueprintcollection with dissolve:
+                yalign 0.2 xalign 0.5
             "(You survey the diagrams before you.)"
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
@@ -36,36 +38,54 @@ label room_2:
             "(The oldest of the blueprints -{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person authored them.)"
             "(In fact,{w=0.1} if you squint...{w=0.5} you can still find the signatures at the bottom.)"
             "(\"Destrange,\"{w=0.1} they say.{w} They're dated more than 15 years ago.)"
+            hide room2_blueprintcollection with dissolve
         else:
+            show room2_blueprintcollection with dissolve:
+                yalign 0.2 xalign 0.5
             "(Blueprints for a variety of dangerous weapons. {w}Honestly,{w=0.1} they're pretty scary.)"
+            hide room2_blueprintcollection with dissolve
             pass
         $ room2["blueprints"] += 1
 
     elif inspect == "post-its":
         if room2["post-its"] == 0:
+            show room2_postitnotes with dissolve:
+                yalign 0.2 xalign 0.5
             "(You eye over the mass of scrawled notes pinned in front of you.{w} There're two distinct handwritings here,{w=0.1} but the contents are mostly the same{w=0.5} - and mostly {i}domestic{/i}.) "
             "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and...{w=0.5} what {i}stories{/i} to read?)"
             "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and {i}chores?{/i})"
             "(Whoever left these notes for each other weren't just sharing the same space.\n{w}They were {i}living{/i} together.)"
+            hide room2_postitnotes with dissolve
         else:
-            "(A wall of scrawled post-its. {w}And they all talk about...{w=0.5} domestic tasks?)"
+            show room2_postitnotes with dissolve:
+                yalign 0.2 xalign 0.5
+            "(A wall of scrawled notes. {w}And they all talk about...{w=0.5} domestic tasks?)"
+            hide room2_postitnotes with dissolve
             pass
         $ room2["post-its"] += 1
 
     elif inspect == "limbs":
         if room2["limbs"] == 0:
+            show room2_limbsdesigns with dissolve:
+                yalign 0.2 xalign 0.5
             "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP -{w=0.5} at first glance.)"
             "(On closer inspection,{w=0.1} there are more differences than there are similarities.) "
             "(STOP's technology is more generalized,{w=0.1} more efficient...{w=0.5} and {i}angular.{/i})"
             "(These plans are heavily customized.{w} They could've only been suitable for a very small number of subjects -{w=-0.5} possibly as few as {i}one.{/i})"
             "(Perhaps Dr. Danger based it off stolen data?{w} You make a note to tell your superiors about possible reverse-engineering.)"
+            hide room2_limbsdesigns with dissolve
         else:
+            show room2_limbsdesigns with dissolve:
+                yalign 0.2 xalign 0.5
             "(Designs for cybernetic limbs.{w} They're pretty similar to the ones produced by STOP...)"
+            hide room2_limbsdesigns with dissolve
             pass
         $ room2["limbs"] += 1
 
     elif inspect == "corkboard":
         if room2["corkboard"] == 0:
+            show room2_evidenceboard with dissolve:
+                yalign 0.2 xalign 0.5
             "(As you look over the sprawling web of photos,{w=0.1} documents,{w=0.1} and diagrams,{w=0.1} you realize everything in front of you is perfectly orderly.)"
             "(These are the notes of a hunter,{w=0.1} and STOP was their prey.)"
             "(You recognize dozens of names,{w=0.1} operations,{w=0.1} and places;{w=0.5} vital parts of STOP's organization that had suffered heavy blows in the last few years.)"
@@ -73,25 +93,35 @@ label room_2:
             "(Laboratories,{w=0.1} factories{w=0.1} and armories that must be high above your clearance level –{w=0.5} crossed out like someone was just going down a checklist.)"
             "(All these top-secret sites share the same acronym:{w=0.5} \"YTDI.\")"
             "(...No,{w=0.1} you {i}don't{/i} recognize it.)"
+            hide room2_evidenceboard with dissolve
             "(That's par for the course with STOP.{w} If you don't know what an acronym means,{w=0.1} it's probably above your paygrade.)"
         else:
+            show room2_evidenceboard with dissolve:
+                yalign 0.2 xalign 0.5
             "(A sprawling web of photos,{w=0.1} documents{w=0.1}  and diagrams. {w}And they're all related to STOP...)"
+            hide room2_evidenceboard with dissolve
             pass
         $ room2["corkboard"] += 1
 
     elif inspect == "clippings":
         if room2["clippings"] == 0:
+            show room2_news with dissolve:
+                yalign 0.2 xalign 0.5
             "(Printouts and clippings of various news articles -{w=0.1} all related to Dr. Danger's exploits...{w=0.5} with a {i}certain{/i} colorful sidekick occasionally breaking into the opening paragraphs.)"
             "(In fact,{w=0.1} when you look at them all together,{w=0.1} Cautionne seems to show up more over time.{w} Dr. Danger must've been pleased with her pupil's growth.)"
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
             "(Based on what you can make out of the caption - {w=0.1}it seems to be of some kind of commemorative occasion.)" 
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
             "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as-{w=0.3}{nw})"
+            hide room2_news with dissolve
             pause 1
             #"{b}[pause as the clippings disappear]{/b}"
             "(...Never mind.{w} It's just similar,{w=0.1} that's all.)"
         else:
+            show room2_news with dissolve:
+                yalign 0.2 xalign 0.5
             "Newspaper printouts and clippings. {w}They all feature Dr. Danger...{w=0.5} as well as a {i}certain{/i} colorful sidekick."
+            hide room2_news with dissolve
             pass
         $ room2["clippings"] += 1
 
@@ -114,7 +144,7 @@ label room_2:
 
     elif inspect == "evidence":
         if "evidence" in room2["solved"]:
-            "(You already solved the evidence board puzzle.)"
+            "(You've already solved the evidence board puzzle.)"
         else:
             if room2["evidence"] == 0:
                 #evidence introduction
@@ -127,7 +157,7 @@ label room_2:
 
     elif inspect == "recalibration":
         if "recalibration" in room2["solved"]:
-            "(You already solved the recalibration puzzle.)"
+            "(You've already solved the recalibration puzzle.)"
         else:
             call init_cybernetics from _call_init_cybernetics
             if room2["recalibration"] == 0:
@@ -165,7 +195,7 @@ label panopticon_solved:
         alpha 0.5
     $ room2["solved"].append("panopticon")
     #Show a note/picture/memento which will then show up on 
-    "(You solved the panopticon puzzle.)"
+    "(Congratulations! {w}You solved the panopticon puzzle.)"
     hide black onlayer screens
     hide screen room2_panopticon
     with dissolve
@@ -179,7 +209,9 @@ label panopticon_game_over:
         alpha 0.5
     "(You re-arrange another set of cells and-)"
     "(-and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
-    hide screen room2_panopticon with fade
+    hide black onlayer screens
+    hide screen room2_panopticon
+    with easeouttop
     cr "Seems like you've run out of time,{w=0.1} lab rat."
     cr "That's it.{w=0.5} The jailbreak is broken.{w=0.5} You screwed up."
     "(So it {i}was {/i}a prison?{w} Then-)"
@@ -196,7 +228,7 @@ label panopticon_game_over:
     cr "I'll come back for you when you're sorry enough."
 
     nvl clear
-    pause 2
+    pause 3
     $nvl_heading = "Lab Report #893"
     l "Subject expired after 3 days due to lack of water, light, food, and mental stimulation."
     l "Scratched their nails bloody on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
@@ -211,29 +243,36 @@ label recalibration_game_over:
     show screen cybernetics(cyb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(You confirm your choice, and a beeping starts.)"
+    "(You confirm your choice,{w=0.1} and a beeping starts.)"
     "(It's tone sets the hairs on the back of your neck on edge.)"
-    cr "You're losing 'em, Doc."
-    "(...Wait. This is an actual {i}person?{/i})"
-    cr "As they are now, they can't be re-stabilized. Their own nervous system will rip them apart with spasming."
-    cr "...But they shouldn't be punished for your mistake, right?"
-    "(...Well, uh-)"
-    cr "Don't worry, I can fix this."
+    cr "You're losing 'em,{w=0.1} Doc."
+    "(...Wait.{w} This is an actual {i}person?{/i})"
+    hide black onlayer screens
+    hide screen cybernetics 
+    with easeouttop
+    cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} Their own nervous system will rip them apart with spasming."
+    cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"
+    "(...Well,{w=0.1} uh-){p=0.3}{nw}"
+    cr "Don't worry,{w=0.1} I can fix this."
     cr "But I'm gonna need a hand."
-    "(Suddenly, your body feels a lot heavier. Is that mist in the corner of the room?)"
-    cr "...And a liver. And a stomach. And a heart. And most of your spinal cord."
+    show bg room2 at dizzy with dissolve:
+        parallel:
+            yalign 0.0 xalign 0.0 zoom 0.34
+    "{cps=30}(Suddenly,{w=0.1} your body feels a lot heavier.{w}{/cps} {cps=20}Is that mist in the corner of the room?){/cps}"
+    cr "...And a liver.{w=0.5} And a stomach.{w=0.5} And a heart.{w=0.5} And most of your spinal cord."
     pause 1
     cr "And I'm gonna need them {i}right now.{/i}"
+    scene black with small_shake
     #"{i}{b}COLLAPSE SFX{/b}"
     nvl clear
-    pause 2
+    pause 3
     $nvl_heading = "Lab Report #062"
     l "Patient was eventually re-stabilized and should wake up within the next few days."
     l "On the other hand, the lab rat won't get up ever again. Seems like they're missing a few too many critical parts."
     l "{b}Contributing Factors to Death:{/b} They gave too much of themselves to my cause."
 
     $deadend(achievement_dead9)
-    le "DEAD END 09: A Taste of Sobering Punishment."
+    le "DEAD END 09: Didn't Make The Cut."
     nvl clear
     return
     

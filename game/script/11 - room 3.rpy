@@ -55,16 +55,24 @@ label room_3:
 
     if inspect == "mannequin":
         if room3["mannequin"] == 0:
+            show room3_wig with dissolve:
+                yalign 0.2 xalign 0.5
             "(When you look at the bust in front of you,{w=0.1} you recall a half-serious lesson on disguising yourself back when you were a trainee.)"
             "(From what you remember,{w=0.1} this appears to be a mannequin for a wig.)"
             "(But Dr. Danger had a full head of hair.)"
             "(Did she need to disguise herself?{w} Intel's always suggested that her mastery over tech kept her off any camera she cared about.)"
+            hide room3_wig with dissolve
         else:
+            show room3_wig with dissolve:
+                yalign 0.2 xalign 0.5
             "(It's a wig mannequin.{w} But it doesn't seem to be Dr. Danger's...)"
+            hide room3_wig with dissolve
         $ room3["mannequin"] += 1
 
     elif inspect == "scrapbook":
         if room3["scrapbook"] == 0:
+            show room3_scrapbookcg with dissolve:
+                yalign 0.2 xalign 0.5
             "(You pick up what appears to be a generic scrapbook,{w=0.1} like those shoved to the back shelves of charity stores.{w} Looking closely, you can still see remnants of price sticker glue.)"
             "(It feels normal.{w} {i}Too{/i} normal.{w} The book's clearly hiding some deep,{w=0.1} dark{w=0.1} secret.)"
             "(But the inner contents are equally...{w=0.5} {i}normal.{/i})"
@@ -83,12 +91,15 @@ label room_3:
             "(...Hold on.{w} Wasn't the film released in cinemas three months later?)"
             "(...)"
             "(Looks like STOP will have to add \"digital piracy\" to Dr. Danger's long list of crimes.)"
+            hide room3_scrapbookcg with dissolve
         else:
             "(A surprisingly ordinary scrapbook.{w} Featuring crimes against copyright.)"
         $ room3["scrapbook"] += 1
 
     elif inspect == "health_record":
         if room3["health_record"] == 0:
+            show room3_report with dissolve:
+                yalign 0.2 xalign 0.5
             "(You pick up a clipboard with a thick stack of charts and diagrams pinned to the front.)"
             "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh,{w=0.1} black{w=0.1} lettering.{w} At the bottom of the page,{w=0.1} you spot an acronym:{w=0.5} \"YTDI\".)"
             "(You flip through the log.{w} The recuperation described here is difficult to read.)"
@@ -98,26 +109,38 @@ label room_3:
             "(And from the logbook,{w=0.1} a lot of children were implanted:{w=0.5} children well under the age of 18.)"
             "(There's nothing here about informed consent or parental permissions.)"
             "(Evidently,{w=0.1} parents weren't involved.)"
+            hide room3_report with dissolve
         else:
+            show room3_report with dissolve:
+                yalign 0.2 xalign 0.5
             "(You don't really want to touch that clipboard again.{w} It gives you...{w=0.5} a {i}sinking{/i} feeling.)"
+            hide room3_report with dissolve
         $ room3["health_record"] += 1
 
     elif inspect == "sewing_book":
         if room3["sewing_book"] == 0:
+            show room3_sewingsetup with dissolve:
+                yalign 0.2 xalign 0.5
             "(You find an assortment of patterns,{w=0.1}  books,{w=0.1}  and materials for sewing.)"
             "(There's a little stack of half-finished items;{w=0.5}  a skirt and a blouse in conservative colors.{w} Right next to it,{w=0.1}  there's a whole pile of hand-stitched garments in garish yellows,{w=0.1}  greens,{w=0.1}  and reds.)"
             "(Seems like someone handed their sewing books down to a more imaginative type.)"
             "(You're well-aware that sewing isn't just a simple hobby.{w} Many of STOP's associated security forces take up the practice when they receive their first cybernetics.)"
             "(After such a big operation,{w=0.1}  the skill rehabilitates their hand-eye coordination.)"
             "(But you doubt they'd make such a large collection of fuzzy mittens.)"
+            hide room3_sewingsetup with dissolve
         else:
+            show room3_sewingsetup with dissolve:
+                yalign 0.2 xalign 0.5
             "(A superb sewing setup. {w}But what's with all the mittens? {w}It's not winter anymore.)"
+            hide room3_sewingsetup with dissolve
         $ room3["sewing_book"] += 1
 
     elif inspect == "locked_container":
         if room3["locked_container"] == 0:
             "(After entering the combination,{w=0.1}  there's a small click.{w} You give the handle a tug.)"
             "(There's no dust inside,{w=0.1}  but a stale odor wafts out.{w} Clearly, this hasn't been opened for a long time.)"
+            show room3_lockedbox with dissolve:
+                yalign 0.2 xalign 0.5
             "(You find a lab coat with an ID pinned above its breast pocket.{w} There's no photo,{w=0.1}  but the name \"Deirdre Destrange\" is clearly printed alongside a worn barcode.)"
             "(The coat itself is high-quality,{w=0.1}  but it's worn around the edges.{w} Deirdre must've worn it for a long time,{w=0.1}  taking good care of it all the while.)"
             "(You see framed photos,{w=0.1}  diplomas,{w=0.1}  certificates and awards -{w=0.5}  all of them belonging to this \"Deirdre Destrange\".)"
@@ -125,12 +148,15 @@ label room_3:
             "(To be {i}that {/i}experienced at a young age,{w=0.1}  and when the science was still so {i}new...{/i}{w=0.5}  Deirdre must've been on the cutting edge of the field.)"
             "(At the bottom of the pile,{w=0.1}  you find a dented medal. {w}An award for \"continued service to the international security community\"?)"
             "(The medal's name has been violently scratched out. {w}And yet, {w=0.1}you think you see the remnants of a familiar logo...)"
+            hide room3_lockedbox with dissolve
         else:
             "(Seems like the contents of this container were meant to be kept a secret.{w} Maybe it's better to leave it be.)"
         $ room3["locked_container"] += 1
 
     elif inspect == "confidence_workbook":
         if room3["confidence_workbook"] == 0:
+            show room3_notebook with dissolve:
+                yalign 0.2 xalign 0.5
             "(It's a crumpled,{w=0.1} heavily worked-over notebook filled with grandiose,{w=0.1}  third-person ramblings.)"
             "(Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
             "(But the more you flip back through the pages,{w=0.1} the more those writings grow negative.)"
@@ -138,10 +164,14 @@ label room_3:
             "(Even further back,{w=0.1} the spidery handwriting disappears.{w} Instead,{w=0.1} there are grids and examples written by someone with clean,{w=0.1} crisp penmanship.)"
             "(It almost looks like a therapeutic exercise -{w=0.5} or a homework assignment.{w} Maybe it's both.)"
             "(What's clear is that the notebook's author hasn't used it for a long,{w=0.1} long{w=0.1} time.)"
+            hide room3_notebook with dissolve
             "(Personally,{w=0.1} you wouldn't be caught dead speaking,{w=0.1} writing,{w=0.1} or even thinking in the third person.)"
             "({i}You{/i} only use the second person.{w} And even then,{w=0.1} only for gathering your thoughts in high-stakes scenarios.)"
         else:
+            show room3_notebook with dissolve:
+                yalign 0.2 xalign 0.5
             "(A crumpled,{w=0.1} heavily worked-over notebook.{w} It clearly hasn't been used in a while.)"
+            hide room3_notebook with dissolve
         $ room3["confidence_workbook"] += 1
 
     elif inspect == "diary":
@@ -322,7 +352,7 @@ label quilt_solved:
         alpha 0.5
     $ room3["solved"].append("quilt")
     #Show a note/picture/memento which will then show up on 
-    "(You solved the quilt puzzle.)"
+    "(You've already solved the quilt puzzle.)"
     hide black onlayer screens
     hide screen room3_quilt 
     with dissolve

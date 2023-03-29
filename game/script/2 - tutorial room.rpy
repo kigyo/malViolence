@@ -94,16 +94,16 @@ label tutorial_room:
             "(There's something at the bottom of the bowl.{w} Something colorful.)"
             "(To get a better look,{w=0.1} you dump the rest of the pellets on the floor.)"
             #[sound of pellets falling]
-            show tutorial_bowl with dissolve:
+            show tutorial_diagram with dissolve:
                 yalign 0.2 xalign 0.5
             "(It's...{w=0.5} a Venn diagram.{w} One with weird shapes?)"
             "(Wonder if it means anything...)"
-            hide tutorial_bowl with dissolve
+            hide tutorial_diagram with dissolve
         else:
-            show tutorial_bowl with dissolve:
+            show tutorial_diagram with dissolve:
                 yalign 0.5 xalign 0.5
             pause
-            hide tutorial_bowl with dissolve
+            hide tutorial_diagram with dissolve
 
     elif inspect == "vent":
         if tutorial["vent"] < 2:

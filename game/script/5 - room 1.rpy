@@ -29,26 +29,38 @@ label room_1:
     if inspect == "oil":
         if room1["oil"] == 0:
             "(You approach the glistening puddle for a closer look.)"
+            show room1_oil with dissolve:
+                yalign 0.2 xalign 0.5
             "(The smell's pretty unambiguous,{w=0.1} but just to be sure -{w=0.1} you gingerly swipe a finger across the surface.)"
             "(Oil.{w} Most likely for some kind of machine.)"
             "(It's not unfamiliar.{w} STOP has a massive array of equipment and vehicles that need regular maintenance.)"
             "(An agent like you is expected to know how to repair and service them -{w=0.1} especially when your bosses are displeased with you.)"
             "(But it's strange to see oil out in the open here.{w} Maybe it's a spill,{w=0.1} or a leak?)"
             "(Either way,{w=0.1} something {i}clearly{/i} isn't working.)"
+            hide room1_oil with dissolve
         else:
+            show room1_oil with dissolve:
+                yalign 0.2 xalign 0.5
             "(Oil.{w} Something clearly isn't working here.)"
+            hide room1_oil with dissolve
             pass
         $ room1["oil"] += 1
 
     elif inspect == "chair":
         #"{b}Primary Source Extractor (Electric Chair){/b} "
         if room1["chair"] == 0:
+            show room1_electricchair with dissolve:
+                yalign 0.2 xalign 0.5
             "(From a comfortable distance,{w=0.1} you eye over the \"Primary Source Extractor\".{w} You approach carefully,{w=0.1} listening closely for any hints of it roaring to life.)"
             "(Agents are expected to keep their wits about them and not jump to conclusions…{w} but it's hard to see the device in front of you as anything but an electric chair.)"
             "(It looks crude and cruel,{w=0.1} like a child's re-imagining of something scary from a history book.)"
             "(That may be exactly what it is.{w} Whatever its purpose,{w=0.1} you give quiet thanks that it seems to be out of commission.)"
+            hide room1_electricchair with dissolve
         else:
+            show room1_electricchair with dissolve:
+                yalign 0.2 xalign 0.5
             "(You're thankful this {i}horrible{/i} device is out of commission.)"
+            hide room1_electricchair with dissolve
             #repeated investigation
 
             pass
@@ -57,14 +69,20 @@ label room_1:
     elif inspect == "megaphone":
         #"{b}Megaphone Collection {/b}"
         if room1["megaphone"] == 0:
+            show room1_megaphones with dissolve:
+                yalign 0.2 xalign 0.5
             "(You paused when you saw the silhouettes from across the room...{w=0.5} but on closer inspection these aren't firearms at all.{w} They're {i}megaphones.{/i})"
             "(So many colors,{w=0.1} materials,{w=0.1} variations… {w}It's far from organized,{w=0.1} but it does look like a collection.)"
             "(It's hard to picture Dr. Danger,{w=0.1} one of STOP's most wanted criminals,{w=0.1} picking up such a quirky hobby.)"
             "(And yet,{w=0.1} half of them are tagged with the initials \"DD\".)"
+            hide room1_megaphones with dissolve
             pause 0.5
             "(...Every supervillain's bound to have a quirk or two.)"
         else:
+            show room1_megaphones with dissolve:
+                yalign 0.2 xalign 0.5
             "(So many megaphones...{w} Every supervillain's bound to have a quirk or two.)"
+            hide room1_megaphones with dissolve
             pass
         $ room1["megaphone"] += 1
 
@@ -77,7 +95,7 @@ label room_1:
 
     elif inspect == "hacking":
         if "hacking" in room1["solved"]:
-            "(You already solved the hacking puzzle.)"
+            "(You've already solved the hacking puzzle.)"
         else:
             if room1["hacking"] == 0:
                 call init_puzzle_board
@@ -90,7 +108,7 @@ label room_1:
         
     elif inspect == "decanting":
         if "decanting" in room1["solved"]:
-            "(You already solved the decanting puzzle.)"
+            "(You've already solved the decanting puzzle.)"
         else:
             if room1["decanting"] == 0:
                 #decanting introduction
@@ -122,7 +140,7 @@ label decanting_solved:
         alpha 0.5
     $ room1["solved"].append("decanting")
     #Show a note/picture/memento which will then show up on 
-    "(You solved the decanting puzzle.)"
+    "(Congratulations! {w}You solved the decanting puzzle.)"
     hide black onlayer screens
     hide screen room1_decanting
     with dissolve
