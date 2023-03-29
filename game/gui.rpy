@@ -314,10 +314,10 @@ define gui.frame_borders = Borders(6, 6, 6, 6)
 define gui.confirm_frame_borders = Borders(60, 60, 60, 60)
 
 ## The frame that is used as part of the skip screen.
-define gui.skip_frame_borders = Borders(24, 8, 75, 8)
+define gui.skip_frame_borders = Borders(125, 26, 12, 3, pad_left = -100)
 
 ## The frame that is used as part of the notify screen.
-define gui.notify_frame_borders = Borders(24, 8, 60, 8)
+define gui.notify_frame_borders = Borders(125, 26, 12, 3, pad_left = -100)
 
 ## The frame that is used as part of the history screen.
 define gui.history_frame_borders = Borders(30, 30, 30, 30)

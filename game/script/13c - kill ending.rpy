@@ -125,7 +125,7 @@ label kill_ending:
     pause 5
 
     hide text
-    $Achievement.add(achievement_end3)
+    $Achievement.add(achievement_end2)
 
     pause 3
 
