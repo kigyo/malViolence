@@ -1,4 +1,5 @@
-default room2 = {"solved":[], "investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0, "recalibration":0, "evidence":0, "word":0}
+default room2 = {"solved":[], "investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0, "recalibration":0, "evidence":0, "word":0,
+    "notes":[]}
 
 screen room2():
     sensitive not inspect
@@ -7,15 +8,23 @@ screen room2():
 
     fixed at zoomed(0.34):
         add "bg room2"
-        imagebutton idle "room2_corkboard" action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (4575, 1550) mouse "inspect"
-        imagebutton idle "room2_blueprints" action [SetVariable("inspect", "blueprints"), Jump("room_2")] pos (800, 1550) mouse "inspect" at zoomed(0.3)
-        imagebutton idle "room2_postits" action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3475, 1450) mouse "inspect" at zoomed(0.3)
-        imagebutton idle "room2_limbs" action [SetVariable("inspect", "limbs"), Jump("room_2")] pos (1775, 2950) mouse "inspect" at zoomed(0.3)
-        imagebutton idle "room2_clippings" action [SetVariable("inspect", "clippings"), Jump("room_2")] pos (2875, 1250) mouse "inspect" at zoomed(0.3)
-        imagebutton idle "room2_panopticon" action [SetVariable("inspect", "panopticon"), Jump("room_2")] pos (3875, 2150) mouse "puzzle" at zoomed(0.3)
-        imagebutton idle "room2_evidence" action [SetVariable("inspect", "evidence"), Jump("room_2")] pos (1175, 1150) mouse "puzzle"
-        imagebutton idle "room2_recalibration" action [SetVariable("inspect", "recalibration"), Jump("room_2")] pos (2175, 1150) mouse "puzzle"
-        imagebutton idle "room2_word" action [SetVariable("inspect", "word"), Jump("room_2")] pos (275, 2350) mouse "puzzle"
+        imagebutton idle Null(940, 805) action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (4800, 1085) mouse "inspect"
+        imagebutton idle Null() action [SetVariable("inspect", "blueprints"), Jump("room_2")] focus_mask Image("rooms/room2_blueprints_mask.png") pos (0, 1175) mouse "inspect"
+        imagebutton idle Null() action [SetVariable("inspect", "clippings"), Jump("room_2")] focus_mask Image("rooms/room2_clippings_mask.png") pos (2811, 1235) mouse "inspect"
+        imagebutton idle Null() action [SetVariable("inspect", "limbs"), Jump("room_2")] focus_mask Image("rooms/room2_limbs_mask.png") pos (0, 2766) mouse "inspect"
+        imagebutton idle Null(300,565) action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3460, 1285) mouse "inspect"
+
+        imagebutton idle Null() action [SetVariable("inspect", "word"), Jump("room_2")] focus_mask Image("rooms/room2_word_mask.png") pos (3790, 1070) mouse "puzzle"
+        imagebutton idle Null() action [SetVariable("inspect", "panopticon"), Jump("room_2")] focus_mask Image("rooms/room2_panopticon_mask.png") pos (4109, 1941) mouse "puzzle"
+        imagebutton idle Null(1563, 620) action [SetVariable("inspect", "evidence"), Jump("room_2")] pos (1175, 1194) mouse "puzzle"
+        imagebutton idle Null() action [SetVariable("inspect", "recalibration"), Jump("room_2")] focus_mask Image("rooms/room2_recalibration_mask.png") pos (0, 2058) mouse "puzzle"
+
+        if 1 not in room2["notes"]:
+            imagebutton idle "rooms/room2_note1.png" action [SetVariable("inspect", "note1"), Jump("room_2")] pos (160, 1484) mouse "inspect"
+        if 2 not in room2["notes"]:
+            imagebutton idle "rooms/room2_note2.png" action [SetVariable("inspect", "note2"), Jump("room_2")] pos (1417, 1767) mouse "inspect"
+        if 3 not in room2["notes"]:
+            imagebutton idle "rooms/room2_note3.png" action [SetVariable("inspect", "note3"), Jump("room_2")] pos (3870, 2217) mouse "inspect"
         
     if config.developer:
         frame:
@@ -27,7 +36,17 @@ label room_2:
     show screen room2
     hide screen room2_panopticon
 
-    if inspect == "blueprints":
+    if inspect == "note1":
+        #TODO flavor text for note on the wall
+        $room2["notes"].append(1)
+    elif inspect == "note2":
+        #TODO flavor text for note on the blackboard
+        $room2["notes"].append(2)
+    elif inspect == "note3":
+        #TODO flavor text for note on the desk
+        $room2["notes"].append(3)
+
+    elif inspect == "blueprints":
         if room2["blueprints"] == 0:
             show room2_blueprintcollection with dissolve:
                 yalign 0.2 xalign 0.5

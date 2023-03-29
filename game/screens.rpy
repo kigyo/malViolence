@@ -1400,9 +1400,9 @@ screen skip_indicator():
     zorder 100
     style_prefix "skip"
 
-    frame:
+    frame at notify_appear:
 
-        hbox:
+        hbox yalign 0.5:
             spacing 9
 
             text _("Skipping")
@@ -1425,14 +1425,13 @@ transform delayed_blink(delay, cycle):
         pause (cycle - .4)
         repeat
 
-
 style skip_frame is empty
 style skip_text is gui_text
 style skip_triangle is skip_text
 
 style skip_frame:
-    ypos gui.skip_ypos
-    background Frame("gui/skip.png", gui.skip_frame_borders, tile=gui.frame_tile)
+    ypos gui.skip_ypos ysize 80
+    background Frame("gui/notify.png", gui.skip_frame_borders, tile=gui.frame_tile)
     padding gui.skip_frame_borders.padding
 
 style skip_text:
@@ -1457,15 +1456,15 @@ screen notify(message):
     style_prefix "notify"
 
     frame at notify_appear:
-        text "[message!tq]"
+        text "[message!tq]" yalign 0.5
 
     timer 3.25 action Hide('notify')
 
 
 transform notify_appear:
     on show:
-        alpha 0
-        linear .25 alpha 1.0
+        alpha 0 xoffset -300
+        easein .25 alpha 1.0 xoffset 0
     on hide:
         linear .5 alpha 0.0
 
@@ -1474,7 +1473,7 @@ style notify_frame is empty
 style notify_text is gui_text
 
 style notify_frame:
-    ypos gui.notify_ypos
+    ypos gui.notify_ypos ysize 80
 
     background Frame("gui/notify.png", gui.notify_frame_borders, tile=gui.frame_tile)
     padding gui.notify_frame_borders.padding

@@ -200,7 +200,7 @@ label neutral_ending:
     hide text
 
     pause 3
-    $Achievement.add(achievement_end2)
+    $Achievement.add(achievement_end3)
 
     if most_explored == 1:
         show text "{size=90}{color=#ffffff}neutral end (a){/color}{/size}":

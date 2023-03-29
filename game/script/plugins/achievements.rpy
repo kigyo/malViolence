@@ -83,18 +83,18 @@ init python:
         ##        'hidden' = Achievements with this label will be displayed as hidden.
         ##      'platinum' = The final achievement to be granted once all other achievements have been granted.
 
-        "start": [_("Rude Awakening"), _(""), "gui/trophy_icon.png", None],
-        "tfng": [_("TFNG"), _("Escape your holding cell."), "gui/trophy_icon.png", None],
-        "room1": [_("Lab Partner"), _("Escape the first puzzle room."), "gui/trophy_icon.png", None],
-        "room2": [_("Private Study"), _("Escape the second puzzle room."), "gui/trophy_icon.png", None],
-        "room3": [_("Housewarming"), _("Escape the third puzzle room."), "gui/trophy_icon.png", None],
-        "deadfirst": [_("Trial and Error"), _("Get your first dead end."), "gui/trophy_icon.png", None],
-        "deadall": [_("A for Effort"), _("Get all dead ends."), "gui/trophy_icon.png", None],
+        "start": [_("Rude Awakening"), _("Find yourself trapped under Cautionne's thumb."), "gui/trophy_icon.png", None],
+        "tfng": [_("TFNG"), _("Get past the first of Cautionne's traps."), "gui/trophy_icon.png", None],
+        "room1": [_("Lab Partner"), _("Escape from Cautionne's evil lab."), "gui/trophy_icon.png", None],
+        "room2": [_("Private Study"), _("Get past the villains' workshop."), "gui/trophy_icon.png", None],
+        "room3": [_("Housewarming"), _("Proceed past the villains' living quarters."), "gui/trophy_icon.png", None],
+        "deadfirst": [_("Trial and Error"), _("Find out what happens when you make a mistake."), "gui/trophy_icon.png", None],
+        "deadall": [_("A for Effort"), _("Make {i}all{/i} the mistakes. For science."), "gui/trophy_icon.png", None],
         #"wrong": [_("Face, Meet Brick Wall"), _(""), "gui/trophy_icon.png", None], #No idea what this one is
-        "end1": [_("Breakout Role"), _("Spare Cautionne."), "gui/trophy_icon.png", "hidden"],
-        "end2": [_("Mission Accomplished"), _("Get killed by Cautionne."), "gui/trophy_icon.png", "hidden"],
-        "end3": [_("Failure to Communicate"), _("Kill Cautionne."), "gui/trophy_icon.png", "hidden"],
-        "investigate": [_("Busybody"), _("Investigate all possible items."), "gui/trophy_icon.png", "hidden"],
+        "end1": [_("Breakout Role"), _("Escape."), "gui/trophy_icon.png", None],
+        "end2": [_("Mission Accomplished"), _("Finish your mission."), "gui/trophy_icon.png", None],
+        "end3": [_("Failure to Communicate"), _("Get to the ending."), "gui/trophy_icon.png", None],
+        "investigate": [_("Busybody"), _("Leave no stone unturned."), "gui/trophy_icon.png", None],
         "all": [_("Noble Laureate"), _("Earn all achievements."), "gui/trophy_icon.png", 'platinum'],
     }
 
