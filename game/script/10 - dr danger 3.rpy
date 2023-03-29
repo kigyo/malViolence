@@ -1,5 +1,7 @@
 label dr_danger_3:
 
+
+
   "(...Again with the temper tantrum,{w=0.1} huh.)"
   "(Seriously,{w=0.1} why's he so pissed off at you?)"
   "(He and Dr. Danger have fought against STOP field agents in the past,{w=0.1} but that's not your department.)"
@@ -9,12 +11,15 @@ label dr_danger_3:
   "(Right - {i}supervillain.{/i})"
   "(Big ego,{w=0.1} no self-awareness.{w} Don't overthink it.)"
 
+  play sound "audio/sfx/Walking Footsteps 3.ogg"
+
   show bg room2:
     zoom 0.8 align (0.8,0.5)
     ease 2 zoom 1.0
   pause 2
+  play sound  "audio/sfx/Opening Door.ogg"
   scene black with fade
-  pause 1
+  pause 2
   show bg corridor3 with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
@@ -22,6 +27,8 @@ label dr_danger_3:
   pause 4
   show bg corridor3 with dissolve:
     zoom 0.5
+  play sound "audio/sfx/Closing Door2.ogg"
+  pause 0.5
   "(...The dim corridor stretches before you,{w=0.1} with no answers to offer.)"
   "(Yes,{w=0.1} it's darker here -{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
   "(The wooden floorboards and the decorated wallpaper feel...{w=0.5} welcoming.{w} {i}Nostalgic,{/i} even.)"
@@ -32,16 +39,24 @@ label dr_danger_3:
   "(Um...{w} Would Cautionne allow you to take a quick breather?)"
   #"{b}[animate camera movements to simulate the protagonist slowly crouching down to the floor] {/b}"
   "(If he meant what he said about not harming a hair on your head,"
+  play sound "audio/sfx/Single Footstep 2.ogg"
   show bg corridor3:
     zoom 0.5 xalign 0.5 yalign 0.5
     ease 3 yalign 1.0 zoom 0.6
   extend "{cps=20} then maybe the smart thing to do would be to-){p=0.5}{nw}"
+  play sound "audio/sfx/staticshort.ogg"
+  pause 0.5
+  voice "audio/voice/dr.danger/Danger_Corridor3-01.ogg"
   dr "Very tempting for a wooden floor,{w=0.1} isn't it?"
+  play sound "audio/sfx/Sitting Up On Bed 1.ogg"
   show bg corridor3:
     zoom 0.6 xalign 0.5 yalign 1.0
     easein 0.2 yalign 0.5 zoom 0.6
   "(Gah!{w} A {i}third{/i} time?!)" with small_shake
-  dr "{i}Heated flooring.{/i} My job has always been stressful,{w=0.5} so I've always strived to maximize comfort wherever I could."
+  voice "audio/voice/dr.danger/Danger_Corridor3-02.ogg"
+  dr "{i}Heated flooring.{/i} My work has always been stressful,{w=0.5} so I've always strived to maximize comfort wherever I could."
+
+  play sound "audio/sfx/Walking Footsteps 3.ogg"
 
   show bg corridor3:
     zoom 0.6 yalign 0.5 xalign 0.5
@@ -53,20 +68,23 @@ label dr_danger_3:
   show crt
   show drdangerframe at bg
   with dissolve 
-
+  voice "audio/voice/dr.danger/Danger_SB-Allow Me To Explain.ogg"
   drs "When your work is done,{w=0.1} you can sleep here all you like."
   drs "But before then,{w=0.1} you've got dishes to clean,{w=0.1} washes to run,{w=0.1} bedrooms to vacuum..."
   show drdanger sidestare
   drs "...and of course,{w=0.1} Cautionne to take care of."
+  voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
   drs "He represents a unique challenge,{w=0.1} I know."
   show drdanger smirk
   drs "But you wouldn't have gotten this far if you and I didn't believe you could do it."
   show drdanger stare
+  voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "While I'm away on business,{w=0.1} it's important that you keep him on his daily routine."
   drs "7am to 9pm –{w=0.5} regularity is key."
   drs "Remember that all his dietary habits,{w=0.1} health regimens{w=0.1} and study exercises{p=0.5}{nw}"
   drs "are detailed in the files that we went over together."
   show drdanger sidestare
+  voice "audio/voice/dr.danger/Danger_SB-I Apologize.ogg"
   drs "I apologize if you'll have to decrypt them again,{w=0.1} but..."
   drs "...Cautionne and I have made a habit of hiding our tracks for good reason."
   show drdanger smirk
@@ -74,9 +92,11 @@ label dr_danger_3:
   drs "If you need a suggestion..."
   drs "...Cautionne told me that he loves the \"Cantaloupe Mall\" course on \"Marco Kart\"."
   show drdanger sidestare
+  voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
   drs "...I might be pronouncing that wrong,{w=0.1}  but he'll know what you mean."
   show drdanger stare
   drs "So, take care."
+  voice "audio/voice/dr.danger/Danger_SB-Allow Me To Explain.ogg"
   drs "If things go smoothly,{w=0.1} I'll be back for him in a week."
   show drdanger sidestare
   drs "And if things {i}don't{/i}{i} {/i}go smoothly..."
@@ -84,20 +104,25 @@ label dr_danger_3:
   pause 1
   show drdanger stare speaking
   drs "Well,{w=0.1} there are systems in place that will guide you on what to do."
+  voice "audio/voice/dr.danger/Danger_Corridor3-03.ogg"
   drs "That's all for now.{w=0.5} Goodbye."
   show drdanger tender
+  voice "audio/voice/dr.danger/Danger_Corridor3-04.ogg"
   drs "And thank you for taking care of my..."
   show drdanger tender silent
   pause 1
-  #"{b}[{/b}{b}Dr.{/b}{b} Danger pauses, and her expression changes – showing {/b}{b}she's{/b}{b} {/b}{b}hold{/b}{b}ing something back]{/b}"
-  show drdanger sidestare speaking
-  drs "{size=-13}Note to self,{w=0.1} re-record instructions at earliest convenience.{/size}"
-  drs "{size=-13}Try not to be so ominous next time.{/size}"
   show drdanger sidestare silent
   pause 0.5
+  play sound "audio/sfx/staticshort.ogg"
   hide drdanger sidestare silent
-  hide crt
   with screenoff
+
+  voice "audio/voice/dr.danger/Danger_Corridor3-05.ogg"
+  #"{b}[{/b}{b}Dr.{/b}{b} Danger pauses, and her expression changes – showing {/b}{b}she's{/b}{b} {/b}{b}hold{/b}{b}ing something back]{/b}"
+  drs "{size=-13}Note to self,{w=0.1} re-record instructions at earliest convenience.{p=2.0}{nw}{/size}"
+  voice sustain
+  drs "{size=-13}Try not to be so...{w=0.5} {i}ominous{/i} next time.{/size}"
+  play sound "audio/sfx/TV Off 1.ogg"
   pause 1
   scene bg corridor3 with fade:
     zoom 0.5 align (0.5,0.5)
@@ -111,12 +136,15 @@ label dr_danger_3:
   pause 1
   "(...C'mon.{w} Just focus on the task at hand.)"
 
+  play sound "audio/sfx/Walking Footsteps 3.ogg"
+
   scene bg corridor3:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
-  pause 2
+  pause 3
   scene black with fade
-  pause 1
+  play sound  "audio/sfx/Opening Door.ogg"
+  pause 2
   show bg room3_downstairs with placeintro:
     zoom 0.6 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
@@ -125,13 +153,15 @@ label dr_danger_3:
 
   show bg room3_downstairs with dissolve:
     zoom 0.4 yalign 0.7
+  play sound "audio/sfx/Closing Door2.ogg"
+  pause 0.5
   #"{b}[pause, walking sounds play as the player goes to room 3]{/b}"
   "(It's...{w=0.5} a normal apartment?)"
   "(There's a kitchenette,{w=0.5} a dining table,{w=0.5} a small sitting area...)"
   "(...and stairs.{w} Probably a bedroom up there.)"
   pause 0.5
   "(Are you {i}supposed{/i} to be here?)"
-  #"[pause – the locked door handle sound is heard]"
+  play sound "audio/sfx/Door Lock 1.ogg"
   pause 1
   "(Guess you are.)"
 

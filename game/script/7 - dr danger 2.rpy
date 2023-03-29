@@ -30,11 +30,16 @@ label dr_danger_2:
   "(You pause.{w} Once again,{w=0.1} your fate is in your own hands.)"
   "(Is this {i}another{/i} one of his puzzles?)"
   pause 0.5
+  play sound "audio/sfx/staticshort.ogg"
+  pause 0.5
+  voice "audio/voice/dr.danger/Danger_Corridor2-01.ogg"
   dr "Good. {w=0.5}You made it through the experiment room."
   "(?!)" with small_shake
   "(Dr. Danger's on again!{w} What did you-)"
   "(No,{w=0.1} no{w=0.1} - calm down.{w} It's probably motion-activated.)"
   "(You should've listened to the last recording,{w=0.1} since it seemed pretty helpful.{w} This time,{w=0.1} you'll stay still and pay attention!)"
+
+  play sound "audio/sfx/Walking Footsteps 2.ogg"
 
   show bg corridor2:
     zoom 0.5 yalign 0.5 xalign 0.5
@@ -48,26 +53,34 @@ label dr_danger_2:
   with dissolve 
 
   pause 1
+  voice "audio/voice/dr.danger/Danger_Corridor2-02.ogg"
   drs "I apologize for any distress that the previous room may have caused you. "
-  drs "For whatever it's worth,{w=0.1} please know that I do not take pleasure in hurting others."
+  voice "audio/voice/dr.danger/Danger_Corridor2-03.ogg"
+  drs "For whatever it's worth,{w=0.1} please know that I do not take pleasure in hurting others.{p=2}{nw}"
+  voice sustain
   drs "The sight of blood makes me quite ill."
   show drdanger sidestare
-  drs "It always has."
+  voice "audio/voice/dr.danger/Danger_Corridor2-04.ogg"
+  drs "{size=-13}It...{w=0.5} always has.{/size}"
   pause 0.5
   show drdanger stare
+  voice "audio/voice/dr.danger/Danger_SB-Allow Me To Explain.ogg"
   drs "No,{w=0.1} {i}that{/i} room belongs to my apprentice."
   drs "Currently,{w=0.1} he is running an experiment -{p=0.5}{nw}"
   show drdanger sidestare
   drs "even if he seems more interested in the process than the results."
+  voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
   drs "Honestly,{w=0.1} I'm in no position to lecture him."
   drs "He's not cruel,{w=0.1}  he's just..."
   show drdanger sidestare silent
   pause 1
   show drdanger stare speaking
+  voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "...I suppose I can say this."
   drs "All his test subjects have a certain {i}unfortunate commonality.{/i}"
   drs" A {i}terminal {/i}condition, as he sees it..."
   drs "...that makes it very difficult for him to...{w=0.5} {i}remain impartial.{/i}"
+  voice "audio/voice/dr.danger/Danger_SB-I Apologize.ogg"
   drs "I apologize for being vague here."
   drs "But this is a subject that has,{w=0.1} and will continue to,{w=0.1} remain between me and him."
   show drdanger sidestare
@@ -76,15 +89,19 @@ label dr_danger_2:
   show drdanger sidestare silent
   pause 1
   show drdanger stare speaking
-  drs "If you're looking for where to go next,{w=0.1} please take the door directly in front of you."
+  voice "audio/voice/dr.danger/Danger_Corridor2-05.ogg"
+  drs "If you're looking for where to go next,{w=0.1} please take the door directly in front of you.{p=1.5}{nw}"
   show drdanger sidestare
+  voice sustain
   drs "The other doors are very much best left shut."
   show drdanger stare
+  voice "audio/voice/dr.danger/Danger_Corridor2-06.ogg"
   drs "Take care, now.{w=0.5} I'll see you in a week."
   #"{b}[{/b}{b}dr.{/b}{b} danger shuts off her recording]{/b}"
 
   show drdanger stare silent
   pause 0.1
+  play sound "audio/sfx/TV Off 1.ogg"
   hide drdanger stare silent
   hide crt
   with screenoff
@@ -97,6 +114,7 @@ label dr_danger_2:
   "(Whoever the intended recipient was,{w=0.1} Dr. Danger clearly trusted them.)"
   "(Better take the door she recommended.)"
   #"{b}[the door in front has an opening sound, and the {/b}{b}bg{/b}{b} changes to room 2]{/b}"
+  play sound "audio/sfx/Walking Footsteps 2.ogg"
   scene bg corridor2:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
@@ -108,17 +126,19 @@ label dr_danger_2:
     linear 20 xalign 1.0
 
   pause 5
-
   show bg room2 with dissolve:
     zoom 0.4 yalign 0.7
-
+  play sound "audio/sfx/Closing Door2.ogg"
+  pause 1
   "(An office...)"
   "(There's shelves everywhere.{w} Loads of files,{w=0.1} too.)"
   "(Like the hall before it,{w=0.1} it's...{w=0.5} oddly ordinary.)"
+  play sound "audio/sfx/Walking Footsteps 2.ogg"
   show bg room2:
     zoom 0.4 yalign 0.7
     ease 4 zoom 0.8 xalign 0.8 yalign 0.65
   "(Just to double check,{w=0.1} though...)"
+  play sound "audio/sfx/Door Lock 1.ogg"
   pause 1
   #"{b}[pause - a locked door handle sound {/b}{b}plays{/b}{b}]{/b}"
   "(...Yup.{w} This is the next puzzle room.)"

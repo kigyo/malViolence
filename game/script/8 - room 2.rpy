@@ -212,6 +212,7 @@ label panopticon_game_over:
     hide black onlayer screens
     hide screen room2_panopticon
     with easeouttop
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Seems like you've run out of time,{w=0.1} lab rat."
     cr "That's it.{w=0.5} The jailbreak is broken.{w=0.5} You screwed up."
     "(So it {i}was {/i}a prison?{w} Then-)"
@@ -221,8 +222,9 @@ label panopticon_game_over:
     "(...Sorry,{w=0.1} {i}operations?{/i})"
     cr "They could've gotten out clean.{w=0.5} Now I'll have to step in and bust them out \n{i}dirty{/i}."
     cr "And it's all because of {i}you.{/i}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 1.ogg"
     cr "Now,{w=0.1} go sit in the corner and think about what you've done!" with small_shake
-    #"{b}SFX LARGE SWITCH FLIPPING, CUT TO BLACK{/b}"
+    ####### industrial lights power off sound here
     scene black 
     pause 1
     cr "I'll come back for you when you're sorry enough."
@@ -245,11 +247,13 @@ label recalibration_game_over:
         alpha 0.5
     "(You confirm your choice,{w=0.1} and a beeping starts.)"
     "(It's tone sets the hairs on the back of your neck on edge.)"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "You're losing 'em,{w=0.1} Doc."
     "(...Wait.{w} This is an actual {i}person?{/i})"
     hide black onlayer screens
     hide screen cybernetics 
     with easeouttop
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} Their own nervous system will rip them apart with spasming."
     cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"
     "(...Well,{w=0.1} uh-){p=0.3}{nw}"
@@ -261,7 +265,15 @@ label recalibration_game_over:
     "{cps=30}(Suddenly,{w=0.1} your body feels a lot heavier.{w}{/cps} {cps=20}Is that mist in the corner of the room?){/cps}"
     cr "...And a liver.{w=0.5} And a stomach.{w=0.5} And a heart.{w=0.5} And most of your spinal cord."
     pause 1
-    cr "And I'm gonna need them {i}right now.{/i}"
+    cr "And I'm gonna need them {cps=20}{i}right now.{/i}{/cps}"
+
+    play sound "audio/sfx/Body Fall 1.ogg"
+
+    show bg room2 at dizzy:
+        zoom 0.34 yalign 0.0
+        easeout 0.4 zoom 1.0 xalign 0.2 yalign 1.0
+    pause 0.4
+
     scene black with small_shake
     #"{i}{b}COLLAPSE SFX{/b}"
     nvl clear
@@ -284,45 +296,69 @@ label word_game_over:
     # [error sound effect]
     $ random_choice = random.randint(1,5)
     if random_choice == 1:
-        cr "Holy crap! Did you just manage to guess that right on your first try?"
-        "(Huh? Really?)"
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
+        cr "Holy crap!{w=0.5} Did you just manage to guess that right on your first try?"
+        "(Huh?{w} Really?)"
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "{i}Kidding!{/i}"
         "(You-)"
-        cr "God, lighten up. Here, let me help!"
+        cr "God,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
         #"{b}ZAP SFX, CUT TO BLACK{/b}"
+        scene black
+        pause 3
 
     elif random_choice == 2:
-        cr "Whoa... You got it."
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+        cr "Whoa...{w=0.5} You got it."
         cr "...Are you looking up a walkthrough our something?"
         "(You-)"
-        cr "If so, go back and complain in the comments. "
+        cr "If so,{w=0.1} go back and complain in the comments."
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "They led you to a dead end!"
         #"{b}SMASH SFX, CUT TO BLACK{/b}"
+        scene black
+        pause 3
 
     elif random_choice == 3:
-        cr "You're a fast one, aren't you?"
-        "(Huh? What do you-)"
-        cr "But next time, {i}do {/i}look before you leap."
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+        cr "You're a fast one,{w=0.1} aren't you?"
+        "(Huh?{w} What do you-)"
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+        cr "But next time,{w=0.1} {i}do{/i} look before you leap."
         #"{b}TRAP DOOR SFX, CUT TO BLACK{/b}"
+        scene black
+        pause 3
 
     elif random_choice == 4:
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
         cr "I see you're the type who likes to gamble."
-        cr "Alas, you didn't hit the jackpot. Better luck next time!"
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+        cr "Alas,{w=0.1} you didn't hit the jackpot.{w=0.5} Better luck next time!"
         "(You-)"
-        cr "But since you're here, I've got another game for you to play."
-        cr "Place your bet, lab rat! Is the gun next to you loaded or unloaded?"
+        cr "But since you're here,{w=0.1} I've got another game for you to play."
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
+        cr "Place your bet,{w=0.1} lab rat!{w=0.5} Is the gun next to you loaded or unloaded?"
         "(What gu-)"
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
+        scene black
+        pause 3
 
     else:
-        cr "...Wow. That wasn't even {i}close. {/i}"
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+        cr "...Wow.{w=0.5} That wasn't even {i}close. {/i}"
         cr "You'd have better luck just smashing keys."
         "(You-)"
         cr "Like.{i} {/i}{i}So{/i}{i}.{/i}"
         #"{b}SMASHING SFX, CUT TO BLACK{/b}"
+        scene black
+        pause 3
 
     $deadend(achievement_dead6)
-    le "DEAD END 06: <NAME>."
+    $nvl_heading = "Lab Report #404"
+    l "Not much to say here."
+    l "The lab rat just sucks at word games!"
+    l "{b}Contributing Factors to Death:{/b} Should've dipped their toes into a few wordy titles before they met me. Personally, I reccommend Scraddle."
+    le "DEAD END 06: Stop Me If You Think You've Word This One Before..."
     nvl clear
     return
    

@@ -6,9 +6,12 @@ label neutral_ending:
 
     pause 4
 
+    play sound "audio/sfx/Opening Door.ogg"
     scene black with fade
 
-    pause 1
+    pause 2
+
+    play sound "audio/sfx/Closing Door2.ogg"
 
 
     show bg garage with placeintro:
@@ -28,6 +31,8 @@ label neutral_ending:
         zoom 0.5 align(0.5,0.5)
     "(...All that said,{w=0.1} you weren't expecting your escape to be so...{w=0.5} {i}straightforward.{/i})"
     "(The exit's wide open.{w} If you walked through right now,{w=0.1} you'll-){p=0.5}{nw}"
+
+    play sound "audio/sfx/Quick Footsteps 1.ogg"
     #"{b}[quick footsteps sound out]{/b}"
     pause 1
     "(Aw,{w=0.1} crap.{w} You jinxed yourself.)"
@@ -56,6 +61,8 @@ label neutral_ending:
     scene black
     pause 2
     #"{b}[Pause – sound of {/b}{b}Cautionne{/b}{b} firing a bullet into your kneecap. Screen turns black for a pause. ]{/b}"
+
+    scene cautionne gun far silent with fade
     "(Oh.{w} My knee.)"
     pause 0.5
     "(Aah?)"
@@ -64,6 +71,14 @@ label neutral_ending:
     pause 0.5
     "{sc}(AaaaaAAAAaaAaAAAAaaAAAAH?!?!?!?){/sc}"
 
+    play sound "audio/sfx/Body Fall 1.ogg"
+
+    scene cautionne gun far silent with small_shake:
+        zoom 1 xalign 0.5 yalign 0.5
+        linear 0.1 yalign 1.0 xalign 0.5 zoom 2
+
+    scene black
+
     #"{b}[the player collapses on the floor]{/b}"
 
     pause 3
@@ -71,11 +86,15 @@ label neutral_ending:
     "{si}(I can't believe –{w} I made such a {i}rookie {/i}mistake!){/si}"
     "{si}(And I can't...{w} Haa...{w} I can't...{w} {i}stand{/i} any more!){/si}"
     "{si}(Wha...{w} what am I gonna do?{w} How am I gonna get out of here {i}now?{/i}){/si}"
+
+    play sound "audio/sfx/Walking Footsteps 4.ogg"
     #"{b}[footsteps sounds as{/b}{b} Cautionn{/b}{b}e walks over.]{/b}"
     pause 3
+    voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
     cr "Patronize me at your own risk."
     cr "...Is what I should've said before firing,{w=0.1} but I'm still new at this part."
     cr "Only a little newer than you,{w=0.1} {i}lab rat.{/i}"
+    voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} with a hand-to-mouth life."
     cr "That's why you did this mission,{w=0.1} right?{w=0.5} ‘Cause you wanted that sweet,{w=0.1} fat,{w=0.1} paycheck?"
     "{si}(...I...{w} I want...{w} to say something...){/si}"

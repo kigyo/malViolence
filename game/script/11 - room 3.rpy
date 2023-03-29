@@ -71,20 +71,26 @@ label room_3:
 
     elif inspect == "scrapbook":
         if room3["scrapbook"] == 0:
+
+            ### sound of paper being picked up
             show room3_scrapbookcg with dissolve:
                 yalign 0.2 xalign 0.5
             "(You pick up what appears to be a generic scrapbook,{w=0.1} like those shoved to the back shelves of charity stores.{w} Looking closely, you can still see remnants of price sticker glue.)"
             "(It feels normal.{w} {i}Too{/i} normal.{w} The book's clearly hiding some deep,{w=0.1} dark{w=0.1} secret.)"
+            ### sound of paper being flicked
             "(But the inner contents are equally...{w=0.5} {i}normal.{/i})"
             "(All you find are photographs of a woman who looks a lot like Dr. Danger,{w=0.1} and a young boy with a crooked,{w=0.1} toothy{w=0.1} grin.)"
             "(The craftsmanship on display isn't anything remarkable,{w=0.1} with poorly cut edges and tacky glitter glue smeared across the cheap cardstock.)"
             "(At least the pages seem to be in chronological order.)"
+            ### sound of paper flip
             "(In the earliest photos,{w=0.1} the boy is bedridden.{w} His skin is unnaturally pale,{w=0.1} and his gaze is unfocused –{w=0.5} empty, even.)"
+            ### sound of paper flip
             "(But as you flick though the pages,{w=0.1} he grows stronger.)"
             "(He gets out of bed.{w} His eyes shine with inspiration and intelligence.{w} He smiles.)"
             pause 1
             "(The woman in these photos must've been taking good care of him.)"
             pause 1
+            ### sound of paper flip
             "(The later photos are self-explanatory.{w} Playing videogames,{w=0.1} reading bedtime stories...{w=0.5} and what seems to be a movie night.)"
             "(You know the film they're watching.{w} It's that one cartoon about an alien supervillain;{w=0.5} one with a very big brain,{w=0.1} but very little common sense.)"
             pause 0.5
@@ -98,10 +104,12 @@ label room_3:
 
     elif inspect == "health_record":
         if room3["health_record"] == 0:
+            ### sound of paper being picked up
             show room3_report with dissolve:
                 yalign 0.2 xalign 0.5
             "(You pick up a clipboard with a thick stack of charts and diagrams pinned to the front.)"
             "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh,{w=0.1} black{w=0.1} lettering.{w} At the bottom of the page,{w=0.1} you spot an acronym:{w=0.5} \"YTDI\".)"
+            ### sound of paper flip
             "(You flip through the log.{w} The recuperation described here is difficult to read.)"
             "(Seizures,{w=0.1}  phantom pain,{w=0.1}  memory loss{w=0.1}  and brain damage are all expected results,{w=0.1} not side effects.)"
             "(Scrawled notes speculate that these symptoms would last for several years,{w=0.1} or decades -{w=0.5}  perhaps even permanently.)"
@@ -137,7 +145,9 @@ label room_3:
 
     elif inspect == "locked_container":
         if room3["locked_container"] == 0:
+            play sound "audio/sfx/boxunlock.ogg"
             "(After entering the combination,{w=0.1}  there's a small click.{w} You give the handle a tug.)"
+            play sound "audio/sfx/boxopen.ogg"
             "(There's no dust inside,{w=0.1}  but a stale odor wafts out.{w} Clearly, this hasn't been opened for a long time.)"
             show room3_lockedbox with dissolve:
                 yalign 0.2 xalign 0.5
@@ -155,12 +165,15 @@ label room_3:
 
     elif inspect == "confidence_workbook":
         if room3["confidence_workbook"] == 0:
+            ### sound of paper being picked up
             show room3_notebook with dissolve:
                 yalign 0.2 xalign 0.5
             "(It's a crumpled,{w=0.1} heavily worked-over notebook filled with grandiose,{w=0.1}  third-person ramblings.)"
             "(Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
+            ### sound of paper flip
             "(But the more you flip back through the pages,{w=0.1} the more those writings grow negative.)"
             "(They're accompanied by notes on how to aim them in a more positive direction.)"
+            ### sound of paper flip
             "(Even further back,{w=0.1} the spidery handwriting disappears.{w} Instead,{w=0.1} there are grids and examples written by someone with clean,{w=0.1} crisp penmanship.)"
             "(It almost looks like a therapeutic exercise -{w=0.5} or a homework assignment.{w} Maybe it's both.)"
             "(What's clear is that the notebook's author hasn't used it for a long,{w=0.1} long{w=0.1} time.)"
@@ -177,6 +190,7 @@ label room_3:
     elif inspect == "diary":
         $ nvl_heading = "Entry #" + str(room3["diary"])
         if room3["diary"] == 0:
+            ### sound of paper being picked up
             "(It's a loose page with handwriting on it.{w} Judging by the page number in the corner and the heavily worn letters,{w=0.1}  it must be a small part of a much larger document.)"
         elif room3["diary"] == 1:
             #"FIRST ENTRIES"
@@ -364,6 +378,7 @@ label quilt_game_over:
     show screen room3_quilt
     show black onlayer screens with dissolve:
         alpha 0.5
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "{i}Wow.{/i}{w=0.5} You're no deft hand,{w=0.1} are you?"
     hide black onlayer screens
     hide screen room3_quilt 
@@ -377,8 +392,8 @@ label quilt_game_over:
 
     #{i}{b}[sound of protag getting stabbed with needles]{/b}{/i}
 
+    pause 3
     nvl clear
-    pause 2
 
     $nvl_heading = "Lab Report #112"
     l "Subject failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles."

@@ -7,16 +7,22 @@ label post_room_2:
   "(No message from the kid yet.)"
   "(Maybe if you're stealthy,"
   show screen nodismiss
+  play sound "audio/sfx/Walking Footsteps 2.ogg"
+  queue sound "audio/sfx/Walking Footsteps 2.ogg"
+
   show bg room2:
     zoom 0.34 align (0.0,0.0)
     ease 8 zoom 0.8 xalign 0.8 yalign 0.5
   extend "{cps=20} you could sneak past{/cps}{cps=10} without being subjected to{/cps} {cps=6}another one of his-){/cps}{nw}"
   #"{b}[{/b}{b}pasue{/b}{b} as the TV TURNS ON and cautionne appears]{/b}"
+  play sound "audio/sfx/TV On 1.ogg"
+  queue sound "audio/sfx/staticshort.ogg"
   show cautionne hairtwirl
   show crt
   show cautionne_frame_glow at bg
   with vpunch
   hide screen nodismiss
+  voice "audio/voice/cautionne/postroom/Cautionne_Post Room 2-01.ogg"
   c "{i}Snooping as usual,{w=0.1} {/i}I see?"
   "(...You spoke too soon.)"
   show cautionne lean eyeclosed
@@ -30,6 +36,7 @@ label post_room_2:
   c "Like sweet,{w=0.1} sparkling limonata in your veins?"
   "(What a colorful turn of phrase.)"
   show cautionne lean eyeclosed
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "I'd give my right arm to feel as excited as you do now,{w=0.1} lab rat!"
   c "You must be {i}salivating {/i}at the mountain of evidence beneath your fingertips. "
   c "Weapons,{w=0.1} corkboards,{w=0.1} secret evil notes..."
@@ -41,6 +48,7 @@ label post_room_2:
   c "and threw it through the washing machine,{p=0.5}{nw}"
   c "you'd {i}still{/i} have enough evidence to net you a promotion from HQ."
   show cautionne lean speaking
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Well Then.ogg"
   c "So, go ahead!{w=0.5} Take as much as you like!"
   show cautionne lean eyeclosed
   c "I won't touch a hair on your head."
@@ -54,6 +62,7 @@ label post_room_2:
   pause 1
   c "..."
   show cautionne lean frown
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
   c "Hey lab rat.{w=0.5} Can I ask you something?"
   c "You {i}are {/i}just getting evidence,{w=0.1} right?"
   if len(room2["investigated"]) == 5:
@@ -80,11 +89,13 @@ label post_room_2:
   show cautionne leanfrown pause
   pause 1
   show cautionne serious
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
   c "{i}Again{/i} with the silent treatment."
   show cautionne lean frown
   c "I've met {i}vending machines{/i} with better social skills than you,{w=0.1} you know that?"
   show cautionne serious
   c "...Fine. "
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 2.ogg"
   extend annoyed hands "{i}FINE!{/i}" with small_shake
   c "The next time you escape,{w=0.1} {i}I won't talk either!{/i}"
   c "See how YOU like it!!"
@@ -93,6 +104,7 @@ label post_room_2:
   show cautionne blockscreen silent
   pause 0.1
 
+  play sound "audio/sfx/TV Off 1.ogg"
   scene black
   hide cautionne blockscreen silent
   hide cautionne_frame_glow

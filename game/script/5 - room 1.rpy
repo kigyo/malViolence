@@ -172,6 +172,8 @@ label decanting_game_over:
     extend " {cps=20}have your legs always been made of jelly?){/cps}"
     cr "...But if your bio signs are anything to go by...{w=0.5} it looks like overexposure to the vapors does the job too!"
 
+    play sound "audio/sfx/Body Fall 1.ogg"
+
     show bg room1 at dizzy:
         zoom 0.34 yalign 0.0
         easeout 0.4 zoom 1.0 xalign 0.2 yalign 1.0

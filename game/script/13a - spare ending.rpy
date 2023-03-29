@@ -6,9 +6,12 @@ label spare_ending:
 
     pause 4
 
+    play sound "audio/sfx/Opening Door.ogg"
     scene black with fade
 
-    pause 1
+    pause 2
+
+    play sound "audio/sfx/Closing Door2.ogg"
 
     #"{b}[pause – walking sounds play as the exit BG appears]{/b}"
     scene bg garage with fade:
@@ -25,6 +28,7 @@ label spare_ending:
     "(...And...)"
     "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole-){p=0.5}{nw}"
     x "Finally going to take responsibility?"
+    play sound "audio/sfx/Quick Footsteps 1.ogg"
     #"{b}[{/b}{b}Cautionne{/b}{b} appears with his gun]{/b}"
 
     scene bg garage:
@@ -43,6 +47,7 @@ label spare_ending:
     "(...{i}Guilt?{/i}{w} Is that what it is?)"
     "(Over something you didn't do?)"
     scene cautionne gun ecu with dissolve
+    voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     cr "All those years,{w=0.1} you must've been so proud to wear that uniform!{w=0.5} To be a brave soldier fighting for such a pristine,{w=0.1} justice-seeking{w=0.1} organization like that."
     "(You feel sick.)"
     cr "But it's not enough for you to {i}feel bad{/i}. "
@@ -51,7 +56,7 @@ label spare_ending:
     cr "You...{w=0.5} Or your boss,{w=0.1} or the next agent..."
     cr "You'll storm in here and sweep away everything me and Dr. Danger fought for."
     cr "{si}S-someone better'll catch me and destroy this place.{/si}"
-    cr "{si}And STOP...{w=0.5} STOP'll turn me into a nameless drone,{w=0.1} \nlike I was {i}supposed{/i} to be.{/si}"
+    cr "{si}And STOP...{w=0.5} STOP'll turn me into a nameless drone,{w=0.1} like I was {i}supposed{/i}\nto be.{/si}"
     "(...He's shaking.{w} He's trying to put on a brave face,{w=0.1} but he's shaking.)"
     #"{b}[{/b}{b}cautionne{/b}{b} begins to break down]{/b}"
     scene cautionne gun ecu cry with dissolve
@@ -62,7 +67,6 @@ label spare_ending:
     
     scene cautionne gun ecu crysilent
     pause 1
-    cr "{si}I don't want to forget about collecting stickers,{w=0.5} or eating pudding,{w=0.5} \nor sewing my first pair of mittens.{/si}"
     #"{b}[{/b}{b}Cautionne{/b}{b} is yelling now]{/b}"
     scene cautionne gun ecu sob 
     cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}"
@@ -112,7 +116,7 @@ label spare_ending:
     "(The bullet...)"
     pause 1
     "(...it only grazed your cheek.)"
-    #"{b}[pause - a thud is heard as cautionne falls to the ground, stunned. The revolver clatters as he drops it.]{/b}"
+    play sound "audio/sfx/Body Fall 1.ogg"
     pause 2
     "(Huh?{w} Cautionne...{w=0.5} fell?)"
     "(What's going...)"
@@ -166,6 +170,12 @@ label spare_ending:
     pause 2
     #"{b}[pause when the exit {/b}{b}bg{/b}{b} shows again. Camera shows the player getting up, and leaving for the {/b}{b}exit{/b}{b}]{/b}"
     "(Slowly,"
+
+    play sound "audio/sfx/Walking Footsteps 4.ogg"
+
+    queue sound "audio/sfx/Walking Footsteps 4.ogg"
+
+    queue sound "audio/sfx/Walking Footsteps 4.ogg"
 
     scene bg garage:
         zoom 0.5 align (0.5,0.5)
@@ -240,7 +250,8 @@ label spare_ending:
     pause 2
 
     scene black with slowfade
-    pause 1
+    play sound "audio/sfx/Walking Footsteps 4.ogg"
+    pause 2
 
     scene hairclip1 with slowfade:
         zoom 0.5
