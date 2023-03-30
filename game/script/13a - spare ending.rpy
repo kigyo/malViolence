@@ -6,9 +6,12 @@ label spare_ending:
 
     pause 4
 
+    play sound "audio/sfx/Opening Door.ogg"
     scene black with fade
 
-    pause 1
+    pause 2
+
+    play sound "audio/sfx/Closing Door2.ogg"
 
     #"{b}[pause – walking sounds play as the exit BG appears]{/b}"
     scene bg garage with fade:
@@ -23,8 +26,9 @@ label spare_ending:
     "(Maybe you'll get a promotion.{w} A better salary.{w} Better benefits.{w} A better home.)"
     "(A better {i}life.{/i}{w} Something you've worked towards for {i}years.{/i})"
     "(...And...)"
-    "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole-{p=0.3}{nw})"
+    "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole-){p=0.5}{nw}"
     x "Finally going to take responsibility?"
+    play sound "audio/sfx/Quick Footsteps 1.ogg"
     #"{b}[{/b}{b}Cautionne{/b}{b} appears with his gun]{/b}"
 
     scene bg garage:
@@ -35,7 +39,7 @@ label spare_ending:
 
     scene cautionne gun far silent with fade
 
-    "(Not {i}now,{/i} kid!{w} The last thing you need is {i}him{/i} showing up and-{p=0.3}{nw})"
+    "(Not {i}now,{/i} kid!{w} The last thing you need is {i}him{/i} showing up and-){p=0.5}{nw}"
 
     scene cautionne gun cu with dissolve
     cr "I...{w=0.5} I see my escape rooms have worked their magic."
@@ -43,6 +47,7 @@ label spare_ending:
     "(...{i}Guilt?{/i}{w} Is that what it is?)"
     "(Over something you didn't do?)"
     scene cautionne gun ecu with dissolve
+    voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     cr "All those years,{w=0.1} you must've been so proud to wear that uniform!{w=0.5} To be a brave soldier fighting for such a pristine,{w=0.1} justice-seeking{w=0.1} organization like that."
     "(You feel sick.)"
     cr "But it's not enough for you to {i}feel bad{/i}. "
@@ -51,39 +56,59 @@ label spare_ending:
     cr "You...{w=0.5} Or your boss,{w=0.1} or the next agent..."
     cr "You'll storm in here and sweep away everything me and Dr. Danger fought for."
     cr "{si}S-someone better'll catch me and destroy this place.{/si}"
-    cr "{si}And STOP...{w=0.5} STOP'll turn me into a nameless drone,{w=0.1} like I was {i}supposed{/i} to be.{/si}"
+    cr "{si}And STOP...{w=0.5} STOP'll turn me into a nameless drone,{w=0.1} like I was {i}supposed{/i}\nto be.{/si}"
     "(...He's shaking.{w} He's trying to put on a brave face,{w=0.1} but he's shaking.)"
     #"{b}[{/b}{b}cautionne{/b}{b} begins to break down]{/b}"
+    scene cautionne gun ecu cry with dissolve
     cr "{si}B-but I don't {i}want {/i}that,{w=0.1} y'know?{/si}"
     cr "{si}I...{w=0.5} I don't {i}want {/i}to forget my home.{w=0.5} My books,{w=0.5} my bugs,{w=0.5} my bed...{/si}"
     cr "{si}And I don't {i}want {/i}to forget myself.{/si}"
     cr "{si}I don't want to forget about collecting stickers,{w=0.5} or eating pudding,{w=0.5} or sewing\nmy first pair of mittens.{/si}"
+    
+    scene cautionne gun ecu crysilent
+    pause 1
     #"{b}[{/b}{b}Cautionne{/b}{b} is yelling now]{/b}"
+    scene cautionne gun ecu sob 
     cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}"
-    cr "{sc}She {i}saved {/i}me!{w=0.5} She {i}raised {/i}me!{w=0.5} She {i}stood up for me{/i} when no one else did!{/sc}"
+    cr "{sc}She {i}saved {/i}me!{w=0.5} She {i}raised {/i}me!{w=0.5} \nShe {i}stood up for me{/i} when no one else did!{/sc}"
     cr "{sc}And what did {i}STOP {/i}do?{/sc}"
     cr "{sc}They MADE her a villain!{w=0.5} They took EVERYTHING away from her!{w=0.5} They KILLED\nher!{/sc}"
-    scene cautionne gun ecu silent
+    scene cautionne gun ecu sobsilent
     pause 1
-    scene cautionne gun cu with dissolve
+    scene cautionne gun cu crysilent with dissolve
+    pause 0.1
+    scene cautionne gun cu cry
     #"{b}[pause as {/b}{b}Cautionne{/b}{b} regains his composure a little]{/b}"
-    "{si}S-so,{w=0.1} what're you gonna do now, lab rat?{/si}"
-    "{si}You've still got your \"service weapon\",{w=0.1} don't you?{/si}"
+    cr "{si}S-so,{w=0.1} what're you gonna do now, lab rat?{/si}"
+    cr "{si}You've still got your \"service weapon\",{w=0.1} don't you?{/si}"
     cr "{si}C'mon.{w=0.5} H-hit me with your best shot.{/si}"
-    scene cautionne gun cu silent
+    scene cautionne gun cu crysilent
     pause 0.5
-    scene cautionne gun cu speaking
+    scene cautionne gun cu cry
     cr "{si}...Hit me!{/si}"
     cr "{si}'Cause if you don't,{w=0.1} I'll...{w=0.5}{/si} {sc}I'll...{/sc}"
-    scene cautionne gun cu silent
+    scene cautionne gun cu crysilent
     #"{b}[pause with the sound of the player's gun dropping to the floor]{/b}"
+
+    pause 1
+
+    scene black with fade
+
     pause 1
     "(...You can't deal with this anymore.)"
     "(You...{w=0.5} you don't want to fight him.)"
+    scene cautionne gun cu crysilent with dissolve
+    pause 1
+
+    scene cautionne gun cu cry
     #"{b}[pause as {/b}{b}Cautionne's{/b}{b} expression changes]{/b}"
     cr "You...{w=0.5} you're {i}not {/i}going to use your gun?"
     cr "...Heh.{w=0.5} Haha.{w=0.5} {si}Hahahaha.{/si}"
+
+    scene cautionne gun cu crysilent 
     #"{b}[gun clicks]{/b}"
+    pause 1
+    scene cautionne gun cu speaking 
     cr "{si}T-then, on behalf of STOP...{/si}{w=1} {i}die.{/i}"
     #"{b}[pause. Sound of the gun firing. {/b}{b}Screen goes black]{/b}"
     scene black
@@ -91,7 +116,7 @@ label spare_ending:
     "(The bullet...)"
     pause 1
     "(...it only grazed your cheek.)"
-    #"{b}[pause - a thud is heard as cautionne falls to the ground, stunned. The revolver clatters as he drops it.]{/b}"
+    play sound "audio/sfx/Body Fall 1.ogg"
     pause 2
     "(Huh?{w} Cautionne...{w=0.5} fell?)"
     "(What's going...)"
@@ -146,6 +171,12 @@ label spare_ending:
     #"{b}[pause when the exit {/b}{b}bg{/b}{b} shows again. Camera shows the player getting up, and leaving for the {/b}{b}exit{/b}{b}]{/b}"
     "(Slowly,"
 
+    play sound "audio/sfx/Walking Footsteps 4.ogg"
+
+    queue sound "audio/sfx/Walking Footsteps 4.ogg"
+
+    queue sound "audio/sfx/Walking Footsteps 4.ogg"
+
     scene bg garage:
         zoom 0.5 align (0.5,0.5)
         ease 15 zoom 1.4 yalign 0.55
@@ -171,7 +202,7 @@ label spare_ending:
     scene bg garage with fade:
         zoom 1.4 align (0.5,0.55)
 
-    "(So, without another word,{w=0.1} you-{p=0.3}{nw})"
+    "(So, without another word,{w=0.1} you-){p=0.5}{nw}"
     cr "...Hey lab rat."
     "(You turn back,"
 
@@ -219,7 +250,8 @@ label spare_ending:
     pause 2
 
     scene black with slowfade
-    pause 1
+    play sound "audio/sfx/Walking Footsteps 4.ogg"
+    pause 2
 
     scene hairclip1 with slowfade:
         zoom 0.5
@@ -258,6 +290,7 @@ label spare_ending:
     hide text
 
     pause 3
+    $Achievement.add(achievement_end1)
 
     show text "{size=90}{color=#ffffff}spare end{/color}{/size}":
             xalign 0.5 yalign 0.5

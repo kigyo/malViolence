@@ -308,6 +308,7 @@ style quick_button:
 style quick_text is button_text:
     properties gui.button_text_properties("quick_button")
     xpos 0.5 ypos 0.5 
+    selected_color "#ffffff"
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
 
@@ -401,6 +402,10 @@ screen main_menu():
     add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
     
     add "gui/logo.png" xalign 0.5 yalign 0.15
+
+    hbox pos (50,50) spacing 30:
+        imagebutton idle "gui/Twitter.png" action OpenURL("https://twitter.com/madocactus") at quick_hover
+        imagebutton idle "gui/Itch.png" action OpenURL("https://madocallie.itch.io/malviolence") at quick_hover
 
     vbox xalign 0.5 yalign 0.6 spacing 15:
         style_prefix "main_menu"
@@ -593,7 +598,7 @@ screen about():
             add "gui/logo.png" at zoomed(0.4) xalign 0.5
 
             ## gui.about is usually set in options.rpy.
-            text "This game was created within 31 days for NaNoRenO 2023, by:"
+            text "This game was crafted with love within 31 days for NaNoRenO 2023, by:" size gui.label_text_size-10 font gui.text_font
             grid 2 6:
                 xspacing 0 yspacing 10 xoffset 50
                 hbox spacing 15:
@@ -633,7 +638,7 @@ screen about():
                     label _("Trailer:")
                     text _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}") 
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25
+            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25 font gui.text_font
 
 
 style about_label is gui_label
@@ -818,24 +823,24 @@ screen preferences():
                 vbox:
                     style_prefix "radio"
                     label _("Typeface")
-                    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 35), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
-                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 36), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
+                    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 39), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
+                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 42), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
 
                 vbox:
                     style_prefix "radio"
                     label _("Font Size")
                     if persistent.typeface == "TitilliumWeb":
                         textbutton _("Large") action gui.SetPreference("size", 44) alt "Change to Large Size Text"
-                        textbutton _("Regular") action gui.SetPreference("size", 35) alt "Change to Regular Size Text"
+                        textbutton _("Regular") action gui.SetPreference("size", 39) alt "Change to Regular Size Text"
                     elif persistent.typeface == "Hyperlegible":
-                        textbutton _("Large") action gui.SetPreference("size", 43) alt "Change to Large Size Text"
-                        textbutton _("Regular") action gui.SetPreference("size", 36) alt "Change to Regular Size Text"
+                        textbutton _("Large") action gui.SetPreference("size", 49) alt "Change to Large Size Text"
+                        textbutton _("Regular") action gui.SetPreference("size", 42) alt "Change to Regular Size Text"
 
                 vbox:
                     style_prefix "radio"
                     label _("Game Overs")
-                    textbutton _("Infinite") action SetField(preferences, "hard_mode", True) alt "Change text color to white" 
-                    textbutton _("Once per Puzzle") action SetField(preferences, "hard_mode", False) alt "Change text color to cream"
+                    textbutton _("Infinite") action SetField(preferences, "hard_mode", True) alt "Hard mode: Failing puzzles always results in a game over" 
+                    textbutton _("Once per Puzzle") action SetField(preferences, "hard_mode", False) alt "Easy mode: Have at most one game over per puzzle"
 
                 #vbox:
                 #    style_prefix "radio"
@@ -1400,9 +1405,9 @@ screen skip_indicator():
     zorder 100
     style_prefix "skip"
 
-    frame:
+    frame at notify_appear:
 
-        hbox:
+        hbox yalign 0.5:
             spacing 9
 
             text _("Skipping")
@@ -1425,14 +1430,13 @@ transform delayed_blink(delay, cycle):
         pause (cycle - .4)
         repeat
 
-
 style skip_frame is empty
 style skip_text is gui_text
 style skip_triangle is skip_text
 
 style skip_frame:
-    ypos gui.skip_ypos
-    background Frame("gui/skip.png", gui.skip_frame_borders, tile=gui.frame_tile)
+    ypos gui.skip_ypos ysize 80
+    background Frame("gui/notify.png", gui.skip_frame_borders, tile=gui.frame_tile)
     padding gui.skip_frame_borders.padding
 
 style skip_text:
@@ -1457,15 +1461,15 @@ screen notify(message):
     style_prefix "notify"
 
     frame at notify_appear:
-        text "[message!tq]"
+        text "[message!tq]" yalign 0.5
 
     timer 3.25 action Hide('notify')
 
 
 transform notify_appear:
     on show:
-        alpha 0
-        linear .25 alpha 1.0
+        alpha 0 xoffset -300
+        easein .25 alpha 1.0 xoffset 0
     on hide:
         linear .5 alpha 0.0
 
@@ -1474,7 +1478,7 @@ style notify_frame is empty
 style notify_text is gui_text
 
 style notify_frame:
-    ypos gui.notify_ypos
+    ypos gui.notify_ypos ysize 80
 
     background Frame("gui/notify.png", gui.notify_frame_borders, tile=gui.frame_tile)
     padding gui.notify_frame_borders.padding
@@ -1605,3 +1609,40 @@ style nvl_button:
 
 style nvl_button_text:
     properties gui.button_text_properties("nvl_button")
+
+    
+
+screen gameover(lbl):
+    
+    add gui.main_menu_background at bg(0.5)
+    add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
+
+    add "black" alpha 0.7
+
+    label _("GAME OVER") text_size 200 yalign 0.4 xalign 0.5 text_outlines [(3, "#000", 1, 1)]
+    vbox xalign 0.65 ypos 0.55:
+        textbutton _("> Restart Room") action Jump(lbl) text_size 65 at navigation_move
+        textbutton _("> Main Menu") action Return() text_size 65 at navigation_move
+
+init python:
+    def game_over(room = 1):
+        renpy.scene()
+        renpy.scene("screens")
+        renpy.block_rollback()
+        room_init(room)
+        store.inspect = None
+        if room == "tutorial":
+            renpy.call_screen("gameover", "tutorial_room")
+        else:
+            renpy.call_screen("gameover", "room_" + str(room))
+        renpy.with_statement(eyeopen)
+
+    def room_init(room = 1):
+        if room == 1:
+            store.room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0}
+        elif room == 2:
+            store.room2 = {"solved":[], "investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0, "recalibration":0, "evidence":0, "word":0, "notes":[]}
+        elif room == 3:
+            store.room3 = {"room":"down", "investigated":[], "solved":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0, "confidence_workbook":0, "sewing_book":0, "quilt":0, "cooking":0, "scrapbook_new":0, "toys":0}
+        else:
+            store.tutorial = {"vent":0, "investigated":[], "lock": [0,0,0,0,0,0,0,0]}

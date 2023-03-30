@@ -97,43 +97,51 @@ init python:
             self.just_cleared = True
 
 screen puzzle_playspace(b, interactable=True):
+    layer "master"
+    tag puzzle
     add "#000"
-    if b.just_cleared:
-        use animated_board(b, (735, 150))
-    else:
-        use board(b, (735, 150))
-    use puzzle_matches(b)
-    if interactable:
-        use buttons(b, (735, 150))
-    use reticle(b, (735, 150))
-    use menu
-    if b.just_cleared:
-        timer adt action Function(b.clear_anim)
+    frame padding 0,0,50,40 xfill True yfill True:
+        if b.just_cleared:
+            use animated_board(b, (700, 150))
+        else:
+            use board(b, (700, 150))
+        use puzzle_matches(b)
+        if interactable:
+            use buttons(b, (700, 150))
+        use reticle(b, (700, 150))
+        use menu
+        if b.just_cleared:
+            timer adt action Function(b.clear_anim)
 
-    use colorized_frame(padding=(10, 10), xysize=(600, 800), pos=(1258, 100), background="#000", accent="#fff"):
-        has vbox
-        xalign 0.5
-        spacing 20
-        style_prefix "codes"
-        label "Instructions" text_color "#fff" xalign 0.5
-        # text "    Cautionne has obtained a list of security codes for a STOP medical facility and plans to use them to sabotage the cybernetic update proceedure of a top official."
-        text "    Using the given list of codes, break into the system, but be careful! Codes are only half the hack. They need to be used at the correct time and place otherwise you may end up locking yourself out of the system."
-        text "    Use the mouse or keyboard to clear out codes as you see them in the system, but be aware of how clearing out codes rearranges the system and changes what codes will be available for you afterwards."
-        text "    ALL the codes must be used to fully clear the fire wall and sucessfully break into the system."
-        text "    Codes are unodered, so long as the three individual components are the same, the codes count as the same."
+        fixed xsize 655 xalign 1.0:
+            fixed ysize 880:
+                vbox spacing 50 yalign 0.5:
+                    style_prefix "puzzle_description"
+                    label _("Instructions") text_color "#fff" xalign 0.5
+                    text hacking_description
 
-style codes_text:
-    size 28
+            hbox xfill True yalign 1.0 ysize 100:
+                if (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
+                    #TODO: matches list is currently not reset - please fix
+                    textbutton "RESTART" style "confirm_button" action Jump("reset_puzzle_board") xalign 0.0 yalign 0.5 sensitive interactable
+                textbutton "RETURN" style "confirm_button" action [SetVariable("inspect", None), Hide()] xalign 1.0 yalign 0.5 sensitive interactable
+
+
+    if config.developer:
+        vbox:
+            textbutton _("Skip Puzzle") action [SetDict(room1, "hacking", "solved"), Return()] style "confirm_button"
+            textbutton _("Game Over") action [Jump("hacking_game_over")] style "confirm_button"
 
 screen p_match(m):
     hbox:
         for p in m.pieces:
             fixed:
                 xysize (80, 80)
-                $ transforms = [colorify(colors[p])]
-                if m.matched:
-                    $ transforms.append(found_match)
-                add p at transforms:
+                add p:
+                    if m.matched:
+                        at colorify(colors[p]),found_match
+                    else:
+                        at colorify(colors[p])
                     xysize (65, 65)
 
 screen puzzle_matches(b):

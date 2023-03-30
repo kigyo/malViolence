@@ -203,8 +203,8 @@ init python:
     def activated(drags):
         pass
 
-label main_menu:
-    jump test_puzzles
+# label main_menu:
+#     jump test_puzzles
 
 label start_bomb:
     $ p = Part()

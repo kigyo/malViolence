@@ -173,7 +173,8 @@ init -1 python:
                             win = False
                             break
                 if win:
-                    renpy.jump('solved_room_1_puzzle_2')
+                    store.room1["hacking"] = "solved"
+                    return True
 
                 lose = True
                 for y in range(self.height):
@@ -190,8 +191,14 @@ init -1 python:
                             if not m.matched and m == match:
                                 lose = False
                                 break
-                if lose:
-                    renpy.jump('failed_room_1_puzzle_2')
+                if lose and not (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
+                    renpy.jump('hacking_game_over')
+                elif lose:
+                    self.__init__(width=6, height=10, move_cap=12)
+                    store.adt = 0.5
+                    #TODO: automatic restart
+                    pass
+
 
             elif isinstance(self, ToyBoard):
                 win = True
@@ -652,3 +659,7 @@ label init_toy_board():
     $ tb = ToyBoard(width=5, height=5)
     $ adt = persistent.toy_reticle_timeout
     return
+
+label reset_puzzle_board:
+    call init_puzzle_board
+    call screen puzzle_playspace(pb)

@@ -1,10 +1,4 @@
-define decanting_description = _("""Cautionne needs your help poisoning a top STOP official, but his toxin of choice is pretty particular!
 
-Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  - {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial contains the poison itself.{/color}
-
-But be careful! {color=#fff}If the poison's disturbed too much, it'll give off nasty vapors...{/color}
-    
-Drag the vials in order to pour their contents into each other.""")
 
 init python:
     def decanting_dropped(drop, drags):
@@ -34,7 +28,7 @@ init python:
                 store.room1["decanting"] = "solved"
                 return True
             
-            if decanting_moves >= decanting_move_limit and not (achievement_dead5 in persistent.my_achievements and not preferences.hard_mode):
+            if decanting_moves >= decanting_move_limit and not (achievement_dead5 in persistent.dead_ends and not preferences.hard_mode):
                 renpy.jump("decanting_game_over")
 
     def decanting_valid():
@@ -43,6 +37,13 @@ init python:
             if getattr(renpy.store, "decanting_vial%s" % str(i+1)) == 9:
                 nines += 1
         return nines == 2
+
+    def decanting_init():
+        store.decanting_moves = 0
+        store.decanting_vial1 = 18
+        store.decanting_vial2 = 0
+        store.decanting_vial3 = 0
+
     
 
 default decanting_moves = 0
@@ -66,15 +67,15 @@ screen room1_decanting():
     
     frame padding 50,40 xfill True yfill True:
 
-        fixed xsize 725 xalign 1.0:
+        fixed xsize 675 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
                     style_prefix "puzzle_description"
+                    label _("Instructions") text_color "#fff" xalign 0.5
                     text decanting_description
                 
             hbox xfill True yalign 1.0 ysize 100:
-                frame xalign 1.0 yalign 0.5:
-                    textbutton "RETURN" style "main_menu_button" action Return()
+                textbutton "RETURN" style "confirm_button" action Return() xalign 1.0 yalign 0.5
 
         fixed xsize 1920-775:
             draggroup ysize 600 xsize 990 yalign 0.45 xalign 0.45:
@@ -95,16 +96,14 @@ screen room1_decanting():
                 hbox xsize 150:
                     text str(decanting_vial3) + "/" + str(decanting_size_vial3) xalign 0.5
 
-        if not (achievement_dead5 in persistent.my_achievements and not preferences.hard_mode):
-            frame xalign 1.0:
-                text str(decanting_moves) + "/" + str(decanting_move_limit) style "main_menu_button"
+            if not (achievement_dead5 in persistent.dead_ends and not preferences.hard_mode):
+                frame xalign 1.0:
+                    text str(decanting_moves) + "/" + str(decanting_move_limit) style "main_menu_button"
     
     if config.developer:
         vbox:
-            frame:
-                textbutton _("Skip Puzzle") action [SetDict(room1, "decanting", "solved"), Return()] style "main_menu_button"
-            frame:
-                textbutton _("Game Over") action [Jump("decanting_game_over")] style "main_menu_button"
+            textbutton _("Skip Puzzle") action [SetDict(room1, "decanting", "solved"), Return()] style "confirm_button"
+            textbutton _("Game Over") action [Jump("decanting_game_over")] style "confirm_button"
 
 style decanting_bar1:
     bar_vertical True xsize 300 ysize 500 bottom_gutter 20

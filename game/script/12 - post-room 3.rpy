@@ -1,12 +1,43 @@
 default route = "neutral"
 default most_explored = 1
 
+init python:
+    def inspection_sum():
+        return len(room1["investigated"]) + len(room2["investigated"]) + len(room3["investigated"])
+
+    def inspector_achievement():
+        if inspection_sum() >= 15:
+            Achievement.add(achievement_investigate)
+
+    def route_calculator():
+        global route, most_explored
+        if inspection_sum() < 6:
+            route = "kill"
+        elif inspection_sum() < 12 or len(room1["investigated"]) < 2 or len(room2["investigated"]) < 4 or len(room3["investigated"]) < 6:
+            route = "neutral"
+            most_explored = explored_ratio()
+        else:
+            route = "spare"
+    
+    def explored_ratio():
+        rooms = [len(room1["investigated"])/3, len(room2["investigated"])/5, len(room3["investigated"])/7]
+
+        highest = 1
+        highest_val = rooms[0]
+
+        for i in range(len(rooms)):
+            if rooms[i] > highest_val:
+                highest_val = rooms[i]
+                highest = i+1
+
+        return highest
+
+
 label post_room_3:
-    $Achievement.add(achievement_room3)
     "(Huh.{w} The screen above you didn't turn on.)"
     "(...Guess Cautionne really was serious about the whole \"silent treatment\" thing.)"
 
-    if len(room3["investigated"]) == 10: #TODO: fix amount
+    if len(room3["investigated"]) == 7:
         "(Well,{w=0.1} you did what he asked you to do,{w=0.1} right?{w} You solved his puzzle.)"
         "(You've been over the whole room with a fine comb.)"
         "(And you haven't overlooked or {i}looked away{/i} from anything.)"
@@ -20,18 +51,25 @@ label post_room_3:
         "(...But chances are high you won't like whatever else you find.)"
         "(Better keep moving.)"
 
+    play sound "audio/sfx/Walking Footsteps 3.ogg"
+    queue sound "audio/sfx/Walking Footsteps 3.ogg"
+
     scene bg room3_downstairs:
-        zoom 0.34 align(0.0,0.0)
-        ease 1 zoom 0.34 xalign 0.6 yalign 0.5 
+        zoom 0.335 align(0.0,0.0)
+        ease 1 zoom 0.335 xalign 0.6 yalign 0.5 
         pause 1
         ease 7 xalign 0.8 yalign 0.6 zoom 1.2
     pause 9
+    play sound "audio/sfx/Opening Door.ogg"
+
     scene black with fade
-    pause 1
+    pause 2
     show bg corridor_exit with placeintro:
         zoom 0.8 xalign 0.0 yalign 0.5
         linear 20 xalign 1.0
+    $Achievement.add(achievement_room3)
     pause 3
+    play sound "audio/sfx/Closing Door2.ogg"
     "(Looks like there're no screens in this corridor.{w} Guess Dr. Danger didn't make any more recordings...)"
 
     show bg corridor_exit with dissolve:
@@ -40,8 +78,7 @@ label post_room_3:
     "(...There really isn't much else to say about this hall.)"
     "(If that's the case, then...{w=0.5} this is probably close to the exit.)"
 
-    #TODO: "Ending calculator"
-    #TODO: "Most explored calculator"
+    $ route_calculator()
 
     if route == "spare":
         pause
@@ -52,10 +89,11 @@ label post_room_3:
         "(You think about the results of your investigation.)"
         "(And you think about yourself:{w=0.5} a tiny cog in a massive machine.{w} A sleek,{w=0.1} pristine,{w=0.1} reliable machine -{w=0.5} carefully cleansed of the blood it's spilt.)"
         "(A deep,{w=0.1} dark{w=0.1} pit hollows your stomach.)"
+        play sound "audio/sfx/Walking Footsteps 4.ogg"
         "(Slowly,{w=0.1} you make your way forward –{w=0.5} each step heavier than the last.)"
         jump spare_ending
 
-    elif route == "spare":
+    elif route == "neutral":
         "(Can't say you miss his nasally jabbering.)"
         "(And yet...{w=0.5} you'd take it over the strange,{w=0.1} baleful{w=0.1} unease that hums at the back of your mind.{w} Like the \"silent\" air conditioner in your boss's office.)"
         "(It's not about your job.{w} You did what you were supposed to"
@@ -66,11 +104,13 @@ label post_room_3:
             pause 1
             "(...Maybe you'll chew on it another day.)"
             "(For now though,{w=0.1} your priority is getting out of here.)"
+            play sound "audio/sfx/Walking Footsteps 4.ogg"
         elif most_explored == 2:
             "(Maybe it was those blueprints.{w} Or that corkboard.)"
             "(Yeah...{w=0.5} they were pretty scary,{w=0.1} weren't they?)"
             "(No wonder you've got goosebumps.{w} Even if Dr. Danger's dead and gone,{w=0.1} Cautionne's more than capable of taking her place.{w} You've seen it for yourself.)"
             "(There's no time to lose.{w} Better hurry back to HQ.)"
+            play sound "audio/sfx/Walking Footsteps 4.ogg"
         else:
             "(You can't say you're surprised about what you've learned.)"
             "(STOP's public image always felt a bit {i}too {/i}pristine to you.{w} Nowadays,{w=0.1} shady,{w=0.1} behind-the-scenes stuff is par for the course for big security organizations.)"
@@ -80,6 +120,7 @@ label post_room_3:
             "(And though you were never fond of your job...{w=0.5} you quite liked your stable,{w=0.1} boring{w=0.1} life.) "
             "(Guess that's another reason to get out of here.)"
             "(Someone else will deal with the problem.{w} You'll get a fat raise,{w=0.1} and pretend it never happened.)"
+            play sound "audio/sfx/Walking Footsteps 4.ogg"
         jump neutral_ending
 
     else:
@@ -90,5 +131,6 @@ label post_room_3:
         "(But not you.{w} {i}Never{/i} you.{w} You just came here for the bonus pay.)"
         pause 1
         "(Alright,{w=0.1} \"agent\".{w} Get going already.)"
-        "(You've got a lair break out of.)"
+        "(You've got a lair to break out of.)"
+        play sound "audio/sfx/Walking Footsteps 4.ogg"
         jump kill_ending

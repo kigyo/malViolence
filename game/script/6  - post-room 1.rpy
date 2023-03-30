@@ -1,8 +1,7 @@
 label post_room_1:
   #"{b}[pause as the microphone turns on and {/b}{b}cautionne{/b}{b} appears on the screen]{/b}"
-  $Achievement.add(achievement_room1)
 
-  ## speakers come on
+#### confirmation sound - yay, you won room 1!
 
   pause 2
 
@@ -11,17 +10,22 @@ label post_room_1:
     zoom 0.5
   with fade
   pause 1
+  play sound "audio/sfx/staticshort.ogg"
+  queue sound "<silence .5>"
+  queue sound "audio/sfx/TV On 1.ogg"
   show cautionne hairtwirl at crt
   show crt
   show cautionne_frame_glow at bg
   with screenon
   pause 0.2
+  voice "audio/voice/cautionne/postroom/Cautionne_Post Room 1-01.ogg"
   c "Well,{w=0.1} well,{w=0.1} well.{w=0.5} If it isn't the {i}lab rat{/i}."
   c "For someone with chronic resting-{i}blah{/i}-face,{w=0.1} you look {i}real{/i} proud of yourself."
   show cautionne lean speaking
   c "And you know what?{w=0.5} You should be. "
   c "By getting {i}this {/i}far,{w=0.1} you've shown more brains than 96\% of STOP employees."
   show cautionne lean eyeclosed
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "So congrats!"
   show cautionne leaneyeclosed pause
   pause 1
@@ -41,10 +45,12 @@ label post_room_1:
     show cautionne leaneyeclosed pause
     pause 1
     show cautionne think
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     c "Huh.{w=0.5} I don't see you jumping for joy."
     c "Not a grape fan?"
   elif len(room1["investigated"]) == 0:
     show cautionne lean frown
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     c "But at the rate you're going...{w=0.5} Oof."
     c "You might not even deserve the {i}durian-scented{/i} one. "
     show cautionne lean speaking
@@ -63,9 +69,11 @@ label post_room_1:
     show cautionne leaneyeclosed pause
     pause 1
     show cautionne think
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     c "Huh.{w=0.5} You're not smiling or anything."
     c "Not a sticker superfan?"
   show cautionne lean eyeclosed
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Well Then.ogg"
   c "Oh well.{w=0.5} More for me! "
   show cautionne leaneyeclosed pause
   if len(room1["investigated"]) == 0:
@@ -75,18 +83,20 @@ label post_room_1:
 
   pause 1
   show cautionne hairtwirl
-  c "So,{w=0.1} what did you think of our-{p=0.3}{nw}"
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+  c "So,{w=0.1} what did you think of our-{p=0.5}{nw}"
   c "{i}-my{/i} Research Lab?"
   show cautionne lean speaking
   c "It's awesome,{w=0.1} isn't it?"
   show cautionne think
   c "A little \"derivative\", maybe..."
   show cautionne lean speaking
-  c "...but any scientist worth their salt \nneeds a room filled with{p=0.2}{nw}"
+  c "...but any scientist worth their salt \nneeds a room filled with{p=0.5}{nw}"
   c "hi-tech computers and big fat source libraries."
   show cautionne lean eyeclosed
   c "Though,{w=0.1} there is {i}one{/i} thing that makes my lab better than the others."
   show cautionne hairtwirl
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "My {i}Primary Source Extractor!{/i}"
   show cautionne think
   c "It's kinda loud once it revs up,{w=0.1} and it's a pain to clean afterwards."
@@ -96,22 +106,24 @@ label post_room_1:
   extend "{i}mwah!{/i}"
   show cautionne think
   c "I {i}had {/i}planned on giving you a first-hand demonstration..."
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
   show cautionne oops
   c "...but the last experiment's results got so messy that I'm still cleaning the rafters."
   show cautionne lean eyeclosed
   c "Disappointing,{w=0.1} I know. "
   c "But never fear!"
   show cautionne hairtwirl
-  c "The Great Cautionne,{w=0.1} Emperor of MalViolence,{p=0.2}{nw}" 
+  c "The Great Cautionne,{w=0.1} Emperor of MalViolence,{p=0.5}{nw}" 
   c "used his aptitude for adaptation to his advantage."
   show cautionne lean speaking
-  c "And so,{w=0.1} he constructed these quasi-deadly puzzle rooms,{p=0.2}{nw}"
+  c "And so,{w=0.1} he constructed these quasi-deadly puzzle rooms,{p=0.5}{nw}"
   c "sure to satisfy even the least imaginative of STOP agents."
   show cautionne lean eyeclosed
   c "Aren't I thoughtful,{w=0.1} lab rat?"
   show cautionne leaneyeclosed pause
   pause 1
   show cautionne lean frown
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
   c "{size=-13}{i}...Yeesh,{/i}{w=0.1} tough crowd.{/size}"
   c "{size=-13}You must be fun at parties.{/size}"
   show cautionne hairtwirl
@@ -119,11 +131,13 @@ label post_room_1:
   c "{i}Vamoose{/i} to the next room already.{w=0.5} There's more games for you to play!"
   c "Or {i}hell{/i},{w=0.1} take your sweet time."
   show cautionne laugh
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "I've {i}always{/i} wanted to see how motivating electrified floors can be!"
   "(He's clearly joking again.)"
   "(Probably.{w} Maybe.)"
   "(...No.{w} Better not tempt fate.)"
 
+  play sound "audio/sfx/TV Off 1.ogg"
   hide cautionne laugh
   hide cautionne_frame_glow
   hide crt
@@ -136,6 +150,8 @@ label post_room_1:
     zoom 0.4 yalign 0.7
 
   pause 1
+
+  play sound "audio/sfx/Walking Footsteps 1.ogg"
 
   show bg room1:
     zoom 0.4 yalign 0.7

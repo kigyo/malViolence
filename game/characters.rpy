@@ -8,7 +8,10 @@ screen debugging():
             #    for i in renpy.get_return_stack():
             #        text str(i) + " "
             null
-            text testvar xalign 0.5
+            hbox xalign 0.5:
+                if cooking_error:
+                    for i in range(len(cooking_error)):
+                        text str(cooking_error[i]) xalign 0.5
             #text str(speaking)
 
 default testvar = ""
@@ -16,14 +19,14 @@ default testvar = ""
 init python:
     config.overlay_screens.append("debugging")
 
-default speaking = None
 init python:
+
+    speaking = None
 
     # This returns speaking if the character is speaking, and done if the
     # character is not.
     def while_speaking(name, speak_d, done_d, st, at):
-        global speaking
-        if speaking == name and not _menu:
+        if renpy.music.is_playing(channel='voice') and speaking == name and not _menu:
             return speak_d, 0.1
         else:
             return done_d, None
@@ -40,9 +43,9 @@ init python:
         global speaking
 
         speaking = name
-        if event == "slow_done":
+        if not renpy.music.is_playing(channel='voice') and (event == "slow_done" or event == "end"):
             speaking = None
-            renpy.restart_interaction()
+        renpy.restart_interaction()
 
     # Curried form of the same.
     speaker = renpy.curry(speaker_callback)
@@ -182,11 +185,29 @@ layeredimage cautionne gun ecu:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_gun_speaking ecu", "images/CG/cautionne_gun_ECU_closed.png")
         attribute silent "images/CG/cautionne_gun_ECU_closed.png"
         attribute dead "images/CG/cautionne_gun_ECU_dead.png" 
+        attribute cry WhileSpeaking("cautionne", "cautionne_gun_cry ecu", "images/CG/cautionne_gun_ECU_cry_closed.png")
+        attribute crysilent "images/CG/cautionne_gun_ECU_cry_closed.png"
+        attribute sob WhileSpeaking("cautionne", "cautionne_gun_sob ecu", "images/CG/cautionne_gun_ECU_sob_closed.png") 
+        attribute sobsilent "images/CG/cautionne_gun_ECU_sob_closed.png"      
 
 image cautionne_gun_speaking ecu:
     "images/CG/cautionne_gun_ECU_open.png"
     pause 0.12
     "images/CG/cautionne_gun_ECU_closed.png"
+    pause 0.12
+    repeat
+
+image cautionne_gun_cry ecu:
+    "images/CG/cautionne_gun_ECU_cry_open.png"
+    pause 0.12
+    "images/CG/cautionne_gun_ECU_cry_closed.png"
+    pause 0.12
+    repeat
+
+image cautionne_gun_sob ecu:
+    "images/CG/cautionne_gun_ECU_sob_open.png"
+    pause 0.12
+    "images/CG/cautionne_gun_ECU_sob_closed.png"
     pause 0.12
     repeat
 
@@ -197,11 +218,20 @@ layeredimage cautionne gun cu:
         attribute speaking default WhileSpeaking("cautionne", "cautionne_gun_speaking cu", "images/CG/cautionne_gun_CU_closed.png")
         attribute silent "images/CG/cautionne_gun_CU_closed.png"
         attribute dead "images/CG/cautionne_gun_CU_dead.png" 
+        attribute cry WhileSpeaking("cautionne", "cautionne_gun_cry cu", "images/CG/cautionne_gun_CU_cry_closed.png")
+        attribute crysilent "images/CG/cautionne_gun_CU_cry_closed.png" 
 
 image cautionne_gun_speaking cu:
     "images/CG/cautionne_gun_CU_open.png"
     pause 0.12
     "images/CG/cautionne_gun_CU_closed.png"
+    pause 0.12
+    repeat
+
+image cautionne_gun_cry cu:
+    "images/CG/cautionne_gun_CU_cry_open.png"
+    pause 0.12
+    "images/CG/cautionne_gun_CU_cry_closed.png"
     pause 0.12
     repeat
 
@@ -344,24 +374,24 @@ image cautionne_serious_speaking:
 layeredimage cautionne shoot:
     zoom 0.5
     group mouth:
-        attribute angry default WhileSpeaking("cautionne", "cautionne_shoot_angry", "cautionne_shoot_angry_closed")
+        attribute angry default WhileSpeaking("cautionne", "cautionne_shoot_angry", "images/CG/cautionne_shoot_angry_close.png")
         attribute cry WhileSpeaking("cautionne", "cautionne_shoot_cry", "images/CG/cautionne_shoot_cry_close.png")
         attribute grin WhileSpeaking("cautionne", "cautionne_shoot_grin", "images/CG/cautionne_shoot_grin_close.png")
-        attribute angrysilent "cautionne_shoot_angry_closed"
+        attribute angrysilent "images/CG/cautionne_shoot_angry_close.png"
         attribute crysilent "images/CG/cautionne_shoot_cry_close.png"
         attribute grinsilent "images/CG/cautionne_shoot_grin_close.png"
 
 
 image cautionne_shoot_angry:
-    "cautionne_shoot_angry_open"
+    "images/CG/cautionne_shoot_angry_open.png"
     pause 0.12
-    "cautionne_shoot_angry_closed"
+    "images/CG/cautionne_shoot_angry_close.png"
     pause 0.12
     repeat
 image cautionne_shoot_cry:
     "cautionne_shoot_cry_open"
     pause 0.12
-    "images/CG/cautionne_shoot_grin_close.png"
+    "images/CG/cautionne_shoot_cry_close.png"
     pause 0.12
     repeat
 image cautionne_shoot_grin:
@@ -370,6 +400,8 @@ image cautionne_shoot_grin:
     "images/CG/cautionne_shoot_grin_close.png"
     pause 0.12
     repeat
+
+    
 
 layeredimage cautionne shot:
     zoom 0.5

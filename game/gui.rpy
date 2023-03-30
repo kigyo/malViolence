@@ -74,7 +74,7 @@ define gui.interface_text_font = "gui/font/kenyan coffee rg.otf"
 define gui.hyperlink_text_font = gui.interface_text_font
 
 ## The size of normal dialogue text.
-define gui.text_size = gui.preference("size", 35)
+define gui.text_size = gui.preference("size", 39)
 
 ## The size and color of normal dialogue text outlines.
 ## Uncomment this if you would like that style.
@@ -314,10 +314,10 @@ define gui.frame_borders = Borders(6, 6, 6, 6)
 define gui.confirm_frame_borders = Borders(60, 60, 60, 60)
 
 ## The frame that is used as part of the skip screen.
-define gui.skip_frame_borders = Borders(24, 8, 75, 8)
+define gui.skip_frame_borders = Borders(125, 26, 12, 3, pad_left = -100)
 
 ## The frame that is used as part of the notify screen.
-define gui.notify_frame_borders = Borders(24, 8, 60, 8)
+define gui.notify_frame_borders = Borders(125, 26, 12, 3, pad_left = -100)
 
 ## The frame that is used as part of the history screen.
 define gui.history_frame_borders = Borders(30, 30, 30, 30)
@@ -414,7 +414,7 @@ define gui.nvl_name_xalign = 1.0
 ## The position, width, and alignment of the dialogue text.
 define gui.nvl_text_xpos = 400
 define gui.nvl_text_ypos = 12
-define gui.nvl_text_width = 1080
+define gui.nvl_text_width = 1120
 define gui.nvl_text_xalign = 0.0
 
 ## The position, width, and alignment of nvl_thought text (the text said by the

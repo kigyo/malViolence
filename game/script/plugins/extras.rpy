@@ -23,48 +23,40 @@ screen splash_settings():
 
             yalign .5
             xalign 0.5
-            spacing 30
+            spacing 50
             xfill True
 
             label _("Accessibility Settings") xalign 0.5
-            label _("These options can be adjusted at any time in the menu.") xalign 0.5
+            label _("These options can be adjusted at any time in the menu.") xalign 0.5 text_color "#fff" text_font "gui/font/TitilliumWeb-Regular.ttf" text_size 35
 
             hbox:
-                xalign 0.5
+                xalign 0.6
                 vbox:
                     style_prefix "radio"
                     label _("Typeface")
-                    textbutton _("DejaVu Sans") action [gui.SetPreference("font", "DejaVuSans.ttf"), gui.SetPreference("size", 31), SetVariable("persistent.typeface", "DejaVuSans")] alt "Change font to DejaVu Sans"
-                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=40}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 32), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
+                    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 39), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
+                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 42), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
 
                 vbox:
                     style_prefix "radio"
                     label _("Font Size")
-                    if persistent.typeface == "DejaVuSans":
-                        textbutton _("Large") action gui.SetPreference("size", 40) alt "Change to Large Size Text"
-                        textbutton _("Regular") action gui.SetPreference("size", 31) alt "Change to Regular Size Text"
+                    if persistent.typeface == "TitilliumWeb":
+                        textbutton _("Large") action gui.SetPreference("size", 44) alt "Change to Large Size Text"
+                        textbutton _("Regular") action gui.SetPreference("size", 39) alt "Change to Regular Size Text"
                     elif persistent.typeface == "Hyperlegible":
-                        textbutton _("Large") action gui.SetPreference("size", 38) alt "Change to Large Size Text"
-                        textbutton _("Regular") action gui.SetPreference("size", 32) alt "Change to Regular Size Text"
+                        textbutton _("Large") action gui.SetPreference("size", 49) alt "Change to Large Size Text"
+                        textbutton _("Regular") action gui.SetPreference("size", 42) alt "Change to Regular Size Text"
 
                 vbox:
                     style_prefix "radio"
-                    label _("Text Color")
-                    textbutton _("White") action gui.SetPreference("color", "#ffffff") alt "Change text color to white" 
-                    textbutton _("Cream") action gui.SetPreference("color", "#FFFDD0") alt "Change text color to cream" 
-
-            hbox:
-                xalign 0.5
-                vbox:
-                    style_prefix "radio"
-                    label _("Line Spacing")
-                    textbutton _("Taller") action gui.SetPreference("dialogue_spacing", 4) alt "Change the height of the space between lines of dialogue to be taller"
-                    textbutton _("Regular") action gui.SetPreference("dialogue_spacing", 2) alt "Change the height of the space between lines of dialogue to the regular height"
+                    label _("Game Overs")
+                    textbutton _("Infinite") action SetField(preferences, "hard_mode", True) alt "Hard mode: Failing puzzles always results in a game over" 
+                    textbutton _("Once per Puzzle") action SetField(preferences, "hard_mode", False) alt "Easy mode: Have at most one game over per puzzle"
 
                 vbox:
                     style_prefix "check"
                     label _("Toggles") 
-                    textbutton _("Image Descriptions") action ToggleVariable("persistent.image_captions") alt "Toggle Image Descriptions"
+                    #textbutton _("Image Descriptions") action ToggleVariable("persistent.image_captions") alt "Toggle Image Descriptions"
                     textbutton _("Audio Titles") action ToggleVariable("persistent.sound_captions") alt "Toggle Sound Captions"
                     if renpy.variant("pc"):
                         ## Self-voicing does not work on smartphone devices, so this
