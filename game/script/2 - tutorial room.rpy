@@ -74,7 +74,7 @@ label tutorial_room:
         if tutorial["vent"] == 0:
             "(There's a weird stock photo on the cover,{w=0.1} but otherwise it's your average vent.)"
             "(Cautionne won't be winning any awards for home decor anytime soon.)"
-            play sound "audio/sfx/Creaky Vent 3.ogg"
+            $ play_sound(creakyvent)
             $ tutorial["vent"] = 1
             with fade
             pause 0.5
@@ -85,9 +85,9 @@ label tutorial_room:
             "(...)"
             "(To be honest,{w=0.1} you {i}could{/i} use something to fill your empty stomach.{w} You made the smart decision to skip lunch on your way here.)"
             hide tutorial_bowl with dissolve
-            play sound "audio/sfx/Metal Bowl Grab 3.ogg"
+            $ play_sound(bowlgrab)
             "(You pick up the bowl and shove a fistful of pellets into your mouth.)"
-            play sound "audio/sfx/Pellet Chew 2.ogg"
+            $ play_sound(pelletchew)
             "(They taste like...)"
             pause 0.5
             "(...Well,{w=0.1} you don't know what you expected.{w} They're grainy,{w=0.1} if nothing else.)"
@@ -95,7 +95,7 @@ label tutorial_room:
             pause 1
             "(...Huh?{w} What's this?)"
             "(There's something at the bottom of the bowl.{w} ...A pattern?)"
-            play sound "audio/sfx/Pellets falling 4.ogg"
+            $ play_sound(pelletfall)
             "(To get a better look,{w=0.1} you dump the rest of the pellets on the floor.)"
             #[sound of pellets falling]
             show tutorial_diagram with dissolve:
@@ -114,7 +114,7 @@ label tutorial_room:
             $ tutorial["vent"] = 2
             "(Again,{w=0.1} it's just your average vent-){p=0.5}{nw}"
             "(-wait.{w} Something's on the back side of that cover.)"
-            play sound "audio/sfx/Creaky Vent 2.ogg"
+            $ play_sound(creakyvent)
             show tutorial_painting with dissolve:
                 zoom 0.3 yalign 0.2 xalign 0.5
             "(Again with those weird shapes! {w}And this time,{w=0.1} they're {i}colorful!{/i})"
@@ -137,7 +137,7 @@ label tutorial_room:
         menu:
             "(Sure!)":
                 $renpy.block_rollback()
-                play sound "audio/sfx/Pellet Chew 2.ogg"
+                $ play_sound(pelletchew)
                 "(You scoop up another fistful of pellets and eat them without a second thought.)"
                 hide tutorial_pellets with dissolve
                 #[crunching sounds]
@@ -145,7 +145,7 @@ label tutorial_room:
                 "(...Why did you do that?)"
                 "(Those pellets still don't taste great.)"
                 "(In fact,{w=0.1} the more you chew on them,{w=0.1} the bitterer they-){p=0.5}{nw}"
-                play sound "audio/sfx/Body Fall 1.ogg"
+                $ play_sound(bodyfall)
                 scene bg tutorial2 with small_shake:
                     parallel:
                         zoom 0.5 xalign 0.5 yalign 0.5
@@ -188,7 +188,7 @@ label tutorial_room:
         "(What an evocative desk-ription!)"
 
     elif inspect == "bed":
-        play sound "audio/sfx/Sitting Up On Bed 1.ogg"
+        $ play_sound(bedsitup)
         "(It's a bed!)"
         "(You're surprised you slept at all on something that lumpy.)"
         "(...Yeah, right.{w} Back at home,{w=0.1} you {i}worshipped{/i} your crappy mattress.)"
@@ -196,7 +196,7 @@ label tutorial_room:
     elif inspect == "tap":
         "(Your throat's dry and sore,{w=0.1} but you can't find a cup anywhere.)"
         "(Does he expect you to drink out of the faucet?)"
-        play sound "audio/sfx/Creaky faucet 2.ogg"
+        $ play_sound(creakyfaucet)
         pause 1
         #[sound of dry squeaking]
         "(...Great.{w} It doesn't even work.)"
