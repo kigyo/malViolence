@@ -19,14 +19,14 @@ default testvar = ""
 init python:
     config.overlay_screens.append("debugging")
 
-default speaking = None
 init python:
+
+    speaking = None
 
     # This returns speaking if the character is speaking, and done if the
     # character is not.
     def while_speaking(name, speak_d, done_d, st, at):
-        global speaking
-        if speaking == name and not _menu:
+        if renpy.music.is_playing(channel='voice') and speaking == name and not _menu:
             return speak_d, 0.1
         else:
             return done_d, None
@@ -43,9 +43,9 @@ init python:
         global speaking
 
         speaking = name
-        if event == "slow_done":
+        if not renpy.music.is_playing(channel='voice') and (event == "slow_done" or event == "end"):
             speaking = None
-            renpy.restart_interaction()
+        renpy.restart_interaction()
 
     # Curried form of the same.
     speaker = renpy.curry(speaker_callback)
