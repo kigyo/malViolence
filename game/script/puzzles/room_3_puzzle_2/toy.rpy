@@ -1,10 +1,10 @@
 define toy_pieces = ["toy_1", "toy_2", "toy_3", "toy_4"]
 
-define toys_description = _("""Help Cautionne sort out his toys by clearing sets of toys. 
+define toys_description = _("""What a mess! You need to clean up all these toys by {color=#fff}sorting them into sets.{/color} 
 
-A set is made up of four unique toys, but you can only reach toys by moving up, down, left, or right (not diagonally). 
+{color=#fff}A set{/color} is made up of {color=#fff}four unique toys.{/color} You can reach toys {color=#fff}by moving up, down, left, or right.{/color} You {color=#fff}can't move diagonally.{/color} 
 
-Be careful, though! As the toys shift, they may get harder to reach...""")
+Plot your moves carefully! As the toys shift, they may get harder to reach...""")
 
 
 image toy_walk_fast:

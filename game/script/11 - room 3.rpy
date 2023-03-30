@@ -434,22 +434,32 @@ label toys_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     "(You set down the toys and pause to think.)"
-    "(The task is a lot harder than you thought it would be. Maybe-)"
-    cr "Having trouble organizing? I get it."
-    cr "I was horrible at putting my stuff away. A total {i}mess, {/i}every time."
-    cr "But whenever I got into a pickle, Dr. Danger always helped me out."
-    #{b}[pause]{/b}
-    cr "...Hey, remind me."
-    cr "Where {i}is {/i}Dr. Danger right now?"
+    "(The task is a lot harder than you thought it would be.{w} Maybe-){p=0.3}{nw}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+    cr "Having trouble organizing?{w=0.5} I get it."
+    hide black onlayer screens
+    hide screen toy_playspace
+    with easeouttop
+    pause 1
+    cr "I was {i}horrible{/i} at putting my stuff away.{w=0.5}  A total mess,{w=0.1} every time."
+    cr "But whenever I got into a pickle,{w=0.1} Dr. Danger always helped me out."
+    pause 1
+    cr "...Hey,{w=0.1} remind me."
+    cr "Where {i}is{/i} Dr. Danger right now?"
     "(The sudden quietness in his voice makes you freeze.)"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "{i}Right.{/i}"
+
+    scene black with small_shake
+
+    pause 3
     #{i}{b}SLICING SFX, CUT TO BLACK{/b}{/i}"
 
     $nvl_heading = "Lab Report #414"
     l "Subject was transported to the automated disposal department via trap door, whereupon the automated disposal department did what it does best."
     l "{b}Contributing Factors to Death:{/b} Expected leniency where there was none to be found."
     $deadend(achievement_dead12)
-    le "DEAD END 12: NAME!"
+    le "DEAD END 12: Get Stuffed."
     pause 2
     nvl clear
     $game_over(3)
