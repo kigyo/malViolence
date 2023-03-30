@@ -194,9 +194,7 @@ init -1 python:
                 if lose and not (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
                     renpy.jump('hacking_game_over')
                 elif lose:
-                    self.__init__(width=6, height=10, move_cap=12)
-                    store.adt = 0.5
-                    #TODO: automatic restart
+                    renpy.jump('auto_reset_puzzle_board')
                     pass
 
 
@@ -662,4 +660,12 @@ label init_toy_board():
 
 label reset_puzzle_board:
     call init_puzzle_board
+    hide screen puzzle_playspace
+    call screen puzzle_playspace(pb)
+
+label auto_reset_puzzle_board:
+    show screen puzzle_playspace(pb, False)
+    "No valid moves left. Restarting..."
+    call init_puzzle_board
+    hide screen puzzle_playspace
     call screen puzzle_playspace(pb)
