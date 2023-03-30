@@ -91,6 +91,7 @@ screen room3_quilt():
         fixed xsize 775 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
+                    label _("Instructions") text_color "#fff" xalign 0.5
                     text _("This quilt's unfinished, and you need to make it complete!\n\nEach tile has {color=#fff}three qualities (color, shape, and fill).\n\n{/color}In order to finish the intended pattern, each adjacent tile must share {color=#fff}exactly 2 out of 3 qualities with the next tile.{/color}"):
                         style "puzzle_description_text"
                     text _("Below, construct the next motif you want to place by adjusting the color, shape, and fill with the arrows:") style "puzzle_description_text"

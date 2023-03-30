@@ -247,7 +247,12 @@ init -1 python:
                         break
                 if invalid: break
             if invalid:
-                renpy.jump("failed_room_2_puzzle_3")
+                if (achievement_dead9 in persistent.dead_ends and not preferences.hard_mode):
+                    cybernetics_reset()
+                    #TODO: some kind of error feedback
+                    return
+                else:
+                    renpy.jump("recalibration_game_over")
 
             checked = []
             next = (0, 0)
@@ -256,7 +261,9 @@ init -1 python:
                 next, checked = self.check_trace(checked, next)
 
             if len(set(checked)) == 74:
-                renpy.jump("solved_room_2_puzzle_3")
+                store.room2["recalibration"] = "solved"
+                return True
+
             else:
                 tally = set(checked)
                 loop_counter += 1
@@ -270,7 +277,12 @@ init -1 python:
                             tally.update(checked)
                             loop_counter += 1
 
-                renpy.jump("failed_room_2_puzzle_3")
+                if (achievement_dead9 in persistent.dead_ends and not preferences.hard_mode):
+                    cybernetics_reset()
+                    renpy.restart_interaction()
+                    #TODO: some kind of error feedback
+                else:
+                    renpy.jump("recalibration_game_over")
 
         def check_trace(self, checked, pos, tally_color=True):
             x, y = pos
@@ -369,6 +381,14 @@ init -1 python:
                 return (d1[0] and d2[2]) or (not d1[0] and not d2[2])
             elif dy == 1:
                 return (d1[3] and d2[1]) or (not d1[3] and not d2[1])
+    
+    def cybernetics_reset(txt=_("Invalid. Restarting...")):
+        store.cyb = Cybernetic()
+        store.loop_data = [[[0,0,0,0] for x in range(12)] for y in range(10)]
+        store.loop_counter = 1
+        renpy.notify(txt)
+        renpy.hide_screen("cybernetics")
+        renpy.show_screen("cybernetics",cyb)
 
 label init_cybernetics:
     $ cyb = Cybernetic()
@@ -381,7 +401,7 @@ screen cybernetics(cyb, interactable=True):
     tag puzzle
     layer "master"
     
-    frame padding 50,40 xfill True yfill True:
+    frame padding 0,0,50,40 xfill True yfill True:
         if interactable:
             add cyb
         grid 12 10:
@@ -415,16 +435,17 @@ screen cybernetics(cyb, interactable=True):
                                     align (0.5, 0.5)
                     else:
                         null
+
         fixed xysize (710, 800):
             align (1.0, 0.35)
             style_prefix "cybernetics"
             vbox xalign 0.5 spacing 50:
-                label _("Instructions") xalign 0.5
-                text cybernetics_description
+                label _("Instructions") xalign 0.5 text_color "#fff"
+                text cybernetics_description style "puzzle_description_text"
 
         hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20:
             frame xalign 0.0 yalign 0.5 at zoomed(0.75):
-                textbutton "RESET" style "main_menu_button" text_color "#fff" sensitive not inspect
+                textbutton "RESET" style "main_menu_button" action Function(cybernetics_reset, _("Restarting...")) text_color "#fff" sensitive not inspect
             frame xalign 0.5 yalign 0.5:
                 textbutton "SUBMIT" style "main_menu_button" action If(cyb.check_broken(), false=Function(cyb.verify)) sensitive not inspect
             frame xalign 1.0 yalign 0.5:

@@ -48,6 +48,7 @@ screen room2_word():
         fixed xsize 650 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5 xfill True:
+                    label _("Instructions") text_color "#fff" xalign 0.5
                     hbox xalign 0.5:
                         for i in range(len(word_rival)):
                             frame xysize(75,75):

@@ -95,6 +95,13 @@ init python:
                     self.pieces[0][x] = None
 
             self.just_cleared = True
+        
+    def puzzle_board_reset(txt=_("Invalid. Restarting...")):
+        store.pb = PuzzleBoard(width=6, height=10, move_cap=12)
+        store.adt = 0.5
+        renpy.notify(txt)
+        renpy.hide_screen("puzzle_playspace")
+        renpy.show_screen("puzzle_playspace",pb)
 
 screen puzzle_playspace(b, interactable=True):
     layer "master"
@@ -123,7 +130,7 @@ screen puzzle_playspace(b, interactable=True):
             hbox xfill True yalign 1.0 ysize 100:
                 if (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
                     #TODO: matches list is currently not reset - please fix
-                    textbutton "RESTART" style "confirm_button" action Jump("reset_puzzle_board") xalign 0.0 yalign 0.5 sensitive interactable
+                    textbutton "RESTART" style "confirm_button" action Function(puzzle_board_reset, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable
                 textbutton "RETURN" style "confirm_button" action [SetVariable("inspect", None), Hide()] xalign 1.0 yalign 0.5 sensitive interactable
 
 

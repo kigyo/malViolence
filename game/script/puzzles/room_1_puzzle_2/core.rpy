@@ -194,8 +194,7 @@ init -1 python:
                 if lose and not (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
                     renpy.jump('hacking_game_over')
                 elif lose:
-                    renpy.jump('auto_reset_puzzle_board')
-
+                    puzzle_board_reset()
             elif isinstance(self, ToyBoard):
                 self.match = []
                 self.match_pic = []
@@ -677,3 +676,4 @@ label auto_reset_puzzle_board:
     call init_puzzle_board
     hide screen puzzle_playspace
     call screen puzzle_playspace(pb)
+    call screen room1
