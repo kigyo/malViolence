@@ -27,6 +27,7 @@ default blueberry_count = 1
 default egg_count = 1
 default nut_count = 1
 default milk_count = 1
+default cooking_error = None
 
 define cutting_board_input = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7],
                               [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -48,6 +49,7 @@ default cutting_board_group = None
 
 init python:
     def ingredient_dragged(drags, drop):
+        store.cooking_error = None
         drag = drags[0]
         if len(drag.drag_name) == 4:
             cutting_board_group.remove(drag)
@@ -104,7 +106,12 @@ init python:
                         win = False
 
         if win:
+            store.room3["cooking"] = "solved"
             return True
+        elif (achievement_dead13 in persistent.dead_ends and not preferences.hard_mode):
+            renpy.restart_interaction()
+            #TODO: some kind of error feedback
+            pass
         else:
             renpy.jump("cooking_game_over")
 
@@ -119,6 +126,7 @@ init python:
                         count += 1
 
             if count != ingredient_counts[ingredients[cutting_board_data[y][x]-1]]:
+                store.cooking_error = ingredients[cutting_board_data[y][x]-1]
                 return False
 
             return all([check_sprawl(x+1, y, checked),
@@ -139,6 +147,8 @@ init python:
                                 check_sprawl(x, y+1, checked),
                                 check_sprawl(x, y-1, checked)])
                 else:
+                    if not cooking_error:
+                        store.cooking_error = [x,y]
                     return False
 
 label init_mise_en_place:
@@ -151,6 +161,7 @@ label init_mise_en_place:
     $ egg_count = 1
     $ nut_count = 1
     $ milk_count = 1
+    $ cooking_error = None
 
     $ cutting_board_group = DragGroup()
     python:
@@ -216,42 +227,33 @@ screen mise_en_place(interactable=True):
                 xalign 0.5
 
                 label "Ingredients" xalign 0.5
-                if bacon_count == ingredient_counts["bacon"]:
-                    text "{s}5 pieces of bacon{/s}"
-                else:
-                    text "5 pieces of bacon"
-                if strawberry_count == ingredient_counts["strawberry"]:
-                    text "{s}7 strawberries{/s}"
-                else:
-                    text "7 strawberries"
-                if flour_count == ingredient_counts["flour"]:
-                    text "{s}5 cups of flour{/s}"
-                else:
-                    text "5 cups of flour"
-                if snapper_count == ingredient_counts["snapper"]:
-                    text "{s}6 snappers{/s}"
-                else:
-                    text "6 snappers"
-                if butter_count == ingredient_counts["butter"]:
-                    text "{s}6 sticks of butter{/s}"
-                else:
-                    text "6 sticks of butter"
-                if blueberry_count == ingredient_counts["blueberry"]:
-                    text "{s}9 blueberries{/s}"
-                else:
-                    text "9 blueberries"
-                if egg_count == ingredient_counts["egg"]:
-                    text "{s}8 eggs{/s}"
-                else:
-                    text "8 eggs"
-                if nut_count == ingredient_counts["nut"]:
-                    text "{s}2 nuts{/s}"
-                else:
-                    text "2 nuts"
-                if milk_count == ingredient_counts["milk"]:
-                    text "{s}3 cartons of milk{/s}"
-                else:
-                    text "3 cartons of milk"
+                text "5 pieces of bacon" strikethrough bacon_count == ingredient_counts["bacon"]:
+                    if cooking_error == "bacon":
+                        color "#d20000" bold True
+                text "7 strawberries" strikethrough strawberry_count == ingredient_counts["strawberry"]:
+                    if cooking_error == "strawberry":
+                        color "#d20000" bold True
+                text "5 cups of flour" strikethrough flour_count == ingredient_counts["flour"]:
+                    if cooking_error == "flour":
+                        color "#d20000" bold True
+                text "6 snappers" strikethrough snapper_count == ingredient_counts["snapper"]:
+                    if cooking_error == "snapper":
+                        color "#d20000" bold True
+                text "6 sticks of butter" strikethrough butter_count == ingredient_counts["butter"]:
+                    if cooking_error == "butter":
+                        color "#d20000" bold True
+                text "9 blueberries" strikethrough blueberry_count == ingredient_counts["blueberry"]:
+                    if cooking_error == "blueberry":
+                        color "#d20000" bold True
+                text "8 eggs" strikethrough egg_count == ingredient_counts["egg"]:
+                    if cooking_error == "egg":
+                        color "#d20000" bold True
+                text "2 nuts" strikethrough nut_count == ingredient_counts["nut"]:
+                    if cooking_error == "nut":
+                        color "#d20000" bold True
+                text "3 cartons of milk" strikethrough milk_count == ingredient_counts["milk"]:
+                    if cooking_error == "milk":
+                        color "#d20000" bold True
                 null height 30
 
                 label "Instructions" xalign 0.5
@@ -280,9 +282,13 @@ screen mise_en_place(interactable=True):
                     fit_first True
                     if cutting_board_input[y][x]:
                         add "fixed_cutting_board_tile"
+                        if cooking_error == [x,y]:
+                            add Solid("#d20000")
                         add ingredients[cutting_board_input[y][x]-1]
                     elif cutting_board_data[y][x]:
                         add "cutting_board_tile"
+                        if cooking_error == [x,y]:
+                            add Solid("#d20000")
                         add ingredients[cutting_board_data[y][x]-1]
                     else:
                         add "cutting_board_tile"
@@ -294,6 +300,9 @@ screen mise_en_place(interactable=True):
 
         if interactable:
             add cutting_board_group
+
+        if isinstance(cooking_error,list):
+            add Solid("#d20000") pos (70+cooking_error[0]*100, 205+cooking_error[1]*100) xysize (100, 100) alpha 0.5
 
 screen ingredient_base(ingredient, x):
     frame:

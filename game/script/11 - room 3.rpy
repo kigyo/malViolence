@@ -329,7 +329,7 @@ label room_3:
             pause 0.0
             $ renpy.retain_after_load()
             call screen mise_en_place
-            if room2["cooking"] == "solved":
+            if room3["cooking"] == "solved":
                 jump cooking_solved
 
     elif inspect == "scrapbook_new":
@@ -422,14 +422,14 @@ label quilt_game_over:
 label cooking_solved:
     $renpy.block_rollback()
     $ inspect = "cooking"
-    show screen room3_quilt
+    show screen mise_en_place(False)
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room3["solved"].append("cooking")
     #Show a note/picture/memento
-    "(You've already solved the cooking puzzle.)"
+    "(You've solved the {i}mise en place{/i} puzzle.)"
     hide black onlayer screens
-    hide screen room3_quilt 
+    hide screen mise_en_place
     with dissolve
     $ inspect = None
     call screen room3

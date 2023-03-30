@@ -8,7 +8,10 @@ screen debugging():
             #    for i in renpy.get_return_stack():
             #        text str(i) + " "
             null
-            text testvar xalign 0.5
+            hbox xalign 0.5:
+                if cooking_error:
+                    for i in range(len(cooking_error)):
+                        text str(cooking_error[i]) xalign 0.5
             #text str(speaking)
 
 default testvar = ""
