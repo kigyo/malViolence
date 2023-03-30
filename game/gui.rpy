@@ -90,7 +90,7 @@ define gui.interface_text_size = 36
 define gui.label_text_size = 43
 
 ## The size of text on the notify screen.
-define gui.notify_text_size = 24
+define gui.notify_text_size = 39
 
 ## The size of the game's title.
 define gui.title_text_size = 75
@@ -275,10 +275,10 @@ define gui.navigation_xpos = 180
 define gui.navigation_ypos = 320
 
 ## The vertical position of the skip indicator.
-define gui.skip_ypos = 15
+define gui.skip_ypos = 105
 
 ## The vertical position of the notify screen.
-define gui.notify_ypos = 68
+define gui.notify_ypos = 15
 
 ## The spacing between menu choices.
 define gui.choice_spacing = 33
