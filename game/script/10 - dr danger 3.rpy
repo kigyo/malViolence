@@ -11,13 +11,13 @@ label dr_danger_3:
   "(Right - {i}supervillain.{/i})"
   "(Big ego,{w=0.1} no self-awareness.{w} Don't overthink it.)"
 
-  play sound "audio/sfx/Walking Footsteps 3.ogg"
+  $ play_sound(footsteps3)
 
   show bg room2:
     zoom 0.8 align (0.8,0.5)
     ease 2 zoom 1.0
   pause 2
-  play sound  "audio/sfx/Opening Door.ogg"
+  $ play_sound(dooropen)
   scene black with fade
   pause 2
   show bg corridor3 with placeintro:
@@ -27,7 +27,7 @@ label dr_danger_3:
   pause 4
   show bg corridor3 with dissolve:
     zoom 0.5
-  play sound "audio/sfx/Closing Door2.ogg"
+  $ play_sound(doorclose)
   pause 0.5
   "(...The dim corridor stretches before you,{w=0.1} with no answers to offer.)"
   "(Yes,{w=0.1} it's darker here -{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
@@ -39,16 +39,16 @@ label dr_danger_3:
   "(Um...{w} Would Cautionne allow you to take a quick breather?)"
   #"{b}[animate camera movements to simulate the protagonist slowly crouching down to the floor] {/b}"
   "(If he meant what he said about not harming a hair on your head,"
-  play sound "audio/sfx/Single Footstep 2.ogg"
+  $ play_sound(singlefootstep2)
   show bg corridor3:
     zoom 0.5 xalign 0.5 yalign 0.5
     ease 3 yalign 1.0 zoom 0.6
   extend "{cps=20} then maybe the smart thing to do would be to-){p=0.5}{nw}"
-  play sound "audio/sfx/staticshort.ogg"
+  $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor3-01.ogg"
   dr "Very tempting for a wooden floor,{w=0.1} isn't it?"
-  play sound "audio/sfx/Sitting Up On Bed 1.ogg"
+  $ play_sound(bedsitup)
   show bg corridor3:
     zoom 0.6 xalign 0.5 yalign 1.0
     easein 0.2 yalign 0.5 zoom 0.6
@@ -56,7 +56,7 @@ label dr_danger_3:
   voice "audio/voice/dr.danger/Danger_Corridor3-02.ogg"
   dr "{i}Heated flooring.{/i} My work has always been stressful,{w=0.5} so I've always strived to maximize comfort wherever I could."
 
-  play sound "audio/sfx/Walking Footsteps 3.ogg"
+  $ play_sound(footsteps3)
 
   show bg corridor3:
     zoom 0.6 yalign 0.5 xalign 0.5
@@ -113,7 +113,7 @@ label dr_danger_3:
   pause 1
   show drdanger sidestare silent
   pause 0.5
-  play sound "audio/sfx/staticshort.ogg"
+  $ play_sound(staticshort)
   hide drdanger sidestare silent
   with screenoff
 
@@ -122,7 +122,7 @@ label dr_danger_3:
   drs "{size=-13}Note to self,{w=0.1} re-record instructions at earliest convenience.{p=2.0}{nw}{/size}"
   voice sustain
   drs "{size=-13}Try not to be so...{w=0.5} {i}ominous{/i} next time.{/size}"
-  play sound "audio/sfx/TV Off 1.ogg"
+  $ play_sound(tvoff)
   pause 1
   scene bg corridor3 with fade:
     zoom 0.5 align (0.5,0.5)
@@ -136,14 +136,14 @@ label dr_danger_3:
   pause 1
   "(...C'mon.{w} Just focus on the task at hand.)"
 
-  play sound "audio/sfx/Walking Footsteps 3.ogg"
+  $ play_sound(footsteps3)
 
   scene bg corridor3:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
   pause 3
   scene black with fade
-  play sound  "audio/sfx/Opening Door.ogg"
+  $ play_sound(dooropen)
   pause 2
   show bg room3_downstairs with placeintro:
     zoom 0.6 xalign 0.0 yalign 0.5
@@ -153,7 +153,7 @@ label dr_danger_3:
 
   show bg room3_downstairs with dissolve:
     zoom 0.4 yalign 0.7
-  play sound "audio/sfx/Closing Door2.ogg"
+  $ play_sound(doorclose)
   pause 0.5
   #"{b}[pause, walking sounds play as the player goes to room 3]{/b}"
   "(It's...{w=0.5} a normal apartment?)"
@@ -161,7 +161,7 @@ label dr_danger_3:
   "(...and stairs.{w} Probably a bedroom up there.)"
   pause 0.5
   "(Are you {i}supposed{/i} to be here?)"
-  play sound "audio/sfx/Door Lock 1.ogg"
+  $ play_sound(doorlock)
   pause 1
   "(Guess you are.)"
 

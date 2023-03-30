@@ -128,11 +128,36 @@ init python:
 
 # TODO: Add your own sound files.
 
+########## SOUND FILES
+
     # example = "audio/examplefile.ogg"
-    door = "audio/sfx/Interior-Door_Close.mp3"
-    drawer_close = "audio/sfx/Chest-Drawer_Close.mp3"
-    drawer_open = "audio/sfx/Chest-Drawer_Open.mp3"
-    ocean = "audio/sfx/Edge-of-Ocean.mp3"
+    bedsitup = "audio/sfx/Sitting Up On Bed 1.ogg"
+    bedgetoff = "audio/sfx/Getting Off Bed 1.ogg"
+    staticshort = "audio/sfx/staticshort.ogg"
+    footsteps1 = "audio/sfx/Walking Footsteps 1.ogg"
+    footsteps2 = "audio/sfx/Walking Footsteps 2.ogg"
+    footsteps3 = "audio/sfx/Walking Footsteps 3.ogg"
+    footsteps4 = "audio/sfx/Walking Footsteps 3.ogg"
+    singlefootstep = "audio/sfx/Single Footstep 1.ogg"
+    singlefootstep2 = "audio/sfx/Single Footstep 2.ogg"
+    creakyvent = "audio/sfx/Creaky Vent 3.ogg"
+    bowlgrab = "audio/sfx/Metal Bowl Grab 3.ogg"
+    pelletchew = "audio/sfx/Pellet Chew 2.ogg"
+    pelletfall = "audio/sfx/Pellets falling 4.ogg"
+    bodyfall = "audio/sfx/Body Fall 1.ogg"
+    creakyfaucet = "audio/sfx/Creaky faucet 2.ogg"
+    doorunlock = "audio/sfx/Door Unlock 1.ogg"
+    tvoff = "audio/sfx/TV Off 1.ogg"
+    tvon = "audio/sfx/TV On 1.ogg"
+    doorclose = "audio/sfx/Closing Door2.ogg"
+    dooropen = "audio/sfx/Opening Door.ogg"
+    doorlock = "audio/sfx/Door Lock 1.ogg"
+    metaldoorlock = "audio/sfx/Door Unlock4.ogg"
+    boxunlock = "audio/sfx/boxunlock.ogg"
+    boxopen = "audio/sfx/boxopen.ogg"
+    quickfootsteps = "audio/sfx/Quick Footsteps 1.ogg"
+
+
 
 # This is where you define the sound captions for each sound file you will be using in the game. Please make sure the names of the sounds defined above match the ones used for the captions below.
 
@@ -140,10 +165,31 @@ init python:
 
     sound_list = {
     # example: _("Example text here"),
-    door : _("A door closes"),
-    drawer_close : _("A drawer closes"),
-    drawer_open : _("A drawer opens"),
-    ocean : _("Ocean waves hit the shore")
+    bedsitup : _("Someone sitting up."),
+    bedgetoff : _("Someone getting off the bed."),
+    staticshort : _("A short burst of static."),
+    footsteps1 : _("Footsteps."),
+    footsteps2 : _("Footsteps."),
+    footsteps3 : _("Footsteps."),
+    footsteps4 : _("Footsteps."),
+    singlefootstep : _("A single footstep."),
+    singlefootstep2 : _("A couple of footsteps."),
+    creakyvent : _("A vent door creaking."),
+    bowlgrab : _("A metal bowl being grabbed."),
+    pelletchew : _("Chewing crunchy pellets."),
+    pelletfall : _("Pellets falling on the floor."),
+    bodyfall : _("Someone falling on the floor."),
+    creakyfaucet : _("A creaking metal faucet."),
+    doorunlock : _("A door unlocking."),
+    tvoff : _("A TV switching off."),
+    tvon : _("A TV switching on."),
+    doorclose : _("A door closing."),
+    dooropen : _("A door opening."),
+    doorlock : _("A locked door."),
+    boxunlock : _("A box being unlocked."),
+    boxopen : _("A box opening."),
+    quickfootsteps : _("Quick footsteps."),
+    metaldoorlock : _("A locked metal door.")
     }
 
 # This is where you define the names for the music files you will be using in the game. It is recommended to define the main menu BGM as well.

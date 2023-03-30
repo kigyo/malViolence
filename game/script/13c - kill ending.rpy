@@ -5,11 +5,11 @@ label kill_ending:
 
     pause 4
 
-    play sound "audio/sfx/Opening Door.ogg"
+    $ play_sound(dooropen)
     scene black with fade
 
     pause 2
-    play sound "audio/sfx/Closing Door2.ogg"
+    $ play_sound(doorclose)
 
     #"{b}[pause – walking sounds play as the exit BG appears]{/b}"
     scene bg garage with fade:
@@ -17,7 +17,7 @@ label kill_ending:
     "({i}There it is.{/i}{w} There's the exit.)"
     "(And the path is clear -{w=0.5} no guards,{w=0.1} no traps.{w} Just a big garage,{w=0.1} littered with cardboard boxes.)"
     "(Huh.{w} You weren't expecting your escape to be so...{w=0.5} simple.)"
-    play sound "audio/sfx/Quick Footsteps 1.ogg"
+    $ play_sound(quickfootsteps)
     pause 1
     "(Scratch that.{w} You spoke too soon.)"
     pause 0.2
@@ -76,10 +76,10 @@ label kill_ending:
     "(He stutters out a pained gasp.)"
     pause 1
     scene cautionne gun cu dead with dissolve
-    play sound "audio/sfx/Single Footstep 1.ogg"
+    $ play_sound(singlefootstep)
     "(He reaches forward.{w} He struggles to grab something you can't see.)"
     scene black
-    play sound "audio/sfx/Body Fall 1.ogg"
+    $ play_sound(bodyfall)
     pause 1
     "(He falls.)"
     scene black
@@ -94,7 +94,7 @@ label kill_ending:
     pause 2
     #"{b}[pause for a few seconds]{/b}"
     #"{b}[show dead {/b}{b}Cautionne{/b}{b} CG with a slow fade.]{/b}"
-    play sound "audio/sfx/Walking Footsteps 4.ogg"
+    $ play_sound(footsteps4)
     "(As you walk from the garage,{w=0.1} you do your best to ignore Cautionne's lifeless body.)"
     "(From the corner of your eye,{w=0.1} you watch his blood ooze onto the floor.{w} Once a better agent comes here to gather evidence,{w=0.1} they'll mop the stains and burn the body.)"
     "(The sight of his blood at the edge of your vision fills you with exhaustion.{w} You just want to get out of here and let someone higher up sort this shit out.)"

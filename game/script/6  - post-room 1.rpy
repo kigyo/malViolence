@@ -10,9 +10,7 @@ label post_room_1:
     zoom 0.5
   with fade
   pause 1
-  play sound "audio/sfx/staticshort.ogg"
-  queue sound "<silence .5>"
-  queue sound "audio/sfx/TV On 1.ogg"
+  $ queue_sound([staticshort, tvon])
   show cautionne hairtwirl at crt
   show crt
   show cautionne_frame_glow at bg
@@ -137,7 +135,7 @@ label post_room_1:
   "(Probably.{w} Maybe.)"
   "(...No.{w} Better not tempt fate.)"
 
-  play sound "audio/sfx/TV Off 1.ogg"
+  $ play_sound(tvoff)
   hide cautionne laugh
   hide cautionne_frame_glow
   hide crt
@@ -151,7 +149,7 @@ label post_room_1:
 
   pause 1
 
-  play sound "audio/sfx/Walking Footsteps 1.ogg"
+  $ play_sound(footsteps4)
 
   show bg room1:
     zoom 0.4 yalign 0.7

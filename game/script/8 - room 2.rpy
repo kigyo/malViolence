@@ -330,7 +330,7 @@ label recalibration_game_over:
     pause 1
     cr "And I'm gonna need them {cps=20}{i}right now.{/i}{/cps}"
 
-    play sound "audio/sfx/Body Fall 1.ogg"
+    $ play_sound(bodyfall)
 
     show bg room2 at dizzy:
         zoom 0.335 yalign 0.0
