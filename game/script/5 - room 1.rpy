@@ -1,6 +1,28 @@
-default room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0,}
+default room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0}
 
-define panopticon_move_limit = 30
+init python:
+    def room1_init():
+        store.room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0}
+        renpy.hide("black", "screens")
+
+define hacking_description = _("""Using the given list of codes, break into the system, but be careful! Codes are only half the hack. They need to be used at the correct time and place otherwise you may end up locking yourself out of the system.
+
+Use the mouse or keybaord to clear out codes as you see them in the system, but be aware of how clearing out codes rearranges the system and changes what codes will be available for you afterwards.
+
+ALL the codes must be used to fully clear the fire wall and sucessfully break into the system.
+    
+Codes are unodered, so long as the three individual components are the same, the codes count as the same.""")
+
+
+define decanting_description = _("""Cautionne needs your help poisoning a top STOP official, but his toxin of choice is pretty particular!
+
+Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  - {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial contains the poison itself.{/color}
+
+But be careful! {color=#fff}If the poison's disturbed too much, it'll give off nasty vapors...{/color}
+    
+Drag the vials in order to pour their contents into each other.""")
+
+define bomb_description = _("")
 
 screen room1():
     sensitive not inspect
@@ -101,18 +123,21 @@ label room_1:
         else:
             if room1["hacking"] == 0:
                 call init_puzzle_board
-                show screen puzzle_playspace(pb, False)
-                "<TODO: Insert intro script and rules.>"
-                call screen puzzle_playspace(pb)
+                #"<TODO: Insert intro script and rules.>"
             else:
-                call screen puzzle_playspace(pb)
-        $ room1["hacking"] += 1
+                pass
+            show screen puzzle_playspace(pb, False) with easeintop
+            $ room1["hacking"] += 1
+            call screen puzzle_playspace(pb)
+            if room1["hacking"] == "solved":
+                jump hacking_solved
         
     elif inspect == "decanting":
         if "decanting" in room1["solved"]:
             "(You've already solved the decanting puzzle.)"
         else:
             if room1["decanting"] == 0:
+                $decanting_init()
                 #decanting introduction
                 pass
             else:
@@ -135,13 +160,54 @@ label room_1:
     $ inspect = None
     call screen room1
 
+label hacking_solved:
+    $ inspect = "hacking"
+    show screen puzzle_playspace(pb, False)
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    $ room1["solved"].append("hacking")
+    #Show a marble
+    "(Congratulations! {w}You solved the hacking puzzle.)"
+    hide black onlayer screens
+    hide screen puzzle_playspace
+    with dissolve
+    $ inspect = None
+    call screen room1
+
+label hacking_game_over:
+    $ inspect = "game over"
+    show screen puzzle_playspace(pb, False)
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    "(It's too late. The counter-trace just found you and-)"
+    "(Wait. Does that mean you've alerted STOP? That rescue could be-)"
+    cr "Hey, lab rat! I've got good news and bad news. In that order, 'cause time's short."
+    cr "Good news! STOP found your computer."
+    cr "Bad news! Standard operating procedure is to overload the offending console ASAP."
+    cr "By the way, you're standing very, very close to the computer. I'll have you know that's bad for your eye-"
+
+    #"{b}BOOM, CUT TO BLACK{/b}"
+    scene black with small_shake
+
+    pause 3
+
+    $nvl_heading = "Lab Report #615"
+    l "Subject died after computer shrapnel blew up into their face."
+    $deadend(achievement_dead4)
+    le "DEAD END 04: NAME!"
+    pause 2
+    nvl clear
+    $room1_init()
+    call screen gameover("room_1") with eyeopen
+    return
+
 label decanting_solved:
     $ inspect = "decanting"
     show screen room1_decanting
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room1["solved"].append("decanting")
-    #Show a note/picture/memento which will then show up on 
+    #Show a marble
     "(Congratulations! {w}You solved the decanting puzzle.)"
     hide black onlayer screens
     hide screen room1_decanting
@@ -151,10 +217,12 @@ label decanting_solved:
 
 label decanting_game_over:
     $ inspect = "game over"
-    show screen room1_decanting
-    show black onlayer screens with dissolve:
+    show bg room1:
+        xalign 0.4 yalign 0.9
+    show screen room1_decanting with None
+    show black onlayer screens:
         alpha 0.5
-    show bg room1
+    with dissolve
     "(You're getting close, now...{w=0.5} Right?)"
     "(If you just pour {i}this{/i}{i} {/i}into {i}that-){/i}"
     cr "Wow, lab rat – you've made {i}quite{/i} the concoction!"
@@ -193,6 +261,8 @@ label decanting_game_over:
     le "DEAD END 05: A Venom-enal End!"
     pause 2
     nvl clear
+    $room1_init()
+    call screen gameover("room_1") with eyeopen
     return
 
 label room1_deaths:
@@ -218,21 +288,7 @@ label room1_deaths:
 
     #"Contributing Factors to Death" "{i}{b}{/b}{/i}{i}A lack of detail-oriented problem solving skills. Nothing more, nothing less. {/i}"
 
-    #"Puzzle 2" "{b}{/b} You are remotely hacking into a STOP medical facility to sabotage the cybernetic implants of a top official. A counter-trace is immediately activated, which, when finished, will remotely overlaod the computer causing it to explode."
-
-    #"Puzzle 2 Death Scene" "{b}{/b}
-    #{i}Player fails to complete the hack{/i}"
-
-    #"(It's too late. The counter-trace just found you and-)
-    #(Wait. Does that mean you've alerted STOP? That rescue could be-)
-    #Hey, lab rat! I've got good news and bad news. In that order, \'cause time's short
-    #Good news! STOP found your computer.
-    #Bad news! Standard operating procedure is to overload the offending console ASAP.
-    #By the way, you're standing very, very close to the computer. I\'ll have you know that's bad for your eye-"
-
-    #"{b}BOOM, CUT TO BLACK{/b}"
-
-    #"Lab Report #615" "{i}{b}{/b}{/i}{i} Subject died after computer shrapnel blew up into their face.{/i}"
+    
 
     # "{b}Puzzle {/b}{b}{/b} Cautionne has presented you with three unmarked cups of irregular shape, and notes they hold 18, 10, and 7cc of liquid respectively. They need your help poisoning a top STOP official, but the poison they are using is very particular and must be administered in two separate doses of 9cc each. The 18cc cup is filled with the poison that will be used. Using only the cups present, Cautionne is asking you to measure the poison into two equal doses. Be careful though! The poison is quite volatile, and if disturbed too much may give off vapors which will not be good for your health in any way shape or form."
 

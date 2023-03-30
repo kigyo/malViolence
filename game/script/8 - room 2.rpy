@@ -1,6 +1,8 @@
 default room2 = {"solved":[], "investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0, "recalibration":0, "evidence":0, "word":0,
     "notes":[]}
 
+define panopticon_move_limit = 30
+
 screen room2():
     sensitive not inspect
     layer "master"

@@ -29,7 +29,7 @@ init python:
             string_answer += i
 
         if len(string_answer) < 5 or string_answer not in word_accepted_answers:
-            if not (achievement_dead6 in persistent.my_achievements and not preferences.hard_mode):
+            if not (achievement_dead6 in persistent.dead_ends and not preferences.hard_mode):
                 renpy.jump("word_game_over")
             else:
                 cr(word_lenient_failure_message)

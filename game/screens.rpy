@@ -1605,3 +1605,17 @@ style nvl_button:
 
 style nvl_button_text:
     properties gui.button_text_properties("nvl_button")
+
+    
+
+screen gameover(lbl):
+    
+    add gui.main_menu_background at bg(0.5)
+    add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
+
+    add "black" alpha 0.7
+
+    label _("GAME OVER") text_size 200 yalign 0.4 xalign 0.5 text_outlines [(3, "#000", 1, 1)]
+    vbox xalign 0.65 ypos 0.55:
+        textbutton _("> Restart Room") action Jump(lbl) text_size 65 at navigation_move
+        textbutton _("> Main Menu") action Return() text_size 65 at navigation_move

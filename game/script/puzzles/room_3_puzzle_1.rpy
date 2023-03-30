@@ -46,9 +46,9 @@ init python:
         renpy.retain_after_load()
 
     def quilt_submit():
-        if not quilt_valid() and not (achievement_dead11 in persistent.my_achievements and not preferences.hard_mode):
+        if not quilt_valid() and not (achievement_dead11 in persistent.dead_ends and not preferences.hard_mode):
             renpy.jump("quilt_game_over")
-        elif not quilt_valid() and (achievement_dead11 in persistent.my_achievements and not preferences.hard_mode):
+        elif not quilt_valid() and (achievement_dead11 in persistent.dead_ends and not preferences.hard_mode):
             #TODO: error sound
             narrator("(...Looks like this is not a valid solution.)")
         else:

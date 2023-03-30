@@ -29,7 +29,7 @@ init python:
             store.room2["panopticon"] = "solved"
             return True
 
-        if panopticon_moves >= panopticon_move_limit and not (achievement_dead8 in persistent.my_achievements and not preferences.hard_mode):
+        if panopticon_moves >= panopticon_move_limit and not (achievement_dead8 in persistent.dead_ends and not preferences.hard_mode):
             renpy.jump("panopticon_game_over")
 
         return
@@ -88,7 +88,7 @@ screen room2_panopticon():
                         textbutton "COUNTERCLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "l")]
                     frame:
                         textbutton "CLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "r")]
-        if not (achievement_dead8 in persistent.my_achievements and not preferences.hard_mode):
+        if not (achievement_dead8 in persistent.dead_ends and not preferences.hard_mode):
             frame xalign 1.0:
                 text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
 

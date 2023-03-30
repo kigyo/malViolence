@@ -44,26 +44,6 @@ define screenoff = ImageDissolve("images/open.png", 0.15, 0, reverse=True)
 define placeintro = ImageDissolve("images/open.png", 3, 0)
 define placeexit = ImageDissolve("images/open.png", 3, 0, reverse=True)
 
-init python:
-    def roomchangedx(i):
-        global roomval
-        roomval[0] = i/(3840-1920)
-        return
-    def roomchangedy(i):
-        global roomval
-        roomval[1] = i/(2160-1080)
-        return
-
-default roomval = [960,540]
-define roomadjustmentx = ui.adjustment(range=1.0, changed=roomchangedx)
-define roomadjustmenty = ui.adjustment(range=1.0, changed=roomchangedy)
-
-screen arrow_controls():
-    textbutton "RIGHT" action [Function(roomadjustmentx.change, roomval[0]+200),SetVariable("roomval", [roomval[0]+200, roomval[1]])] xalign 1.0 yalign 0.5 text_size 150
-    textbutton "LEFT" action [Function(roomadjustmentx.change, roomval[0]-200),SetVariable("roomval", [roomval[0]-200, roomval[1]])] xalign 0.0 yalign 0.5 text_size 150
-    textbutton "UP" action [Function(roomadjustmenty.change, roomval[1]-200),SetVariable("roomval", [roomval[0], roomval[1]-200])] xalign 0.5 yalign 0.0 text_size 150
-    textbutton "DOWN" action [Function(roomadjustmenty.change, roomval[1]+200),SetVariable("roomval", [roomval[0], roomval[1]+200])] xalign 0.5 yalign 1.0 text_size 150
-
 transform crt:
     parallel:
         function WaveShader(amp=0.05, period=17.219, speed=4, direction="horizontal", damp=(0.999,0.043))
@@ -100,6 +80,7 @@ image ctc:
 
 style puzzle_description_text:
     size 28 justify True color gui.accent_color 
+
 
 
 ################### for defining mini cgs in the game ################

@@ -205,9 +205,9 @@ init python:
     
     def deadend(cheevo):
         Achievement.add(achievement_deadfirst)
-        Achievement.add(cheevo)
+        Achievement.add_death(cheevo)
         if len(persistent.dead_ends) >= (len(death_name)):
-            Achievement.add_death(achievement_deadall)
+            Achievement.add(achievement_deadall)
 
 define config.periodic_callback = passive_function
 
