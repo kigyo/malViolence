@@ -55,8 +55,8 @@ label post_room_3:
     queue sound "audio/sfx/Walking Footsteps 3.ogg"
 
     scene bg room3_downstairs:
-        zoom 0.34 align(0.0,0.0)
-        ease 1 zoom 0.34 xalign 0.6 yalign 0.5 
+        zoom 0.335 align(0.0,0.0)
+        ease 1 zoom 0.335 xalign 0.6 yalign 0.5 
         pause 1
         ease 7 xalign 0.8 yalign 0.6 zoom 1.2
     pause 9

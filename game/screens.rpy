@@ -308,6 +308,7 @@ style quick_button:
 style quick_text is button_text:
     properties gui.button_text_properties("quick_button")
     xpos 0.5 ypos 0.5 
+    selected_color "#ffffff"
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
 
@@ -818,18 +819,18 @@ screen preferences():
                 vbox:
                     style_prefix "radio"
                     label _("Typeface")
-                    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 35), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
-                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 36), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
+                    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 39), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
+                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 42), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
 
                 vbox:
                     style_prefix "radio"
                     label _("Font Size")
                     if persistent.typeface == "TitilliumWeb":
                         textbutton _("Large") action gui.SetPreference("size", 44) alt "Change to Large Size Text"
-                        textbutton _("Regular") action gui.SetPreference("size", 35) alt "Change to Regular Size Text"
+                        textbutton _("Regular") action gui.SetPreference("size", 39) alt "Change to Regular Size Text"
                     elif persistent.typeface == "Hyperlegible":
-                        textbutton _("Large") action gui.SetPreference("size", 43) alt "Change to Large Size Text"
-                        textbutton _("Regular") action gui.SetPreference("size", 36) alt "Change to Regular Size Text"
+                        textbutton _("Large") action gui.SetPreference("size", 49) alt "Change to Large Size Text"
+                        textbutton _("Regular") action gui.SetPreference("size", 42) alt "Change to Regular Size Text"
 
                 vbox:
                     style_prefix "radio"

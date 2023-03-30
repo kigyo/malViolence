@@ -74,7 +74,7 @@ define gui.interface_text_font = "gui/font/kenyan coffee rg.otf"
 define gui.hyperlink_text_font = gui.interface_text_font
 
 ## The size of normal dialogue text.
-define gui.text_size = gui.preference("size", 35)
+define gui.text_size = gui.preference("size", 39)
 
 ## The size and color of normal dialogue text outlines.
 ## Uncomment this if you would like that style.

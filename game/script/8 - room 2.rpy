@@ -6,7 +6,7 @@ screen room2():
     layer "master"
     tag room
 
-    fixed at zoomed(0.34):
+    fixed at zoomed(0.335):
         add "bg room2"
         imagebutton idle Null(940, 805) action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (4800, 1085) mouse "inspect"
         imagebutton idle Null() action [SetVariable("inspect", "blueprints"), Jump("room_2")] focus_mask Image("rooms/room2_blueprints_mask.png") pos (0, 1175) mouse "inspect"
@@ -280,7 +280,7 @@ label recalibration_game_over:
     cr "But I'm gonna need a hand."
     show bg room2 at dizzy with dissolve:
         parallel:
-            yalign 0.0 xalign 0.0 zoom 0.34
+            yalign 0.0 xalign 0.0 zoom 0.335
     "{cps=30}(Suddenly,{w=0.1} your body feels a lot heavier.{w}{/cps} {cps=20}Is that mist in the corner of the room?){/cps}"
     cr "...And a liver.{w=0.5} And a stomach.{w=0.5} And a heart.{w=0.5} And most of your spinal cord."
     pause 1
@@ -289,7 +289,7 @@ label recalibration_game_over:
     play sound "audio/sfx/Body Fall 1.ogg"
 
     show bg room2 at dizzy:
-        zoom 0.34 yalign 0.0
+        zoom 0.335 yalign 0.0
         easeout 0.4 zoom 1.0 xalign 0.2 yalign 1.0
     pause 0.4
 

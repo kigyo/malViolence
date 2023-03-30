@@ -167,7 +167,7 @@ label dr_danger_3:
 
   show bg room3_downstairs:
     zoom 0.4 
-    ease 5 zoom 0.34 xalign 0.0 yalign 0.0
+    ease 5 zoom 0.335 xalign 0.0 yalign 0.0
 
   pause 5
   call screen room3 with dissolve

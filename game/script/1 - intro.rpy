@@ -50,7 +50,7 @@ label start:
         ease 0.7 yalign 0.5 xalign 0.7
         ease 0.5 yalign 0.5 xalign 0.5
     "(Where... {w=0.5}where's that voice coming from?)"
-    "(It's giving you a migraine. {w}You just wanna shut it-{nw})"
+    "(It's giving you a migraine. {w}You just wanna shut it-{w=0.5}{nw})"
 
     scene bg tutorial1:
         yalign 0.5 xalign 0.5

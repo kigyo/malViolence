@@ -164,7 +164,7 @@ label dr_danger_1:
   "(...Maybe you\'ll find the answer in this room?)"
 show bg room1:
   zoom 0.8 
-  ease 5 zoom 0.34 xalign 0.0 yalign 0.0
+  ease 5 zoom 0.335 xalign 0.0 yalign 0.0
 
 pause 5
 call screen room1 with dissolve

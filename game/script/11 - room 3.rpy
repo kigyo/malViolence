@@ -26,7 +26,7 @@ screen room3():
             textbutton _("UP") action SetDict(room3, "room", "up") style "main_menu_button" xalign 0.94 yalign 0.4
 
     elif room3["room"] == "up":
-        fixed at zoomed(0.34):
+        fixed at zoomed(0.335):
             add "bg room3_upstairs" 
             imagebutton idle Null(994,272) action [SetVariable("inspect", "sewing_book"), Jump("room_3")] pos (1808, 1694) mouse "inspect"
             imagebutton idle Null() action [SetVariable("inspect", "mannequin"), Jump("room_3")] focus_mask Image("rooms/room3_mannequin_mask.png") pos (0, 2009) mouse "inspect"
@@ -202,7 +202,7 @@ label room_3:
         elif room3["diary"] == 2:
             #"SUCCESS WITH LIMITING PROLIFERAITON OF TECH, PROMOTION, DISCOVERY OF POTENTIAL FOR YOUNGER SUBJECTS"
             n "\"I thought that things were moving fast before - but the growth we're seeing now makes those earlier years look glacial. STOP is doing good work that needs to get done, and it's making the countries that only paid for its formation as lip-service to international cooperation put the money where their mouth is. "
-            if gui.preference("size") > 40:
+            if persistent.typeface == "TitilliumWeb" and gui.preference("size") > 40:
                 nvl clear
             n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.  This month we finalized our report on maximizing cybernetic synchronization for patients - confirming my earlier theory that said the younger the better. "
             n "The difference really was astounding. And I must admit, it felt good to shove that 19\%-point increase right in that stuffy old bastard's smug face.\""

@@ -145,7 +145,7 @@ label dr_danger_2:
   "(Alright,{w=0.1} then.{w} Let's get searching.)"
 show bg room2:
   zoom 0.8 
-  ease 5 zoom 0.34 xalign 0.0 yalign 0.0
+  ease 5 zoom 0.335 xalign 0.0 yalign 0.0
 
 pause 5
 call screen room2 with dissolve

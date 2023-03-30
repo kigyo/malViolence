@@ -7,15 +7,17 @@ screen room1():
     layer "master"
     tag room
 
-    fixed at zoomed(0.34):
+    fixed at zoomed(0.335):
         add "bg room1"
-        imagebutton idle "room1_oil" action [SetVariable("inspect", "oil"), Jump("room_1")] pos (1175, 2650) mouse "inspect"
-        imagebutton idle "room1_chair" action [SetVariable("inspect", "chair"), Jump("room_1")] pos (3800, 1850) mouse "inspect"
-        imagebutton idle "room1_megaphone" action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (2500, 1350) mouse "inspect"
-        imagebutton idle "room1_marble" action [SetVariable("inspect", "marble"), Jump("room_1")] pos (2000, 2550) mouse "puzzle"
-        imagebutton idle "room1_hacking" action [SetVariable("inspect", "hacking"), Jump("room_1")] pos (2500, 2050) mouse "puzzle"
-        imagebutton idle "room1_decanting" action [SetVariable("inspect", "decanting"), Jump("room_1")] pos (1500, 1550) mouse "puzzle"
-        imagebutton idle "room1_bomb" action [SetVariable("inspect", "bomb"), Jump("room_1")] pos (575, 2850) mouse "puzzle"
+        imagebutton idle Null() action [SetVariable("inspect", "oil"), Jump("room_1")] focus_mask Image("rooms/room1_oil_mask.png") pos (232, 2634) mouse "inspect"
+        imagebutton idle Null(618, 1000) action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (2610, 1166) mouse "inspect"
+
+        imagebutton idle Null(724, 1014) action [SetVariable("inspect", "marble"), Jump("room_1")] pos (1212, 1420) mouse "puzzle"
+        imagebutton idle Null() action [SetVariable("inspect", "hacking"), Jump("room_1")] focus_mask Image("rooms/room1_hacking_mask.png") pos (3232, 1376) mouse "puzzle"
+        imagebutton idle Null() action [SetVariable("inspect", "decanting"), Jump("room_1")] focus_mask Image("rooms/room1_decanting_mask.png") pos (1952, 2214) mouse "puzzle"
+        imagebutton idle Null() action [SetVariable("inspect", "bomb"), Jump("room_1")] focus_mask Image("rooms/room1_bomb_mask.png") pos (68, 2160) mouse "puzzle"
+
+        imagebutton idle Null() action [SetVariable("inspect", "chair"), Jump("room_1")] focus_mask Image("rooms/room1_chair_mask.png") pos (3682, 1519) mouse "inspect"
 
     if config.developer:
         frame:
@@ -167,7 +169,7 @@ label decanting_game_over:
 
     show bg room1 at dizzy with dissolve:
         parallel:
-            yalign 0.0 xalign 0.0 zoom 0.34
+            yalign 0.0 xalign 0.0 zoom 0.335
 
     extend " {cps=20}have your legs always been made of jelly?){/cps}"
     cr "...But if your bio signs are anything to go by...{w=0.5} it looks like overexposure to the vapors does the job too!"
@@ -175,7 +177,7 @@ label decanting_game_over:
     play sound "audio/sfx/Body Fall 1.ogg"
 
     show bg room1 at dizzy:
-        zoom 0.34 yalign 0.0
+        zoom 0.335 yalign 0.0
         easeout 0.4 zoom 1.0 xalign 0.2 yalign 1.0
     pause 0.4
 
