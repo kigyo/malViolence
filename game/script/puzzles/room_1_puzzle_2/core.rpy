@@ -195,6 +195,8 @@ init -1 python:
                 if lose and not (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
                     renpy.jump('hacking_game_over')
                 elif lose:
+                    self.__init__(width=6, height=10, move_cap=12)
+                    store.adt = 0.5
                     #TODO: automatic restart
                     pass
 

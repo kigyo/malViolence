@@ -402,9 +402,52 @@ label quilt_game_over:
     l "{b}Contributing Factors to Death:{/b} Couldn't sew their way out of a wet paper bag."
     $deadend(achievement_dead11)
     le "DEAD END 11: Quilt In Action."
+    pause 2
+    nvl clear
+    $game_over(3)
+    return
+
+label cooking_solved:
+    $ inspect = "cooking"
+    show screen room3_quilt
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    $ room3["solved"].append("cooking")
+    #Show a note/picture/memento which will then show up on 
+    "(You've already solved the cooking puzzle.)"
+    hide black onlayer screens
+    hide screen room3_quilt 
+    with dissolve
+    $ inspect = None
+    call screen room3
+
+label cooking_game_over:
+    $ inspect = "game over"
+    show screen room3_quilt
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    "(There. That should be the right ingredients for the pancakes. Now if you pour the batter-)"
+    cr "{i}Stop right there,{/i} lab rat. I don't want that affront to all things edible anywhere near my nice, tasteful, kitchen appliances."
+    cr "How the {i}hell{/i} do you screw up pancakes that bad? Did STOP suck out your common sense as well as your brains?"
+    "(You open your mouth to protest and-)"
+
+    # {b}[SPLAT sound]{/b}
+    # {b}[death screen]{/b}
+
     pause 3
     nvl clear
+
+    $nvl_heading = "Lab Report #406"
+    l "Subject perished soon (but not soon enough) after being plastered against the wall by a gigantic frying-pan-shaped-mallet."
+    l "Good riddance, although I have to admit, I was looking for an opportunity to get a use out of that particular trap."
+    l "{b}Contributing Factors to Death:{/b} Committed sacrilege against breakfast food."
+    $deadend(achievement_dead13)
+    le "DEAD END 13: NAME."
+    pause 2
+    nvl clear
+    $game_over(3)
     return
+
 
 
     #"Puzzle 2" "You are digging into a pile of toys/plushes you found in Dr. Danger/Cautionne's room. You are helping Cautionne sort them. If you mess up sorting them Cautionne giggles and [death scene]"
@@ -427,27 +470,6 @@ label quilt_game_over:
 
    # "Contributing Factors to Death" "{i}{/i}{i}Expected leniency where there was none to be found.{/i}"
 
-   # "Puzzle 3" "WIP – The context of the third puzzle in the bedroom is that you are trying to recreate a recipe Dr. Danger used to make for Cautionne and herself. The specifics of the ingredients and recipe can be remixed as would like to fit the script, so long as there are 9 ingredients total. While designing I wrote them with the idea that it was loosely based on a pancake recipe with some unique additions based on Dr. Danger and Cautionne's personal tastes (the ingredients used were bacon, strawberries, flour, snappers, sticks of butter, blue berries, eggs, bolts, milk)."
-
-   # "Puzzle 3 Death Scene" "{b}{/b}
-   # {b}[PLAYER FAILS PUZZLE]{/b}
-
-   # (There. That should be the right ingredients for the pancakes. Now if you pour the batter-)
-
-   # {i}Stop right there,{/i} lab rat. I don't want that affront to all things edible anywhere near my nice, tasteful, kitchen appliances.
-
-   # How the {i}hell {/i}do you screw up pancakes that bad? Did STOP suck out your common sense as well as your brains?
-
-   # (You open your mouth to protest and-)
-
-   # {b}[SPLAT sound]{/b}
-   # {b}[death screen]{/b}
-
-   # {i}{/i}{i} Lab rat perished soon (but not soon enough) after being plastered against the wall by a gigantic frying-pan-shaped-mallet. {/i}
-
-   # {i}Good riddance, although I have to admit, I was looking for an opportunity to get a use out of that particular trap.{/i}
-
-   # {i}Contributing Factors to Death{/i}{i}Committed sacrilege against breakfast food.{/i}"
 
    # "Meta Puzzle" "This is the scrapbook puzzle. Cautionne is mad you did not get something so sentimental to them right, and comes to shoot you himself."
 

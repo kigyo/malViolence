@@ -1,6 +1,3 @@
-define word_description = _("Can you come up with a word that's almost as good as the above?")
-define word_lenient_failure_message = _("(Nope, not good enough!)")
-
 init python:
     def word_dropped(drop, drags):
 
@@ -48,7 +45,7 @@ screen room2_word():
     layer "master"
 
     frame padding 50,40 xfill True yfill True:
-        fixed xsize 700 xalign 1.0:
+        fixed xsize 650 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5 xfill True:
                     hbox xalign 0.5:
@@ -86,32 +83,36 @@ screen room2_word():
                     frame xysize(110,110):
                         pass
 
-                #TODO: make obtaining tiles conditional on having solved other puzzles
-                if not inspect or inspect and "A" not in word_answer:
-                    drag xalign 0.1 yalign 0.1:
-                        drag_name "A" activated word_moved
-                        frame background Solid(gui.accent_color) xysize(100,100):
-                            text "A" color "#000" align (0.5,0.5)
-                if not inspect or inspect and "E" not in word_answer:
-                    drag xalign 0.3 yalign 0.4:
-                        drag_name "E" activated word_moved
-                        frame background Solid(gui.accent_color) xysize(100,100):
-                            text "E" color "#000" align (0.5,0.5)
-                if not inspect or inspect and "R" not in word_answer:
-                    drag xalign 0.5 yalign 0.0:
-                        drag_name "R" activated word_moved
-                        frame background Solid(gui.accent_color) xysize(100,100):
-                            text "R" color "#000" align (0.5,0.5)
-                if not inspect or inspect and "S" not in word_answer:
-                    drag xalign 0.7 yalign 0.2:
-                        drag_name "S" activated word_moved
-                        frame background Solid(gui.accent_color) xysize(100,100):
-                            text "S" color "#000" align (0.5,0.5)
-                if not inspect or inspect and "T" not in word_answer:
-                    drag xalign 0.9 yalign 0.3:
-                        drag_name "T" activated word_moved
-                        frame background Solid(gui.accent_color) xysize(100,100):
-                            text "T" color "#000" align (0.5,0.5)
+                if "panopticon" in room2["solved"]:
+                    if not inspect or inspect and "A" not in word_answer:
+                        drag xalign 0.1 yalign 0.1:
+                            drag_name "A" activated word_moved
+                            frame background Solid(gui.accent_color) xysize(100,100):
+                                text "A" color "#000" align (0.5,0.5)
+                if "evidence" in room2["solved"]:
+                    if not inspect or inspect and "E" not in word_answer:
+                        drag xalign 0.3 yalign 0.4:
+                            drag_name "E" activated word_moved
+                            frame background Solid(gui.accent_color) xysize(100,100):
+                                text "E" color "#000" align (0.5,0.5)
+                if "recalibration" in room2["solved"]:
+                    if not inspect or inspect and "R" not in word_answer:
+                        drag xalign 0.5 yalign 0.0:
+                            drag_name "R" activated word_moved
+                            frame background Solid(gui.accent_color) xysize(100,100):
+                                text "R" color "#000" align (0.5,0.5)
+                if "panopticon" in room2["solved"]:
+                    if not inspect or inspect and "S" not in word_answer:
+                        drag xalign 0.7 yalign 0.2:
+                            drag_name "S" activated word_moved
+                            frame background Solid(gui.accent_color) xysize(100,100):
+                                text "S" color "#000" align (0.5,0.5)
+                if "recalibration" in room2["solved"]:
+                    if not inspect or inspect and "T" not in word_answer:
+                        drag xalign 0.9 yalign 0.3:
+                            drag_name "T" activated word_moved
+                            frame background Solid(gui.accent_color) xysize(100,100):
+                                text "T" color "#000" align (0.5,0.5)
 
             if inspect:
                 fixed ysize 600 xsize 990 yalign 0.45 xalign 0.45:

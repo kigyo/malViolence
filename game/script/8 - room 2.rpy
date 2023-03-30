@@ -1,8 +1,6 @@
 default room2 = {"solved":[], "investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0, "recalibration":0, "evidence":0, "word":0,
     "notes":[]}
 
-define panopticon_move_limit = 30
-
 screen room2():
     sensitive not inspect
     layer "master"
@@ -31,6 +29,13 @@ screen room2():
     if config.developer:
         frame:
             textbutton _("Skip Room") action [Jump("post_room_2")] style "main_menu_button"
+
+
+define word_description = _("""Can you come up with a word that's almost as good as the above?
+
+...You might have to find some letters first!""")
+
+define word_lenient_failure_message = _("(Nope, not good enough.)")
 
 label room_2:
     if inspect not in room2["investigated"] and inspect in ["blueprints", "limbs", "clippings", "post-its", "corkboard"]:
@@ -151,8 +156,8 @@ label room_2:
             "(You've already solved the panopticon puzzle.)"
         else:
             if room2["panopticon"] == 0:
+                $ panopticon_init()
                 #panopticon introduction
-                pass
             else:
                 #repeated investigation
                 pass
@@ -209,13 +214,27 @@ label room_2:
     $ inspect = None
     call screen room2
 
+label evidence_solved:
+    $ inspect = "evidence"
+    show screen room2_evidence
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    $ room2["solved"].append("evidence")
+    #obtain the "E"
+    "(Congratulations! {w}You solved the evidence board puzzle.)"
+    hide black onlayer screens
+    hide screen room2_evidence
+    with dissolve
+    $ inspect = None
+    call screen room2
+
 label panopticon_solved:
     $ inspect = "panopticon"
     show screen room2_panopticon
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room2["solved"].append("panopticon")
-    #Show a note/picture/memento which will then show up on 
+    #obtain the "A" and "S" tiles
     "(Congratulations! {w}You solved the panopticon puzzle.)"
     hide black onlayer screens
     hide screen room2_panopticon
@@ -258,8 +277,24 @@ label panopticon_game_over:
     l "{b}Contributing Factors to Death:{/b} Didn't take the consequences of imprisonment very seriously."
     $deadend(achievement_dead8)
     le "DEAD END 08: A Taste of Sobering Punishment."
+    pause 2
     nvl clear
+    $game_over(2)
     return
+
+label recalibration_solved:
+    $ inspect = "recalibration"
+    show screen cybernetics(cyb, False)
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    $ room2["solved"].append("recalibration")
+    #obtain the "R" and "T" tiles
+    "(Congratulations! {w}You solved the recalibration puzzle.)"
+    hide black onlayer screens
+    hide screen cybernetics
+    with dissolve
+    $ inspect = None
+    call screen room2
 
 label recalibration_game_over:
     $ inspect = "game over"
@@ -306,7 +341,9 @@ label recalibration_game_over:
 
     $deadend(achievement_dead9)
     le "DEAD END 09: Didn't Make The Cut."
+    pause 2
     nvl clear
+    $game_over(2)
     return
     
 label word_game_over:
@@ -380,7 +417,9 @@ label word_game_over:
     l "The lab rat just sucks at word games!"
     l "{b}Contributing Factors to Death:{/b} Should've dipped their toes into a few wordy titles before they met me. Personally, I reccommend Scraddle."
     le "DEAD END 06: Stop Me If You Think You've Word This One Before..."
+    pause 2
     nvl clear
+    $game_over(2)
     return
    
 

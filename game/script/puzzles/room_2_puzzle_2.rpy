@@ -1,5 +1,12 @@
 
 init python:
+    def panopticon_init():
+        store.panopticon_moves = 0
+        store.panopticon_selected = None
+        store.panopticon_config = [0,0,0,0,0]
+        store.panopticon_pos = [0,0,0,0,0]
+        store.panopticon_reverse = []
+
     def room2_panopticon_set(dir):
 
         store.panopticon_moves += 1

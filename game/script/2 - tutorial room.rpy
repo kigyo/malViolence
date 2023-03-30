@@ -173,6 +173,7 @@ label tutorial_room:
                 nvl hide
                 pause 2
                 nvl clear
+                $game_over("tutorial")
                 return
             "(Nah.)":
                 "(Nah,{w=0.1} you're good.)"

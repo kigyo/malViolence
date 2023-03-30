@@ -138,10 +138,11 @@ screen p_match(m):
         for p in m.pieces:
             fixed:
                 xysize (80, 80)
-                $ transforms = [colorify(colors[p])]
-                if m.matched:
-                    $ transforms.append(found_match)
-                add p at transforms:
+                add p:
+                    if m.matched:
+                        at colorify(colors[p]),found_match
+                    else:
+                        at colorify(colors[p])
                     xysize (65, 65)
 
 screen puzzle_matches(b):

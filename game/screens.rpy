@@ -403,6 +403,10 @@ screen main_menu():
     
     add "gui/logo.png" xalign 0.5 yalign 0.15
 
+    hbox pos (50,50) spacing 30:
+        imagebutton idle "gui/Twitter.png" action OpenURL("https://twitter.com/madocactus") at quick_hover
+        imagebutton idle "gui/Itch.png" action OpenURL("https://madocallie.itch.io/malviolence") at quick_hover
+
     vbox xalign 0.5 yalign 0.6 spacing 15:
         style_prefix "main_menu"
         button:
@@ -594,7 +598,7 @@ screen about():
             add "gui/logo.png" at zoomed(0.4) xalign 0.5
 
             ## gui.about is usually set in options.rpy.
-            text "This game was created within 31 days for NaNoRenO 2023, by:"
+            text "This game was crafted with love within 31 days for NaNoRenO 2023, by:" size gui.label_text_size-10 font gui.text_font
             grid 2 6:
                 xspacing 0 yspacing 10 xoffset 50
                 hbox spacing 15:
@@ -634,7 +638,7 @@ screen about():
                     label _("Trailer:")
                     text _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}") 
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25
+            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25 font gui.text_font
 
 
 style about_label is gui_label
@@ -835,8 +839,8 @@ screen preferences():
                 vbox:
                     style_prefix "radio"
                     label _("Game Overs")
-                    textbutton _("Infinite") action SetField(preferences, "hard_mode", True) alt "Change text color to white" 
-                    textbutton _("Once per Puzzle") action SetField(preferences, "hard_mode", False) alt "Change text color to cream"
+                    textbutton _("Infinite") action SetField(preferences, "hard_mode", True) alt "Hard mode: Failing puzzles always results in a game over" 
+                    textbutton _("Once per Puzzle") action SetField(preferences, "hard_mode", False) alt "Easy mode: Have at most one game over per puzzle"
 
                 #vbox:
                 #    style_prefix "radio"
@@ -1619,3 +1623,24 @@ screen gameover(lbl):
     vbox xalign 0.65 ypos 0.55:
         textbutton _("> Restart Room") action Jump(lbl) text_size 65 at navigation_move
         textbutton _("> Main Menu") action Return() text_size 65 at navigation_move
+
+init python:
+    def game_over(room = 1):
+        room_init(room)
+        store.inspect = None
+        if room == "tutorial":
+            renpy.call_screen("gameover", "tutorial_room")
+        else:
+            renpy.call_screen("gameover", "room_" + str(room))
+        renpy.with_statement(eyeopen)
+
+    def room_init(room = 1):
+        if room == 1:
+            store.room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0}
+        elif room == 2:
+            store.room2 = {"solved":[], "investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0, "recalibration":0, "evidence":0, "word":0, "notes":[]}
+        elif room == 3:
+            store.room3 = {"room":"down", "investigated":[], "solved":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0, "confidence_workbook":0, "sewing_book":0, "quilt":0, "cooking":0, "scrapbook_new":0, "toys":0}
+        else:
+            store.tutorial = {"vent":0, "investigated":[], "lock": [0,0,0,0,0,0,0,0]}
+        renpy.hide("black", "screens")

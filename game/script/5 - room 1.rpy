@@ -1,10 +1,5 @@
 default room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0}
 
-init python:
-    def room1_init():
-        store.room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0}
-        renpy.hide("black", "screens")
-
 define hacking_description = _("""Using the given list of codes, break into the system, but be careful! Codes are only half the hack. They need to be used at the correct time and place otherwise you may end up locking yourself out of the system.
 
 Use the mouse or keybaord to clear out codes as you see them in the system, but be aware of how clearing out codes rearranges the system and changes what codes will be available for you afterwards.
@@ -197,8 +192,7 @@ label hacking_game_over:
     le "DEAD END 04: NAME!"
     pause 2
     nvl clear
-    $room1_init()
-    call screen gameover("room_1") with eyeopen
+    $game_over(1)
     return
 
 label decanting_solved:
@@ -261,8 +255,7 @@ label decanting_game_over:
     le "DEAD END 05: A Venom-enal End!"
     pause 2
     nvl clear
-    $room1_init()
-    call screen gameover("room_1") with eyeopen
+    $game_over(1)
     return
 
 label room1_deaths:
@@ -294,7 +287,7 @@ label room1_deaths:
 
     #"Meta Puzzle" "{b}{/b}You are putting marbles into a marble machine to knock down effigies of STOP officials that Cautione has killed/plans to kill/or was in the process of killing and forced you to actively participate in killing. You must knock down the effigies in order of how the died/will die. If you get the order wrong Cautionne scolds you for not paying attention and activates a death trap (maybe a door in the ceiling opens up and a giant marble falls and crushes you)"
 
-   # "Meta Puzzle Death Scene" "{b}{/b}
+    # "Meta Puzzle Death Scene" "{b}{/b}
     #{b}[death scene writing goes here]{/b}
     #(You step back and pause. Something about the order doesn't seem-)
     #CautionneOof. {i}Not quite.{/i} 
