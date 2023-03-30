@@ -6,12 +6,12 @@ label spare_ending:
 
     pause 4
 
-    play sound "audio/sfx/Opening Door.ogg"
+    $ play_sound(dooropen)
     scene black with fade
 
     pause 2
 
-    play sound "audio/sfx/Closing Door2.ogg"
+    $ play_sound(doorclose)
 
     #"{b}[pause – walking sounds play as the exit BG appears]{/b}"
     scene bg garage with fade:
@@ -28,7 +28,7 @@ label spare_ending:
     "(...And...)"
     "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole-){p=0.5}{nw}"
     x "Finally going to take responsibility?"
-    play sound "audio/sfx/Quick Footsteps 1.ogg"
+    $ play_sound(quickfootsteps)
     #"{b}[{/b}{b}Cautionne{/b}{b} appears with his gun]{/b}"
 
     scene bg garage:
@@ -116,7 +116,7 @@ label spare_ending:
     "(The bullet...)"
     pause 1
     "(...it only grazed your cheek.)"
-    play sound "audio/sfx/Body Fall 1.ogg"
+    $ play_sound(bodyfall)
     pause 2
     "(Huh?{w} Cautionne...{w=0.5} fell?)"
     "(What's going...)"
@@ -171,11 +171,7 @@ label spare_ending:
     #"{b}[pause when the exit {/b}{b}bg{/b}{b} shows again. Camera shows the player getting up, and leaving for the {/b}{b}exit{/b}{b}]{/b}"
     "(Slowly,"
 
-    play sound "audio/sfx/Walking Footsteps 4.ogg"
-
-    queue sound "audio/sfx/Walking Footsteps 4.ogg"
-
-    queue sound "audio/sfx/Walking Footsteps 4.ogg"
+    $ queue_sound ([footsteps4, footsteps4, footsteps4])
 
     scene bg garage:
         zoom 0.5 align (0.5,0.5)
@@ -250,7 +246,7 @@ label spare_ending:
     pause 2
 
     scene black with slowfade
-    play sound "audio/sfx/Walking Footsteps 4.ogg"
+    $ play_sound(footsteps4)
     pause 2
 
     scene hairclip1 with slowfade:

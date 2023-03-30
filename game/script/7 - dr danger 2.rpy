@@ -30,7 +30,7 @@ label dr_danger_2:
   "(You pause.{w} Once again,{w=0.1} your fate is in your own hands.)"
   "(Is this {i}another{/i} one of his puzzles?)"
   pause 0.5
-  play sound "audio/sfx/staticshort.ogg"
+  $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor2-01.ogg"
   dr "Good. {w=0.5}You made it through the experiment room."
@@ -39,7 +39,7 @@ label dr_danger_2:
   "(No,{w=0.1} no{w=0.1} - calm down.{w} It's probably motion-activated.)"
   "(You should've listened to the last recording,{w=0.1} since it seemed pretty helpful.{w} This time,{w=0.1} you'll stay still and pay attention!)"
 
-  play sound "audio/sfx/Walking Footsteps 2.ogg"
+  $ play_sound(footsteps2)
 
   show bg corridor2:
     zoom 0.5 yalign 0.5 xalign 0.5
@@ -101,7 +101,7 @@ label dr_danger_2:
 
   show drdanger stare silent
   pause 0.1
-  play sound "audio/sfx/TV Off 1.ogg"
+  $ play_sound(tvoff)
   hide drdanger stare silent
   hide crt
   with screenoff
@@ -114,7 +114,7 @@ label dr_danger_2:
   "(Whoever the intended recipient was,{w=0.1} Dr. Danger clearly trusted them.)"
   "(Better take the door she recommended.)"
   #"{b}[the door in front has an opening sound, and the {/b}{b}bg{/b}{b} changes to room 2]{/b}"
-  play sound "audio/sfx/Walking Footsteps 2.ogg"
+  $ play_sound(footsteps2)
   scene bg corridor2:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
@@ -128,17 +128,17 @@ label dr_danger_2:
   pause 5
   show bg room2 with dissolve:
     zoom 0.4 yalign 0.7
-  play sound "audio/sfx/Closing Door2.ogg"
+  $ play_sound(doorclose)
   pause 1
   "(An office...)"
   "(There's shelves everywhere.{w} Loads of files,{w=0.1} too.)"
   "(Like the hall before it,{w=0.1} it's...{w=0.5} oddly ordinary.)"
-  play sound "audio/sfx/Walking Footsteps 2.ogg"
+  $ play_sound(footsteps2)
   show bg room2:
     zoom 0.4 yalign 0.7
     ease 4 zoom 0.8 xalign 0.8 yalign 0.65
   "(Just to double check,{w=0.1} though...)"
-  play sound "audio/sfx/Door Lock 1.ogg"
+  $ play_sound(doorlock)
   pause 1
   #"{b}[pause - a locked door handle sound {/b}{b}plays{/b}{b}]{/b}"
   "(...Yup.{w} This is the next puzzle room.)"

@@ -31,6 +31,17 @@ screen room2():
             textbutton _("Skip Room") action [Jump("post_room_2")] style "main_menu_button"
 
 
+define cybernetics_description = _("""- Lay down new synthetic nerual pathways, but be mindful of the original peices that cannot be moved!
+
+- Neural pathways must form one continuous loop and occupy every available space.
+
+- Pathways can cross over themselves, but cannot retreace themselves, so no T intersections!
+
+- At any 4 way intersection, a neuron will always go straight though and never turn at an intersection.
+
+- You can only submit possible solutions where there are no open ended pathways (including T intersections).""")
+
+
 define word_description = _("""Can you come up with a word that's almost as good as the above?
 
 ...You might have to find some letters first!""")
@@ -184,12 +195,11 @@ label room_2:
 
     elif inspect == "recalibration":
         if "recalibration" in room2["solved"]:
-            "(You've already solved the recalibration puzzle.)"
+            "(You've already solved the cybernetics puzzle.)"
         else:
-            call init_cybernetics from _call_init_cybernetics
+            
             if room2["recalibration"] == 0:
-                "<TODO: Insert intro script and rules.>"
-                pass
+                call init_cybernetics
             else:
                 #repeated investigation
                 pass
@@ -330,7 +340,7 @@ label recalibration_game_over:
     pause 1
     cr "And I'm gonna need them {cps=20}{i}right now.{/i}{/cps}"
 
-    play sound "audio/sfx/Body Fall 1.ogg"
+    $ play_sound(bodyfall)
 
     show bg room2 at dizzy:
         zoom 0.335 yalign 0.0

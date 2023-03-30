@@ -377,59 +377,68 @@ label init_cybernetics:
     return
 
 screen cybernetics(cyb, interactable=True):
-    if interactable:
-        add cyb
-    grid 12 10:
-        pos (170, 150)
-        for y in range(10):
-            for x in range(12):
-                if cybernetic_mask[y][x]:
-                    frame:
-                        xysize (65, 65)
-                        if cyb.data[y][x][0]:
-                            add "right_piece":
-                                align (0.5, 0.5)
-                                at colorify(loop_colors[loop_data[y][x][0]])
-                        if cyb.data[y][x][1]:
-                            add "down_piece":
-                                align (0.5, 0.5)
-                                at colorify(loop_colors[loop_data[y][x][1]])
-                        if cyb.data[y][x][2]:
-                            add "left_piece":
-                                align (0.5, 0.5)
-                                at colorify(loop_colors[loop_data[y][x][2]])
-                        if cyb.data[y][x][3]:
-                            add "up_piece":
-                                align (0.5, 0.5)
-                                at colorify(loop_colors[loop_data[y][x][3]])
-                        if cyb.tracing and cyb.cursor == (x, y):
-                            add "cursor" align (0.5, 0.5)
-                        if cybernetic_input[y][x] is not None:
-                            add "#ffffff55" xysize (65, 65) align (0.5, 0.5)
-                            add "fixed_%s_piece" % Pipe.items[cybernetic_input[y][x]]:
-                                align (0.5, 0.5)
-                else:
-                    null
-    frame:
-        xysize (650, 800)
-        align (0.85, 0.35)
-        style_prefix "cybernetics"
-        has vbox
-        xsize 550
-        xalign 0.5
-        label "Instructions" xalign 0.5
-        text "- Lay down new synthetic nerual pathways, but be mindful of the original peices that cannot be moved!"
-        text "- Neural pathways must form one continuous loop and occupy every available space."
-        text "- Pathways can cross over themselves, but cannot retreace themselves, so no T intersections!"
-        text "- At any 4 way intersection, a neuron will always go straight though and never turn at an intersection."
-        text "- You can only submit possible solutions where there are no open ended pathways (including T intersections)."
-        frame:
-            xalign 0.5
-            ypos 50
-            textbutton "Submit" action If(cyb.check_broken(), false=Function(cyb.verify))
+    modal True
+    tag puzzle
+    layer "master"
+    
+    frame padding 50,40 xfill True yfill True:
+        if interactable:
+            add cyb
+        grid 12 10:
+            pos (170, 150)
+            for y in range(10):
+                for x in range(12):
+                    if cybernetic_mask[y][x]:
+                        frame:
+                            xysize (65, 65)
+                            if cyb.data[y][x][0]:
+                                add "right_piece":
+                                    align (0.5, 0.5)
+                                    at colorify(loop_colors[loop_data[y][x][0]])
+                            if cyb.data[y][x][1]:
+                                add "down_piece":
+                                    align (0.5, 0.5)
+                                    at colorify(loop_colors[loop_data[y][x][1]])
+                            if cyb.data[y][x][2]:
+                                add "left_piece":
+                                    align (0.5, 0.5)
+                                    at colorify(loop_colors[loop_data[y][x][2]])
+                            if cyb.data[y][x][3]:
+                                add "up_piece":
+                                    align (0.5, 0.5)
+                                    at colorify(loop_colors[loop_data[y][x][3]])
+                            if cyb.tracing and cyb.cursor == (x, y):
+                                add "cursor" align (0.5, 0.5)
+                            if cybernetic_input[y][x] is not None:
+                                add "#ffffff55" xysize (65, 65) align (0.5, 0.5)
+                                add "fixed_%s_piece" % Pipe.items[cybernetic_input[y][x]]:
+                                    align (0.5, 0.5)
+                    else:
+                        null
+        fixed xysize (710, 800):
+            align (1.0, 0.35)
+            style_prefix "cybernetics"
+            vbox xalign 0.5 spacing 50:
+                label _("Instructions") xalign 0.5
+                text cybernetics_description
+
+        hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20:
+            frame xalign 0.0 yalign 0.5 at zoomed(0.75):
+                textbutton "RESET" style "main_menu_button" text_color "#fff" sensitive not inspect
+            frame xalign 0.5 yalign 0.5:
+                textbutton "SUBMIT" style "main_menu_button" action If(cyb.check_broken(), false=Function(cyb.verify)) sensitive not inspect
+            frame xalign 1.0 yalign 0.5:
+                textbutton "RETURN" style "main_menu_button" action Return() sensitive not inspect
+
+    if config.developer:
+        vbox:
+            frame:
+                textbutton _("Skip Puzzle") action [SetDict(room2, "recalibration", "solved"), Return()] style "main_menu_button"
+            frame:
+                textbutton _("Game Over") action [Jump("recalibration_game_over")] style "main_menu_button"
 
 style cybernetics_text:
-    size 30
+    size 30 justify True
 
 image cursor:
     "reticle"

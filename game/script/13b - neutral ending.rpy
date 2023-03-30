@@ -6,12 +6,12 @@ label neutral_ending:
 
     pause 4
 
-    play sound "audio/sfx/Opening Door.ogg"
+    $ play_sound(dooropen)
     scene black with fade
 
     pause 2
 
-    play sound "audio/sfx/Closing Door2.ogg"
+    $ play_sound(doorclose)
 
 
     show bg garage with placeintro:
@@ -32,7 +32,7 @@ label neutral_ending:
     "(...All that said,{w=0.1} you weren't expecting your escape to be so...{w=0.5} {i}straightforward.{/i})"
     "(The exit's wide open.{w} If you walked through right now,{w=0.1} you'll-){p=0.5}{nw}"
 
-    play sound "audio/sfx/Quick Footsteps 1.ogg"
+    $ play_sound(quickfootsteps)
     #"{b}[quick footsteps sound out]{/b}"
     pause 1
     "(Aw,{w=0.1} crap.{w} You jinxed yourself.)"
@@ -71,7 +71,7 @@ label neutral_ending:
     pause 0.5
     "{sc}(AaaaaAAAAaaAaAAAAaaAAAAH?!?!?!?){/sc}"
 
-    play sound "audio/sfx/Body Fall 1.ogg"
+    $ play_sound(bodyfall)
 
     scene cautionne gun far silent with small_shake:
         zoom 1 xalign 0.5 yalign 0.5
@@ -87,7 +87,7 @@ label neutral_ending:
     "{si}(And I can't...{w} Haa...{w} I can't...{w} {i}stand{/i} any more!){/si}"
     "{si}(Wha...{w} what am I gonna do?{w} How am I gonna get out of here {i}now?{/i}){/si}"
 
-    play sound "audio/sfx/Walking Footsteps 4.ogg"
+    $ play_sound(footsteps4)
     #"{b}[footsteps sounds as{/b}{b} Cautionn{/b}{b}e walks over.]{/b}"
     pause 3
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"

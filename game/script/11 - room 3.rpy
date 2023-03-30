@@ -147,9 +147,9 @@ label room_3:
 
     elif inspect == "locked_container":
         if room3["locked_container"] == 0:
-            play sound "audio/sfx/boxunlock.ogg"
+            $ play_sound(boxunlock)
             "(After entering the combination,{w=0.1}  there's a small click.{w} You give the handle a tug.)"
-            play sound "audio/sfx/boxopen.ogg"
+            $ play_sound(boxopen)
             "(There's no dust inside,{w=0.1}  but a stale odor wafts out.{w} Clearly, this hasn't been opened for a long time.)"
             show room3_lockedbox with dissolve:
                 yalign 0.2 xalign 0.5

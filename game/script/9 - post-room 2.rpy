@@ -7,16 +7,14 @@ label post_room_2:
   "(No message from the kid yet.)"
   "(Maybe if you're stealthy,"
   show screen nodismiss
-  play sound "audio/sfx/Walking Footsteps 2.ogg"
-  queue sound "audio/sfx/Walking Footsteps 2.ogg"
+  $ queue_sound ([footsteps2, footsteps2])
 
   show bg room2:
     zoom 0.335 align (0.0,0.0)
     ease 8 zoom 0.8 xalign 0.8 yalign 0.5
   extend "{cps=20} you could sneak past{/cps}{cps=10} without being subjected to{/cps} {cps=6}another one of his-){/cps}{nw}"
   #"{b}[{/b}{b}pasue{/b}{b} as the TV TURNS ON and cautionne appears]{/b}"
-  play sound "audio/sfx/TV On 1.ogg"
-  queue sound "audio/sfx/staticshort.ogg"
+  $ queue_sound ([tvon, staticshort])
   show cautionne hairtwirl
   show crt
   show cautionne_frame_glow at bg
@@ -104,7 +102,7 @@ label post_room_2:
   show cautionne blockscreen silent
   pause 0.1
 
-  play sound "audio/sfx/TV Off 1.ogg"
+  $ play_sound(tvoff)
   scene black
   hide cautionne blockscreen silent
   hide cautionne_frame_glow

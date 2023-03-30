@@ -8,10 +8,7 @@ screen debugging():
             #    for i in renpy.get_return_stack():
             #        text str(i) + " "
             null
-            hbox xalign 0.5:
-                if cooking_error:
-                    for i in range(len(cooking_error)):
-                        text str(cooking_error[i]) xalign 0.5
+            text testvar xalign 0.5
             #text str(speaking)
 
 default testvar = ""
@@ -22,11 +19,11 @@ init python:
 init python:
 
     speaking = None
-
     # This returns speaking if the character is speaking, and done if the
     # character is not.
     def while_speaking(name, speak_d, done_d, st, at):
-        if renpy.music.is_playing(channel='voice') and speaking == name and not _menu:
+        global speaking
+        if speaking == name and not _menu:
             return speak_d, 0.1
         else:
             return done_d, None
@@ -43,7 +40,7 @@ init python:
         global speaking
 
         speaking = name
-        if not renpy.music.is_playing(channel='voice') and (event == "slow_done" or event == "end"):
+        if event == "slow_done":
             speaking = None
         renpy.restart_interaction()
 
