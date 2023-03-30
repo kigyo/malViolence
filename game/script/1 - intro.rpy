@@ -19,7 +19,7 @@ label start:
     voice "audio/voice/cautionne/intro/Cautionne_Intro-03.ogg"
     x "{sc}{size=+35}{i}HEY!{w=0.1} WAKE THE HELL UP!!!{/i}{/size}{/sc}" with small_shake
 
-    play sound "audio/sfx/Sitting Up On Bed 1.ogg"
+    $ play_sound(bedsitup)
 
     scene bg tutorial1 with eyeopen:
         zoom 1.2 yalign 1.2 xalign 0.5
@@ -60,7 +60,7 @@ label start:
     extend " That monitor, in the corner...)"
     "(You'll just push yourself up and make your way over to it.)"
 
-    play sound "audio/sfx/Getting Off Bed 1.ogg"
+    $ play_sound(bedgetoff)
 
     scene bg tutorial1:
         yalign 0.1 xalign 0.25
@@ -69,7 +69,7 @@ label start:
 
     pause 2
 
-    play sound "audio/sfx/Walking Footsteps 1.ogg"
+    $ play_sound(footsteps1)
 
 
     scene bg tutorial1:
@@ -191,6 +191,6 @@ label start:
     cr "...Well, what's the holdup?{w=0.5} Get up,{w=0.1} look around,{w=0.1} beg for mercy,{w=0.1} or make yourself comfortable."
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
     cr "After all...{w=0.5} you'll be here for a while!"
-    play sound "audio/sfx/staticshort.ogg"
+    $ play_sound(staticshort)
     pause 1
     call screen tutorial_room with dissolve
