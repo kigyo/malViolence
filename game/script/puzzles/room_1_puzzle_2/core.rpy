@@ -174,8 +174,7 @@ init -1 python:
                             break
                 if win:
                     store.room1["hacking"] = "solved"
-                    store.inspect = "hacking"
-                    renpy.jump('hacking_solved')
+                    return True
 
                 lose = True
                 for y in range(self.height):
@@ -195,7 +194,7 @@ init -1 python:
                 if lose and not (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
                     renpy.jump('hacking_game_over')
                 elif lose:
-                    renpy.jump('auto_reset_puzzle_board')
+                    puzzle_board_reset()
 
 
             elif isinstance(self, ToyBoard):
