@@ -25,6 +25,8 @@ screen room2():
             imagebutton idle "rooms/room2_note2.png" action [SetVariable("inspect", "note2"), Jump("room_2")] pos (1417, 1767) mouse "inspect"
         if 3 not in room2["notes"]:
             imagebutton idle "rooms/room2_note3.png" action [SetVariable("inspect", "note3"), Jump("room_2")] pos (3870, 2217) mouse "inspect"
+        if 4 not in room2["notes"]:
+            imagebutton idle "rooms/room2_note3.png" action [SetVariable("inspect", "note4"), Jump("room_2")] pos (5500, 1987) mouse "inspect"
         
     if config.developer:
         frame:
@@ -64,6 +66,9 @@ label room_2:
     elif inspect == "note3":
         #TODO flavor text for note on the desk
         $room2["notes"].append(3)
+    elif inspect == "note4":
+        #TODO flavor text for note on the water cooler
+        $room2["notes"].append(4)
 
     elif inspect == "blueprints":
         if room2["blueprints"] == 0:
@@ -185,13 +190,18 @@ label room_2:
             "(You've already solved the evidence board puzzle.)"
         else:
             if room2["evidence"] == 0:
+                $ evidence_init()
                 #evidence introduction
                 pass
             else:
                 #evidence investigation
                 pass
+            show screen room2_evidence with easeintop
             $ room2["evidence"] += 1
             $ inspect = None
+            call screen room2_evidence
+            if room2["evidence"] == "solved":
+                jump evidence_solved
 
     elif inspect == "recalibration":
         if "recalibration" in room2["solved"]:
@@ -371,7 +381,10 @@ label word_game_over:
         alpha 0.5
     # [error sound effect]
     $ random_choice = random.randint(1,5)
-    if random_choice == 1:
+    if word_answer == ["","","","",""]:
+        #TODO: special text if you didn't even enter anything
+        pass
+    elif random_choice == 1:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
         cr "Holy crap!{w=0.5} Did you just manage to guess that right on your first try?"
         "(Huh?{w} Really?)"
