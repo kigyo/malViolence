@@ -1,5 +1,6 @@
 label post_tutorial:
   #[If puzzle is solved, play a solving/unlocking sound]
+  scene bg tutorial2 at zoomed
   $ play_sound(doorunlock)
   pause 1
   $ play_sound(staticshort)
