@@ -94,18 +94,18 @@ label tutorial_room:
             "(You try not to think about Cautionne laughing at you from the other side of the screen.)"
             pause 1
             "(...Huh?{w} What's this?)"
-            "(There's something at the bottom of the bowl.{w} Something colorful.)"
+            "(There's something at the bottom of the bowl.{w} ...A pattern?)"
             play sound "audio/sfx/Pellets falling 4.ogg"
             "(To get a better look,{w=0.1} you dump the rest of the pellets on the floor.)"
             #[sound of pellets falling]
             show tutorial_diagram with dissolve:
-                yalign 0.2 xalign 0.5
+                zoom 0.3 yalign 0.2 xalign 0.5
             "(It's...{w=0.5} a Venn diagram.{w} One with weird shapes?)"
             "(Wonder if it means anything...)"
             hide tutorial_diagram with dissolve
         else:
             show tutorial_diagram with dissolve:
-                yalign 0.5 xalign 0.5
+                zoom 0.3 yalign 0.2 xalign 0.5
             pause
             hide tutorial_diagram with dissolve
 
@@ -116,14 +116,14 @@ label tutorial_room:
             "(-wait.{w} Something's on the back side of that cover.)"
             play sound "audio/sfx/Creaky Vent 2.ogg"
             show tutorial_painting with dissolve:
-                yalign 0.2 xalign 0.5
-            "(Again with those weird shapes!)"
+                zoom 0.3 yalign 0.2 xalign 0.5
+            "(Again with those weird shapes! {w}And this time,{w=0.1} they're {i}colorful!{/i})"
             "(Yeah,{w=0.1} they definitely mean something.)"
             "(Maybe...{w=0.5} it's a way out?)"
             hide tutorial_painting with dissolve
         else:
             show tutorial_painting with dissolve:
-                yalign 0.5 xalign 0.5
+                zoom 0.3 yalign 0.2 xalign 0.5
             pause
             hide tutorial_painting with dissolve
 
