@@ -213,6 +213,6 @@ label toy_mode:
                        move_cap=persistent.toy_move_cap, \
                        shuffle_matches=persistent.toy_shuffle_matches, \
                        show_next=persistent.toy_show_solution)
-    $ adt = persistent.toy_reticle_timeout
+    $ adt = 1.0
     call screen toy_playspace(tb)
     return

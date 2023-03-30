@@ -662,7 +662,7 @@ label init_puzzle_board():
 
 label init_toy_board():
     $ tb = ToyBoard(width=5, height=5)
-    $ adt = persistent.toy_reticle_timeout
+    $ adt = 1.0
     return
 
 label reset_puzzle_board:
