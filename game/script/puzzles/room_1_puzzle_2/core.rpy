@@ -57,6 +57,7 @@ init -1 python:
             self.pieces = []
 
             self.piece_limit = piece_limit
+            self.h_buffer = 1
             self.set_reticle(int(self.width/2), self.height-1)
 
             for y in range(self.height):
@@ -79,8 +80,6 @@ init -1 python:
             self.move_count = 0
 
             # TODO: Move this to reticle once that is implemented.
-            self.h_buffer = 1
-
             self.player = (-1, -1)
         @property
         def square_meter(self):
@@ -299,7 +298,8 @@ init -1 python:
         def __init__(self, type=None, type_limit=4, player=False):
             self.type = type or Pieces.random(type_limit)
             self.last = None
-            self.color = colors[self.type]
+            # self.color = colors[self.type]
+            self.color = "#fff"
             self.dist = 0
             self.player = player
 
