@@ -44,6 +44,7 @@ label room_1:
     if inspect not in room1["investigated"] and inspect in ["oil", "chair", "megaphone"]:
         $room1["investigated"].append(inspect)
     show screen room1
+    $renpy.block_rollback()
     
     if inspect == "oil":
         if room1["oil"] == 0:
@@ -153,9 +154,11 @@ label room_1:
         $ room1["bomb"] += 1
 
     $ inspect = None
+    $renpy.block_rollback()
     call screen room1
 
 label hacking_solved:
+    $renpy.block_rollback()
     $ inspect = "hacking"
     show screen puzzle_playspace(pb, False)
     show black onlayer screens with dissolve:
@@ -170,6 +173,7 @@ label hacking_solved:
     call screen room1
 
 label hacking_game_over:
+    $renpy.block_rollback()
     $ inspect = "game over"
     show screen puzzle_playspace(pb, False)
     show black onlayer screens with dissolve:
@@ -196,6 +200,7 @@ label hacking_game_over:
     return
 
 label decanting_solved:
+    $renpy.block_rollback()
     $ inspect = "decanting"
     show screen room1_decanting
     show black onlayer screens with dissolve:
@@ -210,6 +215,7 @@ label decanting_solved:
     call screen room1
 
 label decanting_game_over:
+    $renpy.block_rollback()
     $ inspect = "game over"
     show bg room1:
         xalign 0.4 yalign 0.9

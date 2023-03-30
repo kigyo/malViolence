@@ -68,6 +68,7 @@ label tutorial_room:
         $tutorial["investigated"].append(inspect)
     show screen tutorial_room
     hide screen tutorial_lock
+    $renpy.block_rollback()
 
     if inspect == "painting":
         if tutorial["vent"] == 0:
@@ -135,6 +136,7 @@ label tutorial_room:
         "(It wouldn't hurt to eat a little more, right?{w} You could see yourself getting used to the crunchy texture.)"
         menu:
             "(Sure!)":
+                $renpy.block_rollback()
                 play sound "audio/sfx/Pellet Chew 2.ogg"
                 "(You scoop up another fistful of pellets and eat them without a second thought.)"
                 hide tutorial_pellets with dissolve
@@ -223,4 +225,5 @@ label tutorial_room:
         hide screen tutorial_lock with dissolve
 
     $ inspect = None
+    $renpy.block_rollback()
     call screen tutorial_room

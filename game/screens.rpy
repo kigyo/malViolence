@@ -1626,6 +1626,9 @@ screen gameover(lbl):
 
 init python:
     def game_over(room = 1):
+        renpy.scene()
+        renpy.scene("screens")
+        renpy.block_rollback()
         room_init(room)
         store.inspect = None
         if room == "tutorial":
@@ -1643,4 +1646,3 @@ init python:
             store.room3 = {"room":"down", "investigated":[], "solved":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0, "confidence_workbook":0, "sewing_book":0, "quilt":0, "cooking":0, "scrapbook_new":0, "toys":0}
         else:
             store.tutorial = {"vent":0, "investigated":[], "lock": [0,0,0,0,0,0,0,0]}
-        renpy.hide("black", "screens")

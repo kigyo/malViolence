@@ -53,6 +53,7 @@ label room_3:
     if inspect not in room3["investigated"] and inspect in ["sewing_book", "scrapbook", "health_record", "locked_container", "confidence_workbook", "mannequin"]:
         $room3["investigated"].append(inspect)
     show screen room3
+    $renpy.block_rollback()
 
     if inspect == "mannequin":
         if room3["mannequin"] == 0:
@@ -300,8 +301,8 @@ label room_3:
             "(You've already solved the quilt puzzle.)"
         else:
             if room3["quilt"] == 0:
+                $quilt_reset()
                 #quilt introduction
-                pass
             else:
                 #repeated investigation
                 pass
@@ -317,13 +318,19 @@ label room_3:
             "(You've already solved the {i}mise en place{/i} puzzle.)"
         else:
             if room3["cooking"] == 0:
+                call init_mise_en_place
                 #quilt introduction
-                pass
             else:
                 #repeated investigation
                 pass
+            show screen mise_en_place(False) with easeintop
             $ room3["cooking"] += 1
             $ inspect = None
+            pause 0.0
+            $ renpy.retain_after_load()
+            call screen mise_en_place
+            if room2["cooking"] == "solved":
+                jump cooking_solved
 
     elif inspect == "scrapbook_new":
         if room3["scrapbook_new"] == 0:
@@ -340,9 +347,11 @@ label room_3:
     $inspector_achievement()
 
     $ inspect = None
+    $renpy.block_rollback()
     call screen room3
 
 label room3_meta_cutscene:
+    $renpy.block_rollback()
     $ inspect = "quilt"
     show screen room3_meta
     #point out that all three photos are there.
@@ -354,6 +363,7 @@ label room3_meta_cutscene:
     call screen room3_meta
 
 label room3_meta_solved:
+    $renpy.block_rollback()
     $ inspect = "solved"
     if room3["scrapbook_new"] == "solved":
         jump post_room_3
@@ -361,12 +371,13 @@ label room3_meta_solved:
     call screen room3
 
 label quilt_solved:
+    $renpy.block_rollback()
     $ inspect = "quilt"
     show screen room3_quilt
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room3["solved"].append("quilt")
-    #Show a note/picture/memento which will then show up on 
+    #Show a note/picture/memento
     "(You've already solved the quilt puzzle.)"
     hide black onlayer screens
     hide screen room3_quilt 
@@ -375,6 +386,7 @@ label quilt_solved:
     call screen room3
 
 label quilt_game_over:
+    $renpy.block_rollback()
     $ inspect = "game over"
     show screen room3_quilt
     show black onlayer screens with dissolve:
@@ -408,12 +420,13 @@ label quilt_game_over:
     return
 
 label cooking_solved:
+    $renpy.block_rollback()
     $ inspect = "cooking"
     show screen room3_quilt
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room3["solved"].append("cooking")
-    #Show a note/picture/memento which will then show up on 
+    #Show a note/picture/memento
     "(You've already solved the cooking puzzle.)"
     hide black onlayer screens
     hide screen room3_quilt 
@@ -422,14 +435,19 @@ label cooking_solved:
     call screen room3
 
 label cooking_game_over:
+    $renpy.block_rollback()
     $ inspect = "game over"
-    show screen room3_quilt
+    show screen mise_en_place(False)
     show black onlayer screens with dissolve:
         alpha 0.5
     "(There. That should be the right ingredients for the pancakes. Now if you pour the batter-)"
     cr "{i}Stop right there,{/i} lab rat. I don't want that affront to all things edible anywhere near my nice, tasteful, kitchen appliances."
     cr "How the {i}hell{/i} do you screw up pancakes that bad? Did STOP suck out your common sense as well as your brains?"
     "(You open your mouth to protest and-)"
+
+    hide screen mise_en_place
+    hide black onlayer screens
+    scene black
 
     # {b}[SPLAT sound]{/b}
     # {b}[death screen]{/b}
@@ -460,38 +478,38 @@ label cooking_game_over:
     #I was horrible at putting my stuff away. A total {i}mess, {/i}every time.
     #But whenever I got into a pickle, Dr. Danger always helped me out.
     #{b}[pause]{/b}
-   # ...Hey, remind me. 
-    #Where {i}is {/i}Dr. Danger right now?
-   # (The sudden quietness in his voice makes you freeze.)
-   # {i}Right.{/i}
-   # {i}{b}SLICING SFX, CUT TO BLACK{/b}{/i}"
+    # ...Hey, remind me. 
+        #Where {i}is {/i}Dr. Danger right now?
+    # (The sudden quietness in his voice makes you freeze.)
+    # {i}Right.{/i}
+    # {i}{b}SLICING SFX, CUT TO BLACK{/b}{/i}"
 
-   # "Lab Report #414" "{i}{/i} {i}Subject was transported to the automated disposal department via trap door, whereupon the automated disposal department did what it does best.{/i}"
+    # "Lab Report #414" "{i}{/i} {i}Subject was transported to the automated disposal department via trap door, whereupon the automated disposal department did what it does best.{/i}"
 
-   # "Contributing Factors to Death" "{i}{/i}{i}Expected leniency where there was none to be found.{/i}"
+    # "Contributing Factors to Death" "{i}{/i}{i}Expected leniency where there was none to be found.{/i}"
 
 
-   # "Meta Puzzle" "This is the scrapbook puzzle. Cautionne is mad you did not get something so sentimental to them right, and comes to shoot you himself."
+    # "Meta Puzzle" "This is the scrapbook puzzle. Cautionne is mad you did not get something so sentimental to them right, and comes to shoot you himself."
 
-   # "Meta Puzzle Death Scene" "{b}{/b}"
+    # "Meta Puzzle Death Scene" "{b}{/b}"
 
-   # "(You place the scrapbook down to get a fresh look at what you've got so far.)
-   # (But when you step back, you feel like {i}something's{/i} out of place.)
-   # (And if {i}you {/i}can tell, then {i}he {/i}can tell. Better-)
-   # It's okay to suck at arts and crafts, lab rat. Not everyone's born to make masterpieces.
-   # But... that scrapbook meant a lot to me.
-   # If you were gonna screw up {i}that {/i}badly, you could've at least used the {i}non-permanent glue.{/i}
-   # (A bead of sweat trickles down your back.)
-   # (Was... was that an option?)
-   # ...Wait, I left that out, didn't I? My bad!
-   # My bad! If memory serves me, this button should-
-   # {b}[BEEP]{/b}
-   # {b}[sound of lazer charging up]{/b}
-   # Whoopsie doopsie! Looks like I pressed the wrong-
-   # {b}BLAST SFX, CUT TO BLACK{/b}"
+    # "(You place the scrapbook down to get a fresh look at what you've got so far.)
+    # (But when you step back, you feel like {i}something's{/i} out of place.)
+    # (And if {i}you {/i}can tell, then {i}he {/i}can tell. Better-)
+    # It's okay to suck at arts and crafts, lab rat. Not everyone's born to make masterpieces.
+    # But... that scrapbook meant a lot to me.
+    # If you were gonna screw up {i}that {/i}badly, you could've at least used the {i}non-permanent glue.{/i}
+    # (A bead of sweat trickles down your back.)
+    # (Was... was that an option?)
+    # ...Wait, I left that out, didn't I? My bad!
+    # My bad! If memory serves me, this button should-
+    # {b}[BEEP]{/b}
+    # {b}[sound of lazer charging up]{/b}
+    # Whoopsie doopsie! Looks like I pressed the wrong-
+    # {b}BLAST SFX, CUT TO BLACK{/b}"
 
-   # "Lab Report #891" "{i}Subject succeeded in proving the fatality of ray gun protoype Delta-9.{/i}"
+    # "Lab Report #891" "{i}Subject succeeded in proving the fatality of ray gun protoype Delta-9.{/i}"
 
-   # "Contributing Factors to Death" "{i}They messed up my scrapbook – so now, we're even!{/i}"
+    # "Contributing Factors to Death" "{i}They messed up my scrapbook – so now, we're even!{/i}"
 
 

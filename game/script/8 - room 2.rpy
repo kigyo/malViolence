@@ -42,6 +42,7 @@ label room_2:
         $room2["investigated"].append(inspect)
     show screen room2
     hide screen room2_panopticon
+    $renpy.block_rollback()
 
     if inspect == "note1":
         #TODO flavor text for note on the wall
@@ -212,9 +213,11 @@ label room_2:
             jump post_room_2
 
     $ inspect = None
+    $renpy.block_rollback()
     call screen room2
 
 label evidence_solved:
+    $renpy.block_rollback()
     $ inspect = "evidence"
     show screen room2_evidence
     show black onlayer screens with dissolve:
@@ -229,6 +232,7 @@ label evidence_solved:
     call screen room2
 
 label panopticon_solved:
+    $renpy.block_rollback()
     $ inspect = "panopticon"
     show screen room2_panopticon
     show black onlayer screens with dissolve:
@@ -243,6 +247,7 @@ label panopticon_solved:
     call screen room2
 
 label panopticon_game_over:
+    $renpy.block_rollback()
     $ inspect = "game over"
     show screen room2_panopticon
     show black onlayer screens with dissolve:
@@ -283,6 +288,7 @@ label panopticon_game_over:
     return
 
 label recalibration_solved:
+    $renpy.block_rollback()
     $ inspect = "recalibration"
     show screen cybernetics(cyb, False)
     show black onlayer screens with dissolve:
@@ -297,6 +303,7 @@ label recalibration_solved:
     call screen room2
 
 label recalibration_game_over:
+    $renpy.block_rollback()
     $ inspect = "game over"
     show screen cybernetics(cyb, False)
     show black onlayer screens with dissolve:
@@ -347,6 +354,7 @@ label recalibration_game_over:
     return
     
 label word_game_over:
+    $renpy.block_rollback()
     $ inspect = "game over"
     show screen room2_word
     show black onlayer screens with dissolve:

@@ -104,9 +104,9 @@ init python:
                         win = False
 
         if win:
-            renpy.jump("solved_room_3_puzzle_3")
+            return True
         else:
-            renpy.jump("failed_room_3_puzzle_3")
+            renpy.jump("cooking_game_over")
 
     def check_sprawl(x, y, checked=None):
         if checked is None:
@@ -203,91 +203,97 @@ style ingredients_button_text:
     hover_color "#C1C0BE"
 
 screen mise_en_place(interactable=True):
-    style_prefix "ingredients"
-    frame:
-        xysize (600, 860)
-        pos (1250, 50)
-        vbox:
-            xalign 0.5
+    layer "master"
+    tag puzzle
+    modal True
 
-            label "Ingredients" xalign 0.5
-            if bacon_count == ingredient_counts["bacon"]:
-                text "{s}5 pieces of bacon{/s}"
-            else:
-                text "5 pieces of bacon"
-            if strawberry_count == ingredient_counts["strawberry"]:
-                text "{s}7 strawberries{/s}"
-            else:
-                text "7 strawberries"
-            if flour_count == ingredient_counts["flour"]:
-                text "{s}5 cups of flour{/s}"
-            else:
-                text "5 cups of flour"
-            if snapper_count == ingredient_counts["snapper"]:
-                text "{s}6 snappers{/s}"
-            else:
-                text "6 snappers"
-            if butter_count == ingredient_counts["butter"]:
-                text "{s}6 sticks of butter{/s}"
-            else:
-                text "6 sticks of butter"
-            if blueberry_count == ingredient_counts["blueberry"]:
-                text "{s}9 blueberries{/s}"
-            else:
-                text "9 blueberries"
-            if egg_count == ingredient_counts["egg"]:
-                text "{s}8 eggs{/s}"
-            else:
-                text "8 eggs"
-            if nut_count == ingredient_counts["nut"]:
-                text "{s}2 nuts{/s}"
-            else:
-                text "2 nuts"
-            if milk_count == ingredient_counts["milk"]:
-                text "{s}3 cartons of milk{/s}"
-            else:
-                text "3 cartons of milk"
-
-            label "Instructions" xalign 0.5
-            text "- Always begin cooking with {i}~mise en place~{/i}."
-            text "- Drag items onto the board to arrange them them. Look at the ingredients list to figure out how many of each item should be laid out."
-            text "- All items of the same type should be touching eachother orthganally."
-            text "- Items of different types should not touch orthoganlly but can touch diagnally."
-            text "- Drag uneeded items to the trash."
-
-            null height 30
-
-            hbox:
+    frame padding 0,0,50,40 xfill True yfill True:
+        
+        frame style_prefix "ingredients":
+            xysize (600, 860)
+            pos (1250, 50)
+            vbox:
                 xalign 0.5
-                spacing 100
-                frame:
-                    textbutton "Trash"
-                frame:
-                    textbutton "Submit" action Function(check_board)
 
-    add "cutting_board" pos (65, 200)
-
-    for y in range(len(cutting_board_input)):
-        for x in range(len(cutting_board_input[0])):
-            fixed:
-                pos (70+x*100, 205+y*100)
-                fit_first True
-                if cutting_board_input[y][x]:
-                    add "fixed_cutting_board_tile"
-                    add ingredients[cutting_board_input[y][x]-1]
-                elif cutting_board_data[y][x]:
-                    add "cutting_board_tile"
-                    add ingredients[cutting_board_data[y][x]-1]
+                label "Ingredients" xalign 0.5
+                if bacon_count == ingredient_counts["bacon"]:
+                    text "{s}5 pieces of bacon{/s}"
                 else:
-                    add "cutting_board_tile"
+                    text "5 pieces of bacon"
+                if strawberry_count == ingredient_counts["strawberry"]:
+                    text "{s}7 strawberries{/s}"
+                else:
+                    text "7 strawberries"
+                if flour_count == ingredient_counts["flour"]:
+                    text "{s}5 cups of flour{/s}"
+                else:
+                    text "5 cups of flour"
+                if snapper_count == ingredient_counts["snapper"]:
+                    text "{s}6 snappers{/s}"
+                else:
+                    text "6 snappers"
+                if butter_count == ingredient_counts["butter"]:
+                    text "{s}6 sticks of butter{/s}"
+                else:
+                    text "6 sticks of butter"
+                if blueberry_count == ingredient_counts["blueberry"]:
+                    text "{s}9 blueberries{/s}"
+                else:
+                    text "9 blueberries"
+                if egg_count == ingredient_counts["egg"]:
+                    text "{s}8 eggs{/s}"
+                else:
+                    text "8 eggs"
+                if nut_count == ingredient_counts["nut"]:
+                    text "{s}2 nuts{/s}"
+                else:
+                    text "2 nuts"
+                if milk_count == ingredient_counts["milk"]:
+                    text "{s}3 cartons of milk{/s}"
+                else:
+                    text "3 cartons of milk"
+                null height 30
 
-    $ x = 115
-    for i in ingredients:
-        use ingredient_base(i, x)
-        $ x += 125
+                label "Instructions" xalign 0.5
+                text "- Always begin cooking with {i}~mise en place~{/i}."
+                text "- Drag items onto the board to arrange them them. Look at the ingredients list to figure out how many of each item should be laid out."
+                text "- All items of the same type should be touching eachother orthganally."
+                text "- Items of different types should not touch orthoganlly but can touch diagnally."
+                text "- Drag uneeded items to the trash."
 
-    if interactable:
-        add cutting_board_group
+                null height 30
+
+        hbox xalign 1.0 yalign 1.0 ysize 100 spacing 95:
+            frame xalign 0.0 yalign 0.5:
+                textbutton "TRASH" style "main_menu_button" text_color "#fff"
+            frame xalign 0.5 yalign 0.5 xoffset -14:
+                textbutton "SUBMIT" style "main_menu_button" action Function(check_board)
+            frame xalign 1.0 yalign 0.5:
+                textbutton "RETURN" style "main_menu_button" action Jump("room_3")
+
+        add "cutting_board" pos (65, 200)
+
+        for y in range(len(cutting_board_input)):
+            for x in range(len(cutting_board_input[0])):
+                fixed:
+                    pos (70+x*100, 205+y*100)
+                    fit_first True
+                    if cutting_board_input[y][x]:
+                        add "fixed_cutting_board_tile"
+                        add ingredients[cutting_board_input[y][x]-1]
+                    elif cutting_board_data[y][x]:
+                        add "cutting_board_tile"
+                        add ingredients[cutting_board_data[y][x]-1]
+                    else:
+                        add "cutting_board_tile"
+
+        $ x = 115
+        for i in ingredients:
+            use ingredient_base(i, x)
+            $ x += 125
+
+        if interactable:
+            add cutting_board_group
 
 screen ingredient_base(ingredient, x):
     frame:
