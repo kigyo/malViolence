@@ -324,6 +324,8 @@ style quick_button_text:
 
 screen navigation():
 
+    on "show" action Stop("sound", fadeout=0.5)
+
     vbox:
         style_prefix "navigation"
 

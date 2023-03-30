@@ -16,7 +16,7 @@ default testvar = ""
 init python:
     config.overlay_screens.append("debugging")
 
-init python:
+    renpy.music.register_channel("beeps", mixer=None, loop=True, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True)
 
     speaking = None
     # This returns speaking if the character is speaking, and done if the
@@ -40,48 +40,23 @@ init python:
         global speaking
 
         speaking = name
-        if event == "slow_done":
+        if not renpy.music.get_playing("voice") and event == "show":
+            if speaking == "cautionne":
+                renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True)
+            elif speaking == "drdanger":
+                renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True)
+            elif speaking == "protagonist":
+                renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True)
+            elif speaking == "report":
+                renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True)
+
+        if event == "slow_done" or event == "end" or _menu:
+            renpy.music.stop(channel="sound")
             speaking = None
         renpy.restart_interaction()
 
     # Curried form of the same.
     speaker = renpy.curry(speaker_callback)
-
-############# for text beeps
-
-init:
-    $ renpy.music.register_channel("beeps", mixer=None, loop=True, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True)
-
-init python:
-    
-    def protagbeep(event, **kwargs):
-        if event == "show":
-            renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True)
-        elif event == "slow_done" or event == "end":
-            renpy.music.stop(channel="sound")
-            renpy.music.stop(channel="sound", fadeout=1)
-
-    def reportbeep(event, **kwargs):
-        if event == "show":
-            renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True)
-        elif event == "slow_done" or event == "end":
-            renpy.music.stop(channel="sound")
-            renpy.music.stop(channel="sound", fadeout=1)
-
-    def cautionnebeep(event, **kwargs):
-        if event == "show":
-            renpy.music.play("audio/bleep026.ogg", channel="sound", loop=True)
-        elif event == "slow_done" or event == "end":
-            renpy.music.stop(channel="sound")
-            renpy.music.stop(channel="sound", fadeout=1)
-
-    def drdanger(event, **kwargs):
-        if event == "show":
-            renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True)
-        elif event == "slow_done" or event == "end":
-            renpy.music.stop(channel="sound")
-            renpy.music.stop(channel="sound", fadeout=1)
-
 
 ############### character definitions
 
@@ -95,8 +70,8 @@ define drs = Character(_("Dr. Danger"), voice_tag="drdanger", color="#00e7ff", s
 define drx = Character(_("Dr. Danger"), voice_tag="drdanger", color="#00e7ff", screen="subtitle", what_color="#00e7ff", image="dr danger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define narrator = Character(color="#ffffff", callback=speaker("protagonist"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define n = Character(kind=nvl, callback=speaker("danger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
-define l = Character(kind=nvl, what_color="#00e7ff", callback=speaker("danger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
-define le = Character(kind=nvl, what_color="#00e7ff", what_prefix="{size=+2}{b}> ", what_suffix="{/b}{/size}", what_italic=True, callback=speaker("danger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
+define l = Character(kind=nvl, what_color="#00e7ff", callback=speaker("report"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
+define le = Character(kind=nvl, what_color="#00e7ff", what_prefix="{size=+2}{b}> ", what_suffix="{/b}{/size}", what_italic=True, callback=speaker("report"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 
 
 ###### dr danger CGs and sprites
