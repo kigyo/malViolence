@@ -44,16 +44,17 @@ screen room2_word():
     tag puzzle
     layer "master"
 
-    frame padding 50,40 xfill True yfill True:
+    frame style "puzzle_frame":
         fixed xsize 650 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5 xfill True:
-                    label _("Instructions") text_color "#fff" xalign 0.5
+                    style_prefix "puzzle_description"
+                    label _("Instructions")
                     hbox xalign 0.5:
                         for i in range(len(word_rival)):
                             frame xysize(75,75):
                                 text word_rival[i] align (0.5,0.5)
-                    text word_description style "puzzle_description_text"
+                    text word_description
                     
             hbox xfill True yalign 1.0 ysize 100:
                 textbutton "SUBMIT" style "confirm_button" action Function(word_submit) xalign 0.0 yalign 0.5

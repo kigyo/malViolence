@@ -401,7 +401,7 @@ screen cybernetics(cyb, interactable=True):
     tag puzzle
     layer "master"
     
-    frame padding 0,0,50,40 xfill True yfill True:
+    frame style "puzzle_frame" padding 0,0,50,40:
         if interactable:
             add cyb
         grid 12 10:
@@ -440,8 +440,9 @@ screen cybernetics(cyb, interactable=True):
             align (1.0, 0.35)
             style_prefix "cybernetics"
             vbox xalign 0.5 spacing 50:
-                label _("Instructions") xalign 0.5 text_color "#fff"
-                text cybernetics_description style "puzzle_description_text"
+                style_prefix "puzzle_description"
+                label _("Instructions")
+                text cybernetics_description
 
         hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20:
             textbutton "RESET" style "confirm_button" action Function(cybernetics_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)

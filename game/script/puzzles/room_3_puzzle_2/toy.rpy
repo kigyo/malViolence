@@ -161,7 +161,7 @@ screen toy_playspace(b, interactable=True):
     layer "master"
     tag puzzle
     modal True
-    frame padding 50,40 xfill True yfill True:
+    frame style "puzzle_frame":
         frame:
             xysize (400, 200)
             align 0.0,0.5
@@ -191,8 +191,9 @@ screen toy_playspace(b, interactable=True):
         fixed xsize 675 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
-                    label _("Instructions") text_color "#fff" xalign 0.5
-                    text toys_description style "puzzle_description_text"
+                    style_prefix "puzzle_description"
+                    label _("Instructions")
+                    text toys_description
             hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20 xfill True:
                 if (achievement_dead12 in persistent.dead_ends and not preferences.hard_mode):
                     textbutton "RESET" style "confirm_button" action Function(toy_board_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)

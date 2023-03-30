@@ -218,7 +218,7 @@ screen mise_en_place(interactable=True):
     tag puzzle
     layer "master"
 
-    frame padding 0,0,50,40 xfill True yfill True:
+    frame style "puzzle_frame" padding 0,0,50,40:
         
         frame style_prefix "ingredients":
             xysize (600, 860)

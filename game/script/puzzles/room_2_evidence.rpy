@@ -6,7 +6,7 @@ screen room2_evidence:
     sensitive not inspect
     modal True
     layer "master"
-    frame padding 50,40 xfill True yfill True:
+    frame style "puzzle_frame":
 
 
                 

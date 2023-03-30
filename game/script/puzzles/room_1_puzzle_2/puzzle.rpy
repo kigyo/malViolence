@@ -108,7 +108,7 @@ screen puzzle_playspace(b, interactable=True):
     tag puzzle
     modal True
     add "#000"
-    frame padding 0,0,50,40 xfill True yfill True:
+    frame style "puzzle_frame" padding 0,0,50,40:
         if b.just_cleared:
             use animated_board(b, (700, 150))
         else:
@@ -125,7 +125,8 @@ screen puzzle_playspace(b, interactable=True):
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
                     style_prefix "puzzle_description"
-                    label _("Instructions") text_color "#fff" xalign 0.5
+                    null height 50
+                    label _("Instructions")
                     text hacking_description
 
             hbox xfill True yalign 1.0 ysize 100:

@@ -81,22 +81,25 @@ define quilt_colors = ["blue", "red", "yellow"]
 define quilt_shapes = ["bolt", "pill", "swirl", "x"]
 define quilt_fills = ["empty", "full", "striped"]
 
+define quilt_description = _("""This quilt's unfinished, and you need to make it complete!\n\nEach tile has {color=#fff}three qualities (color, shape, and fill).\n\n{/color}In order to finish the intended pattern, each adjacent tile must share {color=#fff}exactly 2 out of 3 qualities with the next tile.{/color}
+
+Below, construct the next motif you want to place by adjusting the color, shape, and fill with the arrows:""")
+
 screen room3_quilt():
     sensitive not inspect
     modal True
     tag puzzle
     layer "master"
 
-    frame padding 50,40 xfill True yfill True:
+    frame style "puzzle_frame":
         fixed xsize 775 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
-                    label _("Instructions") text_color "#fff" xalign 0.5
-                    text _("This quilt's unfinished, and you need to make it complete!\n\nEach tile has {color=#fff}three qualities (color, shape, and fill).\n\n{/color}In order to finish the intended pattern, each adjacent tile must share {color=#fff}exactly 2 out of 3 qualities with the next tile.{/color}"):
-                        style "puzzle_description_text"
-                    text _("Below, construct the next motif you want to place by adjusting the color, shape, and fill with the arrows:") style "puzzle_description_text"
+                    style_prefix "puzzle_description"
+                    label _("Instructions")
+                    text quilt_description
                     frame yalign 0.3 xalign 0.5 padding 50,30:
-                        has vbox spacing 20
+                        has vbox spacing 10
                         label _("Currently placing motif") xalign 0.5
                         hbox xalign 0.5 spacing 50:
                             add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_color]) + "/" + str(quilt_fills[quilt_fill]) + "_" + str(quilt_shapes[quilt_shape]) + ".png" yalign 0.5
