@@ -100,7 +100,6 @@ screen puzzle_playspace(b, interactable=True):
     layer "master"
     tag puzzle
     add "#000"
-
     frame padding 0,0,50,40 xfill True yfill True:
         if b.just_cleared:
             use animated_board(b, (700, 150))
@@ -120,13 +119,13 @@ screen puzzle_playspace(b, interactable=True):
                     style_prefix "puzzle_description"
                     label _("Instructions") text_color "#fff" xalign 0.5
                     text hacking_description
-                
+
             hbox xfill True yalign 1.0 ysize 100:
                 if (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
                     #TODO: matches list is currently not reset - please fix
-                    textbutton "RESTART" style "confirm_button" action [SetVariable("pb", PuzzleBoard(width=6, height=10, move_cap=12)), SetVariable("adt", 0.5), Show("puzzle_playspace", b=pb)] xalign 0.0 yalign 0.5 sensitive interactable
+                    textbutton "RESTART" style "confirm_button" action Jump("reset_puzzle_board") xalign 0.0 yalign 0.5 sensitive interactable
                 textbutton "RETURN" style "confirm_button" action [SetVariable("inspect", None), Hide()] xalign 1.0 yalign 0.5 sensitive interactable
-            
+
 
     if config.developer:
         vbox:
