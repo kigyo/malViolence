@@ -13,7 +13,7 @@ screen room3_meta:
             add "puzzles/room_3_meta/scrapbook1.png" xalign 0.5
             imagebutton idle Null(145,135) action SetScreenVariable("scrapbook_page",1) xpos 203 ypos 75 mouse "inspect"
 
-        hbox yalign 1.0 xalign 0.5:
+        hbox yalign 1.0 xalign 0.5 spacing 100:
             #memories are unlocked as the puzzles are solved
             if "quilt" in room3["solved"]:
                 add "room3_meta1" xalign 1.0 at rotated(30)

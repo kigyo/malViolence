@@ -354,17 +354,6 @@ label room_3:
     $renpy.block_rollback()
     call screen room3
 
-label room3_meta_cutscene:
-    $renpy.block_rollback()
-    $ inspect = "quilt"
-    show screen room3_meta
-    #point out that all three photos are there.
-    #we need to buy time while the puzzle loads lmao
-    "(You hear a strange rumbling sound.){nw}" with small_shake
-    call jigsaw_puzzle
-    $ room3["scrapbook_new"] = 2
-    $ inspect = None
-    call screen room3_meta
 
 label room3_meta_solved:
     $renpy.block_rollback()
