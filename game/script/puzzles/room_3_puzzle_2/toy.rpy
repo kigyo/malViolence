@@ -29,6 +29,7 @@ init python:
             super(ToyBoard, self).__init__(width, height, piece_limit)
 
             self.match = []
+            self.match_pic = []
             self.just_pathed = []
             self.player = (2, 2)
             self.last_player = (2, 2)
@@ -70,7 +71,8 @@ init python:
             self.last_reticle = self.reticle
             if self.reticle in self.match:
                 i = self.match.index(self.reticle)
-                self.match = self.match [:i]
+                self.match = self.match[:i]
+                self.match_pic = self.match_pic[:i]
                 return
 
             if not self.match:
@@ -88,7 +90,7 @@ init python:
                 elif self.pieces[self.reticle[1]][self.reticle[0]].type in [self.pieces[m[1]][m[0]] for m in self.match]:
                     return
             self.match.append(self.reticle)
-
+            self.match_pic.append(self.pieces[self.match[-1][1]][self.match[-1][0]].type)
             if len(self.match) < 4:
                 return
 
@@ -128,8 +130,6 @@ init python:
                     if self.pieces[y][x] and self.pieces[y][x].type == "toy_walk_slow":
                         self.player = (x, y)
 
-            self.match = []
-
             self.just_cleared = True
 
     def sort_matches(tup):
@@ -145,16 +145,38 @@ init python:
 screen toy_playspace(b, interactable=True):
     add "#ffffff" at colorify(colors["background"])
     if b.just_cleared:
-        use animated_board(b)
+        use animated_board(b, (850, 350))
     else:
-        use board(b)
-    use toy_matches(b)
+        use board(b, (850, 350))
     if interactable:
-        use buttons(b)
-    use reticle(b)
-    use menu
+        use buttons(b, (850, 350))
+    use reticle(b, (850, 350))
     if b.just_cleared:
         timer adt action Function(b.clear_anim)
+    frame:
+        xysize (600, 800)
+        pos (100, 100)
+        has vbox
+        xalign 0.5
+        label "Instructions" xalign 0.5
+        text "Help Cautionne sort their toys! You can help by clearing sets of toys. A set is made up of four unique toys, but you can only reach toys orthgnally. Be careful though, as the toys shift they may get harder to reach."
+
+    frame:
+        xysize (400, 200)
+        pos (1300, 400)
+        has vbox
+        xfill True
+        xalign 0.5
+        label "Current Match" xalign 0.5
+        null height 35
+        if not b.match_pic:
+            pass
+            # text "None"
+        else:
+            hbox:
+                xoffset 30
+                for p in b.match_pic:
+                    add p
 
 screen match(m):
     hbox:

@@ -197,6 +197,8 @@ init -1 python:
                     renpy.jump('auto_reset_puzzle_board')
 
             elif isinstance(self, ToyBoard):
+                self.match = []
+                self.match_pic = []
                 win = True
                 for y in range(self.height):
                     for x in range(self.width):
