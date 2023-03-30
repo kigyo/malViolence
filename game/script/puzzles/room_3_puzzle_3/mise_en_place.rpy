@@ -227,41 +227,41 @@ screen mise_en_place(interactable=True):
                 xalign 0.5
 
                 label "Ingredients" xalign 0.5
-                text "5 pieces of bacon" strikethrough bacon_count == ingredient_counts["bacon"]:
+                text "- 5 pieces of bacon" strikethrough bacon_count == ingredient_counts["bacon"]:
                     if cooking_error == "bacon":
                         color "#d20000" bold True
-                text "7 strawberries" strikethrough strawberry_count == ingredient_counts["strawberry"]:
+                text "- 7 strawberries" strikethrough strawberry_count == ingredient_counts["strawberry"]:
                     if cooking_error == "strawberry":
                         color "#d20000" bold True
-                text "5 cups of flour" strikethrough flour_count == ingredient_counts["flour"]:
+                text "- 5 cups of flour" strikethrough flour_count == ingredient_counts["flour"]:
                     if cooking_error == "flour":
                         color "#d20000" bold True
-                text "6 snappers" strikethrough snapper_count == ingredient_counts["snapper"]:
+                text "- 6 snappers" strikethrough snapper_count == ingredient_counts["snapper"]:
                     if cooking_error == "snapper":
                         color "#d20000" bold True
-                text "6 sticks of butter" strikethrough butter_count == ingredient_counts["butter"]:
+                text "- 6 sticks of butter" strikethrough butter_count == ingredient_counts["butter"]:
                     if cooking_error == "butter":
                         color "#d20000" bold True
-                text "9 blueberries" strikethrough blueberry_count == ingredient_counts["blueberry"]:
+                text "- 9 blueberries" strikethrough blueberry_count == ingredient_counts["blueberry"]:
                     if cooking_error == "blueberry":
                         color "#d20000" bold True
-                text "8 eggs" strikethrough egg_count == ingredient_counts["egg"]:
+                text "- 8 eggs" strikethrough egg_count == ingredient_counts["egg"]:
                     if cooking_error == "egg":
                         color "#d20000" bold True
-                text "2 nuts" strikethrough nut_count == ingredient_counts["nut"]:
+                text "- 2 nuts" strikethrough nut_count == ingredient_counts["nut"]:
                     if cooking_error == "nut":
                         color "#d20000" bold True
-                text "3 cartons of milk" strikethrough milk_count == ingredient_counts["milk"]:
+                text "- 3 cartons of milk" strikethrough milk_count == ingredient_counts["milk"]:
                     if cooking_error == "milk":
                         color "#d20000" bold True
-                null height 30
+                null height 5
 
                 label "Instructions" xalign 0.5
                 text "- Always begin cooking with {i}~mise en place~{/i}."
-                text "- Drag items onto the board to arrange them them. Look at the ingredients list to figure out how many of each item should be laid out."
-                text "- All items of the same type should be touching eachother orthganally."
-                text "- Items of different types should not touch orthoganlly but can touch diagnally."
-                text "- Drag uneeded items to the trash."
+                text "- {b}Drag items onto the board to arrange them them.{/b} Look at the ingredients list to figure out how many of each item should be laid out on the counter."
+                text "- {b}All items of the same type{/b} should touch each other {b}orthagonally.{/b}"
+                text "- {b}Items of different types{/b} should not touch orthagonally, but can touch {b}diagonally.{/b}"
+                text "- {b}Drag uneeded items{/b} to the {b}trash.{/b}"
 
                 null height 30
 

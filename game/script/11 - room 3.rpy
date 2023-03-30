@@ -378,7 +378,7 @@ label quilt_solved:
         alpha 0.5
     $ room3["solved"].append("quilt")
     #Show a note/picture/memento
-    "(You've already solved the quilt puzzle.)"
+    "(Congratulations! {w}You've solved the quilt puzzle.)"
     hide black onlayer screens
     hide screen room3_quilt 
     with dissolve
@@ -427,7 +427,7 @@ label cooking_solved:
         alpha 0.5
     $ room3["solved"].append("cooking")
     #Show a note/picture/memento
-    "(You've solved the {i}mise en place{/i} puzzle.)"
+    "(Congratulations! {w}You've solved the {i}mise en place{/i} puzzle.)"
     hide black onlayer screens
     hide screen mise_en_place
     with dissolve
@@ -440,13 +440,16 @@ label cooking_game_over:
     show screen mise_en_place(False)
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(There. That should be the right ingredients for the pancakes. Now if you pour the batter-)"
-    cr "{i}Stop right there,{/i} lab rat. I don't want that affront to all things edible anywhere near my nice, tasteful, kitchen appliances."
-    cr "How the {i}hell{/i} do you screw up pancakes that bad? Did STOP suck out your common sense as well as your brains?"
-    "(You open your mouth to protest and-)"
-
-    hide screen mise_en_place
+    "({i}There.{/i}{w} That should be the right ingredients for the pancakes.{w} Now if you pour the batter-){p=0.3}{nw}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 1.ogg"
+    cr "{i}Stop right there,{/i} lab rat.{w=0.5} I don't want that {i}affront{/i} to all things edible anywhere near my nice,{w=0.1} tasteful,{w=0.1} kitchen appliances."
     hide black onlayer screens
+    hide screen mise_en_place
+    with easeouttop
+    pause 1
+    cr "How the {i}hell{/i} do you screw up pancakes that bad?{w=0.5} Did STOP suck out your common sense as well as your brains?"
+    "(You open your mouth to protest and-){p=0.3}{nw}"
+
     scene black
 
     # {b}[SPLAT sound]{/b}
@@ -456,11 +459,11 @@ label cooking_game_over:
     nvl clear
 
     $nvl_heading = "Lab Report #406"
-    l "Subject perished soon (but not soon enough) after being plastered against the wall by a gigantic frying-pan-shaped-mallet."
+    l "Subject perished soon (but not soon enough) after being plastered against the wall by a gigantic frying pan-shaped mallet."
     l "Good riddance, although I have to admit, I was looking for an opportunity to get a use out of that particular trap."
     l "{b}Contributing Factors to Death:{/b} Committed sacrilege against breakfast food."
     $deadend(achievement_dead13)
-    le "DEAD END 13: NAME."
+    le "DEAD END 13: Flipping Miserable!"
     pause 2
     nvl clear
     $game_over(3)

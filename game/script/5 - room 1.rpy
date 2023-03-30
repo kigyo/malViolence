@@ -1,19 +1,21 @@
 default room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0}
 
-define hacking_description = _("""Using the given list of codes, break into the system, but be careful! Codes are only half the hack. They need to be used at the correct time and place otherwise you may end up locking yourself out of the system.
+define hacking_description = _("""With {color=#fff}the list of codes to your left,{/color} Cautionne wants you to hack into one of STOP's computer systems.
 
-Use the mouse or keybaord to clear out codes as you see them in the system, but be aware of how clearing out codes rearranges the system and changes what codes will be available for you afterwards.
+{color=#fff}Use the mouse or keyboard{/color} to clear out the codes in the system. {color=#fff}These codes are unordered,{/color} so as long as the three individual components are the same, the codes count as the same.
 
-ALL the codes must be used to fully clear the fire wall and sucessfully break into the system.
-    
-Codes are unodered, so long as the three individual components are the same, the codes count as the same.""")
+{color=#fff}All of the codes must be used{/color} to destroy the firewall and sucessfully break into the system.
+
+But be careful! If you don't use these codes at the right time, you might lock yourself out...
+
+""")
 
 
 define decanting_description = _("""Cautionne needs your help poisoning a top STOP official, but his toxin of choice is pretty particular!
 
-Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  - {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial contains the poison itself.{/color}
+Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  - {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial{/color} contains the poison itself.
 
-But be careful! {color=#fff}If the poison's disturbed too much, it'll give off nasty vapors...{/color}
+Be quick, though. {color=#fff}If the poison's disturbed too much, it'll give off nasty vapors...{/color}
     
 Drag the vials in order to pour their contents into each other.""")
 
@@ -178,12 +180,16 @@ label hacking_game_over:
     show screen puzzle_playspace(pb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(It's too late. The counter-trace just found you and-)"
-    "(Wait. Does that mean you've alerted STOP? That rescue could be-)"
-    cr "Hey, lab rat! I've got good news and bad news. In that order, 'cause time's short."
-    cr "Good news! STOP found your computer."
-    cr "Bad news! Standard operating procedure is to overload the offending console ASAP."
-    cr "By the way, you're standing very, very close to the computer. I'll have you know that's bad for your eye-"
+    "(It's too late.{w} The counter-trace just found you and-){p=0.5}{nw}"
+    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be-){p=0.3}{nw}"
+    hide black onlayer screens
+    hide screen puzzle_playspace
+    with easeouttop
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+    cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
+    cr "Good news!{w=0.5} STOP found your computer."
+    cr "Bad news!{w=0.5} Standard operating procedure is to overload the offending console ASAP."
+    cr "By the way,{w=0.1} you're standing very,{w=0.1} {i}very{/i} close to the computer.{w=0.5} I'll have you know that's bad for your eye-{p=0.3}{nw}"
 
     #"{b}BOOM, CUT TO BLACK{/b}"
     scene black with small_shake
@@ -192,8 +198,10 @@ label hacking_game_over:
 
     $nvl_heading = "Lab Report #615"
     l "Subject died after computer shrapnel blew up into their face."
+    l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn’t thorough enough with their background check."
+    l "Idiot."
     $deadend(achievement_dead4)
-    le "DEAD END 04: NAME!"
+    le "DEAD END 04: Trouble-shooting?"
     pause 2
     nvl clear
     $game_over(1)
@@ -225,12 +233,14 @@ label decanting_game_over:
     with dissolve
     "(You're getting close, now...{w=0.5} Right?)"
     "(If you just pour {i}this{/i}{i} {/i}into {i}that-){/i}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Wow, lab rat – you've made {i}quite{/i} the concoction!"
     hide black onlayer screens
     hide screen room1_decanting 
     hide screen room1
     with easeouttop
     "(Really?!{w} Did you find a solution that {i}he {/i}hadn't thought of?)"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Y'know,{w=0.1} I {i}did {/i}say that two doses would be lethal..."
 
     "(...By the way,"
