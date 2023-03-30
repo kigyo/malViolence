@@ -119,14 +119,10 @@ screen room3_quilt():
                 
             hbox xfill True yalign 1.0 ysize 100:
                 vbox xalign 0. yalign 0.5 spacing 5:
-                    frame at zoomed(0.5):
-                        textbutton "ERASER" style "main_menu_button" action ToggleVariable("quilt_eraser") text_selected_idle_color gui.accent_color
-                    frame at zoomed(0.5):
-                        textbutton "RESET" style "main_menu_button" action Function(quilt_reset)
-                frame xalign 0.5 yalign 0.5:
-                    textbutton "SUBMIT" style "main_menu_button" action Function(quilt_submit)
-                frame xalign 1.0 yalign 0.5:
-                    textbutton "RETURN" style "main_menu_button" action Return()
+                    textbutton "ERASER" style "confirm_button" action ToggleVariable("quilt_eraser") text_selected_idle_color gui.accent_color at zoomed(0.5)
+                    textbutton "RESET" style "confirm_button" action Function(quilt_reset) at zoomed(0.5)
+                textbutton "SUBMIT" style "confirm_button" action Function(quilt_submit) xalign 0.5 yalign 0.5
+                textbutton "RETURN" style "confirm_button" action Return() xalign 1.0 yalign 0.5
 
     fixed xoffset -400:
         add "puzzles/room_3_puzzle_1/quilt.png" align (0.5, 0.51) at zoomed(1.35)

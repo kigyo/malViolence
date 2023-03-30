@@ -444,12 +444,9 @@ screen cybernetics(cyb, interactable=True):
                 text cybernetics_description style "puzzle_description_text"
 
         hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20:
-            frame xalign 0.0 yalign 0.5 at zoomed(0.75):
-                textbutton "RESET" style "main_menu_button" action Function(cybernetics_reset, _("Restarting...")) text_color "#fff" sensitive not inspect
-            frame xalign 0.5 yalign 0.5:
-                textbutton "SUBMIT" style "main_menu_button" action If(cyb.check_broken(), false=Function(cyb.verify)) sensitive not inspect
-            frame xalign 1.0 yalign 0.5:
-                textbutton "RETURN" style "main_menu_button" action Return() sensitive not inspect
+            textbutton "RESET" style "confirm_button" action Function(cybernetics_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)
+            textbutton "SUBMIT" style "confirm_button" action If(cyb.check_broken(), false=Function(cyb.verify)) sensitive not inspect xalign 0.5 yalign 0.5
+            textbutton "RETURN" style "confirm_button" action Return() sensitive not inspect xalign 1.0 yalign 0.5
 
     if config.developer:
         vbox:

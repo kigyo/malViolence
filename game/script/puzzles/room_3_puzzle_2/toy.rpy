@@ -1,5 +1,12 @@
 define toy_pieces = ["toy_1", "toy_2", "toy_3", "toy_4"]
 
+define toys_description = _("""Help Cautionne sort out his toys by clearing sets of toys. 
+
+A set is made up of four unique toys, but you can only reach toys by moving up, down, left, or right (not diagonally). 
+
+Be careful, though! As the toys shift, they may get harder to reach...""")
+
+
 image toy_walk_fast:
     "toy_walk_1"
     pause 0.25
@@ -9,9 +16,9 @@ image toy_walk_fast:
 
 image toy_walk_slow:
     "toy_walk_1"
-    pause 1.0
+    pause 0.5
     "toy_walk_2"
-    pause 1.0
+    pause 0.5
     repeat
 
 init python:
@@ -141,42 +148,56 @@ init python:
                     tup[j] = tup[j + 1]
                     tup[j + 1] = temp
         return tup
+    
+    def toy_board_reset(txt=_("Invalid. Restarting...")):
+        store.tb = ToyBoard(width=5, height=5)
+        store.adt = 1.0
+        renpy.notify(txt)
+        renpy.hide_screen("toy_playspace")
+        renpy.show_screen("toy_playspace",tb)
+
 
 screen toy_playspace(b, interactable=True):
-    add "#ffffff" at colorify(colors["background"])
-    if b.just_cleared:
-        use animated_board(b, (850, 350))
-    else:
-        use board(b, (850, 350))
-    if interactable:
-        use buttons(b, (850, 350))
-    use reticle(b, (850, 350))
-    if b.just_cleared:
-        timer adt action Function(b.clear_anim)
-    frame:
-        xysize (600, 800)
-        pos (100, 100)
-        has vbox
-        xalign 0.5
-        label "Instructions" xalign 0.5
-        text "Help Cautionne sort their toys! You can help by clearing sets of toys. A set is made up of four unique toys, but you can only reach toys orthgnally. Be careful though, as the toys shift they may get harder to reach."
-
-    frame:
-        xysize (400, 200)
-        pos (1300, 400)
-        has vbox
-        xfill True
-        xalign 0.5
-        label "Current Match" xalign 0.5
-        null height 35
-        if not b.match_pic:
-            pass
-            # text "None"
+    layer "master"
+    tag puzzle
+    modal True
+    frame padding 50,40 xfill True yfill True:
+        frame:
+            xysize (400, 200)
+            align 0.0,0.5
+            has vbox
+            xfill True
+            xalign 0.5
+            label "Current Match" xalign 0.5
+            null height 35
+            if not b.match_pic:
+                pass
+                # text "None"
+            else:
+                hbox:
+                    xoffset 30
+                    for p in b.match_pic:
+                        add p
+        if b.just_cleared:
+            use animated_board(b, (550, 350))
         else:
-            hbox:
-                xoffset 30
-                for p in b.match_pic:
-                    add p
+            use board(b, (550, 350))
+        if interactable:
+            use buttons(b, (550, 350))
+        use reticle(b, (550, 350))
+        if b.just_cleared:
+            timer adt action Function(b.clear_anim)
+
+        fixed xsize 675 xalign 1.0:
+            fixed ysize 880:
+                vbox spacing 50 yalign 0.5:
+                    label _("Instructions") text_color "#fff" xalign 0.5
+                    text toys_description style "puzzle_description_text"
+            hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20 xfill True:
+                if (achievement_dead12 in persistent.dead_ends and not preferences.hard_mode):
+                    textbutton "RESET" style "confirm_button" action Function(toy_board_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)
+                textbutton "RETURN" style "confirm_button" action Return() sensitive not inspect xalign 1.0 yalign 0.5
+
 
 screen match(m):
     hbox:

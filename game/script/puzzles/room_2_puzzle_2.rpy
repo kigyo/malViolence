@@ -77,10 +77,8 @@ screen room2_panopticon():
                 label _("Instructions") text_color "#fff" xalign 0.5
                 text _("In a stealthy campaign, Cautionne has managed to take control of a STOP holding center, where several young test subjects are being held in a futuristic panopticon.\n\nTo give them the best chance of survival, Cautionne needs to {color=#fff}rearrange the cells so that each group of escaping testees is balanced.{/color}\n\nThese groups are shown as {color=#fff}a circle, a triangle, a square{/color} and {color=#fff}an X.{/color}\n\nHowever, the bureaucratic systems have left only the bare minimum operating instructions on how to operate the panopticon.\n\n{color=#fff}Help Cautionne properly arrange the cells according to the limitations of the system.{/color}"):
                     style "puzzle_description_text"
-            frame xalign 0.0 yalign 1.0:
-                textbutton "RESTART" action [Function(panopticon_init)] style "main_menu_button"
-            frame xalign 1.0 yalign 1.0:
-                textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return()] style "main_menu_button"
+            textbutton "RESTART" action [Function(panopticon_init)] style "confirm_button" xalign 0.0 yalign 1.0 at zoomed(0.75)
+            textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return()] style "confirm_button" xalign 1.0 yalign 1.0
 
         fixed xsize 1000:
             for i in range(len(panopticon_config)):

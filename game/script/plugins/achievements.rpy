@@ -102,7 +102,7 @@ init python:
         "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), "gui/dead_icon.png", 'dead'], #tutorial
         "dead2": [_("DEAD END 02:"), _(""), "gui/dead_icon.png", 'dead'], #room1 meta
         "dead3": [_("DEAD END 03:"), _(""), "gui/dead_icon.png", 'dead'], #room1 1
-        "dead4": [_("DEAD END 04:"), _(""), "gui/dead_icon.png", 'dead'], #room1 2
+        "dead4": [_("DEAD END 04:"), _("Trouble-shooting?"), "gui/dead_icon.png", 'dead'], #room1 2
         "dead5": [_("DEAD END 05:"), _("A Venom-enal End!"), "gui/dead_icon.png", 'dead'], #room1 3
         "dead6": [_("DEAD END 06:"), _("Stop Me If You Think You've Word This One Before..."), "gui/dead_icon.png", 'dead'], #room2 meta
         "dead7": [_("DEAD END 07:"), _(""), "gui/dead_icon.png", 'dead'], #room2 1
@@ -111,7 +111,7 @@ init python:
         "dead10": [_("DEAD END 10:"), _(""), "gui/dead_icon.png", 'dead'], #room3 meta
         "dead11": [_("DEAD END 11:"), _("Quilt In Action."), "gui/dead_icon.png", 'dead'], #room3 1
         "dead12": [_("DEAD END 12:"), _(""), "gui/dead_icon.png", 'dead'], #room3 2
-        "dead13": [_("DEAD END 13:"), _(""), "gui/dead_icon.png", 'dead'], #room3 3
+        "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "gui/dead_icon.png", 'dead'], #room3 3
     }
 
     for k, v in achievement_name.items():

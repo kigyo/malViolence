@@ -56,10 +56,8 @@ screen room2_word():
                     text word_description style "puzzle_description_text"
                     
             hbox xfill True yalign 1.0 ysize 100:
-                frame xalign 0.5 yalign 0.5:
-                    textbutton "SUBMIT" style "main_menu_button" action Function(word_submit)
-                frame xalign 1.0 yalign 0.5:
-                    textbutton "RETURN" style "main_menu_button" action [SetVariable("word_answer", ["","","","",""]), Return()]
+                textbutton "SUBMIT" style "confirm_button" action Function(word_submit) xalign 0.5 yalign 0.5
+                textbutton "RETURN" style "confirm_button" action [SetVariable("word_answer", ["","","","",""]), Return()] xalign 1.0 yalign 0.5
                     
         fixed xsize 1920-700:
             draggroup ysize 600 xsize 990 yalign 0.45 xalign 0.45:

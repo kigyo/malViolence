@@ -283,19 +283,6 @@ label room_3:
         $ room3["diary"] += 1
         nvl clear
 
-    elif inspect == "toys":
-        if "toys" in room3["solved"]:
-            "(You've already solved the plushie puzzle.)"
-        else:
-            if room3["toys"] == 0:
-                #toys introduction
-                pass
-            else:
-                #repeated investigation
-                pass
-            $ room3["toys"] += 1
-            $ inspect = None
-
     elif inspect == "quilt":
         if "quilt" in room3["solved"]:
             "(You've already solved the quilt puzzle.)"
@@ -312,6 +299,23 @@ label room_3:
             call screen room3_quilt
             if room3["quilt"] == "solved":
                 jump quilt_solved
+
+    elif inspect == "toys":
+        if "toys" in room3["solved"]:
+            "(You've already solved the plushie puzzle.)"
+        else:
+            if room3["toys"] == 0:
+                call init_toy_board
+                #toys introduction
+            else:
+                #repeated investigation
+                pass
+            show screen toy_playspace(tb, False) with easeintop
+            $ room3["toys"] += 1
+            $ inspect = None
+            call screen toy_playspace(tb)
+            if room3["toys"] == "solved":
+                jump toys_solved
 
     elif inspect == "cooking":
         if "cooking" in room3["solved"]:
@@ -418,6 +422,49 @@ label quilt_game_over:
     nvl clear
     $game_over(3)
     return
+    
+label toys_solved:
+    $renpy.block_rollback()
+    $ inspect = "toys"
+    show screen toy_playspace(tb, False)
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    $ room3["solved"].append("toys")
+    #Show a note/picture/memento
+    "(Congratulations! {w}You've solved the toys puzzle.)"
+    hide black onlayer screens
+    hide screen toy_playspace
+    with dissolve
+    $ inspect = None
+    call screen room3
+
+label toys_game_over:
+    $renpy.block_rollback()
+    $ inspect = "game over"
+    show screen toy_playspace(tb, False)
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    "(You set down the toys and pause to think.)"
+    "(The task is a lot harder than you thought it would be. Maybe-)"
+    cr "Having trouble organizing? I get it."
+    cr "I was horrible at putting my stuff away. A total {i}mess, {/i}every time."
+    cr "But whenever I got into a pickle, Dr. Danger always helped me out."
+    #{b}[pause]{/b}
+    cr "...Hey, remind me."
+    cr "Where {i}is {/i}Dr. Danger right now?"
+    "(The sudden quietness in his voice makes you freeze.)"
+    cr "{i}Right.{/i}"
+    #{i}{b}SLICING SFX, CUT TO BLACK{/b}{/i}"
+
+    $nvl_heading = "Lab Report #414"
+    l "Subject was transported to the automated disposal department via trap door, whereupon the automated disposal department did what it does best."
+    l "{b}Contributing Factors to Death:{/b} Expected leniency where there was none to be found."
+    $deadend(achievement_dead12)
+    le "DEAD END 12: NAME!"
+    pause 2
+    nvl clear
+    $game_over(3)
+    return
 
 label cooking_solved:
     $renpy.block_rollback()
@@ -469,27 +516,6 @@ label cooking_game_over:
     $game_over(3)
     return
 
-
-
-    #"Puzzle 2" "You are digging into a pile of toys/plushes you found in Dr. Danger/Cautionne's room. You are helping Cautionne sort them. If you mess up sorting them Cautionne giggles and [death scene]"
-
-    #"Puzzle 2 Death Scene" "{b}{/b}"
-
-    #"(You set down the toys and pause to think.)"
-    #(The task is a lot harder than you thought it would be. Maybe-)
-    #Having trouble organizing? I get it.
-    #I was horrible at putting my stuff away. A total {i}mess, {/i}every time.
-    #But whenever I got into a pickle, Dr. Danger always helped me out.
-    #{b}[pause]{/b}
-    # ...Hey, remind me. 
-        #Where {i}is {/i}Dr. Danger right now?
-    # (The sudden quietness in his voice makes you freeze.)
-    # {i}Right.{/i}
-    # {i}{b}SLICING SFX, CUT TO BLACK{/b}{/i}"
-
-    # "Lab Report #414" "{i}{/i} {i}Subject was transported to the automated disposal department via trap door, whereupon the automated disposal department did what it does best.{/i}"
-
-    # "Contributing Factors to Death" "{i}{/i}{i}Expected leniency where there was none to be found.{/i}"
 
 
     # "Meta Puzzle" "This is the scrapbook puzzle. Cautionne is mad you did not get something so sentimental to them right, and comes to shoot you himself."

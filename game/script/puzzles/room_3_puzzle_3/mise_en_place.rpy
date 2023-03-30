@@ -265,13 +265,10 @@ screen mise_en_place(interactable=True):
 
                 null height 30
 
-        hbox xalign 1.0 yalign 1.0 ysize 100 spacing 95:
-            frame xalign 0.0 yalign 0.5:
-                textbutton "TRASH" style "main_menu_button" text_color "#fff" sensitive not inspect
-            frame xalign 0.5 yalign 0.5 xoffset -14:
-                textbutton "SUBMIT" style "main_menu_button" action Function(check_board) sensitive not inspect
-            frame xalign 1.0 yalign 0.5:
-                textbutton "RETURN" style "main_menu_button" action Jump("room_3") sensitive not inspect
+        hbox xalign 1.0 yalign 1.0 ysize 100 spacing 112:
+            textbutton "TRASH" style "confirm_button" text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5
+            textbutton "SUBMIT" style "confirm_button" action Function(check_board) sensitive not inspect xalign 0.5 yalign 0.5 xoffset -40
+            textbutton "RETURN" style "confirm_button" action Jump("room_3") sensitive not inspect xalign 1.0 yalign 0.5
 
         add "cutting_board" pos (65, 200)
 

@@ -8,7 +8,7 @@ screen room3_meta:
         if scrapbook_page == 1:
             add "puzzles/room_3_meta/scrapbook2.png" xalign 0.5
             imagebutton idle Null(175,140) action SetScreenVariable("scrapbook_page",2) xpos 1402 mouse "inspect"
-            
+
         else:
             add "puzzles/room_3_meta/scrapbook1.png" xalign 0.5
             imagebutton idle Null(145,135) action SetScreenVariable("scrapbook_page",1) xpos 203 ypos 75 mouse "inspect"
@@ -28,8 +28,7 @@ screen room3_meta:
         #    use jigsaw 
 
 
-        frame xalign 1.0 yalign 1.0:
-            textbutton "RETURN" style "main_menu_button" action Return()
+        textbutton "RETURN" style "confirm_button" action Return() xalign 1.0 yalign 1.0
 
 init python:
     

@@ -411,9 +411,7 @@ screen main_menu():
 
     vbox xalign 0.5 yalign 0.6 spacing 15:
         style_prefix "main_menu"
-        button:
-            text _("START") style "main_menu_button_text"
-            action Start()
+        textbutton _("START") action Start()
         textbutton _("LOAD") action ShowMenu("load")
         textbutton _("OPTIONS") action ShowMenu("preferences")
         textbutton _("ABOUT") action ShowMenu("about")

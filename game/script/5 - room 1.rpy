@@ -198,7 +198,7 @@ label hacking_game_over:
 
     $nvl_heading = "Lab Report #615"
     l "Subject died after computer shrapnel blew up into their face."
-    l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn’t thorough enough with their background check."
+    l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn'’'t thorough enough with their background check."
     l "Idiot."
     $deadend(achievement_dead4)
     le "DEAD END 04: Trouble-shooting?"

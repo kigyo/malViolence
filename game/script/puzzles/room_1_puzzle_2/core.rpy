@@ -195,6 +195,7 @@ init -1 python:
                     renpy.jump('hacking_game_over')
                 elif lose:
                     puzzle_board_reset()
+                    
             elif isinstance(self, ToyBoard):
                 self.match = []
                 self.match_pic = []
@@ -205,9 +206,13 @@ init -1 python:
                             win = False
                             break
                 if win:
-                    renpy.jump('solved_room_3_puzzle_2')
+                    store.room3["toys"] = "solved"
+                    return True
                 if not self.check_toy_path(self.player):
-                    renpy.jump('failed_room_3_puzzle_2')
+                    if not (achievement_dead12 in persistent.dead_ends and not preferences.hard_mode):
+                        renpy.jump('toys_game_over')
+                    elif lose:
+                        toy_board_reset()
 
         def check_toy_path(self, pos, path=None):
             x = pos[0]

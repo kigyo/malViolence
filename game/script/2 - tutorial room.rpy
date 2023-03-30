@@ -60,8 +60,7 @@ screen tutorial_lock():
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
         
     if not inspect:
-        frame xalign 0.8 yalign 0.5:
-            textbutton "Return" action [Return()] style "main_menu_button"
+        textbutton "Return" action [Return()] style "confirm_button" xalign 0.8 yalign 0.5
 
 label tutorial_room:
     if inspect not in tutorial["investigated"]:

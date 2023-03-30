@@ -106,6 +106,7 @@ init python:
 screen puzzle_playspace(b, interactable=True):
     layer "master"
     tag puzzle
+    modal True
     add "#000"
     frame padding 0,0,50,40 xfill True yfill True:
         if b.just_cleared:
@@ -129,8 +130,7 @@ screen puzzle_playspace(b, interactable=True):
 
             hbox xfill True yalign 1.0 ysize 100:
                 if (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
-                    #TODO: matches list is currently not reset - please fix
-                    textbutton "RESTART" style "confirm_button" action Function(puzzle_board_reset, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable
+                    textbutton "RESET" style "confirm_button" action Function(puzzle_board_reset, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable at zoomed(0.75)
                 textbutton "RETURN" style "confirm_button" action [SetVariable("inspect", None), Hide()] xalign 1.0 yalign 0.5 sensitive interactable
 
 
