@@ -47,6 +47,44 @@ init python:
     # Curried form of the same.
     speaker = renpy.curry(speaker_callback)
 
+############# for text beeps
+
+init:
+    $ renpy.music.register_channel("beeps", mixer=None, loop=True, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True)
+
+init python:
+    
+    def protagbeep(event, **kwargs):
+        if event == "show":
+            renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True)
+        elif event == "slow_done" or event == "end":
+            renpy.music.stop(channel="sound")
+            renpy.music.stop(channel="sound", fadeout=1)
+
+    def reportbeep(event, **kwargs):
+        if event == "show":
+            renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True)
+        elif event == "slow_done" or event == "end":
+            renpy.music.stop(channel="sound")
+            renpy.music.stop(channel="sound", fadeout=1)
+
+    def cautionnebeep(event, **kwargs):
+        if event == "show":
+            renpy.music.play("audio/bleep026.ogg", channel="sound", loop=True)
+        elif event == "slow_done" or event == "end":
+            renpy.music.stop(channel="sound")
+            renpy.music.stop(channel="sound", fadeout=1)
+
+    def drdanger(event, **kwargs):
+        if event == "show":
+            renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True)
+        elif event == "slow_done" or event == "end":
+            renpy.music.stop(channel="sound")
+            renpy.music.stop(channel="sound", fadeout=1)
+
+
+############### character definitions
+
 define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define xd = Character(_("???"), color="#00e7ff", image="drdanger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define c = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", screen="subtitle", what_color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
