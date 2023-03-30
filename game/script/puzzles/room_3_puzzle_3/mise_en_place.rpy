@@ -214,9 +214,9 @@ style ingredients_button_text:
     hover_color "#C1C0BE"
 
 screen mise_en_place(interactable=True):
-    layer "master"
-    tag puzzle
     modal True
+    tag puzzle
+    layer "master"
 
     frame padding 0,0,50,40 xfill True yfill True:
         
@@ -267,11 +267,11 @@ screen mise_en_place(interactable=True):
 
         hbox xalign 1.0 yalign 1.0 ysize 100 spacing 95:
             frame xalign 0.0 yalign 0.5:
-                textbutton "TRASH" style "main_menu_button" text_color "#fff"
+                textbutton "TRASH" style "main_menu_button" text_color "#fff" sensitive not inspect
             frame xalign 0.5 yalign 0.5 xoffset -14:
-                textbutton "SUBMIT" style "main_menu_button" action Function(check_board)
+                textbutton "SUBMIT" style "main_menu_button" action Function(check_board) sensitive not inspect
             frame xalign 1.0 yalign 0.5:
-                textbutton "RETURN" style "main_menu_button" action Jump("room_3")
+                textbutton "RETURN" style "main_menu_button" action Jump("room_3") sensitive not inspect
 
         add "cutting_board" pos (65, 200)
 
@@ -298,11 +298,18 @@ screen mise_en_place(interactable=True):
             use ingredient_base(i, x)
             $ x += 125
 
-        if interactable:
+        if not inspect:
             add cutting_board_group
 
         if isinstance(cooking_error,list):
             add Solid("#d20000") pos (70+cooking_error[0]*100, 205+cooking_error[1]*100) xysize (100, 100) alpha 0.5
+
+    if config.developer:
+        vbox:
+            frame:
+                textbutton _("Skip Puzzle") action [SetDict(room3, "cooking", "solved"), Return()] style "main_menu_button"
+            frame:
+                textbutton _("Game Over") action [Jump("cooking_game_over")] style "main_menu_button"
 
 screen ingredient_base(ingredient, x):
     frame:

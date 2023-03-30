@@ -328,7 +328,7 @@ label room_3:
             $ inspect = None
             pause 0.0
             $ renpy.retain_after_load()
-            call screen mise_en_place
+            call screen mise_en_place(True)
             if room3["cooking"] == "solved":
                 jump cooking_solved
 
