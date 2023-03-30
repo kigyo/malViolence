@@ -25,6 +25,8 @@ init python:
         global speaking
         if speaking == name and not _menu:
             return speak_d, 0.1
+        elif renpy.music.get_playing("voice"):
+            return speak_d, 0.1
         else:
             return done_d, None
 
@@ -41,14 +43,14 @@ init python:
 
         speaking = name
         if event == "show":
-            if speaking == "cautionne" and  _get_voice_info().tag != "cautionne" and not renpy.music.get_playing("voice"):
+            if speaking == "cautionne" and not renpy.music.get_playing("voice"):
                 renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True, tight=False)
-            elif speaking == "drdanger" and  _get_voice_info().tag != "drdanger" and not renpy.music.get_playing("voice"):
-                renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True, tight=False)
+            elif speaking == "drdanger" and not renpy.music.get_playing("voice"):
+                renpy.music.play("audio/beeps/bleep001.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "protagonist":
                 renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "report":
-                renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True, tight=False)
+                renpy.music.play("audio/beeps/bleep001.ogg", channel="sound", loop=True, tight=False)
 
         if event == "slow_done" or event == "end" or _menu:
             renpy.music.stop(channel="sound", fadeout=0.0)
