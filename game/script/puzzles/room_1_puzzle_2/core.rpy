@@ -174,7 +174,8 @@ init -1 python:
                             break
                 if win:
                     store.room1["hacking"] = "solved"
-                    return True
+                    store.inspect = "hacking"
+                    renpy.jump('hacking_solved')
 
                 lose = True
                 for y in range(self.height):
@@ -195,7 +196,6 @@ init -1 python:
                     renpy.jump('hacking_game_over')
                 elif lose:
                     renpy.jump('auto_reset_puzzle_board')
-                    pass
 
 
             elif isinstance(self, ToyBoard):
@@ -669,3 +669,4 @@ label auto_reset_puzzle_board:
     call init_puzzle_board
     hide screen puzzle_playspace
     call screen puzzle_playspace(pb)
+    call screen room1
