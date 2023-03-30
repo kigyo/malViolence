@@ -40,18 +40,18 @@ init python:
         global speaking
 
         speaking = name
-        if not renpy.music.get_playing("voice") and event == "show":
-            if speaking == "cautionne":
-                renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True)
-            elif speaking == "drdanger":
-                renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True)
+        if event == "show":
+            if speaking == "cautionne" and  _get_voice_info().tag != "cautionne" and not renpy.music.get_playing("voice"):
+                renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True, tight=False)
+            elif speaking == "drdanger" and  _get_voice_info().tag != "drdanger" and not renpy.music.get_playing("voice"):
+                renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "protagonist":
-                renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True)
+                renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "report":
-                renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True)
+                renpy.music.play("audio/bleep001.ogg", channel="sound", loop=True, tight=False)
 
         if event == "slow_done" or event == "end" or _menu:
-            renpy.music.stop(channel="sound")
+            renpy.music.stop(channel="sound", fadeout=0.0)
             speaking = None
         renpy.restart_interaction()
 
@@ -60,8 +60,8 @@ init python:
 
 ############### character definitions
 
-define x = Character(_("???"), color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
-define xd = Character(_("???"), color="#00e7ff", image="drdanger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
+define x = Character(_("???"), voice_tag="cautionne", color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
+define xd = Character(_("???"), voice_tag="drdanger", color="#00e7ff", image="drdanger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define c = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", screen="subtitle", what_color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 #no-subtitle cautionne
 define cr = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
