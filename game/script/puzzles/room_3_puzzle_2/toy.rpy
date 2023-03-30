@@ -1,3 +1,19 @@
+define toy_pieces = ["toy_1", "toy_2", "toy_3", "toy_4"]
+
+image toy_walk_fast:
+    "toy_walk_1"
+    pause 0.25
+    "toy_walk_2"
+    pause 0.25
+    repeat
+
+image toy_walk_slow:
+    "toy_walk_1"
+    pause 1.0
+    "toy_walk_2"
+    pause 1.0
+    repeat
+
 init python:
     import random
     class ToyBoard(Board):
@@ -41,10 +57,10 @@ init python:
                 for x in range(0, self.width):
                     p = init[y][x]
                     if p:
-                        self.pieces[y][x] = Piece(Pieces.get(p-1))
+                        self.pieces[y][x] = Piece(toy_pieces[p-1])
 
             self.player = (2, 2)
-            self.pieces[self.player[1]][self.player[0]] = Piece("star", player=True)
+            self.pieces[self.player[1]][self.player[0]] = Piece("toy_walk_slow", player=True)
 
         def populate_matches(self):
             # Toy makes use of a set match, so this step is skipped.
@@ -89,7 +105,7 @@ init python:
                 y = m[1]
                 self.pieces[y][x] = None
 
-            self.pieces[self.player[1]][self.player[0]] = Piece("star")
+            self.pieces[self.player[1]][self.player[0]] = Piece("toy_walk_slow")
 
             for x in range(self.width):
                 for uy in range(self.height-2, -1, -1):
@@ -109,7 +125,7 @@ init python:
 
             for y in range(self.height):
                 for x in range(self.width):
-                    if self.pieces[y][x] and self.pieces[y][x].type == "star":
+                    if self.pieces[y][x] and self.pieces[y][x].type == "toy_walk_slow":
                         self.player = (x, y)
 
             self.match = []

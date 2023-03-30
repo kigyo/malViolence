@@ -10,6 +10,12 @@
 
 # Fairy Flosss by sailorhg <3
 default colors = {
+  "toy_walk_slow": "#fff",
+  "toy_walk_fast": "#fff",
+  "toy_1": "#fff",
+  "toy_2": "#fff",
+  "toy_3": "#fff",
+  "toy_4": "#fff",
   "square": "#bfffde",
   "triangle": "#E1A2BE",
   "reticle": "#F6F7F1",

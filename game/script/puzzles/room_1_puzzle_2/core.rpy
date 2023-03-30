@@ -195,8 +195,6 @@ init -1 python:
                     renpy.jump('hacking_game_over')
                 elif lose:
                     renpy.jump('auto_reset_puzzle_board')
-                    pass
-
 
             elif isinstance(self, ToyBoard):
                 win = True
@@ -450,7 +448,7 @@ screen board_piece(b, x, y):
     elif isinstance(b, ToyBoard):
         if b.just_cleared:
             if (x, y) == b.player:
-                $ transforms.append(player_chomp([('star', b.last_player)]+b.just_pathed, dt=adt*0.75, dist=b.pieces[y][x].dist, pdt=adt*0.25))
+                $ transforms.append(player_chomp([('toy_walk_fast', b.last_player)]+b.just_pathed, dt=adt*0.75, dist=b.pieces[y][x].dist, pdt=adt*0.25))
             elif b.pieces[y][x].last:
                 $ transforms.append(slide_down(x, y, dist=b.pieces[y][x].dist, dt=adt*0.25, d=adt*0.75))
         elif (x, y) in b.match:
@@ -461,12 +459,20 @@ screen board_piece(b, x, y):
                 $ transforms.append(slide_in(x, y))
             else:
                 $ transforms.append(slide_down(x, y))
-    add b.pieces[y][x].img:
-        at transforms
-        pos (x*ch, y*cw)
-        align (0.5, 0.5)
-        if isinstance(b, PuzzleBoard):
-            xysize (65, 65)
+    if (x, y) == b.player and b.just_cleared:
+        add "toy_walk_fast":
+            at transforms
+            pos (x*ch, y*cw)
+            align (0.5, 0.5)
+            if isinstance(b, PuzzleBoard):
+                xysize (65, 65)
+    else:
+        add b.pieces[y][x].img:
+            at transforms
+            pos (x*ch, y*cw)
+            align (0.5, 0.5)
+            if isinstance(b, PuzzleBoard):
+                xysize (65, 65)
 
 screen piece(p, transforms=None):
     $ transforms = transforms or []
