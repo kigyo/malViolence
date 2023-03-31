@@ -110,7 +110,7 @@ init python:
         "dead9": [_("DEAD END 09:"), _("Didn't Make The Cut."), "gui/dead_icon.png", 'dead'], #room2 3
         "dead10": [_("DEAD END 10:"), _(""), "gui/dead_icon.png", 'dead'], #room3 meta
         "dead11": [_("DEAD END 11:"), _("Quilt In Action."), "gui/dead_icon.png", 'dead'], #room3 1
-        "dead12": [_("DEAD END 12:"), _(""), "gui/dead_icon.png", 'dead'], #room3 2
+        "dead12": [_("DEAD END 12:"), _("Get Stuffed."), "gui/dead_icon.png", 'dead'], #room3 2
         "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "gui/dead_icon.png", 'dead'], #room3 3
     }
 

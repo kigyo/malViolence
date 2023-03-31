@@ -344,14 +344,14 @@ label room_3:
                 jump cooking_solved
 
     elif inspect == "scrapbook_new":
+        show screen room3_meta(_layer="master") with easeintop
         if room3["scrapbook_new"] == 0:
             $ room3["scrapbook_new"] = 1
-            #scrapbook meta puzzle introduction
+            "(The \"lock\" for the door is a... scrapbook? Its pages are empty, though...)"
             pass
         else:
             #repeated investigation
             pass
-        show screen room3_meta(_layer="master") with easeintop
         $ inspect = None
         $renpy.hide_screen("room3_meta", "master")
         call screen room3_meta
@@ -364,13 +364,46 @@ label room_3:
     call screen room3
 
 
-label room3_meta_solved:
+label scrapbook_solved:
     $renpy.block_rollback()
     $ inspect = "solved"
     if room3["scrapbook_new"] == "solved":
         jump post_room_3
     $ inspect = None
     call screen room3
+
+label scrapbook_game_over:
+    $renpy.block_rollback()
+    $ inspect = "game over"
+    show screen room3_meta
+    show black onlayer screens with dissolve:
+        alpha 0.5
+
+    "(You place the scrapbook down to get a fresh look at what you've got so far.)"
+    "(But when you step back, you feel like {i}something's{/i} out of place.)"
+    "(And if {i}you {/i}can tell, then {i}he {/i}can tell. Better-)"
+    cr "It's okay to suck at arts and crafts, lab rat. Not everyone's born to make masterpieces."
+    cr "But... that scrapbook meant a lot to me."
+    cr "If you were gonna screw up {i}that {/i}badly, you could've at least used the {i}non-permanent glue.{/i}"
+    "(A bead of sweat trickles down your back.)"
+    "(Was... was that an option?)"
+    cr "...Wait, I left that out, didn't I? My bad!"
+    cr "My bad! If memory serves me, this button should-"
+    #"{b}[BEEP]{/b}"
+    #"{b}[sound of lazer charging up]{/b}"
+    cr "Whoopsie doopsie! Looks like I pressed the wrong-"
+    #"{b}BLAST SFX, CUT TO BLACK{/b}"
+
+    $nvl_heading = "Lab Report #891"
+    l "Subject succeeded in proving the fatality of ray gun protoype Delta-9.{/i}"
+    l "{b}Contributing Factors to Death:{/b} They messed up my scrapbook – so now, we're even!"
+
+    $deadend(achievement_dead10)
+    le "DEAD END 10: NAME!"
+    pause 2
+    nvl clear
+    $game_over(3)
+    return
 
 label quilt_solved:
     $renpy.block_rollback()
@@ -529,30 +562,3 @@ label cooking_game_over:
     nvl clear
     $game_over(3)
     return
-
-
-
-    # "Meta Puzzle" "This is the scrapbook puzzle. Cautionne is mad you did not get something so sentimental to them right, and comes to shoot you himself."
-
-    # "Meta Puzzle Death Scene" "{b}{/b}"
-
-    # "(You place the scrapbook down to get a fresh look at what you've got so far.)
-    # (But when you step back, you feel like {i}something's{/i} out of place.)
-    # (And if {i}you {/i}can tell, then {i}he {/i}can tell. Better-)
-    # It's okay to suck at arts and crafts, lab rat. Not everyone's born to make masterpieces.
-    # But... that scrapbook meant a lot to me.
-    # If you were gonna screw up {i}that {/i}badly, you could've at least used the {i}non-permanent glue.{/i}
-    # (A bead of sweat trickles down your back.)
-    # (Was... was that an option?)
-    # ...Wait, I left that out, didn't I? My bad!
-    # My bad! If memory serves me, this button should-
-    # {b}[BEEP]{/b}
-    # {b}[sound of lazer charging up]{/b}
-    # Whoopsie doopsie! Looks like I pressed the wrong-
-    # {b}BLAST SFX, CUT TO BLACK{/b}"
-
-    # "Lab Report #891" "{i}Subject succeeded in proving the fatality of ray gun protoype Delta-9.{/i}"
-
-    # "Contributing Factors to Death" "{i}They messed up my scrapbook – so now, we're even!{/i}"
-
-
