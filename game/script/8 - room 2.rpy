@@ -220,6 +220,8 @@ label room_2:
             $ inspect = None
             $renpy.hide_screen("cybernetics", "master")
             call screen cybernetics(cyb)
+            if room2["recalibration"] == "solved":
+                jump recalibration_solved
 
     elif inspect == "word":
         if room2["word"] == 0:
