@@ -44,7 +44,7 @@ init python:
 
 
 define evidence_notes = {
-    0: _("During our last operation, we only managed to save three test subjects. We also found some incomplete records and a box of their personal belongings from the subjects on site. \n\nUsing what information we have, {u}figure out which item belongs to who, and who grew up where{/u}."),
+    0: _("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on site. \n\nUsing what information we have, {u}figure out which item belongs to who, and who grew up where{/u}."),
     1: _("The harmonica has traces of wild pollen found only in fairly remote regions that have yet to be extensively developed."),
     2: _("The red headed kid is certain they did not live in the city."),
     3: _("The bracelet is too small for the blonde kid."),

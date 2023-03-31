@@ -261,16 +261,24 @@ label evidence_game_over:
     show screen room2_evidence
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(You carefully insert one more pin into the board, which leaves-)"
+    "(You carefully insert one more pin into the board, which leaves-){p=0.3}{nw}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Whoa, you {i}suck {/i}at this!"
+    hide black onlayer screens
+    hide screen room2_evidence
+    with easeouttop
+    pause 0.5
     "(Something about his unusually straightforward insult puts ice into your veins.)"
     cr "It's like you're solving this puzzle with your eyes closed and your nose plugged."
-    cr "...There some reason you don't want to look at the truth in front of you, lab rat?"
-    "(...No, no, it's just-)"
-    cr "I know you're not taking this seriously. Maybe we should just move on?"
-    cr "You know what? Yeah. "
+    cr "...There some reason you don't want to look at the truth in front of you,{w=0.1} lab rat?"
+    "(...No, no, it's just-){p=0.3}{nw}"
+    cr "I know you're not taking this seriously.{w=0.5} Maybe we should just move on?"
+    cr "You know what?{w=0.5} Yeah. "
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "{i}Let's put a pin in it.{/i}"
     #"{i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
+    scene black
+    pause 3
     $deadend(achievement_dead7)
     $nvl_heading = "Lab Report #273"
     l "Subject experienced permanent loss-of-life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
