@@ -19,7 +19,7 @@ screen room3():
             if 1 in room3["pages"] and 1 not in room3["read_pages"]:
                 imagebutton idle "room3_note1" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (834, 2859) mouse "inspect"
             if 2 in room3["pages"] and 2 not in room3["read_pages"]:
-                imagebutton idle "room3_note2" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (4944, 2568) mouse "inspect"
+                imagebutton idle "room3_note2" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 2), Jump("room_3")] pos (4944, 2568) mouse "inspect"
             if 6 in room3["pages"] and 6 not in room3["read_pages"]:
                 imagebutton idle "room3_note6" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 6), Jump("room_3")] pos (4665, 3034) mouse "inspect"
         if not inspect:
@@ -205,8 +205,7 @@ label room_3:
         elif room3["diary"] == 2:
             #"SUCCESS WITH LIMITING PROLIFERAITON OF TECH, PROMOTION, DISCOVERY OF POTENTIAL FOR YOUNGER SUBJECTS"
             n "\"I thought that things were moving fast before - but the growth we're seeing now makes those earlier years look glacial. STOP is doing good work that needs to get done, and it's making countries put money where their mouths are when it comes to international cooperation efforts."
-            if persistent.typeface == "TitilliumWeb" and gui.preference("size") > 40:
-                nvl clear
+            nvl clear
             n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.  This month we finalized our report on maximizing cybernetic synchronization for patients - confirming my earlier theory that the younger, the better. "
             n "The difference really was astounding. And I must admit, it felt good to shove that 19\% performance increase right in that stuffy old bastard's smug face.\""
             nvl clear
@@ -244,6 +243,7 @@ label room_3:
             n "\"I'm getting better at coming up with excuses to visit him, at least. "
             n "I need to check how he’s coping with procedures. I might need to test his reflexes. Hell, he might need a snack to make him more cooperative."
             n "All my explanations are superficially believable at best. I’m no medical professional. By all means, I should’ve been reprimanded for getting too involved. But no such warnings has come my way." 
+            nvl clear
             n "I get the sense that my superiors aren’t paying attention to what is happening. That might be the most infuriating part for me - they don't even care that much about the success or failure of this program. "
             n "The implication I’m getting is that this is far from the only program of its kind. It might be one of many, many more.\""
         elif room3["diary"] == 5:
@@ -379,6 +379,8 @@ label quilt_solved:
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room3["solved"].append("quilt")
+    $ room3["pages"].append(1)
+    $ room3["pages"].append(5)
     #Show a note/picture/memento
     "(Congratulations! {w}You've solved the quilt puzzle.)"
     hide black onlayer screens
@@ -428,6 +430,8 @@ label toys_solved:
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room3["solved"].append("toys")
+    $ room3["pages"].append(2)
+    $ room3["pages"].append(4)
     #Show a note/picture/memento
     "(Congratulations! {w}You've solved the toys puzzle.)"
     hide black onlayer screens
@@ -481,6 +485,8 @@ label cooking_solved:
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room3["solved"].append("cooking")
+    $ room3["pages"].append(3)
+    $ room3["pages"].append(6)
     #Show a note/picture/memento
     "(Congratulations! {w}You've solved the {i}mise en place{/i} puzzle.)"
     hide black onlayer screens

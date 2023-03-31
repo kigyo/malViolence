@@ -60,7 +60,7 @@ define evidence_notes = {
 }
 define evidence_solutions = [[2,3,7], [4,5,6], [0,1,8]]
 define evidence_positions = [(0.05,0.05),(0.25,0.2),(0.2,0.65),(0.0,0.5),(0.45,0.7),(0.65,0.1),(0.7,0.65),(0.8,0.0),(0.88,0.25)]
-#room2["notes"] = []
+define evidence_note_positions = {1:(0.1,0.1), 2:(0.1,0.1),3:(0.1,0.1),4:(0.1,0.1)}
 
 default evidence_connections = {0:[], 1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[]}
 
@@ -72,7 +72,7 @@ screen room2_evidence:
     layer "puzzles"
 
     frame style "puzzle_frame":
-        use evidence_note(0)
+        use evidence_note(0, xs=500, ys=500)
 
         for i in range(len(evidence_positions)):
             use evidence_photo(i)
@@ -94,15 +94,18 @@ screen room2_evidence:
         for i in range(len(evidence_positions)):
             frame background Null() xysize 200,300 xoffset 20 pos (evidence_positions[i][0], evidence_positions[i][1]):
                 add "puzzles/room_2_puzzle_1/pin_upper.png" xalign 0.35
+
+        for i in room2["notes"]:
+            use evidence_note(i, evidence_note_positions[i][0],evidence_note_positions[i][1])
                 
         vbox xfill True yalign 1.0 ysize 100 spacing 30:
             textbutton "SUBMIT" style "confirm_button" action Function(evidence_submit) xalign 1.0 yalign 0.5
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
 
-screen evidence_note(id, x=0.5, y=0.5):
-    add Solid("#0000004a") xysize 500,500 align (x,y) xoffset 20 yoffset 20
-    frame background Solid("#ffafee") xysize 500,500 padding 50,50 align (x,y):
+screen evidence_note(id, x=0.5, y=0.45, xs=300, ys=300):
+    add Solid("#0000004a") xysize xs,ys align (x,y) xoffset 20 yoffset 20
+    frame background Solid("#ffafee") xysize xs,ys padding 50,50 align (x,y):
         text evidence_notes[id] align (0.5,0.5) style "evidence_note_text"
 
 screen evidence_photo(id):
