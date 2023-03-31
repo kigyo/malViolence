@@ -324,7 +324,7 @@ label room_3:
             "(You've already solved the {i}mise en place{/i} puzzle.)"
         else:
             if room3["cooking"] == 0:
-                $init_mise_en_place()
+                call init_mise_en_place
                 #quilt introduction
             else:
                 #repeated investigation
@@ -332,9 +332,8 @@ label room_3:
             show screen mise_en_place(False, _layer="master") with easeintop
             $ room3["cooking"] += 1
             $ inspect = None
-            pause 0.0001
-            $ renpy.retain_after_load()
             $renpy.hide_screen("mise_en_place", "master")
+            $ renpy.retain_after_load()
             call screen mise_en_place(True)
             if room3["cooking"] == "solved":
                 jump cooking_solved
