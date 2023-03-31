@@ -16,21 +16,12 @@ label splashscreen:
         call screen splash_settings
         $ persistent.firstlaunch = True
     show splash_anim_1
-    if not persistent.seen_splash:
-        $ renpy.pause(3)
-        $ persistent.seen_splash = True
-    else:
-        if renpy.pause(3):
-            jump skip_splash
+    $ renpy.pause(3)
     scene black
     with Dissolve(0.5)
-
-    label skip_splash:
-        pass
     return
 
 default inspect = None
-default minigame = False
 
 ### custom transitions
 
@@ -74,6 +65,8 @@ image ctc:
     #    ease 0.5 alpha 0.5 rotate 270
     #    
     #    repeat
+
+################### puzzle styles ################
 
 style puzzle_description_label is gui_label:
     xalign 0.5

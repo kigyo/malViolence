@@ -1,6 +1,5 @@
 
 label start:
-
     # Uncomment to test puzzles.
     stop music
     # jump test_puzzles
@@ -9,6 +8,7 @@ label start:
     #play music ending_intro
     #queue music ending_kill
     scene black
+    with dissolve
     #[static plays as the game begins. the screen is black, since the protagonist is recovering from being knocked out]
     pause 2
     voice "audio/voice/cautionne/intro/Cautionne_Intro-01.ogg"

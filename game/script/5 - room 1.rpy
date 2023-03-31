@@ -19,7 +19,9 @@ Be quick, though. {color=#fff}If the poison's disturbed too much, it'll give off
     
 Drag the vials in order to pour their contents into each other.""")
 
-define bomb_description = _("")
+
+define bomb_description = _("""Fit all the bomb pieces into the bomb casing -- be sure that everything has it's own space or things might combust a little prematurely!""")
+
 
 screen room1():
     sensitive not inspect
@@ -108,13 +110,6 @@ label room_1:
             pass
         $ room1["megaphone"] += 1
 
-    elif inspect == "marble":
-        if room1["marble"] == 0:
-            "<TODO: Marble puzzle.>"
-        else:
-            pass
-        $ room1["marble"] += 1
-
     elif inspect == "hacking":
         if "hacking" in room1["solved"]:
             "(You've already solved the hacking puzzle.)"
@@ -161,17 +156,79 @@ label room_1:
             else:
                 #repeated investigation
                 pass
-            show screen bomb(b, False, _layer="master") with easeintop
+            show screen room1_bomb(bomb, False, _layer="master") with easeintop
             $ room1["bomb"] += 1
             $ inspect = None
-            $renpy.hide_screen("bomb", "master")
-            call screen bomb(b)
+            $renpy.hide_screen("room1_bomb", "master")
+            call screen room1_bomb(bomb, True)
             if room1["bomb"] == "solved":
                 jump decanting_solved
+
+    elif inspect == "marble":
+        if room1["marble"] == 0:
+            $ room1["marble"] = 1
+            "TODO: Marble Puzzle"
+            pass
+        else:
+            #repeated investigation
+            pass
+        if len(room1["solved"]) >= 3:
+            "Since this puzzle is not implemented yet, you can skip this final puzzle. Do you wish to do so now?"
+            menu:
+                "Yes":
+                    jump post_room_1
+                "Give me the bad ending":
+                    "You got it!"
+                    scene black with eyeclose
+                    jump marble_game_over
+                "No":
+                    pass
+        $ inspect = None
+        if room1["marble"] == "solved":
+            jump post_room_1
 
     $ inspect = None
     $renpy.block_rollback()
     call screen room1
+
+label bomb_solved:
+    $renpy.block_rollback()
+    $ inspect = "bomb"
+    show screen room1_decanting
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    $ room1["solved"].append("bomb")
+    #Show a marble
+    "(Congratulations! {w}You solved the bomb puzzle.)"
+    hide black onlayer screens
+    hide screen room1_decanting
+    with dissolve
+    $ inspect = None
+    call screen room1
+
+label bomb_game_over:
+    $renpy.block_rollback()
+    $ inspect = "game over"
+    show screen puzzle_playspace(pb, False)
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    "(Carefully, you finish the assembly and set it down in front of you.)"
+    "(...Huh. It doesn't seem like it's ticking.)"
+    cr "Well, well, well. You\'ve successfully made a bomb."
+    cr "I can say with {i}100\% certainty{/i} that it\'ll make a fantastic explosion."
+    "(Phew. Looks like I've done what I was supposed to.)"
+    cr "That said, the timer-"
+    #{b}BOOM SFX, CUT TO BLACK{/b}
+    cr "...needs some work."
+    $nvl_heading = "Lab Report #414"
+    l "Subject passed away due to an overexposure to high-yield explosives."
+    l "{b}Contributing Factors to Death:{/b} A lack of detail-oriented problem solving skills. Nothing more, nothing less."
+    $deadend(achievement_dead3)
+    le "DEAD END 03: NAME!"
+    pause 2
+    nvl clear
+    $game_over(1)
+    return
 
 label hacking_solved:
     $renpy.block_rollback()
@@ -287,47 +344,28 @@ label decanting_game_over:
     $game_over(1)
     return
 
-label room1_deaths:
-
-    ##### NOTE: i commented out the death scenes for now, but once they're re-implemented - LMK and i'll edit them and their atl! 
-    ### Mado
-    #"{u}{b}Death Scenes{/b}{/u}"
-
-    #"Puzzle 1" "{b}{/b} Player is helping Cautionne by making a bomb. It is possible to put the ingredients in the wrong order and blow yourself up."
-
-    #"Puzzle 1 Death Scene"
-    #{b}[death scene writing goes here]{/b}
-    #"(Carefully, you finish the assembly and set it down in front of you.)"
-    #(...Huh. It doesn't seem like it's ticking.)""
-    #cr "Well, well, well. You\'ve successfully made a bomb."
-    #cr "I can say with {i}100\% certainty{/i} that it\'ll make a fantastic explosion."
-    #"(Phew. Looks like I've done what I was supposed to.)"
-    #cr "That said, the timer-"
-    #{b}BOOM SFX, CUT TO BLACK{/b}
-    #cr "...needs some work."
-
-    #"Lab Report #414" "{b}{/b}{i}Subject passed away due to an overexposure to high-yield explosives.{/i}"
-
-    #"Contributing Factors to Death" "{i}{b}{/b}{/i}{i}A lack of detail-oriented problem solving skills. Nothing more, nothing less. {/i}"
-
-    
-
-    # "{b}Puzzle {/b}{b}{/b} Cautionne has presented you with three unmarked cups of irregular shape, and notes they hold 18, 10, and 7cc of liquid respectively. They need your help poisoning a top STOP official, but the poison they are using is very particular and must be administered in two separate doses of 9cc each. The 18cc cup is filled with the poison that will be used. Using only the cups present, Cautionne is asking you to measure the poison into two equal doses. Be careful though! The poison is quite volatile, and if disturbed too much may give off vapors which will not be good for your health in any way shape or form."
-
-    #"Meta Puzzle" "{b}{/b}You are putting marbles into a marble machine to knock down effigies of STOP officials that Cautione has killed/plans to kill/or was in the process of killing and forced you to actively participate in killing. You must knock down the effigies in order of how the died/will die. If you get the order wrong Cautionne scolds you for not paying attention and activates a death trap (maybe a door in the ceiling opens up and a giant marble falls and crushes you)"
-
-    # "Meta Puzzle Death Scene" "{b}{/b}
-    #{b}[death scene writing goes here]{/b}
-    #(You step back and pause. Something about the order doesn't seem-)
-    #CautionneOof. {i}Not quite.{/i} 
-    #CautionneBut it's okay! I can fix this, easy-peasy.
-    #CautionneJust, uh... stand still... foooooor oooone secoooooond aaaaand-"
+label marble_game_over:
+    $renpy.block_rollback()
+    $ inspect = "game over"
+    #show screen puzzle_playspace(pb, False)
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    "(You step back and pause. Something about the order doesn't seem-)"
+    cr "Oof. {i}Not quite.{/i} "
+    cr "But it's okay! I can fix this, easy-peasy."
+    cr "Just, uh... stand still... foooooor oooone secoooooond aaaaand-"
 
     #"{b}SPLAT{/b}
     #{b}[a giant marble comes and crushes the protag – screen cuts to black]{/b}"
 
-    #"Lab Report#909" "{i}{b}{/b}{/i}{i} Subject was crushed by a comically large marble. Dropped just high enough for instantaneous death and perfect comedic timing{/i}"
+    $nvl_heading = "Lab Report #909"
+    l "Subject was crushed by a comically large marble. Dropped just high enough for instantaneous death and perfect comedic timing."
+    l "{b}Contributing Factors to Death:{/b} Didn't recognize good slapstick even when it hit them."
 
-    #"Contributing Factors to Death" "{i}{b}Contributing Factors to Death{/b}{/i}{i}{b}{/b}{/i}{i}Didn't{/i}{i} recognize good slapstick even when it hit them.{/i}"
-
+    $deadend(achievement_dead2)
+    le "DEAD END 02: NAME!"
+    pause 2
+    nvl clear
+    $game_over(1)
+    return
 

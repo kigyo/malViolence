@@ -46,8 +46,11 @@ init python:
                         failed = True
                         break
                 if failed: break
-            if failed: renpy.jump("failed_room_1_puzzle_1")
-            else: renpy.jump("solved_room_1_puzzle_1")
+            if failed: 
+                renpy.jump("bomb_game_over")
+            else:
+                store.room1["bomb"] = "solved"
+                return True
 
     default_shape = [[1, 1],
                      [0, 1]]
@@ -267,32 +270,37 @@ label init_bomb:
     $ parts.append(Part("single", "corner", pos=(1300, 500), color=c3))
     $ parts.append(Part("single", "z", pos=(1500, 600), color=c2))
     $ bomb = Bomb(len(bomb_mask[0]), len(bomb_mask), parts)
-    call screen bomb(bomb)
+    call screen room1_bomb(bomb)
 
-screen bomb(b, interactable=True):
-    fixed:
-        add b.group
-        add "bomb_borders" pos (b.ox-5, b.oy-5)
+screen room1_bomb(b, interactable=True):
+    modal True
+    tag puzzle
+    layer "puzzles"
+    frame style "puzzle_frame" padding 0,0,40,50:
         fixed:
-            pos (b.ox, b.oy)
-            for y in range(len(b.data)):
-                for x in range(len(b.data[0])):
-                    if b.data[y][x] == 1:
-                        add "#ffffff55" xysize (block_size, block_size) pos (x*block_size, y*block_size)
-                    elif b.data[y][x] > 1:
-                        add "#ff000088" xysize (block_size, block_size) pos (x*block_size, y*block_size)
-    frame:
-        align (0.5, 0.85)
-        xysize (500, 200)
-        vbox:
-            xalign 0.5
-            label "Instructions" xalign 0.5
-            text "Fit all the bomb pieces into the bomb casing -- be sure that everything has it's own space or things might combust a little prematurely!" size 28
-            frame:
+            add b.group
+            add "bomb_borders" pos (b.ox-5, b.oy-5)
+            fixed:
+                pos (b.ox, b.oy)
+                for y in range(len(b.data)):
+                    for x in range(len(b.data[0])):
+                        if b.data[y][x] == 1:
+                            add "#ffffff55" xysize (block_size, block_size) pos (x*block_size, y*block_size)
+                        elif b.data[y][x] > 1:
+                            add "#ff000088" xysize (block_size, block_size) pos (x*block_size, y*block_size)
+        frame:
+            align (0.515, 0.9) padding 30,30
+            xsize 550
+            vbox spacing 20:
+                style_prefix "puzzle_description"
                 xalign 0.5
-                textbutton "Submit" action Function(b.verify)
-    if not interactable:
-        imagebutton:
-            idle "#ffffff01"
-            xysize (config.screen_width, config.screen_height)
-            action NullAction()
+                label "Instructions"
+                text bomb_description
+        if not interactable:
+            imagebutton:
+                idle "#ffffff01"
+                xysize (config.screen_width, config.screen_height)
+                action NullAction()
+        hbox xalign 1.0 yalign 1.0 spacing 30:
+            textbutton "SUBMIT" style "confirm_button" action Function(b.verify)
+            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
