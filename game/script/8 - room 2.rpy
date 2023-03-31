@@ -39,14 +39,14 @@ define cybernetics_description = _("""It's time for a crash course in cybernetic
 
 Here's some basic recalibration rules:
 -{color=#fff} Neural pathways must form one continuous loop and occupy every available space.{/color}
--{color=#fff} Pathways can cross over themselves,{/color} but {color=#fff}they can't retrace themselves{/color} (so no T intersections).
+-{color=#fff} Pathways can cross over themselves, but they can't retrace themselves{/color} (so no T intersections).
 -{color=#fff} At any 4-way intersection, a neuron will always go straight though.{/color} It'll never turn.
 -You can only submit possible solutions {color=#fff}where there are no open ended pathways{/color} (including T intersections).""")
 
 
-define word_description = _("""Can you come up with a word that's almost as good as the above?
+define word_description = _("""Cautionne's a big fan of word games, so he wants you to come up with {color=#fff}a word that's almost as good as the one above.{/color}
 
-...You might have to find some letters first!""")
+{color=#fff}...You might have to find some letters first!{/color}""")
 
 define word_lenient_failure_message = _("(Nope, not good enough.)")
 

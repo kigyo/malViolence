@@ -54,7 +54,7 @@ init python:
             renpy.jump("evidence_game_over")
 
 define evidence_notes = {
-    0: _("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on site. \n\nUsing what information we have, {u}figure out which item belongs to who, and who grew up where{/u}."),
+    0: _("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}."),
     1: _("The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed."),
     2: _("The red headed kid is certain they did not live in the city."),
     3: _("The bracelet is too big for the redhead."),
@@ -124,4 +124,4 @@ screen evidence_photo(id):
                 add "puzzles/room_2_puzzle_1/pin_lower.png"
 
 style evidence_note_text:
-    color "#fff" font "gui/font/TitilliumWeb-Regular.ttf" size 28 line_spacing -10 justify True outlines [(1.5, "#790e0e", 1, 1)]
+    color "#790e0e" font "gui/font/TitilliumWeb-Regular.ttf" size 28 line_spacing -10 justify True outlines[(2, "#e381ba", 0, 0)]

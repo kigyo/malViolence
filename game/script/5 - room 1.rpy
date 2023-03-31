@@ -2,7 +2,7 @@ default room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone"
 
 define hacking_description = _("""With {color=#fff}the list of codes to your left,{/color} Cautionne wants you to hack into one of STOP's computer systems.
 
-{color=#fff}Use the mouse or keyboard{/color} to clear out the codes in the system. {color=#fff}These codes are unordered,{/color} so as long as the three individual components are the same, the codes count as the same.
+{color=#fff}Use the mouse or keyboard{/color} to clear out {color=#fff}the codes in the system (shown on the right).{/color} These codes are unordered, so {color=#fff}as long as the three individual components are the same, the codes count as the same.{/color}
 
 {color=#fff}All of the codes must be used{/color} to destroy the firewall and sucessfully break into the system.
 
@@ -11,7 +11,7 @@ But be careful! If you don't use these codes at the right time, you might lock y
 """)
 
 
-define decanting_description = _("""Cautionne needs your help poisoning a top STOP official, but his toxin of choice is pretty particular!
+define decanting_description = _("""Cautionne needs your help poisoning a top STOP official, {color=#fff}but his toxin of choice is pretty particular!{/color}
 
 Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  - {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial{/color} contains the poison itself.
 
@@ -20,7 +20,7 @@ Be quick, though. {color=#fff}If the poison's disturbed too much, it'll give off
 Drag the vials in order to pour their contents into each other.""")
 
 
-define bomb_description = _("""Fit all the bomb pieces into the bomb casing -- be sure that everything has it's own space or things might combust a little prematurely!""")
+define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the bomb casing!{/color} \nBe sure to {color=#fff}give every piece has its own space{/color}, or else things might get explosive...""")
 
 
 screen room1():
