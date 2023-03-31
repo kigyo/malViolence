@@ -270,12 +270,12 @@ label init_bomb:
     $ parts.append(Part("single", "corner", pos=(1300, 500), color=c3))
     $ parts.append(Part("single", "z", pos=(1500, 600), color=c2))
     $ bomb = Bomb(len(bomb_mask[0]), len(bomb_mask), parts)
-    call screen room1_bomb(bomb)
 
 screen room1_bomb(b, interactable=True):
     modal True
     tag puzzle
     layer "puzzles"
+    
     frame style "puzzle_frame" padding 0,0,40,50:
         fixed:
             add b.group
@@ -302,5 +302,5 @@ screen room1_bomb(b, interactable=True):
                 xysize (config.screen_width, config.screen_height)
                 action NullAction()
         hbox xalign 1.0 yalign 1.0 spacing 30:
-            textbutton "SUBMIT" style "confirm_button" action Function(b.verify)
-            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
+            textbutton "SUBMIT" style "confirm_button" action Function(b.verify) sensitive interactable
+            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive interactable

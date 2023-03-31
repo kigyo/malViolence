@@ -206,7 +206,7 @@ init python:
     killending = "audio/music/KillEndingV2.ogg"
     tutroom = "audio/music/tute or real.ogg"
     room1theme = "audio/music/evilroom.ogg"
-    room2theme = "audio/music/officeogg"
+    room2theme = "audio/music/office.ogg"
     room3theme = "audio/music/Room 3.ogg"
 
 # This is where you define the music captions for each music file you will be using in the game. Please make sure the names of the music defined above match the ones used for the captions below.

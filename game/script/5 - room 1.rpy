@@ -156,6 +156,7 @@ label room_1:
             else:
                 #repeated investigation
                 pass
+            pause 0.0000001
             show screen room1_bomb(bomb, False, _layer="master") with easeintop
             $ room1["bomb"] += 1
             $ inspect = None
@@ -194,7 +195,7 @@ label room_1:
 label bomb_solved:
     $renpy.block_rollback()
     $ inspect = "bomb"
-    show screen room1_decanting
+    show screen room1_bomb(bomb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room1["solved"].append("bomb")
@@ -209,7 +210,7 @@ label bomb_solved:
 label bomb_game_over:
     $renpy.block_rollback()
     $ inspect = "game over"
-    show screen puzzle_playspace(pb, False)
+    show screen room1_bomb(bomb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
     "(Carefully, you finish the assembly and set it down in front of you.)"
