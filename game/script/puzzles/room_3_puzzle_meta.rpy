@@ -14,14 +14,19 @@ screen room3_meta:
             add "puzzles/room_3_meta/scrapbook1.png" xalign 0.5
             imagebutton idle Null(145,135) action SetScreenVariable("scrapbook_page",1) xpos 203 ypos 75 mouse "inspect"
 
-        hbox yalign 1.0 xalign 0.5 spacing 100:
-            #memories are unlocked as the puzzles are solved
+        draggroup ypos 0 xpos 0:
             if "quilt" in room3["solved"]:
-                add "room3_meta1" xalign 1.0 at rotated(30)
+                drag: 
+                    xpos 0
+                    add "room3_meta1" at rotated(5)
             if "cooking" in room3["solved"]:
-                add "room3_meta2" xalign 0.0 yalign 0.1 at rotated(-30)
+                drag: 
+                    xpos 300
+                    add "room3_meta2" at rotated(-10)
             if "toys" in room3["solved"]:
-                add "room3_meta3" xalign 0.4 yalign 1.0 at rotated(-5)
+                drag: 
+                    xpos 600
+                    add "room3_meta3" at rotated(-5)
         
         #if len(room3["solved"]) >= 3 and room3["scrapbook_new"] < 2:
         #    timer 0.1 action Jump("room3_meta_cutscene") 
