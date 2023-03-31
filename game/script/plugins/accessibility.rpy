@@ -198,6 +198,7 @@ init python:
 
     # example = "audio/examplefile.ogg"
     menutheme = "audio/music/malviolence theme 2.ogg"
+    cautionnethemeintro = "audio/music/cautionne_theme_intro.ogg"
     cautionnetheme = "audio/music/cautionne theme.ogg"
     backstorytheme = "audio/music/CautionneDrDangerTheme.ogg"
     endingintro = "audio/music/EndingIntro.ogg"
@@ -216,7 +217,8 @@ init python:
     music_list = {
     # example: _("Example text here"),
     menutheme : _("Testing, Testing... 1,2,3."),
-    cautionnetheme: _("Emperor of MalViolence!"),
+    cautionnethemeintro: _("Introducing..."),
+    cautionnetheme: _("The Great Cautionne, Emperor of MalViolence!"),
     backstorytheme : _("A Fateful Meeting."),
     endingintro: _("Conclusion"),
     spareending : _("Sudden Compassion."),

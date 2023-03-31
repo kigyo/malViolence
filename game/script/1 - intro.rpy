@@ -103,6 +103,7 @@ label start:
     x "Some call me a simple sidekick.{w=0.5} Others call me the \"Disciple of Danger.\""
     pause 0.5
     voice "audio/voice/cautionne/intro/Cautionne_Intro-10.ogg"
+    $ play_music(cautionnethemeintro)
     x "But if you asked me, I prefer..."
     play audio "audio/sfx/TV On 1.ogg"
     show cautionne hairtwirl at crt
@@ -110,7 +111,7 @@ label start:
     show cautionne_frame_glow at bg
     with screenon
     pause 0.2
-    $ play_music(cautionnetheme)
+    $ queue_music(cautionnetheme)
     voice "audio/voice/cautionne/intro/Cautionne_Intro-11.ogg"
     c "{i}\"...The Great Cautionne,{w=0.1} Emperor of MalViolence!\"{/i}"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-12.ogg"
