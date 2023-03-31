@@ -1,7 +1,8 @@
 screen room3_meta:
     sensitive not inspect
     modal True
-    layer "master"
+    tag puzzle
+    layer "puzzles"
     frame style "puzzle_frame":
         default scrapbook_page = 1
 
@@ -28,7 +29,7 @@ screen room3_meta:
         #    use jigsaw 
 
 
-        textbutton "RETURN" style "confirm_button" action Return() xalign 1.0 yalign 1.0
+        textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 1.0
 
 init python:
     
@@ -144,8 +145,6 @@ label jigsaw_puzzle:
         
         
         mainimage = im.Composite((int(img_width+(grip_size*2)*x_scale_index), int(img_height+(grip_size*2)*y_scale_index)),(int(grip_size*x_scale_index), int(grip_size*y_scale_index)), img_to_play)
-        
-        testvar = "this happened"
         
         # some calculations
         top_row = []

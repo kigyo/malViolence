@@ -124,8 +124,9 @@ label room_1:
                 #"<TODO: Insert intro script and rules.>"
             else:
                 pass
-            show screen puzzle_playspace(pb, False) with easeintop
+            show screen puzzle_playspace(pb, False, _layer="master") with easeintop
             $ room1["hacking"] += 1
+            $renpy.hide_screen("puzzle_playspace", "master")
             call screen puzzle_playspace(pb)
             if room1["hacking"] == "solved":
                 jump hacking_solved
@@ -141,9 +142,10 @@ label room_1:
             else:
                 #repeated investigation
                 pass
-            show screen room1_decanting with easeintop
+            show screen room1_decanting(_layer="master") with easeintop
             $ room1["decanting"] += 1
             $ inspect = None
+            $renpy.hide_screen("room1_decanting", "master")
             call screen room1_decanting
             if room1["decanting"] == "solved":
                 jump decanting_solved

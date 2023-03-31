@@ -158,8 +158,8 @@ init python:
 
 
 screen toy_playspace(b, interactable=True):
-    layer "master"
     tag puzzle
+    layer "puzzles"
     modal True
     frame style "puzzle_frame":
         frame:
@@ -197,7 +197,7 @@ screen toy_playspace(b, interactable=True):
             hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20 xfill True:
                 if (achievement_dead12 in persistent.dead_ends and not preferences.hard_mode):
                     textbutton "RESET" style "confirm_button" action Function(toy_board_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)
-                textbutton "RETURN" style "confirm_button" action Return() sensitive not inspect xalign 1.0 yalign 0.5
+                textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5
 
 
 screen match(m):

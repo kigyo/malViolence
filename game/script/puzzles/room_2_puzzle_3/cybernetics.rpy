@@ -399,7 +399,7 @@ label init_cybernetics:
 screen cybernetics(cyb, interactable=True):
     modal True
     tag puzzle
-    layer "master"
+    layer "puzzles"
     
     frame style "puzzle_frame" padding 0,0,50,40:
         if interactable:
@@ -447,7 +447,7 @@ screen cybernetics(cyb, interactable=True):
         hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20:
             textbutton "RESET" style "confirm_button" action Function(cybernetics_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)
             textbutton "SUBMIT" style "confirm_button" action If(cyb.check_broken(), false=Function(cyb.verify)) sensitive not inspect xalign 0.5 yalign 0.5
-            textbutton "RETURN" style "confirm_button" action Return() sensitive not inspect xalign 1.0 yalign 0.5
+            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5
 
     if config.developer:
         vbox:

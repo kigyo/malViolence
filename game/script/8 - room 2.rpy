@@ -173,14 +173,15 @@ label room_2:
             "(You've already solved the panopticon puzzle.)"
         else:
             if room2["panopticon"] == 0:
-                $ panopticon_init()
+                $ panopticon_init(True)
                 #panopticon introduction
             else:
                 #repeated investigation
                 pass
-            show screen room2_panopticon with easeintop
+            show screen room2_panopticon(_layer="master") with easeintop
             $ room2["panopticon"] += 1
             $ inspect = None
+            $renpy.hide_screen("room2_panopticon", "master")
             call screen room2_panopticon 
             if room2["panopticon"] == "solved":
                 jump panopticon_solved
@@ -190,15 +191,16 @@ label room_2:
             "(You've already solved the evidence board puzzle.)"
         else:
             if room2["evidence"] == 0:
-                $ evidence_init()
+                $ evidence_init(True)
                 #evidence introduction
                 pass
             else:
                 #evidence investigation
                 pass
-            show screen room2_evidence with easeintop
+            show screen room2_evidence(_layer="master") with easeintop
             $ room2["evidence"] += 1
             $ inspect = None
+            $renpy.hide_screen("room2_evidence", "master")
             call screen room2_evidence
             if room2["evidence"] == "solved":
                 jump evidence_solved
@@ -213,9 +215,10 @@ label room_2:
             else:
                 #repeated investigation
                 pass
-            show screen cybernetics(cyb) with easeintop
+            show screen cybernetics(cyb, _layer="master") with easeintop
             $ room2["recalibration"] += 1
             $ inspect = None
+            $renpy.hide_screen("cybernetics", "master")
             call screen cybernetics(cyb)
 
     elif inspect == "word":
@@ -225,9 +228,10 @@ label room_2:
         else:
             #repeated investigation
             pass
-        show screen room2_word with easeintop
+        show screen room2_word(_layer="master") with easeintop
         $ room2["word"] += 1
         $ inspect = None
+        $renpy.hide_screen("room2_word", "master")
         call screen room2_word
         if room2["word"] == "solved":
             jump post_room_2
@@ -250,6 +254,33 @@ label evidence_solved:
     with dissolve
     $ inspect = None
     call screen room2
+
+label evidence_game_over:
+    $renpy.block_rollback()
+    $ inspect = "game over"
+    show screen room2_evidence
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    "(You carefully insert one more pin into the board, which leaves-)"
+    cr "Whoa, you {i}suck {/i}at this!"
+    "(Something about his unusually straightforward insult puts ice into your veins.)"
+    cr "It's like you're solving this puzzle with your eyes closed and your nose plugged."
+    cr "...There some reason you don't want to look at the truth in front of you, lab rat?"
+    "(...No, no, it's just-)"
+    cr "I know you're not taking this seriously. Maybe we should just move on?"
+    cr "You know what? Yeah. "
+    cr "{i}Let's put a pin in it.{/i}"
+    #"{i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
+    $deadend(achievement_dead7)
+    $nvl_heading = "Lab Report #273"
+    l "Subject experienced permanent loss-of-life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
+    l "{i}Guess they were worth the trouble of installation!"
+    l "{b}Contributing Factors to Death:{/b} Couldn't put progress on the board."
+    le "DEAD END 07: NAME!"
+    pause 2
+    nvl clear
+    $game_over(2)
+    return
 
 label panopticon_solved:
     $renpy.block_rollback()
@@ -452,27 +483,3 @@ label word_game_over:
     nvl clear
     $game_over(2)
     return
-   
-
-#label room2_deaths:
-#    "{u}{b}Death Scenes{/b}{/u}"
-#
-#    "Puzzle 1" "This is the evidence board puzzle. I wanted to touch base with the writers to see what kind of scenario could fit here, and then it seems like the dead end would depend on that, so any ideas? I can come up with the hints and clues, but it seems like it oculd be a good exposition oppertunity so I wanted to ask writers about it. "
-#
-#    "Puzzle 1 Death Scene" "{b}{/b}
-#    (You carefully insert one more pin into the board, which leaves-)
-#    Whoa, you {i}suck {/i}at this!
-#    (Something about his unusually straightforward insult puts ice into your veins.)
-#    It's like you're solving this puzzle with your eyes closed and your nose plugged.
-#    ...There some reason you don't want to look at the truth in front of you, lab rat?
-#    (...No, no, it's just-)
-#    I know you're not taking this seriously. Maybe we should just move on?
-#    You know what? Yeah. 
-#    {i}Let's put a pin in it.{/i}
-#    {i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
-
-#    "Lab Report #273" "{b}{/b}{i}Subject experienced permanent loss-of-life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling. {/i}"
-
-#    "{i}Guess they were worth the trouble of installation!{/i}"
-
-#    "Contributing Factors to Death" "{i}{b}{/b}{/i}{i}Couldn't put progress on the board.{/i}"

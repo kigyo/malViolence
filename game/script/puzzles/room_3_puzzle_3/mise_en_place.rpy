@@ -110,8 +110,6 @@ init python:
             return True
         elif (achievement_dead13 in persistent.dead_ends and not preferences.hard_mode):
             renpy.restart_interaction()
-            #TODO: some kind of error feedback
-            pass
         else:
             renpy.jump("cooking_game_over")
 
@@ -151,52 +149,51 @@ init python:
                         store.cooking_error = [x,y]
                     return False
 
-label init_mise_en_place:
-    $ bacon_count = 1
-    $ strawberry_count = 1
-    $ flour_count = 1
-    $ snapper_count = 1
-    $ butter_count = 1
-    $ blueberry_count = 1
-    $ egg_count = 1
-    $ nut_count = 1
-    $ milk_count = 1
-    $ cooking_error = None
+    def init_mise_en_place():
+        store.bacon_count = 1
+        store.strawberry_count = 1
+        store.flour_count = 1
+        store.snapper_count = 1
+        store.butter_count = 1
+        store.blueberry_count = 1
+        store.egg_count = 1
+        store.nut_count = 1
+        store.milk_count = 1
+        store.cooking_error = None
+        store.cutting_board_group = DragGroup()
 
-    $ cutting_board_group = DragGroup()
-    python:
         cutting_board_data = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-                              [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
-                              [0, 0, 3, 0, 0, 0, 0, 6, 0, 0, 0],
-                              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                              [4, 0, 0, 0, 0, 0, 0, 0, 9, 0, 8],
-                              [0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0]]
+                                [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
+                                [0, 0, 3, 0, 0, 0, 0, 6, 0, 0, 0],
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                [4, 0, 0, 0, 0, 0, 0, 0, 9, 0, 8],
+                                [0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0]]
 
         x = 115
         for i in ingredients:
             cutting_board_group.add(Drag(i,
-                                         pos=(x, 100),
-                                         anchor=(0.5, 0.5),
-                                         drag_name=(i, x, 100),
-                                         dragged=ingredient_dragged))
+                                            pos=(x, 100),
+                                            anchor=(0.5, 0.5),
+                                            drag_name=(i, x, 100),
+                                            dragged=ingredient_dragged))
             x += 125
 
         for y in range(len(cutting_board_input)):
             for x in range(len(cutting_board_input[0])):
                 if cutting_board_input[y][x]:
                     cutting_board_group.add(Drag(Fixed("fixed_cutting_board_tile", ingredients[cutting_board_input[y][x]-1], fit_first=True),
-                                                 pos=(70+x*100, 205+y*100),
-                                                 droppable=True,
-                                                 draggable=False))
+                                                    pos=(70+x*100, 205+y*100),
+                                                    droppable=True,
+                                                    draggable=False))
                 else:
                     cutting_board_group.add(Drag("cutting_board_tile",
-                                                 pos=(70+x*100, 205+y*100),
-                                                 xysize=(100, 100),
-                                                 drag_name=(x, y),
-                                                 droppable=True,
-                                                 draggable=False,
-                                                 dropped=cutting_board_dropped))
+                                                    pos=(70+x*100, 205+y*100),
+                                                    xysize=(100, 100),
+                                                    drag_name=(x, y),
+                                                    droppable=True,
+                                                    draggable=False,
+                                                    dropped=cutting_board_dropped))
 
 style ingredients_text:
     color "#6f593d"
@@ -216,7 +213,7 @@ style ingredients_button_text:
 screen mise_en_place(interactable=True):
     modal True
     tag puzzle
-    layer "master"
+    layer "puzzles"
 
     frame style "puzzle_frame" padding 0,0,50,40:
         
@@ -268,7 +265,7 @@ screen mise_en_place(interactable=True):
         hbox xalign 1.0 yalign 1.0 ysize 100 spacing 112:
             textbutton "TRASH" style "confirm_button" text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5
             textbutton "SUBMIT" style "confirm_button" action Function(check_board) sensitive not inspect xalign 0.5 yalign 0.5 xoffset -40
-            textbutton "RETURN" style "confirm_button" action Jump("room_3") sensitive not inspect xalign 1.0 yalign 0.5
+            textbutton "RETURN" style "confirm_button" action Return() sensitive not inspect xalign 1.0 yalign 0.5
 
         add "cutting_board" pos (65, 200)
 

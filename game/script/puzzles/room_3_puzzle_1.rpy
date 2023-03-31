@@ -89,7 +89,7 @@ screen room3_quilt():
     sensitive not inspect
     modal True
     tag puzzle
-    layer "master"
+    layer "puzzles"
 
     frame style "puzzle_frame":
         fixed xsize 775 xalign 1.0:
@@ -125,7 +125,7 @@ screen room3_quilt():
                     textbutton "ERASER" style "confirm_button" action ToggleVariable("quilt_eraser") text_selected_idle_color gui.accent_color at zoomed(0.5)
                     textbutton "RESET" style "confirm_button" action Function(quilt_reset) at zoomed(0.5)
                 textbutton "SUBMIT" style "confirm_button" action Function(quilt_submit) xalign 0.5 yalign 0.5
-                textbutton "RETURN" style "confirm_button" action Return() xalign 1.0 yalign 0.5
+                textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
     fixed xoffset -400:
         add "puzzles/room_3_puzzle_1/quilt.png" align (0.5, 0.51) at zoomed(1.35)

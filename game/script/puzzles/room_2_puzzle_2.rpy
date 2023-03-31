@@ -1,12 +1,13 @@
 
 init python:
-    def panopticon_init():
+    def panopticon_init(start=False):
         store.panopticon_moves = 0
         store.panopticon_selected = None
         store.panopticon_config = [0,0,0,0,0]
         store.panopticon_pos = [0,0,0,0,0]
         store.panopticon_reverse = []
-        renpy.notify(_("Restarting..."))
+        if not start:
+            renpy.notify(_("Restarting..."))
 
     def room2_panopticon_set(dir):
 
@@ -68,7 +69,8 @@ define panopticon_values = {0:[4,2,3,4,3], 1:[4,3,1,2,0], 2:[0,0,1,3,0], 3:[4,1,
 screen room2_panopticon():
     sensitive not inspect
     modal True
-    layer "master"
+    tag puzzle
+    layer "puzzles"
     zorder 5
 
     frame style "puzzle_frame":
@@ -80,7 +82,7 @@ screen room2_panopticon():
                 text _("In a stealthy campaign, Cautionne has managed to take control of a STOP holding center, where several young test subjects are being held in a futuristic panopticon.\n\nTo give them the best chance of survival, Cautionne needs to {color=#fff}rearrange the cells so that each group of escaping testees is balanced.{/color}\n\nThese groups are shown as {color=#fff}a circle, a triangle, a square{/color} and {color=#fff}an X.{/color}\n\nHowever, the bureaucratic systems have left only the bare minimum operating instructions on how to operate the panopticon.\n\n{color=#fff}Help Cautionne properly arrange the cells according to the limitations of the system.{/color}")
             if (achievement_dead8 in persistent.dead_ends and not preferences.hard_mode):
                 textbutton "RESTART" action [Function(panopticon_init)] style "confirm_button" xalign 0.0 yalign 1.0 at zoomed(0.75)
-            textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return()] style "confirm_button" xalign 1.0 yalign 1.0
+            textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return(), With(puzzle_hide)] style "confirm_button" xalign 1.0 yalign 1.0
 
         fixed xsize 1000:
             for i in range(len(panopticon_config)):

@@ -1626,11 +1626,12 @@ screen gameover(lbl):
 
 init python:
     def game_over(room = 1):
-        renpy.scene()
-        renpy.scene("screens")
-        renpy.block_rollback()
         room_init(room)
         store.inspect = None
+        renpy.scene()
+        renpy.scene("screens")
+        renpy.scene("puzzles")
+        renpy.block_rollback()
         if room == "tutorial":
             renpy.call_screen("gameover", "tutorial_room")
         else:

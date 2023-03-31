@@ -293,9 +293,10 @@ label room_3:
             else:
                 #repeated investigation
                 pass
-            show screen room3_quilt with easeintop
+            show screen room3_quilt(_layer="master") with easeintop
             $ room3["quilt"] += 1
             $ inspect = None
+            $renpy.hide_screen("room3_quilt", "master")
             call screen room3_quilt
             if room3["quilt"] == "solved":
                 jump quilt_solved
@@ -310,9 +311,10 @@ label room_3:
             else:
                 #repeated investigation
                 pass
-            show screen toy_playspace(tb, False) with easeintop
+            show screen toy_playspace(tb, False, _layer="master") with easeintop
             $ room3["toys"] += 1
             $ inspect = None
+            $renpy.hide_screen("toy_playspace", "master")
             call screen toy_playspace(tb)
             if room3["toys"] == "solved":
                 jump toys_solved
@@ -322,16 +324,17 @@ label room_3:
             "(You've already solved the {i}mise en place{/i} puzzle.)"
         else:
             if room3["cooking"] == 0:
-                call init_mise_en_place
+                $init_mise_en_place()
                 #quilt introduction
             else:
                 #repeated investigation
                 pass
-            show screen mise_en_place(False) with easeintop
+            show screen mise_en_place(False, _layer="master") with easeintop
             $ room3["cooking"] += 1
             $ inspect = None
-            pause 0.0
+            pause 0.0001
             $ renpy.retain_after_load()
+            $renpy.hide_screen("mise_en_place", "master")
             call screen mise_en_place(True)
             if room3["cooking"] == "solved":
                 jump cooking_solved
@@ -344,7 +347,9 @@ label room_3:
         else:
             #repeated investigation
             pass
+        show screen room3_meta(_layer="master") with easeintop
         $ inspect = None
+        $renpy.hide_screen("room3_meta", "master")
         call screen room3_meta
         jump room3_meta_solved
 

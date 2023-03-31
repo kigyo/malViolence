@@ -104,8 +104,8 @@ init python:
         renpy.show_screen("puzzle_playspace",pb)
 
 screen puzzle_playspace(b, interactable=True):
-    layer "master"
     tag puzzle
+    layer "puzzles"
     modal True
     add "#000"
     frame style "puzzle_frame" padding 0,0,50,40:
@@ -132,7 +132,7 @@ screen puzzle_playspace(b, interactable=True):
             hbox xfill True yalign 1.0 ysize 100:
                 if (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
                     textbutton "RESET" style "confirm_button" action Function(puzzle_board_reset, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable at zoomed(0.75)
-                textbutton "RETURN" style "confirm_button" action [SetVariable("inspect", None), Hide()] xalign 1.0 yalign 0.5 sensitive interactable
+                textbutton "RETURN" style "confirm_button" action [SetVariable("inspect", None), Hide(transition=puzzle_hide)] xalign 1.0 yalign 0.5 sensitive interactable
 
 
     if config.developer:

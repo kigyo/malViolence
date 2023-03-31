@@ -45,7 +45,7 @@ screen room2_word():
     sensitive not inspect
     modal True
     tag puzzle
-    layer "master"
+    layer "puzzles"
 
     frame style "puzzle_frame":
         fixed xsize 650 xalign 1.0:
@@ -61,7 +61,7 @@ screen room2_word():
                     
             hbox xfill True yalign 1.0 ysize 100:
                 textbutton "SUBMIT" style "confirm_button" action Function(word_submit) xalign 0.0 yalign 0.5
-                textbutton "RETURN" style "confirm_button" action [SetVariable("word_answer", ["","","","",""]), Return()] xalign 1.0 yalign 0.5
+                textbutton "RETURN" style "confirm_button" action [SetVariable("word_answer", ["","","","",""]), Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
                     
         fixed xsize 1920-700:
             draggroup ysize 600 xsize 990 yalign 0.45 xalign 0.45:

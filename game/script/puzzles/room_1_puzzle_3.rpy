@@ -61,7 +61,7 @@ screen room1_decanting():
     sensitive not inspect
     modal True
     tag puzzle
-    layer "master"
+    layer "puzzles"
 
     style_prefix "decanting"
     
@@ -75,7 +75,7 @@ screen room1_decanting():
                     text decanting_description
                 
             hbox xfill True yalign 1.0 ysize 100:
-                textbutton "RETURN" style "confirm_button" action Return() xalign 1.0 yalign 0.5
+                textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
         fixed xsize 1920-775:
             draggroup ysize 600 xsize 990 yalign 0.35 xalign 0.45:

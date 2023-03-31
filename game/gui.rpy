@@ -18,6 +18,10 @@ define config.mouse = { "default": [("gui/cursor.png",0,0)] , "inspect": [("gui/
 ## GUI Configuration Variables
 ################################################################################
 
+define config.layers = [ 'master', 'puzzles', 'transient', 'screens', 'overlay' ]
+
+define puzzle_show = { "puzzles" : easeintop }
+define puzzle_hide = { "puzzles" : easeouttop }
 
 ## Colors ######################################################################
 ##
