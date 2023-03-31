@@ -266,7 +266,7 @@ label evidence_game_over:
     cr "Whoa, you {i}suck {/i}at this!"
     hide black onlayer screens
     hide screen room2_evidence
-    with easeouttop
+    with puzzle_hide
     pause 0.5
     "(Something about his unusually straightforward insult puts ice into your veins.)"
     cr "It's like you're solving this puzzle with your eyes closed and your nose plugged."
@@ -315,7 +315,7 @@ label panopticon_game_over:
     "(-and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
     hide black onlayer screens
     hide screen room2_panopticon
-    with easeouttop
+    with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Seems like you've run out of time,{w=0.1} lab rat."
     cr "That's it.{w=0.5} The jailbreak is broken.{w=0.5} You screwed up."
@@ -374,7 +374,7 @@ label recalibration_game_over:
     "(...Wait.{w} This is an actual {i}person?{/i})"
     hide black onlayer screens
     hide screen cybernetics 
-    with easeouttop
+    with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} Their own nervous system will rip them apart with spasming."
     cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"

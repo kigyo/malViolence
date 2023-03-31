@@ -1633,10 +1633,13 @@ init python:
         renpy.scene("puzzles")
         renpy.block_rollback()
         if room == "tutorial":
+            renpy.show_screen("gameover", "tutorial_room")
+            renpy.with_statement(dissolve)
             renpy.call_screen("gameover", "tutorial_room")
         else:
+            renpy.show_screen("gameover", "room_" + str(room))
+            renpy.with_statement(dissolve)
             renpy.call_screen("gameover", "room_" + str(room))
-        renpy.with_statement(eyeopen)
 
     def room_init(room = 1):
         if room == 1:
