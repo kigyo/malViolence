@@ -137,8 +137,8 @@ init python:
     footsteps1 = "audio/sfx/Walking Footsteps 1.ogg"
     footsteps2 = "audio/sfx/Walking Footsteps 2.ogg"
     footsteps3 = "audio/sfx/Walking Footsteps 3.ogg"
-    footsteps4 = "audio/sfx/Walking Footsteps 3.ogg"
-    singlefootstep = "audio/sfx/Single Footstep 1.ogg"
+    footsteps4 = "audio/sfx/WalkingFootsteps4.ogg"
+    singlefootstep = "audio/sfx/Single_Footstep.ogg"
     singlefootstep2 = "audio/sfx/Single Footstep 2.ogg"
     creakyvent = "audio/sfx/Creaky Vent 3.ogg"
     bowlgrab = "audio/sfx/Metal Bowl Grab 3.ogg"
@@ -197,10 +197,17 @@ init python:
 # TODO: Add your own music files.
 
     # example = "audio/examplefile.ogg"
-    ending_intro = "audio/music/EndingIntro.wav"
-    ending_kill = "audio/music/KillEndingV1.mp3"
-    garden = "audio/music/Sculpture-Garden_Looping.mp3"
-    summer = "audio/music/Careless-Summer_Looping.mp3"
+    menutheme = "audio/music/malviolence theme 2.ogg"
+    cautionnetheme = "audio/music/cautionne theme.ogg"
+    backstorytheme = "audio/music/CautionneDrDangerTheme.ogg"
+    endingintro = "audio/music/EndingIntro.ogg"
+    spareending = "audio/music/SpareEnding.ogg"
+    neutralending = "audio/music/NeutralEnding.ogg"
+    killending = "audio/music/KillEndingV2.ogg"
+    tutroom = "audio/music/tute or real.ogg"
+    room1 = "audio/music/evilroom.ogg"
+    room2 = "audio/music/officeogg"
+    room3 = "audio/music/Room 3.ogg"
 
 # This is where you define the music captions for each music file you will be using in the game. Please make sure the names of the music defined above match the ones used for the captions below.
 
@@ -208,10 +215,17 @@ init python:
 
     music_list = {
     # example: _("Example text here"),
-    ending_intro : _("Future Business"),
-    ending_kill : _("The Concrete Bakes"),
-    garden : _("Sculpture Garden"),
-    summer : _("Careless Summer")
+    menutheme : _("Testing, Testing... 1,2,3."),
+    cautionnetheme: _("Emperor of MalViolence!"),
+    backstorytheme : _("A Fateful Meeting."),
+    endingintro: _("Conclusion"),
+    spareending : _("Sudden Compassion."),
+    neutralending : _("One Way Only."),
+    killending : _("Just Another Job."),
+    tutroom : _("Tute or Real?"),
+    room1 : _("The Evil Lab, For Evil Lab Things."),
+    room2 : _("Odd Office?"),
+    room3 : _("Bittersweet Home.")
     }
 
 # This is the sound command. It functions the same way as "play sound" normally does. You can change the fadein, fadeout and loop values when you invoke the command. If you do not change the values, the default values are 0.0 fadein, 0.0 fadeout, and no loop. If you change the values below, that will change the default values for every time you invoke the command.

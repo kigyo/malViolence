@@ -2,6 +2,7 @@
 label start:
 
     # Uncomment to test puzzles.
+    stop music
     # jump test_puzzles
 
     #starts with the first track, then continues looping the second one
@@ -50,7 +51,7 @@ label start:
         ease 0.7 yalign 0.5 xalign 0.7
         ease 0.5 yalign 0.5 xalign 0.5
     "(Where... {w=0.5}where's that voice coming from?)"
-    "(It's giving you a migraine. {w}You just wanna shut it-{w=0.5}{nw})"
+    "(It's giving you a migraine. {w}You just wanna shut it-){w=0.5}{nw}"
 
     scene bg tutorial1:
         yalign 0.5 xalign 0.5
@@ -109,7 +110,7 @@ label start:
     show cautionne_frame_glow at bg
     with screenon
     pause 0.2
-#### cautionne theme starts here
+    $ play_music(cautionnetheme)
     voice "audio/voice/cautionne/intro/Cautionne_Intro-11.ogg"
     c "{i}\"...The Great Cautionne,{w=0.1} Emperor of MalViolence!\"{/i}"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-12.ogg"
@@ -192,5 +193,7 @@ label start:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
     cr "After all...{w=0.5} you'll be here for a while!"
     $ play_sound(staticshort)
-    pause 1
+    stop music
+    pause 2
+    $ play_music(tutroom, fadein=1.0, fadeout=0.1)
     call screen tutorial_room with dissolve

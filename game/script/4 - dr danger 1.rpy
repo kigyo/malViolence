@@ -21,15 +21,16 @@ label dr_danger_1:
     yalign 0.5 xalign 0.5 zoom 0.8
     ease 2 zoom 1.0 xalign 0.5 yalign 0.5
   pause 2
+  $ play_sound(dooropen)
   scene black with fade
-  pause 1
+  pause 2
   show bg corridor1 with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
   $Achievement.add(achievement_tfng)
 
-
-  pause 1
+  $ play_sound(doorclose)
+  pause 2
   "(No side corridors,{w=0.5} no secret doors...{w=0.5} not even a crack in the wall.)"
 
   pause 1
@@ -41,11 +42,14 @@ label dr_danger_1:
   "(No choice but to move forward.)"
   pause 1
 
-  $ play_sound(singlefootstep)
+
 
   show bg corridor1:
     align (0.5,0.5) zoom 0.5
     ease 2.7 zoom 0.6
+
+  $ play_sound(singlefootstep)
+  pause 0.5
 
   "(You take another cautious step ahead and-){p=0.5}{nw}"
   $ play_sound(staticshort)
@@ -98,7 +102,7 @@ label dr_danger_1:
   drs "Due to my circumstances,{w=0.1} I cannot repeat my instructions.{p=1}{nw}"
   voice sustain
   drs "Nor will I be able to answer any of your questions."
-  "(...No.{w} Her her death was {i}very thoroughly{/i} confirmed.{w} Which means...)" 
+  "(...No.{w} Her death was {i}very thoroughly{/i} confirmed.{w} Which means...)" 
   "(...This is just a recording.{w} A cheesy one,{w=0.1} at that.)" 
   "(Turns out even supervillains make the newbies watch employee training videos.)"
   "(Better tune her out.)"
@@ -133,26 +137,32 @@ label dr_danger_1:
 
   pause 1
 ######### metal door shut plays here
+
   "(Huh.{w} Seems like a typical evil lab,{w=0.1} straight out of a comic book.)"
 
   "(Let's see here... {w}Massive computers,{w=0.5} hi-tech gizmos,{w=0.5} and a...{w=0.5} \"Primary Source Extractor?\")"
   "({i}...Eugh.{/i} {w}Looking at that thing gives you goosebumps.)"
   "(Do you {i}have{/i} to go through here?)"
   "(Maybe there's something you missed in the corridor...)"
-  "(Yeah,{w=0.1} you'll turn around and-)"
+  "(Yeah,{w=0.1} you'll turn around and-){p=0.5}{nw}"
   $ play_sound(metaldoorlock)
   pause 1
   "(-it's not opening.)"
   pause 1
   "(No,{w=0.1} there\'s still the door on the other side."
-  $ play_sound(footsteps4)
+
+  "You'll just walk over,{w=0.1} and it'll automatically..."
+
   show bg room1:
     zoom 0.4 yalign 0.7
     ease 4 zoom 0.8 xalign 0.15 yalign 0.65
 
-  extend "You'll just walk over,{w=0.1} and it'll automatically...){p=1.5}{nw}"
+  $ play_sound(footsteps4)
+
+  pause 5
+
   #"{b}[pause as the camera moves to the door in the middle{/b}{b}]{/b}"
-  "(...aaaaaaaaand it's shut too.)"
+  extend "...aaaaaaaaand it's shut too.)"
   "(Great.{w} Off to a {i}fantastic{/i} start already.)"
   pause 1
   "(...Wait.{w} There's something else here.)"
@@ -165,6 +175,8 @@ label dr_danger_1:
 show bg room1:
   zoom 0.8 
   ease 5 zoom 0.335 xalign 0.0 yalign 0.0
+
+$ play_music(room1, fadein=1.0, fadeout=0.1)
 
 pause 5
 call screen room1 with dissolve

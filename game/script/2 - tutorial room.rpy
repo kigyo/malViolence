@@ -83,10 +83,11 @@ label tutorial_room:
             pause 1
             "(...)"
             "(To be honest,{w=0.1} you {i}could{/i} use something to fill your empty stomach.{w} You made the smart decision to skip lunch on your way here.)"
-            hide tutorial_bowl with dissolve
             $ play_sound(bowlgrab)
+            hide tutorial_bowl with dissolve
             "(You pick up the bowl and shove a fistful of pellets into your mouth.)"
             $ play_sound(pelletchew)
+            pause 3
             "(They taste like...)"
             pause 0.5
             "(...Well,{w=0.1} you don't know what you expected.{w} They're grainy,{w=0.1} if nothing else.)"
@@ -95,6 +96,7 @@ label tutorial_room:
             "(...Huh?{w} What's this?)"
             "(There's something at the bottom of the bowl.{w} ...A pattern?)"
             $ play_sound(pelletfall)
+            pause 1
             "(To get a better look,{w=0.1} you dump the rest of the pellets on the floor.)"
             #[sound of pellets falling]
             show tutorial_diagram with dissolve:
@@ -136,14 +138,14 @@ label tutorial_room:
         menu:
             "(Sure!)":
                 $renpy.block_rollback()
-                $ play_sound(pelletchew)
                 "(You scoop up another fistful of pellets and eat them without a second thought.)"
                 hide tutorial_pellets with dissolve
-                #[crunching sounds]
-                pause 1
+                $ play_sound(pelletchew)
+                pause 3
                 "(...Why did you do that?)"
                 "(Those pellets still don't taste great.)"
                 "(In fact,{w=0.1} the more you chew on them,{w=0.1} the bitterer they-){p=0.5}{nw}"
+                stop music
                 $ play_sound(bodyfall)
                 scene bg tutorial2 with small_shake:
                     parallel:

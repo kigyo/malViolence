@@ -1,8 +1,9 @@
 label post_tutorial:
   #[If puzzle is solved, play a solving/unlocking sound]
   scene bg tutorial2 at zoomed
+  stop music
   $ play_sound(doorunlock)
-  pause 1
+  pause 2
   $ play_sound(staticshort)
   scene black 
   show cautionne_frame_glow at bg
@@ -39,6 +40,8 @@ label post_tutorial:
 
   extend " {i}Real{/i} cute."
 
+  $ play_music(cautionnetheme, fadein=1.0, fadeout=0.1)
+
   c "I'll forgive you for that."
   c "After all,{w=0.1} I'm the {i}Great Cautionne, Emperor of MalViolence{/i}."
   c "I'm not the type of man to go all-out on a scrub like yourself."
@@ -56,7 +59,9 @@ label post_tutorial:
 
   show cautionne leaneyeclosed pause
 
+
   pause 1
+  stop music
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-03.ogg"
   c lean frown "Stop making mistakes."
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-04.ogg"
