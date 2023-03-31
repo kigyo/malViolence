@@ -192,95 +192,160 @@ label room_3:
         $ room3["confidence_workbook"] += 1
 
     elif inspect == "diary":
-        $ nvl_heading = "Entry #" + str(room3["diary"]+1)
+        $ nvl_heading = "Entry Set #" + str(room3["diary"]+1)
         if room3["diary"] == 0:
             ### sound of paper being picked up
-            "(It's a loose page with handwriting on it.{w} Judging by the page number in the corner and the fading ink,{w=0.1} it must be a small part of a much larger document.)"
+            "(It's a loose page with handwriting on it.{w} Judging by the number in the corner and the fading ink,{w=0.1} it must be a small part of a much larger document.)"
             #"FIRST ENTRIES"
-            n "\"It’s nice to have job security right out of school. I had my doubts during junior year, of course, but I don't think anyone could've predicted how the sector's grown these past few months. The developments in cybernetic technology have been explosive. Sometimes {i}literally. {/i}"
-            n "It's troubling, but all great technology has the potential for misuse. And now I'm going to be part of an organization that works to keep that tech under control. "
-            n "Though I'll be honest, the name's pretty silly. "
-            n "Oh well. They could always change the acronym later.\""
+            n "\"It’s nice to have job security right out of school.{w} I had my doubts during junior year, of course, but I don't think anyone could've predicted how the sector's grown these past few months.{w} The developments in cybernetic technology have been explosive.{w} Sometimes {i}literally. {/i}"
+            n "It's troubling, but all great technology has the potential for misuse.{w} And now I'm going to be part of an organization that works to keep that tech under control. "
+            n "Though I'll be honest, the name's pretty silly."
+            n "Oh well.{w} They could always change the acronym later.\""
         elif room3["diary"] == 1:
             #"SUCCESS WITH LIMITING PROLIFERAITON OF TECH, PROMOTION, DISCOVERY OF POTENTIAL FOR YOUNGER SUBJECTS"
-            n "\"I thought that things were moving fast before - but the growth we're seeing now makes those earlier years look glacial. STOP is doing good work that needs to get done, and it's making countries put money where their mouths are when it comes to international cooperation efforts."
+            n "\"I thought that things were moving fast before - but the growth we're seeing now makes those earlier years look glacial.{w} STOP is doing good work that needs to get done, and it's making countries put money where their mouths are when it comes to international cooperation efforts."
             nvl clear
-            n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.  This month we finalized our report on maximizing cybernetic synchronization for patients - confirming my earlier theory that the younger, the better. "
-            n "The difference really was astounding. And I must admit, it felt good to shove that 19\% performance increase right in that stuffy old bastard's smug face.\""
+            n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.{w} \nThis month we finalized our report on maximizing cybernetic synchronization for patients - confirming my earlier theory that the younger, the better. "
+            n "The difference really was astounding.{w} And I must admit, it felt good to shove that 19\% performance increase right in that stuffy old bastard's smug face.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"Dr. Tan asked if the trend in performance would improve further if we started surgery any earlier. A weird question, since this tech is only approved for anyone old enough to enlist, but I guess she was just being thorough. The theory is sound.\""
+            nvl show
+
+            n "\"Dr. Tan asked if the trend in performance would improve further if we started surgery any earlier.{w} A weird question, since this tech is only approved for anyone old enough to enlist, but I guess she was just being thorough.{w} The theory is sound.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"The promotion was nice. I deserve it, and I was the only obvious choice, but still. It felt nice to be recognized.\""
+            nvl show
+            n "\"The promotion was nice.{w} I deserve it, and I was the only obvious choice, but still.{w} It felt nice to be recognized.\""
         elif room3["diary"] == 2:
             #"STAGNATION, LOTS OF RESEARCH WORK DISILLUSIONMENT, PARANOIA"
-            n "\"Another month where the Security Advisory Council looked completely lost. It's like they don't know what to do with peacetime. They do amazing work - obviously. The world is secure, and cybernetic technology is finally getting regulated. The laws are catching up with the science. That's a good thing, even if it makes their job a little less exciting. Or maybe a little less secure.\""
+            n "\"Another month where the Security Advisory Council looked completely lost.{w} It's like they don't know what to do with peacetime."
+            n "They do amazing work - obviously.{w} The world is secure, and cybernetic technology is finally getting regulated.{w} The laws are catching up with the science."
+            n "That's a good thing, even if it makes their job a little less\nexciting."
+            n "Or maybe a little less secure.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"I requested another transfer. My third in three years, but they didn't seem to mind. I just can't find work as engrossing as I used to. It probably doesn't help that I'm not sure what it is I do anymore. "
-            n "I mean, logically, I know what I do - I research cybernetics. But I'm not sure what I do for STOP. They haven't had a major security incident in months; the last \"incident\" they responded to was just a protest outside the building that got a little rowdy.\""
+            nvl show
+            n "\"I requested another transfer.{w} My third in three years, but they didn't seem to mind.{w} I just can't find work as engrossing as I used to.{w} It probably doesn't help that I'm not sure what it is I do anymore. "
+            n "I mean, logically, I know what I do - I research cybernetics.{w} But I'm not sure what I do for STOP.{w} They haven't had a major security incident in months; the last \"incident\" they responded to was just a protest outside the building that got a little rowdy.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"Staff morale's been down ever since. A little controversy's to be expected, given the power STOP has nowadays. They're being naive if they expect people to be grateful to the organization forever.\""
+            nvl show
+            n "\"Staff morale's been down ever since.{w} A little controversy's to be expected, given the power STOP has nowadays.{w} They're being naive if they expect people to be grateful to the organization forever.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"I might've transferred a few times too many. "
-            n "I came into work today and clocked out without recognizing a single face the entire time. New people, places, committees, projects, and always more acronyms. "
-            n "And, for the first time in years, I was denied access to internal data. I didn’t think anything could be above my paygrade anymore. Note to self: look up \"YTDI \"."
+            nvl show
+            n "\"I might've transferred a few times too many."
+            n "I came into work today and clocked out without recognizing a single face the entire time.{w} New people, places, committees, projects, and always more acronyms. "
+            n "And, for the first time in years, I was denied access to internal data.{w} I didn’t think anything could be above my paygrade anymore.\n"
+            n "Note to self: look up \"YTDI \"."
         elif room3["diary"] == 3:
             #"Meeting CAUTIONNE"
-            n "\"\"I was very disappointed with the state of the Youth Training and Development Initiative.\""
+            n "\"\'I was very disappointed with the state of the Youth Training and Development Initiative.\'"
             n "That's how I put it in writing. "
-            n "I don't really have the right words to express my disgust with this program’s existence. The idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline - assuming that we were talking about 18 vs 24. "
-            n "It was never supposed to justify... whatever the hell they're doing now.\""
+            n "I don't really have the right words to express my disgust with this program’s existence.{w}\n\nThe idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline - assuming that we were talking about 18 vs 24. "
+            n "It was never supposed to justify...{w} whatever the hell they're doing now.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"They don't actually care about reducing rejection symptoms or making the cybernetics work more seamlessly. They care about creating a product by experimenting on children. Children that no one else cares about. They care about producing cybernetic \"Trainees\" that are powerful, unthinking, and unflinchingly obedient to authority. "
+            nvl show
+            n "\"They don't actually care about reducing rejection symptoms or making the cybernetics work more seamlessly."
+            n "They care about creating a product by experimenting on children.\n"
+            n "Children that no one else cares about."
+            n "They care about producing cybernetic \"Trainees\" that are powerful, unthinking, and unflinchingly obedient to authority. "
             n "STOP cares about selling these trainees as a force to keep its donors on top.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"I got a transfer to the YTDI. No one even seemed ashamed to give me full access.\""
+            nvl show
+            n "\"I got a transfer to the YTDI.{w} No one even seemed ashamed to give me full access.\""
+            nvl hide
+            pause 0.5
             nvl clear
+            nvl show
             n "\"He smiled at me. "
-            n "Even though everyone else he's seen here - everyone dressed like me, acting like me, working for the same people as me – has made him suffer. "
+            n "Even though everyone else he's seen here -{w} everyone dressed like me, acting like me, working for the same people as me –{w} has made him suffer. "
             n "He {i}smiled{/i} at me.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"I'm getting better at coming up with excuses to visit him, at least. "
-            n "I need to check how he’s coping with procedures. I might need to test his reflexes. Hell, he might need a snack to make him more cooperative."
-            n "All my explanations are superficially believable at best. I’m no medical professional. By all means, I should’ve been reprimanded for getting too involved. But no such warnings has come my way." 
+            nvl show
+            n "\"I'm getting better at coming up with excuses to visit him, at least.\n"
+            n "I need to check how he’s coping with procedures.{w} I might need to test his reflexes.{w} Hell, he might need a snack to make him more cooperative."
+            n "All my explanations are superficially believable at best."
+            n "I’m no medical professional.{w} By all means, I should’ve been reprimanded for getting too involved."
+            n "But no such warnings have come my way.\"" 
+            nvl hide
+            pause 0.5
             nvl clear
-            n "I get the sense that my superiors aren’t paying attention to what is happening. That might be the most infuriating part for me - they don't even care that much about the success or failure of this program. "
-            n "The implication I’m getting is that this is far from the only program of its kind. It might be one of many, many more.\""
+            nvl show
+            n "\"I get the sense that my superiors aren’t paying attention to what is happening.{w} That might be the most infuriating part for me -{w} they don't even care that much about the success or failure of this program. "
+            n "The implication I’m getting is that this is far from the only program of its kind.{w} It might be one of many, many more.\""
         elif room3["diary"] == 4:
             #"SEVEN FLEE, ON THE RUN"
             n "\"I'm never going to be able to forget the look on his face when the convulsions started. "
             n "He knew it was coming, and he knew there was nothing he could do to even brace himself for the pain. "
-            n "He's been through it countless times. I don't want to see it ever again.\""
+            n "He's been through it countless times.{w} I don't want to see it ever again.\""
+            nvl hide
+            pause 0.5
             nvl clear
+            nvl show
             n "\"They claimed that it was a clerical error that he didn't receive his anti-seizure medications that morning. "
-            n "I know that it was actually punishment. He refused to obey during yesterday’s mandatory exercises. "
-            n "You wouldn't treat an {i}animal{/i} like this, much less another human. To them, he's less than that.\""
+            n "I know that it was actually punishment.{w} He refused to obey during yesterday’s mandatory exercises. "
+            n "You wouldn't treat an {i}animal{/i} like this, much less another human.\n"
+            n "To them, he's less than that.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"I triggered the false alarm right on schedule, down to the second. My not-at-all false explosive followed suit. "
-            n "I had always understood that the chemical reaction was very simple to set up. But, I still expected my first felony to present more challenges than this. Maybe I have a knack for this kind of thing. "
-            n "He didn’t hesitate for one second when I asked him to come with me. As I rushed him through the fire exit, the look on his face at that moment has stuck with me. Could anyone have looked more relieved?\""
+            nvl show
+            n "\"I triggered the false alarm right on schedule, down to the second.\n{w} My not-at-all false explosive followed suit. "
+            n "I had always understood that the chemical reaction was very simple to set up.{w} But, I still expected my first felony to present more challenges than this.{w} Maybe I have a knack for this kind of thing. "
+            n "He didn’t hesitate for one second when I asked him to come with me.{w} As I rushed him through the fire exit, the look on his face at that moment has stuck with me.{w} Could anyone have looked more relieved?\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"Maybe he should have hesitated. All that awaits him is a life in hiding."
+            nvl show
+            n "\"Maybe he should have hesitated.{w} All that awaits him is a life in hiding."
             n "...At least he’ll have a choice from now on.\""
         elif room3["diary"] == 5:
             #"FIGHTING BACK, CAUTIONNE WANTING TO HELP"
-            n "\"I've no right to call myself a parent, but even so - parenthood is hard. "
-            n "His rehab is going as well as can be expected, but this is no way to raise a child. I can educate him, keep him fed, and care for him."
-            n "But I can't give him any kind of a future - not while STOP is trying to erase our very existence.\""
+            n "\"I've no right to call myself a parent, but even so -{w} parenthood is hard. "
+            n "His rehab is going as well as can be expected, but this is no way to raise a child."
+            n "I can educate him, keep him fed, and care for him."
+            n "But I can't give him any kind of a future -{w} not while STOP is trying to erase our very existence.\""
+            nvl hide
+            pause 0.5
             nvl clear
+            nvl show
             n "\"I managed to section away enough resources to last us a while, but all my internal records within STOP were destroyed by the fire. "
-            n "They still know I'm out here, but now I have no proof that I was ever as big a part of them as I say. It's my word against theirs, and they have far larger, more powerful allies.\""
+            n "They still know I'm out here, but now I have no proof that I was ever as big a part of them as I say.{w} It's my word against theirs, and they have far larger, more powerful allies.\""
+            nvl hide
+            pause 0.5
             nvl clear
+            nvl show
             n "\"Bombs, sabotage, and cryptic messages on shady websites get much better traction than just sending my research notes to major news outlets."
-            n "No one cares what Deirdre Destrange has to say. But when \"Dr. Danger\" blows up an energy pipeline, people look up from their food and {i}watch.{/i}"
-            n "He chose the name. It's got a nice, old-world appeal to it.\""
+            n "No one cares what Deirdre Destrange has to say.{w} But when \"Dr. Danger\" blows up an energy pipeline, people look up from their food and {i}watch.{/i}"
+            n "He chose the name.{w} It's got a nice, old-world appeal to it.\""
+            nvl hide
+            pause 0.5
             nvl clear
-            n "\"Cautionne has always been eager to please and happy to spend time with me. Is it any wonder he wants to help the nefarious Dr. Danger in her fight against STOP? "
-            n "I should tell him no. Revenge is poison, and he's already been through too much. "
-            n "But I still can’t even bear to calculate how much of his suffering is my fault. I don't have the heart to tell him no - and I'd sooner die than judge him for how much he hates STOP.\""
+            nvl show
+            n "\"Cautionne has always been eager to please and happy to spend time with me.{w} Is it any wonder he wants to help the nefarious Dr. Danger in her fight against STOP? "
+            n "I should tell him no.{w} Revenge is poison, and he's already been through too much. "
+            n "But I still can’t even bear to calculate how much of his suffering is my fault.{w} I don't have the heart to tell him no - and I'd sooner die than judge him for how much he hates STOP.\""
+            nvl hide
+            pause 0.5
             nvl clear
+            nvl show
             n "\"Dr. Danger and Cautionne are becoming a household name, but that's about it. "
-            n "STOP is still in power. People are still too scared to take them to task. And there are still YTDI centers all over the world. If I destroy one, they move the children to another. "
-            n "That's horrible as-is, but what if they don’t care enough to do even that? What if they just figure the YTDI is just not worth the cost? What’ll happen to those children then?"
+            n "STOP is still in power.{w} People are still too scared to take them to task.{w} And there are still YTDI centers all over the world.\n{w}If I destroy one, they move the children to another. "
+            n "That's horrible as-is, but what if they don’t care enough to do even that?"
+            n "What if they just figure the YTDI is just not worth the cost?\n{w}What’ll happen to those children then?"
+            nvl clear
             n "Something needs to change, but I'm not sure it's something that Dr. Danger can do. "
             if gui.text_size > 40:
                 nvl clear
