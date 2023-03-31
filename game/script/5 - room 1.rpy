@@ -186,7 +186,7 @@ label hacking_game_over:
     "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be-){p=0.3}{nw}"
     hide black onlayer screens
     hide screen puzzle_playspace
-    with easeouttop
+    with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     cr "Good news!{w=0.5} STOP found your computer."
@@ -239,7 +239,7 @@ label decanting_game_over:
     hide black onlayer screens
     hide screen room1_decanting 
     hide screen room1
-    with easeouttop
+    with puzzle_hide
     "(Really?!{w} Did you find a solution that {i}he {/i}hadn't thought of?)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Y'know,{w=0.1} I {i}did {/i}say that two doses would be lethal..."

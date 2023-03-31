@@ -397,7 +397,7 @@ label quilt_game_over:
     cr "{i}Wow.{/i}{w=0.5} You're far from delicate,{w=0.1} aren't you?"
     hide black onlayer screens
     hide screen room3_quilt 
-    with easeouttop
+    with puzzle_hide
     pause 1
     cr "I'd like to think of myself as a lenient kinda guy... {w}But watching you butcher that sentimental quilt is {i}pretty painful.{/i}"
     cr "Like,{w=0.1} a death by a thousand cuts...{p=0.5}{nw}"
@@ -448,7 +448,7 @@ label toys_game_over:
     cr "Having trouble organizing?{w=0.5} I get it."
     hide black onlayer screens
     hide screen toy_playspace
-    with easeouttop
+    with puzzle_hide
     pause 1
     cr "I was {i}horrible{/i} at putting my stuff away.{w=0.5}  A total mess,{w=0.1} every time."
     cr "But whenever I got into a pickle,{w=0.1} Dr. Danger always helped me out."
@@ -500,7 +500,7 @@ label cooking_game_over:
     cr "{i}Stop right there,{/i} lab rat.{w=0.5} I don't want that {i}affront{/i} to all things edible anywhere near my nice,{w=0.1} tasteful,{w=0.1} kitchen appliances."
     hide black onlayer screens
     hide screen mise_en_place
-    with easeouttop
+    with puzzle_hide
     pause 1
     cr "How the {i}hell{/i} do you screw up pancakes that bad?{w=0.5} Did STOP mangle your common sense as well as your brains?"
     "(You open your mouth to protest and-){p=0.3}{nw}"

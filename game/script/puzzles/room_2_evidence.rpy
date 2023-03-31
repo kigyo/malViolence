@@ -24,11 +24,19 @@ init python:
         renpy.restart_interaction()
 
     def evidence_valid():
+        checked = []
         for i in range(len(evidence_solutions)):
+            checked.append([])
             for solution in evidence_solutions[i]:
+                checked[i].append(solution)
                 for connection in evidence_connections[solution]:
                     if connection not in evidence_solutions[i]:
+                        print(checked)
                         return False
+                    checked[i].append(connection)
+        
+        print(checked)
+
         return True
 
     def evidence_submit():
@@ -68,7 +76,6 @@ screen room2_evidence:
 
         for i in range(len(evidence_positions)):
             use evidence_photo(i)
-        
 
         draggroup:
             for id in range(len(evidence_positions)):

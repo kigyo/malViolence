@@ -32,7 +32,8 @@ init python:
             if not (achievement_dead6 in persistent.dead_ends and not preferences.hard_mode):
                 renpy.jump("word_game_over")
             else:
-                cr(word_lenient_failure_message)
+                renpy.notify(word_lenient_failure_message)
+                return
         store.room2["word"] = "solved"
         return True
 
