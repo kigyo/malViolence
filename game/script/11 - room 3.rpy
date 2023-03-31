@@ -370,27 +370,38 @@ label scrapbook_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
 
+    stop music fadeout 1.0
+
     "(You place the scrapbook down to get a fresh look at what you've got so far.)"
-    "(But when you step back, you feel like {i}something's{/i} out of place.)"
-    "(And if {i}you {/i}can tell, then {i}he {/i}can tell. Better-)"
+    "(But when you step back,{w=0.1} you feel like {i}something's{/i} out of place.)"
+    "(And if {i}you {/i}can tell,{w=0.1} then {i}he {/i}can tell.{w} Better-){p=0.3}{nw}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "It's okay to suck at arts and crafts, lab rat. Not everyone's born to make masterpieces."
-    cr "But... that scrapbook meant a lot to me."
-    cr "If you were gonna screw up {i}that {/i}badly, you could've at least used the {i}non-permanent glue.{/i}"
+    hide black onlayer screens
+    hide screen room3_quilt 
+    with puzzle_hide
+    cr "But...{w=0.5} that scrapbook meant a lot to me."
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+    cr "If you were gonna screw up {i}that {/i}badly,{w=0.1} you could've at least used the {i}non-permanent{/i} glue."
     "(A bead of sweat trickles down your back.)"
-    "(Was... was that an option?)"
-    cr "...Wait, I left that out, didn't I? My bad!"
-    cr "My bad! If memory serves me, this button should-"
+    "(Was...{w=0.5} was that an option?)"
+    cr "...Wait,{w=0.1} I left that out,{w=0.1} didn't I?"
+    cr "My bad!{w=0.5} If memory serves me,{w=0.1} this button should-"
     #"{b}[BEEP]{/b}"
     #"{b}[sound of lazer charging up]{/b}"
-    cr "Whoopsie doopsie! Looks like I pressed the wrong-"
+    pause 1
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
+    cr "Whoopsie doopsie!{w=0.5} Looks like I pressed the wrong-"
     #"{b}BLAST SFX, CUT TO BLACK{/b}"
 
+    scene black with small_shake
+    pause 3
     $nvl_heading = "Lab Report #891"
     l "Subject succeeded in proving the fatality of ray gun protoype Delta-9.{/i}"
     l "{b}Contributing Factors to Death:{/b} They messed up my scrapbook – so now, we're even!"
 
     $deadend(achievement_dead10)
-    le "DEAD END 10: NAME!"
+    le "DEAD END 10: Holy Scrap!"
     pause 2
     nvl clear
     $game_over(3)
@@ -420,6 +431,7 @@ label quilt_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+    stop music fadeout 1.0
     cr "{i}Wow.{/i}{w=0.5} You're far from delicate,{w=0.1} aren't you?"
     hide black onlayer screens
     hide screen room3_quilt 
@@ -470,6 +482,7 @@ label toys_game_over:
     show screen toy_playspace(tb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
+    stop music fadeout 1.0
     "(You set down the toys and pause to think.)"
     "(The task is a lot harder than you thought it would be.{w} Maybe-){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
@@ -525,6 +538,7 @@ label cooking_game_over:
     show screen mise_en_place(False)
     show black onlayer screens with dissolve:
         alpha 0.5
+    stop music fadeout 1.0
     "({i}There.{/i}{w} That should be the right ingredients for the pancakes.{w} Now if you pour the batter-){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 1.ogg"
     cr "{i}Stop right there,{/i} lab rat.{w=0.5} I don't want that {i}affront{/i} to all things edible anywhere near my nice,{w=0.1} tasteful,{w=0.1} kitchen appliances."

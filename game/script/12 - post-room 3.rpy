@@ -34,8 +34,16 @@ init python:
 
 
 label post_room_3:
+
+    stop music fadeout 1.0
+
+    pause 1
+
+    $ play_sound(doorunlock)
+    pause 2
+
     "(Huh.{w} The screen above you didn't turn on.)"
-    "(...Guess Cautionne really was serious about the whole silent treatment thing.)"
+    "(...Guess Cautionne really was serious about the whole \"silent treatment\ thing.)"
 
     if len(room3["investigated"]) == 7:
         "(Well,{w=0.1} you did what he asked you to do,{w=0.1} right?{w} You solved his puzzle.)"

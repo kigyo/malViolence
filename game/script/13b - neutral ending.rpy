@@ -48,6 +48,9 @@ label neutral_ending:
 
     scene cautionne gun far silent with fade
 
+    $ play_music(endingintro, loop=False)
+    $ queue_music(neutralending)
+
     pause 2
 
     pause 1
@@ -60,7 +63,8 @@ label neutral_ending:
     "Um...{w=0.5} I'm glad you're having fun and all,{w=0.1} but I really should get going."
     "See,{w=0.1} adults have these things called “jobs”,{w=0.1} and-{p=0.5}{nw}"
     scene black
-    pause 2
+    stop music
+    pause 3
     #"{b}[Pause – sound of {/b}{b}Cautionne{/b}{b} firing a bullet into your kneecap. Screen turns black for a pause. ]{/b}"
 
     scene cautionne gun far silent with fade
@@ -96,6 +100,7 @@ label neutral_ending:
     cr "...Is what I should've said before firing,{w=0.1} but I'm still new at this."
     cr "Kind of like you at your job{w=0.1} {i}lab rat.{/i}"
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
+    $ play_music(neutralending, fadein=1.0, fadeout=1.0)
     cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} living a hand-to-mouth life."
     cr "That's why you did this mission,{w=0.1} right?{w=0.5} ‘Cause you wanted a sweet,{w=0.1} fat,{w=0.1} paycheck?"
     "{si}(...I...{w} I want...{w} to say something...){/si}"
@@ -218,8 +223,12 @@ label neutral_ending:
             cr "...I just can't forgive someone who'd brush that aside."
             #"{b}[the gun fires]{/b}"
 
+
+
             #"{b}[{/b}{b}Cautionne{/b}{b} is heard crying softly as the ending text pops up]{/b}"
             #"{b}[NEUTRAL END – ROOM 3 VARIANT]{/b}"
+
+    stop music
 
     scene black
     pause 3

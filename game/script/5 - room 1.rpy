@@ -194,6 +194,8 @@ label hacking_game_over:
     show screen puzzle_playspace(pb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
+
+    stop music fadeout 0.5
     "(It's too late.{w} The counter-trace just found you and-){p=0.5}{nw}"
     "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be-){p=0.3}{nw}"
     hide black onlayer screens
@@ -244,6 +246,7 @@ label decanting_game_over:
     show black onlayer screens:
         alpha 0.5
     with dissolve
+    stop music fadeout 0.5
     "(You're getting close, now...{w=0.5} Right?)"
     "(If you just pour {i}this{/i}{i} {/i}into {i}that-){/i}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
@@ -269,8 +272,8 @@ label decanting_game_over:
 
     show bg room1 at dizzy:
         zoom 0.335 yalign 0.0
-        easeout 0.4 zoom 1.0 xalign 0.2 yalign 1.0
-    pause 0.4
+        easeout 0.2 zoom 1.0 xalign 0.2 yalign 1.0
+    pause 0.2
 
     scene black with small_shake
 

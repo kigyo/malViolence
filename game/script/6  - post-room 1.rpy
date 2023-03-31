@@ -3,6 +3,8 @@ label post_room_1:
 
 #### confirmation sound - yay, you won room 1!
 
+  stop music fadeout 1.0
+
   pause 2
 
   scene black
@@ -10,11 +12,15 @@ label post_room_1:
     zoom 0.5
   with fade
   pause 1
+  
   $ queue_sound([staticshort, tvon])
+  pause 0.4
+
   show cautionne hairtwirl at crt
   show crt
   show cautionne_frame_glow at bg
   with screenon
+  $ play_music(cautionnetheme)
   pause 0.2
   voice "audio/voice/cautionne/postroom/Cautionne_Post Room 1-01.ogg"
   c "Well,{w=0.1} well,{w=0.1} well.{w=0.5} If it isn't the {i}lab rat{/i}."
@@ -31,6 +37,7 @@ label post_room_1:
   c "...That said,{w=0.1} I actually expected you to die by now."
   c "I'm not sure how to reward you for your success..."
   show cautionne lean speaking
+  stop music fadeout 1.0
   c "Ooh –{w=0.1} wait,{w=0.1} wait.{w=0.5} I have an idea!"
   show cautionne lean eyeclosed
   c "How about a sticker?"
@@ -72,6 +79,7 @@ label post_room_1:
     c "Not a sticker superfan?"
   show cautionne lean eyeclosed
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Well Then.ogg"
+  $ play_music(cautionnetheme, fadein=1.0, fadeout=0.1)
   c "Oh well.{w=0.5} More for me! "
   show cautionne leaneyeclosed pause
   if len(room1["investigated"]) == 0:
@@ -135,6 +143,8 @@ label post_room_1:
   "(Probably.)"
   "(...Maybe.)"
   "(...No.{w} Better not tempt fate.)"
+
+  stop music 
 
   $ play_sound(tvoff)
   hide cautionne laugh

@@ -3,18 +3,29 @@ label post_room_2:
   screen nodismiss(): #Our screen, while it is visible, no one can dismiss anything at all
       key "dismiss" action NullAction()
 
+  stop music fadeout 1.0
+
+  pause 1
+
+  $ play_sound(doorunlock)
+  pause 2
+
   #"{b} [The TV {/b}{b}isn't{/b}{b} on yet]{/b}"
   "(No message from the kid yet.)"
-  "(Maybe if you're stealthy,"
+  "(Maybe if you're stealthy, you could sneak past without being subjected to another one of his stupid broadcasts.)"
   show screen nodismiss
+
   $ queue_sound ([footsteps2, footsteps2])
 
-  show bg room2:
+  scene bg room2:
     zoom 0.335 align (0.0,0.0)
     ease 8 zoom 0.8 xalign 0.8 yalign 0.5
-  extend "{cps=20} you could sneak past{/cps}{cps=10} without being subjected to{/cps} {cps=6}another one of his-){/cps}{nw}"
+
+  pause 6
   #"{b}[{/b}{b}pasue{/b}{b} as the TV TURNS ON and cautionne appears]{/b}"
   $ queue_sound ([tvon, staticshort])
+  pause 0.4
+  $ play_music(cautionnetheme)
   show cautionne hairtwirl
   show crt
   show cautionne_frame_glow at bg
@@ -24,6 +35,7 @@ label post_room_2:
   c "{i}Snooping as usual,{w=0.1} {/i}I see?"
   "(...You spoke too soon.)"
   show cautionne lean eyeclosed
+
   c "Yeah,{w=0.1} you're right in your element,{w=0.1} huh? "
   show cautionne lean speaking
   c "Not that {i}you'd{/i} know it,{p=0.5}{nw}"
@@ -57,6 +69,7 @@ label post_room_2:
   c "He shall let you indulge."
 
   show cautionne leaneyeclosed pause
+  stop music fadeout 1.0
   pause 1
   c "..."
   show cautionne lean frown
@@ -98,7 +111,7 @@ label post_room_2:
   c "The next time you escape a puzzle room,{w=0.1} {i}I won't talk either!{/i}"
   c "See how YOU like it!!"
   show cautionne block
-  c "Now, MOVE!{w=0.5} Or you'll regret trying a staring contest with me!!"
+  c "Now, MOVE!{w=0.5} Or you'll regret your staring contest with me!!"
   show cautionne blockscreen silent
   pause 0.1
 

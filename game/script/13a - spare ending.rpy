@@ -50,6 +50,8 @@ label spare_ending:
     "(...{i}Guilt?{/i}{w} Is that what it is?)"
     "(Over something you didn't do?)"
     scene cautionne gun ecu with dissolve
+    $ play_music(endingintro, loop=False)
+    $ queue_music(spareending)
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     cr "All those years,{w=0.1} you must've been so proud to wear that uniform!{w=0.5} To be a brave soldier fighting for such a pristine,{w=0.1} justice-seeking{w=0.1} organization like that."
     "(You feel sick.)"
@@ -117,6 +119,7 @@ label spare_ending:
     cr "...Heh.{w=0.5} Haha.{w=0.5} {si}Hahahaha.{/si}"
 
     scene cautionne gun cu crysilent 
+    stop music fadeout 1.0
     #"{b}[gun clicks]{/b}"
     pause 1
     scene cautionne gun cu speaking 
@@ -132,6 +135,7 @@ label spare_ending:
     pause 2
     "(Huh?{w} Cautionne...{w=0.5} fell?)"
     "(What's going...)"
+    $ play_music(spareending, fadein=1.0, fadeout=1.0)
     scene cautionne sit stunned with fade:
         align(0.0,1.0)
         ease 7 align(0.0,0.1)
@@ -265,6 +269,8 @@ label spare_ending:
     voice sustain
     extend " But I know what I'm talking about."
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-24.ogg"
+
+    stop music fadeout 1.0
     cr "After all,{w=0.1} I {i}am{/i}{i} {/i}a supervillain."
 
     define slowfade = Fade(2, 0.1, 1)

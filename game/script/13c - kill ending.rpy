@@ -33,6 +33,9 @@ label kill_ending:
 
     scene cautionne gun far silent with fade
 
+    $ play_music(endingintro, loop=False)
+    $ queue_music(killending)
+
     pause 2
     #"{b}[show {/b}{b}Cautionne{/b}{b} shooting CG{/b}{b}]{/b}"
     "No more TV screens,{w=0.1} huh?"
@@ -58,6 +61,7 @@ label kill_ending:
     "(He’s scared,{w=0.1} but he’s not going to hesitate any longer.)"
     "(You exhale,{w=0.1} and before his finger can snake itself over the trigger-)"
     "(-You raise your gun towards his torso.)"
+    stop music
     scene black
     pause 3
     #"{b}[bang – with a cut to black]{/b}"
@@ -89,6 +93,7 @@ label kill_ending:
     pause 1
     "(He doesn't move again.)"
     pause 3
+    $ play_music(killending, fadein=1.0, fadeout=1.0)
     scene cautionne dead with fade:
         zoom 1.0 align (0.5,0.6)
         ease 40 zoom 0.5 
@@ -109,6 +114,8 @@ label kill_ending:
     "(...But one thing's for sure.{w} There's one less villain out there now.)"
     "(One less threat.)"
     "(One less thorn in STOP's side.)"
+
+    stop music fadeout 1.0
 
     scene cautionne dead with dissolve:
         zoom 0.5 align(0.0,0.0)
@@ -141,4 +148,5 @@ label kill_ending:
     #"{b}[pause and last cg fades to black]{/b}"
     #"{b}[KILL END]{/b}"
     #"{b}[credits roll]{/b}"
+    stop music fadeout 1.0
     return
