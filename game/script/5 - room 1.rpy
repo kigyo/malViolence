@@ -151,11 +151,23 @@ label room_1:
                 jump decanting_solved
 
     elif inspect == "bomb":
-        if room1["bomb"] == 0:
-            "<TODO: bomb puzzle.>"
+        if "bomb" in room1["solved"]:
+            "(You've already solved the bomb puzzle.)"
         else:
-            pass
-        $ room1["bomb"] += 1
+            if room1["bomb"] == 0:
+                call init_bomb
+                #bomb introduction
+                pass
+            else:
+                #repeated investigation
+                pass
+            show screen bomb(b, False, _layer="master") with easeintop
+            $ room1["bomb"] += 1
+            $ inspect = None
+            $renpy.hide_screen("bomb", "master")
+            call screen bomb(b)
+            if room1["bomb"] == "solved":
+                jump decanting_solved
 
     $ inspect = None
     $renpy.block_rollback()

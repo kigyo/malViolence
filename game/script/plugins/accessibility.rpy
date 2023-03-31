@@ -205,9 +205,9 @@ init python:
     neutralending = "audio/music/NeutralEnding.ogg"
     killending = "audio/music/KillEndingV2.ogg"
     tutroom = "audio/music/tute or real.ogg"
-    room1 = "audio/music/evilroom.ogg"
-    room2 = "audio/music/officeogg"
-    room3 = "audio/music/Room 3.ogg"
+    room1theme = "audio/music/evilroom.ogg"
+    room2theme = "audio/music/officeogg"
+    room3theme = "audio/music/Room 3.ogg"
 
 # This is where you define the music captions for each music file you will be using in the game. Please make sure the names of the music defined above match the ones used for the captions below.
 
@@ -223,9 +223,9 @@ init python:
     neutralending : _("One Way Only."),
     killending : _("Just Another Job."),
     tutroom : _("Tute or Real?"),
-    room1 : _("The Evil Lab, For Evil Lab Things."),
-    room2 : _("Odd Office?"),
-    room3 : _("Bittersweet Home.")
+    room1theme : _("The Evil Lab, For Evil Lab Things."),
+    room2theme : _("Odd Office?"),
+    room3theme : _("Bittersweet Home.")
     }
 
 # This is the sound command. It functions the same way as "play sound" normally does. You can change the fadein, fadeout and loop values when you invoke the command. If you do not change the values, the default values are 0.0 fadein, 0.0 fadeout, and no loop. If you change the values below, that will change the default values for every time you invoke the command.

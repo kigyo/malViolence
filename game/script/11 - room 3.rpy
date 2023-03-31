@@ -344,32 +344,23 @@ label room_3:
                 jump cooking_solved
 
     elif inspect == "scrapbook_new":
-        show screen room3_meta(_layer="master") with easeintop
         if room3["scrapbook_new"] == 0:
             $ room3["scrapbook_new"] = 1
+            show screen room3_meta(_layer="master") with easeintop
             "(The \"lock\" for the door is a... scrapbook? Its pages are empty, though...)"
             pass
         else:
-            #repeated investigation
-            pass
+            show screen room3_meta(_layer="master") with easeintop
         $ inspect = None
         $renpy.hide_screen("room3_meta", "master")
         call screen room3_meta
-        jump room3_meta_solved
+        if room3["scrapbook_new"] == "solved":
+            jump post_room_3
 
     $inspector_achievement()
 
     $ inspect = None
     $renpy.block_rollback()
-    call screen room3
-
-
-label scrapbook_solved:
-    $renpy.block_rollback()
-    $ inspect = "solved"
-    if room3["scrapbook_new"] == "solved":
-        jump post_room_3
-    $ inspect = None
     call screen room3
 
 label scrapbook_game_over:

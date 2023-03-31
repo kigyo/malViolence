@@ -232,8 +232,6 @@ init python:
     def activated(drags):
         pass
 
-label main_menu:
-    jump room_1_puzzle_1
 
 define shape_bar = [[1],
               [1]]

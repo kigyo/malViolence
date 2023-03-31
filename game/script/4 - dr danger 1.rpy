@@ -176,7 +176,7 @@ show bg room1:
   zoom 0.8 
   ease 5 zoom 0.335 xalign 0.0 yalign 0.0
 
-$ play_music(room1, fadein=1.0, fadeout=0.1)
+$ play_music(room1theme, fadein=1.0, fadeout=0.1)
 
 pause 5
 call screen room1 with dissolve
