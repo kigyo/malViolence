@@ -191,7 +191,6 @@ init python:
                         if part.handles[py][px]:
                             part.handles[py][px].handle = (px, py) == (offx, offy)
             x, y = drop.drag_name
-            glog (drags)
             handle = [d for d in drags if d and d.handle][0]
             for py in range(len(part.handles)):
                 for px in range(len(part.handles[py])):
