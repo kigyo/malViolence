@@ -32,7 +32,7 @@ init python:
                         return False
                         
         for i in range(len(evidence_solutions)):
-            if evidence_connections[evidence_solutions[i][0]].sort() == evidence_solutions[0][1:].sort():
+            if sorted(evidence_connections[evidence_solutions[i][0]]) == sorted(evidence_solutions[i][1:]):
                 continue
             elif evidence_connections[evidence_solutions[i][0]] == [evidence_solutions[i][1]] and evidence_connections[evidence_solutions[i][1]] == [evidence_solutions[i][2]]:
                 continue

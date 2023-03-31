@@ -1612,7 +1612,7 @@ style nvl_button_text:
 
     
 
-screen gameover(lbl):
+screen gameover(lbl, track):
     
     add gui.main_menu_background at bg(0.5)
     add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
@@ -1621,7 +1621,7 @@ screen gameover(lbl):
 
     label _("GAME OVER") text_size 200 yalign 0.4 xalign 0.5 text_outlines [(3, "#000", 1, 1)]
     vbox xalign 0.65 ypos 0.55:
-        textbutton _("> Restart Room") action Jump(lbl) text_size 65 at navigation_move
+        textbutton _("> Restart Room") action [Play("music", track), Jump(lbl)] text_size 65 at navigation_move
         textbutton _("> Main Menu") action Return() text_size 65 at navigation_move
 
 init python:
@@ -1631,15 +1631,18 @@ init python:
         renpy.scene()
         renpy.scene("screens")
         renpy.scene("puzzles")
+        renpy.show("black")
+        renpy.with_statement(dissolve)
         renpy.block_rollback()
         if room == "tutorial":
-            renpy.show_screen("gameover", "tutorial_room")
+            renpy.show_screen("gameover", "tutorial_room", tutroom, _layer="master")
             renpy.with_statement(dissolve)
-            renpy.call_screen("gameover", "tutorial_room")
+            renpy.call_screen("gameover", "tutorial_room", tutroom)
         else:
-            renpy.show_screen("gameover", "room_" + str(room))
+            track_to_play = getattr(renpy.store, "room%stheme" % room, room1theme)
+            renpy.show_screen("gameover", "room_" + str(room), track_to_play, _layer="master")
             renpy.with_statement(dissolve)
-            renpy.call_screen("gameover", "room_" + str(room))
+            renpy.call_screen("gameover", "room_" + str(room), track_to_play)
 
     def room_init(room = 1):
         if room == 1:
