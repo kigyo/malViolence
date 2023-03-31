@@ -13,6 +13,24 @@ label test_puzzles:
         "Room 3 Puzzle 3":
             jump room_3_puzzle_3
 
+label room_1_puzzle_1:
+    call init_bomb
+    show screen bomb(bomb, False)
+    "<TODO: Insert intro script and rules.>"
+    call screen bomb(bomb)
+
+label solved_room_1_puzzle_1:
+    show screen bomb(bomb, False)
+    "You solved room_1_puzzle_1."
+    hide screen bomb
+    jump test_puzzles
+
+label failed_room_1_puzzle_1:
+    show screen bomb(bomb, False)
+    "You failed room_1_puzzle_1."
+    hide screen bomb
+    jump test_puzzles
+
 label room_1_puzzle_2:
     call init_puzzle_board
     show screen puzzle_playspace(pb, False)
