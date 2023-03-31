@@ -220,8 +220,8 @@ label room_2:
 
     elif inspect == "word":
         if room2["word"] == 0:
+            $word_init()
             #word introduction
-            pass
         else:
             #repeated investigation
             pass

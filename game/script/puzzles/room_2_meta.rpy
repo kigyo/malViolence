@@ -1,4 +1,7 @@
 init python:
+    def word_init():
+        store.word_answer = ["","","","",""]
+        
     def word_dropped(drop, drags):
 
         drag = drags[0]

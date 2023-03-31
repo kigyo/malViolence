@@ -158,7 +158,7 @@ screen room3_quilt():
                                 if quilt_eraser == True:
                                     action NullAction() hover "puzzles/room_3_puzzle_1/error.png"
                         showif quilt_error == i:
-                            add "puzzles/room_3_puzzle_1/error.png" at error_display
+                            add "puzzles/room_3_puzzle_1/error.png" at alphashow(alph=0.9)
                             #imagebutton idle "puzzles/room_3_puzzle_1/tile.png" action [Function(quilt_set, i), SetScreenVariable("testy", str(i))]
                         #if config.developer:
                         #    text "(" + str(col) + "," + str(row) + ")" outlines [(1, "#000000", 0, 0)] size 24
@@ -177,9 +177,9 @@ style puzzle_nav_button is main_menu_button:
 style puzzle_nav_button_text is main_menu_button_text
 
 
-transform error_display:
+transform alphashow(t=0.25, alph=1.0):
     on show:
         alpha 0 
-        easein .25 alpha 0.9
+        easein t alpha alph
     on hide:
-        linear .25 alpha 0.0
+        linear t alpha 0.0
