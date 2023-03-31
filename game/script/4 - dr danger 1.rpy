@@ -98,7 +98,7 @@ label dr_danger_1:
   drs "Due to my circumstances,{w=0.1} I cannot repeat my instructions.{p=1}{nw}"
   voice sustain
   drs "Nor will I be able to answer any of your questions."
-  "(...No -{w=0.5} thinking back,{w=0.1} her death was {i}very thoroughly{/i} confirmed.{w} Which means...)" 
+  "(...No.{w} Her her death was {i}very thoroughly{/i} confirmed.{w} Which means...)" 
   "(...This is just a recording.{w} A cheesy one,{w=0.1} at that.)" 
   "(Turns out even supervillains make the newbies watch employee training videos.)"
   "(Better tune her out.)"
@@ -135,7 +135,7 @@ label dr_danger_1:
 ######### metal door shut plays here
   "(Huh.{w} Seems like a typical evil lab,{w=0.1} straight out of a comic book.)"
 
-  "(Let's see here... {w}Massive computers,{w=0.5} hi-tech gizmos,{w=0.5} and a \"Primary Source Extractor?\")"
+  "(Let's see here... {w}Massive computers,{w=0.5} hi-tech gizmos,{w=0.5} and a...{w=0.5} \"Primary Source Extractor?\")"
   "({i}...Eugh.{/i} {w}Looking at that thing gives you goosebumps.)"
   "(Do you {i}have{/i} to go through here?)"
   "(Maybe there's something you missed in the corridor...)"

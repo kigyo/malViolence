@@ -19,12 +19,12 @@ label spare_ending:
     "(In a large garage filled to the brim with carboard boxes,{w=0.1} the exit waits for you,{w=0.1} wide open.)"
     "(It's night already.{w} Outside, you hear the quiet rushing of a river.)"
     "(Just a few more steps,{w=0.1} and you're out of here.{w} Even more,{w=0.1} and you'll be on the bus back home.)"
-    "(It'll take a couple of hours to get back to HQ.{w} You'll probably nap,{w=0.1} so that by the time you get to your stop,{w=0.1} you'll have enough energy to run up thousands of narrow stairs.)"
+    "(It'll take a couple of hours to get back to HQ.{w} You'll nap on the ride,{w=0.1} probably,{w=0.1} so that by the time you get to your stop,{w=0.1} you'll have enough energy to run up thousands of narrow stairs.)"
     "(And you'll reach your boss's office,{w=0.1} and...)"
     "(...Well,{w=0.1} what'll happen next?)"
     "(You'll {i}definitely {/i}get that bonus.{w} If this isn't going \"above and beyond...\")"
     "(Maybe you'll get a promotion.{w} A better salary.{w} Better benefits.{w} A better home.)"
-    "(A better {i}life.{/i}{w} Something you've worked towards for {i}years.{/i})"
+    "(A better {i}life.{/i}{w} Something you've always wanted.)"
     "(...And...)"
     "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole-){p=0.5}{nw}"
     x "Finally going to take responsibility?"
@@ -80,7 +80,7 @@ label spare_ending:
     scene cautionne gun cu cry
     #"{b}[pause as {/b}{b}Cautionne{/b}{b} regains his composure a little]{/b}"
     cr "{si}S-so,{w=0.1} what're you gonna do now, lab rat?{/si}"
-    cr "{si}You've still got your \"service weapon\",{w=0.1} don't you?{/si}"
+    cr "{si}You've still got your weapon,{w=0.1} don't you?{/si}"
     cr "{si}C'mon.{w=0.5} H-hit me with your best shot.{/si}"
     scene cautionne gun cu crysilent
     pause 0.5

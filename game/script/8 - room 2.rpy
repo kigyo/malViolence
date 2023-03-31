@@ -78,7 +78,7 @@ label room_2:
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
             "(That said,{w=0.1} poor penmanship hasn't dulled the designs themselves.{w} The {i}least{/i} dangerous of these would be devastating out in the field.)"
-            "(The oldest of the blueprints -{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person authored them.)"
+            "(The oldest of the blueprints -{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
             "(In fact,{w=0.1} if you squint...{w=0.5} you can still find the signatures at the bottom.)"
             "(\"Destrange,\"{w=0.1} they say.{w} They're dated more than 15 years ago.)"
             hide room2_blueprintcollection with dissolve
@@ -94,9 +94,9 @@ label room_2:
         if room2["post-its"] == 0:
             show room2_postitnotes with dissolve:
                 yalign 0.2 xalign 0.5
-            "(You eye over the mass of scrawled notes pinned in front of you.{w} There're two distinct handwritings here,{w=0.1} but the contents are mostly the same{w=0.5} - and mostly {i}domestic{/i}.) "
-            "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and...{w=0.5} what {i}stories{/i} to read?)"
-            "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and {i}chores?{/i})"
+            "(You eye over the mass of scrawled notes pinned in front of you.{w} There are two distinct sets of handwriting here,{w=0.1} but the contents are mostly the same...{w=0.5} and mostly {i}domestic?{/i}) "
+            "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and what stories to read.)"
+            "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and chores...)"
             "(Whoever left these notes for each other weren't just sharing the same space.\n{w}They were {i}living{/i} together.)"
             hide room2_postitnotes with dissolve
         else:
@@ -281,7 +281,7 @@ label evidence_game_over:
     pause 3
     $deadend(achievement_dead7)
     $nvl_heading = "Lab Report #273"
-    l "Subject experienced permanent loss-of-life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
+    l "Subject experienced permanent loss of life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
     l "{i}Guess they were worth the trouble of installation!"
     l "{b}Contributing Factors to Death:{/b} Couldn't put progress on the board."
     le "DEAD END 07: NAME!"
@@ -318,9 +318,9 @@ label panopticon_game_over:
     with easeouttop
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Seems like you've run out of time,{w=0.1} lab rat."
-    cr "That's it.{w=0.5} The jailbreak is broken.{w=0.5} You screwed up."
+    cr "That's it.{w=0.5} The jailbreak is over.{w=0.5} You screwed up."
     "(So it {i}was {/i}a prison?{w} Then-)"
-    cr "If it was just between you and me,{w=0.1} I'd be \"whatever\" about it."
+    cr "If this only concerned you and me,{w=0.1} I'd be \"whatever\" about it."
     cr "We all make mistakes,{w=0.1} y'know?{w=0.5} So,{w=0.1} I'm super forgiving and cool and mature about this kind of thing."
     cr "...But you just lost those kids a chance to get out before the {i}operations{/i} start."
     "(...Sorry,{w=0.1} {i}operations?{/i})"
@@ -337,7 +337,7 @@ label panopticon_game_over:
     pause 3
     $nvl_heading = "Lab Report #893"
     l "Subject expired after 3 days due to lack of water, light, food, and mental stimulation."
-    l "Scratched their nails bloody on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
+    l "Scratched their nails to bleeding point on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
     l "{b}Contributing Factors to Death:{/b} Didn't take the consequences of imprisonment very seriously."
     $deadend(achievement_dead8)
     le "DEAD END 08: A Taste of Sobering Punishment."
@@ -368,15 +368,15 @@ label recalibration_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     "(You confirm your choice,{w=0.1} and a beeping starts.)"
-    "(It's tone sets the hairs on the back of your neck on edge.)"
+    "(Its tone sets the hairs on the back of your neck on edge.)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "You're losing 'em,{w=0.1} Doc."
-    "(...Wait.{w} This is an actual {i}person?{/i})"
+    "(...Wait.{w} That's...{w=0.5} an actual...?)"
     hide black onlayer screens
     hide screen cybernetics 
     with easeouttop
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
-    cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} Their own nervous system will rip them apart with spasming."
+    cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} That person's own nervous system will rip their body apart with spasming."
     cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"
     "(...Well,{w=0.1} uh-){p=0.3}{nw}"
     cr "Don't worry,{w=0.1} I can fix this."
@@ -402,7 +402,7 @@ label recalibration_game_over:
     pause 3
     $nvl_heading = "Lab Report #062"
     l "Patient was eventually re-stabilized and should wake up within the next few days."
-    l "On the other hand, the lab rat won't get up ever again. Seems like they're missing a few too many critical parts."
+    l "On the other hand, the lab rat won't get up ever again. They're missing a few too many critical parts."
     l "{b}Contributing Factors to Death:{/b} They gave too much of themselves to my cause."
 
     $deadend(achievement_dead9)
@@ -430,7 +430,7 @@ label word_game_over:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "{i}Kidding!{/i}"
         "(You-)"
-        cr "God,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
+        cr "C'mon,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
         #"{b}ZAP SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
@@ -438,11 +438,11 @@ label word_game_over:
     elif random_choice == 2:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Whoa...{w=0.5} You got it."
-        cr "...Are you looking up a walkthrough our something?"
+        cr "...Did someone write you a walkthrough online?"
         "(You-)"
-        cr "If so,{w=0.1} go back and complain in the comments."
+        cr "If so,{w=0.1} go complain in the comments."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
-        cr "They led you to a dead end!"
+        cr "You've just met a a dead end!"
         #"{b}SMASH SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
@@ -465,7 +465,7 @@ label word_game_over:
         "(You-)"
         cr "But since you're here,{w=0.1} I've got another game for you to play."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
-        cr "Place your bet,{w=0.1} lab rat!{w=0.5} Is the gun next to you loaded or unloaded?"
+        cr "It's time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
         "(What gu-)"
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
         scene black
@@ -474,9 +474,9 @@ label word_game_over:
     else:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "...Wow.{w=0.5} That wasn't even {i}close. {/i}"
-        cr "You'd have better luck just smashing keys."
+        cr "You'd have better luck smashing keys."
         "(You-)"
-        cr "Like.{i} {/i}{i}So{/i}{i}.{/i}"
+        cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}"
         #"{b}SMASHING SFX, CUT TO BLACK{/b}"
         scene black
         pause 3

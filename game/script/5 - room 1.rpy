@@ -95,7 +95,7 @@ label room_1:
                 yalign 0.2 xalign 0.5
             "(You paused when you saw the silhouettes from across the room...{w=0.5} but on closer inspection these aren't firearms at all.{w} They're {i}megaphones.{/i})"
             "(So many colors,{w=0.1} materials,{w=0.1} variations… {w}It's far from organized,{w=0.1} but it does look like a collection.)"
-            "(It's hard to picture Dr. Danger,{w=0.1} one of STOP's most wanted criminals,{w=0.1} picking up such a quirky hobby.)"
+            "(It's hard to picture Dr. Danger,{w=0.1} one of STOP's most wanted criminals,{w=0.1} picking up such an odd hobby.)"
             "(And yet,{w=0.1} half of them are tagged with the initials \"DD\".)"
             hide room1_megaphones with dissolve
             pause 0.5
@@ -200,8 +200,7 @@ label hacking_game_over:
 
     $nvl_heading = "Lab Report #615"
     l "Subject died after computer shrapnel blew up into their face."
-    l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn'’'t thorough enough with their background check."
-    l "Idiot."
+    l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn't thorough enough with their background check."
     $deadend(achievement_dead4)
     le "DEAD END 04: Trouble-shooting?"
     pause 2

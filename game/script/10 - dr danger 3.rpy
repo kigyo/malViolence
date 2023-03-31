@@ -5,6 +5,7 @@ label dr_danger_3:
   "(...Again with the temper tantrum,{w=0.1} huh.)"
   "(Seriously,{w=0.1} why's he so pissed off at you?)"
   "(He and Dr. Danger have fought against STOP field agents in the past,{w=0.1} but that's not your department.)"
+  "(Hell -{w=0.1} {i}before{/i} this,{w=0.1} you've never met either of them face-to-face.)"
   "(What right does he have to act all high and mighty towards {i}you?{/i})"
   pause 1
   "(...)"
@@ -30,10 +31,10 @@ label dr_danger_3:
   $ play_sound(doorclose)
   pause 0.5
   "(...The dim corridor stretches before you,{w=0.1} with no answers to offer.)"
-  "(Yes,{w=0.1} it's darker here -{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
+  "(It's darker here -{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
   "(The wooden floorboards and the decorated wallpaper feel...{w=0.5} welcoming.{w} {i}Nostalgic,{/i} even.)"
   "(If you viewed this hall alone,{w=0.1} you'd assume it'd belong to a family household.\n{w}Not to a scheming terrorist and her kooky sidekick.)"
-  "(It's been a very long...{w=0.5} day?{w} Hard to tell how much time has passed.)"
+  "(It's been a very long...{w=0.5} day?{w} Hard to tell how much time has passed. {w}But damn,{w=0.1} you are {i}exhausted.{/i})"
   "(The gentle heat tempts you to sit down on the floor.{w} Or maybe lie down.)"
   pause 1
   "(Um...{w} Would Cautionne allow you to take a quick breather?)"
@@ -93,7 +94,7 @@ label dr_danger_3:
   drs "...Cautionne told me that he loves the \"Cantaloupe Mall\" course on \"Marco Kart\"."
   show drdanger sidestare
   voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
-  drs "...I might be pronouncing that wrong,{w=0.1}  but he'll know what you mean."
+  drs "...I might be pronouncing that wrong.{w=0.5} He'll know what you mean."
   show drdanger stare
   drs "So, take care."
   voice "audio/voice/dr.danger/Danger_SB-Allow Me To Explain.ogg"
@@ -158,7 +159,7 @@ label dr_danger_3:
   #"{b}[pause, walking sounds play as the player goes to room 3]{/b}"
   "(It's...{w=0.5} a normal apartment?)"
   "(There's a kitchenette,{w=0.5} a dining table,{w=0.5} a small sitting area...)"
-  "(...and stairs.{w} Probably a bedroom up there.)"
+  "(...And stairs.{w} Probably a bedroom up there.)"
   pause 0.5
   "(Are you {i}supposed{/i} to be here?)"
   $ play_sound(doorlock)

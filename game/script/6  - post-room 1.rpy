@@ -21,7 +21,7 @@ label post_room_1:
   c "For someone with chronic resting-{i}blah{/i}-face,{w=0.1} you look {i}real{/i} proud of yourself."
   show cautionne lean speaking
   c "And you know what?{w=0.5} You should be. "
-  c "By getting {i}this {/i}far,{w=0.1} you've shown more brains than 96\% of STOP employees."
+  c "By getting {i}this {/i}far,{w=0.1} you're statistically proven to have more brains than 96\% of STOP employees."
   show cautionne lean eyeclosed
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "So congrats!"
@@ -29,7 +29,7 @@ label post_room_1:
   pause 1
   show cautionne think
   c "...That said,{w=0.1} I actually expected you to die by now."
-  c "I'm not sure how to reward you."
+  c "I'm not sure how to reward you for your success..."
   show cautionne lean speaking
   c "Ooh –{w=0.1} wait,{w=0.1} wait.{w=0.5} I have an idea!"
   show cautionne lean eyeclosed
@@ -54,11 +54,11 @@ label post_room_1:
     show cautionne lean speaking
     c "Hey,{w=0.1} maybe you're just terminally un-curious and a lifelong sticker-hater."
     show cautionne lean eyeclosed
-    c "No shame in that.{p} I hate things 24/7!"
+    c "No shame in being a hater, though.{p} I hate things 24/7!"
     show cautionne leaneyeclosed pause
     pause 1
     show cautionne serious
-    c "{size=-13}...Not even gonna argue against that, huh?{/size}"
+    c "{size=-13}...Not even gonna deny that, huh?{/size}"
   else:
     show cautionne lean speaking
     c "Though if you were expecting a grape-scented sticker,{w=0.1} you're outta luck."
@@ -76,7 +76,7 @@ label post_room_1:
   show cautionne leaneyeclosed pause
   if len(room1["investigated"]) == 0:
     show cautionne lean frown
-    c "{size=-13}Even the durian ones.{/size}"
+    c "{size=-13}Even the durian-scented ones.{/size}"
     show cautionne leanfrown pause
 
   pause 1
@@ -101,12 +101,12 @@ label post_room_1:
   show cautionne lean speaking
   c "But the results are...\n"
   show cautionne lean eyeclosed
-  extend "{i}mwah!{/i}"
+  extend "{i}mwah!{/i} {w=0.5}{i}Ah-{w=0.1}mazing!{/i}"
   show cautionne think
   c "I {i}had {/i}planned on giving you a first-hand demonstration..."
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
   show cautionne oops
-  c "...but the last experiment's results got so messy that I'm still cleaning the rafters."
+  c "...but the last experiment got so messy that I'm still cleaning the rafters."
   show cautionne lean eyeclosed
   c "Disappointing,{w=0.1} I know. "
   c "But never fear!"
@@ -132,7 +132,8 @@ label post_room_1:
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "I've {i}always{/i} wanted to see how motivating electrified floors can be!"
   "(He's clearly joking again.)"
-  "(Probably.{w} Maybe.)"
+  "(Probably.)"
+  "(...Maybe.)"
   "(...No.{w} Better not tempt fate.)"
 
   $ play_sound(tvoff)

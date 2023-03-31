@@ -15,11 +15,11 @@ label kill_ending:
     scene bg garage with fade:
         zoom 0.5 align (0.5,0.5)
     "({i}There it is.{/i}{w} There's the exit.)"
-    "(And the path is clear -{w=0.5} no guards,{w=0.1} no traps.{w} Just a big garage,{w=0.1} littered with cardboard boxes.)"
+    "(And the path is clear.{w} No guards,{w=0.1} no traps.{w} Just a big garage,{w=0.1} littered with cardboard boxes.)"
     "(Huh.{w} You weren't expecting your escape to be so...{w=0.5} simple.)"
     $ play_sound(quickfootsteps)
     pause 1
-    "(Scratch that.{w} You spoke too soon.)"
+    "(You spoke too soon.)"
     pause 0.2
     "Identify yourself!"
     #### cautionne's voices go here
@@ -43,12 +43,12 @@ label kill_ending:
     "Using{i} that?{/i}{w} Kid,{w=0.1} you shouldn't be wielding-{p=0.5}{nw}"
     scene cautionne gun ecu with dissolve
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
-    cr "Shut up and {i}let me improvise,{/i}{w=0.1} lab rat."
+    cr "Shut up and {i}let me talk,{/i}{w=0.1} lab rat."
     cr "I didn't {i}actually {/i}think you'd make it this far."
     cr "But alas,{w=0.1} as it turns out...{w=0.5} your puzzle-solving skills are...{w=0.6} decent."
     cr "In another life,{w=0.1} you'd make {i}quite {/i}the sidekick."
     "...Well,{w=0.1} maybe if you'd free me-{p=0.5}{nw}"
-    cr "No more hypotheticals."
+    cr "{i}Hell{/i} no."
     cr "You're {i}dangerous,{/i}{w=0.1} lab rat,{w=0.1} and I just can't let you go."
     scene cautionne gun ecu silent
     "(The brat's got bravado -{w=0.5} you'll give him that.{w} He's keeping that revolver remarkably steady,{w=0.1} even though he's shaking all over.)"
@@ -57,11 +57,11 @@ label kill_ending:
     "(You can draw and fire a gun faster than someone can say \"knife\".{w} It's the first thing they teach you as a trainee.)"
     "(He’s scared,{w=0.1} but he’s not going to hesitate any longer.)"
     "(You exhale,{w=0.1} and before his finger can snake itself over the trigger-)"
-    "(-you raise your gun towards his torso.)"
+    "(-You raise your gun towards his torso.)"
     scene black
     pause 3
     #"{b}[bang – with a cut to black]{/b}"
-    "(You half expected that freak to go down cackling,{w=0.1} like something out of a movie.)"
+    "(You half expected that freak to go down cackling,{w=0.1} like a scene out of a movie.)"
     "(A villain shrieking with laughter,{w=0.1} even as they're plugged with thousands of rounds.)"
     #"{b}[show bleeding {/b}{b}cautionne{/b}{b} cg with a slow fade]{/b}"
     scene cautionne gun ecu dead with fade:
@@ -95,9 +95,9 @@ label kill_ending:
     #"{b}[pause for a few seconds]{/b}"
     #"{b}[show dead {/b}{b}Cautionne{/b}{b} CG with a slow fade.]{/b}"
     $ play_sound(footsteps4)
-    "(As you walk from the garage,{w=0.1} you do your best to ignore Cautionne's lifeless body.)"
-    "(From the corner of your eye,{w=0.1} you watch his blood ooze onto the floor.{w} Once a better agent comes here to gather evidence,{w=0.1} they'll mop the stains and burn the body.)"
-    "(The sight of his blood at the edge of your vision fills you with exhaustion.{w} You just want to get out of here and let someone higher up sort this shit out.)"
+    "(As you walk from the garage,{w=0.1} you do your best to ignore his lifeless body.)"
+    "(From the corner of your eye,{w=0.1} you watch his blood ooze onto the floor.{w} Once a better agent comes here to gather evidence,{w=0.1} they'll clean the stains and burn the corpse.)"
+    "(The sight of blood at the edge of your vision fills you with exhaustion.{w} You just want to get out of here and let someone higher up sort this shit out.)"
     "(But as you leave,{w=0.1} you can't help but think to yourself...)"
     "(\"That was easy.\")"
     #"{b}[pause]{/b}"

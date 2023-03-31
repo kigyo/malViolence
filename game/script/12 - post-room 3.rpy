@@ -35,7 +35,7 @@ init python:
 
 label post_room_3:
     "(Huh.{w} The screen above you didn't turn on.)"
-    "(...Guess Cautionne really was serious about the whole \"silent treatment\" thing.)"
+    "(...Guess Cautionne really was serious about the whole silent treatment thing.)"
 
     if len(room3["investigated"]) == 7:
         "(Well,{w=0.1} you did what he asked you to do,{w=0.1} right?{w} You solved his puzzle.)"
@@ -69,7 +69,7 @@ label post_room_3:
     $Achievement.add(achievement_room3)
     pause 3
     $ play_sound(doorclose)
-    "(Looks like there're no screens in this corridor.{w} Guess Dr. Danger didn't make any more recordings...)"
+    "(Looks like there are no screens in this corridor.{w} You don't think you'll see any of Dr. Danger either.)"
 
     show bg corridor_exit with dissolve:
         align (0.5,0.5) zoom 0.5
@@ -82,8 +82,8 @@ label post_room_3:
     if route == "spare":
         pause
         "(...To be honest,{w=0.1} the lack of nasally jabbering...{w=0.5} kinda puts you on edge.)"
-        "(Not that you {i}like {/i}that brat who calls you a lab rat and makes you solve lethal puzzles.)"
-        "(But the silence forces you to focus on something much louder and much more disturbing.{w} Thoughts that've collapsed in your mind like juices from a rotting apple.)"
+        "(Not that you {i}like {/i}that brat who called you a lab rat and trapped you in several rooms with lethal puzzles.)"
+        "(But the silence forces you to focus on something much louder and much more disturbing.{w} Thoughts that are only now coming to the forefront of your mind.)"
         "(You think about Dr. Dan –{w=0.5} no.{i} Dr. Deidre Destrange.){/i}"
         "(You think about the results of your investigation.)"
         "(And you think about yourself:{w=0.5} a tiny cog in a massive machine.{w} A sleek,{w=0.1} pristine,{w=0.1} reliable machine -{w=0.5} carefully cleansed of the blood it's spilt.)"
@@ -94,7 +94,7 @@ label post_room_3:
 
     elif route == "neutral":
         "(Can't say you miss his nasally jabbering.)"
-        "(And yet...{w=0.5} you'd take it over the strange,{w=0.1} baleful{w=0.1} unease that hums at the back of your mind.{w} Like the \"silent\" air conditioner in your boss's office.)"
+        "(And yet...{w=0.5} you'd take it over that strange,{w=0.1} baleful{w=0.1} unease that hums at the back of your mind.{w} Like the \"silent\" air conditioner in your boss's office.)"
         "(It's not about your job.{w} You did what you were supposed to"
         "(No,{w=0.1} rather...{w=0.5} you're bothered about the evidence itself.)"
 
@@ -116,7 +116,7 @@ label post_room_3:
             "(No.{w} What {i}bothers {/i}you is your future.)"
             "(If evidence of STOP's crimes goes public,{w=0.1} your boss'll {i}definitely{/i} fire you.)"
             "(You'll lose a decent salary.{w} Your 401k.{w} Your tiny,{w=0.1} cozy{w=0.1} studio apartment.)"
-            "(And though you were never fond of your job...{w=0.5} you quite liked your stable,{w=0.1} boring{w=0.1} life.) "
+            "(And though you were never fond of your job...{w=0.5} you quite liked your stable,{w=0.1} boring{w=0.1} life as is.) "
             "(Guess that's another reason to get out of here.)"
             "(Someone else will deal with the problem.{w} You'll get a fat raise,{w=0.1} and pretend it never happened.)"
             $ play_sound(footsteps4)
@@ -124,10 +124,11 @@ label post_room_3:
 
     else:
         "({i}Finally.{/i}{w} You're tired of that brat's antics.)"
-        "(Yeah,{w=0.1} you didn't do your job properly.{w} But in your position,{w=0.1} who would?)"
+        "(Yeah,{w=0.1} you didn't do your job properly.{w} You certainly didn't take advantage of the intel opportunities you were given.)"
+        "(But in your position,{w=0.1} who would?)"
         "(With a little grovelling and brown-nosing,{w=0.1} you'll be back to your usual routine:{w=0.5} handing locked suitcases to labs and giving your boss his 3 o'clock coffee.)"
-        "(Besides,{w=0.1} STOP'll send a better agent in your place.{w} A capable one:{w=0.5} one who'll slurp up information like the fruit smoothies you get for lunch.)"
-        "(But not you.{w} {i}Never{/i} you.{w} You just came here for the bonus pay.)"
+        "(Besides,{w=0.1} STOP will send a better agent in your place.{w} A capable one:{w=0.5} one who'll sponge up information and collect samples like there's no tomorrow.)"
+        "(But that agent isn't you.{w} It's {i}never{/i} you.{w} You just come to work for a decent salary.)"
         pause 1
         "(Alright,{w=0.1} \"agent\".{w} Get going already.)"
         "(You've got a lair to break out of.)"

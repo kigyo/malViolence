@@ -19,7 +19,7 @@ label dr_danger_2:
   pause 0.5
   "(The last corridor looked straight out of a sci-fi movie.{w} This one's practically mundane.)"
   "(It's got more in common with a basic STOP research building.)"
-  "(It brings back memories of your days as low-level agent,{w=0.1} trudging through monochromatic halls,{w=0.1} delivering low-level intel to low-level research assistants.)"
+  "(It brings back memories of your days as low-level agent,{w=0.1} trudging through halls,{w=0.1} delivering low-level intel to low-level researchers.)"
   "(Your supervisor loved emphasizing the \"low-level\" part.)"
   "(Pressing your keycard to the reader,{w=0.1} hearing that little \"beep\" of approval,{w=0.1} seeing the doors click open...)"
   pause 0.5
@@ -82,7 +82,7 @@ label dr_danger_2:
   drs "...that makes it very difficult for him to...{w=0.5} {i}remain impartial.{/i}"
   voice "audio/voice/dr.danger/Danger_SB-I Apologize.ogg"
   drs "I apologize for being vague here."
-  drs "But this is a subject that has,{w=0.1} and will continue to,{w=0.1} remain between me and him."
+  drs "But the nature of this work has always been a...{w=0.5} private matter."
   show drdanger sidestare
   drs "It's not your responsibility.{w=0.5} It's mine."
   "(What's that supposed to mean?)"
@@ -141,7 +141,7 @@ label dr_danger_2:
   $ play_sound(doorlock)
   pause 1
   #"{b}[pause - a locked door handle sound {/b}{b}plays{/b}{b}]{/b}"
-  "(...Yup.{w} This is the next puzzle room.)"
+  "(...Yup.{w} Pretty sure this is another puzzle room.)"
   "(Alright,{w=0.1} then.{w} Let's get searching.)"
 show bg room2:
   zoom 0.8 

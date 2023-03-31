@@ -35,7 +35,7 @@ label neutral_ending:
     $ play_sound(quickfootsteps)
     #"{b}[quick footsteps sound out]{/b}"
     pause 1
-    "(Aw,{w=0.1} crap.{w} You jinxed yourself.)"
+    "(Crap.{w} You jinxed yourself.)"
     "H-hello?{w} Who's there?"
     x "So,{w=0.1} you {i}finally {/i}made it.{w=0.5} Did you like my games,{w=0.1} lab rat?"
 
@@ -92,11 +92,11 @@ label neutral_ending:
     pause 3
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
     cr "Patronize me at your own risk."
-    cr "...Is what I should've said before firing,{w=0.1} but I'm still new at this part."
-    cr "Only a little newer than you,{w=0.1} {i}lab rat.{/i}"
+    cr "...Is what I should've said before firing,{w=0.1} but I'm still new at this."
+    cr "Kind of like you at your job{w=0.1} {i}lab rat.{/i}"
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
-    cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} with a hand-to-mouth life."
-    cr "That's why you did this mission,{w=0.1} right?{w=0.5} ‘Cause you wanted that sweet,{w=0.1} fat,{w=0.1} paycheck?"
+    cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} living a hand-to-mouth life."
+    cr "That's why you did this mission,{w=0.1} right?{w=0.5} ‘Cause you wanted a sweet,{w=0.1} fat,{w=0.1} paycheck?"
     "{si}(...I...{w} I want...{w} to say something...){/si}"
     "{si}(But,{w=0.1} haah...{w} I'm shaking...{w} and sweating...{w} everywhere...){/si}"
     "{si}(All I can do...{w} is open my eyes...){/si}"
@@ -107,7 +107,7 @@ label neutral_ending:
 
     pause 3
     #"{b}[Show the bottom of his shooting CG]{/b}"
-    cr "Struggling just to open your mouth?{w=0.5} That's almost cute,{w=0.1} in a gross kind of way."
+    cr "Struggling just to open your mouth?{w=0.5} That's almost pitiful,{w=0.1} in a gross kind of way."
     cr "You've never experienced this much pain before,{w=0.1} have you?"
     if most_explored == 1:
 
