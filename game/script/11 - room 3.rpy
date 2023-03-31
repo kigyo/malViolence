@@ -400,7 +400,7 @@ label scrapbook_game_over:
     l "Subject succeeded in proving the fatality of ray gun protoype Delta-9.{/i}"
     l "{b}Contributing Factors to Death:{/b} They messed up my scrapbook – so now, we're even!"
 
-    $deadend(achievement_dead10)
+    $deadend("dead10")
     le "DEAD END 10: Holy Scrap!"
     pause 2
     nvl clear
@@ -452,7 +452,7 @@ label quilt_game_over:
     l "Subject failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles."
     l "{i}(NB: It needed to be a square number for the triggering mechanism to hit its mark.){/i}"
     l "{b}Contributing Factors to Death:{/b} Couldn't sew their way out of a wet paper bag."
-    $deadend(achievement_dead11)
+    $deadend("dead11")
     le "DEAD END 11: Quilt In Action."
     pause 2
     nvl clear
@@ -508,7 +508,7 @@ label toys_game_over:
     $nvl_heading = "Lab Report #414"
     l "Subject was transported to the automated disposal unit via trap door, whereupon the automated disposal department did what it does best."
     l "{b}Contributing Factors to Death:{/b} Expected leniency where there was none to be found."
-    $deadend(achievement_dead12)
+    $deadend("dead12")
     le "DEAD END 12: Get Stuffed."
     pause 2
     nvl clear
@@ -561,7 +561,7 @@ label cooking_game_over:
     l "Subject perished soon (but not soon enough) after being plastered against the wall by a gigantic frying pan-shaped mallet."
     l "Good riddance, although I have to admit, I was looking for an opportunity to get a use out of that particular trap."
     l "{b}Contributing Factors to Death:{/b} Committed sacrilege against breakfast food."
-    $deadend(achievement_dead13)
+    $deadend("dead13")
     le "DEAD END 13: Flipping Miserable!"
     pause 2
     nvl clear

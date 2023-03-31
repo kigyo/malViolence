@@ -247,7 +247,7 @@ init -1 python:
                         break
                 if invalid: break
             if invalid:
-                if (achievement_dead9 in persistent.dead_ends and not preferences.hard_mode):
+                if ("dead9" in persistent.dead_ends and not preferences.hard_mode):
                     cybernetics_reset()
                     #TODO: some kind of error feedback
                     return
@@ -277,7 +277,7 @@ init -1 python:
                             tally.update(checked)
                             loop_counter += 1
 
-                if (achievement_dead9 in persistent.dead_ends and not preferences.hard_mode):
+                if ("dead9" in persistent.dead_ends and not preferences.hard_mode):
                     cybernetics_reset()
                     renpy.restart_interaction()
                     #TODO: some kind of error feedback

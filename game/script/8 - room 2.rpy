@@ -282,7 +282,7 @@ label evidence_game_over:
     #"{i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
     scene black
     pause 3
-    $deadend(achievement_dead7)
+    $deadend("dead7")
     $nvl_heading = "Lab Report #273"
     l "Subject experienced permanent loss of life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
     l "{i}Guess they were worth the trouble of installation!"
@@ -343,7 +343,7 @@ label panopticon_game_over:
     l "Subject expired after 3 days due to lack of water, light, food, and mental stimulation."
     l "Scratched their nails to bleeding point on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
     l "{b}Contributing Factors to Death:{/b} Didn't take the consequences of imprisonment very seriously."
-    $deadend(achievement_dead8)
+    $deadend("dead8")
     le "DEAD END 08: A Taste of Sobering Punishment."
     pause 2
     nvl clear
@@ -412,7 +412,7 @@ label recalibration_game_over:
     l "On the other hand, the lab rat won't get up ever again. They're missing a few too many critical parts."
     l "{b}Contributing Factors to Death:{/b} They gave too much of themselves to my cause."
 
-    $deadend(achievement_dead9)
+    $deadend("dead9")
     le "DEAD END 09: Didn't Make The Cut."
     pause 2
     nvl clear
@@ -511,7 +511,7 @@ label word_game_over:
         scene black
         pause 3
 
-    $deadend(achievement_dead6)
+    $deadend("dead6")
     $nvl_heading = "Lab Report #404"
     l "Not much to say here."
     l "The lab rat just sucks at word games!"

@@ -108,7 +108,7 @@ init python:
         if win:
             store.room3["cooking"] = "solved"
             return True
-        elif (achievement_dead13 in persistent.dead_ends and not preferences.hard_mode):
+        elif ("dead13" in persistent.dead_ends and not preferences.hard_mode):
             renpy.restart_interaction()
             #TODO: some kind of error feedback
             pass

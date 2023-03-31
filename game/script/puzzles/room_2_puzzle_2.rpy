@@ -38,7 +38,7 @@ init python:
             store.room2["panopticon"] = "solved"
             return True
 
-        if panopticon_moves >= panopticon_move_limit and not (achievement_dead8 in persistent.dead_ends and not preferences.hard_mode):
+        if panopticon_moves >= panopticon_move_limit and not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
             renpy.jump("panopticon_game_over")
 
         return
@@ -80,7 +80,7 @@ screen room2_panopticon():
                 null height 10
                 label _("Instructions")
                 text _("In a stealthy campaign, {color=#fff}Cautionne has managed to take control of a STOP holding center,{/color} where several young test subjects are being held in a futuristic panopticon.\n\nTo give them the best chance of survival, Cautionne needs to {color=#fff}rearrange the cells so that each group of escaping testees is balanced.{/color}\n\nThese groups are shown as {color=#fff}a circle, a triangle, a square{/color} and {color=#fff}an X.{/color}\n\nHowever, the bureaucratic systems have left only the bare minimum operating instructions on how to operate the panopticon.\n\n{color=#fff}Help Cautionne properly arrange the cells according to the limitations of the system.{/color}")
-            if (achievement_dead8 in persistent.dead_ends and not preferences.hard_mode):
+            if ("dead8" in persistent.dead_ends and not preferences.hard_mode):
                 textbutton "RESTART" action [Function(panopticon_init)] style "confirm_button" xalign 0.0 yalign 1.0 at zoomed(0.75)
             textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return(), With(puzzle_hide)] style "confirm_button" xalign 1.0 yalign 1.0
 
@@ -103,7 +103,7 @@ screen room2_panopticon():
                         textbutton "COUNTERCLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "l")]
                     frame:
                         textbutton "CLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "r")]
-        if not (achievement_dead8 in persistent.dead_ends and not preferences.hard_mode):
+        if not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
             frame xalign 1.0:
                 text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
 

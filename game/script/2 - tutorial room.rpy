@@ -171,7 +171,7 @@ label tutorial_room:
                 $nvl_heading = "Lab Report #310"
                 l "Subject expired shortly after ingesting higher than recommended daily serving of cyanide-laced rodent feed."           
                 l "{b}Contributing Factors to Death:{/b} Their stomach was bigger than their brain, evidently. \n{w}May need to re-evaluate STOP agents' dietary preferences."
-                $deadend(achievement_dead1)
+                $deadend("dead1")
                 le "DEAD END 01: Cheers! It's Cyanide."
                 nvl hide
                 pause 2

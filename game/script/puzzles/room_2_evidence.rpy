@@ -46,7 +46,7 @@ init python:
         if evidence_valid():
             store.room2["evidence"] = "solved"
             return True
-        elif (achievement_dead7 in persistent.dead_ends and not preferences.hard_mode):
+        elif ("dead7" in persistent.dead_ends and not preferences.hard_mode):
             evidence_init()
             renpy.retain_after_load()
             renpy.restart_interaction()

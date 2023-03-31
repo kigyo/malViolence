@@ -191,7 +191,7 @@ init -1 python:
                             if not m.matched and m == match:
                                 lose = False
                                 break
-                if lose and not (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
+                if lose and not ("dead4" in persistent.dead_ends and not preferences.hard_mode):
                     renpy.jump('hacking_game_over')
                 elif lose:
                     puzzle_board_reset()
@@ -209,7 +209,7 @@ init -1 python:
                     store.room3["toys"] = "solved"
                     return True
                 if not self.check_toy_path(self.player):
-                    if not (achievement_dead12 in persistent.dead_ends and not preferences.hard_mode):
+                    if not ("dead12" in persistent.dead_ends and not preferences.hard_mode):
                         renpy.jump('toys_game_over')
                     else:
                         toy_board_reset()

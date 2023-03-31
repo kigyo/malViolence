@@ -119,8 +119,8 @@ screen failchievement_menu():
                 
                 cols 2 ## You can change this number depending on the width of your achievements.
                 spacing 10
-                for v in death_name.values():
-                    if [d.name == v for d in persistent.dead_ends]:
+                for v in death_name:
+                    if v in persistent.dead_ends:
                     
                         frame:
                             
@@ -130,7 +130,7 @@ screen failchievement_menu():
                                 yalign 0.5
                                 xysize (100, 100)
                                 
-                                add v[2] size (100, 100) yalign 0.5
+                                add death_name[v][2] size (100, 100) yalign 0.5
 
                                 null width 20
 
@@ -138,8 +138,8 @@ screen failchievement_menu():
                                     spacing 0
                                     yfill False
                                     
-                                    text v[0] style 'achievements_label' color '#000000'
-                                    text v[1] color '#000000'
+                                    text death_name[v][0] style 'achievements_label' color '#000000'
+                                    text death_name[v][1] color '#000000'
                     else:
                         frame:
                             
@@ -160,10 +160,10 @@ screen failchievement_menu():
 
                                     ## We're setting the data feedback to represent
                                     ## the None and 'hidden' achievements.
-                                    if v[3] == "dead":
+                                    if death_name[v][3] == "dead":
                                         ## Index '1' is the description of the achievemnt.
                                     
-                                        text str(v[0]) style 'achievements_label' color '#FFFFFF33'
+                                        text str(death_name[v][0]) style 'achievements_label' color '#FFFFFF33'
                                         #text str(v[1]) color '#FFFFFF33'
                                         text "???" color '#FFFFFF33'
                                     
@@ -243,7 +243,10 @@ screen achievement_notification():
 
             hbox:
                 xysize (100, 100)
-                add achievement_notification_list[0].image
+                if isinstance(achievement_notification_list[0], str):
+                    add death_name[achievement_notification_list[0]][2]
+                else:
+                    add achievement_notification_list[0].image
                 
                 null width 20
 
@@ -254,17 +257,23 @@ screen achievement_notification():
                     yfill False
                     xfill False
 
-                    text str(achievement_notification_list[0].name):
-                        color gui.accent_color
-                        size 25
+                    if isinstance(achievement_notification_list[0], str):
+                        text death_name[achievement_notification_list[0]][0]:
+                            color gui.accent_color size 25
+                    else:
+                        text str(achievement_notification_list[0].name):
+                            color gui.accent_color size 25
 
-                    text str(achievement_notification_list[0].message):
-                        style 'victory_message_text'
-                        size 16
+                    if isinstance(achievement_notification_list[0], str):
+                        text death_name[achievement_notification_list[0]][1]:
+                            style 'victory_message_text'
+                    else:
+                        text str(achievement_notification_list[0].message):
+                            style 'victory_message_text'
 
 style victory_message_text:
     color "#ffffff"
-    size 20
+    size 16
 
 transform achievement_appear:
     subpixel True
