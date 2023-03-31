@@ -272,6 +272,7 @@ label init_bomb:
     $ bomb = Bomb(len(bomb_mask[0]), len(bomb_mask), parts)
 
 screen room1_bomb(b, interactable=True):
+    sensitive interactable
     modal True
     tag puzzle
     layer "puzzles"
@@ -296,11 +297,7 @@ screen room1_bomb(b, interactable=True):
                 xalign 0.5
                 label "Instructions"
                 text bomb_description
-        if not interactable:
-            imagebutton:
-                idle "#ffffff01"
-                xysize (config.screen_width, config.screen_height)
-                action NullAction()
+
         hbox xalign 1.0 yalign 1.0 spacing 30:
-            textbutton "SUBMIT" style "confirm_button" action Function(b.verify) sensitive interactable
-            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive interactable
+            textbutton "SUBMIT" style "confirm_button" action Function(b.verify)
+            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]

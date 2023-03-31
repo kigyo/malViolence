@@ -156,7 +156,6 @@ label room_1:
             else:
                 #repeated investigation
                 pass
-            pause 0.0000001
             show screen room1_bomb(bomb, False, _layer="master") with easeintop
             $ room1["bomb"] += 1
             $ inspect = None
