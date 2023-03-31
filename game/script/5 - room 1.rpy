@@ -162,7 +162,7 @@ label room_1:
             $renpy.hide_screen("room1_bomb", "master")
             call screen room1_bomb(bomb, True)
             if room1["bomb"] == "solved":
-                jump decanting_solved
+                jump bomb_solved
 
     elif inspect == "marble":
         if room1["marble"] == 0:
@@ -201,8 +201,8 @@ label bomb_solved:
     #Show a marble
     "(Congratulations! {w}You solved the bomb puzzle.)"
     hide black onlayer screens
-    hide screen room1_decanting
-    with dissolve
+    hide screen room1_bomb
+    with puzzle_hide
     $ inspect = None
     call screen room1
 
@@ -241,7 +241,7 @@ label hacking_solved:
     "(Congratulations! {w}You solved the hacking puzzle.)"
     hide black onlayer screens
     hide screen puzzle_playspace
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room1
 
@@ -290,7 +290,7 @@ label decanting_solved:
     "(Congratulations! {w}You solved the decanting puzzle.)"
     hide black onlayer screens
     hide screen room1_decanting
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room1
 

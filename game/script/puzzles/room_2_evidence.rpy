@@ -109,6 +109,11 @@ screen room2_evidence:
             textbutton "SUBMIT" style "confirm_button" action Function(evidence_submit) xalign 1.0 yalign 0.5
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
+    if config.developer:
+        vbox:
+            textbutton _("Skip Puzzle") action [SetDict(room2, "evidence", "solved"), Return()] style "confirm_button"
+            textbutton _("Game Over") action [Jump("evidence_game_over")] style "confirm_button"
+
 screen evidence_note(id, x=0.5, y=0.45, xs=350, ys=350):
     add Solid("#0000004a") xysize xs,ys align (x,y) xoffset 20 yoffset 20
     frame background Solid("#ffafee") xysize xs,ys padding int(xs/10),int(ys/10) align (x,y):

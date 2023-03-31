@@ -420,7 +420,7 @@ label quilt_solved:
     "(Congratulations! {w}You've solved the quilt puzzle.)"
     hide black onlayer screens
     hide screen room3_quilt 
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room3
 
@@ -472,7 +472,7 @@ label toys_solved:
     "(Congratulations! {w}You've solved the toys puzzle.)"
     hide black onlayer screens
     hide screen toy_playspace
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room3
 
@@ -528,7 +528,7 @@ label cooking_solved:
     "(Congratulations! {w}You've solved the {i}mise en place{/i} puzzle.)"
     hide black onlayer screens
     hide screen mise_en_place
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room3
 

@@ -176,4 +176,5 @@ label dr_danger_3:
 
   pause 5
   $ play_music(room3theme, fadein=1.0, fadeout=1.0)
+  $ inspect = None
   call screen room3 with dissolve

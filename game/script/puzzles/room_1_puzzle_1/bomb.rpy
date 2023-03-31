@@ -301,3 +301,8 @@ screen room1_bomb(b, interactable=True):
         hbox xalign 1.0 yalign 1.0 spacing 30:
             textbutton "SUBMIT" style "confirm_button" action Function(b.verify)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
+
+    if config.developer:
+        vbox:
+            textbutton _("Skip Puzzle") action [SetDict(room1, "bomb", "solved"), Return()] style "confirm_button"
+            textbutton _("Game Over") action [Jump("bomb_game_over")] style "confirm_button"

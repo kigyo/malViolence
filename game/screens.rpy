@@ -1632,7 +1632,6 @@ init python:
         renpy.scene("screens")
         renpy.scene("puzzles")
         renpy.show("black")
-        renpy.with_statement(dissolve)
         renpy.block_rollback()
         if room == "tutorial":
             renpy.show_screen("gameover", "tutorial_room", tutroom, _layer="master")

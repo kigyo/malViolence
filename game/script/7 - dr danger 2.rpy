@@ -147,10 +147,11 @@ label dr_danger_2:
   #"{b}[pause - a locked door handle sound {/b}{b}plays{/b}{b}]{/b}"
   "(...Yup.{w} Pretty sure this is another puzzle room.)"
   "(Alright,{w=0.1} then.{w} Let's get searching.)"
-show bg room2:
-  zoom 0.8 
-  ease 5 zoom 0.335 xalign 0.0 yalign 0.0
+  show bg room2:
+    zoom 0.8 
+    ease 5 zoom 0.335 xalign 0.0 yalign 0.0
 
-pause 5
-$ play_music(room2theme, fadein=1.0, fadeout=0.1)
-call screen room2 with dissolve
+  pause 5
+  $ play_music(room2theme, fadein=1.0, fadeout=0.1)
+  $ inspect = None
+  call screen room2 with dissolve
