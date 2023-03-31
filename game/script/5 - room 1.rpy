@@ -95,7 +95,7 @@ label room_1:
                 yalign 0.2 xalign 0.5
             "(You paused when you saw the silhouettes from across the room...{w=0.5} but on closer inspection these aren't firearms at all.{w} They're {i}megaphones.{/i})"
             "(So many colors,{w=0.1} materials,{w=0.1} variations… {w}It's far from organized,{w=0.1} but it does look like a collection.)"
-            "(It's hard to picture Dr. Danger,{w=0.1} one of STOP's most wanted criminals,{w=0.1} picking up such a quirky hobby.)"
+            "(It's hard to picture Dr. Danger,{w=0.1} one of STOP's most wanted criminals,{w=0.1} picking up such an odd hobby.)"
             "(And yet,{w=0.1} half of them are tagged with the initials \"DD\".)"
             hide room1_megaphones with dissolve
             pause 0.5
@@ -124,8 +124,9 @@ label room_1:
                 #"<TODO: Insert intro script and rules.>"
             else:
                 pass
-            show screen puzzle_playspace(pb, False) with easeintop
+            show screen puzzle_playspace(pb, False, _layer="master") with easeintop
             $ room1["hacking"] += 1
+            $renpy.hide_screen("puzzle_playspace", "master")
             call screen puzzle_playspace(pb)
             if room1["hacking"] == "solved":
                 jump hacking_solved
@@ -141,9 +142,10 @@ label room_1:
             else:
                 #repeated investigation
                 pass
-            show screen room1_decanting with easeintop
+            show screen room1_decanting(_layer="master") with easeintop
             $ room1["decanting"] += 1
             $ inspect = None
+            $renpy.hide_screen("room1_decanting", "master")
             call screen room1_decanting
             if room1["decanting"] == "solved":
                 jump decanting_solved
@@ -184,7 +186,7 @@ label hacking_game_over:
     "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be-){p=0.3}{nw}"
     hide black onlayer screens
     hide screen puzzle_playspace
-    with easeouttop
+    with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     cr "Good news!{w=0.5} STOP found your computer."
@@ -198,8 +200,7 @@ label hacking_game_over:
 
     $nvl_heading = "Lab Report #615"
     l "Subject died after computer shrapnel blew up into their face."
-    l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn’t thorough enough with their background check."
-    l "Idiot."
+    l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn't thorough enough with their background check."
     $deadend(achievement_dead4)
     le "DEAD END 04: Trouble-shooting?"
     pause 2
@@ -238,7 +239,7 @@ label decanting_game_over:
     hide black onlayer screens
     hide screen room1_decanting 
     hide screen room1
-    with easeouttop
+    with puzzle_hide
     "(Really?!{w} Did you find a solution that {i}he {/i}hadn't thought of?)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Y'know,{w=0.1} I {i}did {/i}say that two doses would be lethal..."
@@ -252,7 +253,7 @@ label decanting_game_over:
     extend " {cps=20}have your legs always been made of jelly?){/cps}"
     cr "...But if your bio signs are anything to go by...{w=0.5} it looks like overexposure to the vapors does the job too!"
 
-    play sound "audio/sfx/Body Fall 1.ogg"
+    $ play_sound(bodyfall)
 
     show bg room1 at dizzy:
         zoom 0.335 yalign 0.0

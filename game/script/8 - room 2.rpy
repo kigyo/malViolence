@@ -25,10 +25,23 @@ screen room2():
             imagebutton idle "rooms/room2_note2.png" action [SetVariable("inspect", "note2"), Jump("room_2")] pos (1417, 1767) mouse "inspect"
         if 3 not in room2["notes"]:
             imagebutton idle "rooms/room2_note3.png" action [SetVariable("inspect", "note3"), Jump("room_2")] pos (3870, 2217) mouse "inspect"
+        if 4 not in room2["notes"]:
+            imagebutton idle "rooms/room2_note3.png" action [SetVariable("inspect", "note4"), Jump("room_2")] pos (5500, 1987) mouse "inspect"
         
     if config.developer:
         frame:
             textbutton _("Skip Room") action [Jump("post_room_2")] style "main_menu_button"
+
+
+define cybernetics_description = _("""- Lay down new synthetic nerual pathways, but be mindful of the original peices that cannot be moved!
+
+- Neural pathways must form one continuous loop and occupy every available space.
+
+- Pathways can cross over themselves, but cannot retreace themselves, so no T intersections!
+
+- At any 4 way intersection, a neuron will always go straight though and never turn at an intersection.
+
+- You can only submit possible solutions where there are no open ended pathways (including T intersections).""")
 
 
 define word_description = _("""Can you come up with a word that's almost as good as the above?
@@ -53,6 +66,9 @@ label room_2:
     elif inspect == "note3":
         #TODO flavor text for note on the desk
         $room2["notes"].append(3)
+    elif inspect == "note4":
+        #TODO flavor text for note on the water cooler
+        $room2["notes"].append(4)
 
     elif inspect == "blueprints":
         if room2["blueprints"] == 0:
@@ -62,7 +78,7 @@ label room_2:
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
             "(That said,{w=0.1} poor penmanship hasn't dulled the designs themselves.{w} The {i}least{/i} dangerous of these would be devastating out in the field.)"
-            "(The oldest of the blueprints -{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person authored them.)"
+            "(The oldest of the blueprints -{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
             "(In fact,{w=0.1} if you squint...{w=0.5} you can still find the signatures at the bottom.)"
             "(\"Destrange,\"{w=0.1} they say.{w} They're dated more than 15 years ago.)"
             hide room2_blueprintcollection with dissolve
@@ -78,9 +94,9 @@ label room_2:
         if room2["post-its"] == 0:
             show room2_postitnotes with dissolve:
                 yalign 0.2 xalign 0.5
-            "(You eye over the mass of scrawled notes pinned in front of you.{w} There're two distinct handwritings here,{w=0.1} but the contents are mostly the same{w=0.5} - and mostly {i}domestic{/i}.) "
-            "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and...{w=0.5} what {i}stories{/i} to read?)"
-            "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and {i}chores?{/i})"
+            "(You eye over the mass of scrawled notes pinned in front of you.{w} There are two distinct sets of handwriting here,{w=0.1} but the contents are mostly the same...{w=0.5} and mostly {i}domestic?{/i}) "
+            "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and what stories to read.)"
+            "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and chores...)"
             "(Whoever left these notes for each other weren't just sharing the same space.\n{w}They were {i}living{/i} together.)"
             hide room2_postitnotes with dissolve
         else:
@@ -157,14 +173,15 @@ label room_2:
             "(You've already solved the panopticon puzzle.)"
         else:
             if room2["panopticon"] == 0:
-                $ panopticon_init()
+                $ panopticon_init(True)
                 #panopticon introduction
             else:
                 #repeated investigation
                 pass
-            show screen room2_panopticon with easeintop
+            show screen room2_panopticon(_layer="master") with easeintop
             $ room2["panopticon"] += 1
             $ inspect = None
+            $renpy.hide_screen("room2_panopticon", "master")
             call screen room2_panopticon 
             if room2["panopticon"] == "solved":
                 jump panopticon_solved
@@ -174,40 +191,49 @@ label room_2:
             "(You've already solved the evidence board puzzle.)"
         else:
             if room2["evidence"] == 0:
+                $ evidence_init(True)
                 #evidence introduction
                 pass
             else:
                 #evidence investigation
                 pass
+            show screen room2_evidence(_layer="master") with easeintop
             $ room2["evidence"] += 1
             $ inspect = None
+            $renpy.hide_screen("room2_evidence", "master")
+            call screen room2_evidence
+            if room2["evidence"] == "solved":
+                jump evidence_solved
 
     elif inspect == "recalibration":
         if "recalibration" in room2["solved"]:
-            "(You've already solved the recalibration puzzle.)"
+            "(You've already solved the cybernetics puzzle.)"
         else:
-            call init_cybernetics from _call_init_cybernetics
+            
             if room2["recalibration"] == 0:
-                "<TODO: Insert intro script and rules.>"
-                pass
+                call init_cybernetics
             else:
                 #repeated investigation
                 pass
-            show screen cybernetics(cyb) with easeintop
+            show screen cybernetics(cyb, _layer="master") with easeintop
             $ room2["recalibration"] += 1
             $ inspect = None
+            $renpy.hide_screen("cybernetics", "master")
             call screen cybernetics(cyb)
+            if room2["recalibration"] == "solved":
+                jump recalibration_solved
 
     elif inspect == "word":
         if room2["word"] == 0:
+            $word_init()
             #word introduction
-            pass
         else:
             #repeated investigation
             pass
-        show screen room2_word with easeintop
+        show screen room2_word(_layer="master") with easeintop
         $ room2["word"] += 1
         $ inspect = None
+        $renpy.hide_screen("room2_word", "master")
         call screen room2_word
         if room2["word"] == "solved":
             jump post_room_2
@@ -230,6 +256,41 @@ label evidence_solved:
     with dissolve
     $ inspect = None
     call screen room2
+
+label evidence_game_over:
+    $renpy.block_rollback()
+    $ inspect = "game over"
+    show screen room2_evidence
+    show black onlayer screens with dissolve:
+        alpha 0.5
+    "(You carefully insert one more pin into the board, which leaves-){p=0.3}{nw}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+    cr "Whoa, you {i}suck {/i}at this!"
+    hide black onlayer screens
+    hide screen room2_evidence
+    with puzzle_hide
+    pause 0.5
+    "(Something about his unusually straightforward insult puts ice into your veins.)"
+    cr "It's like you're solving this puzzle with your eyes closed and your nose plugged."
+    cr "...There some reason you don't want to look at the truth in front of you,{w=0.1} lab rat?"
+    "(...No, no, it's just-){p=0.3}{nw}"
+    cr "I know you're not taking this seriously.{w=0.5} Maybe we should just move on?"
+    cr "You know what?{w=0.5} Yeah. "
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+    cr "{i}Let's put a pin in it.{/i}"
+    #"{i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
+    scene black
+    pause 3
+    $deadend(achievement_dead7)
+    $nvl_heading = "Lab Report #273"
+    l "Subject experienced permanent loss of life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
+    l "{i}Guess they were worth the trouble of installation!"
+    l "{b}Contributing Factors to Death:{/b} Couldn't put progress on the board."
+    le "DEAD END 07: NAME!"
+    pause 2
+    nvl clear
+    $game_over(2)
+    return
 
 label panopticon_solved:
     $renpy.block_rollback()
@@ -256,12 +317,12 @@ label panopticon_game_over:
     "(-and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
     hide black onlayer screens
     hide screen room2_panopticon
-    with easeouttop
+    with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Seems like you've run out of time,{w=0.1} lab rat."
-    cr "That's it.{w=0.5} The jailbreak is broken.{w=0.5} You screwed up."
+    cr "That's it.{w=0.5} The jailbreak is over.{w=0.5} You screwed up."
     "(So it {i}was {/i}a prison?{w} Then-)"
-    cr "If it was just between you and me,{w=0.1} I'd be \"whatever\" about it."
+    cr "If this only concerned you and me,{w=0.1} I'd be \"whatever\" about it."
     cr "We all make mistakes,{w=0.1} y'know?{w=0.5} So,{w=0.1} I'm super forgiving and cool and mature about this kind of thing."
     cr "...But you just lost those kids a chance to get out before the {i}operations{/i} start."
     "(...Sorry,{w=0.1} {i}operations?{/i})"
@@ -278,7 +339,7 @@ label panopticon_game_over:
     pause 3
     $nvl_heading = "Lab Report #893"
     l "Subject expired after 3 days due to lack of water, light, food, and mental stimulation."
-    l "Scratched their nails bloody on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
+    l "Scratched their nails to bleeding point on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
     l "{b}Contributing Factors to Death:{/b} Didn't take the consequences of imprisonment very seriously."
     $deadend(achievement_dead8)
     le "DEAD END 08: A Taste of Sobering Punishment."
@@ -309,15 +370,15 @@ label recalibration_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     "(You confirm your choice,{w=0.1} and a beeping starts.)"
-    "(It's tone sets the hairs on the back of your neck on edge.)"
+    "(Its tone sets the hairs on the back of your neck on edge.)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "You're losing 'em,{w=0.1} Doc."
-    "(...Wait.{w} This is an actual {i}person?{/i})"
+    "(...Wait.{w} That's...{w=0.5} an actual...?)"
     hide black onlayer screens
     hide screen cybernetics 
-    with easeouttop
+    with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
-    cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} Their own nervous system will rip them apart with spasming."
+    cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} That person's own nervous system will rip their body apart with spasming."
     cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"
     "(...Well,{w=0.1} uh-){p=0.3}{nw}"
     cr "Don't worry,{w=0.1} I can fix this."
@@ -330,7 +391,7 @@ label recalibration_game_over:
     pause 1
     cr "And I'm gonna need them {cps=20}{i}right now.{/i}{/cps}"
 
-    play sound "audio/sfx/Body Fall 1.ogg"
+    $ play_sound(bodyfall)
 
     show bg room2 at dizzy:
         zoom 0.335 yalign 0.0
@@ -343,7 +404,7 @@ label recalibration_game_over:
     pause 3
     $nvl_heading = "Lab Report #062"
     l "Patient was eventually re-stabilized and should wake up within the next few days."
-    l "On the other hand, the lab rat won't get up ever again. Seems like they're missing a few too many critical parts."
+    l "On the other hand, the lab rat won't get up ever again. They're missing a few too many critical parts."
     l "{b}Contributing Factors to Death:{/b} They gave too much of themselves to my cause."
 
     $deadend(achievement_dead9)
@@ -361,14 +422,17 @@ label word_game_over:
         alpha 0.5
     # [error sound effect]
     $ random_choice = random.randint(1,5)
-    if random_choice == 1:
+    if word_answer == ["","","","",""]:
+        #TODO: special text if you didn't even enter anything
+        pass
+    elif random_choice == 1:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
         cr "Holy crap!{w=0.5} Did you just manage to guess that right on your first try?"
         "(Huh?{w} Really?)"
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "{i}Kidding!{/i}"
         "(You-)"
-        cr "God,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
+        cr "C'mon,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
         #"{b}ZAP SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
@@ -376,11 +440,11 @@ label word_game_over:
     elif random_choice == 2:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Whoa...{w=0.5} You got it."
-        cr "...Are you looking up a walkthrough our something?"
+        cr "...Did someone write you a walkthrough online?"
         "(You-)"
-        cr "If so,{w=0.1} go back and complain in the comments."
+        cr "If so,{w=0.1} go complain in the comments."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
-        cr "They led you to a dead end!"
+        cr "You've just met a a dead end!"
         #"{b}SMASH SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
@@ -403,7 +467,7 @@ label word_game_over:
         "(You-)"
         cr "But since you're here,{w=0.1} I've got another game for you to play."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
-        cr "Place your bet,{w=0.1} lab rat!{w=0.5} Is the gun next to you loaded or unloaded?"
+        cr "It's time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
         "(What gu-)"
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
         scene black
@@ -412,9 +476,9 @@ label word_game_over:
     else:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "...Wow.{w=0.5} That wasn't even {i}close. {/i}"
-        cr "You'd have better luck just smashing keys."
+        cr "You'd have better luck smashing keys."
         "(You-)"
-        cr "Like.{i} {/i}{i}So{/i}{i}.{/i}"
+        cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}"
         #"{b}SMASHING SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
@@ -429,27 +493,3 @@ label word_game_over:
     nvl clear
     $game_over(2)
     return
-   
-
-#label room2_deaths:
-#    "{u}{b}Death Scenes{/b}{/u}"
-#
-#    "Puzzle 1" "This is the evidence board puzzle. I wanted to touch base with the writers to see what kind of scenario could fit here, and then it seems like the dead end would depend on that, so any ideas? I can come up with the hints and clues, but it seems like it oculd be a good exposition oppertunity so I wanted to ask writers about it. "
-#
-#    "Puzzle 1 Death Scene" "{b}{/b}
-#    (You carefully insert one more pin into the board, which leaves-)
-#    Whoa, you {i}suck {/i}at this!
-#    (Something about his unusually straightforward insult puts ice into your veins.)
-#    It's like you're solving this puzzle with your eyes closed and your nose plugged.
-#    ...There some reason you don't want to look at the truth in front of you, lab rat?
-#    (...No, no, it's just-)
-#    I know you're not taking this seriously. Maybe we should just move on?
-#    You know what? Yeah. 
-#    {i}Let's put a pin in it.{/i}
-#    {i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
-
-#    "Lab Report #273" "{b}{/b}{i}Subject experienced permanent loss-of-life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling. {/i}"
-
-#    "{i}Guess they were worth the trouble of installation!{/i}"
-
-#    "Contributing Factors to Death" "{i}{b}{/b}{/i}{i}Couldn't put progress on the board.{/i}"

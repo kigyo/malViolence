@@ -7,16 +7,14 @@ label post_room_2:
   "(No message from the kid yet.)"
   "(Maybe if you're stealthy,"
   show screen nodismiss
-  play sound "audio/sfx/Walking Footsteps 2.ogg"
-  queue sound "audio/sfx/Walking Footsteps 2.ogg"
+  $ queue_sound ([footsteps2, footsteps2])
 
   show bg room2:
     zoom 0.335 align (0.0,0.0)
     ease 8 zoom 0.8 xalign 0.8 yalign 0.5
   extend "{cps=20} you could sneak past{/cps}{cps=10} without being subjected to{/cps} {cps=6}another one of his-){/cps}{nw}"
   #"{b}[{/b}{b}pasue{/b}{b} as the TV TURNS ON and cautionne appears]{/b}"
-  play sound "audio/sfx/TV On 1.ogg"
-  queue sound "audio/sfx/staticshort.ogg"
+  $ queue_sound ([tvon, staticshort])
   show cautionne hairtwirl
   show crt
   show cautionne_frame_glow at bg
@@ -33,16 +31,16 @@ label post_room_2:
   extend "but I've got a good eye for this kind of thing!"
   c "I bet you've got that bubbly feeling buzzing under your skin..." 
   show cautionne lean speaking
-  c "Like sweet,{w=0.1} sparkling limonata in your veins?"
+  c "Like sweet,{w=0.1} sparkling lemonade in your veins?"
   "(What a colorful turn of phrase.)"
   show cautionne lean eyeclosed
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "I'd give my right arm to feel as excited as you do now,{w=0.1} lab rat!"
-  c "You must be {i}salivating {/i}at the mountain of evidence beneath your fingertips. "
-  c "Weapons,{w=0.1} corkboards,{w=0.1} secret evil notes..."
+  c "You must be {i}salivating {/i}at the mountain of evidence beneath your fingertips."
+  c "Weapons,{w=0.1} corkboards,{w=0.1} secret evil plans..."
   show cautionne hairtwirl
   c "All the classics are here,{p=0.5}{nw}"
-  c "and {i}we both know{/i} you know you want to rub your grubby paws all over them."
+  c "and {i}we both know{/i} you know you really, {i}really{/i} want to rub your grubby paws all over them."
   show cautionne think
   c "Even if you copied half of one blueprint onto a bar napkin{p=0.5}{nw}"
   c "and threw it through the washing machine,{p=0.5}{nw}"
@@ -71,16 +69,16 @@ label post_room_2:
     pause 1
     "({i}...You're just being thorough.{/i})"
   elif len(room2["investigated"]) == 0:
-    "(You're sticking to the mission objective,{w=0.1} just as you're trained to do.)"
-    "(He's calling the shots right now -{w=0.1}  but if you stay focused,{w=0.1} he'll run out of rooms.)"
+    "(You're sticking to the mission objective,{w=0.1} just as you've been trained to do.)"
+    "(He's calling the shots right now -{w=0.1} but if you stay focused,{w=0.1} he'll run out of puzzles,{w=0.1} and you'll have a way out.)"
     "(Then,{w=0.1} you'll have the chance to close this case for good.)"
   else:
-    "(First, he holds you prisoner.{w} Now, he complains about how much you look around?)"
+    "(First, he holds you prisoner.{w} {i}Now,{/i} he complains about how much you look around your prison?)"
     "(Well, {i}screw him.{/i}{w} You'll snoop as much or as little as you please.)"
   show cautionne serious
   c "I've watched you with my drones..."
   c "Tailored these puzzles to your specific,{w=0.1} sub-par problem-solving skills..."
-  c "Carried out quasi-legal research..."
+  c "Carried out quasi-legal research on your identity..."
   show cautionne lean frown
   c "So,{w=0.1} I know what you are."
   c "You're an agent for STOP...{w=0.5} nothing more,{w=0.1} nothing less."
@@ -97,14 +95,14 @@ label post_room_2:
   c "...Fine. "
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 2.ogg"
   extend annoyed hands "{i}FINE!{/i}" with small_shake
-  c "The next time you escape,{w=0.1} {i}I won't talk either!{/i}"
+  c "The next time you escape a puzzle room,{w=0.1} {i}I won't talk either!{/i}"
   c "See how YOU like it!!"
   show cautionne block
-  c "Now, MOVE!{w=0.5} Or you'll be {i}fatally {/i}late for your next staring contest."
+  c "Now, MOVE!{w=0.5} Or you'll regret trying a staring contest with me!!"
   show cautionne blockscreen silent
   pause 0.1
 
-  play sound "audio/sfx/TV Off 1.ogg"
+  $ play_sound(tvoff)
   scene black
   hide cautionne blockscreen silent
   hide cautionne_frame_glow

@@ -1,24 +1,35 @@
 screen room3_meta:
     sensitive not inspect
     modal True
-    layer "master"
-    frame padding 50,40 xfill True yfill True:
-        if "quilt" in room3["solved"]:
-            add "room3_meta1" xalign 1.0 at rotated(30)
-        if "cooking" in room3["solved"]:
-            add "room3_meta2" xalign 0.0 yalign 0.1 at rotated(-30)
-        if "toys" in room3["solved"]:
-            add "room3_meta3" xalign 0.4 yalign 1.0 at rotated(-5)
+    tag puzzle
+    layer "puzzles"
+    frame style "puzzle_frame":
+        default scrapbook_page = 1
+
+        if scrapbook_page == 1:
+            add "puzzles/room_3_meta/scrapbook2.png" xalign 0.5
+            imagebutton idle Null(175,140) action SetScreenVariable("scrapbook_page",2) xpos 1402 mouse "inspect"
+
+        else:
+            add "puzzles/room_3_meta/scrapbook1.png" xalign 0.5
+            imagebutton idle Null(145,135) action SetScreenVariable("scrapbook_page",1) xpos 203 ypos 75 mouse "inspect"
+
+        hbox yalign 1.0 xalign 0.5 spacing 100:
+            #memories are unlocked as the puzzles are solved
+            if "quilt" in room3["solved"]:
+                add "room3_meta1" xalign 1.0 at rotated(30)
+            if "cooking" in room3["solved"]:
+                add "room3_meta2" xalign 0.0 yalign 0.1 at rotated(-30)
+            if "toys" in room3["solved"]:
+                add "room3_meta3" xalign 0.4 yalign 1.0 at rotated(-5)
         
-        if len(room3["solved"]) >= 3 and room3["scrapbook_new"] < 2:
-            timer 0.1 action Jump("room3_meta_cutscene")
-            
-        if room3["scrapbook_new"] == 2:
-            use jigsaw 
+        #if len(room3["solved"]) >= 3 and room3["scrapbook_new"] < 2:
+        #    timer 0.1 action Jump("room3_meta_cutscene") 
+        #if room3["scrapbook_new"] == 2:
+        #    use jigsaw 
 
 
-        frame xalign 1.0 yalign 1.0:
-            textbutton "RETURN" style "main_menu_button" action Return()
+        textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 1.0
 
 init python:
     
@@ -61,7 +72,7 @@ screen jigsaw:
     key "rollback" action [[]]
     key "rollforward" action [[]]
     
-    add im.Scale("puzzles/room3_meta/_puzzle_field.png", img_width, img_height) pos(puzzle_field_xoffset, puzzle_field_yoffset)
+    add im.Scale("puzzles/room_3_meta/_puzzle_field.png", img_width, img_height) pos(puzzle_field_xoffset, puzzle_field_yoffset)
     
     draggroup:
 
@@ -72,7 +83,7 @@ screen jigsaw:
                 $ my_y = j*int(active_area_size*y_scale_index)+puzzle_field_yoffset
                 drag:
                     drag_name name
-                    child im.Scale("puzzles/room3_meta/_blank_space.png", int(active_area_size*x_scale_index), int(active_area_size*y_scale_index) )
+                    child im.Scale("puzzles/room_3_meta/_blank_space.png", int(active_area_size*x_scale_index), int(active_area_size*y_scale_index) )
                     draggable False
                     xpos my_x ypos my_y
             
@@ -89,7 +100,7 @@ screen jigsaw:
 
 
 
-default chosen_img = "images/room3_meta.png"
+default chosen_img = "images/room_3_meta.png"
 
 default grid_width = 7
 default grid_height = 5
@@ -134,8 +145,6 @@ label jigsaw_puzzle:
         
         
         mainimage = im.Composite((int(img_width+(grip_size*2)*x_scale_index), int(img_height+(grip_size*2)*y_scale_index)),(int(grip_size*x_scale_index), int(grip_size*y_scale_index)), img_to_play)
-        
-        testvar = "this happened"
         
         # some calculations
         top_row = []
@@ -207,10 +216,10 @@ label jigsaw_puzzle:
         # (will rotate them to form top, right, bottom and left sides of puzzle piece)
                 imagelist[i,j] = im.Composite(
         (int(puzzle_piece_size*x_scale_index), int(puzzle_piece_size*y_scale_index)),
-        (0,0), im.AlphaMask(temp_img, im.Scale(im.Rotozoom("puzzles/room3_meta/_00%s.png"%(jigsaw_grid[grid_width*j+i][0]), 0, 1.0), int(puzzle_piece_size*x_scale_index), int(puzzle_piece_size*y_scale_index))),
-        (0,0), im.AlphaMask(temp_img, im.Scale(im.Rotozoom("puzzles/room3_meta/_00%s.png"%(jigsaw_grid[grid_width*j+i][1]), 270, 1.0), int(puzzle_piece_size*x_scale_index), int(puzzle_piece_size*y_scale_index))),
-        (0,0), im.AlphaMask(temp_img, im.Scale(im.Rotozoom("puzzles/room3_meta/_00%s.png"%(jigsaw_grid[grid_width*j+i][2]), 180, 1.0), int(puzzle_piece_size*x_scale_index), int(puzzle_piece_size*y_scale_index))),
-        (0,0), im.AlphaMask(temp_img, im.Scale(im.Rotozoom("puzzles/room3_meta/_00%s.png"%(jigsaw_grid[grid_width*j+i][3]), 90, 1.0), int(puzzle_piece_size*x_scale_index), int(puzzle_piece_size*y_scale_index)))
+        (0,0), im.AlphaMask(temp_img, im.Scale(im.Rotozoom("puzzles/room_3_meta/_00%s.png"%(jigsaw_grid[grid_width*j+i][0]), 0, 1.0), int(puzzle_piece_size*x_scale_index), int(puzzle_piece_size*y_scale_index))),
+        (0,0), im.AlphaMask(temp_img, im.Scale(im.Rotozoom("puzzles/room_3_meta/_00%s.png"%(jigsaw_grid[grid_width*j+i][1]), 270, 1.0), int(puzzle_piece_size*x_scale_index), int(puzzle_piece_size*y_scale_index))),
+        (0,0), im.AlphaMask(temp_img, im.Scale(im.Rotozoom("puzzles/room_3_meta/_00%s.png"%(jigsaw_grid[grid_width*j+i][2]), 180, 1.0), int(puzzle_piece_size*x_scale_index), int(puzzle_piece_size*y_scale_index))),
+        (0,0), im.AlphaMask(temp_img, im.Scale(im.Rotozoom("puzzles/room_3_meta/_00%s.png"%(jigsaw_grid[grid_width*j+i][3]), 90, 1.0), int(puzzle_piece_size*x_scale_index), int(puzzle_piece_size*y_scale_index)))
         )
                 placedlist[i,j] = False
 
@@ -246,7 +255,7 @@ screen control_scr:
         image_files = [ ]
 
         for fn in renpy.list_files():
-            if fn[0] == "_" or fn.startswith("gui") or fn.startswith("puzzles/room3_meta"):
+            if fn[0] == "_" or fn.startswith("gui") or fn.startswith("puzzles/room_3_meta"):
                 continue
 
             lfn = fn.lower()
@@ -258,7 +267,7 @@ screen control_scr:
         image_files.sort()
     
     frame:
-        background Frame("puzzles/room3_meta/_puzzle_field.png", 0, 0)
+        background Frame("puzzles/room_3_meta/_puzzle_field.png", 0, 0)
         xpos 100 ypos 100
         
         side "c b r":

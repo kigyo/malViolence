@@ -6,12 +6,12 @@ label spare_ending:
 
     pause 4
 
-    play sound "audio/sfx/Opening Door.ogg"
+    $ play_sound(dooropen)
     scene black with fade
 
     pause 2
 
-    play sound "audio/sfx/Closing Door2.ogg"
+    $ play_sound(doorclose)
 
     #"{b}[pause – walking sounds play as the exit BG appears]{/b}"
     scene bg garage with fade:
@@ -19,16 +19,17 @@ label spare_ending:
     "(In a large garage filled to the brim with carboard boxes,{w=0.1} the exit waits for you,{w=0.1} wide open.)"
     "(It's night already.{w} Outside, you hear the quiet rushing of a river.)"
     "(Just a few more steps,{w=0.1} and you're out of here.{w} Even more,{w=0.1} and you'll be on the bus back home.)"
-    "(It'll take a couple of hours to get back to HQ.{w} You'll probably nap,{w=0.1} so that by the time you get to your stop,{w=0.1} you'll have enough energy to run up thousands of narrow stairs.)"
+    "(It'll take a couple of hours to get back to HQ.{w} You'll nap on the ride,{w=0.1} probably,{w=0.1} so that by the time you get to your stop,{w=0.1} you'll have enough energy to run up thousands of narrow stairs.)"
     "(And you'll reach your boss's office,{w=0.1} and...)"
     "(...Well,{w=0.1} what'll happen next?)"
     "(You'll {i}definitely {/i}get that bonus.{w} If this isn't going \"above and beyond...\")"
     "(Maybe you'll get a promotion.{w} A better salary.{w} Better benefits.{w} A better home.)"
-    "(A better {i}life.{/i}{w} Something you've worked towards for {i}years.{/i})"
+    "(A better {i}life.{/i}{w} Something you've always wanted.)"
     "(...And...)"
     "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole-){p=0.5}{nw}"
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-01.ogg"
     x "Finally going to take responsibility?"
-    play sound "audio/sfx/Quick Footsteps 1.ogg"
+    $ play_sound(quickfootsteps)
     #"{b}[{/b}{b}Cautionne{/b}{b} appears with his gun]{/b}"
 
     scene bg garage:
@@ -42,7 +43,9 @@ label spare_ending:
     "(Not {i}now,{/i} kid!{w} The last thing you need is {i}him{/i} showing up and-){p=0.5}{nw}"
 
     scene cautionne gun cu with dissolve
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-02.ogg"
     cr "I...{w=0.5} I see my escape rooms have worked their magic."
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-03.ogg"
     cr "I didn't think it was possible but...{w=0.5} you're feeling {i}guilty,{/i} aren't you?"
     "(...{i}Guilt?{/i}{w} Is that what it is?)"
     "(Over something you didn't do?)"
@@ -60,18 +63,26 @@ label spare_ending:
     "(...He's shaking.{w} He's trying to put on a brave face,{w=0.1} but he's shaking.)"
     #"{b}[{/b}{b}cautionne{/b}{b} begins to break down]{/b}"
     scene cautionne gun ecu cry with dissolve
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-04.ogg"
     cr "{si}B-but I don't {i}want {/i}that,{w=0.1} y'know?{/si}"
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-05.ogg"
     cr "{si}I...{w=0.5} I don't {i}want {/i}to forget my home.{w=0.5} My books,{w=0.5} my bugs,{w=0.5} my bed...{/si}"
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-06.ogg"
     cr "{si}And I don't {i}want {/i}to forget myself.{/si}"
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-07.ogg"
     cr "{si}I don't want to forget about collecting stickers,{w=0.5} or eating pudding,{w=0.5} or sewing\nmy first pair of mittens.{/si}"
     
     scene cautionne gun ecu crysilent
     pause 1
     #"{b}[{/b}{b}Cautionne{/b}{b} is yelling now]{/b}"
     scene cautionne gun ecu sob 
-    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}"
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-08.ogg"
+    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}{p=0.5}{nw}"
+    voice sustain
     cr "{sc}She {i}saved {/i}me!{w=0.5} She {i}raised {/i}me!{w=0.5} \nShe {i}stood up for me{/i} when no one else did!{/sc}"
-    cr "{sc}And what did {i}STOP {/i}do?{/sc}"
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-09.ogg"
+    cr "{sc}And what did {i}STOP {/i}do?{/sc}{p=0.5}{nw}"
+    voice sustain
     cr "{sc}They MADE her a villain!{w=0.5} They took EVERYTHING away from her!{w=0.5} They KILLED\nher!{/sc}"
     scene cautionne gun ecu sobsilent
     pause 1
@@ -80,7 +91,7 @@ label spare_ending:
     scene cautionne gun cu cry
     #"{b}[pause as {/b}{b}Cautionne{/b}{b} regains his composure a little]{/b}"
     cr "{si}S-so,{w=0.1} what're you gonna do now, lab rat?{/si}"
-    cr "{si}You've still got your \"service weapon\",{w=0.1} don't you?{/si}"
+    cr "{si}You've still got your weapon,{w=0.1} don't you?{/si}"
     cr "{si}C'mon.{w=0.5} H-hit me with your best shot.{/si}"
     scene cautionne gun cu crysilent
     pause 0.5
@@ -109,6 +120,7 @@ label spare_ending:
     #"{b}[gun clicks]{/b}"
     pause 1
     scene cautionne gun cu speaking 
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-10.ogg"
     cr "{si}T-then, on behalf of STOP...{/si}{w=1} {i}die.{/i}"
     #"{b}[pause. Sound of the gun firing. {/b}{b}Screen goes black]{/b}"
     scene black
@@ -116,7 +128,7 @@ label spare_ending:
     "(The bullet...)"
     pause 1
     "(...it only grazed your cheek.)"
-    play sound "audio/sfx/Body Fall 1.ogg"
+    $ play_sound(bodyfall)
     pause 2
     "(Huh?{w} Cautionne...{w=0.5} fell?)"
     "(What's going...)"
@@ -125,8 +137,11 @@ label spare_ending:
         ease 7 align(0.0,0.1)
     pause 3
     #"{b}[pause as cautionne spare end cg fades in]{/b}"
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-11.ogg"
     cr "I...{w=0.5} I missed."
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-12.ogg"
     cr "I had the muzzle aimed at your head.{w=0.5} The bullets loaded."
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-13.ogg"
     cr "And I missed.{w=0.5} First try."
     "(Cautionne's gaze is vacant.)"
     "(It's the same gaze as that boy in the scrapbook.)"
@@ -136,23 +151,33 @@ label spare_ending:
     "You know...{w=0.5} you could've fired again.{w} I'm at contact shot distance."
     scene cautionne sit hope:
         align (0.0,0.1)
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-14.ogg"
     cr "…Pft."
     scene cautionne sit stunned:
         align (0.0,0.1)
-    cr "No,{w=0.1} I couldn't have." 
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-15.ogg"
+    cr "No,{w=0.1} I couldn't have.{p=0.6}{nw}" 
+    voice sustain
     cr "Trying to kill you...{w=0.5} was a lot more tiring than I thought it would be."
     "Tiring?"
     scene cautionne sit stunnedsilent:
         align (0.0,0.1)
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-16.ogg"
     cr "…"
     "(...Ah.)"
     scene cautionne sit stunned:
         align (0.0,0.1)
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-17.ogg"
     cr "Go.{w=0.5} This is what you wanted,{w=0.1} right?"
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-18.ogg"
     cr "The exit's right there."
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-19.ogg"
     cr "Go back to your home.{w=0.5} Your TV.{w=0.5} Your{i} money.{/i}"
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-20.ogg"
     cr "I was fooling myself,{w=0.1} thinking I could do what Dr. Danger did for me."
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-21.ogg"
     cr "So,{w=0.1} go. "
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-22.ogg"
     cr "I hope the guilt eats at you for the rest of your fucking life."
     scene cautionne sit stunnedsilent:
         align (0.0,0.1)
@@ -171,11 +196,7 @@ label spare_ending:
     #"{b}[pause when the exit {/b}{b}bg{/b}{b} shows again. Camera shows the player getting up, and leaving for the {/b}{b}exit{/b}{b}]{/b}"
     "(Slowly,"
 
-    play sound "audio/sfx/Walking Footsteps 4.ogg"
-
-    queue sound "audio/sfx/Walking Footsteps 4.ogg"
-
-    queue sound "audio/sfx/Walking Footsteps 4.ogg"
+    $ queue_sound ([footsteps4, footsteps4, footsteps4])
 
     scene bg garage:
         zoom 0.5 align (0.5,0.5)
@@ -235,12 +256,15 @@ label spare_ending:
     scene cautionne sit hope:
         align (0.0,0.1)
 
-    cr "Your choice,{w=0.1} obviously."
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-23.ogg"
+
+    cr "Your choice,{w=0.1} obviously.{p=0.6}{nw}"
 
     scene cautionne sit smug:
         align (0.0,0.1)
-
+    voice sustain
     extend " But I know what I'm talking about."
+    voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-24.ogg"
     cr "After all,{w=0.1} I {i}am{/i}{i} {/i}a supervillain."
 
     define slowfade = Fade(2, 0.1, 1)
@@ -250,7 +274,7 @@ label spare_ending:
     pause 2
 
     scene black with slowfade
-    play sound "audio/sfx/Walking Footsteps 4.ogg"
+    $ play_sound(footsteps4)
     pause 2
 
     scene hairclip1 with slowfade:

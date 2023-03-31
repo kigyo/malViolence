@@ -112,6 +112,16 @@ define config.choice_empty_window = extend
 
 ## Transitions used to show and hide the dialogue window
 
+define config.end_splash_transition = Dissolve(3)
+
+define config.enter_yesno_transition = Dissolve(.5)
+define config.exit_yesno_transition  = Dissolve(.5)
+
+define config.nvl_adv_transition = Dissolve(.5)
+define config.adv_nvl_transition = Dissolve(.5)
+
+define config.end_game_transition = Dissolve(2)
+
 define config.window_show_transition = Dissolve(.2)
 define config.window_hide_transition = Dissolve(.2)
 

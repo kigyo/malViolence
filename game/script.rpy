@@ -16,18 +16,14 @@ label splashscreen:
         call screen splash_settings
         $ persistent.firstlaunch = True
     show splash_anim_1
-    show text "{size=60}Made with Ren'Py [renpy.version_only]{/s}":
-        xalign 0.5 yalign 0.8 alpha 0.0
-        pause 6.0
-        linear 1.0 alpha 1.0
     if not persistent.seen_splash:
-        $ renpy.pause(5)
+        $ renpy.pause(3)
         $ persistent.seen_splash = True
     else:
-        if renpy.pause(5):
+        if renpy.pause(3):
             jump skip_splash
     scene black
-    with fade
+    with Dissolve(0.5)
 
     label skip_splash:
         pass
@@ -79,10 +75,18 @@ image ctc:
     #    
     #    repeat
 
+style puzzle_description_label is gui_label:
+    xalign 0.5
+
+style puzzle_description_label_text is gui_label_text:
+    color "#fff" underline True
+
 style puzzle_description_text:
-    size 28 justify True color gui.accent_color 
+    size 28 justify True color gui.accent_color outlines [(1.5, "#000000", 1, 1)]
 
-
+style puzzle_frame is gui_frame:
+    background "gui/puzzle.png"
+    padding (50,40) xfill True yfill True
 
 ################### for defining mini cgs in the game ################
 image tutorial_pellets = "images/tutorial_pellets.png"

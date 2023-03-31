@@ -6,7 +6,6 @@ screen tutorial_room():
     tag room
 
     fixed at zoomed:
-        imagebutton idle Null(1410, 395) action [SetVariable("inspect", "bed"), Jump("tutorial_room")] pos (560, 1760) mouse "inspect"
         imagebutton idle Null(700, 280) action [SetVariable("inspect", "desk"), Jump("tutorial_room")] pos (2315, 1370) mouse "inspect"
         imagebutton idle Null(380, 800) action [SetVariable("inspect", "handle"), Jump("tutorial_room")] pos (1750, 680) mouse "inspect":
             if tutorial["vent"] == 2:
@@ -18,9 +17,10 @@ screen tutorial_room():
             imagebutton idle Null(340, 560) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (840, 715) mouse "inspect"
         else:
             add "bg tutorial2"
+            imagebutton idle Null(540, 348) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1776, 1629) mouse "inspect"
             imagebutton idle Null(270, 450) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (880, 780) mouse "inspect"
-            imagebutton idle Null(730, 225) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1075, 1715) mouse "inspect"
-            imagebutton idle "tutorial_food" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1580, 1480) mouse "inspect" at zoomed(0.3)
+            imagebutton idle Null(192,144) action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1254, 1782) mouse "inspect"
+        imagebutton idle Null() action [SetVariable("inspect", "bed"), Jump("tutorial_room")] pos (561, 1753) mouse "inspect" focus_mask Image("rooms/tutorial_bed_mask.png")
 
     if config.developer:
         frame:
@@ -60,8 +60,7 @@ screen tutorial_lock():
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
         
     if not inspect:
-        frame xalign 0.8 yalign 0.5:
-            textbutton "Return" action [Return()] style "main_menu_button"
+        textbutton "Return" action [Return()] style "confirm_button" xalign 0.8 yalign 0.5
 
 label tutorial_room:
     if inspect not in tutorial["investigated"]:
@@ -198,7 +197,6 @@ label tutorial_room:
         "(Does he expect you to drink out of the faucet?)"
         $ play_sound(creakyfaucet)
         pause 1
-        #[sound of dry squeaking]
         "(...Great.{w} It doesn't even work.)"
         "(So much for quenching your thirst.{w} Asshole.)"
 

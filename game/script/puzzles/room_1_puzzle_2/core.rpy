@@ -194,11 +194,11 @@ init -1 python:
                 if lose and not (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
                     renpy.jump('hacking_game_over')
                 elif lose:
-                    renpy.jump('auto_reset_puzzle_board')
-                    pass
-
+                    puzzle_board_reset()
 
             elif isinstance(self, ToyBoard):
+                self.match = []
+                self.match_pic = []
                 win = True
                 for y in range(self.height):
                     for x in range(self.width):
@@ -206,9 +206,13 @@ init -1 python:
                             win = False
                             break
                 if win:
-                    renpy.jump('solved_room_3_puzzle_2')
+                    store.room3["toys"] = "solved"
+                    return True
                 if not self.check_toy_path(self.player):
-                    renpy.jump('failed_room_3_puzzle_2')
+                    if not (achievement_dead12 in persistent.dead_ends and not preferences.hard_mode):
+                        renpy.jump('toys_game_over')
+                    else:
+                        toy_board_reset()
 
         def check_toy_path(self, pos, path=None):
             x = pos[0]
@@ -450,7 +454,7 @@ screen board_piece(b, x, y):
     elif isinstance(b, ToyBoard):
         if b.just_cleared:
             if (x, y) == b.player:
-                $ transforms.append(player_chomp([('star', b.last_player)]+b.just_pathed, dt=adt*0.75, dist=b.pieces[y][x].dist, pdt=adt*0.25))
+                $ transforms.append(player_chomp([('toy_walk_fast', b.last_player)]+b.just_pathed, dt=adt*0.75, dist=b.pieces[y][x].dist, pdt=adt*0.25))
             elif b.pieces[y][x].last:
                 $ transforms.append(slide_down(x, y, dist=b.pieces[y][x].dist, dt=adt*0.25, d=adt*0.75))
         elif (x, y) in b.match:
@@ -461,12 +465,20 @@ screen board_piece(b, x, y):
                 $ transforms.append(slide_in(x, y))
             else:
                 $ transforms.append(slide_down(x, y))
-    add b.pieces[y][x].img:
-        at transforms
-        pos (x*ch, y*cw)
-        align (0.5, 0.5)
-        if isinstance(b, PuzzleBoard):
-            xysize (65, 65)
+    if (x, y) == b.player and b.just_cleared:
+        add "toy_walk_fast":
+            at transforms
+            pos (x*ch, y*cw)
+            align (0.5, 0.5)
+            if isinstance(b, PuzzleBoard):
+                xysize (65, 65)
+    else:
+        add b.pieces[y][x].img:
+            at transforms
+            pos (x*ch, y*cw)
+            align (0.5, 0.5)
+            if isinstance(b, PuzzleBoard):
+                xysize (65, 65)
 
 screen piece(p, transforms=None):
     $ transforms = transforms or []
@@ -655,7 +667,7 @@ label init_puzzle_board():
 
 label init_toy_board():
     $ tb = ToyBoard(width=5, height=5)
-    $ adt = persistent.toy_reticle_timeout
+    $ adt = 1.0
     return
 
 label reset_puzzle_board:
@@ -669,3 +681,4 @@ label auto_reset_puzzle_board:
     call init_puzzle_board
     hide screen puzzle_playspace
     call screen puzzle_playspace(pb)
+    call screen room1

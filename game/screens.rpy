@@ -324,6 +324,8 @@ style quick_button_text:
 
 screen navigation():
 
+    on "show" action Stop("sound", fadeout=0.5)
+
     vbox:
         style_prefix "navigation"
 
@@ -409,9 +411,7 @@ screen main_menu():
 
     vbox xalign 0.5 yalign 0.6 spacing 15:
         style_prefix "main_menu"
-        button:
-            text _("START") style "main_menu_button_text"
-            action Start()
+        textbutton _("START") action Start()
         textbutton _("LOAD") action ShowMenu("load")
         textbutton _("OPTIONS") action ShowMenu("preferences")
         textbutton _("ABOUT") action ShowMenu("about")
@@ -1626,16 +1626,20 @@ screen gameover(lbl):
 
 init python:
     def game_over(room = 1):
-        renpy.scene()
-        renpy.scene("screens")
-        renpy.block_rollback()
         room_init(room)
         store.inspect = None
+        renpy.scene()
+        renpy.scene("screens")
+        renpy.scene("puzzles")
+        renpy.block_rollback()
         if room == "tutorial":
+            renpy.show_screen("gameover", "tutorial_room")
+            renpy.with_statement(dissolve)
             renpy.call_screen("gameover", "tutorial_room")
         else:
+            renpy.show_screen("gameover", "room_" + str(room))
+            renpy.with_statement(dissolve)
             renpy.call_screen("gameover", "room_" + str(room))
-        renpy.with_statement(eyeopen)
 
     def room_init(room = 1):
         if room == 1:

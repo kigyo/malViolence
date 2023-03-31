@@ -61,24 +61,24 @@ screen room1_decanting():
     sensitive not inspect
     modal True
     tag puzzle
-    layer "master"
+    layer "puzzles"
 
     style_prefix "decanting"
     
-    frame padding 50,40 xfill True yfill True:
+    frame style "puzzle_frame":
 
         fixed xsize 675 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
                     style_prefix "puzzle_description"
-                    label _("Instructions") text_color "#fff" xalign 0.5
+                    label _("Instructions")
                     text decanting_description
                 
             hbox xfill True yalign 1.0 ysize 100:
-                textbutton "RETURN" style "confirm_button" action Return() xalign 1.0 yalign 0.5
+                textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
         fixed xsize 1920-775:
-            draggroup ysize 600 xsize 990 yalign 0.45 xalign 0.45:
+            draggroup ysize 600 xsize 990 yalign 0.35 xalign 0.45:
                 drag yalign 1.0:
                     drag_name 1 dropped decanting_dropped
                     bar value AnimatedValue(decanting_vial1,18, 0.75) xalign 0.5 style "decanting_bar1"
@@ -88,7 +88,7 @@ screen room1_decanting():
                 drag yalign 1.0 xalign 1.0:
                     drag_name 3 dropped decanting_dropped
                     bar value AnimatedValue(decanting_vial3,7, 0.75) xalign 0.5 style "decanting_bar3"
-            hbox xalign 0.45 yalign 0.85 spacing 200:
+            hbox xalign 0.45 yalign 0.8 spacing 200:
                 hbox xsize 150:
                     text str(decanting_vial1) + "/" + str(decanting_size_vial1) xalign 0.5
                 hbox xsize 150:

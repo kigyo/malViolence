@@ -1,4 +1,7 @@
 init python:
+    def word_init():
+        store.word_answer = ["","","","",""]
+        
     def word_dropped(drop, drags):
 
         drag = drags[0]
@@ -29,7 +32,8 @@ init python:
             if not (achievement_dead6 in persistent.dead_ends and not preferences.hard_mode):
                 renpy.jump("word_game_over")
             else:
-                cr(word_lenient_failure_message)
+                renpy.notify(word_lenient_failure_message)
+                return
         store.room2["word"] = "solved"
         return True
 
@@ -42,23 +46,23 @@ screen room2_word():
     sensitive not inspect
     modal True
     tag puzzle
-    layer "master"
+    layer "puzzles"
 
-    frame padding 50,40 xfill True yfill True:
+    frame style "puzzle_frame":
         fixed xsize 650 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5 xfill True:
+                    style_prefix "puzzle_description"
+                    label _("Instructions")
                     hbox xalign 0.5:
                         for i in range(len(word_rival)):
                             frame xysize(75,75):
                                 text word_rival[i] align (0.5,0.5)
-                    text word_description style "puzzle_description_text"
+                    text word_description
                     
             hbox xfill True yalign 1.0 ysize 100:
-                frame xalign 0.5 yalign 0.5:
-                    textbutton "SUBMIT" style "main_menu_button" action Function(word_submit)
-                frame xalign 1.0 yalign 0.5:
-                    textbutton "RETURN" style "main_menu_button" action [SetVariable("word_answer", ["","","","",""]), Return()]
+                textbutton "SUBMIT" style "confirm_button" action Function(word_submit) xalign 0.0 yalign 0.5
+                textbutton "RETURN" style "confirm_button" action [SetVariable("word_answer", ["","","","",""]), Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
                     
         fixed xsize 1920-700:
             draggroup ysize 600 xsize 990 yalign 0.45 xalign 0.45:

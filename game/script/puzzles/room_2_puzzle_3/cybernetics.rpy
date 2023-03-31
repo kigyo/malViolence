@@ -247,7 +247,12 @@ init -1 python:
                         break
                 if invalid: break
             if invalid:
-                renpy.jump("failed_room_2_puzzle_3")
+                if (achievement_dead9 in persistent.dead_ends and not preferences.hard_mode):
+                    cybernetics_reset()
+                    #TODO: some kind of error feedback
+                    return
+                else:
+                    renpy.jump("recalibration_game_over")
 
             checked = []
             next = (0, 0)
@@ -256,7 +261,9 @@ init -1 python:
                 next, checked = self.check_trace(checked, next)
 
             if len(set(checked)) == 74:
-                renpy.jump("solved_room_2_puzzle_3")
+                store.room2["recalibration"] = "solved"
+                return True
+
             else:
                 tally = set(checked)
                 loop_counter += 1
@@ -270,7 +277,12 @@ init -1 python:
                             tally.update(checked)
                             loop_counter += 1
 
-                renpy.jump("failed_room_2_puzzle_3")
+                if (achievement_dead9 in persistent.dead_ends and not preferences.hard_mode):
+                    cybernetics_reset()
+                    renpy.restart_interaction()
+                    #TODO: some kind of error feedback
+                else:
+                    renpy.jump("recalibration_game_over")
 
         def check_trace(self, checked, pos, tally_color=True):
             x, y = pos
@@ -369,6 +381,14 @@ init -1 python:
                 return (d1[0] and d2[2]) or (not d1[0] and not d2[2])
             elif dy == 1:
                 return (d1[3] and d2[1]) or (not d1[3] and not d2[1])
+    
+    def cybernetics_reset(txt=_("Invalid. Restarting...")):
+        store.cyb = Cybernetic()
+        store.loop_data = [[[0,0,0,0] for x in range(12)] for y in range(10)]
+        store.loop_counter = 1
+        renpy.notify(txt)
+        renpy.hide_screen("cybernetics")
+        renpy.show_screen("cybernetics",cyb)
 
 label init_cybernetics:
     $ cyb = Cybernetic()
@@ -377,59 +397,67 @@ label init_cybernetics:
     return
 
 screen cybernetics(cyb, interactable=True):
-    if interactable:
-        add cyb
-    grid 12 10:
-        pos (170, 150)
-        for y in range(10):
-            for x in range(12):
-                if cybernetic_mask[y][x]:
-                    frame:
-                        xysize (65, 65)
-                        if cyb.data[y][x][0]:
-                            add "right_piece":
-                                align (0.5, 0.5)
-                                at colorify(loop_colors[loop_data[y][x][0]])
-                        if cyb.data[y][x][1]:
-                            add "down_piece":
-                                align (0.5, 0.5)
-                                at colorify(loop_colors[loop_data[y][x][1]])
-                        if cyb.data[y][x][2]:
-                            add "left_piece":
-                                align (0.5, 0.5)
-                                at colorify(loop_colors[loop_data[y][x][2]])
-                        if cyb.data[y][x][3]:
-                            add "up_piece":
-                                align (0.5, 0.5)
-                                at colorify(loop_colors[loop_data[y][x][3]])
-                        if cyb.tracing and cyb.cursor == (x, y):
-                            add "cursor" align (0.5, 0.5)
-                        if cybernetic_input[y][x] is not None:
-                            add "#ffffff55" xysize (65, 65) align (0.5, 0.5)
-                            add "fixed_%s_piece" % Pipe.items[cybernetic_input[y][x]]:
-                                align (0.5, 0.5)
-                else:
-                    null
-    frame:
-        xysize (650, 800)
-        align (0.85, 0.35)
-        style_prefix "cybernetics"
-        has vbox
-        xsize 550
-        xalign 0.5
-        label "Instructions" xalign 0.5
-        text "- Lay down new synthetic nerual pathways, but be mindful of the original peices that cannot be moved!"
-        text "- Neural pathways must form one continuous loop and occupy every available space."
-        text "- Pathways can cross over themselves, but cannot retreace themselves, so no T intersections!"
-        text "- At any 4 way intersection, a neuron will always go straight though and never turn at an intersection."
-        text "- You can only submit possible solutions where there are no open ended pathways (including T intersections)."
-        frame:
-            xalign 0.5
-            ypos 50
-            textbutton "Submit" action If(cyb.check_broken(), false=Function(cyb.verify))
+    modal True
+    tag puzzle
+    layer "puzzles"
+    
+    frame style "puzzle_frame" padding 0,0,50,40:
+        if interactable:
+            add cyb
+        grid 12 10:
+            pos (170, 150)
+            for y in range(10):
+                for x in range(12):
+                    if cybernetic_mask[y][x]:
+                        frame:
+                            xysize (65, 65)
+                            if cyb.data[y][x][0]:
+                                add "right_piece":
+                                    align (0.5, 0.5)
+                                    at colorify(loop_colors[loop_data[y][x][0]])
+                            if cyb.data[y][x][1]:
+                                add "down_piece":
+                                    align (0.5, 0.5)
+                                    at colorify(loop_colors[loop_data[y][x][1]])
+                            if cyb.data[y][x][2]:
+                                add "left_piece":
+                                    align (0.5, 0.5)
+                                    at colorify(loop_colors[loop_data[y][x][2]])
+                            if cyb.data[y][x][3]:
+                                add "up_piece":
+                                    align (0.5, 0.5)
+                                    at colorify(loop_colors[loop_data[y][x][3]])
+                            if cyb.tracing and cyb.cursor == (x, y):
+                                add "cursor" align (0.5, 0.5)
+                            if cybernetic_input[y][x] is not None:
+                                add "#ffffff55" xysize (65, 65) align (0.5, 0.5)
+                                add "fixed_%s_piece" % Pipe.items[cybernetic_input[y][x]]:
+                                    align (0.5, 0.5)
+                    else:
+                        null
+
+        fixed xysize (710, 800):
+            align (1.0, 0.35)
+            style_prefix "cybernetics"
+            vbox xalign 0.5 spacing 50:
+                style_prefix "puzzle_description"
+                label _("Instructions")
+                text cybernetics_description
+
+        hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20:
+            textbutton "RESET" style "confirm_button" action Function(cybernetics_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)
+            textbutton "SUBMIT" style "confirm_button" action If(cyb.check_broken(), false=Function(cyb.verify)) sensitive not inspect xalign 0.5 yalign 0.5
+            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5
+
+    if config.developer:
+        vbox:
+            frame:
+                textbutton _("Skip Puzzle") action [SetDict(room2, "recalibration", "solved"), Return()] style "main_menu_button"
+            frame:
+                textbutton _("Game Over") action [Jump("recalibration_game_over")] style "main_menu_button"
 
 style cybernetics_text:
-    size 30
+    size 30 justify True
 
 image cursor:
     "reticle"

@@ -1,8 +1,9 @@
 label post_tutorial:
   #[If puzzle is solved, play a solving/unlocking sound]
-  play sound "audio/sfx/Door Unlock 1.ogg"
+  scene bg tutorial2 at zoomed
+  $ play_sound(doorunlock)
   pause 1
-  play sound "audio/sfx/staticshort.ogg"
+  $ play_sound(staticshort)
   scene black 
   show cautionne_frame_glow at bg
   with dissolve
@@ -63,7 +64,7 @@ label post_tutorial:
 
   show cautionne leanfrown pause
   pause 0.1
-  play sound "audio/sfx/TV Off 1.ogg"
+  $ play_sound(tvoff)
   hide cautionne leanfrown pause
   hide cautionne_frame_glow
   hide crt

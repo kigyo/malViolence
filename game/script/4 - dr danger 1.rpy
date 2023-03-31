@@ -15,7 +15,7 @@ label dr_danger_1:
   "(Remember your training. {w}Now's not the time to overthink things.)"
   "(You need to get out of here. {w}Detective work can come later.)"
 
-  play sound "audio/sfx/Walking Footsteps 1.ogg"
+  $ play_sound(footsteps1)
 
   show bg tutorial2:
     yalign 0.5 xalign 0.5 zoom 0.8
@@ -41,14 +41,14 @@ label dr_danger_1:
   "(No choice but to move forward.)"
   pause 1
 
-  play sound "audio/sfx/Single Footstep 1.ogg"
+  $ play_sound(singlefootstep)
 
   show bg corridor1:
     align (0.5,0.5) zoom 0.5
     ease 2.7 zoom 0.6
 
   "(You take another cautious step ahead and-){p=0.5}{nw}"
-  play sound "audio/sfx/staticshort.ogg"
+  $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor1-01.ogg"
   #"{b}[the {/b}{b}dr.{/b}{b} danger screens go {/b}{b}on ]{/b}"
@@ -60,7 +60,7 @@ label dr_danger_1:
   "(What the-?!)" with small_shake
   "({i}Another {/i}voice? {w}And all the screens in the room lit up, too...)"
 
-  play sound "audio/sfx/Walking Footsteps 1.ogg"
+  $ play_sound(footsteps1)
   scene bg corridor1:
     zoom 0.6 yalign 0.5 xalign 0.5
     ease 4 zoom 1 xalign 0.0 yalign 0.45
@@ -98,7 +98,7 @@ label dr_danger_1:
   drs "Due to my circumstances,{w=0.1} I cannot repeat my instructions.{p=1}{nw}"
   voice sustain
   drs "Nor will I be able to answer any of your questions."
-  "(...No -{w=0.5} thinking back,{w=0.1} her death was {i}very thoroughly{/i} confirmed.{w} Which means...)" 
+  "(...No.{w} Her her death was {i}very thoroughly{/i} confirmed.{w} Which means...)" 
   "(...This is just a recording.{w} A cheesy one,{w=0.1} at that.)" 
   "(Turns out even supervillains make the newbies watch employee training videos.)"
   "(Better tune her out.)"
@@ -115,7 +115,7 @@ label dr_danger_1:
   "(So what if there are more puzzles to solve and locked rooms to explore? {w}To someone like you,{w=0.1} they should be child's play.)"
   pause 1
   "({i}...Should{/i} be.)"
-  play sound "audio/sfx/Walking Footsteps 1.ogg"
+  $ play_sound(footsteps1)
   scene bg corridor1:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
@@ -135,17 +135,17 @@ label dr_danger_1:
 ######### metal door shut plays here
   "(Huh.{w} Seems like a typical evil lab,{w=0.1} straight out of a comic book.)"
 
-  "(Let's see here... {w}Massive computers,{w=0.5} hi-tech gizmos,{w=0.5} and a \"Primary Source Extractor?\")"
+  "(Let's see here... {w}Massive computers,{w=0.5} hi-tech gizmos,{w=0.5} and a...{w=0.5} \"Primary Source Extractor?\")"
   "({i}...Eugh.{/i} {w}Looking at that thing gives you goosebumps.)"
   "(Do you {i}have{/i} to go through here?)"
   "(Maybe there's something you missed in the corridor...)"
   "(Yeah,{w=0.1} you'll turn around and-)"
-  play sound "audio/sfx/Door Unlock4.ogg"
+  $ play_sound(metaldoorlock)
   pause 1
   "(-it's not opening.)"
   pause 1
   "(No,{w=0.1} there\'s still the door on the other side."
-  play sound "audio/sfx/Walking Footsteps 3.ogg"
+  $ play_sound(footsteps4)
   show bg room1:
     zoom 0.4 yalign 0.7
     ease 4 zoom 0.8 xalign 0.15 yalign 0.65

@@ -1,3 +1,26 @@
+define toy_pieces = ["toy_1", "toy_2", "toy_3", "toy_4"]
+
+define toys_description = _("""What a mess! You need to clean up all these toys by {color=#fff}sorting them into sets.{/color} 
+
+{color=#fff}A set{/color} is made up of {color=#fff}four unique toys.{/color} You can reach toys {color=#fff}by moving up, down, left, or right.{/color} You {color=#fff}can't move diagonally.{/color} 
+
+Plot your moves carefully! As the toys shift, they may get harder to reach...""")
+
+
+image toy_walk_fast:
+    "toy_walk_1"
+    pause 0.25
+    "toy_walk_2"
+    pause 0.25
+    repeat
+
+image toy_walk_slow:
+    "toy_walk_1"
+    pause 0.5
+    "toy_walk_2"
+    pause 0.5
+    repeat
+
 init python:
     import random
     class ToyBoard(Board):
@@ -13,6 +36,7 @@ init python:
             super(ToyBoard, self).__init__(width, height, piece_limit)
 
             self.match = []
+            self.match_pic = []
             self.just_pathed = []
             self.player = (2, 2)
             self.last_player = (2, 2)
@@ -41,10 +65,10 @@ init python:
                 for x in range(0, self.width):
                     p = init[y][x]
                     if p:
-                        self.pieces[y][x] = Piece(Pieces.get(p-1))
+                        self.pieces[y][x] = Piece(toy_pieces[p-1])
 
             self.player = (2, 2)
-            self.pieces[self.player[1]][self.player[0]] = Piece("star", player=True)
+            self.pieces[self.player[1]][self.player[0]] = Piece("toy_walk_slow", player=True)
 
         def populate_matches(self):
             # Toy makes use of a set match, so this step is skipped.
@@ -54,7 +78,8 @@ init python:
             self.last_reticle = self.reticle
             if self.reticle in self.match:
                 i = self.match.index(self.reticle)
-                self.match = self.match [:i]
+                self.match = self.match[:i]
+                self.match_pic = self.match_pic[:i]
                 return
 
             if not self.match:
@@ -72,7 +97,7 @@ init python:
                 elif self.pieces[self.reticle[1]][self.reticle[0]].type in [self.pieces[m[1]][m[0]] for m in self.match]:
                     return
             self.match.append(self.reticle)
-
+            self.match_pic.append(self.pieces[self.match[-1][1]][self.match[-1][0]].type)
             if len(self.match) < 4:
                 return
 
@@ -89,7 +114,7 @@ init python:
                 y = m[1]
                 self.pieces[y][x] = None
 
-            self.pieces[self.player[1]][self.player[0]] = Piece("star")
+            self.pieces[self.player[1]][self.player[0]] = Piece("toy_walk_slow")
 
             for x in range(self.width):
                 for uy in range(self.height-2, -1, -1):
@@ -109,10 +134,8 @@ init python:
 
             for y in range(self.height):
                 for x in range(self.width):
-                    if self.pieces[y][x] and self.pieces[y][x].type == "star":
+                    if self.pieces[y][x] and self.pieces[y][x].type == "toy_walk_slow":
                         self.player = (x, y)
-
-            self.match = []
 
             self.just_cleared = True
 
@@ -125,20 +148,57 @@ init python:
                     tup[j] = tup[j + 1]
                     tup[j + 1] = temp
         return tup
+    
+    def toy_board_reset(txt=_("Invalid. Restarting...")):
+        store.tb = ToyBoard(width=5, height=5)
+        store.adt = 1.0
+        renpy.notify(txt)
+        renpy.hide_screen("toy_playspace")
+        renpy.show_screen("toy_playspace",tb)
+
 
 screen toy_playspace(b, interactable=True):
-    add "#ffffff" at colorify(colors["background"])
-    if b.just_cleared:
-        use animated_board(b)
-    else:
-        use board(b)
-    use toy_matches(b)
-    if interactable:
-        use buttons(b)
-    use reticle(b)
-    use menu
-    if b.just_cleared:
-        timer adt action Function(b.clear_anim)
+    tag puzzle
+    layer "puzzles"
+    modal True
+    frame style "puzzle_frame":
+        frame:
+            xysize (400, 200)
+            align 0.0,0.5
+            has vbox
+            xfill True
+            xalign 0.5
+            label "Current Match" xalign 0.5
+            null height 35
+            if not b.match_pic:
+                pass
+                # text "None"
+            else:
+                hbox:
+                    xoffset 30
+                    for p in b.match_pic:
+                        add p
+        if b.just_cleared:
+            use animated_board(b, (550, 350))
+        else:
+            use board(b, (550, 350))
+        if interactable:
+            use buttons(b, (550, 350))
+        use reticle(b, (550, 350))
+        if b.just_cleared:
+            timer adt action Function(b.clear_anim)
+
+        fixed xsize 675 xalign 1.0:
+            fixed ysize 880:
+                vbox spacing 50 yalign 0.5:
+                    style_prefix "puzzle_description"
+                    label _("Instructions")
+                    text toys_description
+            hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20 xfill True:
+                if (achievement_dead12 in persistent.dead_ends and not preferences.hard_mode):
+                    textbutton "RESET" style "confirm_button" action Function(toy_board_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)
+                textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5
+
 
 screen match(m):
     hbox:
@@ -175,6 +235,6 @@ label toy_mode:
                        move_cap=persistent.toy_move_cap, \
                        shuffle_matches=persistent.toy_shuffle_matches, \
                        show_next=persistent.toy_show_solution)
-    $ adt = persistent.toy_reticle_timeout
+    $ adt = 1.0
     call screen toy_playspace(tb)
     return

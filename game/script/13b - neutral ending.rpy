@@ -6,12 +6,12 @@ label neutral_ending:
 
     pause 4
 
-    play sound "audio/sfx/Opening Door.ogg"
+    $ play_sound(dooropen)
     scene black with fade
 
     pause 2
 
-    play sound "audio/sfx/Closing Door2.ogg"
+    $ play_sound(doorclose)
 
 
     show bg garage with placeintro:
@@ -32,11 +32,12 @@ label neutral_ending:
     "(...All that said,{w=0.1} you weren't expecting your escape to be so...{w=0.5} {i}straightforward.{/i})"
     "(The exit's wide open.{w} If you walked through right now,{w=0.1} you'll-){p=0.5}{nw}"
 
-    play sound "audio/sfx/Quick Footsteps 1.ogg"
+    $ play_sound(quickfootsteps)
     #"{b}[quick footsteps sound out]{/b}"
     pause 1
-    "(Aw,{w=0.1} crap.{w} You jinxed yourself.)"
+    "(Crap.{w} You jinxed yourself.)"
     "H-hello?{w} Who's there?"
+    voice "audio/voice/cautionne/Endings/Neutral Endings/NE 1/Cautionne_NeutralEnding1-01.ogg"
     x "So,{w=0.1} you {i}finally {/i}made it.{w=0.5} Did you like my games,{w=0.1} lab rat?"
 
     scene bg garage:
@@ -71,7 +72,7 @@ label neutral_ending:
     pause 0.5
     "{sc}(AaaaaAAAAaaAaAAAAaaAAAAH?!?!?!?){/sc}"
 
-    play sound "audio/sfx/Body Fall 1.ogg"
+    $ play_sound(bodyfall)
 
     scene cautionne gun far silent with small_shake:
         zoom 1 xalign 0.5 yalign 0.5
@@ -87,16 +88,16 @@ label neutral_ending:
     "{si}(And I can't...{w} Haa...{w} I can't...{w} {i}stand{/i} any more!){/si}"
     "{si}(Wha...{w} what am I gonna do?{w} How am I gonna get out of here {i}now?{/i}){/si}"
 
-    play sound "audio/sfx/Walking Footsteps 4.ogg"
+    $ play_sound(footsteps4)
     #"{b}[footsteps sounds as{/b}{b} Cautionn{/b}{b}e walks over.]{/b}"
     pause 3
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
     cr "Patronize me at your own risk."
-    cr "...Is what I should've said before firing,{w=0.1} but I'm still new at this part."
-    cr "Only a little newer than you,{w=0.1} {i}lab rat.{/i}"
+    cr "...Is what I should've said before firing,{w=0.1} but I'm still new at this."
+    cr "Kind of like you at your job{w=0.1} {i}lab rat.{/i}"
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
-    cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} with a hand-to-mouth life."
-    cr "That's why you did this mission,{w=0.1} right?{w=0.5} ‘Cause you wanted that sweet,{w=0.1} fat,{w=0.1} paycheck?"
+    cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} living a hand-to-mouth life."
+    cr "That's why you did this mission,{w=0.1} right?{w=0.5} ‘Cause you wanted a sweet,{w=0.1} fat,{w=0.1} paycheck?"
     "{si}(...I...{w} I want...{w} to say something...){/si}"
     "{si}(But,{w=0.1} haah...{w} I'm shaking...{w} and sweating...{w} everywhere...){/si}"
     "{si}(All I can do...{w} is open my eyes...){/si}"
@@ -107,7 +108,7 @@ label neutral_ending:
 
     pause 3
     #"{b}[Show the bottom of his shooting CG]{/b}"
-    cr "Struggling just to open your mouth?{w=0.5} That's almost cute,{w=0.1} in a gross kind of way."
+    cr "Struggling just to open your mouth?{w=0.5} That's almost pitiful,{w=0.1} in a gross kind of way."
     cr "You've never experienced this much pain before,{w=0.1} have you?"
     if most_explored == 1:
 
@@ -122,8 +123,11 @@ label neutral_ending:
         scene cautionne shoot grin with dissolve:
             align(0.0,0.0)
         pause 1
+        voice "audio/voice/cautionne/Endings/Neutral Endings/NE 1/Cautionne_NeutralEnding1-02.ogg"
         cr "Hm...{w=0.5} I'll admit,{w=0.1} I'm curious."
+        voice "audio/voice/cautionne/Endings/Neutral Endings/NE 1/Cautionne_NeutralEnding1-03.ogg"
         cr "When you're gone,{w=0.1} will STOP eulogize you?{w=0.5} Or will they just write you off as another wasted asset?"
+        voice "audio/voice/cautionne/Endings/Neutral Endings/NE 1/Cautionne_NeutralEnding1-04.ogg"
         cr "...Hee hee.{w=0.5} I'm undecided."
         #"{b}[the trigger clicks]{/b}"
         scene cautionne shoot grinsilent:
@@ -134,6 +138,7 @@ label neutral_ending:
         pause 0.1
         scene cautionne shoot grin:
             zoom 2 align(0.0,0.07)
+        voice "audio/voice/cautionne/Endings/Neutral Endings/NE 1/Cautionne_NeutralEnding1-05.ogg"
         cr "But I wouldn't be much of a scientist if I didn't test my hypotheses."
 
     elif most_explored == 2:
@@ -147,20 +152,24 @@ label neutral_ending:
             pause 2
             scene cautionne shoot grin:
                 align(0.0,0.0)
+            voice "audio/voice/cautionne/Endings/Neutral Endings/NE 2/Cautionne_NeutralEnding2-01.ogg"
             cr "No hard feelings.{w=0.5} I know you were just doing your job."
+            voice "audio/voice/cautionne/Endings/Neutral Endings/NE 2/Cautionne_NeutralEnding2-02.ogg"
             cr "But see,{w=0.1} there's a little {i}conflict of interest{/i} between you and me."
             scene cautionne shoot angry:
                 align(0.0,0.0)
+            voice "audio/voice/cautionne/Endings/Neutral Endings/NE 2/Cautionne_NeutralEnding2-03.ogg"
             cr "Besides,{w=0.1} I've got to finish what Dr. Danger started.{w=0.5} That's {i}my {/i}{i}job{/i},{w=0.1} now that she's gone."
             #"{b}[the trigger clicks]{/b}"
             scene cautionne shoot angrysilent:
                 align(0.0,0.0)
             pause 0.1
-            scene cautionne shoot angrysilent with dissolve:
+            scene cautionne shoot grinsilent with dissolve:
                 zoom 2 align(0.0,0.07)
             pause 0.1
-            scene cautionne shoot angry:
+            scene cautionne shoot grin:
                 zoom 2 align(0.0,0.07)
+            voice "audio/voice/cautionne/Endings/Neutral Endings/NE 2/Cautionne_NeutralEnding2-04.ogg"
             cr "And by the time I'm finished,{w=0.1} they'll be {i}begging{/i} for her to come back."
             #"{b}[the gun fires]{/b}"
 
@@ -181,9 +190,11 @@ label neutral_ending:
             scene cautionne shoot angry:
                 align(0.0,0.0)
             cr "I {i}won't{/i} let anyone else live through what I did."
+            voice "audio/voice/cautionne/Endings/Neutral Endings/NE 3/Cautionne_NeutralEnding3-01.ogg"
             cr "You weren't there.{w=0.5} You weren't in charge. "
             scene cautionne shoot cry:
                 align(0.0,0.0)
+            voice "audio/voice/cautionne/Endings/Neutral Endings/NE 3/Cautionne_NeutralEnding3-02.ogg"
             cr "But after everything you people did to me...{w=0.5} No,{w=0.1} to {i}us...{/i}"
 
             scene cautionne shoot crysilent:
@@ -195,6 +206,7 @@ label neutral_ending:
             scene cautionne shoot cry:
                 zoom 2 align(0.0,0.07)
             #"{b}[{/b}{b}cautione{/b}{b} is on the verge of tears]{/b}"
+            voice "audio/voice/cautionne/Endings/Neutral Endings/NE 3/Cautionne_NeutralEnding3-03.ogg"
             cr "I...{w=0.5} I..."
             scene cautionne shoot crysilent:
                 zoom 2 align(0.0,0.07)
@@ -202,6 +214,7 @@ label neutral_ending:
             scene cautionne shoot cry:
                 zoom 2 align(0.0,0.07)
             #"{b}[the trigger clicks]{/b}"
+            voice "audio/voice/cautionne/Endings/Neutral Endings/NE 3/Cautionne_NeutralEnding3-04.ogg"
             cr "...I just can't forgive someone who'd brush that aside."
             #"{b}[the gun fires]{/b}"
 
@@ -220,6 +233,7 @@ label neutral_ending:
 
     pause 3
     $Achievement.add(achievement_end3)
+######## unsure whether to put in the neutral ending voicelines here - but ive left them in the files so you can figure out which one feels better
 
     if most_explored == 1:
         show text "{size=90}{color=#ffffff}neutral end (a){/color}{/size}":
