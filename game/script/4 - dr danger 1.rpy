@@ -172,10 +172,11 @@ label dr_danger_1:
   "(A lock with a strange puzzle. {w}Kinda like the one you found in your cell.)"
   pause 1
   "(...Maybe you\'ll find the answer in this room?)"
-show bg room1:
-  zoom 0.8 
-  ease 5 zoom 0.335 xalign 0.0 yalign 0.0
+  show bg room1:
+    zoom 0.8 
+    ease 5 zoom 0.335 xalign 0.0 yalign 0.0
 
-pause 5
-$ play_music(room1theme, fadein=1.0, fadeout=0.1)
-call screen room1 with dissolve
+  pause 5
+  $ inspect = None
+  $ play_music(room1theme, fadein=1.0, fadeout=0.1)
+  call screen room1 with dissolve

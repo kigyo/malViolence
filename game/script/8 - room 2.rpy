@@ -253,7 +253,7 @@ label evidence_solved:
     "(Congratulations! {w}You solved the evidence board puzzle.)"
     hide black onlayer screens
     hide screen room2_evidence
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room2
 
@@ -304,7 +304,7 @@ label panopticon_solved:
     "(Congratulations! {w}You solved the panopticon puzzle.)"
     hide black onlayer screens
     hide screen room2_panopticon
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room2
 
@@ -361,7 +361,7 @@ label recalibration_solved:
     "(Congratulations! {w}You solved the recalibration puzzle.)"
     hide black onlayer screens
     hide screen cybernetics
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room2
 

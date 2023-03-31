@@ -120,8 +120,8 @@ screen failchievement_menu():
                 cols 2 ## You can change this number depending on the width of your achievements.
                 spacing 10
                 for v in death_name.values():
-                    if achievement.has(v[0]) and v[3] == 'dead':
-                        
+                    if [d.name == v for d in persistent.dead_ends]:
+                    
                         frame:
                             
                             background Solid('#0088AA') ## Nice bright blue/turquoise.
@@ -140,10 +140,7 @@ screen failchievement_menu():
                                     
                                     text v[0] style 'achievements_label' color '#000000'
                                     text v[1] color '#000000'
-
-                for v in death_name.values():
-                    if not achievement.has(v[0]) and v[3] == 'dead':
-                        
+                    else:
                         frame:
                             
                             hbox:
@@ -204,7 +201,8 @@ init python:
             Achievement.add(achievement_platinum)
     
     def deadend(cheevo):
-        Achievement.add(achievement_deadfirst)
+        if len(persistent.dead_ends) == 0:
+            Achievement.add(achievement_deadfirst)
         Achievement.add_death(cheevo)
         if len(persistent.dead_ends) >= (len(death_name)):
             Achievement.add(achievement_deadall)
@@ -240,7 +238,6 @@ screen achievement_notification():
     if achievement_notification_list:
 
         frame at achievement_appear:
-            background Solid('#FFFFFF')
             align (0.5, 0.0)
             padding (20, 20, 20, 20)
 
@@ -258,7 +255,7 @@ screen achievement_notification():
                     xfill False
 
                     text str(achievement_notification_list[0].name):
-                        color '#000000'
+                        color gui.accent_color
                         size 25
 
                     text str(achievement_notification_list[0].message):
@@ -266,7 +263,7 @@ screen achievement_notification():
                         size 16
 
 style victory_message_text:
-    color "#000000"
+    color "#ffffff"
     size 20
 
 transform achievement_appear:

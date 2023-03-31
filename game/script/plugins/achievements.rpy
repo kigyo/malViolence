@@ -108,7 +108,7 @@ init python:
         "dead7": [_("DEAD END 07:"), _(""), "gui/dead_icon.png", 'dead'], #room2 1
         "dead8": [_("DEAD END 08:"), _("A Taste of Sobering Punishment."), "gui/dead_icon.png", 'dead'], #room2 2
         "dead9": [_("DEAD END 09:"), _("Didn't Make The Cut."), "gui/dead_icon.png", 'dead'], #room2 3
-        "dead10": [_("DEAD END 10:"), _(""), "gui/dead_icon.png", 'dead'], #room3 meta
+        "dead10": [_("DEAD END 10:"), _("Holy Scrap!"), "gui/dead_icon.png", 'dead'], #room3 meta
         "dead11": [_("DEAD END 11:"), _("Quilt In Action."), "gui/dead_icon.png", 'dead'], #room3 1
         "dead12": [_("DEAD END 12:"), _("Get Stuffed."), "gui/dead_icon.png", 'dead'], #room3 2
         "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "gui/dead_icon.png", 'dead'], #room3 3
