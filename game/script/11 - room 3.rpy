@@ -192,17 +192,16 @@ label room_3:
         $ room3["confidence_workbook"] += 1
 
     elif inspect == "diary":
-        $ nvl_heading = "Entry #" + str(room3["diary"])
+        $ nvl_heading = "Entry #" + str(room3["diary"]+1)
         if room3["diary"] == 0:
             ### sound of paper being picked up
             "(It's a loose page with handwriting on it.{w} Judging by the page number in the corner and the fading ink,{w=0.1} it must be a small part of a much larger document.)"
-        elif room3["diary"] == 1:
             #"FIRST ENTRIES"
             n "\"It’s nice to have job security right out of school. I had my doubts during junior year, of course, but I don't think anyone could've predicted how the sector's grown these past few months. The developments in cybernetic technology have been explosive. Sometimes {i}literally. {/i}"
             n "It's troubling, but all great technology has the potential for misuse. And now I'm going to be part of an organization that works to keep that tech under control. "
             n "Though I'll be honest, the name's pretty silly. "
             n "Oh well. They could always change the acronym later.\""
-        elif room3["diary"] == 2:
+        elif room3["diary"] == 1:
             #"SUCCESS WITH LIMITING PROLIFERAITON OF TECH, PROMOTION, DISCOVERY OF POTENTIAL FOR YOUNGER SUBJECTS"
             n "\"I thought that things were moving fast before - but the growth we're seeing now makes those earlier years look glacial. STOP is doing good work that needs to get done, and it's making countries put money where their mouths are when it comes to international cooperation efforts."
             nvl clear
@@ -212,7 +211,7 @@ label room_3:
             n "\"Dr. Tan asked if the trend in performance would improve further if we started surgery any earlier. A weird question, since this tech is only approved for anyone old enough to enlist, but I guess she was just being thorough. The theory is sound.\""
             nvl clear
             n "\"The promotion was nice. I deserve it, and I was the only obvious choice, but still. It felt nice to be recognized.\""
-        elif room3["diary"] == 3:
+        elif room3["diary"] == 2:
             #"STAGNATION, LOTS OF RESEARCH WORK DISILLUSIONMENT, PARANOIA"
             n "\"Another month where the Security Advisory Council looked completely lost. It's like they don't know what to do with peacetime. They do amazing work - obviously. The world is secure, and cybernetic technology is finally getting regulated. The laws are catching up with the science. That's a good thing, even if it makes their job a little less exciting. Or maybe a little less secure.\""
             nvl clear
@@ -224,7 +223,7 @@ label room_3:
             n "\"I might've transferred a few times too many. "
             n "I came into work today and clocked out without recognizing a single face the entire time. New people, places, committees, projects, and always more acronyms. "
             n "And, for the first time in years, I was denied access to internal data. I didn’t think anything could be above my paygrade anymore. Note to self: look up \"YTDI \"."
-        elif room3["diary"] == 4:
+        elif room3["diary"] == 3:
             #"Meeting CAUTIONNE"
             n "\"\"I was very disappointed with the state of the Youth Training and Development Initiative.\""
             n "That's how I put it in writing. "
@@ -246,7 +245,7 @@ label room_3:
             nvl clear
             n "I get the sense that my superiors aren’t paying attention to what is happening. That might be the most infuriating part for me - they don't even care that much about the success or failure of this program. "
             n "The implication I’m getting is that this is far from the only program of its kind. It might be one of many, many more.\""
-        elif room3["diary"] == 5:
+        elif room3["diary"] == 4:
             #"SEVEN FLEE, ON THE RUN"
             n "\"I'm never going to be able to forget the look on his face when the convulsions started. "
             n "He knew it was coming, and he knew there was nothing he could do to even brace himself for the pain. "
@@ -262,7 +261,7 @@ label room_3:
             nvl clear
             n "\"Maybe he should have hesitated. All that awaits him is a life in hiding."
             n "...At least he’ll have a choice from now on.\""
-        elif room3["diary"] == 6:
+        elif room3["diary"] == 5:
             #"FIGHTING BACK, CAUTIONNE WANTING TO HELP"
             n "\"I've no right to call myself a parent, but even so - parenthood is hard. "
             n "His rehab is going as well as can be expected, but this is no way to raise a child. I can educate him, keep him fed, and care for him."
@@ -283,6 +282,8 @@ label room_3:
             n "STOP is still in power. People are still too scared to take them to task. And there are still YTDI centers all over the world. If I destroy one, they move the children to another. "
             n "That's horrible as-is, but what if they don’t care enough to do even that? What if they just figure the YTDI is just not worth the cost? What’ll happen to those children then?"
             n "Something needs to change, but I'm not sure it's something that Dr. Danger can do. "
+            if gui.text_size > 40:
+                nvl clear
             n "...And I'm not sure that Deirdre Destrange is enough for him.\""
             $room3["investigated"].append("diary")
         $ room3["diary"] += 1
