@@ -23,7 +23,7 @@ screen room3():
             if 6 in room3["pages"] and 6 not in room3["read_pages"]:
                 imagebutton idle "room3_note6" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 6), Jump("room_3")] pos (4665, 3034) mouse "inspect"
         if not inspect:
-            textbutton _("UP") action SetDict(room3, "room", "up") style "main_menu_button" xalign 0.94 yalign 0.4
+            textbutton _("UP") action [SetDict(room3, "room", "up"), With(dissolve)] style "main_menu_button" xalign 0.94 yalign 0.4
 
     elif room3["room"] == "up":
         fixed at zoomed(0.335):
@@ -43,11 +43,12 @@ screen room3():
                 imagebutton idle "room3_note5" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 5), Jump("room_3")] pos (4900, 2456) mouse "inspect"
         
         if not inspect:
-            textbutton _("DOWN") action SetDict(room3, "room", "down") style "main_menu_button" xalign 0.97 yalign 0.97
+            textbutton _("DOWN") action [SetDict(room3, "room", "down"), With(dissolve)] style "main_menu_button" xalign 0.97 yalign 0.97
         
     if config.developer:
         frame:
             textbutton _("Skip Room") action [Jump("post_room_3")] style "main_menu_button"
+
 
 label room_3:
     if inspect not in room3["investigated"] and inspect in ["sewing_book", "scrapbook", "health_record", "locked_container", "confidence_workbook", "mannequin"]:
