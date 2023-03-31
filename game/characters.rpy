@@ -44,9 +44,9 @@ init python:
         speaking = name
         if event == "show":
             if speaking == "cautionne" and not renpy.music.get_playing("voice"):
-                renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True, tight=False)
+                renpy.music.play("audio/beeps/bleep026.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "drdanger" and not renpy.music.get_playing("voice"):
-                renpy.music.play("audio/beeps/bleep001.ogg", channel="sound", loop=True, tight=False)
+                renpy.music.play("audio/beeps/bleep018.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "protagonist":
                 renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "report":
