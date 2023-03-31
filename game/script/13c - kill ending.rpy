@@ -22,7 +22,7 @@ label kill_ending:
     "(You spoke too soon.)"
     pause 0.2
     "Identify yourself!"
-    #### cautionne's voices go here
+    voice "audio/voice/cautionne/Endings/Kill Ending/Cautionne_KillEnding-01.ogg"
     x "How many guesses will you need {i}this{/i} time?"
 
     scene bg garage:
@@ -73,6 +73,7 @@ label kill_ending:
     pause 3
     "(...But Cautionne's final moments are surprisingly quiet.)"
     pause 1
+    voice "audio/voice/cautionne/Endings/Kill Ending/Cautionne_KillEnding-02.ogg"
     "(He stutters out a pained gasp.)"
     pause 1
     scene cautionne gun cu dead with dissolve
