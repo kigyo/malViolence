@@ -44,9 +44,9 @@ init python:
         speaking = name
         if event == "show":
             if speaking == "cautionne" and not renpy.music.get_playing("voice"):
-                renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True, tight=False)
+                renpy.music.play("audio/beeps/bleep026.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "drdanger" and not renpy.music.get_playing("voice"):
-                renpy.music.play("audio/beeps/bleep001.ogg", channel="sound", loop=True, tight=False)
+                renpy.music.play("audio/beeps/bleep018.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "protagonist":
                 renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True, tight=False)
             elif speaking == "report":
@@ -62,7 +62,7 @@ init python:
 
 ############### character definitions
 
-define x = Character(_("???"), voice_tag="cautionne", color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
+define xc = Character(_("???"), voice_tag="cautionne", color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define xd = Character(_("???"), voice_tag="drdanger", color="#00e7ff", image="drdanger", callback=speaker("drdanger"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 define c = Character(_("Cautionne"), voice_tag="cautionne", color="#00e7ff", screen="subtitle", what_color="#00e7ff", image="cautionne", callback=speaker("cautionne"), ctc="ctc", ctc_pause="ctc", ctc_timedpause=Null(), ctc_position="nestled-close")
 #no-subtitle cautionne
@@ -143,8 +143,6 @@ image drdanger_tender_speaking:
 
 
 ###### cautionne CGs and sprites
-
-image bg cautionne_screen = "cautionne_screen_background.png"
 
 layeredimage cautionne annoyed:
     zoom 0.5
@@ -385,6 +383,7 @@ image cautionne_serious_speaking:
 
 layeredimage cautionne shoot:
     zoom 0.5
+    always "images/CG/cautionne_shoot_angry_close.png"
     group mouth:
         attribute angry default WhileSpeaking("cautionne", "cautionne_shoot_angry", "images/CG/cautionne_shoot_angry_close.png")
         attribute cry WhileSpeaking("cautionne", "cautionne_shoot_cry", "images/CG/cautionne_shoot_cry_close.png")
@@ -427,6 +426,7 @@ layeredimage cautionne sit_far:
 
 layeredimage cautionne sit:
     zoom 0.5
+    always "images/CG/cautionne_sit_hope_closed.png"
     group mouth:
         attribute hope default WhileSpeaking("cautionne", "cautionne_sit_hope", "images/CG/cautionne_sit_hope_closed.png")
         attribute stunned WhileSpeaking("cautionne", "cautionne_sit_stunned", "images/CG/cautionne_sit_stunned_closed.png")

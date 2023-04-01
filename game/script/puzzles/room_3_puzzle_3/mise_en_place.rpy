@@ -108,7 +108,7 @@ init python:
         if win:
             store.room3["cooking"] = "solved"
             return True
-        elif (achievement_dead13 in persistent.dead_ends and not preferences.hard_mode):
+        elif ("dead13" in persistent.dead_ends and not preferences.hard_mode):
             renpy.restart_interaction()
             #TODO: some kind of error feedback
             pass
@@ -257,8 +257,8 @@ screen mise_en_place(interactable=True):
                 null height 5
 
                 label "Instructions" xalign 0.5
-                text "- Always begin cooking with {i}~mise en place~{/i}."
-                text "- {b}Drag items onto the board to arrange them them.{/b} Look at the ingredients list to figure out how many of each item should be laid out on the counter."
+                text "- Always begin cooking with {i}{b}~mise en place~.{/i}{/b}"
+                text "- {b}Drag items onto the board to arrange them.{/b} Look at the ingredients list to figure out how many of each item should be laid out on the counter."
                 text "- {b}All items of the same type{/b} should touch each other {b}orthagonally.{/b}"
                 text "- {b}Items of different types{/b} should not touch orthagonally, but can touch {b}diagonally.{/b}"
                 text "- {b}Drag uneeded items{/b} to the {b}trash.{/b}"

@@ -32,7 +32,7 @@ init python:
                         return False
                         
         for i in range(len(evidence_solutions)):
-            if evidence_connections[evidence_solutions[i][0]].sort() == evidence_solutions[0][1:].sort():
+            if sorted(evidence_connections[evidence_solutions[i][0]]) == sorted(evidence_solutions[i][1:]):
                 continue
             elif evidence_connections[evidence_solutions[i][0]] == [evidence_solutions[i][1]] and evidence_connections[evidence_solutions[i][1]] == [evidence_solutions[i][2]]:
                 continue
@@ -46,7 +46,7 @@ init python:
         if evidence_valid():
             store.room2["evidence"] = "solved"
             return True
-        elif (achievement_dead7 in persistent.dead_ends and not preferences.hard_mode):
+        elif ("dead7" in persistent.dead_ends and not preferences.hard_mode):
             evidence_init()
             renpy.retain_after_load()
             renpy.restart_interaction()
@@ -54,7 +54,7 @@ init python:
             renpy.jump("evidence_game_over")
 
 define evidence_notes = {
-    0: _("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on site. \n\nUsing what information we have, {u}figure out which item belongs to who, and who grew up where{/u}."),
+    0: _("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}."),
     1: _("The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed."),
     2: _("The red headed kid is certain they did not live in the city."),
     3: _("The bracelet is too big for the redhead."),
@@ -67,7 +67,7 @@ define evidence_positions = [(0.05,0.05),(0.25,0.2),(0.2,0.65),(0.0,0.5),(0.45,0
 define evidence_note_positions = {1:(0.11,0.45), 2:(0.4,0.0), 3:(0.96,0.72), 4:(0.79,0.4)}
 define evidence_small = [2,3]
 
-screen room2_evidence:
+screen room2_evidence():
     sensitive not inspect
     modal True
     tag puzzle
@@ -109,6 +109,11 @@ screen room2_evidence:
             textbutton "SUBMIT" style "confirm_button" action Function(evidence_submit) xalign 1.0 yalign 0.5
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
+    if config.developer:
+        vbox:
+            textbutton _("Skip Puzzle") action [SetDict(room2, "evidence", "solved"), Return()] style "confirm_button"
+            textbutton _("Game Over") action [Jump("evidence_game_over")] style "confirm_button"
+
 screen evidence_note(id, x=0.5, y=0.45, xs=350, ys=350):
     add Solid("#0000004a") xysize xs,ys align (x,y) xoffset 20 yoffset 20
     frame background Solid("#ffafee") xysize xs,ys padding int(xs/10),int(ys/10) align (x,y):
@@ -124,4 +129,4 @@ screen evidence_photo(id):
                 add "puzzles/room_2_puzzle_1/pin_lower.png"
 
 style evidence_note_text:
-    color "#fff" font "gui/font/TitilliumWeb-Regular.ttf" size 28 line_spacing -10 justify True outlines [(1.5, "#790e0e", 1, 1)]
+    color "#790e0e" font "gui/font/TitilliumWeb-Regular.ttf" size 28 line_spacing -10 justify True outlines[(2, "#e381ba", 0, 0)]

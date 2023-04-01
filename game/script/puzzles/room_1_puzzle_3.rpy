@@ -7,12 +7,11 @@ init python:
         drag.snap((drag.drag_name-1)*345,100,0.3)
 
         drag_filled = getattr(renpy.store, "decanting_vial%s" % str(drag.drag_name))
+        drop_filled = getattr(renpy.store, "decanting_vial%s" % str(drop.drag_name))
+        drop_size = getattr(renpy.store, "decanting_size_vial%s" % str(drop.drag_name))
         
-        if drag_filled > 0:
+        if drag_filled > 0 and drop_filled < drop_size:
             store.decanting_moves += 1
-            
-            drop_filled = getattr(renpy.store, "decanting_vial%s" % str(drop.drag_name))
-            drop_size = getattr(renpy.store, "decanting_size_vial%s" % str(drop.drag_name))
 
             transfer_amount = drag_filled
             if drag_filled + drop_filled > drop_size:
@@ -28,7 +27,7 @@ init python:
                 store.room1["decanting"] = "solved"
                 return True
             
-            if decanting_moves >= decanting_move_limit and not (achievement_dead5 in persistent.dead_ends and not preferences.hard_mode):
+            if decanting_moves >= decanting_move_limit and not ("dead5" in persistent.dead_ends and not preferences.hard_mode):
                 renpy.jump("decanting_game_over")
 
     def decanting_valid():
@@ -96,7 +95,7 @@ screen room1_decanting():
                 hbox xsize 150:
                     text str(decanting_vial3) + "/" + str(decanting_size_vial3) xalign 0.5
 
-            if not (achievement_dead5 in persistent.dead_ends and not preferences.hard_mode):
+            if not ("dead5" in persistent.dead_ends and not preferences.hard_mode):
                 frame xalign 1.0:
                     text str(decanting_moves) + "/" + str(decanting_move_limit) style "main_menu_button"
     

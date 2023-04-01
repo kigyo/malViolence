@@ -70,7 +70,6 @@ define config.main_menu_music = "audio/music/malviolence theme 2.ogg"
 define config.enter_transition = dissolve
 define config.exit_transition = dissolve
 
-
 ## Between screens of the game menu.
 
 define config.intra_transition = dissolve
@@ -79,11 +78,6 @@ define config.intra_transition = dissolve
 ## A transition that is used after a game has been loaded.
 
 define config.after_load_transition = dissolve
-
-
-## Used when entering the main menu after the game has ended.
-
-define config.end_game_transition = dissolve
 
 
 ## A variable to set the transition used when the game starts does not exist.
@@ -111,7 +105,7 @@ define config.choice_empty_window = extend
 
 ## Transitions used to show and hide the dialogue window
 
-define config.end_splash_transition = Dissolve(3)
+define config.end_splash_transition = Dissolve(2.5)
 
 define config.enter_yesno_transition = Dissolve(.5)
 define config.exit_yesno_transition  = Dissolve(.5)
@@ -119,7 +113,7 @@ define config.exit_yesno_transition  = Dissolve(.5)
 define config.nvl_adv_transition = Dissolve(.5)
 define config.adv_nvl_transition = Dissolve(.5)
 
-define config.end_game_transition = Dissolve(2)
+define config.end_game_transition = Fade(1,0.1,1)
 
 define config.window_show_transition = Dissolve(.2)
 define config.window_hide_transition = Dissolve(.2)

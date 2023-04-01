@@ -53,9 +53,9 @@ init python:
         renpy.retain_after_load()
 
     def quilt_submit():
-        if not quilt_valid() and not (achievement_dead11 in persistent.dead_ends and not preferences.hard_mode):
+        if not quilt_valid() and not ("dead11" in persistent.dead_ends and not preferences.hard_mode):
             renpy.jump("quilt_game_over")
-        elif not quilt_valid() and (achievement_dead11 in persistent.dead_ends and not preferences.hard_mode):
+        elif not quilt_valid() and ("dead11" in persistent.dead_ends and not preferences.hard_mode):
             #TODO: error sound
             pass
         else:
@@ -81,9 +81,9 @@ define quilt_colors = ["blue", "red", "yellow"]
 define quilt_shapes = ["bolt", "pill", "swirl", "x"]
 define quilt_fills = ["empty", "full", "striped"]
 
-define quilt_description = _("""This quilt's unfinished, and you need to make it complete!\n\nEach tile has {color=#fff}three qualities (color, shape, and fill).\n\n{/color}In order to finish the intended pattern, each adjacent tile must share {color=#fff}exactly 2 out of 3 qualities with the next tile.{/color}
+define quilt_description = _("""This quilt's unfinished, and {color=#fff}you need to make it complete!{/color}\n\nEach tile has {color=#fff}three qualities (color, shape, and fill).\n\n{/color}In order to finish the intended pattern, each adjacent tile must share {color=#fff}exactly 2 out of 3 qualities with the next tile.{/color}
 
-Below, construct the next motif you want to place by adjusting the color, shape, and fill with the arrows:""")
+Below, {color=#fff}construct the next motif{/color} you want to place by{color=#fff} adjusting the color, shape, and fill with the arrows:{/color}""")
 
 screen room3_quilt():
     sensitive not inspect

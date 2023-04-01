@@ -156,6 +156,14 @@ init python:
     boxunlock = "audio/sfx/boxunlock.ogg"
     boxopen = "audio/sfx/boxopen.ogg"
     quickfootsteps = "audio/sfx/Quick Footsteps 1.ogg"
+    timeralarm = "audio/sfx/Room1SFX/Timer Alarm 2.ogg"
+    timeralarm2 = "audio/sfx/Room1SFX/TimerAlarm1.ogg"
+    bombexplosion1 = "audio/sfx/Room1SFX/Bomb Explosion Big 2.ogg"
+    bombexplosion2 = "audio/sfx/Room1SFX/Bomb explosion Smaller.ogg"
+    liquidpour = "audio/sfx/Room1SFX/Liquid Pour 3.ogg"
+    marbledeath = "audio/sfx/Room1SFX/Marble Death Crush.ogg"
+    metaldoorclose = "audio/sfx/Room1SFX/Metal Door Close 2.ogg"
+
 
 
 
@@ -189,7 +197,14 @@ init python:
     boxunlock : _("A box being unlocked."),
     boxopen : _("A box opening."),
     quickfootsteps : _("Quick footsteps."),
+    bombexplosion1 : _("A bomb explodes."),
+    bombexplosion2 : _("The computer explodes."),
+    timeralarm : _("A timer alarm."),
+    timeralarm2 : _("A computer alarm."),
+    liquidpour : _("A liquid is poured."),
+    marbledeath : _("A comically large marble is on it's way..."),
     metaldoorlock : _("A locked metal door.")
+    metaldoorclose : _("A metal door closes.")
     }
 
 # This is where you define the names for the music files you will be using in the game. It is recommended to define the main menu BGM as well.
@@ -198,6 +213,7 @@ init python:
 
     # example = "audio/examplefile.ogg"
     menutheme = "audio/music/malviolence theme 2.ogg"
+    cautionnethemeintro = "audio/music/cautionne_theme_intro.ogg"
     cautionnetheme = "audio/music/cautionne theme.ogg"
     backstorytheme = "audio/music/CautionneDrDangerTheme.ogg"
     endingintro = "audio/music/EndingIntro.ogg"
@@ -205,9 +221,9 @@ init python:
     neutralending = "audio/music/NeutralEnding.ogg"
     killending = "audio/music/KillEndingV2.ogg"
     tutroom = "audio/music/tute or real.ogg"
-    room1 = "audio/music/evilroom.ogg"
-    room2 = "audio/music/officeogg"
-    room3 = "audio/music/Room 3.ogg"
+    room1theme = "audio/music/evilroom.ogg"
+    room2theme = "audio/music/office.ogg"
+    room3theme = "audio/music/Room 3.ogg"
 
 # This is where you define the music captions for each music file you will be using in the game. Please make sure the names of the music defined above match the ones used for the captions below.
 
@@ -216,16 +232,17 @@ init python:
     music_list = {
     # example: _("Example text here"),
     menutheme : _("Testing, Testing... 1,2,3."),
-    cautionnetheme: _("Emperor of MalViolence!"),
+    cautionnethemeintro: _("Introducing..."),
+    cautionnetheme: _("The Great Cautionne, Emperor of MalViolence!"),
     backstorytheme : _("A Fateful Meeting."),
     endingintro: _("Conclusion"),
     spareending : _("Sudden Compassion."),
     neutralending : _("One Way Only."),
     killending : _("Just Another Job."),
     tutroom : _("Tute or Real?"),
-    room1 : _("The Evil Lab, For Evil Lab Things."),
-    room2 : _("Odd Office?"),
-    room3 : _("Bittersweet Home.")
+    room1theme : _("The Evil Lab, For Evil Lab Things."),
+    room2theme : _("Odd Office?"),
+    room3theme : _("Bittersweet Home.")
     }
 
 # This is the sound command. It functions the same way as "play sound" normally does. You can change the fadein, fadeout and loop values when you invoke the command. If you do not change the values, the default values are 0.0 fadein, 0.0 fadeout, and no loop. If you change the values below, that will change the default values for every time you invoke the command.

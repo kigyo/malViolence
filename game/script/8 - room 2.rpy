@@ -33,20 +33,20 @@ screen room2():
             textbutton _("Skip Room") action [Jump("post_room_2")] style "main_menu_button"
 
 
-define cybernetics_description = _("""- Lay down new synthetic nerual pathways, but be mindful of the original peices that cannot be moved!
+define cybernetics_description = _("""It's time for a crash course in cybernetics! 
 
-- Neural pathways must form one continuous loop and occupy every available space.
+{color=#fff}Lay down new synthetic neural pathways — but be mindful of the original pieces that can't be moved.{/color}
 
-- Pathways can cross over themselves, but cannot retreace themselves, so no T intersections!
+Here's some basic recalibration rules:
+-{color=#fff} Neural pathways must form one continuous loop and occupy every available space.{/color}
+-{color=#fff} Pathways can cross over themselves, but they can't retrace themselves{/color} (so no T intersections).
+-{color=#fff} At any 4-way intersection, a neuron will always go straight though.{/color} It'll never turn.
+-You can only submit possible solutions {color=#fff}where there are no open ended pathways{/color} (including T intersections).""")
 
-- At any 4 way intersection, a neuron will always go straight though and never turn at an intersection.
 
-- You can only submit possible solutions where there are no open ended pathways (including T intersections).""")
+define word_description = _("""Cautionne's a big fan of word games, so he wants you to come up with {color=#fff}a word that's almost as good as the one above.{/color}
 
-
-define word_description = _("""Can you come up with a word that's almost as good as the above?
-
-...You might have to find some letters first!""")
+{color=#fff}...You might have to find some letters first!{/color}""")
 
 define word_lenient_failure_message = _("(Nope, not good enough.)")
 
@@ -78,7 +78,7 @@ label room_2:
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
             "(That said,{w=0.1} poor penmanship hasn't dulled the designs themselves.{w} The {i}least{/i} dangerous of these would be devastating out in the field.)"
-            "(The oldest of the blueprints -{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
+            "(The oldest of the blueprints —{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
             "(In fact,{w=0.1} if you squint...{w=0.5} you can still find the signatures at the bottom.)"
             "(\"Destrange,\"{w=0.1} they say.{w} They're dated more than 15 years ago.)"
             hide room2_blueprintcollection with dissolve
@@ -111,10 +111,10 @@ label room_2:
         if room2["limbs"] == 0:
             show room2_limbsdesigns with dissolve:
                 yalign 0.2 xalign 0.5
-            "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP -{w=0.5} at first glance.)"
+            "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP —{w=0.5} at first glance.)"
             "(On closer inspection,{w=0.1} there are more differences than there are similarities.) "
             "(STOP's technology is more generalized,{w=0.1} more efficient...{w=0.5} and {i}angular.{/i})"
-            "(These plans are heavily customized.{w} They could've only been suitable for a very small number of subjects -{w=-0.5} possibly as few as {i}one.{/i})"
+            "(These plans are heavily customized.{w} They could've only been suitable for a very small number of subjects —{w=-0.5} possibly as few as {i}one.{/i})"
             "(Perhaps Dr. Danger based it off stolen data?{w} You make a note to tell your superiors about possible reverse-engineering.)"
             hide room2_limbsdesigns with dissolve
         else:
@@ -133,7 +133,7 @@ label room_2:
             "(These are the notes of a hunter,{w=0.1} and STOP was their prey.)"
             "(You recognize dozens of names,{w=0.1} operations,{w=0.1} and places;{w=0.5} vital parts of STOP's organization that had suffered heavy blows in the last few years.)"
             "(But you're disturbed by how many places you {i}don't{/i} recognize.)"
-            "(Laboratories,{w=0.1} factories{w=0.1} and armories that must be high above your clearance level –{w=0.5} crossed out like someone was just going down a checklist.)"
+            "(Laboratories,{w=0.1} factories{w=0.1} and armories that must be high above your clearance level —{w=0.5} crossed out like someone was just going down a checklist.)"
             "(All these top-secret sites share the same acronym:{w=0.5} \"YTDI.\")"
             "(...No,{w=0.1} you {i}don't{/i} recognize it.)"
             hide room2_evidenceboard with dissolve
@@ -150,12 +150,12 @@ label room_2:
         if room2["clippings"] == 0:
             show room2_news with dissolve:
                 yalign 0.2 xalign 0.5
-            "(Printouts and clippings of various news articles -{w=0.1} all related to Dr. Danger's exploits...{w=0.5} with a {i}certain{/i} colorful sidekick occasionally breaking into the opening paragraphs.)"
+            "(Printouts and clippings of various news articles —{w=0.1} all related to Dr. Danger's exploits...{w=0.5} with a {i}certain{/i} colorful sidekick occasionally breaking into the opening paragraphs.)"
             "(In fact,{w=0.1} when you look at them all together,{w=0.1} Cautionne seems to show up more over time.{w} Dr. Danger must've been pleased with her pupil's growth.)"
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
-            "(Based on what you can make out of the caption - {w=0.1}it seems to be of some kind of commemorative occasion.)" 
+            "(Based on what you can make out of the caption — {w=0.1}it seems to be of some kind of commemorative occasion.)" 
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
-            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as-{w=0.3}{nw})"
+            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as—{w=0.3}{nw})"
             hide room2_news with dissolve
             pause 1
             #"{b}[pause as the clippings disappear]{/b}"
@@ -250,10 +250,12 @@ label evidence_solved:
         alpha 0.5
     $ room2["solved"].append("evidence")
     #obtain the "E"
+    if len(room2["notes"]) < 4:
+        "(...You were mostly guessing, but somehow, this worked.)"
     "(Congratulations! {w}You solved the evidence board puzzle.)"
     hide black onlayer screens
     hide screen room2_evidence
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room2
 
@@ -263,7 +265,8 @@ label evidence_game_over:
     show screen room2_evidence
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(You carefully insert one more pin into the board, which leaves-){p=0.3}{nw}"
+    stop music fadeout 0.5
+    "(You carefully insert one more pin into the board, which leaves—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Whoa, you {i}suck {/i}at this!"
     hide black onlayer screens
@@ -273,7 +276,7 @@ label evidence_game_over:
     "(Something about his unusually straightforward insult puts ice into your veins.)"
     cr "It's like you're solving this puzzle with your eyes closed and your nose plugged."
     cr "...There some reason you don't want to look at the truth in front of you,{w=0.1} lab rat?"
-    "(...No, no, it's just-){p=0.3}{nw}"
+    "(...No, no, it's just—){p=0.3}{nw}"
     cr "I know you're not taking this seriously.{w=0.5} Maybe we should just move on?"
     cr "You know what?{w=0.5} Yeah. "
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
@@ -281,10 +284,10 @@ label evidence_game_over:
     #"{i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
     scene black
     pause 3
-    $deadend(achievement_dead7)
+    $deadend("dead7")
     $nvl_heading = "Lab Report #273"
     l "Subject experienced permanent loss of life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
-    l "{i}Guess they were worth the trouble of installation!"
+    l "Guess they were worth the trouble of installation!"
     l "{b}Contributing Factors to Death:{/b} Couldn't put progress on the board."
     le "DEAD END 07: NAME!"
     pause 2
@@ -303,7 +306,7 @@ label panopticon_solved:
     "(Congratulations! {w}You solved the panopticon puzzle.)"
     hide black onlayer screens
     hide screen room2_panopticon
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room2
 
@@ -313,20 +316,21 @@ label panopticon_game_over:
     show screen room2_panopticon
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(You re-arrange another set of cells and-)"
-    "(-and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
+    stop music fadeout 0.5
+    "(You re-arrange another set of cells and—)"
+    "(—and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
     hide black onlayer screens
     hide screen room2_panopticon
     with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Seems like you've run out of time,{w=0.1} lab rat."
     cr "That's it.{w=0.5} The jailbreak is over.{w=0.5} You screwed up."
-    "(So it {i}was {/i}a prison?{w} Then-)"
+    "(So it {i}was {/i}a prison?{w} Then—)"
     cr "If this only concerned you and me,{w=0.1} I'd be \"whatever\" about it."
     cr "We all make mistakes,{w=0.1} y'know?{w=0.5} So,{w=0.1} I'm super forgiving and cool and mature about this kind of thing."
     cr "...But you just lost those kids a chance to get out before the {i}operations{/i} start."
     "(...Sorry,{w=0.1} {i}operations?{/i})"
-    cr "They could've gotten out clean.{w=0.5} Now I'll have to step in and bust them out \n{i}dirty{/i}."
+    cr "They could've gotten out clean.{w=0.5} Now I'll have to step in and bust them out {i}dirty{/i}."
     cr "And it's all because of {i}you.{/i}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 1.ogg"
     cr "Now,{w=0.1} go sit in the corner and think about what you've done!" with small_shake
@@ -341,7 +345,7 @@ label panopticon_game_over:
     l "Subject expired after 3 days due to lack of water, light, food, and mental stimulation."
     l "Scratched their nails to bleeding point on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
     l "{b}Contributing Factors to Death:{/b} Didn't take the consequences of imprisonment very seriously."
-    $deadend(achievement_dead8)
+    $deadend("dead8")
     le "DEAD END 08: A Taste of Sobering Punishment."
     pause 2
     nvl clear
@@ -359,7 +363,7 @@ label recalibration_solved:
     "(Congratulations! {w}You solved the recalibration puzzle.)"
     hide black onlayer screens
     hide screen cybernetics
-    with dissolve
+    with puzzle_hide
     $ inspect = None
     call screen room2
 
@@ -369,6 +373,7 @@ label recalibration_game_over:
     show screen cybernetics(cyb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
+    stop music fadeout 0.5
     "(You confirm your choice,{w=0.1} and a beeping starts.)"
     "(Its tone sets the hairs on the back of your neck on edge.)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
@@ -380,12 +385,14 @@ label recalibration_game_over:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} That person's own nervous system will rip their body apart with spasming."
     cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"
-    "(...Well,{w=0.1} uh-){p=0.3}{nw}"
+    "(...Well,{w=0.1} uh—){p=0.3}{nw}"
     cr "Don't worry,{w=0.1} I can fix this."
     cr "But I'm gonna need a hand."
-    show bg room2 at dizzy with dissolve:
+
+    scene bg room2 at dizzy with dissolve:
         parallel:
             yalign 0.0 xalign 0.0 zoom 0.335
+
     "{cps=30}(Suddenly,{w=0.1} your body feels a lot heavier.{w}{/cps} {cps=20}Is that mist in the corner of the room?){/cps}"
     cr "...And a liver.{w=0.5} And a stomach.{w=0.5} And a heart.{w=0.5} And most of your spinal cord."
     pause 1
@@ -393,10 +400,10 @@ label recalibration_game_over:
 
     $ play_sound(bodyfall)
 
-    show bg room2 at dizzy:
+    scene bg room2 at dizzy:
         zoom 0.335 yalign 0.0
-        easeout 0.4 zoom 1.0 xalign 0.2 yalign 1.0
-    pause 0.4
+        easeout 0.2 zoom 1.0 xalign 0.2 yalign 1.0
+    pause 0.2
 
     scene black with small_shake
     #"{i}{b}COLLAPSE SFX{/b}"
@@ -407,7 +414,7 @@ label recalibration_game_over:
     l "On the other hand, the lab rat won't get up ever again. They're missing a few too many critical parts."
     l "{b}Contributing Factors to Death:{/b} They gave too much of themselves to my cause."
 
-    $deadend(achievement_dead9)
+    $deadend("dead9")
     le "DEAD END 09: Didn't Make The Cut."
     pause 2
     nvl clear
@@ -429,19 +436,28 @@ label word_game_over:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
         cr "Holy crap!{w=0.5} Did you just manage to guess that right on your first try?"
         "(Huh?{w} Really?)"
+        stop music fadeout 0.5
+        hide black onlayer screens
+        hide screen room2_word
+        with puzzle_hide
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "{i}Kidding!{/i}"
-        "(You-)"
+        "(You—)"
         cr "C'mon,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
         #"{b}ZAP SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
 
     elif random_choice == 2:
+        stop music fadeout 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Whoa...{w=0.5} You got it."
         cr "...Did someone write you a walkthrough online?"
-        "(You-)"
+        "(You—)"
+        stop music fadeout 0.5
+        hide black onlayer screens
+        hide screen room2_word
+        with puzzle_hide
         cr "If so,{w=0.1} go complain in the comments."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "You've just met a a dead end!"
@@ -451,8 +467,12 @@ label word_game_over:
 
     elif random_choice == 3:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+        stop music fadeout 0.5
         cr "You're a fast one,{w=0.1} aren't you?"
-        "(Huh?{w} What do you-)"
+        "(Huh?{w} What do you—)"
+        hide black onlayer screens
+        hide screen room2_word
+        with puzzle_hide
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "But next time,{w=0.1} {i}do{/i} look before you leap."
         #"{b}TRAP DOOR SFX, CUT TO BLACK{/b}"
@@ -460,34 +480,44 @@ label word_game_over:
         pause 3
 
     elif random_choice == 4:
+        stop music fadeout 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
         cr "I see you're the type who likes to gamble."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Alas,{w=0.1} you didn't hit the jackpot.{w=0.5} Better luck next time!"
-        "(You-)"
+        "(You—)"
+        stop music fadeout 0.5
+        hide black onlayer screens
+        hide screen room2_word
+        with puzzle_hide
         cr "But since you're here,{w=0.1} I've got another game for you to play."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "It's time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
-        "(What gu-)"
+        "(What gu—)"
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
 
     else:
+        stop music fadeout 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "...Wow.{w=0.5} That wasn't even {i}close. {/i}"
+        stop music fadeout 0.5
+        hide black onlayer screens
+        hide screen room2_word
+        with puzzle_hide
         cr "You'd have better luck smashing keys."
-        "(You-)"
+        "(You—)"
         cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}"
         #"{b}SMASHING SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
 
-    $deadend(achievement_dead6)
+    $deadend("dead6")
     $nvl_heading = "Lab Report #404"
     l "Not much to say here."
     l "The lab rat just sucks at word games!"
-    l "{b}Contributing Factors to Death:{/b} Should've dipped their toes into a few wordy titles before they met me. Personally, I reccommend Scraddle."
+    l "{b}Contributing Factors to Death:{/b} Should've dipped their toes into a few wordy titles before they met me. Personally, I reccommend {i}Scraddle.{/i}"
     le "DEAD END 06: Stop Me If You Think You've Word This One Before..."
     pause 2
     nvl clear

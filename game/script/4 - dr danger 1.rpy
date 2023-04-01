@@ -51,17 +51,17 @@ label dr_danger_1:
   $ play_sound(singlefootstep)
   pause 0.5
 
-  "(You take another cautious step ahead and-){p=0.5}{nw}"
+  "(You take another cautious step ahead and—){p=0.5}{nw}"
   $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor1-01.ogg"
   #"{b}[the {/b}{b}dr.{/b}{b} danger screens go {/b}{b}on ]{/b}"
-  "???" "Welcome.{w=1} I see you've arrived safely?"
+  "???" "Welcome.{w=0.52} I see you've arrived safely?"
 
   show bg corridor1:
     align (0.5,0.5) zoom 0.6
 
-  "(What the-?!)" with small_shake
+  "(What the—?!)" with small_shake
   "({i}Another {/i}voice? {w}And all the screens in the room lit up, too...)"
 
   $ play_sound(footsteps1)
@@ -89,17 +89,17 @@ label dr_danger_1:
   "(A saboteur who terrorized the public with bombs and cryptic threats.{w} A supervillain,{w=0.1} through and through.)"
   "(A supervillain by the name of...)"
   voice "audio/voice/dr.danger/Danger_Corridor1-02.ogg"
-  drx "From the top,{w=0.1} then. {w=1}I am Dr. Danger."
+  drx "From the top,{w=0.622} then. {w=1}I am Dr. Danger."
   voice "audio/voice/dr.danger/Danger_Corridor1-03.ogg"
   drs "You are here because you're under my temporary employment."
   "(Uh... {w}no?)"
   "(Last time you checked,{w=0.1} you were a STOP agent.{w} By default, Dr. Danger's a sworn enemy.)"
   "(...{i}Was{/i} a sworn enemy.{w} She died {i}weeks{/i} ago,{w=0.1} caught in her own explosion while trying to wipe another STOP facility off the map.)"
-  "(Wait.{w} Does this mean she survi-){p=0.5}{nw}"
+  "(Wait.{w} Does this mean she survi—){p=0.5}{nw}"
   voice "audio/voice/dr.danger/Danger_Corridor1-04.ogg"
-  drs "Before you begin your task,{w=0.1} please listen carefully.{p=1.5}{nw}"
+  drs "Before you begin your task,{w=0.14} please listen carefully.{p=0.28}{nw}"
   voice sustain
-  drs "Due to my circumstances,{w=0.1} I cannot repeat my instructions.{p=1}{nw}"
+  drs "Due to my circumstances, I cannot repeat my instructions.{p=0.204}{nw}"
   voice sustain
   drs "Nor will I be able to answer any of your questions."
   "(...No.{w} Her death was {i}very thoroughly{/i} confirmed.{w} Which means...)" 
@@ -115,7 +115,7 @@ label dr_danger_1:
   with dissolve
   pause 1
   "(Besides,{w=0.1} you're no mere hired hand.)"
-  "(You're a proud agent of STOP –{w=0.5} trained to fight villains like her.)"
+  "(You're a proud agent of STOP —{w=0.5} trained to fight villains like her.)"
   "(So what if there are more puzzles to solve and locked rooms to explore? {w}To someone like you,{w=0.1} they should be child's play.)"
   pause 1
   "({i}...Should{/i} be.)"
@@ -135,6 +135,7 @@ label dr_danger_1:
   show bg room1 with dissolve:
     zoom 0.4 yalign 0.7
 
+  $ play_sound(metaldoorclose)
   pause 1
 ######### metal door shut plays here
 
@@ -144,10 +145,10 @@ label dr_danger_1:
   "({i}...Eugh.{/i} {w}Looking at that thing gives you goosebumps.)"
   "(Do you {i}have{/i} to go through here?)"
   "(Maybe there's something you missed in the corridor...)"
-  "(Yeah,{w=0.1} you'll turn around and-){p=0.5}{nw}"
+  "(Yeah,{w=0.1} you'll turn around and—){p=0.5}{nw}"
   $ play_sound(metaldoorlock)
   pause 1
-  "(-it's not opening.)"
+  "(—it's not opening.)"
   pause 1
   "(No,{w=0.1} there\'s still the door on the other side."
 
@@ -172,11 +173,11 @@ label dr_danger_1:
   "(A lock with a strange puzzle. {w}Kinda like the one you found in your cell.)"
   pause 1
   "(...Maybe you\'ll find the answer in this room?)"
-show bg room1:
-  zoom 0.8 
-  ease 5 zoom 0.335 xalign 0.0 yalign 0.0
+  show bg room1:
+    zoom 0.8 
+    ease 5 zoom 0.335 xalign 0.0 yalign 0.0
 
-$ play_music(room1, fadein=1.0, fadeout=0.1)
-
-pause 5
-call screen room1 with dissolve
+  pause 5
+  $ inspect = None
+  $ play_music(room1theme, fadein=1.0, fadeout=0.1)
+  call screen room1 with dissolve

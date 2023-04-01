@@ -1,4 +1,6 @@
 label post_tutorial:
+  $renpy.block_rollback()
+  $ inspect = "post room"
   #[If puzzle is solved, play a solving/unlocking sound]
   scene bg tutorial2 at zoomed
   stop music
@@ -16,7 +18,7 @@ label post_tutorial:
   c "{size=+35}{i}WHAT?!?{/i}{/size}" with small_shake
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-02.ogg"
   c "How the {i}hell{/i} did you break the lock? "
-  c nohands "There's no way you could've-"
+  c nohands "There's no way you could've—"
   c "...gotten out on..."
   c oops "...your own."
   c "..."
@@ -65,7 +67,7 @@ label post_tutorial:
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-03.ogg"
   c lean frown "Stop making mistakes."
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-04.ogg"
-  c "Because the next time you screw up,{w=0.5} {i}you're not gonna like what happens next.{/i}"
+  c "Because the next time you screw up,{w=0.193} {i}you're not gonna like what happens next.{/i}"
 
   show cautionne leanfrown pause
   pause 0.1

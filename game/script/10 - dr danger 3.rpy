@@ -5,11 +5,11 @@ label dr_danger_3:
   "(...Again with the temper tantrum,{w=0.1} huh.)"
   "(Seriously,{w=0.1} why's he so pissed off at you?)"
   "(He and Dr. Danger have fought against STOP field agents in the past,{w=0.1} but that's not your department.)"
-  "(Hell -{w=0.1} {i}before{/i} this,{w=0.1} you've never met either of them face-to-face.)"
+  "(Hell,{w=0.1} {i}before{/i} this,{w=0.1} you've never met either of them face-to-face.)"
   "(What right does he have to act all high and mighty towards {i}you?{/i})"
   pause 1
   "(...)"
-  "(Right - {i}supervillain.{/i})"
+  "(Right — {i}supervillain.{/i})"
   "(Big ego,{w=0.1} no self-awareness.{w} Don't overthink it.)"
 
   $ play_sound(footsteps3)
@@ -31,31 +31,33 @@ label dr_danger_3:
   $ play_sound(doorclose)
   pause 0.5
   "(...The dim corridor stretches before you,{w=0.1} with no answers to offer.)"
-  "(It's darker here -{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
+  "(It's darker here —{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
   "(The wooden floorboards and the decorated wallpaper feel...{w=0.5} welcoming.{w} {i}Nostalgic,{/i} even.)"
-  "(If you viewed this hall alone,{w=0.1} you'd assume it'd belong to a family household.\n{w}Not to a scheming terrorist and her kooky sidekick.)"
-  "(It's been a very long...{w=0.5} day?{w} Hard to tell how much time has passed. {w}But damn,{w=0.1} you are {i}exhausted.{/i})"
+  "(If you viewed this hall alone,{w=0.1} you'd assume it'd belong to a family household.{w} Not to a scheming terrorist and her kooky sidekick.)"
+  "(It's been a very long...{w=0.5} day?{w} Hard to tell how much time has passed.{p}But damn,{w=0.1} you are {i}exhausted.{/i})"
   "(The gentle heat tempts you to sit down on the floor.{w} Or maybe lie down.)"
   pause 1
   "(Um...{w} Would Cautionne allow you to take a quick breather?)"
   #"{b}[animate camera movements to simulate the protagonist slowly crouching down to the floor] {/b}"
   "(If he meant what he said about not harming a hair on your head,"
   $ play_sound(singlefootstep2)
+  pause 0.1
   show bg corridor3:
     zoom 0.5 xalign 0.5 yalign 0.5
     ease 3 yalign 1.0 zoom 0.6
-  extend "{cps=20} then maybe the smart thing to do would be to-){p=0.5}{nw}"
+  pause 2
+  extend "{cps=20} then maybe the smart thing to do would be to—){/cps}{p=0.5}{nw}"
   $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor3-01.ogg"
-  dr "Very tempting for a wooden floor,{w=0.1} isn't it?"
+  dr "Very tempting for a wooden floor,{w=0.287} isn't it?"
   $ play_sound(bedsitup)
   show bg corridor3:
     zoom 0.6 xalign 0.5 yalign 1.0
     easein 0.2 yalign 0.5 zoom 0.6
   "(Gah!{w} A {i}third{/i} time?!)" with small_shake
   voice "audio/voice/dr.danger/Danger_Corridor3-02.ogg"
-  dr "{i}Heated flooring.{/i} My work has always been stressful,{w=0.5} so I've always strived to maximize comfort wherever I could."
+  dr "{i}Heated flooring.{/i}{w=0.41} My work has always been stressful, so...{w=0.193} I've always strived to maximize comfort wherever I could."
 
   $ play_sound(footsteps3)
 
@@ -75,13 +77,14 @@ label dr_danger_3:
   show drdanger sidestare
   drs "...and of course,{w=0.1} Cautionne to take care of."
   voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
+  $ play_music(backstorytheme, fadein=1.0, fadeout=1.0)
   drs "He represents a unique challenge,{w=0.1} I know."
   show drdanger smirk
   drs "But you wouldn't have gotten this far if you and I didn't believe you could do it."
   show drdanger stare
   voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "While I'm away on business,{w=0.1} it's important that you keep him on his daily routine."
-  drs "7am to 9pm –{w=0.5} regularity is key."
+  drs "7am to 9pm —{w=0.5} regularity is key."
   drs "Remember that all his dietary habits,{w=0.1} health regimens{w=0.1} and study exercises{p=0.5}{nw}"
   drs "are detailed in the files that we went over together."
   show drdanger sidestare
@@ -97,32 +100,33 @@ label dr_danger_3:
   drs "...I might be pronouncing that wrong.{w=0.5} He'll know what you mean."
   show drdanger stare
   drs "So, take care."
-  voice "audio/voice/dr.danger/Danger_SB-Allow Me To Explain.ogg"
+  voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "If things go smoothly,{w=0.1} I'll be back for him in a week."
   show drdanger sidestare
   drs "And if things {i}don't{/i}{i} {/i}go smoothly..."
   show drdanger sidestare silent
+  stop music fadeout 1.0
   pause 1
   show drdanger stare speaking
   drs "Well,{w=0.1} there are systems in place that will guide you on what to do."
   voice "audio/voice/dr.danger/Danger_Corridor3-03.ogg"
-  drs "That's all for now.{w=0.5} Goodbye."
+  drs "That's all for now.{w=0.458} Goodbye."
   show drdanger tender
   voice "audio/voice/dr.danger/Danger_Corridor3-04.ogg"
   drs "And thank you for taking care of my..."
   show drdanger tender silent
   pause 1
   show drdanger sidestare silent
-  pause 0.5
+  pause 1
   $ play_sound(staticshort)
   hide drdanger sidestare silent
   with screenoff
 
   voice "audio/voice/dr.danger/Danger_Corridor3-05.ogg"
   #"{b}[{/b}{b}Dr.{/b}{b} Danger pauses, and her expression changes – showing {/b}{b}she's{/b}{b} {/b}{b}hold{/b}{b}ing something back]{/b}"
-  drs "{size=-13}Note to self,{w=0.1} re-record instructions at earliest convenience.{p=2.0}{nw}{/size}"
+  drs "{size=-13}Note to self, re-record instructions at earliest convenience.{p=0.197}{nw}{/size}"
   voice sustain
-  drs "{size=-13}Try not to be so...{w=0.5} {i}ominous{/i} next time.{/size}"
+  drs "{size=-13}Try not to be so...{w=0.453} {i}ominous{/i} next time.{/size}"
   $ play_sound(tvoff)
   pause 1
   scene bg corridor3 with fade:
@@ -171,4 +175,6 @@ label dr_danger_3:
     ease 5 zoom 0.335 xalign 0.0 yalign 0.0
 
   pause 5
+  $ play_music(room3theme, fadein=1.0, fadeout=1.0)
+  $ inspect = None
   call screen room3 with dissolve

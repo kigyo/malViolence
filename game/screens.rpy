@@ -425,11 +425,11 @@ screen main_menu():
     text "[config.version]" xalign 0.99 yalign 0.99:
         style "main_menu_version"
 
-transform scroll_skew:
+transform scroll_skew(distance=250):
     perspective True subpixel True
     matrixtransform RotateMatrix(30, 0, 0)* OffsetMatrix(-1500, -300, 400)#OffsetMatrix(-500, 0, 1000)
     block:
-        linear 3 yoffset 250
+        linear 3 yoffset distance
         yoffset 0
         repeat
 
@@ -599,46 +599,48 @@ screen about():
 
             ## gui.about is usually set in options.rpy.
             text "This game was crafted with love within 31 days for NaNoRenO 2023, by:" size gui.label_text_size-10 font gui.text_font
-            grid 2 6:
+            grid 2 7:
                 xspacing 0 yspacing 10 xoffset 50
                 hbox spacing 15:
-                    label _("Director & CG Artist:")
+                    label _("Director & CG Artist") + ":"
                     text _("{a=https://madocallie.carrd.co/}Mado{/a}") 
                 hbox spacing 15:
-                    label _("Scenario:")
-                    text _("{a=https://madocallie.carrd.co/}Mado{/a}, {a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}, {a=https://itch.io/profile/luoxyz}Z{/a}") 
+                    label _("Scenario") + ":"
+                    text _("{a=https://madocallie.carrd.co/}Mado{/a}") + ", " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}")  + ", " + _("{a=https://itch.io/profile/luoxyz}Z{/a}") 
                 hbox spacing 15:
-                    label _("Programmer:")
-                    text _("{a=https://kigyodev.com/}KigyoDev{/a}") 
-                hbox spacing 15:
-                    label _("Puzzle Designer:")
+                    label _("Puzzle Designer") + ":"
                     text _("{a=https://omelette.itch.io/}speck{/a}") 
                 hbox spacing 15:
-                    label _("UI & Logo:")
+                    label _("Programmer") + ":"
+                    text _("{a=https://kigyodev.com/}KigyoDev{/a}") 
+                hbox spacing 15:
+                    label _("UI & Logo") + ":"
                     text _("{a=https://spicaze.itch.io/}spicaze{/a}") 
                 hbox spacing 15:
-                    label _("Backgrounds:")
+                    label _("Backgrounds") + ":"
                     text _("{a=https://twitter.com/ReinaTensei}Reina{/a}") 
                 hbox spacing 15:
-                    label _("Cautionne VA:")
+                    label _("Cautionne VA") + ":"
                     text _("{a=https://www.carrickinabnett.com/}Carrick Inabnett{/a}") 
                 hbox spacing 15:
-                    label _("Dr. Danger VA:")
+                    label _("Dr. Danger VA") + ":"
                     text _("{a=https://vynvox.com/}Vyn Vox{/a}") 
                 hbox spacing 15:
-                    label _("Voice Direction:")
+                    label _("Voice Direction") + ":"
                     text _("{a=https://twitter.com/pheberryfab}Phebe Fabacher{/a}") 
                 hbox spacing 15:
-                    label _("Audio Mastering & SFX:")
+                    label _("Audio Mastering & SFX") + ":"
                     text _("{a=https://twitter.com/DrayReedOFC}D.ray{/a}") 
                 hbox spacing 15:
-                    label _("Music:")
-                    text _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}, {a=https://twitter.com/doranthedoran}Doran{/a}") 
+                    label _("Music") + ":"
+                    text _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}") + ", " + _("{a=https://twitter.com/doranthedoran}Doran{/a}") 
                 hbox spacing 15:
-                    label _("Trailer:")
+                    label _("Trailer") + ":"
                     text _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}") 
-
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25 font gui.text_font
+                text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25 font gui.text_font yalign 1.0
+                hbox spacing 15:
+                    label _("Testing") + ":"
+                    text _("cluniies") + ", " + _("wBrian")
 
 
 style about_label is gui_label
@@ -1612,16 +1614,19 @@ style nvl_button_text:
 
     
 
-screen gameover(lbl):
+screen gameover(lbl, track, anim=True):
     
     add gui.main_menu_background at bg(0.5)
-    add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
+    if anim:
+        add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
+    else:
+        add AlphaMask(At("gui/scroller.png",scroll_skew(0)), "gui/grid_opacity.png")
 
     add "black" alpha 0.7
 
     label _("GAME OVER") text_size 200 yalign 0.4 xalign 0.5 text_outlines [(3, "#000", 1, 1)]
     vbox xalign 0.65 ypos 0.55:
-        textbutton _("> Restart Room") action Jump(lbl) text_size 65 at navigation_move
+        textbutton _("> Restart Room") action [Play("music", track), Jump(lbl)] text_size 65 at navigation_move
         textbutton _("> Main Menu") action Return() text_size 65 at navigation_move
 
 init python:
@@ -1631,15 +1636,21 @@ init python:
         renpy.scene()
         renpy.scene("screens")
         renpy.scene("puzzles")
+        renpy.show("black")
         renpy.block_rollback()
         if room == "tutorial":
-            renpy.show_screen("gameover", "tutorial_room")
+            renpy.show_screen("gameover", "tutorial_room", tutroom, anim=False, _layer="master")
             renpy.with_statement(dissolve)
-            renpy.call_screen("gameover", "tutorial_room")
+            renpy.scene()
+            renpy.show("black")
+            renpy.call_screen("gameover", "tutorial_room", tutroom)
         else:
-            renpy.show_screen("gameover", "room_" + str(room))
+            track_to_play = getattr(renpy.store, "room%stheme" % room, room1theme)
+            renpy.show_screen("gameover", "room_" + str(room), track_to_play, anim=False, _layer="master")
             renpy.with_statement(dissolve)
-            renpy.call_screen("gameover", "room_" + str(room))
+            renpy.scene()
+            renpy.show("black")
+            renpy.call_screen("gameover", "room_" + str(room), track_to_play)
 
     def room_init(room = 1):
         if room == 1:

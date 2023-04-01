@@ -29,14 +29,14 @@ label dr_danger_2:
   "(Speaking of doors...{w=0.5} this corridor's got five to choose from.)"
   "(You pause.{w} Once again,{w=0.1} your fate is in your own hands.)"
   "(Is this {i}another{/i} one of his puzzles?)"
-  pause 0.5
+  pause 0.1
   $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor2-01.ogg"
-  dr "Good. {w=0.5}You made it through the experiment room."
+  dr "Good. {w=0.559}You made it through the experiment room."
   "(?!)" with small_shake
-  "(Dr. Danger's on again!{w} What did you-)"
-  "(No,{w=0.1} no{w=0.1} - calm down.{w} It's probably motion-activated.)"
+  "(Dr. Danger's on again!{w} What did you—)"
+  "(No,{w=0.1} no{w=0.1} — calm down.{w} It's probably motion-activated.)"
   "(You should've listened to the last recording,{w=0.1} since it seemed pretty helpful.{w} This time,{w=0.1} you'll stay still and pay attention!)"
 
   $ play_sound(footsteps2)
@@ -56,17 +56,18 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_Corridor2-02.ogg"
   drs "I apologize for any distress that the previous room may have caused you. "
   voice "audio/voice/dr.danger/Danger_Corridor2-03.ogg"
-  drs "For whatever it's worth,{w=0.1} please know that I do not take pleasure in hurting others.{p=2}{nw}"
+  drs "For whatever it's worth,{w=0.359} please know that I do not take pleasure in hurting others.{p=0.288}{nw}"
   voice sustain
   drs "The sight of blood makes me quite ill."
   show drdanger sidestare
   voice "audio/voice/dr.danger/Danger_Corridor2-04.ogg"
-  drs "{size=-13}It...{w=0.5} always has.{/size}"
+  drs "{size=-13}It...{w=0.503} always has.{/size}"
   pause 0.5
   show drdanger stare
+  $ play_music(backstorytheme, fadein=1.0, fadeout=1.0)
   voice "audio/voice/dr.danger/Danger_SB-Allow Me To Explain.ogg"
   drs "No,{w=0.1} {i}that{/i} room belongs to my apprentice."
-  drs "Currently,{w=0.1} he is running an experiment -{p=0.5}{nw}"
+  drs "Currently,{w=0.1} he is running an experiment —{p=0.5}{nw}"
   show drdanger sidestare
   drs "even if he seems more interested in the process than the results."
   voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
@@ -87,16 +88,18 @@ label dr_danger_2:
   drs "It's not your responsibility.{w=0.5} It's mine."
   "(What's that supposed to mean?)"
   show drdanger sidestare silent
+
+  stop music fadeout 1.0
   pause 1
   show drdanger stare speaking
   voice "audio/voice/dr.danger/Danger_Corridor2-05.ogg"
-  drs "If you're looking for where to go next,{w=0.1} please take the door directly in front of you.{p=1.5}{nw}"
+  drs "If you're looking for where to go next,{w=0.065} please take the door directly in front of you.{p=1.175}{nw}"
   show drdanger sidestare
   voice sustain
   drs "The other doors are very much best left shut."
   show drdanger stare
   voice "audio/voice/dr.danger/Danger_Corridor2-06.ogg"
-  drs "Take care, now.{w=0.5} I'll see you in a week."
+  drs "Take care, now.{w=0.389} I'll see you in a week."
   #"{b}[{/b}{b}dr.{/b}{b} danger shuts off her recording]{/b}"
 
   show drdanger stare silent
@@ -133,19 +136,22 @@ label dr_danger_2:
   "(An office...)"
   "(There's shelves everywhere.{w} Loads of files,{w=0.1} too.)"
   "(Like the hall before it,{w=0.1} it's...{w=0.5} oddly ordinary.)"
+  "(Just to double check,{w=0.1} though...)"
   $ play_sound(footsteps2)
   show bg room2:
     zoom 0.4 yalign 0.7
     ease 4 zoom 0.8 xalign 0.8 yalign 0.65
-  "(Just to double check,{w=0.1} though...)"
+  pause 4
   $ play_sound(doorlock)
   pause 1
   #"{b}[pause - a locked door handle sound {/b}{b}plays{/b}{b}]{/b}"
   "(...Yup.{w} Pretty sure this is another puzzle room.)"
   "(Alright,{w=0.1} then.{w} Let's get searching.)"
-show bg room2:
-  zoom 0.8 
-  ease 5 zoom 0.335 xalign 0.0 yalign 0.0
+  show bg room2:
+    zoom 0.8 
+    ease 5 zoom 0.335 xalign 0.0 yalign 0.0
 
-pause 5
-call screen room2 with dissolve
+  pause 5
+  $ play_music(room2theme, fadein=1.0, fadeout=0.1)
+  $ inspect = None
+  call screen room2 with dissolve

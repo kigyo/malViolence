@@ -23,7 +23,7 @@ label kill_ending:
     pause 0.2
     "Identify yourself!"
     voice "audio/voice/cautionne/Endings/Kill Ending/Cautionne_KillEnding-01.ogg"
-    x "How many guesses will you need {i}this{/i} time?"
+    xc "How many guesses will you need {i}this{/i} time?"
 
     scene bg garage:
         zoom 0.5 align (0.5,0.5)
@@ -33,6 +33,9 @@ label kill_ending:
 
     scene cautionne gun far silent with fade
 
+    $ play_music(endingintro, loop=False)
+    $ queue_music(killending)
+
     pause 2
     #"{b}[show {/b}{b}Cautionne{/b}{b} shooting CG{/b}{b}]{/b}"
     "No more TV screens,{w=0.1} huh?"
@@ -40,24 +43,25 @@ label kill_ending:
     scene cautionne gun cu with dissolve
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     cr "Don't need them.{w=0.5} Not if {i}I'm{/i} going to finish what Dr. Danger started."
-    "Using{i} that?{/i}{w} Kid,{w=0.1} you shouldn't be wielding-{p=0.5}{nw}"
+    "Using{i} that?{/i}{w} Kid,{w=0.1} you shouldn't be wielding—{p=0.5}{nw}"
     scene cautionne gun ecu with dissolve
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
     cr "Shut up and {i}let me talk,{/i}{w=0.1} lab rat."
     cr "I didn't {i}actually {/i}think you'd make it this far."
     cr "But alas,{w=0.1} as it turns out...{w=0.5} your puzzle-solving skills are...{w=0.6} decent."
     cr "In another life,{w=0.1} you'd make {i}quite {/i}the sidekick."
-    "...Well,{w=0.1} maybe if you'd free me-{p=0.5}{nw}"
+    "...Well,{w=0.1} maybe if you'd free me—{p=0.5}{nw}"
     cr "{i}Hell{/i} no."
     cr "You're {i}dangerous,{/i}{w=0.1} lab rat,{w=0.1} and I just can't let you go."
     scene cautionne gun ecu silent
-    "(The brat's got bravado -{w=0.5} you'll give him that.{w} He's keeping that revolver remarkably steady,{w=0.1} even though he's shaking all over.)"
+    "(The brat's got bravado —{w=0.5} you'll give him that.{w} He's keeping that revolver remarkably steady,{w=0.1} even though he's shaking all over.)"
     "(But he's still just a kid.{w} Might never have even wielded a weapon before,{w=0.1} for all his big talk.)"
     "(On the other hand...{w=0.5} {i}you're{/i} a STOP agent.)"
     "(You can draw and fire a gun faster than someone can say \"knife\".{w} It's the first thing they teach you as a trainee.)"
-    "(He’s scared,{w=0.1} but he’s not going to hesitate any longer.)"
-    "(You exhale,{w=0.1} and before his finger can snake itself over the trigger-)"
-    "(-You raise your gun towards his torso.)"
+    "(He's scared,{w=0.1} but he's not going to hesitate any longer.)"
+    "(You exhale,{w=0.1} and before his finger can snake itself over the trigger—)"
+    "(—You raise your gun towards his torso.)"
+    stop music
     scene black
     pause 3
     #"{b}[bang – with a cut to black]{/b}"
@@ -89,6 +93,7 @@ label kill_ending:
     pause 1
     "(He doesn't move again.)"
     pause 3
+    $ play_music(killending, fadein=1.0, fadeout=1.0)
     scene cautionne dead with fade:
         zoom 1.0 align (0.5,0.6)
         ease 40 zoom 0.5 
@@ -109,6 +114,8 @@ label kill_ending:
     "(...But one thing's for sure.{w} There's one less villain out there now.)"
     "(One less threat.)"
     "(One less thorn in STOP's side.)"
+
+    stop music fadeout 1.0
 
     scene cautionne dead with dissolve:
         zoom 0.5 align(0.0,0.0)
@@ -141,4 +148,5 @@ label kill_ending:
     #"{b}[pause and last cg fades to black]{/b}"
     #"{b}[KILL END]{/b}"
     #"{b}[credits roll]{/b}"
+    stop music fadeout 1.0
     return

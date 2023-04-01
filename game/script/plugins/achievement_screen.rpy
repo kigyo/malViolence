@@ -65,36 +65,34 @@ screen achievement_menu():
                         ## The platinum achievement will not appear
                         ## in the list.
                         ## Index '3' is the type of achievement.
-                        if v[3] != 'platinum':
+                        frame:
                             
-                            frame:
+                            hbox:
                                 
-                                hbox:
+                                yalign 0.5
+                                xysize (100, 100)
+                                
+                                ## This will display a locked icon.
+                                add 'gui/locked_achievement.png' size (100, 100) yalign 0.5
+
+                                null width 20
+
+                                vbox:
                                     
-                                    yalign 0.5
-                                    xysize (100, 100)
+                                    spacing 0
+                                    yfill False
+
+                                    ## We're setting the data feedback to represent
+                                    ## the None and 'hidden' achievements.
+                                    if v[3] is None:
+                                        ## Index '1' is the description of the achievemnt.
                                     
-                                    ## This will display a locked icon.
-                                    add 'gui/locked_achievement.png' size (100, 100) yalign 0.5
-
-                                    null width 20
-
-                                    vbox:
-                                        
-                                        spacing 0
-                                        yfill False
-
-                                        ## We're setting the data feedback to represent
-                                        ## the None and 'hidden' achievements.
-                                        if v[3] is None:
-                                            ## Index '1' is the description of the achievemnt.
-                                        
-                                            text str(v[0]) style 'achievements_label' color '#FFFFFF33'
-                                            text str(v[1]) color '#FFFFFF33'
-                                        
-                                        else:
-                                        
-                                            text _('Hidden Achievement') style 'achievements_label' color '#FFFFFF33'
+                                        text str(v[0]) style 'achievements_label' color '#FFFFFF33'
+                                        text str(v[1]) color '#FFFFFF33'
+                                    
+                                    else:
+                                    
+                                        text _('Hidden Achievement') style 'achievements_label' color '#FFFFFF33'
 
 screen failchievement_menu():
 
@@ -119,9 +117,9 @@ screen failchievement_menu():
                 
                 cols 2 ## You can change this number depending on the width of your achievements.
                 spacing 10
-                for v in death_name.values():
-                    if achievement.has(v[0]) and v[3] == 'dead':
-                        
+                for v in death_name:
+                    if v in persistent.dead_ends:
+                    
                         frame:
                             
                             background Solid('#0088AA') ## Nice bright blue/turquoise.
@@ -130,7 +128,7 @@ screen failchievement_menu():
                                 yalign 0.5
                                 xysize (100, 100)
                                 
-                                add v[2] size (100, 100) yalign 0.5
+                                add death_name[v][2] size (100, 100) yalign 0.5
 
                                 null width 20
 
@@ -138,12 +136,9 @@ screen failchievement_menu():
                                     spacing 0
                                     yfill False
                                     
-                                    text v[0] style 'achievements_label' color '#000000'
-                                    text v[1] color '#000000'
-
-                for v in death_name.values():
-                    if not achievement.has(v[0]) and v[3] == 'dead':
-                        
+                                    text death_name[v][0] style 'achievements_label' color '#000000'
+                                    text death_name[v][1] color '#000000'
+                    else:
                         frame:
                             
                             hbox:
@@ -163,10 +158,10 @@ screen failchievement_menu():
 
                                     ## We're setting the data feedback to represent
                                     ## the None and 'hidden' achievements.
-                                    if v[3] == "dead":
+                                    if death_name[v][3] == "dead":
                                         ## Index '1' is the description of the achievemnt.
                                     
-                                        text str(v[0]) style 'achievements_label' color '#FFFFFF33'
+                                        text str(death_name[v][0]) style 'achievements_label' color '#FFFFFF33'
                                         #text str(v[1]) color '#FFFFFF33'
                                         text "???" color '#FFFFFF33'
                                     
@@ -196,15 +191,21 @@ init python:
 
     config.overlay_screens.append("achievement_notification_catcher")
 
+    def all_endings():
+        if achievement_end1 in persistent.my_achievements and achievement_end2 in persistent.my_achievements and achievement_end3 in persistent.my_achievements and persistent.game_clear == False:
+            persistent.game_clear = True
+            renpy.notify("You have unlocked a special extras screen in the Main Menu!")
 
     ## Here we have a funtion that is passive.
     def passive_function():
         ## This code here will grant the platinum achievement.
+        all_endings()
         if len(persistent.my_achievements) >= (len(achievement_name) - 1):
             Achievement.add(achievement_platinum)
     
     def deadend(cheevo):
-        Achievement.add(achievement_deadfirst)
+        if len(persistent.dead_ends) == 0:
+            Achievement.add(achievement_deadfirst)
         Achievement.add_death(cheevo)
         if len(persistent.dead_ends) >= (len(death_name)):
             Achievement.add(achievement_deadall)
@@ -240,13 +241,15 @@ screen achievement_notification():
     if achievement_notification_list:
 
         frame at achievement_appear:
-            background Solid('#FFFFFF')
             align (0.5, 0.0)
             padding (20, 20, 20, 20)
 
             hbox:
                 xysize (100, 100)
-                add achievement_notification_list[0].image
+                if isinstance(achievement_notification_list[0], str):
+                    add death_name[achievement_notification_list[0]][2]
+                else:
+                    add achievement_notification_list[0].image
                 
                 null width 20
 
@@ -257,17 +260,23 @@ screen achievement_notification():
                     yfill False
                     xfill False
 
-                    text str(achievement_notification_list[0].name):
-                        color '#000000'
-                        size 25
+                    if isinstance(achievement_notification_list[0], str):
+                        text death_name[achievement_notification_list[0]][0]:
+                            color gui.accent_color size 25
+                    else:
+                        text str(achievement_notification_list[0].name):
+                            color gui.accent_color size 25
 
-                    text str(achievement_notification_list[0].message):
-                        style 'victory_message_text'
-                        size 16
+                    if isinstance(achievement_notification_list[0], str):
+                        text death_name[achievement_notification_list[0]][1]:
+                            style 'victory_message_text'
+                    else:
+                        text str(achievement_notification_list[0].message):
+                            style 'victory_message_text'
 
 style victory_message_text:
-    color "#000000"
-    size 20
+    color "#ffffff"
+    size 16
 
 transform achievement_appear:
     subpixel True

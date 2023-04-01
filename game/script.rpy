@@ -16,21 +16,12 @@ label splashscreen:
         call screen splash_settings
         $ persistent.firstlaunch = True
     show splash_anim_1
-    if not persistent.seen_splash:
-        $ renpy.pause(3)
-        $ persistent.seen_splash = True
-    else:
-        if renpy.pause(3):
-            jump skip_splash
+    $ renpy.pause(3)
     scene black
     with Dissolve(0.5)
-
-    label skip_splash:
-        pass
     return
 
 default inspect = None
-default minigame = False
 
 ### custom transitions
 
@@ -75,6 +66,8 @@ image ctc:
     #    
     #    repeat
 
+################### puzzle styles ################
+
 style puzzle_description_label is gui_label:
     xalign 0.5
 
@@ -104,3 +97,19 @@ image room3_report = "images/room3_report.png"
 image room3_scrapbookcg = "images/room3_scrapbookcg.png"
 image room3_sewingsetup = "images/room3_sewingsetup.png"
 image room3_wig = "images/room3_wig.png"
+
+
+
+################ reset some puzzles after loading a save (drags reset their positions)
+init python:
+    def reset_puzzles_after_load():
+        #room1
+
+        #room2
+        word_init()
+
+        #room3
+        scrapbook_init()
+        pass
+
+    config.after_load_callbacks.append(reset_puzzles_after_load)

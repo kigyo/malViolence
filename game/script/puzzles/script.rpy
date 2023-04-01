@@ -2,7 +2,7 @@
 
 # For testing.
 label test_puzzles:
-    scene layer "screens"
+    #scene layer "screens"
     menu:
         "Room 1 Puzzle 2":
             jump room_1_puzzle_2
@@ -15,20 +15,20 @@ label test_puzzles:
 
 label room_1_puzzle_1:
     call init_bomb
-    show screen bomb(bomb, False)
+    show screen room1_bomb(bomb, False)
     "<TODO: Insert intro script and rules.>"
-    call screen bomb(bomb)
+    call screen room1_bomb(bomb)
 
 label solved_room_1_puzzle_1:
-    show screen bomb(bomb, False)
+    show screen room1_bomb(bomb, False)
     "You solved room_1_puzzle_1."
-    hide screen bomb
+    hide screen room1_bomb
     jump test_puzzles
 
 label failed_room_1_puzzle_1:
-    show screen bomb(bomb, False)
+    show screen room1_bomb(bomb, False)
     "You failed room_1_puzzle_1."
-    hide screen bomb
+    hide screen room1_bomb
     jump test_puzzles
 
 label room_1_puzzle_2:

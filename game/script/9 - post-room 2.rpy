@@ -1,29 +1,44 @@
-label post_room_2:
+screen nodismiss(): #Our screen, while it is visible, no one can dismiss anything at all
+    key "dismiss" action NullAction()
 
-  screen nodismiss(): #Our screen, while it is visible, no one can dismiss anything at all
-      key "dismiss" action NullAction()
+label post_room_2:
+  $renpy.block_rollback()
+  $ inspect = "post room"
+
+
+  stop music fadeout 1.0
+
+  pause 1
+
+  $ play_sound(doorunlock)
+  pause 2
 
   #"{b} [The TV {/b}{b}isn't{/b}{b} on yet]{/b}"
   "(No message from the kid yet.)"
-  "(Maybe if you're stealthy,"
+  "(Maybe if you're stealthy, you could sneak past without being subjected to another one of his stupid broadcasts.)"
   show screen nodismiss
+
   $ queue_sound ([footsteps2, footsteps2])
 
-  show bg room2:
+  scene bg room2:
     zoom 0.335 align (0.0,0.0)
     ease 8 zoom 0.8 xalign 0.8 yalign 0.5
-  extend "{cps=20} you could sneak past{/cps}{cps=10} without being subjected to{/cps} {cps=6}another one of his-){/cps}{nw}"
+
+  pause 6
   #"{b}[{/b}{b}pasue{/b}{b} as the TV TURNS ON and cautionne appears]{/b}"
   $ queue_sound ([tvon, staticshort])
+  pause 0.4
+  $ play_music(cautionnetheme)
   show cautionne hairtwirl
   show crt
   show cautionne_frame_glow at bg
   with vpunch
   hide screen nodismiss
   voice "audio/voice/cautionne/postroom/Cautionne_Post Room 2-01.ogg"
-  c "{i}Snooping as usual,{w=0.1} {/i}I see?"
+  c "{i}Snooping as usual, {/i}I see?"
   "(...You spoke too soon.)"
   show cautionne lean eyeclosed
+
   c "Yeah,{w=0.1} you're right in your element,{w=0.1} huh? "
   show cautionne lean speaking
   c "Not that {i}you'd{/i} know it,{p=0.5}{nw}"
@@ -57,6 +72,7 @@ label post_room_2:
   c "He shall let you indulge."
 
   show cautionne leaneyeclosed pause
+  stop music fadeout 1.0
   pause 1
   c "..."
   show cautionne lean frown
@@ -65,12 +81,12 @@ label post_room_2:
   c "You {i}are {/i}just getting evidence,{w=0.1} right?"
   if len(room2["investigated"]) == 5:
     "(...Does he not approve of your investigation style?)"
-    "(You're being thorough,{w=0.1} just to be cautio-){p=0.5}{nw}"
+    "(You're being thorough,{w=0.1} just to be cautio—){p=0.5}{nw}"
     pause 1
     "({i}...You're just being thorough.{/i})"
   elif len(room2["investigated"]) == 0:
     "(You're sticking to the mission objective,{w=0.1} just as you've been trained to do.)"
-    "(He's calling the shots right now -{w=0.1} but if you stay focused,{w=0.1} he'll run out of puzzles,{w=0.1} and you'll have a way out.)"
+    "(He's calling the shots right now —{w=0.1} but if you stay focused,{w=0.1} he'll run out of puzzles,{w=0.1} and you'll have a way out.)"
     "(Then,{w=0.1} you'll have the chance to close this case for good.)"
   else:
     "(First, he holds you prisoner.{w} {i}Now,{/i} he complains about how much you look around your prison?)"
@@ -98,7 +114,7 @@ label post_room_2:
   c "The next time you escape a puzzle room,{w=0.1} {i}I won't talk either!{/i}"
   c "See how YOU like it!!"
   show cautionne block
-  c "Now, MOVE!{w=0.5} Or you'll regret trying a staring contest with me!!"
+  c "Now, MOVE!{w=0.5} Or you'll regret your staring contest with me!!"
   show cautionne blockscreen silent
   pause 0.1
 

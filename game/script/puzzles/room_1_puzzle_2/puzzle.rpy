@@ -95,6 +95,7 @@ init python:
                     self.pieces[0][x] = None
 
             self.just_cleared = True
+            renpy.retain_after_load()
         
     def puzzle_board_reset(txt=_("Invalid. Restarting...")):
         store.pb = PuzzleBoard(width=6, height=10, move_cap=12)
@@ -130,7 +131,7 @@ screen puzzle_playspace(b, interactable=True):
                     text hacking_description
 
             hbox xfill True yalign 1.0 ysize 100:
-                if (achievement_dead4 in persistent.dead_ends and not preferences.hard_mode):
+                if ("dead4" in persistent.dead_ends and not preferences.hard_mode):
                     textbutton "RESET" style "confirm_button" action Function(puzzle_board_reset, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable at zoomed(0.75)
                 textbutton "RETURN" style "confirm_button" action [SetVariable("inspect", None), Hide(transition=puzzle_hide)] xalign 1.0 yalign 0.5 sensitive interactable
 

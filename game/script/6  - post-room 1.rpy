@@ -1,7 +1,11 @@
 label post_room_1:
+  $renpy.block_rollback()
+  $ inspect = "post room"
   #"{b}[pause as the microphone turns on and {/b}{b}cautionne{/b}{b} appears on the screen]{/b}"
 
 #### confirmation sound - yay, you won room 1!
+
+  stop music fadeout 1.0
 
   pause 2
 
@@ -10,14 +14,18 @@ label post_room_1:
     zoom 0.5
   with fade
   pause 1
+  
   $ queue_sound([staticshort, tvon])
+  pause 0.4
+
   show cautionne hairtwirl at crt
   show crt
   show cautionne_frame_glow at bg
   with screenon
+  $ play_music(cautionnetheme)
   pause 0.2
   voice "audio/voice/cautionne/postroom/Cautionne_Post Room 1-01.ogg"
-  c "Well,{w=0.1} well,{w=0.1} well.{w=0.5} If it isn't the {i}lab rat{/i}."
+  c "Well, well, well.{w=0.0.036} If it isn't the {i}lab rat{/i}."
   c "For someone with chronic resting-{i}blah{/i}-face,{w=0.1} you look {i}real{/i} proud of yourself."
   show cautionne lean speaking
   c "And you know what?{w=0.5} You should be. "
@@ -31,7 +39,8 @@ label post_room_1:
   c "...That said,{w=0.1} I actually expected you to die by now."
   c "I'm not sure how to reward you for your success..."
   show cautionne lean speaking
-  c "Ooh –{w=0.1} wait,{w=0.1} wait.{w=0.5} I have an idea!"
+  stop music fadeout 1.0
+  c "Ooh —{w=0.1} wait,{w=0.1} wait.{w=0.5} I have an idea!"
   show cautionne lean eyeclosed
   c "How about a sticker?"
   c "If you get out of here,{w=0.1} I'll give you a fruit-scented one!"
@@ -72,6 +81,7 @@ label post_room_1:
     c "Not a sticker superfan?"
   show cautionne lean eyeclosed
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Well Then.ogg"
+  $ play_music(cautionnetheme, fadein=1.0, fadeout=0.1)
   c "Oh well.{w=0.5} More for me! "
   show cautionne leaneyeclosed pause
   if len(room1["investigated"]) == 0:
@@ -82,8 +92,8 @@ label post_room_1:
   pause 1
   show cautionne hairtwirl
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-  c "So,{w=0.1} what did you think of our-{p=0.5}{nw}"
-  c "{i}-my{/i} Research Lab?"
+  c "So,{w=0.1} what did you think of our—{p=0.5}{nw}"
+  c "{i}—my{/i} Research Lab?"
   show cautionne lean speaking
   c "It's awesome,{w=0.1} isn't it?"
   show cautionne think
@@ -135,6 +145,8 @@ label post_room_1:
   "(Probably.)"
   "(...Maybe.)"
   "(...No.{w} Better not tempt fate.)"
+
+  stop music 
 
   $ play_sound(tvoff)
   hide cautionne laugh
