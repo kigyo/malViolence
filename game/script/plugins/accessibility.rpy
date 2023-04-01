@@ -203,7 +203,7 @@ init python:
     timeralarm2 : _("A computer alarm."),
     liquidpour : _("A liquid is poured."),
     marbledeath : _("A comically large marble is on it's way..."),
-    metaldoorlock : _("A locked metal door.")
+    metaldoorlock : _("A locked metal door."),
     metaldoorclose : _("A metal door closes.")
     }
 

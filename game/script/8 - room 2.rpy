@@ -422,13 +422,13 @@ label recalibration_game_over:
     return
     
 label word_game_over:
-    $renpy.block_rollback()
     $ inspect = "game over"
     show screen room2_word
     show black onlayer screens with dissolve:
         alpha 0.5
     # [error sound effect]
     $ random_choice = random.randint(1,5)
+    $renpy.block_rollback()
     if word_answer == ["","","","",""]:
         #TODO: special text if you didn't even enter anything
         pass

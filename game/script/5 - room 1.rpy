@@ -328,6 +328,9 @@ label decanting_game_over:
     hide black onlayer screens
     hide screen room1_decanting 
     with puzzle_hide
+    scene bg room1:
+        parallel:
+            yalign 0.0 xalign 0.0 zoom 0.335
     "(Really?!{w} Did you find a solution that {i}he {/i}hadn't thought of?)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Y'know,{w=0.1} I {i}did {/i}say that two doses would be lethal..."

@@ -16,7 +16,7 @@ default testvar = ""
 init python:
     config.overlay_screens.append("debugging")
 
-    renpy.music.register_channel("beeps", mixer=None, loop=True, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True)
+    renpy.music.register_channel("beeps", mixer="sfx", loop=True, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True)
 
     speaking = None
     # This returns speaking if the character is speaking, and done if the
@@ -44,16 +44,16 @@ init python:
         speaking = name
         if event == "show":
             if speaking == "cautionne" and not renpy.music.get_playing("voice"):
-                renpy.music.play("audio/beeps/bleep026.ogg", channel="sound", loop=True, tight=False)
+                renpy.music.play("audio/beeps/bleep026.ogg", channel="beeps", loop=True, tight=False)
             elif speaking == "drdanger" and not renpy.music.get_playing("voice"):
-                renpy.music.play("audio/beeps/bleep018.ogg", channel="sound", loop=True, tight=False)
+                renpy.music.play("audio/beeps/bleep018.ogg", channel="beeps", loop=True, tight=False)
             elif speaking == "protagonist":
-                renpy.music.play("audio/beeps/bleep015.ogg", channel="sound", loop=True, tight=False)
+                renpy.music.play("audio/beeps/bleep015.ogg", channel="beeps", loop=True, tight=False)
             elif speaking == "report":
-                renpy.music.play("audio/beeps/bleep001.ogg", channel="sound", loop=True, tight=False)
+                renpy.music.play("audio/beeps/bleep001.ogg", channel="beeps", loop=True, tight=False)
 
         if event == "slow_done" or event == "end" or _menu:
-            renpy.music.stop(channel="sound", fadeout=0.0)
+            renpy.music.stop(channel="beeps", fadeout=0.0)
             speaking = None
         renpy.restart_interaction()
 

@@ -100,8 +100,8 @@ init python:
 
     death_name = {
         "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), "gui/dead_icon.png", 'dead'], #tutorial
-        "dead2": [_("DEAD END 02:"), _(""), "gui/dead_icon.png", 'dead'], #room1 meta
-        "dead3": [_("DEAD END 03:"), _(""), "gui/dead_icon.png", 'dead'], #room1 1
+        "dead2": [_("DEAD END 02:"), _("Marbleous Slapstick!"), "gui/dead_icon.png", 'dead'], #room1 meta
+        "dead3": [_("DEAD END 03:"), _("A Mindblowing Conclusion!"), "gui/dead_icon.png", 'dead'], #room1 1
         "dead4": [_("DEAD END 04:"), _("Trouble-shooting?"), "gui/dead_icon.png", 'dead'], #room1 2
         "dead5": [_("DEAD END 05:"), _("A Venom-enal End!"), "gui/dead_icon.png", 'dead'], #room1 3
         "dead6": [_("DEAD END 06:"), _("Stop Me If You Think You've Word This One Before..."), "gui/dead_icon.png", 'dead'], #room2 meta

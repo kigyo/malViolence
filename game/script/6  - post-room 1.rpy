@@ -25,7 +25,7 @@ label post_room_1:
   $ play_music(cautionnetheme)
   pause 0.2
   voice "audio/voice/cautionne/postroom/Cautionne_Post Room 1-01.ogg"
-  c "Well, well, well.{w=0.0.036} If it isn't the {i}lab rat{/i}."
+  c "Well, well, well.{w=0.036} If it isn't the {i}lab rat{/i}."
   c "For someone with chronic resting-{i}blah{/i}-face,{w=0.1} you look {i}real{/i} proud of yourself."
   show cautionne lean speaking
   c "And you know what?{w=0.5} You should be. "

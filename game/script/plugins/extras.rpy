@@ -417,7 +417,7 @@ screen dev_notes():
                 label "— " + _("cluniies") + " (" + _("Testing") + ")"
             frame:
                 has vbox
-                text _("")
+                text _("I was here for one day and in that time I gained a crippling fear of panopticons and a crippling attraction to Cautionne. No regrets.")
                 label "— " + _("wBrian") + " (" + _("Testing") + ")"
             
 style developer_notes_frame is gui_frame:

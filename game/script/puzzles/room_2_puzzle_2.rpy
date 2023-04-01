@@ -76,6 +76,7 @@ screen room2_panopticon():
     zorder 5
 
     frame style "puzzle_frame":
+        imagebutton idle Null(1920,1080) action SetVariable("panopticon_selected", None)
         fixed xsize 775 yfill True xalign 1.0:
             vbox spacing 50:
                 style_prefix "puzzle_description"
@@ -89,18 +90,18 @@ screen room2_panopticon():
         fixed xsize 1000:
             for i in range(len(panopticon_config)):
                 if panopticon_pos[i] == panopticon_config[i] * 72:
-                    imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i)] focus_mask True align (0.5,0.5) at hover_brighten, rotated(panopticon_pos[i])
+                    imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i)] focus_mask True align (0.5,0.5) at hover_darken, rotated(panopticon_pos[i])
                 elif i in panopticon_reverse:
-                    imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i)] focus_mask True align (0.5,0.5) at hover_brighten, rotate_reverse(panopticon_pos[i])
+                    imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i)] focus_mask True align (0.5,0.5) at hover_darken, rotate_reverse(panopticon_pos[i])
                     $ panopticon_pos[i] = panopticon_config[i] * 72
                 elif i not in panopticon_reverse:
-                    imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i)] focus_mask True align (0.5,0.5) at hover_brighten, rotate_anim(panopticon_pos[i])
+                    imagebutton idle "puzzles/room2_2_color"+ str(i+1) +".png" sensitive (inspect==None) action [SetVariable("panopticon_selected", i)] focus_mask True align (0.5,0.5) at hover_darken, rotate_anim(panopticon_pos[i])
                     $ panopticon_pos[i] = panopticon_config[i] * 72
             add "puzzles/room2_2_base.png" align (0.5,0.5)
     
-            if panopticon_selected != None:
+            showif panopticon_selected != None:
                 #add "gui/overlay/confirm.png"
-                hbox xalign 0.5 yalign 0.5 spacing 20:
+                hbox xalign 0.5 yalign 0.5 spacing 20 at alphashow:
                     frame:
                         textbutton "COUNTERCLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "l")]
                     frame:
@@ -131,3 +132,12 @@ transform rotate_reverse(val):
     rotate val
     linear 0.2 rotate val-72
     
+transform hover_darken:
+    on hover:
+        ease 0.2 matrixcolor BrightnessMatrix(-0.15)
+    on idle:
+        ease 0.2 matrixcolor BrightnessMatrix(0.0)
+    on selected_idle:
+        ease 0.2 matrixcolor BrightnessMatrix(-0.3)
+    on selected_hover:
+        ease 0.2 matrixcolor BrightnessMatrix(-0.3)
