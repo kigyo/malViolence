@@ -43,24 +43,24 @@ label kill_ending:
     scene cautionne gun cu with dissolve
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     cr "Don't need them.{w=0.5} Not if {i}I'm{/i} going to finish what Dr. Danger started."
-    "Using{i} that?{/i}{w} Kid,{w=0.1} you shouldn't be wielding-{p=0.5}{nw}"
+    "Using{i} that?{/i}{w} Kid,{w=0.1} you shouldn't be wielding—{p=0.5}{nw}"
     scene cautionne gun ecu with dissolve
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
     cr "Shut up and {i}let me talk,{/i}{w=0.1} lab rat."
     cr "I didn't {i}actually {/i}think you'd make it this far."
     cr "But alas,{w=0.1} as it turns out...{w=0.5} your puzzle-solving skills are...{w=0.6} decent."
     cr "In another life,{w=0.1} you'd make {i}quite {/i}the sidekick."
-    "...Well,{w=0.1} maybe if you'd free me-{p=0.5}{nw}"
+    "...Well,{w=0.1} maybe if you'd free me—{p=0.5}{nw}"
     cr "{i}Hell{/i} no."
     cr "You're {i}dangerous,{/i}{w=0.1} lab rat,{w=0.1} and I just can't let you go."
     scene cautionne gun ecu silent
-    "(The brat's got bravado -{w=0.5} you'll give him that.{w} He's keeping that revolver remarkably steady,{w=0.1} even though he's shaking all over.)"
+    "(The brat's got bravado —{w=0.5} you'll give him that.{w} He's keeping that revolver remarkably steady,{w=0.1} even though he's shaking all over.)"
     "(But he's still just a kid.{w} Might never have even wielded a weapon before,{w=0.1} for all his big talk.)"
     "(On the other hand...{w=0.5} {i}you're{/i} a STOP agent.)"
     "(You can draw and fire a gun faster than someone can say \"knife\".{w} It's the first thing they teach you as a trainee.)"
     "(He's scared,{w=0.1} but he's not going to hesitate any longer.)"
-    "(You exhale,{w=0.1} and before his finger can snake itself over the trigger-)"
-    "(-You raise your gun towards his torso.)"
+    "(You exhale,{w=0.1} and before his finger can snake itself over the trigger—)"
+    "(—You raise your gun towards his torso.)"
     stop music
     scene black
     pause 3

@@ -81,12 +81,12 @@ label post_room_2:
   c "You {i}are {/i}just getting evidence,{w=0.1} right?"
   if len(room2["investigated"]) == 5:
     "(...Does he not approve of your investigation style?)"
-    "(You're being thorough,{w=0.1} just to be cautio-){p=0.5}{nw}"
+    "(You're being thorough,{w=0.1} just to be cautio—){p=0.5}{nw}"
     pause 1
     "({i}...You're just being thorough.{/i})"
   elif len(room2["investigated"]) == 0:
     "(You're sticking to the mission objective,{w=0.1} just as you've been trained to do.)"
-    "(He's calling the shots right now -{w=0.1} but if you stay focused,{w=0.1} he'll run out of puzzles,{w=0.1} and you'll have a way out.)"
+    "(He's calling the shots right now —{w=0.1} but if you stay focused,{w=0.1} he'll run out of puzzles,{w=0.1} and you'll have a way out.)"
     "(Then,{w=0.1} you'll have the chance to close this case for good.)"
   else:
     "(First, he holds you prisoner.{w} {i}Now,{/i} he complains about how much you look around your prison?)"

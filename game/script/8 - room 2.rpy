@@ -35,7 +35,7 @@ screen room2():
 
 define cybernetics_description = _("""It's time for a crash course in cybernetics! 
 
-{color=#fff}Lay down new synthetic neural pathways - but be mindful of the original pieces that can't be moved.{/color}
+{color=#fff}Lay down new synthetic neural pathways — but be mindful of the original pieces that can't be moved.{/color}
 
 Here's some basic recalibration rules:
 -{color=#fff} Neural pathways must form one continuous loop and occupy every available space.{/color}
@@ -78,7 +78,7 @@ label room_2:
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
             "(That said,{w=0.1} poor penmanship hasn't dulled the designs themselves.{w} The {i}least{/i} dangerous of these would be devastating out in the field.)"
-            "(The oldest of the blueprints -{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
+            "(The oldest of the blueprints —{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
             "(In fact,{w=0.1} if you squint...{w=0.5} you can still find the signatures at the bottom.)"
             "(\"Destrange,\"{w=0.1} they say.{w} They're dated more than 15 years ago.)"
             hide room2_blueprintcollection with dissolve
@@ -111,10 +111,10 @@ label room_2:
         if room2["limbs"] == 0:
             show room2_limbsdesigns with dissolve:
                 yalign 0.2 xalign 0.5
-            "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP -{w=0.5} at first glance.)"
+            "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP —{w=0.5} at first glance.)"
             "(On closer inspection,{w=0.1} there are more differences than there are similarities.) "
             "(STOP's technology is more generalized,{w=0.1} more efficient...{w=0.5} and {i}angular.{/i})"
-            "(These plans are heavily customized.{w} They could've only been suitable for a very small number of subjects -{w=-0.5} possibly as few as {i}one.{/i})"
+            "(These plans are heavily customized.{w} They could've only been suitable for a very small number of subjects —{w=-0.5} possibly as few as {i}one.{/i})"
             "(Perhaps Dr. Danger based it off stolen data?{w} You make a note to tell your superiors about possible reverse-engineering.)"
             hide room2_limbsdesigns with dissolve
         else:
@@ -133,7 +133,7 @@ label room_2:
             "(These are the notes of a hunter,{w=0.1} and STOP was their prey.)"
             "(You recognize dozens of names,{w=0.1} operations,{w=0.1} and places;{w=0.5} vital parts of STOP's organization that had suffered heavy blows in the last few years.)"
             "(But you're disturbed by how many places you {i}don't{/i} recognize.)"
-            "(Laboratories,{w=0.1} factories{w=0.1} and armories that must be high above your clearance level –{w=0.5} crossed out like someone was just going down a checklist.)"
+            "(Laboratories,{w=0.1} factories{w=0.1} and armories that must be high above your clearance level —{w=0.5} crossed out like someone was just going down a checklist.)"
             "(All these top-secret sites share the same acronym:{w=0.5} \"YTDI.\")"
             "(...No,{w=0.1} you {i}don't{/i} recognize it.)"
             hide room2_evidenceboard with dissolve
@@ -150,12 +150,12 @@ label room_2:
         if room2["clippings"] == 0:
             show room2_news with dissolve:
                 yalign 0.2 xalign 0.5
-            "(Printouts and clippings of various news articles -{w=0.1} all related to Dr. Danger's exploits...{w=0.5} with a {i}certain{/i} colorful sidekick occasionally breaking into the opening paragraphs.)"
+            "(Printouts and clippings of various news articles —{w=0.1} all related to Dr. Danger's exploits...{w=0.5} with a {i}certain{/i} colorful sidekick occasionally breaking into the opening paragraphs.)"
             "(In fact,{w=0.1} when you look at them all together,{w=0.1} Cautionne seems to show up more over time.{w} Dr. Danger must've been pleased with her pupil's growth.)"
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
-            "(Based on what you can make out of the caption - {w=0.1}it seems to be of some kind of commemorative occasion.)" 
+            "(Based on what you can make out of the caption — {w=0.1}it seems to be of some kind of commemorative occasion.)" 
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
-            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as-{w=0.3}{nw})"
+            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as—{w=0.3}{nw})"
             hide room2_news with dissolve
             pause 1
             #"{b}[pause as the clippings disappear]{/b}"
@@ -264,7 +264,7 @@ label evidence_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 0.5
-    "(You carefully insert one more pin into the board, which leaves-){p=0.3}{nw}"
+    "(You carefully insert one more pin into the board, which leaves—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Whoa, you {i}suck {/i}at this!"
     hide black onlayer screens
@@ -274,7 +274,7 @@ label evidence_game_over:
     "(Something about his unusually straightforward insult puts ice into your veins.)"
     cr "It's like you're solving this puzzle with your eyes closed and your nose plugged."
     cr "...There some reason you don't want to look at the truth in front of you,{w=0.1} lab rat?"
-    "(...No, no, it's just-){p=0.3}{nw}"
+    "(...No, no, it's just—){p=0.3}{nw}"
     cr "I know you're not taking this seriously.{w=0.5} Maybe we should just move on?"
     cr "You know what?{w=0.5} Yeah. "
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
@@ -315,15 +315,15 @@ label panopticon_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 0.5
-    "(You re-arrange another set of cells and-)"
-    "(-and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
+    "(You re-arrange another set of cells and—)"
+    "(—and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
     hide black onlayer screens
     hide screen room2_panopticon
     with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Seems like you've run out of time,{w=0.1} lab rat."
     cr "That's it.{w=0.5} The jailbreak is over.{w=0.5} You screwed up."
-    "(So it {i}was {/i}a prison?{w} Then-)"
+    "(So it {i}was {/i}a prison?{w} Then—)"
     cr "If this only concerned you and me,{w=0.1} I'd be \"whatever\" about it."
     cr "We all make mistakes,{w=0.1} y'know?{w=0.5} So,{w=0.1} I'm super forgiving and cool and mature about this kind of thing."
     cr "...But you just lost those kids a chance to get out before the {i}operations{/i} start."
@@ -383,7 +383,7 @@ label recalibration_game_over:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} That person's own nervous system will rip their body apart with spasming."
     cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"
-    "(...Well,{w=0.1} uh-){p=0.3}{nw}"
+    "(...Well,{w=0.1} uh—){p=0.3}{nw}"
     cr "Don't worry,{w=0.1} I can fix this."
     cr "But I'm gonna need a hand."
 
@@ -440,7 +440,7 @@ label word_game_over:
         with puzzle_hide
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "{i}Kidding!{/i}"
-        "(You-)"
+        "(You—)"
         cr "C'mon,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
         #"{b}ZAP SFX, CUT TO BLACK{/b}"
         scene black
@@ -451,7 +451,7 @@ label word_game_over:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Whoa...{w=0.5} You got it."
         cr "...Did someone write you a walkthrough online?"
-        "(You-)"
+        "(You—)"
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word
@@ -467,7 +467,7 @@ label word_game_over:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
         stop music fadeout 0.5
         cr "You're a fast one,{w=0.1} aren't you?"
-        "(Huh?{w} What do you-)"
+        "(Huh?{w} What do you—)"
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
@@ -483,7 +483,7 @@ label word_game_over:
         cr "I see you're the type who likes to gamble."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Alas,{w=0.1} you didn't hit the jackpot.{w=0.5} Better luck next time!"
-        "(You-)"
+        "(You—)"
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word
@@ -491,7 +491,7 @@ label word_game_over:
         cr "But since you're here,{w=0.1} I've got another game for you to play."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "It's time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
-        "(What gu-)"
+        "(What gu—)"
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
@@ -505,7 +505,7 @@ label word_game_over:
         hide screen room2_word
         with puzzle_hide
         cr "You'd have better luck smashing keys."
-        "(You-)"
+        "(You—)"
         cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}"
         #"{b}SMASHING SFX, CUT TO BLACK{/b}"
         scene black

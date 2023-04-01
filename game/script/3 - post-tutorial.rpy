@@ -18,7 +18,7 @@ label post_tutorial:
   c "{size=+35}{i}WHAT?!?{/i}{/size}" with small_shake
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-02.ogg"
   c "How the {i}hell{/i} did you break the lock? "
-  c nohands "There's no way you could've-"
+  c nohands "There's no way you could've—"
   c "...gotten out on..."
   c oops "...your own."
   c "..."

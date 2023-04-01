@@ -40,7 +40,7 @@ label post_room_1:
   c "I'm not sure how to reward you for your success..."
   show cautionne lean speaking
   stop music fadeout 1.0
-  c "Ooh –{w=0.1} wait,{w=0.1} wait.{w=0.5} I have an idea!"
+  c "Ooh —{w=0.1} wait,{w=0.1} wait.{w=0.5} I have an idea!"
   show cautionne lean eyeclosed
   c "How about a sticker?"
   c "If you get out of here,{w=0.1} I'll give you a fruit-scented one!"
@@ -92,8 +92,8 @@ label post_room_1:
   pause 1
   show cautionne hairtwirl
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-  c "So,{w=0.1} what did you think of our-{p=0.5}{nw}"
-  c "{i}-my{/i} Research Lab?"
+  c "So,{w=0.1} what did you think of our—{p=0.5}{nw}"
+  c "{i}—my{/i} Research Lab?"
   show cautionne lean speaking
   c "It's awesome,{w=0.1} isn't it?"
   show cautionne think

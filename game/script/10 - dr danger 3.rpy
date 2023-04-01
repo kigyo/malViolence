@@ -9,7 +9,7 @@ label dr_danger_3:
   "(What right does he have to act all high and mighty towards {i}you?{/i})"
   pause 1
   "(...)"
-  "(Right - {i}supervillain.{/i})"
+  "(Right — {i}supervillain.{/i})"
   "(Big ego,{w=0.1} no self-awareness.{w} Don't overthink it.)"
 
   $ play_sound(footsteps3)
@@ -31,7 +31,7 @@ label dr_danger_3:
   $ play_sound(doorclose)
   pause 0.5
   "(...The dim corridor stretches before you,{w=0.1} with no answers to offer.)"
-  "(It's darker here -{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
+  "(It's darker here —{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
   "(The wooden floorboards and the decorated wallpaper feel...{w=0.5} welcoming.{w} {i}Nostalgic,{/i} even.)"
   "(If you viewed this hall alone,{w=0.1} you'd assume it'd belong to a family household.{w} Not to a scheming terrorist and her kooky sidekick.)"
   "(It's been a very long...{w=0.5} day?{w} Hard to tell how much time has passed.{p}But damn,{w=0.1} you are {i}exhausted.{/i})"
@@ -46,7 +46,7 @@ label dr_danger_3:
     zoom 0.5 xalign 0.5 yalign 0.5
     ease 3 yalign 1.0 zoom 0.6
   pause 2
-  extend "{cps=20} then maybe the smart thing to do would be to-){p=0.5}{nw}"
+  extend "{cps=20} then maybe the smart thing to do would be to—){p=0.5}{nw}"
   $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor3-01.ogg"
@@ -84,7 +84,7 @@ label dr_danger_3:
   show drdanger stare
   voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "While I'm away on business,{w=0.1} it's important that you keep him on his daily routine."
-  drs "7am to 9pm –{w=0.5} regularity is key."
+  drs "7am to 9pm —{w=0.5} regularity is key."
   drs "Remember that all his dietary habits,{w=0.1} health regimens{w=0.1} and study exercises{p=0.5}{nw}"
   drs "are detailed in the files that we went over together."
   show drdanger sidestare

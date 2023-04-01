@@ -86,7 +86,7 @@ label room_3:
             "(The craftsmanship on display isn't anything remarkable,{w=0.1} with poorly cut edges and tacky glitter glue smeared across the cheap cardstock.)"
             "(At least the pages seem to be in chronological order.)"
             ### sound of paper flip
-            "(In the earliest photos,{w=0.1} the boy is bedridden.{w} His skin is unnaturally pale,{w=0.1} and his gaze is unfocused –{w=0.5} empty, even.)"
+            "(In the earliest photos,{w=0.1} the boy is bedridden.{w} His skin is unnaturally pale,{w=0.1} and his gaze is unfocused —{w=0.5} empty, even.)"
             ### sound of paper flip
             "(But as you flick though the pages,{w=0.1} he grows stronger.)"
             "(He gets out of bed.{w} His eyes shine with inspiration and intelligence.{w} He smiles.)"
@@ -115,7 +115,7 @@ label room_3:
             ### sound of paper flip
             "(You flip through the log.{w} The recuperation described here is difficult to read.)"
             "(Seizures,{w=0.1}  phantom pain,{w=0.1}  memory loss{w=0.1}  and brain damage are all expected results,{w=0.1} not side effects.)"
-            "(Scrawled notes speculate that these symptoms would last for several years or decades -{w=0.5}  perhaps even permanently.)"
+            "(Scrawled notes speculate that these symptoms would last for several years or decades —{w=0.5}  perhaps even permanently.)"
             "(Implanting cybernetics in individuals under 18 isn't illegal,{w=0.1} but it {i}is {/i} frowned upon.)"
             "(And from the logbook,{w=0.1} a lot of children were implanted.{w=0.5} Children well under the age of 18.)"
             "(There's nothing here about informed consent or parental permissions.)"
@@ -156,7 +156,7 @@ label room_3:
                 yalign 0.2 xalign 0.5
             "(You find a lab coat with an ID pinned above its breast pocket.{w} There's no photo,{w=0.1}  but the name \"Deirdre Destrange\" is clearly printed on the plastic card alongside a worn barcode.)"
             "(The coat itself is high-quality,{w=0.1} but it's worn around the edges.{w} Deirdre must've worn it for a long time,{w=0.1}  taking good care of it all the while.)"
-            "(You see framed photos,{w=0.1} diplomas,{w=0.1}  certificates and awards -{w=0.5} all of them belonging to this \"Deirdre Destrange\".)"
+            "(You see framed photos,{w=0.1} diplomas,{w=0.1}  certificates and awards —{w=0.5} all of them belonging to this \"Deirdre Destrange\".)"
             "(In and of itself,{w=0.1} a doctorate in cybernetic biology is impressive,{w=0.1} but Destrange received this {i}years{/i} ago.)"
             "(To be {i}that {/i}experienced at a young age,{w=0.1}  and when the science was still so {i}new...{/i}{w=0.5} she must've been on the cutting edge of the field.)"
             "(At the bottom of the pile,{w=0.1} you find a dented,{w=0.1} dusty medal. {w}An award for \"continued service to the international security community\"?)"
@@ -179,7 +179,7 @@ label room_3:
             ### sound of paper flip
             "(Even further back,{w=0.1} the spidery handwriting disappears altogether.{w} Instead,{w=0.1} there are grids and examples written with clean,{w=0.1} crisp penmanship.)"
             "(Shaky,{w=0.1} barely-legible scribbles sit below,{w=0.1} rounding out vague, letter-like shapes.)"
-            "(It almost looks like a therapeutic exercise -{w=0.5} or a homework assignment.{w} Maybe it's both.)"
+            "(It almost looks like a therapeutic exercise —{w=0.5} or a homework assignment.{w} Maybe it's both.)"
             "(What's clear is that the notebook's author hasn't used it for a long,{w=0.1} long{w=0.1} time.)"
             hide room3_notebook with dissolve
             "(Personally,{w=0.1} you wouldn't be caught dead using the third person.)"
@@ -203,9 +203,9 @@ label room_3:
             n "Oh well.{w} They could always change the acronym later.\""
         elif room3["diary"] == 1:
             #"SUCCESS WITH LIMITING PROLIFERAITON OF TECH, PROMOTION, DISCOVERY OF POTENTIAL FOR YOUNGER SUBJECTS"
-            n "\"I thought that things were moving fast before - but the growth we're seeing now makes those earlier years look glacial.{w} STOP is doing good work that needs to get done, and it's making countries put money where their mouths are when it comes to international cooperation efforts."
+            n "\"I thought that things were moving fast before — but the growth we're seeing now makes those earlier years look glacial.{w} STOP is doing good work that needs to get done, and it's making countries put money where their mouths are when it comes to international cooperation efforts."
             nvl clear
-            n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.{w} \nThis month we finalized our report on maximizing cybernetic synchronization for patients - confirming my earlier theory that the younger, the better. "
+            n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.{w} \nThis month we finalized our report on maximizing cybernetic synchronization for patients — confirming my earlier theory that the younger, the better. "
             n "The difference really was astounding.{w} And I must admit, it felt good to shove that 19\% performance increase right in that stuffy old bastard's smug face.\""
             nvl hide
             pause 0.5
@@ -221,7 +221,7 @@ label room_3:
         elif room3["diary"] == 2:
             #"STAGNATION, LOTS OF RESEARCH WORK DISILLUSIONMENT, PARANOIA"
             n "\"Another month where the Security Advisory Council looked completely lost.{w} It's like they don't know what to do with peacetime."
-            n "They do amazing work - obviously.{w} The world is secure, and cybernetic technology is finally getting regulated.{w} The laws are catching up with the science."
+            n "They do amazing work — obviously.{w} The world is secure, and cybernetic technology is finally getting regulated.{w} The laws are catching up with the science."
             n "That's a good thing, even if it makes their job a little less\nexciting."
             n "Or maybe a little less secure.\""
             nvl hide
@@ -229,7 +229,7 @@ label room_3:
             nvl clear
             nvl show
             n "\"I requested another transfer.{w} My third in three years, but they didn't seem to mind.{w} I just can't find work as engrossing as I used to.{w} It probably doesn't help that I'm not sure what it is I do anymore. "
-            n "I mean, logically, I know what I do - I research cybernetics.{w} But I'm not sure what I do for STOP.{w} They haven't had a major security incident in months; the last \"incident\" they responded to was just a protest outside the building that got a little rowdy.\""
+            n "I mean, logically, I know what I do — I research cybernetics.{w} But I'm not sure what I do for STOP.{w} They haven't had a major security incident in months; the last \"incident\" they responded to was just a protest outside the building that got a little rowdy.\""
             nvl hide
             pause 0.5
             nvl clear
@@ -247,7 +247,7 @@ label room_3:
             #"Meeting CAUTIONNE"
             n "\"\'I was very disappointed with the state of the Youth Training and Development Initiative.\'"
             n "That's how I put it in writing. "
-            n "I don't really have the right words to express my disgust with this program's existence.{w}\n\nThe idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline - assuming that we were talking about 18 vs 24. "
+            n "I don't really have the right words to express my disgust with this program's existence.{w}\n\nThe idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline — assuming that we were talking about 18 vs 24. "
             n "It was never supposed to justify...{w} whatever the hell they're doing now.\""
             nvl hide
             pause 0.5
@@ -268,7 +268,7 @@ label room_3:
             nvl clear
             nvl show
             n "\"He smiled at me. "
-            n "Even though everyone else he's seen here -{w} everyone dressed like me, acting like me, working for the same people as me –{w} has made him suffer. "
+            n "Even though everyone else he's seen here —{w} everyone dressed like me, acting like me, working for the same people as me —{w} has made him suffer. "
             n "He {i}smiled{/i} at me.\""
             nvl hide
             pause 0.5
@@ -283,7 +283,7 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
-            n "\"I get the sense that my superiors aren't paying attention to what is happening.{w} That might be the most infuriating part for me -{w} they don't even care that much about the success or failure of this program. "
+            n "\"I get the sense that my superiors aren't paying attention to what is happening.{w} That might be the most infuriating part for me —{w} they don't even care that much about the success or failure of this program. "
             n "The implication I'm getting is that this is far from the only program of its kind.{w} It might be one of many, many more.\""
         elif room3["diary"] == 4:
             #"SEVEN FLEE, ON THE RUN"
@@ -313,10 +313,10 @@ label room_3:
             n "...At least he'll have a choice from now on.\""
         elif room3["diary"] == 5:
             #"FIGHTING BACK, CAUTIONNE WANTING TO HELP"
-            n "\"I've no right to call myself a parent, but even so -{w} parenthood is hard. "
+            n "\"I've no right to call myself a parent, but even so —{w} parenthood is hard. "
             n "His rehab is going as well as can be expected, but this is no way to raise a child."
             n "I can educate him, keep him fed, and care for him."
-            n "But I can't give him any kind of a future -{w} not while STOP is trying to erase our very existence.\""
+            n "But I can't give him any kind of a future —{w} not while STOP is trying to erase our very existence.\""
             nvl hide
             pause 0.5
             nvl clear
@@ -336,7 +336,7 @@ label room_3:
             nvl show
             n "\"Cautionne has always been eager to please and happy to spend time with me.{w} Is it any wonder he wants to help the nefarious Dr. Danger in her fight against STOP? "
             n "I should tell him no.{w} Revenge is poison, and he's already been through too much. "
-            n "But I still can't even bear to calculate how much of his suffering is my fault.{w} I don't have the heart to tell him no - and I'd sooner die than judge him for how much he hates STOP.\""
+            n "But I still can't even bear to calculate how much of his suffering is my fault.{w} I don't have the heart to tell him no — and I'd sooner die than judge him for how much he hates STOP.\""
             nvl hide
             pause 0.5
             nvl clear
@@ -441,7 +441,7 @@ label scrapbook_game_over:
 
     "(You place the scrapbook down to get a fresh look at what you've got so far.)"
     "(But when you step back,{w=0.1} you feel like {i}something's{/i} out of place.)"
-    "(And if {i}you {/i}can tell,{w=0.1} then {i}he {/i}can tell.{w} Better-){p=0.3}{nw}"
+    "(And if {i}you {/i}can tell,{w=0.1} then {i}he {/i}can tell.{w} Better—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "It's okay to suck at arts and crafts, lab rat. Not everyone's born to make masterpieces."
     hide black onlayer screens
@@ -453,19 +453,19 @@ label scrapbook_game_over:
     "(A bead of sweat trickles down your back.)"
     "(Was...{w=0.5} was that an option?)"
     cr "...Wait,{w=0.1} I left that out,{w=0.1} didn't I?"
-    cr "My bad!{w=0.5} If memory serves me,{w=0.1} this button should-"
+    cr "My bad!{w=0.5} If memory serves me,{w=0.1} this button should—"
     #"{b}[BEEP]{/b}"
     #"{b}[sound of lazer charging up]{/b}"
     pause 1
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
-    cr "Whoopsie doopsie!{w=0.5} Looks like I pressed the wrong-"
+    cr "Whoopsie doopsie!{w=0.5} Looks like I pressed the wrong—"
     #"{b}BLAST SFX, CUT TO BLACK{/b}"
 
     scene black with small_shake
     pause 3
     $nvl_heading = "Lab Report #891"
     l "Subject succeeded in proving the fatality of ray gun protoype Delta-9."
-    l "{b}Contributing Factors to Death:{/b} They messed up my scrapbook – so now, we're even!"
+    l "{b}Contributing Factors to Death:{/b} They messed up my scrapbook — so now, we're even!"
 
     $deadend("dead10")
     le "DEAD END 10: Holy Scrap!"
@@ -507,7 +507,7 @@ label quilt_game_over:
     cr "I'd like to think of myself as a lenient kinda guy... {w}But watching you butcher that sentimental quilt is {i}pretty painful.{/i}"
     cr "Like,{w=0.1} a death by a thousand cuts...{p=0.5}{nw}"
     cr "...or needles,{w=0.1} in this case."
-    "(You hear a switch go off,{w=0.1} and-){p=0.5}{nw}"
+    "(You hear a switch go off,{w=0.1} and—){p=0.5}{nw}"
     scene black
 
     #{i}{b}[sound of protag getting stabbed with needles]{/b}{/i}
@@ -551,7 +551,7 @@ label toys_game_over:
         alpha 0.5
     stop music fadeout 1.0
     "(You set down the toys and pause to think.)"
-    "(The task is a lot harder than you thought it would be.{w} Maybe-){p=0.3}{nw}"
+    "(The task is a lot harder than you thought it would be.{w} Maybe—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Having trouble organizing?{w=0.5} I get it."
     hide black onlayer screens
@@ -606,7 +606,7 @@ label cooking_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 1.0
-    "({i}There.{/i}{w} That should be the right ingredients for the pancakes.{w} Now if you pour the batter-){p=0.3}{nw}"
+    "({i}There.{/i}{w} That should be the right ingredients for the pancakes.{w} Now if you pour the batter—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 1.ogg"
     cr "{i}Stop right there,{/i} lab rat.{w=0.5} I don't want that {i}affront{/i} to all things edible anywhere near my nice,{w=0.1} tasteful,{w=0.1} kitchen appliances."
     hide black onlayer screens
@@ -614,7 +614,7 @@ label cooking_game_over:
     with puzzle_hide
     pause 1
     cr "How the {i}hell{/i} do you screw up pancakes that bad?{w=0.5} Did STOP mangle your common sense as well as your brains?"
-    "(You open your mouth to protest and-){p=0.3}{nw}"
+    "(You open your mouth to protest and—){p=0.3}{nw}"
 
     scene black
 

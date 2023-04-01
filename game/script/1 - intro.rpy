@@ -26,7 +26,7 @@ label start:
         zoom 1.2 yalign 1.2 xalign 0.5
         ease 0.4 zoom 1 yalign 0.5
     $Achievement.add(achievement_start)
-    "(GAH! {w}What the-)"
+    "(GAH! {w}What the—)"
     "(...Huh? {w}Where {i}are{/i} you?)"
     scene bg tutorial1:
         yalign 0.5 xalign 0.5
@@ -37,7 +37,7 @@ label start:
         ease 1.5 xalign 0.5 yalign 0.5
     "(Some sort of... cell? {w}But everything's so... woozy, so you can't...)"
     pause 0.5
-    "(No, no - what were you doing {i}before{/i} you got here?)"
+    "(No, no — what were you doing {i}before{/i} you got here?)"
     "(You wanted a bonus, and your boss told you to go here and get info.{w} So, you did, and then...)"
     "(...and then something hit your back, and... {w}you, {w=0.5}uh...) "
     "(You...)"
@@ -51,7 +51,7 @@ label start:
         ease 0.7 yalign 0.5 xalign 0.7
         ease 0.5 yalign 0.5 xalign 0.5
     "(Where... {w=0.5}where's that voice coming from?)"
-    "(It's giving you a migraine. {w}You just wanna shut it-){w=0.5}{nw}"
+    "(It's giving you a migraine. {w}You just wanna shut it—){w=0.5}{nw}"
 
     scene bg tutorial1:
         yalign 0.5 xalign 0.5
@@ -92,11 +92,11 @@ label start:
     "(Maybe it's to the side,{w=0.5} or...)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-06.ogg"
     x "{i}Too bad,{/i} lab rat!{w=0.5} You won't find any volume buttons here."
-    "({i}\"Lab rat?\"{/i} {w}What's with that-)"
+    "({i}\"Lab rat?\"{/i} {w}What's with that—)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-07.ogg"
     x "You're {i}awfully{/i} confused by all of this,{w=0.25} aren't you?"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-08.ogg"
-    x "Well, then - {w=0.25} allow me to introduce myself."
+    x "Well, then — {w=0.25} allow me to introduce myself."
 ######### edit voices from here
     pause 0.5
     voice "audio/voice/cautionne/intro/Cautionne_Intro-09.ogg"

@@ -26,7 +26,7 @@ label spare_ending:
     "(Maybe you'll get a promotion.{w} A better salary.{w} Better benefits.{w} A better home.)"
     "(A better {i}life.{/i}{w} Something you've always wanted.)"
     "(...And...)"
-    "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole-){p=0.5}{nw}"
+    "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole—){p=0.5}{nw}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-01.ogg"
     x "Finally going to take responsibility?"
     $ play_sound(quickfootsteps)
@@ -40,7 +40,7 @@ label spare_ending:
 
     scene cautionne gun far silent with fade
 
-    "(Not {i}now,{/i} kid!{w} The last thing you need is {i}him{/i} showing up and-){p=0.5}{nw}"
+    "(Not {i}now,{/i} kid!{w} The last thing you need is {i}him{/i} showing up and—){p=0.5}{nw}"
 
     scene cautionne gun cu with dissolve
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-02.ogg"
@@ -227,7 +227,7 @@ label spare_ending:
     scene bg garage with fade:
         zoom 1.4 align (0.5,0.55)
 
-    "(So, without another word,{w=0.1} you-){p=0.5}{nw}"
+    "(So, without another word,{w=0.1} you—){p=0.5}{nw}"
     cr "...Hey lab rat."
     "(You turn back,"
 

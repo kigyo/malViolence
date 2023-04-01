@@ -51,7 +51,7 @@ label dr_danger_1:
   $ play_sound(singlefootstep)
   pause 0.5
 
-  "(You take another cautious step ahead and-){p=0.5}{nw}"
+  "(You take another cautious step ahead and—){p=0.5}{nw}"
   $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor1-01.ogg"
@@ -61,7 +61,7 @@ label dr_danger_1:
   show bg corridor1:
     align (0.5,0.5) zoom 0.6
 
-  "(What the-?!)" with small_shake
+  "(What the—?!)" with small_shake
   "({i}Another {/i}voice? {w}And all the screens in the room lit up, too...)"
 
   $ play_sound(footsteps1)
@@ -95,7 +95,7 @@ label dr_danger_1:
   "(Uh... {w}no?)"
   "(Last time you checked,{w=0.1} you were a STOP agent.{w} By default, Dr. Danger's a sworn enemy.)"
   "(...{i}Was{/i} a sworn enemy.{w} She died {i}weeks{/i} ago,{w=0.1} caught in her own explosion while trying to wipe another STOP facility off the map.)"
-  "(Wait.{w} Does this mean she survi-){p=0.5}{nw}"
+  "(Wait.{w} Does this mean she survi—){p=0.5}{nw}"
   voice "audio/voice/dr.danger/Danger_Corridor1-04.ogg"
   drs "Before you begin your task,{w=0.1} please listen carefully.{p=1.5}{nw}"
   voice sustain
@@ -115,7 +115,7 @@ label dr_danger_1:
   with dissolve
   pause 1
   "(Besides,{w=0.1} you're no mere hired hand.)"
-  "(You're a proud agent of STOP –{w=0.5} trained to fight villains like her.)"
+  "(You're a proud agent of STOP —{w=0.5} trained to fight villains like her.)"
   "(So what if there are more puzzles to solve and locked rooms to explore? {w}To someone like you,{w=0.1} they should be child's play.)"
   pause 1
   "({i}...Should{/i} be.)"
@@ -144,10 +144,10 @@ label dr_danger_1:
   "({i}...Eugh.{/i} {w}Looking at that thing gives you goosebumps.)"
   "(Do you {i}have{/i} to go through here?)"
   "(Maybe there's something you missed in the corridor...)"
-  "(Yeah,{w=0.1} you'll turn around and-){p=0.5}{nw}"
+  "(Yeah,{w=0.1} you'll turn around and—){p=0.5}{nw}"
   $ play_sound(metaldoorlock)
   pause 1
-  "(-it's not opening.)"
+  "(—it's not opening.)"
   pause 1
   "(No,{w=0.1} there\'s still the door on the other side."
 

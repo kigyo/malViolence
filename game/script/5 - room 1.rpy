@@ -13,7 +13,7 @@ But be careful! If you don't use these codes at the right time, you might lock y
 
 define decanting_description = _("""Cautionne needs your help poisoning a top STOP official, {color=#fff}but his toxin of choice is pretty particular!{/color}
 
-Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  - {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial{/color} contains the poison itself.
+Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  — {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial{/color} contains the poison itself.
 
 Be quick, though. {color=#fff}If the poison's disturbed too much, it'll give off nasty vapors...{/color}
     
@@ -55,10 +55,10 @@ label room_1:
             "(You approach the glistening puddle for a closer look.)"
             show room1_oil with dissolve:
                 yalign 0.2 xalign 0.5
-            "(The smell's pretty unambiguous,{w=0.1} but just to be sure -{w=0.1} you gingerly swipe a finger across the surface.)"
+            "(The smell's pretty unambiguous,{w=0.1} but just to be sure —{w=0.1} you gingerly swipe a finger across the surface.)"
             "(Oil.{w} Most likely for some kind of machine.)"
             "(It's not unfamiliar.{w} STOP has a massive array of equipment and vehicles that need regular maintenance.)"
-            "(An agent like you is expected to know how to repair and service them -{w=0.1} especially when your bosses are displeased with you.)"
+            "(An agent like you is expected to know how to repair and service them —{w=0.1} especially when your bosses are displeased with you.)"
             "(But it's strange to see oil out in the open here.{w} Maybe it's a spill,{w=0.1} or a leak?)"
             "(Either way,{w=0.1} something {i}clearly{/i} isn't working.)"
             hide room1_oil with dissolve
@@ -217,7 +217,7 @@ label bomb_game_over:
     cr "Well, well, well. You\'ve successfully made a bomb."
     cr "I can say with {i}100\% certainty{/i} that it\'ll make a fantastic explosion."
     "(Phew. Looks like I've done what I was supposed to.)"
-    cr "That said, the timer-"
+    cr "That said, the timer—"
     #{b}BOOM SFX, CUT TO BLACK{/b}
     cr "...needs some work."
     $nvl_heading = "Lab Report #414"
@@ -253,8 +253,8 @@ label hacking_game_over:
         alpha 0.5
 
     stop music fadeout 0.5
-    "(It's too late.{w} The counter-trace just found you and-){p=0.5}{nw}"
-    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be-){p=0.3}{nw}"
+    "(It's too late.{w} The counter-trace just found you and—){p=0.5}{nw}"
+    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){p=0.3}{nw}"
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
@@ -262,7 +262,7 @@ label hacking_game_over:
     cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     cr "Good news!{w=0.5} STOP found your computer."
     cr "Bad news!{w=0.5} Standard operating procedure is to overload the offending console ASAP."
-    cr "By the way,{w=0.1} you're standing very,{w=0.1} {i}very{/i} close to the computer.{w=0.5} I'll have you know that's bad for your eye-{p=0.3}{nw}"
+    cr "By the way,{w=0.1} you're standing very,{w=0.1} {i}very{/i} close to the computer.{w=0.5} I'll have you know that's bad for your eye—{p=0.3}{nw}"
 
     #"{b}BOOM, CUT TO BLACK{/b}"
     scene black with small_shake
@@ -305,9 +305,9 @@ label decanting_game_over:
     with dissolve
     stop music fadeout 0.5
     "(You're getting close, now...{w=0.5} Right?)"
-    "(If you just pour {i}this{/i}{i} {/i}into {i}that-){/i}"
+    "(If you just pour {i}this{/i}{i} {/i}into {i}that—){/i}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-    cr "Wow, lab rat – you've made {i}quite{/i} the concoction!"
+    cr "Wow, lab rat — you've made {i}quite{/i} the concoction!"
     hide black onlayer screens
     hide screen room1_decanting 
     hide screen room1
@@ -353,13 +353,13 @@ label marble_game_over:
     #show screen puzzle_playspace(pb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(You step back and pause. Something about the order doesn't seem-)"
+    "(You step back and pause. Something about the order doesn't seem—)"
     cr "Oof. {i}Not quite.{/i} "
     cr "But it's okay! I can fix this, easy-peasy."
-    cr "Just, uh... stand still... foooooor oooone secoooooond aaaaand-"
+    cr "Just, uh... stand still... foooooor oooone secoooooond aaaaand—"
 
     #"{b}SPLAT{/b}
-    #{b}[a giant marble comes and crushes the protag – screen cuts to black]{/b}"
+    #{b}[a giant marble comes and crushes the protag — screen cuts to black]{/b}"
 
     $nvl_heading = "Lab Report #909"
     l "Subject was crushed by a comically large marble. Dropped just high enough for instantaneous death and perfect comedic timing."

@@ -30,7 +30,7 @@ label neutral_ending:
     show bg garage with dissolve:
         zoom 0.5 align(0.5,0.5)
     "(...All that said,{w=0.1} you weren't expecting your escape to be so...{w=0.5} {i}straightforward.{/i})"
-    "(The exit's wide open.{w} If you walked through right now,{w=0.1} you'll-){p=0.5}{nw}"
+    "(The exit's wide open.{w} If you walked through right now,{w=0.1} you'll—){p=0.5}{nw}"
 
     $ play_sound(quickfootsteps)
     #"{b}[quick footsteps sound out]{/b}"
@@ -57,11 +57,11 @@ label neutral_ending:
     #"{b}[show {/b}{b}Cautionne{/b}{b} shooting CG]{/b}"
     "(A...{w=0.5} a {i}gun?{/i})"
     scene cautionne gun cu with dissolve
-    "(Why does he have a gun?{w} Someone his age shouldn't-){p=0.5}{nw}"
-    "(No,{w=0.1} it's a fake,{w=0.1} isn't it?{w} Of course –{w=0.5} it's just a practical joke of his!)"
+    "(Why does he have a gun?{w} Someone his age shouldn't—){p=0.5}{nw}"
+    "(No,{w=0.1} it's a fake,{w=0.1} isn't it?{w} Of course —{w=0.5} it's just a practical joke of his!)"
     pause 1
     "Um...{w=0.5} I'm glad you're having fun and all,{w=0.1} but I really should get going."
-    "See,{w=0.1} adults have these things called “jobs”,{w=0.1} and-{p=0.5}{nw}"
+    "See,{w=0.1} adults have these things called “jobs”,{w=0.1} and—{p=0.5}{nw}"
     scene black
     stop music
     pause 3
@@ -88,7 +88,7 @@ label neutral_ending:
 
     pause 3
     "{si}(Shit.{w} Shit,{w=0.1} shit,{w=0.1} shit.){/si}"
-    "{si}(I can't believe –{w} I made such a {i}rookie {/i}mistake!){/si}"
+    "{si}(I can't believe —{w} I made such a {i}rookie {/i}mistake!){/si}"
     "{si}(And I can't...{w} Haa...{w} I can't...{w} {i}stand{/i} any more!){/si}"
     "{si}(Wha...{w} what am I gonna do?{w} How am I gonna get out of here {i}now?{/i}){/si}"
 
@@ -102,7 +102,7 @@ label neutral_ending:
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     $ play_music(neutralending, fadein=1.0, fadeout=1.0)
     cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} living a hand-to-mouth life."
-    cr "That's why you did this mission,{w=0.1} right?{w=0.5} ‘Cause you wanted a sweet,{w=0.1} fat,{w=0.1} paycheck?"
+    cr "That's why you did this mission,{w=0.1} right?{w=0.5} 'Cause you wanted a sweet,{w=0.1} fat,{w=0.1} paycheck?"
     "{si}(...I...{w} I want...{w} to say something...){/si}"
     "{si}(But,{w=0.1} haah...{w} I'm shaking...{w} and sweating...{w} everywhere...){/si}"
     "{si}(All I can do...{w} is open my eyes...){/si}"
@@ -121,7 +121,7 @@ label neutral_ending:
         pause 0.5
         cr "If I let you go,{w=0.1} would your bosses even care?"
         cr "After all,{w=0.1} you're not much of an investigator."
-        cr "So, how ‘bout I save you all the exit interviews and put things to an end here."
+        cr "So, how 'bout I save you all the exit interviews and put things to an end here."
         "{si}(N-no...{w} I can still get up!){/si}"
         "{si}(If I...{w} crawl all the way back...{w} they'll...{w} definitely forgive me...){/si}"
         #"{b}[pan up to his face]{/b}"

@@ -114,8 +114,8 @@ label tutorial_room:
     elif inspect == "vent":
         if tutorial["vent"] < 2:
             $ tutorial["vent"] = 2
-            "(Again,{w=0.1} it's just your average vent-){p=0.5}{nw}"
-            "(-wait.{w} Something's on the back side of that cover.)"
+            "(Again,{w=0.1} it's just your average vent—){p=0.5}{nw}"
+            "(—wait.{w} Something's on the back side of that cover.)"
             $ play_sound(creakyvent)
             show tutorial_painting with dissolve:
                 zoom 0.3 yalign 0.2 xalign 0.5
@@ -145,7 +145,7 @@ label tutorial_room:
                 pause 3
                 "(...Why did you do that?)"
                 "(Those pellets still don't taste great.)"
-                "(In fact,{w=0.1} the more you chew on them,{w=0.1} the bitterer they-){p=0.5}{nw}"
+                "(In fact,{w=0.1} the more you chew on them,{w=0.1} the bitterer they—){p=0.5}{nw}"
                 stop music
                 $ play_sound(bodyfall)
                 scene bg tutorial2 with small_shake:
@@ -157,7 +157,7 @@ label tutorial_room:
                 scene bg tutorial2 at dizzy with dissolve:
                     parallel:
                         yalign 1.0 xalign 0.5 zoom 0.75
-                "{sc}({i}-HURK!{/i}){/sc}"
+                "{sc}({i}—HURK!{/i}){/sc}"
                 "{si}(...Aw,{w=0.1} crap.){/si}"
                 "{si}(Of {i}course{/i} there was something in the food.){/si}"
                 "{si}(Whatever it was...{w=0.5} it's making everything throb like crazy.{/si} {si}{w}{p}Your chest,{w=0.5} your head,{w=0.5} your eyes...){/si}"

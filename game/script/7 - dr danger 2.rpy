@@ -35,8 +35,8 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_Corridor2-01.ogg"
   dr "Good. {w=0.5}You made it through the experiment room."
   "(?!)" with small_shake
-  "(Dr. Danger's on again!{w} What did you-)"
-  "(No,{w=0.1} no{w=0.1} - calm down.{w} It's probably motion-activated.)"
+  "(Dr. Danger's on again!{w} What did you—)"
+  "(No,{w=0.1} no{w=0.1} — calm down.{w} It's probably motion-activated.)"
   "(You should've listened to the last recording,{w=0.1} since it seemed pretty helpful.{w} This time,{w=0.1} you'll stay still and pay attention!)"
 
   $ play_sound(footsteps2)
@@ -67,7 +67,7 @@ label dr_danger_2:
   $ play_music(backstorytheme, fadein=1.0, fadeout=1.0)
   voice "audio/voice/dr.danger/Danger_SB-Allow Me To Explain.ogg"
   drs "No,{w=0.1} {i}that{/i} room belongs to my apprentice."
-  drs "Currently,{w=0.1} he is running an experiment -{p=0.5}{nw}"
+  drs "Currently,{w=0.1} he is running an experiment —{p=0.5}{nw}"
   show drdanger sidestare
   drs "even if he seems more interested in the process than the results."
   voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
