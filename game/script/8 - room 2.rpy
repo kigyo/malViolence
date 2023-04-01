@@ -250,6 +250,8 @@ label evidence_solved:
         alpha 0.5
     $ room2["solved"].append("evidence")
     #obtain the "E"
+    if len(room2["notes"]) < 4:
+        "(...You were mostly guessing, but somehow, this worked.)"
     "(Congratulations! {w}You solved the evidence board puzzle.)"
     hide black onlayer screens
     hide screen room2_evidence

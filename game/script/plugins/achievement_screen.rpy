@@ -65,36 +65,34 @@ screen achievement_menu():
                         ## The platinum achievement will not appear
                         ## in the list.
                         ## Index '3' is the type of achievement.
-                        if v[3] != 'platinum':
+                        frame:
                             
-                            frame:
+                            hbox:
                                 
-                                hbox:
+                                yalign 0.5
+                                xysize (100, 100)
+                                
+                                ## This will display a locked icon.
+                                add 'gui/locked_achievement.png' size (100, 100) yalign 0.5
+
+                                null width 20
+
+                                vbox:
                                     
-                                    yalign 0.5
-                                    xysize (100, 100)
+                                    spacing 0
+                                    yfill False
+
+                                    ## We're setting the data feedback to represent
+                                    ## the None and 'hidden' achievements.
+                                    if v[3] is None:
+                                        ## Index '1' is the description of the achievemnt.
                                     
-                                    ## This will display a locked icon.
-                                    add 'gui/locked_achievement.png' size (100, 100) yalign 0.5
-
-                                    null width 20
-
-                                    vbox:
-                                        
-                                        spacing 0
-                                        yfill False
-
-                                        ## We're setting the data feedback to represent
-                                        ## the None and 'hidden' achievements.
-                                        if v[3] is None:
-                                            ## Index '1' is the description of the achievemnt.
-                                        
-                                            text str(v[0]) style 'achievements_label' color '#FFFFFF33'
-                                            text str(v[1]) color '#FFFFFF33'
-                                        
-                                        else:
-                                        
-                                            text _('Hidden Achievement') style 'achievements_label' color '#FFFFFF33'
+                                        text str(v[0]) style 'achievements_label' color '#FFFFFF33'
+                                        text str(v[1]) color '#FFFFFF33'
+                                    
+                                    else:
+                                    
+                                        text _('Hidden Achievement') style 'achievements_label' color '#FFFFFF33'
 
 screen failchievement_menu():
 

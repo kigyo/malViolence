@@ -167,18 +167,18 @@ label room_1:
     elif inspect == "marble":
         if room1["marble"] == 0:
             $ room1["marble"] = 1
-            "TODO: Marble Puzzle"
+            "> This puzzle is not implemented yet. Come back here once you solved all the other puzzles in this room."
             pass
         else:
             #repeated investigation
             pass
         if len(room1["solved"]) >= 3:
-            "Since this puzzle is not implemented yet, you can skip this final puzzle. Do you wish to do so now?"
+            "> Since this puzzle is not implemented yet, you can skip this final puzzle. Do you wish to do so now?"
             menu:
                 "Yes":
                     jump post_room_1
                 "Give me the bad ending":
-                    "You got it!"
+                    "> You got it!"
                     scene black with eyeclose
                     jump marble_game_over
                 "No":
