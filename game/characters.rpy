@@ -385,6 +385,7 @@ image cautionne_serious_speaking:
 
 layeredimage cautionne shoot:
     zoom 0.5
+    always "images/CG/cautionne_shoot_angry_close.png"
     group mouth:
         attribute angry default WhileSpeaking("cautionne", "cautionne_shoot_angry", "images/CG/cautionne_shoot_angry_close.png")
         attribute cry WhileSpeaking("cautionne", "cautionne_shoot_cry", "images/CG/cautionne_shoot_cry_close.png")
@@ -427,6 +428,7 @@ layeredimage cautionne sit_far:
 
 layeredimage cautionne sit:
     zoom 0.5
+    always "images/CG/cautionne_sit_hope_closed.png"
     group mouth:
         attribute hope default WhileSpeaking("cautionne", "cautionne_sit_hope", "images/CG/cautionne_sit_hope_closed.png")
         attribute stunned WhileSpeaking("cautionne", "cautionne_sit_stunned", "images/CG/cautionne_sit_stunned_closed.png")
