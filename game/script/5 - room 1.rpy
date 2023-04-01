@@ -2,7 +2,7 @@ default room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone"
 
 define hacking_description = _("""With {color=#fff}the list of codes to your left,{/color} Cautionne wants you to hack into one of STOP's computer systems.
 
-{color=#fff}Use the mouse or keyboard{/color} to clear out {color=#fff}the codes in the system (shown on the right).{/color} These codes are unordered, so {color=#fff}as long as the three individual components are the same, the codes count as the same.{/color}
+{color=#fff}Use the mouse or keyboard{/color} to clear out {color=#fff}the codes in the system (shown on the right).{/color}
 
 {color=#fff}All of the codes must be used{/color} to destroy the firewall and sucessfully break into the system.
 
@@ -16,7 +16,7 @@ define decanting_description = _("""Cautionne needs your help poisoning a top ST
 Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  — {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial{/color} contains the poison itself.
 
 Be quick, though. {color=#fff}If the poison's disturbed too much, it'll give off nasty vapors...{/color}
-    
+
 Drag the vials in order to pour their contents into each other.""")
 
 
@@ -43,13 +43,13 @@ screen room1():
     if config.developer:
         frame:
             textbutton _("Skip Room") action [Jump("post_room_1")] style "main_menu_button"
-            
+
 label room_1:
     if inspect not in room1["investigated"] and inspect in ["oil", "chair", "megaphone"]:
         $room1["investigated"].append(inspect)
     show screen room1
     $renpy.block_rollback()
-    
+
     if inspect == "oil":
         if room1["oil"] == 0:
             "(You approach the glistening puddle for a closer look.)"
@@ -125,7 +125,7 @@ label room_1:
             call screen puzzle_playspace(pb)
             if room1["hacking"] == "solved":
                 jump hacking_solved
-        
+
     elif inspect == "decanting":
         if "decanting" in room1["solved"]:
             "(You've already solved the decanting puzzle.)"
@@ -326,7 +326,7 @@ label decanting_game_over:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Wow, lab rat — you've made {i}quite{/i} the concoction!"
     hide black onlayer screens
-    hide screen room1_decanting 
+    hide screen room1_decanting
     with puzzle_hide
     scene bg room1:
         parallel:
@@ -402,4 +402,3 @@ label marble_game_over:
     nvl clear
     $game_over(1)
     return
-
