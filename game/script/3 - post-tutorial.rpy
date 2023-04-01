@@ -1,4 +1,6 @@
 label post_tutorial:
+  $renpy.block_rollback()
+  $ inspect = "post room"
   #[If puzzle is solved, play a solving/unlocking sound]
   scene bg tutorial2 at zoomed
   stop music

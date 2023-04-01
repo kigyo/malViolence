@@ -32,6 +32,7 @@ init python:
         store.tutorial["lock"][idx] += 1
         if tutorial["lock"][idx] == 6:
             store.tutorial["lock"][idx] = 0
+        renpy.retain_after_load()
         if tutorial_valid_solution():
             renpy.jump("post_tutorial")
             

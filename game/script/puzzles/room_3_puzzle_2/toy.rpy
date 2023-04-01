@@ -139,6 +139,8 @@ init python:
 
             self.just_cleared = True
 
+            renpy.retain_after_load()
+
     def sort_matches(tup):
         lst = len(tup)
         for i in range(0, lst):

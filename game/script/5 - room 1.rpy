@@ -76,7 +76,7 @@ label room_1:
             show room1_electricchair with dissolve:
                 yalign 0.2 xalign 0.5
             "(From a comfortable distance,{w=0.1} you eye over the \"Primary Source Extractor\".{w} You approach carefully,{w=0.1} listening closely for any hints of it roaring to life.)"
-            "(Agents are expected to keep their wits about them and not jump to conclusions…{w} but it's hard to see the device in front of you as anything but an electric chair.)"
+            "(Agents are expected to keep their wits about them and not jump to conclusions...{w} but it's hard to see the device in front of you as anything but an electric chair.)"
             "(It looks crude and cruel,{w=0.1} like a child's re-imagining of something scary from a history book.)"
             "(That may be exactly what it is.{w} Whatever its purpose,{w=0.1} you give quiet thanks that it seems to be out of commission.)"
             hide room1_electricchair with dissolve
@@ -96,7 +96,7 @@ label room_1:
             show room1_megaphones with dissolve:
                 yalign 0.2 xalign 0.5
             "(You paused when you saw the silhouettes from across the room...{w=0.5} but on closer inspection these aren't firearms at all.{w} They're {i}megaphones.{/i})"
-            "(So many colors,{w=0.1} materials,{w=0.1} variations… {w}It's far from organized,{w=0.1} but it does look like a collection.)"
+            "(So many colors,{w=0.1} materials,{w=0.1} variations... {w}It's far from organized,{w=0.1} but it does look like a collection.)"
             "(It's hard to picture Dr. Danger,{w=0.1} one of STOP's most wanted criminals,{w=0.1} picking up such an odd hobby.)"
             "(And yet,{w=0.1} half of them are tagged with the initials \"DD\".)"
             hide room1_megaphones with dissolve

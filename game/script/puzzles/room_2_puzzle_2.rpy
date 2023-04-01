@@ -34,6 +34,8 @@ init python:
                 if panopticon_config[i] == 5:
                     store.panopticon_config[i] = 0
         store.panopticon_selected = None
+        renpy.retain_after_load()
+        
         if room2_panopticon_valid_solution():
             store.room2["panopticon"] = "solved"
             return True

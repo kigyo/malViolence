@@ -1,4 +1,6 @@
 label post_room_1:
+  $renpy.block_rollback()
+  $ inspect = "post room"
   #"{b}[pause as the microphone turns on and {/b}{b}cautionne{/b}{b} appears on the screen]{/b}"
 
 #### confirmation sound - yay, you won room 1!

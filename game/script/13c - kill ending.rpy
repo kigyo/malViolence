@@ -58,7 +58,7 @@ label kill_ending:
     "(But he's still just a kid.{w} Might never have even wielded a weapon before,{w=0.1} for all his big talk.)"
     "(On the other hand...{w=0.5} {i}you're{/i} a STOP agent.)"
     "(You can draw and fire a gun faster than someone can say \"knife\".{w} It's the first thing they teach you as a trainee.)"
-    "(He’s scared,{w=0.1} but he’s not going to hesitate any longer.)"
+    "(He's scared,{w=0.1} but he's not going to hesitate any longer.)"
     "(You exhale,{w=0.1} and before his finger can snake itself over the trigger-)"
     "(-You raise your gun towards his torso.)"
     stop music

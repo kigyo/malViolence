@@ -156,7 +156,7 @@ label spare_ending:
     scene cautionne sit hope:
         align (0.0,0.1)
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-14.ogg"
-    cr "…Pft."
+    cr "...Pft."
     scene cautionne sit stunned:
         align (0.0,0.1)
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-15.ogg"
@@ -167,7 +167,7 @@ label spare_ending:
     scene cautionne sit stunnedsilent:
         align (0.0,0.1)
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-16.ogg"
-    cr "…"
+    cr "..."
     "(...Ah.)"
     scene cautionne sit stunned:
         align (0.0,0.1)

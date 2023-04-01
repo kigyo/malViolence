@@ -95,6 +95,7 @@ init python:
                     self.pieces[0][x] = None
 
             self.just_cleared = True
+            renpy.retain_after_load()
         
     def puzzle_board_reset(txt=_("Invalid. Restarting...")):
         store.pb = PuzzleBoard(width=6, height=10, move_cap=12)

@@ -197,7 +197,7 @@ label room_3:
             ### sound of paper being picked up
             "(It's a loose page with handwriting on it.{w} Judging by the number in the corner and the fading ink,{w=0.1} it must be a small part of a much larger document.)"
             #"FIRST ENTRIES"
-            n "\"It’s nice to have job security right out of school.{w} I had my doubts during junior year, of course, but I don't think anyone could've predicted how the sector's grown these past few months.{w} The developments in cybernetic technology have been explosive.{w} Sometimes {i}literally. {/i}"
+            n "\"It's nice to have job security right out of school.{w} I had my doubts during junior year, of course, but I don't think anyone could've predicted how the sector's grown these past few months.{w} The developments in cybernetic technology have been explosive.{w} Sometimes {i}literally. {/i}"
             n "It's troubling, but all great technology has the potential for misuse.{w} And now I'm going to be part of an organization that works to keep that tech under control. "
             n "Though I'll be honest, the name's pretty silly."
             n "Oh well.{w} They could always change the acronym later.\""
@@ -241,13 +241,13 @@ label room_3:
             nvl show
             n "\"I might've transferred a few times too many."
             n "I came into work today and clocked out without recognizing a single face the entire time.{w} New people, places, committees, projects, and always more acronyms. "
-            n "And, for the first time in years, I was denied access to internal data.{w} I didn’t think anything could be above my paygrade anymore.\n"
+            n "And, for the first time in years, I was denied access to internal data.{w} I didn't think anything could be above my paygrade anymore.\n"
             n "Note to self: look up \"YTDI \"."
         elif room3["diary"] == 3:
             #"Meeting CAUTIONNE"
             n "\"\'I was very disappointed with the state of the Youth Training and Development Initiative.\'"
             n "That's how I put it in writing. "
-            n "I don't really have the right words to express my disgust with this program’s existence.{w}\n\nThe idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline - assuming that we were talking about 18 vs 24. "
+            n "I don't really have the right words to express my disgust with this program's existence.{w}\n\nThe idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline - assuming that we were talking about 18 vs 24. "
             n "It was never supposed to justify...{w} whatever the hell they're doing now.\""
             nvl hide
             pause 0.5
@@ -275,16 +275,16 @@ label room_3:
             nvl clear
             nvl show
             n "\"I'm getting better at coming up with excuses to visit him, at least.\n"
-            n "I need to check how he’s coping with procedures.{w} I might need to test his reflexes.{w} Hell, he might need a snack to make him more cooperative."
+            n "I need to check how he's coping with procedures.{w} I might need to test his reflexes.{w} Hell, he might need a snack to make him more cooperative."
             n "All my explanations are superficially believable at best."
-            n "I’m no medical professional.{w} By all means, I should’ve been reprimanded for getting too involved."
+            n "I'm no medical professional.{w} By all means, I should've been reprimanded for getting too involved."
             n "But no such warnings have come my way.\"" 
             nvl hide
             pause 0.5
             nvl clear
             nvl show
-            n "\"I get the sense that my superiors aren’t paying attention to what is happening.{w} That might be the most infuriating part for me -{w} they don't even care that much about the success or failure of this program. "
-            n "The implication I’m getting is that this is far from the only program of its kind.{w} It might be one of many, many more.\""
+            n "\"I get the sense that my superiors aren't paying attention to what is happening.{w} That might be the most infuriating part for me -{w} they don't even care that much about the success or failure of this program. "
+            n "The implication I'm getting is that this is far from the only program of its kind.{w} It might be one of many, many more.\""
         elif room3["diary"] == 4:
             #"SEVEN FLEE, ON THE RUN"
             n "\"I'm never going to be able to forget the look on his face when the convulsions started. "
@@ -295,7 +295,7 @@ label room_3:
             nvl clear
             nvl show
             n "\"They claimed that it was a clerical error that he didn't receive his anti-seizure medications that morning. "
-            n "I know that it was actually punishment.{w} He refused to obey during yesterday’s mandatory exercises. "
+            n "I know that it was actually punishment.{w} He refused to obey during yesterday's mandatory exercises. "
             n "You wouldn't treat an {i}animal{/i} like this, much less another human.\n"
             n "To them, he's less than that.\""
             nvl hide
@@ -304,13 +304,13 @@ label room_3:
             nvl show
             n "\"I triggered the false alarm right on schedule, down to the second.\n{w} My not-at-all false explosive followed suit. "
             n "I had always understood that the chemical reaction was very simple to set up.{w} But, I still expected my first felony to present more challenges than this.{w} Maybe I have a knack for this kind of thing. "
-            n "He didn’t hesitate for one second when I asked him to come with me.{w} As I rushed him through the fire exit, the look on his face at that moment has stuck with me.{w} Could anyone have looked more relieved?\""
+            n "He didn't hesitate for one second when I asked him to come with me.{w} As I rushed him through the fire exit, the look on his face at that moment has stuck with me.{w} Could anyone have looked more relieved?\""
             nvl hide
             pause 0.5
             nvl clear
             nvl show
             n "\"Maybe he should have hesitated.{w} All that awaits him is a life in hiding."
-            n "...At least he’ll have a choice from now on.\""
+            n "...At least he'll have a choice from now on.\""
         elif room3["diary"] == 5:
             #"FIGHTING BACK, CAUTIONNE WANTING TO HELP"
             n "\"I've no right to call myself a parent, but even so -{w} parenthood is hard. "
@@ -336,15 +336,15 @@ label room_3:
             nvl show
             n "\"Cautionne has always been eager to please and happy to spend time with me.{w} Is it any wonder he wants to help the nefarious Dr. Danger in her fight against STOP? "
             n "I should tell him no.{w} Revenge is poison, and he's already been through too much. "
-            n "But I still can’t even bear to calculate how much of his suffering is my fault.{w} I don't have the heart to tell him no - and I'd sooner die than judge him for how much he hates STOP.\""
+            n "But I still can't even bear to calculate how much of his suffering is my fault.{w} I don't have the heart to tell him no - and I'd sooner die than judge him for how much he hates STOP.\""
             nvl hide
             pause 0.5
             nvl clear
             nvl show
             n "\"Dr. Danger and Cautionne are becoming a household name, but that's about it. "
             n "STOP is still in power.{w} People are still too scared to take them to task.{w} And there are still YTDI centers all over the world.\n{w}If I destroy one, they move the children to another. "
-            n "That's horrible as-is, but what if they don’t care enough to do even that?"
-            n "What if they just figure the YTDI is just not worth the cost?\n{w}What’ll happen to those children then?"
+            n "That's horrible as-is, but what if they don't care enough to do even that?"
+            n "What if they just figure the YTDI is just not worth the cost?\n{w}What'll happen to those children then?"
             nvl clear
             n "Something needs to change, but I'm not sure it's something that Dr. Danger can do. "
             if gui.text_size > 40:
@@ -411,6 +411,7 @@ label room_3:
 
     elif inspect == "scrapbook_new":
         if room3["scrapbook_new"] == 0:
+            $scrapbook_init()
             $ room3["scrapbook_new"] = 1
             show screen room3_meta(_layer="master") with easeintop
             "(The \"lock\" for the door is a... scrapbook? Its pages are empty, though...)"
@@ -463,7 +464,7 @@ label scrapbook_game_over:
     scene black with small_shake
     pause 3
     $nvl_heading = "Lab Report #891"
-    l "Subject succeeded in proving the fatality of ray gun protoype Delta-9.{/i}"
+    l "Subject succeeded in proving the fatality of ray gun protoype Delta-9."
     l "{b}Contributing Factors to Death:{/b} They messed up my scrapbook – so now, we're even!"
 
     $deadend("dead10")

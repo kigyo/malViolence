@@ -34,6 +34,8 @@ init python:
 
 
 label post_room_3:
+    $renpy.block_rollback()
+    $ inspect = "post room"
 
     stop music fadeout 1.0
 

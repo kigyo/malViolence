@@ -1,7 +1,10 @@
-label post_room_2:
+screen nodismiss(): #Our screen, while it is visible, no one can dismiss anything at all
+    key "dismiss" action NullAction()
 
-  screen nodismiss(): #Our screen, while it is visible, no one can dismiss anything at all
-      key "dismiss" action NullAction()
+label post_room_2:
+  $renpy.block_rollback()
+  $ inspect = "post room"
+
 
   stop music fadeout 1.0
 
