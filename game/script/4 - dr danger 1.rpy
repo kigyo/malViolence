@@ -135,6 +135,7 @@ label dr_danger_1:
   show bg room1 with dissolve:
     zoom 0.4 yalign 0.7
 
+  $ play_sound(metaldoorclose)
   pause 1
 ######### metal door shut plays here
 

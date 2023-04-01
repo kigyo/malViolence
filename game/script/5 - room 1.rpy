@@ -167,7 +167,7 @@ label room_1:
     elif inspect == "marble":
         if room1["marble"] == 0:
             $ room1["marble"] = 1
-            "> This puzzle is not implemented yet. Come back here once you solved all the other puzzles in this room."
+            "> This puzzle is not implemented yet. Come back here once you've solved all the other puzzles in this room."
             pass
         else:
             #repeated investigation
@@ -212,19 +212,31 @@ label bomb_game_over:
     show screen room1_bomb(bomb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
+    stop music fadeout 0.5
     "(Carefully, you finish the assembly and set it down in front of you.)"
-    "(...Huh. It doesn't seem like it's ticking.)"
-    cr "Well, well, well. You\'ve successfully made a bomb."
+    "(...Huh.{w} It doesn't seem like it's ticking.)"
+    hide black onlayer screens
+    hide screen room1_bomb
+    with puzzle_hide
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+    cr "Well, well, well.{w=0.5} You\'ve successfully made a bomb."
     cr "I can say with {i}100\% certainty{/i} that it\'ll make a fantastic explosion."
-    "(Phew. Looks like I've done what I was supposed to.)"
-    cr "That said, the timer—"
-    #{b}BOOM SFX, CUT TO BLACK{/b}
+    "(Phew.{w} Looks like I've done what I was supposed to.)"
+    $ play_sound(timeralarm)
+    pause 3
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+    cr "That said,{w=0.1} the timer—{p=0.3}{nw}"
+    $ play_sound(bombexplosion1)
+    scene black with small_shake
+    pause 3
     cr "...needs some work."
+    pause 3
+    nvl clear
     $nvl_heading = "Lab Report #414"
     l "Subject passed away due to an overexposure to high-yield explosives."
     l "{b}Contributing Factors to Death:{/b} A lack of detail-oriented problem solving skills. Nothing more, nothing less."
     $deadend("dead3")
-    le "DEAD END 03: NAME!"
+    le "DEAD END 03: A Mindblowing Conclusion!"
     pause 2
     nvl clear
     $game_over(1)
@@ -253,18 +265,24 @@ label hacking_game_over:
         alpha 0.5
 
     stop music fadeout 0.5
-    "(It's too late.{w} The counter-trace just found you and—){p=0.5}{nw}"
-    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){p=0.3}{nw}"
+
+    $ play_sound(timeralarm2)
+
+
+    pause 2
+
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
+    "(It's too late.{w} The counter-trace just found you and—){p=0.5}{nw}"
+    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     cr "Good news!{w=0.5} STOP found your computer."
     cr "Bad news!{w=0.5} Standard operating procedure is to overload the offending console ASAP."
     cr "By the way,{w=0.1} you're standing very,{w=0.1} {i}very{/i} close to the computer.{w=0.5} I'll have you know that's bad for your eye—{p=0.3}{nw}"
 
-    #"{b}BOOM, CUT TO BLACK{/b}"
+    $ play_sound(bombexplosion2)
     scene black with small_shake
 
     pause 3
@@ -297,20 +315,18 @@ label decanting_solved:
 label decanting_game_over:
     $renpy.block_rollback()
     $ inspect = "game over"
-    show bg room1:
-        xalign 0.4 yalign 0.9
     show screen room1_decanting with None
     show black onlayer screens:
         alpha 0.5
     with dissolve
     stop music fadeout 0.5
     "(You're getting close, now...{w=0.5} Right?)"
+    $ play_sound(liquidpour)
     "(If you just pour {i}this{/i}{i} {/i}into {i}that—){/i}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Wow, lab rat — you've made {i}quite{/i} the concoction!"
     hide black onlayer screens
     hide screen room1_decanting 
-    hide screen room1
     with puzzle_hide
     "(Really?!{w} Did you find a solution that {i}he {/i}hadn't thought of?)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
@@ -353,20 +369,32 @@ label marble_game_over:
     #show screen puzzle_playspace(pb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(You step back and pause. Something about the order doesn't seem—)"
-    cr "Oof. {i}Not quite.{/i} "
-    cr "But it's okay! I can fix this, easy-peasy."
-    cr "Just, uh... stand still... foooooor oooone secoooooond aaaaand—"
+    "(You step back and pause.{w} Something about the order doesn't seem—)"
+    hide black onlayer screens
+    ### hide marble screen here
+    with puzzle_hide
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+    cr "Oof.{w=0.5} {i}Not quite.{/i} "
+    cr "But it's okay!{w=0.5} I can fix this,{w=0.1} easy-peasy."
+    cr "Just, uh...{w=0.5} stand still...{w=0.5}{cps=20}foooooor oooone secoooooond aaaaand—{/cps}{p=0.3}{nw}"
 
     #"{b}SPLAT{/b}
     #{b}[a giant marble comes and crushes the protag — screen cuts to black]{/b}"
+
+    $ play_sound(marbledeath)
+
+    pause 1.127
+
+    scene black with small_shake
+
+    pause 3
 
     $nvl_heading = "Lab Report #909"
     l "Subject was crushed by a comically large marble. Dropped just high enough for instantaneous death and perfect comedic timing."
     l "{b}Contributing Factors to Death:{/b} Didn't recognize good slapstick even when it hit them."
 
     $deadend("dead2")
-    le "DEAD END 02: NAME!"
+    le "DEAD END 02: Marbleous Slapstick!"
     pause 2
     nvl clear
     $game_over(1)

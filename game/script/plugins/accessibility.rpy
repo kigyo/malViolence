@@ -156,6 +156,14 @@ init python:
     boxunlock = "audio/sfx/boxunlock.ogg"
     boxopen = "audio/sfx/boxopen.ogg"
     quickfootsteps = "audio/sfx/Quick Footsteps 1.ogg"
+    timeralarm = "audio/sfx/Room1SFX/Timer Alarm 2.ogg"
+    timeralarm2 = "audio/sfx/Room1SFX/TimerAlarm1.ogg"
+    bombexplosion1 = "audio/sfx/Room1SFX/Bomb Explosion Big 2.ogg"
+    bombexplosion2 = "audio/sfx/Room1SFX/Bomb explosion Smaller.ogg"
+    liquidpour = "audio/sfx/Room1SFX/Liquid Pour 3.ogg"
+    marbledeath = "audio/sfx/Room1SFX/Marble Death Crush.ogg"
+    metaldoorclose = "audio/sfx/Room1SFX/Metal Door Close 2.ogg"
+
 
 
 
@@ -189,7 +197,14 @@ init python:
     boxunlock : _("A box being unlocked."),
     boxopen : _("A box opening."),
     quickfootsteps : _("Quick footsteps."),
+    bombexplosion1 : _("A bomb explodes."),
+    bombexplosion2 : _("The computer explodes."),
+    timeralarm : _("A timer alarm."),
+    timeralarm2 : _("A computer alarm."),
+    liquidpour : _("A liquid is poured."),
+    marbledeath : _("A comically large marble is on it's way..."),
     metaldoorlock : _("A locked metal door.")
+    metaldoorclose : _("A metal door closes.")
     }
 
 # This is where you define the names for the music files you will be using in the game. It is recommended to define the main menu BGM as well.
