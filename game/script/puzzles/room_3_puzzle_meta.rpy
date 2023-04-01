@@ -42,7 +42,7 @@ She said it was impressive how quickly I'd picked up on what her design needed. 
 ...She's sad a lot, I've noticed. I want to do something to change that.""")
 }
 
-screen room3_meta:
+screen room3_meta():
     sensitive not inspect
     modal True
     tag puzzle

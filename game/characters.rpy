@@ -144,8 +144,6 @@ image drdanger_tender_speaking:
 
 ###### cautionne CGs and sprites
 
-image bg cautionne_screen = "cautionne_screen_background.png"
-
 layeredimage cautionne annoyed:
     zoom 0.5
     always "bg cautionne"

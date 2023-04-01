@@ -287,7 +287,7 @@ label evidence_game_over:
     $deadend("dead7")
     $nvl_heading = "Lab Report #273"
     l "Subject experienced permanent loss of life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
-    l "{i}Guess they were worth the trouble of installation!"
+    l "Guess they were worth the trouble of installation!"
     l "{b}Contributing Factors to Death:{/b} Couldn't put progress on the board."
     le "DEAD END 07: NAME!"
     pause 2

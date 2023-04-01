@@ -84,69 +84,70 @@ style presplash_label_text:
 ## program.
 
 ## These background buttons are 384x216
-image room_button = im.FactorScale("bg/room.jpg", 0.2)
-image office_button = im.FactorScale("bg/future_office.jpg", 0.2)
-image beach_button = im.FactorScale("bg/sort_of_beautiful_beach_day.jpg", 0.2)
-image bglock_button = "gui/button/cg_locked.jpg"
+#image room_button = im.FactorScale("bg/room.jpg", 0.2)
+#image office_button = im.FactorScale("bg/future_office.jpg", 0.2)
+#image beach_button = im.FactorScale("bg/sort_of_beautiful_beach_day.jpg", 0.2)
+#image bglock_button = "gui/button/cg_locked.jpg"
 
 init python:
 
     g_bg = Gallery()
 
     # Backgrounds for the BG Gallery
-    g_bg.button("room")
-    g_bg.unlock_image("room") 
+    #g_bg.button("room")
+    #g_bg.unlock_image("room") 
 
-    g_bg.button("office")
-    g_bg.image("future_office")
-    g_bg.unlock("future_office")
+    #g_bg.button("office")
+    #g_bg.image("future_office")
+    #g_bg.unlock("future_office")
 
-    g_bg.button("beach")
-    g_bg.image("sort_of_beautiful_beach_day")
-    g_bg.unlock("sort_of_beautiful_beach_day")
+    #g_bg.button("beach")
+    #g_bg.image("sort_of_beautiful_beach_day")
+    #g_bg.unlock("sort_of_beautiful_beach_day")
 
     # Sprites for the Sprite Gallery
     # We put a background in the first spot so Eileen isn't floating in a void.
 
-    g_sprite = Gallery()
+    #g_sprite = Gallery()
 
-    g_sprite.button("eileen happy")
-    g_sprite.unlock_image("room", "eileen happy")
+    #g_sprite.button("eileen happy")
+    #g_sprite.unlock_image("room", "eileen happy")
 
-    g_sprite.button("eileen neutral")
-    g_sprite.unlock_image("room", "eileen neutral")
+    #g_sprite.button("eileen neutral")
+    #g_sprite.unlock_image("room", "eileen neutral")
 
-    g_sprite.button("eileen surprised")
-    g_sprite.unlock_image("room", "eileen surprised")
+    #g_sprite.button("eileen surprised")
+    #g_sprite.unlock_image("room", "eileen surprised")
 
-    g_sprite.button("eileen upset")
-    g_sprite.image("room", "eileen upset")
-    g_sprite.unlock("room", "eileen upset")
+    #g_sprite.button("eileen upset")
+    #g_sprite.image("room", "eileen upset")
+    #g_sprite.unlock("room", "eileen upset")
 
-    g_sprite.button("eileen angry")
-    g_sprite.image("room", "eileen angry")
-    g_sprite.unlock("room", "eileen angry")
+    #g_sprite.button("eileen angry")
+    #g_sprite.image("room", "eileen angry")
+    #g_sprite.unlock("room", "eileen angry")
 
-    # The button used for locked images
-    g_bg.locked_button = "bglock_button"
-    g_sprite.locked_button = "spritelock_button"
+    ## The button used for locked images
+    #g_bg.locked_button = "bglock_button"
+    #g_sprite.locked_button = "spritelock_button"
 
-    # The transition used when switching images.
-    g_bg.transition = dissolve
-    g_sprite.transition = dissolve
+    ## The transition used when switching images.
+    #g_bg.transition = dissolve
+    #g_sprite.transition = dissolve
 
-    # MusicRoom instance.
-    mr = MusicRoom(fadeout=1.0)
+    ## MusicRoom instance.
+    #mr = MusicRoom(fadeout=1.0)
 
-    # Add music files.
-    mr.add("audio/music/Careless-Summer_Looping.mp3", always_unlocked=True)
-    mr.add("audio/music/Future-Business_v001.mp3")
-    mr.add("audio/music/Sculpture-Garden_Looping.mp3")
-    mr.add("audio/music/The-Concrete-Bakes_Looping.mp3")
+    ## Add music files.
+    #mr.add("audio/music/Careless-Summer_Looping.mp3", always_unlocked=True)
+    #mr.add("audio/music/Future-Business_v001.mp3")
+    #mr.add("audio/music/Sculpture-Garden_Looping.mp3")
+    #mr.add("audio/music/The-Concrete-Bakes_Looping.mp3")
 
 ## Extras Navigation screen ############################################################
 ##
 ## This is the same as the Game Menu Navigation screen, but just for the Extras.
+default persistent.game_clear = False
 
 screen extras_navigation():
 
@@ -289,9 +290,9 @@ screen bg_gallery():
             ## Call make_button to show a particular button.
             # add g_bg.make_button("background", "bg_button")
 
-            add g_bg.make_button("room", "room_button", xalign=0.5, yalign=0.5)
-            add g_bg.make_button("office", "office_button", xalign=0.5, yalign=0.5)
-            add g_bg.make_button("beach", "beach_button", xalign=0.5, yalign=0.5)
+            #add g_bg.make_button("room", "room_button", xalign=0.5, yalign=0.5)
+            #add g_bg.make_button("office", "office_button", xalign=0.5, yalign=0.5)
+            #add g_bg.make_button("beach", "beach_button", xalign=0.5, yalign=0.5)
 
 ## Music Gallery screen ############################################################
 ##
@@ -310,10 +311,10 @@ screen music_gallery():
             yalign 0.5
 
             # The buttons that play each track.
-            textbutton "The Concrete Brakes" action mr.Play("audio/music/The-Concrete-Bakes_Looping.mp3")
-            textbutton "Sculpture Garden" action mr.Play("audio/music/Sculpture-Garden_Looping.mp3")
-            textbutton "Future Business" action mr.Play("audio/music/Future-Business_v001.mp3")
-            textbutton "Careless Summer" action mr.Play("audio/music/Careless-Summer_Looping.mp3")
+            #textbutton "The Concrete Brakes" action mr.Play("audio/music/The-Concrete-Bakes_Looping.mp3")
+            #textbutton "Sculpture Garden" action mr.Play("audio/music/Sculpture-Garden_Looping.mp3")
+            #textbutton "Future Business" action mr.Play("audio/music/Future-Business_v001.mp3")
+            #textbutton "Careless Summer" action mr.Play("audio/music/Careless-Summer_Looping.mp3")
 
             null height 20
 
@@ -330,30 +331,8 @@ screen music_gallery():
         ## Restore the main menu music upon leaving.
         ## You can actually comment this out if you want to let players enjoy the music
         ## while looking at the other screens.
-        on "replaced" action Play("music", "audio/The-Concrete-Bakes_Looping.mp3")
+        #on "replaced" action Play("music", "audio/The-Concrete-Bakes_Looping.mp3")
 
-## Replay Gallery screen ######################################
-##
-## This is a simple screen that shows buttons that replay a scene from the game.
-
-screen replay_gallery():
-
-    tag menu
-
-    ## This use statement includes the extras_menu screen inside this one.
-    use extras_menu(_("Replay Room")):
-
-        vbox:
-
-            xalign 0.5
-            yalign 0.5
-
-            # The buttons that play each section.
-            textbutton "The Beginning" action Replay("start")
-            textbutton "The Office" action Replay("office")
-            textbutton "The Beach" action Replay("beach")
-
-            null height 20
 
 ## Dev Notes screen ########################################
 ##
@@ -369,13 +348,89 @@ screen dev_notes():
     ## screen.
     use extras_menu(_("Developer's Notes"), scroll="viewport"):
 
-        style_prefix "about"
+        
 
-        vbox:
+        vbox spacing 10:
+            style_prefix "developer_notes"
+            frame:
+                has vbox
+                text _("")
+                label "— " + _("{a=https://madocallie.carrd.co/}Mado{/a}") + " (" + _("Director, CG Artist & Scenario") + ")"
+            frame:
+                has vbox
+                text _("Mado's strong vision and the whole team's dedication is what made this project come together. I hope you enjoyed playing as much as we enjoyed working on it. It was a pleasure contributing to the script and story where I could. Thank you for playing!")
+                label "— " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}") + " (" + _("Scenario") + ")"
+            frame:
+                has vbox
+                text _("Thank you for playing! Thanks to everyone on the team for making everything possible! Learned a lot and had fun!")
+                label "— " + _("{a=https://itch.io/profile/luoxyz}Z{/a}") + " (" + _("Scenario") + ")"
+            frame:
+                has vbox
+                text _("")
+                label "— " + _("{a=https://omelette.itch.io/}speck{/a}") + " (" + _("Puzzle Designer") + ")"
+            frame:
+                has vbox
+                text _("Putting everyone's work together was a lot of fun, and I'm so happy with how it turned out! Huge thanks to Mado and speck for their coding contributions; they're responsible for the astonishing level of polish, and the cooler puzzles, respectively. Now that malViolence is done, I'm feeling very inspired and satisfied, and can't wait to put all the things I learned this month to good use in my own games. \nAlso, please view my new son:")
+                hbox xfill True:
+                    add "gui/developer notes/kigyodev.png"
+                    label "— " + _("{a=https://kigyodev.com/}KigyoDev{/a}") + " (" + _("Programmer") + ")"
+            frame:
+                has vbox
+                text _("Thank you for the chance to work in malViolence! It's my first gamejam in a while and I'm really excited to see everything come together!")
+                label "— " + _("{a=https://spicaze.itch.io/}spicaze{/a}") + " (" + _("UI & Logo") + ")"
+            frame:
+                has vbox
+                text _("Thank you for playing.")
+                label "— " + _("{a=https://twitter.com/ReinaTensei}Reina{/a}") + " (" + _("Backgrounds") + ")"
+            frame:
+                has vbox
+                text _("What an honor it's been to provide the voice of this unhinged yet tragic little scrunkly. Getting to work on a project like this has been an absolute honor, and I couldn't be more thankful to the team for giving me the chance. Who knows what adventures await our little pint sized mad scientist? Whatever that may be for you, don't forget to get out there and approach life just like a real super villain. With PRESENTATION!!!")
+                label "— " + _("{a=https://www.carrickinabnett.com/}Carrick Inabnett{/a}") + " (" + _("Cautionne VA") + ")"
+            frame:
+                has vbox
+                text _("What can I say except, 'WOW??? OMG WOW???' I had such an amazing time participating, and I hope everyone enjoys!")
+                label "— " + _("{a=https://vynvox.com/}Vyn Vox{/a}") + " (" + _("Dr. Danger VA") + ")"
+            frame:
+                has vbox
+                text _("My team and I at Very Berry Studios are extremely thankful for the opportunity to cast and find the voice actors for Malviolence! I am super happy with the final result and I think the casting is perfect, and Mado chose the perfect actors to represent Cautionne and Dr. Danger. Malviolence is a very unique project when it comes to both the art and the process of playing the game, so I hope everyone who played enjoys it to its full potential, everyone on the team worked super hard!")
+                label "— " + _("{a=https://twitter.com/pheberryfab}Phebe Fabacher{/a}") + " (" + _("Voice Direction") + ")"
+            frame:
+                has vbox
+                text _("It was honor to work on this project. Thanks to the voice actors and musician's for letting me present their contributions in the best light. I wanted to achieve the best sounding game audio I could and I hope that comes through. May my sound design startle your earholes as well.\nMalviolence turned out to be a great and unique game. I almost didn't join the project but am glad that I did.  Thanks to everyone on team Malviolence. And thanks to anyone who plays.")
+                label "— " + _("{a=https://twitter.com/DrayReedOFC}D.ray{/a}") + " (" + _("Audio Mastering & SFX") + ")"
+            frame:
+                has vbox
+                text _("I consider myself lucky to be part of such a unique team and game as my first experience with game development. malViolence is the first project I ever worked on as a music composer and it was a really exciting experience. Everyone on this team worked very hard to make this an amazing game, and I'm very happy to able to say this was the first team I was part of. It was wonderful to get to see behind the curtains of the development of a visual novel for the very first time. I hope my contribuition has touched you in some way and has made this project even more amazing!")
+                label "— " + _("{a=https://twitter.com/doranthedoran}Doran{/a}") + " (" + _("Music") + ")"
+            frame:
+                has vbox
+                text _("I'm more than thankful for mado inviting me on board to compose music for malViolence! As this was my first time composing VGM, I learned quite a lot composing music for malviolence (and games in general), especially in managing the time to make sure stuff gets done as well making sure the music is loopable! I hope you enjoyed what I had brought to this lovely vn! (Between you and me, my favorite track is the jail cell theme d(owx;;) ) \n\nI also cannot get over the coincidence that Cautionne happens to have an X eye like me.")
+                add "gui/developer notes/melo-dii.png" fit "contain"
+                label "— " + _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}") + " (" + _("Music") + ")"
+            frame:
+                has vbox
+                text _("It's been a blast to work with talented and caring people during the production of this project.")
+                label "— " + _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}") + " (" + _("Trailer") + ")"
+            frame:
+                has vbox
+                text _("This is the best game ever made I know bc I am a gamer")
+                label "— " + _("cluniies") + " (" + _("Testing") + ")"
+            frame:
+                has vbox
+                text _("")
+                label "— " + _("wBrian") + " (" + _("Testing") + ")"
+            
+style developer_notes_frame is gui_frame:
+    padding (40,40) xfill True
 
-            ## Your text goes here.
-            if gui.dev_notes:
-                text "[gui.dev_notes!t]\n"
+style developer_notes_vbox:
+    xfill True
+
+style developer_notes_text is puzzle_description_text:
+    color "#fff"
+
+style developer_notes_label:
+    xalign 1.0 yalign 1.0
 
 ## Type your special message here.
 define gui.dev_notes = _p("""Hello, this is BáiYù of tofurocks here. I want to thank
@@ -385,88 +440,6 @@ define gui.dev_notes = _p("""Hello, this is BáiYù of tofurocks here. I want to
     \n
     Thank you for taking the time to read this, and I wish you the best on your
     development adventures to come.""")
-
-## Achievements screen ######################################
-##
-## This custom screen contains a list of achievements for the game.
-## Official Documentation: https://www.renpy.org/doc/html/achievement.html
-## Additional writeup by bobcgames:
-## Part 1: http://bobcgames.com/blog/archives/48/
-## Part 2: http://bobcgames.com/blog/archives/54/
-## Roselia Achievements Module: https://github.com/OlegWock/Roselia-achievements/
-
-## List achievements that are either True or False here
-## Please note for translations: I couldn't figure out how to have
-## these strings auto-generated. Sorry!
-python early:
-    simple_achievement_list = (
-        # ("Achievement Name", "Description when not unlocked", "Description when unlocked"),
-        ("Beginning", "???", "Started a new game"),
-        ("Office", "???", "Went to the office"),
-        ("Beach", "???", "Went to the beach"),
-        ("Completionist", "???", "Read all of the game")
-    )
-
-## Registers your achievements to work on backend systems such as Steam
-## Be sure to match the name of the achievement in achievement_list and
-## the corresponding achievement.grant or achievement.progress in the script.
-## Notes for testing: you need at least 2 achievements for it to work
-
-init python:
-
-    for a, lockdesc, unlockdesc in simple_achievement_list:
-
-        ## This auto-populates the achievements to register on the backend
-        achievement.register(a)
-
-        ## This Achievement is based on an integer, and must be defined manually
-        achievement.register("Point Collector", stat_max=100, stat_modulo=0)
-        ## TODO: Simplify achievements that are integer-based
-        ## to update in a bar directly tied to achievement.progress
-
-## For our Point Collector Achievement
-default persistent.points = 0
-
-## Our actual achievements screen
-screen achievements():
-
-    tag menu
-
-    ## This use statement includes the extras_menu screen inside this one. The
-    ## vbox child is then included inside the viewport inside the extras_menu
-    ## screen.
-    use extras_menu(_("Achievements"), scroll="viewport"):
-
-        ## This screen doesn't need anything fancy, so we borrow the style
-        ## from the About screen, which just displays text.
-        style_prefix "about"
-
-        vbox:
-
-            ## This auto-populates our list of simple achievements that will appear
-            ## in the screen, so we don't have to manually type each one out.
-            for aname, lockdesc, unlockdesc in simple_achievement_list:
-
-                if achievement.has(aname):
-
-                    text "[aname]: [unlockdesc]"
-
-                else:
-
-                    text "[aname]: [lockdesc]"
-
-            ## We have to type each integer based achievement however
-            hbox:
-                text _("Point Collector:")
-
-                null width 10
-
-                bar value persistent.points range 100 xsize 525
-
-            if not persistent.readtotal:
-                text _("You haven't finished any endings yet...")
-            else:
-                text _("[persistent.readtotal]% of the game read")
 
 ## End Credits Scroll ############################################################
 ## A new optimized screen for showing rolling credits. This is similar to the

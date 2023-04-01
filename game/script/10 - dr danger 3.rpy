@@ -46,7 +46,7 @@ label dr_danger_3:
     zoom 0.5 xalign 0.5 yalign 0.5
     ease 3 yalign 1.0 zoom 0.6
   pause 2
-  extend "{cps=20} then maybe the smart thing to do would be to—){p=0.5}{nw}"
+  extend "{cps=20} then maybe the smart thing to do would be to—){/cps}{p=0.5}{nw}"
   $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor3-01.ogg"

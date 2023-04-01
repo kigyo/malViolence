@@ -2,7 +2,7 @@
 
 # For testing.
 label test_puzzles:
-    scene layer "screens"
+    #scene layer "screens"
     menu:
         "Room 1 Puzzle 2":
             jump room_1_puzzle_2

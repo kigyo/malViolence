@@ -7,12 +7,11 @@ init python:
         drag.snap((drag.drag_name-1)*345,100,0.3)
 
         drag_filled = getattr(renpy.store, "decanting_vial%s" % str(drag.drag_name))
+        drop_filled = getattr(renpy.store, "decanting_vial%s" % str(drop.drag_name))
+        drop_size = getattr(renpy.store, "decanting_size_vial%s" % str(drop.drag_name))
         
-        if drag_filled > 0:
+        if drag_filled > 0 and drop_filled < drop_size:
             store.decanting_moves += 1
-            
-            drop_filled = getattr(renpy.store, "decanting_vial%s" % str(drop.drag_name))
-            drop_size = getattr(renpy.store, "decanting_size_vial%s" % str(drop.drag_name))
 
             transfer_amount = drag_filled
             if drag_filled + drop_filled > drop_size:

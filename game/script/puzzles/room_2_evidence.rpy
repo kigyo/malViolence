@@ -67,7 +67,7 @@ define evidence_positions = [(0.05,0.05),(0.25,0.2),(0.2,0.65),(0.0,0.5),(0.45,0
 define evidence_note_positions = {1:(0.11,0.45), 2:(0.4,0.0), 3:(0.96,0.72), 4:(0.79,0.4)}
 define evidence_small = [2,3]
 
-screen room2_evidence:
+screen room2_evidence():
     sensitive not inspect
     modal True
     tag puzzle

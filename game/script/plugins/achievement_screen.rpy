@@ -191,10 +191,15 @@ init python:
 
     config.overlay_screens.append("achievement_notification_catcher")
 
+    def all_endings():
+        if achievement_end1 in persistent.my_achievements and achievement_end2 in persistent.my_achievements and achievement_end3 in persistent.my_achievements and persistent.game_clear == False:
+            persistent.game_clear = True
+            renpy.notify("You have unlocked a special extras screen in the Main Menu!")
 
     ## Here we have a funtion that is passive.
     def passive_function():
         ## This code here will grant the platinum achievement.
+        all_endings()
         if len(persistent.my_achievements) >= (len(achievement_name) - 1):
             Achievement.add(achievement_platinum)
     
