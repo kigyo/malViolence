@@ -20,7 +20,7 @@ Be quick, though. {color=#fff}If the poison's disturbed too much, it'll give off
 Drag the vials in order to pour their contents into each other.""")
 
 
-define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the bomb casing!{/color} \nBe sure to {color=#fff}give every piece has its own space{/color}, or else things might get explosive...""")
+define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the bomb casing!{/color} \nBe sure to {color=#fff}give every piece its own space{/color}, or else things might get explosive...""")
 
 
 screen room1():
