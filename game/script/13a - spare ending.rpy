@@ -327,7 +327,19 @@ label spare_ending:
 
     pause 7
 
-    call screen credits(60)
+    call screen credits(60) with Dissolve(2)
+    hide text
+    pause 3
+    $persistent.credits_seen = True
+    $Achievement.add(achievement_end1)
+    show text "{size=90}{color=#ffffff}END{/color}{/size}":
+            xalign 0.5 yalign 0.5
+
+    pause 5
+
+    hide text
+
+    pause 3
 
 
     #"{b}[pause as {/b}{b}Cautionne's{/b}{b} footsteps are heard slowly walking off]{/b}"

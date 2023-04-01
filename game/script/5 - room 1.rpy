@@ -1,4 +1,5 @@
-default room1 = {"investigated":[], "solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0}
+default room1 = {"solved":[], "oil":0, "chair":0, "megaphone":0, "marble":0, "hacking":0, "decanting":0, "bomb":0}
+default room1_investigated = []
 
 define hacking_description = _("""With {color=#fff}the list of codes to your left,{/color} Cautionne wants you to hack into one of STOP's computer systems.
 
@@ -20,7 +21,9 @@ Be quick, though. {color=#fff}If the poison's disturbed too much, it'll give off
 Drag the vials in order to pour their contents into each other.""")
 
 
-define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the bomb casing!{/color} \nBe sure to {color=#fff}give every piece its own space{/color}, or else things might get explosive...""")
+define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the bomb casing!{/color} Use the mouse to drag pieces around. Left click to rotate things clockwise, right click to rotate things counterclockwise. \nBe sure to {color=#fff}give every piece its own space{/color}, or else things might get explosive...
+
+""")
 
 define marble_description = _("""Kill the STOP officials in the same order you encountered them.
 
@@ -49,8 +52,8 @@ screen room1():
             textbutton _("Skip Room") action [Jump("post_room_1")] style "main_menu_button"
 
 label room_1:
-    if inspect not in room1["investigated"] and inspect in ["oil", "chair", "megaphone"]:
-        $room1["investigated"].append(inspect)
+    if inspect not in room1_investigated and inspect in ["oil", "chair", "megaphone"]:
+        $room1_investigated.append(inspect)
     show screen room1
     $renpy.block_rollback()
 
@@ -120,7 +123,6 @@ label room_1:
         else:
             if room1["hacking"] == 0:
                 call init_puzzle_board
-                #"<TODO: Insert intro script and rules.>"
             else:
                 pass
             show screen puzzle_playspace(pb, False, _layer="master") with easeintop
@@ -136,8 +138,6 @@ label room_1:
         else:
             if room1["decanting"] == 0:
                 $decanting_init()
-                #decanting introduction
-                pass
             else:
                 #repeated investigation
                 pass
@@ -155,8 +155,6 @@ label room_1:
         else:
             if room1["bomb"] == 0:
                 call init_bomb
-                #bomb introduction
-                pass
             else:
                 #repeated investigation
                 pass
@@ -282,6 +280,9 @@ label hacking_game_over:
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
+
+    "(It's too late.{w} The counter-trace just found you and—){p=0.5}{nw}"
+    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     cr "Good news!{w=0.5} STOP found your computer."

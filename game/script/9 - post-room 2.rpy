@@ -82,12 +82,12 @@ label post_room_2:
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
   c "Hey lab rat.{w=0.5} Can I ask you something?"
   c "You {i}are {/i}just getting evidence,{w=0.1} right?"
-  if len(room2["investigated"]) == 5:
+  if len(room2_investigated) == 5:
     "(...Does he not approve of your investigation style?)"
     "(You're being thorough,{w=0.1} just to be cautio—){p=0.5}{nw}"
     pause 1
     "({i}...You're just being thorough.{/i})"
-  elif len(room2["investigated"]) == 0:
+  elif len(room2_investigated) == 0:
     "(You're sticking to the mission objective,{w=0.1} just as you've been trained to do.)"
     "(He's calling the shots right now —{w=0.1} but if you stay focused,{w=0.1} he'll run out of puzzles,{w=0.1} and you'll have a way out.)"
     "(Then,{w=0.1} you'll have the chance to close this case for good.)"

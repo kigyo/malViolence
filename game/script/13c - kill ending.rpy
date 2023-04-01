@@ -128,12 +128,11 @@ label kill_ending:
     scene black with fade
     pause 3
 
-    show image "gui/logo.png" with dissolve:
-        xalign 0.5 yalign 0.5
 
-    pause 5
-
-    hide image "gui/logo.png" with dissolve 
+    call screen credits(60) with Dissolve(2)
+    hide text
+    pause 3
+    $persistent.credits_seen = True
     $Achievement.add(achievement_end2)
 
     pause 3

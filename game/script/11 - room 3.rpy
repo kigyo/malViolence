@@ -1,5 +1,6 @@
-default room3 = {"room":"down", "investigated":[], "solved":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0, 
+default room3 = {"room":"down", "solved":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0, 
     "confidence_workbook":0, "sewing_book":0, "quilt":0, "cooking":0, "scrapbook_new":0, "toys":0}
+default room3_investigated = []
 
 screen room3():
     sensitive not inspect
@@ -51,8 +52,8 @@ screen room3():
 
 
 label room_3:
-    if inspect not in room3["investigated"] and inspect in ["sewing_book", "scrapbook", "health_record", "locked_container", "confidence_workbook", "mannequin"]:
-        $room3["investigated"].append(inspect)
+    if inspect not in room3_investigated and inspect in ["sewing_book", "scrapbook", "health_record", "locked_container", "confidence_workbook", "mannequin"]:
+        $room3_investigated.append(inspect)
     show screen room3
     $renpy.block_rollback()
 
@@ -385,7 +386,7 @@ label room_3:
             if gui.text_size > 40:
                 nvl clear
             n "...And I'm not sure that Deirdre Destrange is enough for him.\""
-            $room3["investigated"].append("diary")
+            $room3_investigated.append("diary")
         $ room3["diary"] += 1
         nvl clear
 

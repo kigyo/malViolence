@@ -224,11 +224,11 @@ default achievement_is_done = False
 screen achievement_notification_catcher():
 
     if len(achievement_notification_list) > 0 and not renpy.get_screen('achievement_notification'):
-        timer 1.0 repeat True:
+        timer 0.5 repeat True:
             action [SetVariable('achievement_is_done', False), Show('achievement_notification')]
 
     if not achievement_is_done:
-        timer 4.0 repeat True:
+        timer 2.0 repeat True:
             action If(len(achievement_notification_list) > 0,
                 true=[Hide("achievement_notification"), Function(achievement_notification_show)],
                 false=[Function(achievement_notification_done)])

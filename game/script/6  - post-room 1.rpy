@@ -46,7 +46,7 @@ label post_room_1:
   show cautionne lean eyeclosed
   c "How about a sticker?"
   c "If you get out of here,{w=0.1} I'll give you a fruit-scented one!"
-  if len(room1["investigated"]) == 3:
+  if len(room1_investigated) == 3:
     show cautionne lean speaking
     c "At the rate you're going,{w=0.1} you might even get one of my {cps=20}suuuuuuuper{/cps} special grape stickers."
     show cautionne lean eyeclosed
@@ -57,7 +57,7 @@ label post_room_1:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     c "Huh.{w=0.5} I don't see you jumping for joy."
     c "Not a grape fan?"
-  elif len(room1["investigated"]) == 0:
+  elif len(room1_investigated) == 0:
     show cautionne lean frown
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     c "But at the rate you're going...{w=0.5} Oof."
@@ -86,7 +86,7 @@ label post_room_1:
   $ play_music(cautionnetheme, fadein=1.0, fadeout=0.1)
   c "Oh well.{w=0.5} More for me! "
   show cautionne leaneyeclosed pause
-  if len(room1["investigated"]) == 0:
+  if len(room1_investigated) == 0:
     show cautionne lean frown
     c "{size=-13}Even the durian-scented ones.{/size}"
     show cautionne leanfrown pause

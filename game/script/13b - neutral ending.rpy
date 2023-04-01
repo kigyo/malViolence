@@ -21,7 +21,7 @@ label neutral_ending:
     pause 1
     "(There's the exit,{w=0.1} right up ahead.)"
     #"{b}[pan across {/b}{b}bg{/b}{b} to show {/b}{b}all of{/b}{b} the items there]{/b}"
-    "(It's in the middle of a big,{w=0.1} garage space;{w=0.5} one filled with boxes of all shapes and sizes.{w} Maybe it's for storing tools or materials.)"
+    "(It's in the middle of a big,{w=0.1} garage-like space;{w=0.5} one filled with boxes of all shapes and sizes.{w} Maybe it's for storing tools or materials.)"
     "(You don't really want to find out.{w} Like the hallway before it,{w=0.1} this room's completely unremarkable.)"
 
     "(And besides,{w=0.1} you've had enough of exploring.)"
@@ -233,18 +233,14 @@ label neutral_ending:
 
     $ play_sound(gunblast1)
 
-    scene black 
-    pause 3
-
-    show image "gui/logo.png" with dissolve:
-        xalign 0.5 yalign 0.5
-
-    pause 5
-
-    hide image "gui/logo.png" with dissolve 
-    $Achievement.add(achievement_end2)
+    scene black
 
     pause 3
+    call screen credits(60) with Dissolve(2)
+    hide text
+    pause 3
+    $persistent.credits_seen = True
+    $Achievement.add(achievement_end3)
 
     show text "{size=90}{color=#ffffff}END{/color}{/size}" with dissolve:
             xalign 0.5 yalign 0.5
