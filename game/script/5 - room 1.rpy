@@ -22,6 +22,8 @@ Drag the vials in order to pour their contents into each other.""")
 
 define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the bomb casing!{/color} \nBe sure to {color=#fff}give every piece its own space{/color}, or else things might get explosive...""")
 
+define marble_description = _("""Kill the STOP officials in the same order you encountered them.""")
+
 
 screen room1():
     sensitive not inspect
@@ -167,23 +169,14 @@ label room_1:
     elif inspect == "marble":
         if room1["marble"] == 0:
             $ room1["marble"] = 1
-            "> This puzzle is not implemented yet. Come back here once you've solved all the other puzzles in this room."
-            pass
+            $marble_init()
         else:
             #repeated investigation
             pass
-        if len(room1["solved"]) >= 3:
-            "> Since this puzzle is not implemented yet, you can skip this final puzzle. Do you wish to do so now?"
-            menu:
-                "Yes":
-                    jump post_room_1
-                "Give me the bad ending":
-                    "> You got it!"
-                    scene black with eyeclose
-                    jump marble_game_over
-                "No":
-                    pass
+        show screen room1_marble(_layer="master") with easeintop
         $ inspect = None
+        $renpy.hide_screen("room1_marble", "master")
+        call screen room1_marble
         if room1["marble"] == "solved":
             jump post_room_1
 
