@@ -22,7 +22,9 @@ Drag the vials in order to pour their contents into each other.""")
 
 define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the bomb casing!{/color} \nBe sure to {color=#fff}give every piece its own space{/color}, or else things might get explosive...""")
 
-define marble_description = _("""Kill the STOP officials in the same order you encountered them.""")
+define marble_description = _("""Kill the STOP officials in the same order you encountered them.
+
+So far, you have found:""")
 
 
 screen room1():
@@ -191,8 +193,14 @@ label bomb_solved:
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room1["solved"].append("bomb")
-    #Show a marble
-    "(Congratulations! {w}You solved the bomb puzzle.)"
+#####Show a marble 
+    "(You spot a marble, and a note reading \"Field Marshall Grad Rufos\".)"
+    if len(room1["solved"]) == 1 and room1["marble"] == 0:
+        "(You wonder what that could mean...)"
+    elif room1["marble"] == 0:
+        "(You think you've seen that name somewhere before.)"
+
+
     hide black onlayer screens
     hide screen room1_bomb
     with puzzle_hide
@@ -243,7 +251,11 @@ label hacking_solved:
         alpha 0.5
     $ room1["solved"].append("hacking")
     #Show a marble
-    "(Congratulations! {w}You solved the hacking puzzle.)"
+    "(You spot a marble, and a note reading \"Attorney General Zark Hundor\".)"
+    if len(room1["solved"]) == 1 and room1["marble"] == 0:
+        "(You wonder what that could mean...)"
+    elif room1["marble"] == 0:
+        "(You think you've seen that name somewhere before.)"
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
@@ -298,7 +310,11 @@ label decanting_solved:
         alpha 0.5
     $ room1["solved"].append("decanting")
     #Show a marble
-    "(Congratulations! {w}You solved the decanting puzzle.)"
+    "(You spot a marble, and a note reading \"Imperator Unnfer Progas\".)"
+    if len(room1["solved"]) == 1 and room1["marble"] == 0:
+        "(You wonder what that could mean...)"
+    elif room1["marble"] == 0:
+        "(You think you've seen that name somewhere before.)"
     hide black onlayer screens
     hide screen room1_decanting
     with puzzle_hide
