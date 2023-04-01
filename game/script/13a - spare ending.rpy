@@ -28,7 +28,7 @@ label spare_ending:
     "(...And...)"
     "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole—){p=0.5}{nw}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-01.ogg"
-    x "Finally going to take responsibility?"
+    xc "Finally going to take responsibility?"
     $ play_sound(quickfootsteps)
     #"{b}[{/b}{b}Cautionne{/b}{b} appears with his gun]{/b}"
 
@@ -61,7 +61,7 @@ label spare_ending:
     cr "You...{w=0.5} Or your boss,{w=0.1} or the next agent..."
     cr "You'll storm in here and sweep away everything me and Dr. Danger fought for."
     cr "{si}S-someone better'll catch me and destroy this place.{/si}"
-    cr "{si}And STOP...{w=0.5} STOP'll turn me into a nameless drone,{w=0.1} like I was {i}supposed{/i}\nto be.{/si}"
+    cr "{si}And STOP...{w=0.5} STOP'll turn me into a nameless drone,{w=0.1} like I was \n{i}supposed{/i} to be.{/si}"
     "(...He's shaking.{w} He's trying to put on a brave face,{w=0.1} but he's shaking.)"
     #"{b}[{/b}{b}cautionne{/b}{b} begins to break down]{/b}"
     scene cautionne gun ecu cry with dissolve
@@ -72,20 +72,20 @@ label spare_ending:
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-06.ogg"
     cr "{si}And I don't {i}want {/i}to forget myself.{/si}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-07.ogg"
-    cr "{si}I don't want to forget about collecting stickers,{w=0.5} or eating pudding,{w=0.5} or sewing\nmy first pair of mittens.{/si}"
+    cr "{si}I don't want to forget about collecting stickers,{w=0.5} or eating pudding,{w=0.5}\n or sewing my first pair of mittens.{/si}"
     
     scene cautionne gun ecu crysilent
     pause 1
     #"{b}[{/b}{b}Cautionne{/b}{b} is yelling now]{/b}"
     scene cautionne gun ecu sob 
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-08.ogg"
-    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}{p=0.5}{nw}"
+    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}{p=1.9}{nw}"
     voice sustain
-    cr "{sc}She {i}saved {/i}me!{w=0.5} She {i}raised {/i}me!{w=0.5} \nShe {i}stood up for me{/i} when no one else did!{/sc}"
+    cr "{sc}She {i}saved {/i}me!{w=0.9} She {i}raised {/i}me!{w=0.9} \nShe {i}stood up for me{/i} when no one else did!{/sc}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-09.ogg"
-    cr "{sc}And what did {i}STOP {/i}do?{/sc}{p=0.5}{nw}"
+    cr "{sc}And what did {i}STOP {/i}do?{/sc}{p=0.9}{nw}"
     voice sustain
-    cr "{sc}They MADE her a villain!{w=0.5} They took EVERYTHING away from her!{w=0.5} They KILLED\nher!{/sc}"
+    cr "{sc}They MADE her a villain!{w=1.2} They took EVERYTHING away from her!{w=2.1}\n They KILLED her!{/sc}"
     scene cautionne gun ecu sobsilent
     pause 1
     scene cautionne gun cu crysilent with dissolve

@@ -38,7 +38,7 @@ label neutral_ending:
     "(Crap.{w} You jinxed yourself.)"
     "H-hello?{w} Who's there?"
     voice "audio/voice/cautionne/Endings/Neutral Endings/NE 1/Cautionne_NeutralEnding1-01.ogg"
-    x "So,{w=0.1} you {i}finally {/i}made it.{w=0.5} Did you like my games,{w=0.1} lab rat?"
+    xc "So,{w=0.1} you {i}finally {/i}made it.{w=0.5} Did you like my games,{w=0.1} lab rat?"
 
     scene bg garage:
         zoom 0.5 align (0.5,0.5)

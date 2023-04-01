@@ -23,7 +23,7 @@ label kill_ending:
     pause 0.2
     "Identify yourself!"
     voice "audio/voice/cautionne/Endings/Kill Ending/Cautionne_KillEnding-01.ogg"
-    x "How many guesses will you need {i}this{/i} time?"
+    xc "How many guesses will you need {i}this{/i} time?"
 
     scene bg garage:
         zoom 0.5 align (0.5,0.5)

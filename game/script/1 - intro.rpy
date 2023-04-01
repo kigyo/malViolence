@@ -12,13 +12,13 @@ label start:
     #[static plays as the game begins. the screen is black, since the protagonist is recovering from being knocked out]
     pause 2
     voice "audio/voice/cautionne/intro/Cautionne_Intro-01.ogg"
-    x "...llo?"
+    xc "...llo?"
     pause 2
     voice "audio/voice/cautionne/intro/Cautionne_Intro-02.ogg"
-    x "{bt}Hello?{/bt}"
+    xc "{bt}Hello?{/bt}"
     pause 2
     voice "audio/voice/cautionne/intro/Cautionne_Intro-03.ogg"
-    x "{sc}{size=+35}{i}HEY!{w=0.1} WAKE THE HELL UP!!!{/i}{/size}{/sc}" with small_shake
+    xc "{sc}{size=+35}{i}HEY!{w=0.1} WAKE THE HELL UP!!!{/i}{/size}{/sc}" with small_shake
 
     $ play_sound(bedsitup)
 
@@ -42,9 +42,9 @@ label start:
     "(...and then something hit your back, and... {w}you, {w=0.5}uh...) "
     "(You...)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-04.ogg"
-    x "Oh dear, looks like the anaesthesia hasn't worn off, has it? {w=0.5}{size=-8}Must've given them the wrong dose of ketamine.{/size}"
+    xc "Oh dear, looks like the anaesthesia hasn't worn off, has it? {w=0.5}{size=-8}Must've given them the wrong dose of ketamine.{/size}"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-05.ogg"
-    x "Just give it a couple more minutes.{w=0.5} Soon, you'll be right as rain!"
+    xc "Just give it a couple more minutes.{w=0.5} Soon, you'll be right as rain!"
     scene bg tutorial1:
         yalign 0.5 xalign 0.5
         ease 0.5 yalign 0.5 xalign 0.3
@@ -91,20 +91,20 @@ label start:
     pause 0.5
     "(Maybe it's to the side,{w=0.5} or...)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-06.ogg"
-    x "{i}Too bad,{/i} lab rat!{w=0.5} You won't find any volume buttons here."
+    xc "{i}Too bad,{/i} lab rat!{w=0.5} You won't find any volume buttons here."
     "({i}\"Lab rat?\"{/i} {w}What's with that—)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-07.ogg"
-    x "You're {i}awfully{/i} confused by all of this,{w=0.25} aren't you?"
+    xc "You're {i}awfully{/i} confused by all of this,{w=0.25} aren't you?"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-08.ogg"
-    x "Well, then — {w=0.25} allow me to introduce myself."
+    xc "Well, then — {w=0.25} allow me to introduce myself."
 ######### edit voices from here
     pause 0.5
     voice "audio/voice/cautionne/intro/Cautionne_Intro-09.ogg"
-    x "Some call me a simple sidekick.{w=0.5} Others call me the \"Disciple of Danger.\""
+    xc "Some call me a simple sidekick.{w=0.5} Others call me the \"Disciple of Danger.\""
     pause 0.5
     voice "audio/voice/cautionne/intro/Cautionne_Intro-10.ogg"
     $ play_music(cautionnethemeintro)
-    x "But if you asked me, I prefer..."
+    xc "But if you asked me, I prefer..."
     play audio "audio/sfx/TV On 1.ogg"
     show cautionne hairtwirl at crt
     show crt
