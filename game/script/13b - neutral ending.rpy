@@ -21,7 +21,7 @@ label neutral_ending:
     pause 1
     "(There's the exit,{w=0.1} right up ahead.)"
     #"{b}[pan across {/b}{b}bg{/b}{b} to show {/b}{b}all of{/b}{b} the items there]{/b}"
-    "(It's in the middle of a big,{w=0.1} garage space;{w=0.5} one filled with boxes of all shapes and sizes.{w} Maybe it's for storing tools or materials.)"
+    "(It's in the middle of a big,{w=0.1} garage-like space;{w=0.5} one filled with boxes of all shapes and sizes.{w} Maybe it's for storing tools or materials.)"
     "(You don't really want to find out.{w} Like the hallway before it,{w=0.1} this room's completely unremarkable.)"
 
     "(And besides,{w=0.1} you've had enough of exploring.)"
@@ -98,7 +98,7 @@ label neutral_ending:
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
     cr "Patronize me at your own risk."
     cr "...Is what I should've said before firing,{w=0.1} but I'm still new at this."
-    cr "Kind of like you at your job{w=0.1} {i}lab rat.{/i}"
+    cr "Kind of like you at your job,{w=0.1} {i}lab rat.{/i}"
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     $ play_music(neutralending, fadein=1.0, fadeout=1.0)
     cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} living a hand-to-mouth life."

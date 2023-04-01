@@ -3,7 +3,7 @@ default most_explored = 1
 
 init python:
     def inspection_sum():
-        return len(room1["investigated"]) + len(room2["investigated"]) + len(room3["investigated"])
+        return len(room1_investigated) + len(room2_investigated) + len(room3_investigated)
 
     def inspector_achievement():
         if inspection_sum() >= 15:
@@ -13,14 +13,14 @@ init python:
         global route, most_explored
         if inspection_sum() < 6:
             route = "kill"
-        elif inspection_sum() < 12 or len(room1["investigated"]) < 2 or len(room2["investigated"]) < 4 or len(room3["investigated"]) < 6:
+        elif inspection_sum() < 12 or len(room1_investigated) < 2 or len(room2_investigated) < 4 or len(room3_investigated) < 6:
             route = "neutral"
             most_explored = explored_ratio()
         else:
             route = "spare"
     
     def explored_ratio():
-        rooms = [len(room1["investigated"])/3, len(room2["investigated"])/5, len(room3["investigated"])/7]
+        rooms = [len(room1_investigated)/3, len(room2_investigated)/5, len(room3_investigated)/7]
 
         highest = 1
         highest_val = rooms[0]
@@ -47,12 +47,12 @@ label post_room_3:
     "(Huh.{w} The screen above you didn't turn on.)"
     "(...Guess Cautionne really was serious about the whole \"silent treatment\ thing.)"
 
-    if len(room3["investigated"]) == 7:
+    if len(room3_investigated) == 7:
         "(Well,{w=0.1} you did what he asked you to do,{w=0.1} right?{w} You solved his puzzle.)"
         "(You've been over the whole room with a fine comb.)"
         "(And you haven't overlooked or {i}looked away{/i} from anything.)"
         "(There's not much left you can do.{w} Time to move forward.)"
-    elif len(room3["investigated"]) == 0:
+    elif len(room3_investigated) == 0:
         "(Good.{w} You must be getting close to the end.)"
         "(No time to waste,{w=0.1} then.{w} Remember your training,{w=0.1} follow protocol{w=0.1} and go finish this.)"
     else:

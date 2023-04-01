@@ -1,5 +1,5 @@
-default room2 = {"solved":[], "investigated":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0, "recalibration":0, "evidence":0, "word":0,
-    "notes":[]}
+default room2 = {"solved":[], "blueprints":0, "post-its":0, "limbs":0, "corkboard":0, "clippings":0, "panopticon":0, "recalibration":0, "evidence":0, "word":0, "notes":[]}
+default room2_investigated = []
 
 screen room2():
     sensitive not inspect
@@ -51,24 +51,28 @@ define word_description = _("""Cautionne's a big fan of word games, so he wants 
 define word_lenient_failure_message = _("(Nope, not good enough.)")
 
 label room_2:
-    if inspect not in room2["investigated"] and inspect in ["blueprints", "limbs", "clippings", "post-its", "corkboard"]:
-        $room2["investigated"].append(inspect)
+    if inspect not in room2_investigated and inspect in ["blueprints", "limbs", "clippings", "post-its", "corkboard"]:
+        $room2_investigated.append(inspect)
     show screen room2
     hide screen room2_panopticon
     $renpy.block_rollback()
 
     if inspect == "note1":
-        #TODO flavor text for note on the wall
         $room2["notes"].append(1)
+        "(You spot a note on the wall, and pick it up.)"
+        "(It says: \"The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.\")"
     elif inspect == "note2":
-        #TODO flavor text for note on the blackboard
         $room2["notes"].append(2)
+        "(You pick up the note beneath the blackboard.)"
+        "(It says: \"The red headed kid is certain they did not live in the city.\")"
     elif inspect == "note3":
-        #TODO flavor text for note on the desk
         $room2["notes"].append(3)
+        "(There's a note stuck to the front of the desk.)"
+        "(It says: \"The bracelet is too big for the redhead.\")"
     elif inspect == "note4":
-        #TODO flavor text for note on the water cooler
         $room2["notes"].append(4)
+        "(A note is stuck to the water cooler — which does not actually dispense any water.)"
+        "(It says: \"The blonde kid managed to play a tune on the harmonica when asked, but the other two children could not.\")"
 
     elif inspect == "blueprints":
         if room2["blueprints"] == 0:
