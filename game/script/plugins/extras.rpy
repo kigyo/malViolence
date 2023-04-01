@@ -355,15 +355,15 @@ screen dev_notes():
             frame:
                 has vbox
                 text _("")
-                label "— " + _("{a=https://madocallie.carrd.co/}Mado{/a}") + " (" + _("Director, CG Artist & Scenario") + ")"
+                label "— " + _("{a=https://madocallie.carrd.co/}Mado{/a}") + " (" + _("Director, CG Artist & Writing") + ")"
             frame:
                 has vbox
                 text _("Mado's strong vision and the whole team's dedication is what made this project come together. I hope you enjoyed playing as much as we enjoyed working on it. It was a pleasure contributing to the script and story where I could. Thank you for playing!")
-                label "— " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}") + " (" + _("Scenario") + ")"
+                label "— " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}") + " (" + _("Writing") + ")"
             frame:
                 has vbox
                 text _("Thank you for playing! Thanks to everyone on the team for making everything possible! Learned a lot and had fun!")
-                label "— " + _("{a=https://itch.io/profile/luoxyz}Z{/a}") + " (" + _("Scenario") + ")"
+                label "— " + _("{a=https://itch.io/profile/luoxyz}Z{/a}") + " (" + _("Writing") + ")"
             frame:
                 has vbox
                 text _("")
@@ -446,94 +446,65 @@ define gui.dev_notes = _p("""Hello, this is BáiYù of tofurocks here. I want to
 ## gui.about string in options.rpy, and you can style it using text tags.
 ## https://www.renpy.org/doc/html/text.html
 
-## The contents of your credits screen.
 define credits_string = _p("""
-{size=+100}Credits{/size}
+{size=+50}Director:{/size}
+\n
+Mado
 \n\n
-{size=+75}Programming:{/size}
+{size=+50}Writing:{/size}
 \n
-BáiYù
+Mado\n
+Brian Mulholland
+Z
+\n\n
+{size=+50}Puzzles & Programming:{/size}
 \n
-bobcgames
+speck\n
+KigyoDev
+\n\n
+{size=+50}Art & UI:{/size}
 \n
+Mado\n
+Reina\n
+spicaze
+\n\n
+{size=+50}Music:{/size}
+\n
+Melo-dii\n
+Doran
+\n\n
+{size=+50}Voiceover:{/size}
+\n
+Carrick Inabnett\n
+Vyn Vox
+\n\n
+{size=+50}Sound & Voice Direction:{/size}
+\n
+D.ray\n
+Phebe Fabacher
+\n\n
+{size=+50}Trailer:{/size}
+\n
+Jennymhulla
+\n\n
+{size=+50}Beta-Testing:{/size}
+\n
+cluniies\n
+wBrian
+\n\n
+{size=+50}Special Thanks:{/size}
+\n
+dmochas\n
+tofurocks\n
+wattson\n
+glsuoa\n
 npckc
-\n
-TheoMinute
 \n\n
-{size=+75}Art{/size}
-\n
-Sprites - Mannequin by HelloAR14
-\n
-Backgrounds - Uncle Mugen
-\n\n
-{size=+75}Soundtrack{/size}
-\n
-Eric Matyas
-\n\n
-{size=+75}Special Thanks{/size}
-\n
-Renall
 \n\n\n\n\n\n\n\n
-{size=+100}Made with Ren'Py [renpy.version_only].{/size}\n\n\n\n
+Made with Ren'Py.
+\n\n\n\n\n\n\n\n
 {size=+100}Thanks for Playing!{/size}
 """)
-
-## Here's a blank one with common roles to fit your game.
-## TODO: Adjust this to fit your project
-# define credits_string = _p("""
-# {size=+100}Credits{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Producer:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Director:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Writing:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Art:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Music:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Sound:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Voiceover:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Programming:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Trailer:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Beta-Testing:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# {size=+75}Special Thanks:{/size}
-# \n
-# Lorem Ipsum
-# \n\n
-# \n\n\n\n\n\n\n\n
-# {size=+25}Made with Ren'Py [renpy.version_only].{/size}
-# \n\n\n\n\n\n\n\n
-# {size=+100}Thanks for Playing!{/size}
-# """)
 
 ## This controls the position and speed of your end credits.
 transform credits_scroll(t):
@@ -550,22 +521,29 @@ screen credits(t):
     key "K_MENU" action NullAction()
     key "mouseup_3" action NullAction()
 
-    ## If a player has seen the end credits before, this button appears.
+    add gui.main_menu_background at bg(0.5)
+    add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
+
+    default title_shown = False
+
+    timer 5 action SetScreenVariable("title_shown", True)
+
+    showif not title_shown:
+        add "gui/logo.png" xalign 0.5 yalign 0.5 at alphashow
+    else:
+        timer t action Return()
+        text credits_string text_align 0.5 at credits_scroll(t)
+        
     if persistent.credits_seen:
 
-        textbutton _("Skip End Credits") action Jump("skip_credits") xalign 1.0 yalign 1.0
-
-    ## When t is up, the game will go to the next line.
-    timer t action Return()
-    ## The contents of your credits screen is here.
-    text credits_string text_align 0.5 at credits_scroll(t)
+        textbutton _("Skip Credits") action Jump("skip_credits") xalign 1.0 yalign 1.0
 
     ## To use in script:
     ### call screen credits(t)
     ## Where t is the number of seconds it takes to scroll
 
 style credits_text:
-    size gui.title_text_size
+    size 40
     color "#ffffff"
 
 

@@ -8,13 +8,15 @@ init python:
     
     def marble_dropped(drop, drags):
         drag = drags[0]
-
+        if marble_killed[drop.drag_name-1] == 0:
+            store.marble_killed[drop.drag_name-1] = drag.drag_name
+        renpy.retain_after_load()
+        renpy.restart_interaction()
 
 
 define marble_positions = [250,600,950]
 
 default marble_killed = [0, 0, 0]
-default marble_used = [0,0,0]
 default marble_selected = 0
 
 screen room1_marble():
@@ -47,17 +49,17 @@ screen room1_marble():
                         text _("- \"Imperator Unnfer Progas\" (Poison)")
 
         draggroup:
-            if "bomb" in room1["solved"] and 1 not in marble_used:
+            if "bomb" in room1["solved"] and 1 not in marble_killed:
                 drag:
                     xpos 250
                     droppable False drag_name 1 dragged marble_dragged
                     add "puzzles/room_1_meta/marble.png"
-            if "hacking" in room1["solved"] and 2 not in marble_used:
+            if "hacking" in room1["solved"] and 2 not in marble_killed:
                 drag:
                     xpos 600
                     droppable False drag_name 2 dragged marble_dragged
                     add "puzzles/room_1_meta/marble.png"
-            if "decanting" in room1["solved"] and 3 not in marble_used:
+            if "decanting" in room1["solved"] and 3 not in marble_killed:
                 drag:
                     xpos 950
                     droppable False drag_name 3 dragged marble_dragged
@@ -66,16 +68,24 @@ screen room1_marble():
             drag:
                 draggable False dropped marble_dropped
                 pos (230,210) drag_name 1
-                add Solid("#000") xysize 150,150 alpha 0.5
+                add Null(150,150) #Solid("#000") xysize 150,150 alpha 0.5
             drag:
                 draggable False dropped marble_dropped
                 pos (565,190) drag_name 2
-                add Solid("#000") xysize 150,150 alpha 0.5
+                add Null(150,150)
             drag:
                 draggable False dropped marble_dropped
                 pos (1035,160) drag_name 3
-                add Solid("#000") xysize 150,150 alpha 0.5#Null(150,150)
+                add Null(150,150)
         
+        text str(tuple(marble_killed)) xalign 0.5
         
         hbox xfill True yalign 1.0 ysize 100:
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
+
+    if config.developer:
+        vbox:
+            frame:
+                textbutton _("Skip Puzzle") action [SetDict(room1, "marble", "solved"), Return()] style "main_menu_button"
+            frame:
+                textbutton _("Game Over") action [Jump("marble_game_over")] style "main_menu_button"

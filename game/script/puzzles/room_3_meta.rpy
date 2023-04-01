@@ -119,8 +119,6 @@ screen room3_meta():
                 vbox spacing 20:
                     style_prefix "puzzle_description"
                     text scrapbook_memories[memory_read]
-        
-        text str(tuple(scrapbook_input)) style "puzzle_description_text" xalign 0.5
 
         vbox xalign 1.0 yalign 1.0 spacing 30:
             textbutton "SUBMIT" style "confirm_button" action Function(scrapbook_submit)

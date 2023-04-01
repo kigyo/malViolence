@@ -319,10 +319,7 @@ label spare_ending:
 
     pause 7
 
-    show text "{size=200}{color=#00e7ff}MALVIOLENCE{/color}{/size}":
-            xalign 0.5 yalign 0.5
-
-    pause 5
+    call screen credits(60)
 
     hide text
 
