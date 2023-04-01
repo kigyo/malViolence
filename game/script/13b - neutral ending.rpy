@@ -232,16 +232,12 @@ label neutral_ending:
     stop music
 
     scene black
+
     pause 3
-
-    show text "{size=200}{color=#00e7ff}MALVIOLENCE{/color}{/size}":
-        xalign 0.5 yalign 0.5
-
-    pause 5
-
+    call screen credits(60) with Dissolve(2)
     hide text
-
     pause 3
+    $persistent.credits_seen = True
     $Achievement.add(achievement_end3)
 ######## unsure whether to put in the neutral ending voicelines here - but ive left them in the files so you can figure out which one feels better
 

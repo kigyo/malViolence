@@ -318,14 +318,11 @@ label spare_ending:
     scene black with fadehold
 
     pause 7
-
-    call screen credits(60)
-
+    call screen credits(60) with Dissolve(2)
     hide text
-
     pause 3
+    $persistent.credits_seen = True
     $Achievement.add(achievement_end1)
-
     show text "{size=90}{color=#ffffff}spare end{/color}{/size}":
             xalign 0.5 yalign 0.5
 

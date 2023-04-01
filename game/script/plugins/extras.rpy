@@ -447,53 +447,46 @@ define gui.dev_notes = _p("""Hello, this is BáiYù of tofurocks here. I want to
 ## https://www.renpy.org/doc/html/text.html
 
 define credits_string = _p("""
-{size=+50}Director:{/size}
-\n
+\n\n
+\n\n
+\n\n\n
+{size=+25}Director:{/size}\n
 Mado
 \n\n
-{size=+50}Writing:{/size}
-\n
+{size=+25}Writing:{/size}\n
 Mado\n
-Brian Mulholland
+Brian Mulholland\n
 Z
 \n\n
-{size=+50}Puzzles & Programming:{/size}
-\n
+{size=+25}Puzzles & Programming:{/size}\n
 speck\n
 KigyoDev
 \n\n
-{size=+50}Art & UI:{/size}
-\n
+{size=+25}Art & UI:{/size}\n
 Mado\n
 Reina\n
 spicaze
 \n\n
-{size=+50}Music:{/size}
-\n
+{size=+25}Music:{/size}\n
 Melo-dii\n
 Doran
 \n\n
-{size=+50}Voiceover:{/size}
-\n
+{size=+25}Voiceover:{/size}\n
 Carrick Inabnett\n
 Vyn Vox
 \n\n
-{size=+50}Sound & Voice Direction:{/size}
-\n
+{size=+25}Sound & Voice Direction:{/size}\n
 D.ray\n
 Phebe Fabacher
 \n\n
-{size=+50}Trailer:{/size}
-\n
+{size=+25}Trailer:{/size}\n
 Jennymhulla
 \n\n
-{size=+50}Beta-Testing:{/size}
-\n
+{size=+25}Beta-Testing:{/size}\n
 cluniies\n
 wBrian
 \n\n
-{size=+50}Special Thanks:{/size}
-\n
+{size=+25}Special Thanks:{/size}\n
 dmochas\n
 tofurocks\n
 wattson\n
@@ -501,14 +494,12 @@ glsuoa\n
 npckc
 \n\n
 \n\n\n\n\n\n\n\n
-Made with Ren'Py.
-\n\n\n\n\n\n\n\n
 {size=+100}Thanks for Playing!{/size}
 """)
 
 ## This controls the position and speed of your end credits.
 transform credits_scroll(t):
-    xcenter 0.5 yanchor 0.0 ypos 1.0
+    xcenter 0.5 yanchor 0.0 ypos 1.0 subpixel True
     linear t yanchor 1.0 ypos 0.0
 
 ## The actual end credits screen that we call.
@@ -528,10 +519,10 @@ screen credits(t):
 
     timer 5 action SetScreenVariable("title_shown", True)
 
-    showif not title_shown:
-        add "gui/logo.png" xalign 0.5 yalign 0.5 at alphashow
+    showif title_shown == False:
+        add "gui/logo.png" xalign 0.5 yalign 0.5 at alphashow(0.5)
     else:
-        timer t action Return()
+        timer t-2 action [Return(), With(Dissolve(2))]
         text credits_string text_align 0.5 at credits_scroll(t)
         
     if persistent.credits_seen:
@@ -543,7 +534,7 @@ screen credits(t):
     ## Where t is the number of seconds it takes to scroll
 
 style credits_text:
-    size 40
+    size 40 outlines [(1.5, "#000000", 1, 1)]
     color "#ffffff"
 
 
