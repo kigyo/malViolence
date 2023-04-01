@@ -252,17 +252,20 @@ init -1 python:
             match = sorted(match)
 
             for i, m in enumerate(self.matches):
-                if m == match and not m.matched:
-                    self.last_match_index = i
-                    self.matched.insert(0, m)
-                    del self.matches[i]
-                    self.matches.insert(0, Match(piece_limit=self.piece_limit))
-                    self.match_count += 1
-                    renpy.store.race.player.boost()
-                    # for p in match:
+                if m.matched or \
+                   not (not self.shuffle_matches and m == match) or\
+                   not (self.shuffle_matches and [p.type for p in m] == [p.type for p in match]):
+                       continue
+                self.last_match_index = i
+                self.matched.insert(0, m)
+                del self.matches[i]
+                self.matches.insert(0, Match(piece_limit=self.piece_limit))
+                self.match_count += 1
+                renpy.store.race.player.boost()
+                # for p in match:
                     #     setattr(self, p.type +"_meter", getattr(self, p.type+"_meter")+5)
                     # TODO: Do we want to allow mutiple matches on the off chance that comes up? Should we filter matches so there are no dupes in the first place?
-                    break
+                break
             for p in match:
                 setattr(self, p.type +"_meter", getattr(self, p.type+"_meter")+5)
             if self.last_match_index is None:
@@ -660,10 +663,9 @@ default pb = None
 default tb = None
 
 label init_puzzle_board():
-    $ pb = PuzzleBoard(width=6, height=10, move_cap=12)
+    $ pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False)
     $ adt = 0.5
     return
-
 
 label init_toy_board():
     $ tb = ToyBoard(width=5, height=5)

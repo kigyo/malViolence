@@ -18,7 +18,8 @@ init python:
 
         def populate_board(self):
             seed = random.randint(0, 8000)
-            seed = 7637
+            # seed = 7637
+            seed = 6107
             # glog("Seed: %s" % seed)
             random.seed(seed)
             # NOTE: For normal reticle only.
@@ -35,7 +36,7 @@ init python:
                 if max(local_heights) < self.height:
                     # match = random_match(self.piece_limit, puzzle_pieces)
                     # match = random.choices(["0, 1, carat, uwu"], cum_weights=[35, 35, 15, 15], k=3)
-                    match = random.choices(["0", "1", "carat", "uwu"], weights=[8, 8, 1, 1], k=3)
+                    match = random.choices(["0", "1", "carat", "uwu"], weights=[3, 3, 1, 1], k=3)
                     pieces = [Piece(m) for m in match]
                     y = self.height-1-random.randint(0, min(local_heights))
                     for ny in range(0, y+1):
@@ -69,16 +70,22 @@ init python:
             match = (self.pieces[self.reticle[1]][x-1],
                      self.pieces[self.reticle[1]][x],
                      self.pieces[self.reticle[1]][x+1])
-            match = sorted(match)
+            if self.shuffle_matches:
+                match = sorted(match)
+            # else:
+            #     match = match.reverse()
             matched = False
             for i, m in enumerate(self.matches):
-                if m == match and not m.matched:
-                    if self.show_next:
-                        self.solution.pop(0)
-                    m.matched = True
-                    matched = True
-                    # Only allow one match at a time.
-                    break
+                if m.matched or \
+                   (self.shuffle_matches and m != match) or \
+                   (not self.shuffle_matches and [p.type for p in match] != m.pieces):
+                       continue
+                if self.show_next:
+                    self.solution.pop(0)
+                m.matched = True
+                matched = True
+                # Only allow one match at a time.
+                break
 
             if not matched: return
 
@@ -96,7 +103,7 @@ init python:
 
             self.just_cleared = True
             renpy.retain_after_load()
-        
+
     def puzzle_board_reset(txt=_("Invalid. Restarting...")):
         store.pb = PuzzleBoard(width=6, height=10, move_cap=12)
         store.adt = 0.5
@@ -111,18 +118,18 @@ screen puzzle_playspace(b, interactable=True):
     add "#000"
     frame style "puzzle_frame" padding 0,0,50,40:
         if b.just_cleared:
-            use animated_board(b, (700, 150))
+            use animated_board(b, (665, 150))
         else:
-            use board(b, (700, 150))
+            use board(b, (665, 150))
         use puzzle_matches(b)
         if interactable:
-            use buttons(b, (700, 150))
-        use reticle(b, (700, 150))
+            use buttons(b, (665, 150))
+        use reticle(b, (665, 150))
         use menu
         if b.just_cleared:
             timer adt action Function(b.clear_anim)
 
-        fixed xsize 655 xalign 1.0:
+        fixed xsize 580 xalign 1.0:
             fixed ysize 880:
                 vbox spacing 50 yalign 0.5:
                     style_prefix "puzzle_description"
