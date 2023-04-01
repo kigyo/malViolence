@@ -241,7 +241,29 @@ init python:
 
     def activated(drags):
         pass
+    
+    def init_bomb_function(txt=_("Invalid. Restarting...")):  
+        store.parts = []
+        store.parts.append(Part("shape_1", pos=(240, 220), color="#E3615A"))
+        store.parts.append(Part("shape_2", pos=(260, 40), color="#00E6E3"))
+        store.parts.append(Part("shape_3", pos=(420, 300), color="#52CD6A"))
+        store.parts.append(Part("shape_4", pos=(80, 300), color="#E97B9A"))
+        store.parts.append(Part("shape_5", pos=(800, 480), color="#E88D26"))
+        store.parts.append(Part("shape_6", pos=(640, 220), color="#0087E8"))
+        store.parts.append(Part("shape_7", pos=(920, 220), color="#51A35B"))
+        store.parts.append(Part("shape_8", pos=(590, 380), color="#F8EF46"))
+        store.parts.append(Part("shape_9", pos=(880, 40), color="#E88D25"))
+        store.parts.append(Part("shape_10", pos=(160, 540), color="#E88D25"))
+        store.parts.append(Part("shape_11", pos=(160, 40), color="#1DBCDB"))
+        store.parts.append(Part("shape_12", pos=(80, 40), color="#60B125"))
+        store.parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
+        store.parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
+        store.bomb = Bomb(len(bomb_mask[0]), len(bomb_mask), parts)
+        renpy.notify(txt)
+        renpy.hide_screen("room1_bomb")
+        renpy.show_screen("room1_bomb",bomb)
 
+default parts = []
 default c1 = "#1d96db"
 default c2 = "#d62a2a"
 default c3 = "#454545"
@@ -293,6 +315,7 @@ screen room1_bomb(b, interactable=True):
                 text bomb_description
 
         hbox xalign 1.0 yalign 1.0 spacing 30:
+            textbutton "RESET" style "confirm_button" action Function(init_bomb_function, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable at zoomed(0.75)
             textbutton "SUBMIT" style "confirm_button" action Function(b.verify)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
 

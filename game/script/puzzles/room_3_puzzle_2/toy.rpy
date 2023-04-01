@@ -75,6 +75,7 @@ init python:
             return
 
         def trigger_reticle(self):
+
             self.last_reticle = self.reticle
             if self.reticle in self.match:
                 i = self.match.index(self.reticle)
@@ -101,6 +102,7 @@ init python:
             if len(self.match) < 4:
                 return
 
+            renpy.sound.play("audio/sfx/Room 3 SFX/Squeak2.ogg")
             self.just_pathed = [(self.pieces[y][x].type, (x, y)) for (x, y) in self.match]
 
             self.pieces[self.player[1]][self.player[0]] = None

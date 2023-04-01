@@ -163,6 +163,8 @@ init python:
     bombexplosion1 = "audio/sfx/Room1SFX/Bomb Explosion Big 2.ogg"
     bombexplosion2 = "audio/sfx/Room1SFX/Bomb explosion Smaller.ogg"
     liquidpour = "audio/sfx/Room1SFX/Liquid Pour 3.ogg"
+    liquidpour2 = "audio/sfx/Room1SFX/Liquid Pour 2.ogg"
+    bodycrush = "audio/sfx/Room1SFX/Body Crush.ogg"
     marbledeath = "audio/sfx/Room1SFX/Marble Death Crush.ogg"
     metaldoorclose = "audio/sfx/Room1SFX/Metal Door Close 2.ogg"
     roomsuccess = "audio/sfx/Room1SFX/Success 2.ogg"
@@ -232,6 +234,8 @@ init python:
     timeralarm : _("A timer alarm."),
     timeralarm2 : _("A computer alarm."),
     liquidpour : _("A liquid is poured."),
+    liquidpour2 : _("A liquid is poured."),
+    bodycrush : _("A heavy crunch."),
     marbledeath : _("A comically large marble is on it's way..."),
     metaldoorlock : _("A locked metal door."),
     roomsuccess : _("Congrats! You completed this puzzle room."),

@@ -21,6 +21,8 @@ init python:
             
             store.marble_selected = drop.drag_name
 
+            renpy.sound.play(bodycrush)
+
             for i in range(len(marble_killed_shown)):
                 if marble_killed_shown[i] == 0:
                     store.marble_killed_shown[i] = marble_selected

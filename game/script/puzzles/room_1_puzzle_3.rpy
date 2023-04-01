@@ -20,6 +20,7 @@ init python:
             setattr(renpy.store, "decanting_vial%s" % str(drop.drag_name), drop_filled + transfer_amount)
             setattr(renpy.store, "decanting_vial%s" % str(drag.drag_name), drag_filled - transfer_amount)
 
+            renpy.sound.play(liquidpour2)
             renpy.retain_after_load()
             renpy.restart_interaction()
 
