@@ -172,7 +172,7 @@ screen extras_navigation():
 
         #textbutton _("REPLAY ROOM") action ShowMenu("replay_gallery") alt "Replay Room" at navigation_move
 
-        if persistent.game_clear:
+        if persistent.game_clear or config.developer:
 
             textbutton _("DEVELOPER NOTES") action ShowMenu("dev_notes") alt "Developer Notes" at navigation_move
 
@@ -348,13 +348,12 @@ screen dev_notes():
     ## screen.
     use extras_menu(_("Developer's Notes"), scroll="viewport"):
 
-        
-
         vbox spacing 10:
             style_prefix "developer_notes"
             frame:
                 has vbox
-                text _("")
+                text _("There’s so much I want to say about making this project - but ah… all I can muster right now is “Thank you for letting me direct!” and “I really want to eat a cheesy corn dog now…”\n\n“malViolence” is my first work as a director of a visual novel, rather than a solo dev. I was worried about taking on such an important role, and I didn’t know how my vision would be executed when working in a team… but I’m really happy that I ended up working with such talented, kind teammates for this NaNoRenO 2023. Their kindness and incredible work has brought me a lot of confidence. Because of them I’ve found a new love for directing things…\n\nI hope you enjoyed Cautionne’s and Dr. Danger’s story! Let me know what you think in the Itch.io comments or on Twitter - I’d love to see your feelings on my lovely little family of villains… and on the game as a whole.\nBut for now, ciao!")
+                add "gui/developer notes/mado.png" xalign 0.5
                 label "— " + _("{a=https://madocallie.carrd.co/}Mado{/a}") + " (" + _("Director, CG Artist & Writing") + ")"
             frame:
                 has vbox
@@ -366,11 +365,11 @@ screen dev_notes():
                 label "— " + _("{a=https://itch.io/profile/luoxyz}Z{/a}") + " (" + _("Writing") + ")"
             frame:
                 has vbox
-                text _("")
+                text _("So grateful to work with such a talented team under such a strong director this Nano! I hope you enjoyed playing the game as much as I enjoyed working on it and I hope the puzzles give you a little trouble, but not too much trouble~")
                 label "— " + _("{a=https://omelette.itch.io/}speck{/a}") + " (" + _("Puzzle Designer") + ")"
             frame:
                 has vbox
-                text _("Putting everyone's work together was a lot of fun, and I'm so happy with how it turned out! Huge thanks to Mado and speck for their coding contributions; they're responsible for the astonishing level of polish, and the cooler puzzles, respectively. Now that malViolence is done, I'm feeling very inspired and satisfied, and can't wait to put all the things I learned this month to good use in my own games. \nAlso, please view my new son:")
+                text _("Putting everyone's work together was a lot of fun, and I'm so happy with how it turned out! Huge thanks to Mado and speck for their coding contributions; they're responsible for the astonishing level of polish, and the cooler puzzles, respectively. \n\nNow that malViolence is done, I can't wait to put all the things I learned this month to good use in my own games. Also, please view my new son:")
                 hbox xfill True:
                     add "gui/developer notes/kigyodev.png"
                     label "— " + _("{a=https://kigyodev.com/}KigyoDev{/a}") + " (" + _("Programmer") + ")"

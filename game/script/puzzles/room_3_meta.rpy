@@ -53,7 +53,7 @@ screen room3_meta():
 
         if scrapbook_page == 1:
             add "puzzles/room_3_meta/scrapbook2.png" xalign 0.5
-            imagebutton idle Null(175,140) action [SetScreenVariable("scrapbook_page",2), With(dissolve)] xpos 1402 mouse "inspect"
+            imagebutton idle Null(175,140) action [SetScreenVariable("scrapbook_page",2), With(dissolve)] xpos 1402 ypos 50 mouse "inspect"
 
         else:
             add "puzzles/room_3_meta/scrapbook1.png" xalign 0.5
@@ -77,7 +77,7 @@ screen room3_meta():
                     dropped scrapbook_dropped
                     add Null(312,253)
                 drag:
-                    pos (990,90) draggable False drag_name 2
+                    pos (970,100) draggable False drag_name 2
                     dropped scrapbook_dropped
                     add Null(252,252)
             else:
@@ -86,7 +86,7 @@ screen room3_meta():
                     dropped scrapbook_dropped
                     add Null(312,253)
                 drag:
-                    pos (990,90) draggable False drag_name 4
+                    pos (970,100) draggable False drag_name 4
                     dropped scrapbook_dropped
                     add Null(252,252)
 
@@ -162,7 +162,7 @@ init python:
         if drop.drag_name % 2 == 1:
             drag.snap(327,172, 0.2)
         else:
-            drag.snap(1010,110, 0.2)
+            drag.snap(970,150, 0.2)
         scrapbook_input[drop.drag_name-1] = drag.drag_name
         renpy.retain_after_load()
         renpy.restart_interaction()

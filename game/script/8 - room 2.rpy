@@ -41,7 +41,7 @@ Here's some basic recalibration rules:
 -{color=#fff} Neural pathways must form one continuous loop and occupy every available space.{/color}
 -{color=#fff} Pathways can cross over themselves, but they can't retrace themselves{/color} (so no T intersections).
 -{color=#fff} At any 4-way intersection, a neuron will always go straight though.{/color} It'll never turn.
--You can only submit possible solutions {color=#fff}where there are no open ended pathways{/color} (including T intersections).""")
+-You can only submit possible solutions {color=#fff}where there are no open-ended pathways{/color} (including T intersections).""")
 
 
 define word_description = _("""Cautionne's a big fan of word games, so he wants you to come up with {color=#fff}a word that's almost as good as the one above.{/color}
@@ -180,11 +180,11 @@ label room_2:
         else:
             if room2["panopticon"] == 0:
                 $ panopticon_init(True)
-                #panopticon introduction
+                "(A computer, and a small, strange... colosseum? What on earth is that?)"
+                show screen room2_panopticon(_layer="master") with easeintop
+                "(...Of course. It's a puzzle.)"
             else:
-                #repeated investigation
-                pass
-            show screen room2_panopticon(_layer="master") with easeintop
+                show screen room2_panopticon(_layer="master") with easeintop
             $ room2["panopticon"] += 1
             $ inspect = None
             $renpy.hide_screen("room2_panopticon", "master")
@@ -198,12 +198,11 @@ label room_2:
         else:
             if room2["evidence"] == 0:
                 $ evidence_init(True)
-                #evidence introduction
-                pass
+                show screen room2_evidence(_layer="master") with easeintop
+                "(The blackboard is covered in little doodles, but they don't seem to be there just for decoration.)"
+                "(You hate to admit it, but they're kind of cute. Completely unlike their creator.)"
             else:
-                #evidence investigation
-                pass
-            show screen room2_evidence(_layer="master") with easeintop
+                show screen room2_evidence(_layer="master") with easeintop
             $ room2["evidence"] += 1
             $ inspect = None
             $renpy.hide_screen("room2_evidence", "master")
@@ -215,9 +214,9 @@ label room_2:
         if "recalibration" in room2["solved"]:
             "(You've already solved the cybernetics puzzle.)"
         else:
-            
             if room2["recalibration"] == 0:
                 call init_cybernetics
+                "(The monitor is displaying some kind of simulation. Better take a closer look...)"
             else:
                 #repeated investigation
                 pass
@@ -232,7 +231,7 @@ label room_2:
     elif inspect == "word":
         if room2["word"] == 0:
             $word_init()
-            #word introduction
+            "(There are five empty slots on the door's lock. Your best guess is that you need to fill them up somehow.)"
         else:
             #repeated investigation
             pass
@@ -259,10 +258,13 @@ label evidence_solved:
     if len(room2["notes"]) < 4:
         "(...You were mostly guessing, but somehow, this worked?)"
     $ play_sound(puzzlesuccess)
-    "(Congratulations! {w}You solved the evidence board puzzle.)"
+    "You solved the puzzle!"
     hide black onlayer screens
     hide screen room2_evidence
     with puzzle_hide
+    "(A tiny blue tile falls to the ground. Upon closer inspection, it reads the letter \"E\", for... {i}evidence{/i}?)"
+    "(Or maybe for {i}end of puzzles — enough of these silly games{/i}. But that's just wishful thinking.)"
+    "(Either way, you decide to take it with you.)"
     $ inspect = None
     call screen room2
 
@@ -297,7 +299,7 @@ label evidence_game_over:
     l "Guess they were worth the trouble of installation!"
     l "{b}Contributing Factors to Death:{/b} Couldn't put progress on the board."
     $deadend("dead7")
-    le "DEAD END 07: NAME!"
+    le "DEAD END 07: Pinpricked!"
     pause 2
     nvl clear
     $game_over(2)
@@ -312,10 +314,12 @@ label panopticon_solved:
     $ room2["solved"].append("panopticon")
     #obtain the "A" and "S" tiles
     $ play_sound(puzzlesuccess)
-    "(Congratulations! {w}You solved the panopticon puzzle.)"
+    "You solved the puzzle!"
     hide black onlayer screens
     hide screen room2_panopticon
     with puzzle_hide
+    "(In response to your hard-earned success, two little {i}Scraddle{/i}-like tiles pop out of the miniature panopticon.)"
+    "(They represent the letters \"A\" and \"S\". How quaint.)"
     $ inspect = None
     call screen room2
 
@@ -372,10 +376,12 @@ label recalibration_solved:
     $ room2["solved"].append("recalibration")
     #obtain the "R" and "T" tiles
     $ play_sound(puzzlesuccess)
-    "(Congratulations! {w}You solved the recalibration puzzle.)"
+    "You solved the puzzle!"
     hide black onlayer screens
     hide screen cybernetics
     with puzzle_hide
+    "(The desk drawer juts open just a bit, and reveals two small tiles inside.)"
+    "(\"R\" and \"T\" are written on them, respectively. Now, where could you put them to use...?)"
     $ inspect = None
     call screen room2
 
@@ -442,14 +448,7 @@ label word_game_over:
     # [error sound effect]
     $ random_choice = random.randint(1,5)
     $renpy.block_rollback()
-####################### EASTER EGG?
-    if word_answer == ["","","","",""]:
-
-
-        #TODO: special text if you didn't even enter anything
-        pass
-    elif word_answer == ["T","A","S","E","R"]:
-
+    if word_answer == ["","","","",""] or  word_answer == ["T","A","S","E","R"]:
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word
@@ -460,9 +459,6 @@ label word_game_over:
         $ play_sound(smash)
         scene black
         pause 3
-
-
-####################### EASTER EGGS END
     elif random_choice == 1:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
         cr "Holy crap!{w=0.5} Did you just manage to guess that right on your first try?"
