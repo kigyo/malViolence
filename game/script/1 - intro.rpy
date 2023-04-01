@@ -38,7 +38,7 @@ label start:
     "(Some sort of... cell? {w}But everything's so... woozy, so you can't...)"
     pause 0.5
     "(No, no — what were you doing {i}before{/i} you got here?)"
-    "(You wanted a bonus, and your boss told you to go here and get info.{w} So, you did, and then...)"
+    "(You wanted a bonus, and your boss told you to go here and get info.\n{w}So, you did, and then...)"
     "(...and then something hit your back, and... {w}you, {w=0.5}uh...) "
     "(You...)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-04.ogg"
@@ -122,18 +122,18 @@ label start:
     "(You got locked up by a {i}kid?{/i})"
     show cautionne lean eyeclosed
     voice "audio/voice/cautionne/intro/Cautionne_Intro-13.ogg"
-    c "Oh, lab rat, that look on your face is {i}priceless.{/i}{p=0.369}{nw}"
+    c "Oh, lab rat, that look on your face is {i}priceless.{/i}{p=0.5}{nw}"
     voice sustain
     c "I wanna take a commemorative photo and tack it to my bedroom wall!"
     "(Ugh, please don't.{w} Everyone tells you that you have a resting bitch face.)"
     show cautionne lean speaking
     voice "audio/voice/cautionne/intro/Cautionne_Intro-14.ogg"
-    c "Sadly, my camera isn't with me right now...{p=0.133}{nw}"
+    c "Sadly, my camera isn't with me right now...{p=0.3}{nw}"
     voice sustain
     c "So, you'll have to make-do with me telling you why you're here."
     show cautionne hairtwirl at crt
     voice "audio/voice/cautionne/intro/Cautionne_Intro-15.ogg"
-    c "That's another thing you're wondering about, isn't it?{p=0.247}{nw}"
+    c "That's another thing you're wondering about, isn't it?{p=0.3}{nw}"
     c "Why {i}are{/i} you here?"
     "(...You think?)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-16.ogg"
@@ -142,14 +142,14 @@ label start:
     voice "audio/voice/cautionne/intro/Cautionne_Intro-17.ogg"
     c "{i}You{/i} want something from {i}me.{/i}"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-18.ogg"
-    c "That's why you came here, right?{p=0.177}{nw}"
+    c "That's why you came here, right?{p=0.3}{nw}"
     voice sustain
     c "Your boss told you to come here and get something."
     voice "audio/voice/cautionne/intro/Cautionne_Intro-19.ogg"
     c "But I can't let that happen.{w=0.062} No-siree!"
     show cautionne lean eyeclosed
     voice "audio/voice/cautionne/intro/Cautionne_Intro-20.ogg"
-    c "So, I'm gonna have fun with you instead.{p=0.151}{nw}"
+    c "So, I'm gonna have fun with you instead.{p=0.3}{nw}"
     voice sustain
     c " I'll learn what you're after, and you won't be bored!"
     show cautionne lean speaking
@@ -158,21 +158,21 @@ label start:
     "(No.{w} No, it's not.)"
     show cautionne laugh
     voice "audio/voice/cautionne/intro/Cautionne_Intro-22.ogg"
-    c "Ha ha ha!{p=0.26}{nw}"
+    c "Ha ha ha!{p=0.7}{nw}"
     show cautionne lean eyeclosed
     c"You're a funny one, lab rat.{w=0.208} I like you already!"
     voice sustain
     voice "audio/voice/cautionne/intro/Cautionne_Intro-23.ogg"
-    c "So much so, that I've let you keep your gun.{p=0.19}{nw}"
+    c "So much so, that I've let you keep your gun.{p=0.7}{nw}"
     voice sustain
-    c "Feel free to shoot my screen anytime.{p=0.063}{nw}"
+    c "Feel free to shoot my screen anytime.{p=0.7}{nw}"
     voice sustain
     c "I promise I won't care!"
     "(The temptation's there,{w=0.1} but no thanks.)"
     "(You'd prefer to have some form of self-defense on-hand.)"
     show cautionne think
     voice "audio/voice/cautionne/intro/Cautionne_Intro-24.ogg"
-    c "Now,{w=0.031} I'm still tidying up a couple of things on my end.{p=0.126}{nw}"
+    c "Now,{w=0.031} I'm still tidying up a couple of things on my end.{p=0.5}{nw}"
     voice sustain
     c "So, before I get back to work..."
 
@@ -188,11 +188,12 @@ label start:
     cr "Quintessential five-star living,{w=0.1} just like the famous Milton Hotels."
     cr "Oh,{w=0.1} and if you get hungry,{w=0.1} just lift {color=#00e7ff}the painting in the middle of the room.{/color}"
     cr "The vent dispenses LabScrip 4053."
-    cr "Reviewers say its \"safe for human consumption,\"{w=0.1} so don't be shy. {w}It's got all the nutrients you need to live a good life!"
+    cr "Reviewers say its \"safe for human consumption,\"{w=0.1} so don't be shy.\n{w}It's got all the nutrients you need to live a good life!"
     pause 1
     cr "...Well, what's the holdup?{w=0.5} Have a look around,{w=0.1} beg for mercy,{w=0.1} or make yourself comfortable."
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
     cr "After all...{w=0.5} you'll be here for a while!"
+    pause 1
     $ play_sound(staticshort)
     stop music
     pause 2

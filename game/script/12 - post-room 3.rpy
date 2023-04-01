@@ -39,8 +39,8 @@ label post_room_3:
 
     stop music fadeout 1.0
 
-    pause 1
-
+    $ play_sound(roomsuccess)
+    pause 2
     $ play_sound(doorunlock)
     pause 2
 
@@ -61,7 +61,8 @@ label post_room_3:
         "(...But chances are high you won't like whatever else you find.)"
         "(Better keep moving.)"
 
-    $ queue_sound ([footsteps3, footsteps3])
+    $ play_sound (footsteps3)
+    $ queue_sound (footsteps3)
 
     scene bg room3_downstairs:
         zoom 0.335 align(0.0,0.0)

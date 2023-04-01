@@ -74,6 +74,7 @@ label room_2:
         if room2["blueprints"] == 0:
             show room2_blueprintcollection with dissolve:
                 yalign 0.2 xalign 0.5
+            $ play_sound(paperpickup)
             "(You survey the diagrams before you.)"
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
@@ -111,6 +112,7 @@ label room_2:
         if room2["limbs"] == 0:
             show room2_limbsdesigns with dissolve:
                 yalign 0.2 xalign 0.5
+            $ play_sound(paperpickup)
             "(These documents appear to be designs for cybernetic limbs like the ones produced by STOP —{w=0.5} at first glance.)"
             "(On closer inspection,{w=0.1} there are more differences than there are similarities.) "
             "(STOP's technology is more generalized,{w=0.1} more efficient...{w=0.5} and {i}angular.{/i})"
@@ -251,7 +253,8 @@ label evidence_solved:
     $ room2["solved"].append("evidence")
     #obtain the "E"
     if len(room2["notes"]) < 4:
-        "(...You were mostly guessing, but somehow, this worked.)"
+        "(...You were mostly guessing, but somehow, this worked?)"
+    $ play_sound(puzzlesuccess)
     "(Congratulations! {w}You solved the evidence board puzzle.)"
     hide black onlayer screens
     hide screen room2_evidence
@@ -282,6 +285,7 @@ label evidence_game_over:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "{i}Let's put a pin in it.{/i}"
     #"{i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
+    $ play_sound(bodypierce)
     scene black
     pause 3
     $nvl_heading = "Lab Report #273"
@@ -303,6 +307,7 @@ label panopticon_solved:
         alpha 0.5
     $ room2["solved"].append("panopticon")
     #obtain the "A" and "S" tiles
+    $ play_sound(puzzlesuccess)
     "(Congratulations! {w}You solved the panopticon puzzle.)"
     hide black onlayer screens
     hide screen room2_panopticon
@@ -318,6 +323,7 @@ label panopticon_game_over:
         alpha 0.5
     stop music fadeout 0.5
     "(You re-arrange another set of cells and—)"
+    $ play_sound(error)
     "(—and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
     hide black onlayer screens
     hide screen room2_panopticon
@@ -335,8 +341,9 @@ label panopticon_game_over:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 1.ogg"
     cr "Now,{w=0.1} go sit in the corner and think about what you've done!" with small_shake
     ####### industrial lights power off sound here
+    $ play_sound(switchoff)
     scene black 
-    pause 1
+    pause 2
     cr "I'll come back for you when you're sorry enough."
 
     nvl clear
@@ -360,6 +367,7 @@ label recalibration_solved:
         alpha 0.5
     $ room2["solved"].append("recalibration")
     #obtain the "R" and "T" tiles
+    $ play_sound(puzzlesuccess)
     "(Congratulations! {w}You solved the recalibration puzzle.)"
     hide black onlayer screens
     hide screen cybernetics
@@ -374,6 +382,7 @@ label recalibration_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 0.5
+    $ play_sound(timeralarm2)
     "(You confirm your choice,{w=0.1} and a beeping starts.)"
     "(Its tone sets the hairs on the back of your neck on edge.)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
@@ -437,7 +446,17 @@ label word_game_over:
         pass
     elif word_answer == ["T","A","S","E","R"]:
 
-        cr "...Did you even try?"
+        stop music fadeout 0.5
+        hide black onlayer screens
+        hide screen room2_word
+        with puzzle_hide
+        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+        cr "Wow,{w=0.1} lab rat."
+        cr "...Did you even {i}try?{/i}"
+        $ play_sound(smash)
+        scene black
+        pause 3
+
 
 ####################### EASTER EGGS END
     elif random_choice == 1:
@@ -453,6 +472,7 @@ label word_game_over:
         "(You—)"
         cr "C'mon,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
         #"{b}ZAP SFX, CUT TO BLACK{/b}"
+        $ play_sound(zap)
         scene black
         pause 3
 
@@ -469,7 +489,7 @@ label word_game_over:
         cr "If so,{w=0.1} go complain in the comments."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "You've just met a a dead end!"
-        #"{b}SMASH SFX, CUT TO BLACK{/b}"
+        $ play_sound(smash)
         scene black
         pause 3
 
@@ -483,8 +503,9 @@ label word_game_over:
         with puzzle_hide
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "But next time,{w=0.1} {i}do{/i} look before you leap."
-        #"{b}TRAP DOOR SFX, CUT TO BLACK{/b}"
-        scene black
+        $ play_sound(trapdoor)
+        $ queue_sound(falling)
+        scene black with easeoutbottom
         pause 3
 
     elif random_choice == 4:
@@ -502,6 +523,7 @@ label word_game_over:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "It's time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
         "(What gu—)"
+        $ play_sound(gunshot)
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
         scene black
         pause 3
@@ -517,7 +539,8 @@ label word_game_over:
         cr "You'd have better luck smashing keys."
         "(You—)"
         cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}"
-        #"{b}SMASHING SFX, CUT TO BLACK{/b}"
+        $ play_sound(smash2)
+        pause 0.6
         scene black
         pause 3
 

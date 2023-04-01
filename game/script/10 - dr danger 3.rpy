@@ -41,14 +41,12 @@ label dr_danger_3:
   #"{b}[animate camera movements to simulate the protagonist slowly crouching down to the floor] {/b}"
   "(If he meant what he said about not harming a hair on your head,"
   $ play_sound(singlefootstep2)
-  pause 0.1
   show bg corridor3:
     zoom 0.5 xalign 0.5 yalign 0.5
     ease 3 yalign 1.0 zoom 0.6
   pause 2
   extend "{cps=20} then maybe the smart thing to do would be to—){/cps}{p=0.5}{nw}"
   $ play_sound(staticshort)
-  pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor3-01.ogg"
   dr "Very tempting for a wooden floor,{w=0.287} isn't it?"
   $ play_sound(bedsitup)
@@ -124,22 +122,21 @@ label dr_danger_3:
 
   voice "audio/voice/dr.danger/Danger_Corridor3-05.ogg"
   #"{b}[{/b}{b}Dr.{/b}{b} Danger pauses, and her expression changes – showing {/b}{b}she's{/b}{b} {/b}{b}hold{/b}{b}ing something back]{/b}"
-  drs "{size=-13}Note to self, re-record instructions at earliest convenience.{p=0.197}{nw}{/size}"
+  drs "{size=-13}Note to self, re-record instructions at earliest convenience.{p=3}{nw}{/size}"
   voice sustain
-  drs "{size=-13}Try not to be so...{w=0.453} {i}ominous{/i} next time.{/size}"
+  drs "{size=-13}Try not to be so...{w=0.5} {i}ominous{/i} next time.{/size}"
   $ play_sound(tvoff)
-  pause 1
+  pause 2
   scene bg corridor3 with fade:
     zoom 0.5 align (0.5,0.5)
-  pause 1
+  pause 2
 
-  pause 1
   "(That message wasn't for you,{w=0.1} and it wasn't for one of Dr. Danger's goons either.)"
   "(But a {i}babysitter?{/i}{w} {i}Really?{/i})"
   "(Who in the world would be qualified to babysit {i}him?{/i})"
   "(...)"
   pause 1
-  "(...C'mon.{w} Just focus on the task at hand.)"
+  "(...{i}C'mon.{/i}{w} Just focus on the task at hand.)"
 
   $ play_sound(footsteps3)
 
@@ -164,10 +161,10 @@ label dr_danger_3:
   "(It's...{w=0.5} a normal apartment?)"
   "(There's a kitchenette,{w=0.5} a dining table,{w=0.5} a small sitting area...)"
   "(...And stairs.{w} Probably a bedroom up there.)"
-  pause 0.5
+  pause 1
   "(Are you {i}supposed{/i} to be here?)"
   $ play_sound(doorlock)
-  pause 1
+  pause 2
   "(Guess you are.)"
 
   show bg room3_downstairs:

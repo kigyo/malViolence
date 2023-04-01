@@ -7,6 +7,9 @@ label post_room_1:
 
   stop music fadeout 1.0
 
+  $ play_sound(roomsuccess)
+  pause 2
+  $ play_sound(doorunlock)
   pause 2
 
   scene black
@@ -23,7 +26,6 @@ label post_room_1:
   show cautionne_frame_glow at bg
   with screenon
   $ play_music(cautionnetheme)
-  pause 0.2
   voice "audio/voice/cautionne/postroom/Cautionne_Post Room 1-01.ogg"
   c "Well, well, well.{w=0.036} If it isn't the {i}lab rat{/i}."
   c "For someone with chronic resting-{i}blah{/i}-face,{w=0.1} you look {i}real{/i} proud of yourself."
@@ -63,7 +65,7 @@ label post_room_1:
     show cautionne lean speaking
     c "Hey,{w=0.1} maybe you're just terminally un-curious and a lifelong sticker-hater."
     show cautionne lean eyeclosed
-    c "No shame in being a hater, though.{p} I hate things 24/7!"
+    c "No shame in being a hater, though.\n{w=0.5}I hate things 24/7!"
     show cautionne leaneyeclosed pause
     pause 1
     show cautionne serious
@@ -142,8 +144,11 @@ label post_room_1:
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "I've {i}always{/i} wanted to see how motivating electrified floors can be!"
   "(He's clearly joking again.)"
+  pause 1
   "(Probably.)"
+  pause 1
   "(...Maybe.)"
+  pause 1
   "(...No.{w} Better not tempt fate.)"
 
   stop music 

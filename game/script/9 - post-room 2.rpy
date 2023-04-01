@@ -8,26 +8,29 @@ label post_room_2:
 
   stop music fadeout 1.0
 
-  pause 1
-
+  $ play_sound(roomsuccess)
+  pause 2
   $ play_sound(doorunlock)
   pause 2
 
+
   #"{b} [The TV {/b}{b}isn't{/b}{b} on yet]{/b}"
   "(No message from the kid yet.)"
-  "(Maybe if you're stealthy, you could sneak past without being subjected to another one of his stupid broadcasts.)"
+  "(Maybe if you're stealthy,{nw}"
   show screen nodismiss
 
-  $ queue_sound ([footsteps2, footsteps2])
+  $ play_sound(footsteps2)
+  $ queue_sound(footsteps2)
 
   scene bg room2:
     zoom 0.335 align (0.0,0.0)
     ease 8 zoom 0.8 xalign 0.8 yalign 0.5
 
-  pause 6
+  extend "{cps=15} you could sneak past without being subjected to another one of his stupid broadcasts.){nw}"
+
+
   #"{b}[{/b}{b}pasue{/b}{b} as the TV TURNS ON and cautionne appears]{/b}"
-  $ queue_sound ([tvon, staticshort])
-  pause 0.4
+  $ play_sound(staticshort)
   $ play_music(cautionnetheme)
   show cautionne hairtwirl
   show crt
@@ -110,6 +113,7 @@ label post_room_2:
   show cautionne serious
   c "...Fine. "
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 2.ogg"
+  $ play_sound(fistslam)
   extend annoyed hands "{i}FINE!{/i}" with small_shake
   c "The next time you escape a puzzle room,{w=0.1} {i}I won't talk either!{/i}"
   c "See how YOU like it!!"
@@ -126,11 +130,11 @@ label post_room_2:
   show cautionne_frame_noglow:
     zoom 0.5
   with screenoff
-  pause 1
+  pause 2
 
   show bg room2 with fade:
     zoom 0.8 align (0.8,0.5)
-  pause 1
+  pause 2
 
 
 

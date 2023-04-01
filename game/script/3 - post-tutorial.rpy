@@ -4,6 +4,8 @@ label post_tutorial:
   #[If puzzle is solved, play a solving/unlocking sound]
   scene bg tutorial2 at zoomed
   stop music
+  $ play_sound(roomsuccess)
+  pause 2
   $ play_sound(doorunlock)
   pause 2
   $ play_sound(staticshort)
@@ -62,7 +64,7 @@ label post_tutorial:
   show cautionne leaneyeclosed pause
 
 
-  pause 1
+  pause 3
   stop music
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-03.ogg"
   c lean frown "Stop making mistakes."
@@ -80,5 +82,5 @@ label post_tutorial:
   with screenoff
 
 
-  pause 1
+  pause 2
   jump dr_danger_1

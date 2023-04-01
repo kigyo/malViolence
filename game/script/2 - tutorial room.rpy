@@ -119,6 +119,7 @@ label tutorial_room:
             $ play_sound(creakyvent)
             show tutorial_painting with dissolve:
                 zoom 0.3 yalign 0.2 xalign 0.5
+            pause 1
             "(Again with those weird shapes! {w}And this time,{w=0.1} they're {i}colorful!{/i})"
             "(Yeah,{w=0.1} they definitely mean something.)"
             "(Maybe...{w=0.5} it's a way out?)"
@@ -193,6 +194,7 @@ label tutorial_room:
         $ play_sound(bedsitup)
         "(It's a bed!)"
         "(You're surprised you slept at all on something that lumpy.)"
+        pause 1
         "(...Yeah, right.{w} Back at home,{w=0.1} you {i}worshipped{/i} your crappy mattress.)"
 
     elif inspect == "tap":

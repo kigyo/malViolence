@@ -62,6 +62,7 @@ label kill_ending:
     "(You exhale,{w=0.1} and before his finger can snake itself over the trigger—)"
     "(—You raise your gun towards his torso.)"
     stop music
+    $ play_sound(gunblast1)
     scene black
     pause 3
     #"{b}[bang – with a cut to black]{/b}"
@@ -88,6 +89,7 @@ label kill_ending:
     pause 1
     "(He falls.)"
     scene black
+    $ play_sound(gundrop)
     pause 1
     "(His gun clatters on the floor.)"
     pause 1
@@ -102,8 +104,9 @@ label kill_ending:
     #"{b}[show dead {/b}{b}Cautionne{/b}{b} CG with a slow fade.]{/b}"
     $ play_sound(footsteps4)
     "(As you walk from the garage,{w=0.1} you do your best to ignore his lifeless body.)"
-    "(From the corner of your eye,{w=0.1} you watch his blood ooze onto the floor.{w} Once a better agent comes here to gather evidence,{w=0.1} they'll clean the stains and burn the corpse.)"
-    "(The sight of blood at the edge of your vision fills you with exhaustion.{w} You just want to get out of here and let someone higher up sort this shit out.)"
+    "(From the corner of your eye,{w=0.1} you watch his blood ooze onto the floor.)"
+    "(Once a better agent comes here to gather evidence,{w=0.1} they'll clean the stains and burn the corpse.)"
+    "(The sight of blood at the edge of your vision fills you with exhaustion.\n{w}You just want to get out of here and let someone higher up sort this shit out.)"
     "(But as you leave,{w=0.1} you can't help but think to yourself...)"
     "(\"That was easy.\")"
     #"{b}[pause]{/b}"
@@ -115,8 +118,6 @@ label kill_ending:
     "(One less threat.)"
     "(One less thorn in STOP's side.)"
 
-    stop music fadeout 1.0
-
     scene cautionne dead with dissolve:
         zoom 0.5 align(0.0,0.0)
     pause 2
@@ -127,26 +128,27 @@ label kill_ending:
     scene black with fade
     pause 3
 
-    show text "{size=200}{color=#00e7ff}MALVIOLENCE{/color}{/size}":
-            xalign 0.5 yalign 0.5
+    show image "gui/logo.png" with dissolve:
+        xalign 0.5 yalign 0.5
 
     pause 5
 
-    hide text
+    hide image "gui/logo.png" with dissolve 
     $Achievement.add(achievement_end2)
 
     pause 3
 
-    show text "{size=90}{color=#ffffff}kill end{/color}{/size}":
+    show text "{size=90}{color=#ffffff}END{/color}{/size}" with dissolve:
             xalign 0.5 yalign 0.5
 
     pause 5
 
-    hide text
+    hide text with dissolve
+
+    stop music fadeout 2.0
 
     pause 3
     #"{b}[pause and last cg fades to black]{/b}"
     #"{b}[KILL END]{/b}"
     #"{b}[credits roll]{/b}"
-    stop music fadeout 1.0
     return

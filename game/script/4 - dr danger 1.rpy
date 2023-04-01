@@ -43,13 +43,12 @@ label dr_danger_1:
   pause 1
 
 
+  $ play_sound(singlefootstep)
 
   show bg corridor1:
     align (0.5,0.5) zoom 0.5
     ease 2.7 zoom 0.6
 
-  $ play_sound(singlefootstep)
-  pause 0.5
 
   "(You take another cautious step ahead and—){p=0.5}{nw}"
   $ play_sound(staticshort)
@@ -86,7 +85,7 @@ label dr_danger_1:
   "({i}Everyone{/i} at STOP knows that face.)"
   "(They've seen her photos in newspaper articles.{w} Broadcasts.{w} Social media.)"
   "(For years,{w=0.1} this mysterious woman was the scourge of STOP.)"
-  "(A saboteur who terrorized the public with bombs and cryptic threats.{w} A supervillain,{w=0.1} through and through.)"
+  "(A saboteur who terrorized the public with bombs and cryptic threats.\n{w}A supervillain,{w=0.1} through and through.)"
   "(A supervillain by the name of...)"
   voice "audio/voice/dr.danger/Danger_Corridor1-02.ogg"
   drx "From the top,{w=0.622} then. {w=1}I am Dr. Danger."
@@ -97,9 +96,9 @@ label dr_danger_1:
   "(...{i}Was{/i} a sworn enemy.{w} She died {i}weeks{/i} ago,{w=0.1} caught in her own explosion while trying to wipe another STOP facility off the map.)"
   "(Wait.{w} Does this mean she survi—){p=0.5}{nw}"
   voice "audio/voice/dr.danger/Danger_Corridor1-04.ogg"
-  drs "Before you begin your task,{w=0.14} please listen carefully.{p=0.28}{nw}"
+  drs "Before you begin your task,{w=0.14} please listen carefully.{p=1.75}{nw}"
   voice sustain
-  drs "Due to my circumstances, I cannot repeat my instructions.{p=0.204}{nw}"
+  drs "Due to my circumstances, I cannot repeat my instructions.{p=2}{nw}"
   voice sustain
   drs "Nor will I be able to answer any of your questions."
   "(...No.{w} Her death was {i}very thoroughly{/i} confirmed.{w} Which means...)" 
@@ -124,6 +123,7 @@ label dr_danger_1:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
   pause 2
+  $ play_sound(creakyvent)
   scene black with fade
   pause 1
   show bg room1 with placeintro:
@@ -147,12 +147,10 @@ label dr_danger_1:
   "(Maybe there's something you missed in the corridor...)"
   "(Yeah,{w=0.1} you'll turn around and—){p=0.5}{nw}"
   $ play_sound(metaldoorlock)
-  pause 1
+  pause 2
   "(—it's not opening.)"
   pause 1
   "(No,{w=0.1} there\'s still the door on the other side."
-
-  "You'll just walk over,{w=0.1} and it'll automatically..."
 
   show bg room1:
     zoom 0.4 yalign 0.7
@@ -160,7 +158,8 @@ label dr_danger_1:
 
   $ play_sound(footsteps4)
 
-  pause 5
+  "(You'll just walk over,{w=0.1} and it'll automatically-{p=2}{nw}"
+
 
   #"{b}[pause as the camera moves to the door in the middle{/b}{b}]{/b}"
   extend "...aaaaaaaaand it's shut too.)"

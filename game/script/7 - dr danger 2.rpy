@@ -1,11 +1,13 @@
 label dr_danger_2:
 
   scene black with fade
-  pause 1
+  $ play_sound(creakyvent)
+  pause 2
   show bg corridor2 with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
   $Achievement.add(achievement_room1)
+  $ play_sound(metaldoorclose)
   #"{b}[pause as {/b}{b}Cautionne's{/b}{b} screen shuts off, and walking sounds are heard – showing the player move to the next corridor]{/b}"
   "(...)"
   "(This self-styled supervillain has got {i}world-class{/i} bad manners.{w} Where could he have picked up such a nasty personality,{w=0.1} anyway?)"
@@ -29,7 +31,6 @@ label dr_danger_2:
   "(Speaking of doors...{w=0.5} this corridor's got five to choose from.)"
   "(You pause.{w} Once again,{w=0.1} your fate is in your own hands.)"
   "(Is this {i}another{/i} one of his puzzles?)"
-  pause 0.1
   $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor2-01.ogg"
@@ -56,7 +57,7 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_Corridor2-02.ogg"
   drs "I apologize for any distress that the previous room may have caused you. "
   voice "audio/voice/dr.danger/Danger_Corridor2-03.ogg"
-  drs "For whatever it's worth,{w=0.359} please know that I do not take pleasure in hurting others.{p=0.288}{nw}"
+  drs "For whatever it's worth,{w=0.359} please know that I do not take pleasure in hurting others.{p=3}{nw}"
   voice sustain
   drs "The sight of blood makes me quite ill."
   show drdanger sidestare
@@ -93,25 +94,25 @@ label dr_danger_2:
   pause 1
   show drdanger stare speaking
   voice "audio/voice/dr.danger/Danger_Corridor2-05.ogg"
-  drs "If you're looking for where to go next,{w=0.065} please take the door directly in front of you.{p=1.175}{nw}"
+  drs "If you're looking for where to go next,{w=0.065} please take the door directly in front of you.{p=3}{nw}"
   show drdanger sidestare
   voice sustain
-  drs "The other doors are very much best left shut."
+  drs "The other doors are very much {i}best left shut.{/i}"
   show drdanger stare
   voice "audio/voice/dr.danger/Danger_Corridor2-06.ogg"
   drs "Take care, now.{w=0.389} I'll see you in a week."
   #"{b}[{/b}{b}dr.{/b}{b} danger shuts off her recording]{/b}"
 
   show drdanger stare silent
-  pause 0.1
+  pause 0.5
   $ play_sound(tvoff)
   hide drdanger stare silent
   hide crt
   with screenoff
-  pause 1
+  pause 2
   scene bg corridor2 with fade:
     zoom 0.5 align (0.5,0.5)
-  pause 1
+  pause 2
 
   "(That recording {i}definitely{/i} wasn't for you.)"
   "(Whoever the intended recipient was,{w=0.1} Dr. Danger clearly trusted them.)"
@@ -121,9 +122,10 @@ label dr_danger_2:
   scene bg corridor2:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
-  pause 2
+  pause 4
   scene black with fade
-  pause 1
+  $ play_sound(dooropen)
+  pause 3
   show bg room2 with placeintro:
     zoom 0.6 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0

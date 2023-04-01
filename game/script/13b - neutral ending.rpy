@@ -38,7 +38,7 @@ label neutral_ending:
     "(Crap.{w} You jinxed yourself.)"
     "H-hello?{w} Who's there?"
     voice "audio/voice/cautionne/Endings/Neutral Endings/NE 1/Cautionne_NeutralEnding1-01.ogg"
-    xc "So,{w=0.142} you {i}finally {/i}made it.{w=0.064} Did you like my games, lab rat?"
+    xc "So,{w=0.142} you {i}finally {/i}made it.{w=0.5} Did you like my games, lab rat?"
 
     scene bg garage:
         zoom 0.5 align (0.5,0.5)
@@ -62,6 +62,8 @@ label neutral_ending:
     pause 1
     "Um...{w=0.5} I'm glad you're having fun and all,{w=0.1} but I really should get going."
     "See,{w=0.1} adults have these things called “jobs”,{w=0.1} and—{p=0.5}{nw}"
+    $ play_sound(gunblast1)
+    $ queue_sound(bulletimpact)
     scene black
     stop music
     pause 3
@@ -98,7 +100,7 @@ label neutral_ending:
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
     cr "Patronize me at your own risk."
     cr "...Is what I should've said before firing,{w=0.1} but I'm still new at this."
-    cr "Kind of like you at your job{w=0.1} {i}lab rat.{/i}"
+    cr "Kind of like you at your job,{w=0.1} {i}lab rat.{/i}"
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     $ play_music(neutralending, fadein=1.0, fadeout=1.0)
     cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} living a hand-to-mouth life."
@@ -164,7 +166,7 @@ label neutral_ending:
             scene cautionne shoot angry:
                 align(0.0,0.0)
             voice "audio/voice/cautionne/Endings/Neutral Endings/NE 2/Cautionne_NeutralEnding2-03.ogg"
-            cr "Besides,{w=0.14} I've got to finish what Dr. Danger started.{w=0.14} That's {i}my {/i}{i}job{/i},{w=0.191} now that she's gone."
+            cr "Besides,{w=0.14} I've got to finish what Dr. Danger started.{w=0.5} That's {i}my {/i}{i}job{/i},{w=0.1} now that she's gone."
             #"{b}[the trigger clicks]{/b}"
             scene cautionne shoot angrysilent:
                 align(0.0,0.0)
@@ -229,37 +231,29 @@ label neutral_ending:
             #"{b}[{/b}{b}Cautionne{/b}{b} is heard crying softly as the ending text pops up]{/b}"
             #"{b}[NEUTRAL END – ROOM 3 VARIANT]{/b}"
 
-    stop music
+    $ play_sound(gunblast1)
 
-    scene black
+    scene black 
     pause 3
 
-    show text "{size=200}{color=#00e7ff}MALVIOLENCE{/color}{/size}":
+    show image "gui/logo.png" with dissolve:
         xalign 0.5 yalign 0.5
 
     pause 5
 
-    hide text
+    hide image "gui/logo.png" with dissolve 
+    $Achievement.add(achievement_end2)
 
     pause 3
-    $Achievement.add(achievement_end3)
-######## unsure whether to put in the neutral ending voicelines here - but ive left them in the files so you can figure out which one feels better
 
-    if most_explored == 1:
-        show text "{size=90}{color=#ffffff}neutral end (a){/color}{/size}":
-            xalign 0.5 yalign 0.5
-
-    elif most_explored == 2:
-        show text "{size=90}{color=#ffffff}neutral end (b){/color}{/size}":
-            xalign 0.5 yalign 0.5
-
-    else:
-        show text "{size=90}{color=#ffffff}neutral end (c){/color}{/size}":
+    show text "{size=90}{color=#ffffff}END{/color}{/size}" with dissolve:
             xalign 0.5 yalign 0.5
 
     pause 5
 
-    hide text
+    hide text with dissolve
+
+    stop music fadeout 2.0
 
     pause 3
 

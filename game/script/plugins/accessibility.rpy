@@ -148,7 +148,9 @@ init python:
     creakyfaucet = "audio/sfx/Creaky faucet 2.ogg"
     doorunlock = "audio/sfx/Door Unlock 1.ogg"
     tvoff = "audio/sfx/TV Off 1.ogg"
+    switchoff = "audio/sfx/TV Off 1.ogg"
     tvon = "audio/sfx/TV On 1.ogg"
+    switchon = "audio/sfx/TV On 1.ogg"
     doorclose = "audio/sfx/Closing Door2.ogg"
     dooropen = "audio/sfx/Opening Door.ogg"
     doorlock = "audio/sfx/Door Lock 1.ogg"
@@ -163,6 +165,32 @@ init python:
     liquidpour = "audio/sfx/Room1SFX/Liquid Pour 3.ogg"
     marbledeath = "audio/sfx/Room1SFX/Marble Death Crush.ogg"
     metaldoorclose = "audio/sfx/Room1SFX/Metal Door Close 2.ogg"
+    roomsuccess = "audio/sfx/Room1SFX/Success 2.ogg"
+    puzzlesuccess = "audio/sfx/Room1SFX/Success 3.ogg"
+    marbleroll = "audio/sfx/itemfall.ogg"
+    paperpickup = "audio/sfx/Room 3 SFX/Paper pick up.ogg"
+    bodypierce = "audio/sfx/Room 2/Body pierce 2.ogg"
+    error = "audio/sfx/Room 2/Error 2.ogg"
+    zap = "audio/sfx/Room 2/Zap 2.ogg"
+    smash = "audio/sfx/Room 2/Impact + Death 1.ogg"
+    smash2 = "audio/sfx/Room1SFX/Impact + Death 2.ogg"
+    falling = "audio/sfx/Room 2/Body Fall.ogg"
+    trapdoor = "audio/sfx/Room 2/Trap door 1.ogg"
+    fistslam = "audio/sfx/Body Fall 1.ogg"
+    gunshot = "audio/sfx/Room 2/Gun Shot 1.ogg"
+    paperturn = "audio/sfx/Room 3 SFX/paper Turn.ogg"
+    lazercharge = "audio/sfx/Room 3 SFX/Laser Charging 2.ogg"
+    lazerblast = "audio/sfx/Room 3 SFX/Laser Blast.ogg"
+    piercings = "audio/sfx/Room 3 SFX/Multiple Peircings3.ogg"
+    plushiesqueak = "audio/sfx/Room 3 SFX/Squeak2.ogg"
+    buzzsawgore = "audio/sfx/Room 3 SFX/Buzzsawgore1.ogg"
+    gunblast1 = "audio/sfx/Ending sfx/Gun Blast 1.ogg"
+    gunblast2 = "audio/sfx/Ending sfx/Gun Blast 2.ogg"
+    gundrop = "audio/sfx/Ending sfx/Gun Slide.ogg"
+    bulletimpact = "audio/sfx/Ending sfx/bullet Impact.ogg"
+    hairpindrop = "audio/sfx/Ending sfx/Hairpin Drop.ogg"
+    hairpinpickup = "audio/sfx/Ending sfx/hairpin pickup.ogg"
+    gunclick = "audio/sfx/Ending sfx/Gun Click 3.ogg"
 
 
 
@@ -186,11 +214,13 @@ init python:
     bowlgrab : _("A metal bowl being grabbed."),
     pelletchew : _("Chewing crunchy pellets."),
     pelletfall : _("Pellets falling on the floor."),
-    bodyfall : _("Someone falling on the floor."),
+    bodyfall : _("Something slamming on a surface."),
     creakyfaucet : _("A creaking metal faucet."),
     doorunlock : _("A door unlocking."),
-    tvoff : _("A TV switching off."),
-    tvon : _("A TV switching on."),
+    tvoff : _("A switch turns on."),
+    switchon : _("A switch turning on."),
+    switchoff : _("A switch turning off."),
+    tvon : _("A switch turns off."),
     doorclose : _("A door closing."),
     dooropen : _("A door opening."),
     doorlock : _("A locked door."),
@@ -204,7 +234,33 @@ init python:
     liquidpour : _("A liquid is poured."),
     marbledeath : _("A comically large marble is on it's way..."),
     metaldoorlock : _("A locked metal door."),
-    metaldoorclose : _("A metal door closes.")
+    roomsuccess : _("Congrats! You completed this puzzle room."),
+    puzzlesuccess : _("You completed a puzzle!"),
+    marbleroll : _("Something rolls out."),
+    paperpickup : _("A piece of paper is picked up."),
+    bodypierce : _("Someone's body is pierced."),
+    error : _("An error sound."),
+    zap : _("Someone gets zapped."),
+    smash : _("Someone gets smashed."),
+    smash2 : _("Someone gets smashed."),
+    trapdoor : _("A trap door opens."),
+    falling : _("Someone is falling."),
+    gunshot : _("A gunshot fires."),
+    metaldoorclose : _("A metal door closes."),
+    lazercharge : _("A lazer charges."),
+    lazerblast : _("A lazer blasts."),
+    piercings : _("Someone is pierced multiple times."),
+    paperturn : _("A page is turned."),
+    plushiesqueak : _("A soft toy squeaks."),
+    buzzsawgore : _("Someone is torn apart by a buzzsaw."),
+    gunblast1 : _("A gun fires."),
+    gunblast2 : _("A gun fires."),
+    gundrop : _("A gun drops."),
+    bulletimpact : _("A bullet flies and hits someone."),
+    hairpindrop : _("A hairpin drops."),
+    hairpinpickup : _("A hairpin is picked up."),
+    gunclick : _("A gun clicks.")
+
     }
 
 # This is where you define the names for the music files you will be using in the game. It is recommended to define the main menu BGM as well.

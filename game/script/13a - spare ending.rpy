@@ -79,13 +79,13 @@ label spare_ending:
     #"{b}[{/b}{b}Cautionne{/b}{b} is yelling now]{/b}"
     scene cautionne gun ecu sob 
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-08.ogg"
-    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}{p=0.308}{nw}"
+    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}{p=1}{nw}"
     voice sustain
-    cr "{sc}She {i}saved {/i}me!{w=0.252} She {i}raised {/i}me!{w=0.292} \nShe {i}stood up for me{/i} when no one else did!{/sc}"
+    cr "{sc}She {i}saved {/i}me!{w=1} She {i}raised {/i}me!{w=1} \nShe {i}stood up for me{/i} when no one else did!{/sc}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-09.ogg"
-    cr "{sc}And what did {i}STOP {/i}do?{/sc}{p=0.234}{nw}"
+    cr "{sc}And what did {i}STOP {/i}do?{/sc}{p=1}{nw}"
     voice sustain
-    cr "{sc}They MADE her a villain!{w=0.219} They took EVERYTHING away from her!{w=0.379}\n They KILLED her!{/sc}"
+    cr "{sc}They MADE her a villain!{w=1} They took EVERYTHING away from her!{w=1}\n They KILLED her!{/sc}"
     scene cautionne gun ecu sobsilent
     pause 1
     scene cautionne gun cu crysilent with dissolve
@@ -101,11 +101,12 @@ label spare_ending:
     cr "{si}...Hit me!{/si}"
     cr "{si}'Cause if you don't,{w=0.1} I'll...{w=0.5}{/si} {sc}I'll...{/sc}"
     scene cautionne gun cu crysilent
-    #"{b}[pause with the sound of the player's gun dropping to the floor]{/b}"
 
     pause 1
 
     scene black with fade
+
+    $ play_sound(gundrop)
 
     pause 1
     "(...You can't deal with this anymore.)"
@@ -125,9 +126,9 @@ label spare_ending:
     scene cautionne gun cu speaking 
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-10.ogg"
     cr "{si}T-then,{w=0.434} on behalf of STOP...{/si}{w=1.5} {i}die.{/i}"
-    #"{b}[pause. Sound of the gun firing. {/b}{b}Screen goes black]{/b}"
+    $ play_sound(gunblast1)
     scene black
-    pause 3
+    pause 5
     "(The bullet...)"
     pause 1
     "(...it only grazed your cheek.)"
@@ -160,7 +161,7 @@ label spare_ending:
     scene cautionne sit stunned:
         align (0.0,0.1)
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-15.ogg"
-    cr "No,{w=0.35} I couldn't have.{p=0.599}{nw}" 
+    cr "No,{w=0.35} I couldn't have.{p=1}{nw}" 
     voice sustain
     cr "Trying to kill you...{w=0.717} was a lot more tiring than I thought it would be."
     "Tiring?"
@@ -243,22 +244,22 @@ label spare_ending:
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-25.ogg"
     cr "I did sneak copies of everything you've seen here onto your device.{w=0.675} I found your address while you were looking around."
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-26.ogg"
-    cr "Pretty devious idea, right?{p=0.556}{nw}"
+    cr "Pretty devious idea, right?{w=1}{nw}"
     scene cautionne sit smug:
         align (0.0,0.1)
-    extend " Downright heinous."
+    extend "Downright heinous."
     "(He takes a deep breath.{w=0.5} Then exhales.)"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-27.ogg"
     cr "Alright.{w=0.833} Here's another world-class criminal scheme for you:"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-28.ogg"
     cr "{i}\"STOP agent stakes reputation,{w=0.1} credentials,{w=0.1} leaks internal docs{w=0.1} to all four corners of the net.\"{/i}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-29.ogg"
-    cr "Not a bad headline.{p=0.464}{nw}"
+    cr "Not a bad headline.{w=1}{nw}"
 
     scene cautionne sit hope:
         align (0.0,0.1)
 
-    extend " Could make for a half-decent start to a villainous career."
+    extend "Could make for a half-decent start to a villainous career."
     #"{b}[pause]{/b}"
     scene cautionne sit hopesilent:
         align (0.0,0.1)
@@ -269,7 +270,7 @@ label spare_ending:
 
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-30.ogg"
 
-    cr "Your choice,{w=0.1} obviously.{p=0.606}{nw}"
+    cr "Your choice,{w=0.1} obviously.{w=0.606}{nw}"
 
     scene cautionne sit smug:
         align (0.0,0.1)
@@ -287,8 +288,13 @@ label spare_ending:
     pause 2
 
     scene black with slowfade
-    $ play_sound(footsteps4)
+
+    $ play_sound(hairpindrop)
+
     pause 2
+
+    $ queue_sound(footsteps4)
+    pause 4
 
     scene hairclip1 with slowfade:
         zoom 0.5
@@ -308,6 +314,8 @@ label spare_ending:
 
     pause 1
 
+    $ play_sound(hairpinpickup)
+
     scene hairclip3 with slowfade:
         zoom 0.5
 
@@ -320,20 +328,6 @@ label spare_ending:
     pause 7
 
     call screen credits(60)
-
-    hide text
-
-    pause 3
-    $Achievement.add(achievement_end1)
-
-    show text "{size=90}{color=#ffffff}spare end{/color}{/size}":
-            xalign 0.5 yalign 0.5
-
-    pause 5
-
-    hide text
-
-    pause 3
 
 
     #"{b}[pause as {/b}{b}Cautionne's{/b}{b} footsteps are heard slowly walking off]{/b}"

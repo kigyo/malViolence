@@ -194,6 +194,9 @@ label bomb_solved:
         alpha 0.5
     $ room1["solved"].append("bomb")
 #####Show a marble 
+    $ play_sound(puzzlesuccess)
+    "You solved the puzzle!"
+    $ play_sound(marbleroll)
     "(You spot a marble, and a note reading \"Field Marshall Grad Rufos\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
@@ -224,9 +227,8 @@ label bomb_game_over:
     cr "I can say with {i}100\% certainty{/i} that it\'ll make a fantastic explosion."
     "(Phew.{w} Looks like I've done what I was supposed to.)"
     $ play_sound(timeralarm)
-    pause 3
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
-    cr "That said,{w=0.1} the timer—{p=0.3}{nw}"
+    cr "That said,{w=0.1} the timer—{p=1}{nw}"
     $ play_sound(bombexplosion1)
     scene black with small_shake
     pause 3
@@ -250,7 +252,9 @@ label hacking_solved:
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room1["solved"].append("hacking")
-    #Show a marble
+    $ play_sound(puzzlesuccess)
+    "You solved the puzzle!"
+    $ play_sound(marbleroll)
     "(You spot a marble, and a note reading \"Attorney General Zark Hundor\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
@@ -273,14 +277,11 @@ label hacking_game_over:
 
     $ play_sound(timeralarm2)
 
-
-    pause 2
-
+    "(It's too late.{w} The counter-trace just found you and—){p=0.5}{nw}"
+    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){p=0.3}{nw}"
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
-    "(It's too late.{w} The counter-trace just found you and—){p=0.5}{nw}"
-    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     cr "Good news!{w=0.5} STOP found your computer."
@@ -309,7 +310,9 @@ label decanting_solved:
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room1["solved"].append("decanting")
-    #Show a marble
+    $ play_sound(puzzlesuccess)
+    "You solved the puzzle!"
+    $ play_sound(marbleroll)
     "(You spot a marble, and a note reading \"Imperator Unnfer Progas\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
@@ -357,8 +360,8 @@ label decanting_game_over:
 
     show bg room1 at dizzy:
         zoom 0.335 yalign 0.0
-        easeout 0.2 zoom 1.0 xalign 0.2 yalign 1.0
-    pause 0.2
+        easeout 0.3 zoom 1.0 xalign 0.2 yalign 1.0
+    pause 0.3
 
     scene black with small_shake
 
@@ -378,12 +381,12 @@ label decanting_game_over:
 label marble_game_over:
     $renpy.block_rollback()
     $ inspect = "game over"
-    #show screen puzzle_playspace(pb, False)
+    show screen room1_marble with None
     show black onlayer screens with dissolve:
         alpha 0.5
     "(You step back and pause.{w} Something about the order doesn't seem—)"
     hide black onlayer screens
-    ### hide marble screen here
+    hide screen room1_marble
     with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Oof.{w=0.5} {i}Not quite.{/i} "
@@ -406,7 +409,7 @@ label marble_game_over:
     l "{b}Contributing Factors to Death:{/b} Didn't recognize good slapstick even when it hit them."
 
     $deadend("dead2")
-    le "DEAD END 02: Marbleous Slapstick!"
+    le "DEAD END 02: Marble-ous Slapstick!"
     pause 2
     nvl clear
     $game_over(1)

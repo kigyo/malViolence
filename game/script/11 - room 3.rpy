@@ -78,22 +78,23 @@ label room_3:
             ### sound of paper being picked up
             show room3_scrapbookcg with dissolve:
                 yalign 0.2 xalign 0.5
+            $ play_sound(paperpickup)
             "(You pick up what appears to be a generic scrapbook,{w=0.1} like those shoved to the back shelves of charity stores.{w} Looking closely, you can still see remnants of price sticker glue.)"
             "(It feels normal.{w} {i}Too{/i} normal.{w} The book's clearly hiding some deep,{w=0.1} dark{w=0.1} secret.)"
-            ### sound of paper being flicked
+            $ play_sound(paperturn)
             "(But the inner contents are equally...{w=0.5} {i}normal.{/i})"
             "(All you find are photographs of a woman who looks a lot like Dr. Danger,{w=0.1} and a young boy with a crooked,{w=0.1} toothy{w=0.1} grin.)"
             "(The craftsmanship on display isn't anything remarkable,{w=0.1} with poorly cut edges and tacky glitter glue smeared across the cheap cardstock.)"
             "(At least the pages seem to be in chronological order.)"
-            ### sound of paper flip
+            $ play_sound(paperturn)
             "(In the earliest photos,{w=0.1} the boy is bedridden.{w} His skin is unnaturally pale,{w=0.1} and his gaze is unfocused —{w=0.5} empty, even.)"
-            ### sound of paper flip
+            $ play_sound(paperturn)
             "(But as you flick though the pages,{w=0.1} he grows stronger.)"
             "(He gets out of bed.{w} His eyes shine with inspiration and intelligence.{w} He smiles.)"
             pause 1
             "(The woman in these photos must've been taking good care of him.)"
             pause 1
-            ### sound of paper flip
+            $ play_sound(paperturn)
             "(The later photos are self-explanatory.{w} Each moment is carefully dated and annotated.{w} Playing videogames,{w=0.1} reading bedtime stories...{w=0.5} and what seems to be a movie night.)"
             "(You know the film they're watching.{w} It's that one cartoon about an alien supervillain;{w=0.5} one with a very big brain,{w=0.1} but very little common sense.)"
             pause 0.5
@@ -110,9 +111,10 @@ label room_3:
             ### sound of paper being picked up
             show room3_report with dissolve:
                 yalign 0.2 xalign 0.5
+            $ play_sound(paperpickup)
             "(You pick up a clipboard with a thick stack of charts and diagrams pinned to the front.)"
             "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh,{w=0.1} black{w=0.1} lettering.{w} At the bottom of the page,{w=0.1} you spot an acronym:{w=0.5} \"YTDI\".)"
-            ### sound of paper flip
+            $ play_sound(paperturn)
             "(You flip through the log.{w} The recuperation described here is difficult to read.)"
             "(Seizures,{w=0.1}  phantom pain,{w=0.1}  memory loss{w=0.1}  and brain damage are all expected results,{w=0.1} not side effects.)"
             "(Scrawled notes speculate that these symptoms would last for several years or decades —{w=0.5}  perhaps even permanently.)"
@@ -148,9 +150,10 @@ label room_3:
 
     elif inspect == "locked_container":
         if room3["locked_container"] == 0:
+            "(This appears to be a locked box...{w=0.5}but it's without a lock.{w} You give the lid a small tug, and it opens.)"
             $ play_sound(boxunlock)
-            "(After entering the combination,{w=0.1}  there's a small click.{w} You give the handle a tug.)"
-            $ play_sound(boxopen)
+            $ queue_sound(boxopen)
+            pause 2
             "(There's no dust inside,{w=0.1}  but a stale odor wafts out.{w} Clearly, this hasn't been opened for a long time.)"
             show room3_lockedbox with dissolve:
                 yalign 0.2 xalign 0.5
@@ -171,12 +174,13 @@ label room_3:
             ### sound of paper being picked up
             show room3_notebook with dissolve:
                 yalign 0.2 xalign 0.5
+            $ play_sound(paperpickup)
             "(It's a crumpled,{w=0.1} heavily worked-over notebook filled with grandiose ramblings in the third person.)"
             "(Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
-            ### sound of paper flip
+            $ play_sound(paperturn)
             "(But the more you flip back through the pages,{w=0.1} the more the writing grows negative in tone.)"
             "(A second distinct set of handwriting accompanies the first,{w=0.1} leaving notes on how to aim the subject matter in a more positive direction)"
-            ### sound of paper flip
+            $ play_sound(paperturn)
             "(Even further back,{w=0.1} the spidery handwriting disappears altogether.{w} Instead,{w=0.1} there are grids and examples written with clean,{w=0.1} crisp penmanship.)"
             "(Shaky,{w=0.1} barely-legible scribbles sit below,{w=0.1} rounding out vague, letter-like shapes.)"
             "(It almost looks like a therapeutic exercise —{w=0.5} or a homework assignment.{w} Maybe it's both.)"
@@ -194,7 +198,7 @@ label room_3:
     elif inspect == "diary":
         $ nvl_heading = "Entry Set #" + str(room3["diary"]+1)
         if room3["diary"] == 0:
-            ### sound of paper being picked up
+            $ play_sound(paperpickup)
             "(It's a loose page with handwriting on it.{w} Judging by the number in the corner and the fading ink,{w=0.1} it must be a small part of a much larger document.)"
             #"FIRST ENTRIES"
             n "\"It's nice to have job security right out of school.{w} I had my doubts during junior year, of course, but I don't think anyone could've predicted how the sector's grown these past few months.{w} The developments in cybernetic technology have been explosive.{w} Sometimes {i}literally. {/i}"
@@ -203,23 +207,27 @@ label room_3:
             n "Oh well.{w} They could always change the acronym later.\""
         elif room3["diary"] == 1:
             #"SUCCESS WITH LIMITING PROLIFERAITON OF TECH, PROMOTION, DISCOVERY OF POTENTIAL FOR YOUNGER SUBJECTS"
+            $ play_sound(paperpickup)
             n "\"I thought that things were moving fast before — but the growth we're seeing now makes those earlier years look glacial.{w} STOP is doing good work that needs to get done, and it's making countries put money where their mouths are when it comes to international cooperation efforts."
             nvl clear
+            $ play_sound(paperturn)
             n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.{w} \nThis month we finalized our report on maximizing cybernetic synchronization for patients — confirming my earlier theory that the younger, the better. "
             n "The difference really was astounding.{w} And I must admit, it felt good to shove that 19\% performance increase right in that stuffy old bastard's smug face.\""
             nvl hide
             pause 0.5
             nvl clear
             nvl show
-
+            $ play_sound(paperturn)
             n "\"Dr. Tan asked if the trend in performance would improve further if we started surgery any earlier.{w} A weird question, since this tech is only approved for anyone old enough to enlist, but I guess she was just being thorough.{w} The theory is sound.\""
             nvl hide
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"The promotion was nice.{w} I deserve it, and I was the only obvious choice, but still.{w} It felt nice to be recognized.\""
         elif room3["diary"] == 2:
             #"STAGNATION, LOTS OF RESEARCH WORK DISILLUSIONMENT, PARANOIA"
+            $ play_sound(paperpickup)
             n "\"Another month where the Security Advisory Council looked completely lost.{w} It's like they don't know what to do with peacetime."
             n "They do amazing work — obviously.{w} The world is secure, and cybernetic technology is finally getting regulated.{w} The laws are catching up with the science."
             n "That's a good thing, even if it makes their job a little less\nexciting."
@@ -228,23 +236,27 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"I requested another transfer.{w} My third in three years, but they didn't seem to mind.{w} I just can't find work as engrossing as I used to.{w} It probably doesn't help that I'm not sure what it is I do anymore. "
             n "I mean, logically, I know what I do — I research cybernetics.{w} But I'm not sure what I do for STOP.{w} They haven't had a major security incident in months; the last \"incident\" they responded to was just a protest outside the building that got a little rowdy.\""
             nvl hide
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"Staff morale's been down ever since.{w} A little controversy's to be expected, given the power STOP has nowadays.{w} They're being naive if they expect people to be grateful to the organization forever.\""
             nvl hide
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"I might've transferred a few times too many."
             n "I came into work today and clocked out without recognizing a single face the entire time.{w} New people, places, committees, projects, and always more acronyms. "
             n "And, for the first time in years, I was denied access to internal data.{w} I didn't think anything could be above my paygrade anymore.\n"
             n "Note to self: look up \"YTDI \"."
         elif room3["diary"] == 3:
             #"Meeting CAUTIONNE"
+            $ play_sound(paperpickup)
             n "\"\'I was very disappointed with the state of the Youth Training and Development Initiative.\'"
             n "That's how I put it in writing. "
             n "I don't really have the right words to express my disgust with this program's existence.{w}\n\nThe idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline — assuming that we were talking about 18 vs 24. "
@@ -253,6 +265,7 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"They don't actually care about reducing rejection symptoms or making the cybernetics work more seamlessly."
             n "They care about creating a product by experimenting on children.\n"
             n "Children that no one else cares about."
@@ -261,17 +274,29 @@ label room_3:
                 pause 0.5
                 nvl clear
                 nvl show
+            $ play_sound(paperturn)
             n "They care about producing cybernetic \"Trainees\" that are powerful, unthinking, and unflinchingly obedient to authority. "
             n "STOP cares about selling these trainees as a force to keep its donors on top.\""
             nvl hide
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"I got a transfer to the YTDI.{w} No one even seemed ashamed to give me full access.\""
             nvl hide
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
+            n "\"I get the sense that my superiors aren't paying attention to what is happening.{w} That might be the most infuriating part for me —{w} they don't even care that much about the success or failure of this program. "
+            n "The implication I'm getting is that this is far from the only program of its kind.{w} It might be one of many, many more.\""
+            nvl hide
+            pause 0.5
+            nvl clear
+        elif room3["diary"] == 4:
+            #"MEETING CAUTIONNE AND FLEEING"
+            nvl show
+            $ play_sound(paperpickup)
             n "\"He smiled at me. "
             n "Even though everyone else he's seen here —{w} everyone dressed like me, acting like me, working for the same people as me —{w} has made him suffer. "
             n "He {i}smiled{/i} at me.\""
@@ -279,6 +304,7 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"I'm getting better at coming up with excuses to visit him, at least.\n"
             n "I need to check how he's coping with procedures.{w} I might need to test his reflexes.{w} Hell, he might need a snack to make him more cooperative."
             n "All my explanations are superficially believable at best."
@@ -288,10 +314,7 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
-            n "\"I get the sense that my superiors aren't paying attention to what is happening.{w} That might be the most infuriating part for me —{w} they don't even care that much about the success or failure of this program. "
-            n "The implication I'm getting is that this is far from the only program of its kind.{w} It might be one of many, many more.\""
-        elif room3["diary"] == 4:
-            #"SEVEN FLEE, ON THE RUN"
+            $ play_sound(paperturn)
             n "\"I'm never going to be able to forget the look on his face when the convulsions started. "
             n "He knew it was coming, and he knew there was nothing he could do to even brace himself for the pain. "
             n "He's been through it countless times.{w} I don't want to see it ever again.\""
@@ -299,6 +322,7 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"They claimed that it was a clerical error that he didn't receive his anti-seizure medications that morning. "
             n "I know that it was actually punishment.{w} He refused to obey during yesterday's mandatory exercises. "
             n "You wouldn't treat an {i}animal{/i} like this, much less another human.\n"
@@ -307,6 +331,7 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"I triggered the false alarm right on schedule, down to the second.\n{w} My not-at-all false explosive followed suit. "
             n "I had always understood that the chemical reaction was very simple to set up.{w} But, I still expected my first felony to present more challenges than this.{w} Maybe I have a knack for this kind of thing. "
             n "He didn't hesitate for one second when I asked him to come with me.{w} As I rushed him through the fire exit, the look on his face at that moment has stuck with me.{w} Could anyone have looked more relieved?\""
@@ -314,10 +339,11 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"Maybe he should have hesitated.{w} All that awaits him is a life in hiding."
             n "...At least he'll have a choice from now on.\""
         elif room3["diary"] == 5:
-            #"FIGHTING BACK, CAUTIONNE WANTING TO HELP"
+            $ play_sound(paperpickup)
             n "\"I've no right to call myself a parent, but even so —{w} parenthood is hard. "
             n "His rehab is going as well as can be expected, but this is no way to raise a child."
             n "I can educate him, keep him fed, and care for him."
@@ -326,12 +352,14 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"I managed to section away enough resources to last us a while, but all my internal records within STOP were destroyed by the fire. "
             n "They still know I'm out here, but now I have no proof that I was ever as big a part of them as I say.{w} It's my word against theirs, and they have far larger, more powerful allies.\""
             nvl hide
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"Bombs, sabotage, and cryptic messages on shady websites get much better traction than just sending my research notes to major news outlets."
             n "No one cares what Deirdre Destrange has to say.{w} But when \"Dr. Danger\" blows up an energy pipeline, people look up from their food and {i}watch.{/i}"
             n "He chose the name.{w} It's got a nice, old-world appeal to it.\""
@@ -339,6 +367,7 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"Cautionne has always been eager to please and happy to spend time with me.{w} Is it any wonder he wants to help the nefarious Dr. Danger in her fight against STOP? "
             n "I should tell him no.{w} Revenge is poison, and he's already been through too much. "
             n "But I still can't even bear to calculate how much of his suffering is my fault.{w} I don't have the heart to tell him no — and I'd sooner die than judge him for how much he hates STOP.\""
@@ -346,6 +375,7 @@ label room_3:
             pause 0.5
             nvl clear
             nvl show
+            $ play_sound(paperturn)
             n "\"Dr. Danger and Cautionne are becoming a household name, but that's about it. "
             n "STOP is still in power.{w} People are still too scared to take them to task.{w} And there are still YTDI centers all over the world.\n{w}If I destroy one, they move the children to another. "
             n "That's horrible as-is, but what if they don't care enough to do even that?"
@@ -419,7 +449,7 @@ label room_3:
             $scrapbook_init()
             $ room3["scrapbook_new"] = 1
             show screen room3_meta(_layer="master") with easeintop
-            "(The \"lock\" for the door is a... scrapbook? Its pages are empty, though...)"
+            "(The \"lock\" for the door is a...{w=0.5} scrapbook?{w} Its pages are empty, though...)"
             pass
         else:
             show screen room3_meta(_layer="master") with easeintop
@@ -448,9 +478,9 @@ label scrapbook_game_over:
     "(But when you step back,{w=0.1} you feel like {i}something's{/i} out of place.)"
     "(And if {i}you {/i}can tell,{w=0.1} then {i}he {/i}can tell.{w} Better—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-    cr "It's okay to suck at arts and crafts, lab rat. Not everyone's born to make masterpieces."
+    cr "It's okay to suck at arts and crafts, lab rat.{w=0.5} Not everyone's born to make masterpieces."
     hide black onlayer screens
-    hide screen room3_quilt 
+    hide screen room3_meta
     with puzzle_hide
     cr "But...{w=0.5} that scrapbook meant a lot to me."
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
@@ -459,12 +489,12 @@ label scrapbook_game_over:
     "(Was...{w=0.5} was that an option?)"
     cr "...Wait,{w=0.1} I left that out,{w=0.1} didn't I?"
     cr "My bad!{w=0.5} If memory serves me,{w=0.1} this button should—"
-    #"{b}[BEEP]{/b}"
-    #"{b}[sound of lazer charging up]{/b}"
+    $ play_sound(switchon)
     pause 1
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
-    cr "Whoopsie doopsie!{w=0.5} Looks like I pressed the wrong—"
-    #"{b}BLAST SFX, CUT TO BLACK{/b}"
+    $ play_sound(lazercharge)
+    cr "Whoopsie doopsie!{w=0.5} Looks like I pressed the wrong—{p=0.5}{nw}"
+    $ play_sound(lazerblast)
 
     scene black with small_shake
     pause 3
@@ -489,6 +519,7 @@ label quilt_solved:
     $ room3["pages"].append(1)
     $ room3["pages"].append(5)
     #Show a note/picture/memento
+    $ play_sound(puzzlesuccess)
     "(Congratulations! {w}You've solved the quilt puzzle.)"
     hide black onlayer screens
     hide screen room3_quilt 
@@ -512,7 +543,10 @@ label quilt_game_over:
     cr "I'd like to think of myself as a lenient kinda guy... {w}But watching you butcher that sentimental quilt is {i}pretty painful.{/i}"
     cr "Like,{w=0.1} a death by a thousand cuts...{p=0.5}{nw}"
     cr "...or needles,{w=0.1} in this case."
+    $ play_sound(switchon)
     "(You hear a switch go off,{w=0.1} and—){p=0.5}{nw}"
+    $ play_sound(piercings)
+    $ queue_sound(bodypierce)
     scene black
 
     #{i}{b}[sound of protag getting stabbed with needles]{/b}{/i}
@@ -541,6 +575,7 @@ label toys_solved:
     $ room3["pages"].append(2)
     $ room3["pages"].append(4)
     #Show a note/picture/memento
+    $ play_sound(puzzlesuccess)
     "(Congratulations! {w}You've solved the toys puzzle.)"
     hide black onlayer screens
     hide screen toy_playspace
@@ -555,6 +590,7 @@ label toys_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 1.0
+    $ play_sound(plushiesqueak)
     "(You set down the toys and pause to think.)"
     "(The task is a lot harder than you thought it would be.{w} Maybe—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
@@ -571,6 +607,10 @@ label toys_game_over:
     "(The sudden quietness in his voice makes you freeze.)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "{i}Right.{/i}"
+
+    $ play_sound(trapdoor)
+    $ queue_sound(falling)
+    $ queue_sound(buzzsawgore)
 
     scene black with small_shake
 
@@ -597,6 +637,7 @@ label cooking_solved:
     $ room3["pages"].append(3)
     $ room3["pages"].append(6)
     #Show a note/picture/memento
+    $ play_sound(puzzlesuccess)
     "(Congratulations! {w}You've solved the {i}mise en place{/i} puzzle.)"
     hide black onlayer screens
     hide screen mise_en_place
@@ -620,6 +661,8 @@ label cooking_game_over:
     pause 1
     cr "How the {i}hell{/i} do you screw up pancakes that bad?{w=0.5} Did STOP mangle your common sense as well as your brains?"
     "(You open your mouth to protest and—){p=0.3}{nw}"
+
+    $ play_sound(smash)
 
     scene black
 
