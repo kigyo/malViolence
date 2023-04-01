@@ -197,6 +197,12 @@ label init_mise_en_place:
                                                  droppable=True,
                                                  draggable=False,
                                                  dropped=cutting_board_dropped))
+    return
+
+label reset_cutting_board():
+    call init_mise_en_place
+    hide screen mise_en_place
+    call screen mise_en_place
 
 style ingredients_text:
     color "#6f593d"
@@ -219,7 +225,7 @@ screen mise_en_place(interactable=True):
     layer "puzzles"
 
     frame style "puzzle_frame" padding 0,0,50,40:
-        
+
         frame style_prefix "ingredients":
             xysize (600, 860)
             pos (1250, 50)
@@ -266,6 +272,7 @@ screen mise_en_place(interactable=True):
                 null height 30
 
         hbox xalign 1.0 yalign 1.0 ysize 100 spacing 112:
+            textbutton "RESET" style "confirm_button" action Call("reset_cutting_board") text_color "#fff" align (0.0, 0.5)
             textbutton "TRASH" style "confirm_button" text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5
             textbutton "SUBMIT" style "confirm_button" action Function(check_board) sensitive not inspect xalign 0.5 yalign 0.5 xoffset -40
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5

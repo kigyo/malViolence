@@ -138,10 +138,6 @@ init python:
                 self.handles = list(map(list, list(zip(*self.handles[::-1]))))
                 self.shape = list(zip(*self.shape[::-1]))
                 self.handles = list(map(list, list(zip(*self.handles[::-1]))))
-            for y in range(len(self.handles)):
-                for x in range(len(self.handles[y])):
-                    if self.handles[y][x]:
-                        self.handles[y][x].snap(self.display.x+x*block_size, self.display.y+y*block_size, 0.0)
             self.display.child.rotate = self.rotation*90
             self.display.child.update()
             if self.last_filled:
@@ -164,7 +160,6 @@ init python:
             if not not_filled:
                 for (x, y) in self.last_filled:
                     bomb.data[y][x] += 1
-                    self.display.snap(offset_x+ox*block_size, offset_y+oy*block_size, 0.25)
             else:
                 self.last_filled = []
                 self.display.snap(self.display.x, self.display.y, 0.0)
@@ -201,7 +196,6 @@ init python:
                         if part.handles[py][px]:
                             part.handles[py][px].handle = (px, py) == (offx, offy)
             x, y = drop.drag_name
-            handle = [d for d in drags if d and d.handle][0]
             for py in range(len(part.handles)):
                 for px in range(len(part.handles[py])):
                     if part.handles[py][px] and part.handles[py][px].handle:
@@ -241,8 +235,8 @@ init python:
 
     def activated(drags):
         pass
-    
-    def init_bomb_function(txt=_("Invalid. Restarting...")):  
+
+    def init_bomb_function(txt=_("Invalid. Restarting...")):
         store.parts = []
         store.parts.append(Part("shape_1", pos=(240, 220), color="#E3615A"))
         store.parts.append(Part("shape_2", pos=(260, 40), color="#00E6E3"))
