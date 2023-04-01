@@ -284,11 +284,11 @@ label evidence_game_over:
     #"{i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
     scene black
     pause 3
-    $deadend("dead7")
     $nvl_heading = "Lab Report #273"
     l "Subject experienced permanent loss of life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
     l "Guess they were worth the trouble of installation!"
     l "{b}Contributing Factors to Death:{/b} Couldn't put progress on the board."
+    $deadend("dead7")
     le "DEAD END 07: NAME!"
     pause 2
     nvl clear
@@ -429,9 +429,17 @@ label word_game_over:
     # [error sound effect]
     $ random_choice = random.randint(1,5)
     $renpy.block_rollback()
+####################### EASTER EGG?
     if word_answer == ["","","","",""]:
+
+
         #TODO: special text if you didn't even enter anything
         pass
+    elif word_answer == ["T","A","S","E","R"]:
+
+        cr "...Did you even try?"
+
+####################### EASTER EGGS END
     elif random_choice == 1:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
         cr "Holy crap!{w=0.5} Did you just manage to guess that right on your first try?"
@@ -513,11 +521,11 @@ label word_game_over:
         scene black
         pause 3
 
-    $deadend("dead6")
     $nvl_heading = "Lab Report #404"
     l "Not much to say here."
     l "The lab rat just sucks at word games!"
     l "{b}Contributing Factors to Death:{/b} Should've dipped their toes into a few wordy titles before they met me. Personally, I reccommend {i}Scraddle.{/i}"
+    $deadend("dead6")
     le "DEAD END 06: Stop Me If You Think You've Word This One Before..."
     pause 2
     nvl clear

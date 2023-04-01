@@ -324,7 +324,7 @@ style quick_button_text:
 
 screen navigation():
 
-    on "show" action Stop("sound", fadeout=0.5)
+    on "show" action Stop("beeps", fadeout=0.5)
 
     vbox:
         style_prefix "navigation"
@@ -605,7 +605,7 @@ screen about():
                     label _("Director & CG Artist") + ":"
                     text _("{a=https://madocallie.carrd.co/}Mado{/a}") 
                 hbox spacing 15:
-                    label _("Scenario") + ":"
+                    label _("Writing") + ":"
                     text _("{a=https://madocallie.carrd.co/}Mado{/a}") + ", " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}")  + ", " + _("{a=https://itch.io/profile/luoxyz}Z{/a}") 
                 hbox spacing 15:
                     label _("Puzzle Designer") + ":"

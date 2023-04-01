@@ -183,3 +183,8 @@ transform alphashow(t=0.25, alph=1.0):
         easein t alpha alph
     on hide:
         linear t alpha 0.0
+    on replace:
+        alpha 0 
+        easein t alpha alph
+    on replaced:
+        linear t alpha 0.0

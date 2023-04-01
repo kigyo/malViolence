@@ -256,6 +256,11 @@ label room_3:
             n "\"They don't actually care about reducing rejection symptoms or making the cybernetics work more seamlessly."
             n "They care about creating a product by experimenting on children.\n"
             n "Children that no one else cares about."
+            if gui.text_size > 40:
+                nvl hide
+                pause 0.5
+                nvl clear
+                nvl show
             n "They care about producing cybernetic \"Trainees\" that are powerful, unthinking, and unflinchingly obedient to authority. "
             n "STOP cares about selling these trainees as a force to keep its donors on top.\""
             nvl hide
