@@ -93,10 +93,10 @@ init -1:
 #         elif renpy.music.get_playing(channel="music") is None and renpy.music.get_playing(channel="music1") is None:
 #             oldChannel = None
 #             newChannel = "music"
-            
+
 #         if oldChannel is not None:
 #             renpy.music.stop(channel= oldChannel, fadeout=fadeTime)
-            
+
 #         if newChannel is not None:
 #             renpy.music.play(music, channel=newChannel,fadein=fadeTime)
 

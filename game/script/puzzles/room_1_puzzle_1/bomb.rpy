@@ -1,13 +1,17 @@
 define block_size = 80
 default bomb = None
-define offset_x = 715
-define offset_y = 200
-define bomb_mask = [[0, 1, 1, 1, 1, 0],
-                    [1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1]]
-
+define offset_x = 1100
+define offset_y = 100
+define bomb_mask = [[0, 0, 1, 1, 1, 1, 1, 0, 0],
+                    [0, 1, 1, 1, 1, 1, 1, 1, 0],
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    [1, 1, 1, 0, 0, 0, 1, 1, 1],
+                    [1, 1, 1, 0, 0, 0, 1, 1, 1],
+                    [1, 1, 1, 0, 0, 0, 1, 1, 1],
+                    [1, 1, 1, 0, 0, 0, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    [0, 1, 1, 1, 1, 1, 1, 1, 0],
+                    [0, 0, 1, 1, 1, 1, 1, 0, 0]]
 # TODO center bound
 
 init python:
@@ -46,7 +50,7 @@ init python:
                         failed = True
                         break
                 if failed: break
-            if failed: 
+            if failed:
                 renpy.jump("bomb_game_over")
             else:
                 store.room1["bomb"] = "solved"
@@ -57,18 +61,20 @@ init python:
 
     class Part(object):
         def __init__(self,
-                     bond=None,
                      shape=None,
+                     bond="triple",
                      color="#fff",
                      pos=(600, 400)):
 
-            self.shape = [row[:] for row in getattr(renpy.store, "shape_%s" % shape, default_shape)]
+            self.shape = [row[:] for row in getattr(renpy.store, "%s" % shape, default_shape)]
+            self.shape_name = shape
             self.rotation = 0
             self.x = pos[0]
             self.y = pos[1]
             self.bench_x = pos[0]
             self.bench_y = pos[1]
-            self.img = Transform("%s_%s" % (bond, shape), matrixcolor=TintMatrix(color))
+            # self.img = Transform("%s_%s" % (bond, shape), matrixcolor=TintMatrix(color))
+            self.img = Transform(shape, matrixcolor=TintMatrix(color))
             self.last_filled = []
 
             self.handles = [[None for x in range(len(self.shape[0]))] for y in range(len(self.shape))]
@@ -100,7 +106,8 @@ init python:
                                 drag_handle=(0,0,0,0),
                                 clicked=self.rotate,
                                 alternate=renpy.curry(self.rotate)(False),
-                                drag_offscreen=True)
+                                drag_offscreen=True,
+                                focus_mask=True)
 
         def joined(self, drag):
             ret = [(self.display, 0, 0)]
@@ -235,40 +242,26 @@ init python:
     def activated(drags):
         pass
 
-
-define shape_bar = [[1],
-              [1]]
-
-define shape_quad = [[1, 1],
-               [1, 1]]
-
-define shape_corner = [[0, 1],
-                 [1, 1]]
-
-define shape_l = [[1, 1],
-            [1, 0],
-            [1, 0]]
-
-define shape_z = [[0, 1],
-            [1, 1],
-            [1, 0]]
-
 default c1 = "#1d96db"
 default c2 = "#d62a2a"
 default c3 = "#454545"
 
 label init_bomb:
     $ parts = []
-    $ parts.append(Part("triple", "corner", pos=(100, 100), color=c1))
-    $ parts.append(Part("single", "bar", pos=(300, 400), color=c1))
-    $ parts.append(Part("triple", "bar", pos=(500, 100), color=c2))
-    $ parts.append(Part("single", "bar", pos=(400, 400), color=c2))
-    $ parts.append(Part("triple", "bar", pos=(500, 300), color=c3))
-    $ parts.append(Part("triple", "bar", pos=(500, 500), color=c3))
-    $ parts.append(Part("single", "quad", pos=(1300, 200), color=c3))
-    $ parts.append(Part("triple", "l", pos=(1500, 400), color=c1))
-    $ parts.append(Part("single", "corner", pos=(1300, 500), color=c3))
-    $ parts.append(Part("single", "z", pos=(1500, 600), color=c2))
+    $ parts.append(Part("shape_1", pos=(239, 217)))
+    $ parts.append(Part("shape_2", pos=(258, 33)))
+    $ parts.append(Part("shape_3", pos=(417, 295)))
+    $ parts.append(Part("shape_4", pos=(70, 302)))
+    $ parts.append(Part("shape_5", pos=(807, 484)))
+    $ parts.append(Part("shape_6", pos=(675, 219)))
+    $ parts.append(Part("shape_7", pos=(928, 226)))
+    $ parts.append(Part("shape_8", pos=(590, 374)))
+    $ parts.append(Part("shape_9", pos=(897, 48)))
+    $ parts.append(Part("shape_10", pos=(153, 551)))
+    $ parts.append(Part("shape_11", pos=(151, 31)))
+    $ parts.append(Part("shape_12", pos=(57, 42)))
+    $ parts.append(Part("shape_13", pos=(507, 206)))
+    $ parts.append(Part("shape_14", pos=(665, 22)))
     $ bomb = Bomb(len(bomb_mask[0]), len(bomb_mask), parts)
 
 screen room1_bomb(b, interactable=True):
@@ -276,7 +269,7 @@ screen room1_bomb(b, interactable=True):
     modal True
     tag puzzle
     layer "puzzles"
-    
+
     frame style "puzzle_frame" padding 0,0,40,50:
         fixed:
             add b.group
@@ -290,8 +283,9 @@ screen room1_bomb(b, interactable=True):
                         elif b.data[y][x] > 1:
                             add "#ff000088" xysize (block_size, block_size) pos (x*block_size, y*block_size)
         frame:
-            align (0.515, 0.9) padding 30,30
-            xsize 550
+            align (0.0, 1.0) padding 30,30 offset (0, 30)
+            xsize 1000
+            ymaximum 350
             vbox spacing 20:
                 style_prefix "puzzle_description"
                 xalign 0.5

@@ -18,3 +18,55 @@ image test_part = "images/test_part.png"
 
 define default_shape = [[1, 1],
                         [0, 1]]
+
+define shape_1 = [[1, 0],
+                 [1, 1],
+                 [0, 1],
+                 [0, 1],
+                 [0, 1]]
+
+define shape_2 = [[1, 0, 0, 0, 0],
+                 [1, 1, 1, 1, 1],
+                 [0, 1, 0, 0, 0]]
+
+define shape_3 = [[1, 0, 0],
+                 [1, 1, 0],
+                 [1, 1, 1],
+                 [1, 1, 1]]
+
+define shape_4 = [[0, 1],
+                 [0, 1],
+                 [1, 1],
+                 [1, 0]]
+
+define shape_5 = [[1, 1, 1],
+                 [0, 0, 1]]
+
+define shape_6 = [[1, 1, 1],
+                 [0, 0, 1]]
+
+define shape_7 = [[1, 1],
+                 [1, 1],
+                 [1, 1]]
+
+define shape_8 = [[1, 1, 1],
+                  [0, 1, 0]]
+
+define shape_9 = [[0, 1, 1, 1],
+                  [1, 1, 1, 0]]
+
+define shape_10 = [[1, 1],
+                  [1, 1]]
+
+define shape_11 = [[1],
+                  [1]]
+
+define shape_12 = [[1],
+                  [1],
+                  [1]]
+
+define shape_13 = [[0, 1],
+                  [1, 1]]
+
+define shape_14 = [[1, 0],
+                  [1, 1]]
