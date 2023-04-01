@@ -67,7 +67,7 @@ label post_tutorial:
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-03.ogg"
   c lean frown "Stop making mistakes."
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-04.ogg"
-  c "Because the next time you screw up,{w=0.5} {i}you're not gonna like what happens next.{/i}"
+  c "Because the next time you screw up,{w=0.193} {i}you're not gonna like what happens next.{/i}"
 
   show cautionne leanfrown pause
   pause 0.1

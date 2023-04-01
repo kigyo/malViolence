@@ -18,7 +18,7 @@ label start:
     xc "{bt}Hello?{/bt}"
     pause 2
     voice "audio/voice/cautionne/intro/Cautionne_Intro-03.ogg"
-    xc "{sc}{size=+35}{i}HEY!{w=0.1} WAKE THE HELL UP!!!{/i}{/size}{/sc}" with small_shake
+    xc "{sc}{size=+35}{i}HEY!{w=0.085} WAKE THE HELL UP!!!{/i}{/size}{/sc}" with small_shake
 
     $ play_sound(bedsitup)
 
@@ -42,7 +42,7 @@ label start:
     "(...and then something hit your back, and... {w}you, {w=0.5}uh...) "
     "(You...)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-04.ogg"
-    xc "Oh dear, looks like the anaesthesia hasn't worn off, has it? {w=0.5}{size=-8}Must've given them the wrong dose of ketamine.{/size}"
+    xc "Oh dear, looks like the anaesthesia hasn't worn off, has it? {w=0.597}{size=-8}Must've given them the wrong dose of ketamine.{/size}"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-05.ogg"
     xc "Just give it a couple more minutes.{w=0.5} Soon, you'll be right as rain!"
     scene bg tutorial1:
@@ -91,29 +91,29 @@ label start:
     pause 0.5
     "(Maybe it's to the side,{w=0.5} or...)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-06.ogg"
-    xc "{i}Too bad,{/i} lab rat!{w=0.5} You won't find any volume buttons here."
+    xc "{i}Too bad,{/i} lab rat!{w=0.169} You won't find any volume buttons here."
     "({i}\"Lab rat?\"{/i} {w}What's with that—)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-07.ogg"
-    xc "You're {i}awfully{/i} confused by all of this,{w=0.25} aren't you?"
+    xc "You're {i}awfully{/i} confused by all of this,{w=0.098} aren't you?"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-08.ogg"
-    xc "Well, then — {w=0.25} allow me to introduce myself."
+    xc "Well, then — allow me to introduce myself!"
 ######### edit voices from here
     pause 0.5
     voice "audio/voice/cautionne/intro/Cautionne_Intro-09.ogg"
-    xc "Some call me a simple sidekick.{w=0.5} Others call me the \"Disciple of Danger.\""
+    xc "Some call me a simple sidekick.{w=0.079} Others call me the \"Disciple of Danger.\""
     pause 0.5
     voice "audio/voice/cautionne/intro/Cautionne_Intro-10.ogg"
-    $ play_music(cautionnethemeintro)
     xc "But if you asked me, I prefer..."
+    $ play_music(cautionnethemeintro)
+    $ queue_music(cautionnetheme)
     play audio "audio/sfx/TV On 1.ogg"
     show cautionne hairtwirl at crt
     show crt
     show cautionne_frame_glow at bg
     with screenon
     pause 0.2
-    $ queue_music(cautionnetheme)
     voice "audio/voice/cautionne/intro/Cautionne_Intro-11.ogg"
-    c "{i}\"...The Great Cautionne,{w=0.1} Emperor of MalViolence!\"{/i}"
+    c "{i}\"...The Great Cautionne,{w=0.133} Emperor of MalViolence!\"{/i}"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-12.ogg"
     c "Or \"Cautionne\", for your convenience."
     show cautionne hairtwirl silent
@@ -122,59 +122,59 @@ label start:
     "(You got locked up by a {i}kid?{/i})"
     show cautionne lean eyeclosed
     voice "audio/voice/cautionne/intro/Cautionne_Intro-13.ogg"
-    c "Oh, lab rat, that look on your face is {i}priceless.{/i}{p=2.2}{nw}"
+    c "Oh, lab rat, that look on your face is {i}priceless.{/i}{p=0.369}{nw}"
     voice sustain
     c "I wanna take a commemorative photo and tack it to my bedroom wall!"
     "(Ugh, please don't.{w} Everyone tells you that you have a resting bitch face.)"
     show cautionne lean speaking
     voice "audio/voice/cautionne/intro/Cautionne_Intro-14.ogg"
-    c "Sadly, my camera isn't with me right now...{p=2.1}{nw}"
+    c "Sadly, my camera isn't with me right now...{p=0.133}{nw}"
     voice sustain
     c "So, you'll have to make-do with me telling you why you're here."
     show cautionne hairtwirl at crt
     voice "audio/voice/cautionne/intro/Cautionne_Intro-15.ogg"
-    c "That's another thing you're wondering about,{w=0.1} isn't it?{p=1.5}{nw}"
+    c "That's another thing you're wondering about, isn't it?{p=0.247}{nw}"
     c "Why {i}are{/i} you here?"
     "(...You think?)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-16.ogg"
-    c "Alright, then!{w=0.1} Let's make this quick."
+    c "Alright, then! Let's make this quick."
     show cautionne lean 
     voice "audio/voice/cautionne/intro/Cautionne_Intro-17.ogg"
     c "{i}You{/i} want something from {i}me.{/i}"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-18.ogg"
-    c "That's why you came here, right?{p=0.5}{nw}"
+    c "That's why you came here, right?{p=0.177}{nw}"
     voice sustain
     c "Your boss told you to come here and get something."
     voice "audio/voice/cautionne/intro/Cautionne_Intro-19.ogg"
-    c "But I can't let that happen. {w=1}No-siree!"
+    c "But I can't let that happen.{w=0.062} No-siree!"
     show cautionne lean eyeclosed
     voice "audio/voice/cautionne/intro/Cautionne_Intro-20.ogg"
-    c "So, I'm gonna have fun with you instead.{p=1.2}{nw}"
+    c "So, I'm gonna have fun with you instead.{p=0.151}{nw}"
     voice sustain
-    c " I'll learn what you're after,{w=0.1} and you won't be bored!"
+    c " I'll learn what you're after, and you won't be bored!"
     show cautionne lean speaking
     voice "audio/voice/cautionne/intro/Cautionne_Intro-21.ogg"
     c "Great deal, right?"
     "(No.{w} No, it's not.)"
     show cautionne laugh
     voice "audio/voice/cautionne/intro/Cautionne_Intro-22.ogg"
-    c "Ha ha ha!{p=1.1}{nw}"
+    c "Ha ha ha!{p=0.26}{nw}"
     show cautionne lean eyeclosed
-    c"You're a funny one, lab rat.{w=0.5} I like you already!"
+    c"You're a funny one, lab rat.{w=0.208} I like you already!"
     voice sustain
     voice "audio/voice/cautionne/intro/Cautionne_Intro-23.ogg"
-    c "So much so, that I've let you keep your gun.{p=1.2}{nw}"
+    c "So much so, that I've let you keep your gun.{p=0.19}{nw}"
     voice sustain
-    c "Feel free to shoot my screen anytime.{p=1.2}{nw}"
+    c "Feel free to shoot my screen anytime.{p=0.063}{nw}"
     voice sustain
     c "I promise I won't care!"
     "(The temptation's there,{w=0.1} but no thanks.)"
     "(You'd prefer to have some form of self-defense on-hand.)"
     show cautionne think
     voice "audio/voice/cautionne/intro/Cautionne_Intro-24.ogg"
-    c "Now, I'm still tidying up a couple of things on my end.{p=1}{nw}"
+    c "Now,{w=0.031} I'm still tidying up a couple of things on my end.{p=0.126}{nw}"
     voice sustain
-    c "So,{w=0.1} before I get back to work..."
+    c "So, before I get back to work..."
 
     show cautionne thinkpause
 

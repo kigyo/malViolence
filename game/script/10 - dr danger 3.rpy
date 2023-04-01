@@ -50,14 +50,14 @@ label dr_danger_3:
   $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor3-01.ogg"
-  dr "Very tempting for a wooden floor,{w=0.1} isn't it?"
+  dr "Very tempting for a wooden floor,{w=0.287} isn't it?"
   $ play_sound(bedsitup)
   show bg corridor3:
     zoom 0.6 xalign 0.5 yalign 1.0
     easein 0.2 yalign 0.5 zoom 0.6
   "(Gah!{w} A {i}third{/i} time?!)" with small_shake
   voice "audio/voice/dr.danger/Danger_Corridor3-02.ogg"
-  dr "{i}Heated flooring.{/i} My work has always been stressful,{w=0.5} so I've always strived to maximize comfort wherever I could."
+  dr "{i}Heated flooring.{/i}{w=0.41} My work has always been stressful, so...{w=0.193} I've always strived to maximize comfort wherever I could."
 
   $ play_sound(footsteps3)
 
@@ -110,7 +110,7 @@ label dr_danger_3:
   show drdanger stare speaking
   drs "Well,{w=0.1} there are systems in place that will guide you on what to do."
   voice "audio/voice/dr.danger/Danger_Corridor3-03.ogg"
-  drs "That's all for now.{w=0.5} Goodbye."
+  drs "That's all for now.{w=0.458} Goodbye."
   show drdanger tender
   voice "audio/voice/dr.danger/Danger_Corridor3-04.ogg"
   drs "And thank you for taking care of my..."
@@ -124,9 +124,9 @@ label dr_danger_3:
 
   voice "audio/voice/dr.danger/Danger_Corridor3-05.ogg"
   #"{b}[{/b}{b}Dr.{/b}{b} Danger pauses, and her expression changes – showing {/b}{b}she's{/b}{b} {/b}{b}hold{/b}{b}ing something back]{/b}"
-  drs "{size=-13}Note to self,{w=0.1} re-record instructions at earliest convenience.{p=3.0}{nw}{/size}"
+  drs "{size=-13}Note to self, re-record instructions at earliest convenience.{p=0.197}{nw}{/size}"
   voice sustain
-  drs "{size=-13}Try not to be so...{w=0.5} {i}ominous{/i} next time.{/size}"
+  drs "{size=-13}Try not to be so...{w=0.453} {i}ominous{/i} next time.{/size}"
   $ play_sound(tvoff)
   pause 1
   scene bg corridor3 with fade:

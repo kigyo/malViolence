@@ -56,7 +56,7 @@ label dr_danger_1:
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor1-01.ogg"
   #"{b}[the {/b}{b}dr.{/b}{b} danger screens go {/b}{b}on ]{/b}"
-  "???" "Welcome.{w=1} I see you've arrived safely?"
+  "???" "Welcome.{w=0.52} I see you've arrived safely?"
 
   show bg corridor1:
     align (0.5,0.5) zoom 0.6
@@ -89,7 +89,7 @@ label dr_danger_1:
   "(A saboteur who terrorized the public with bombs and cryptic threats.{w} A supervillain,{w=0.1} through and through.)"
   "(A supervillain by the name of...)"
   voice "audio/voice/dr.danger/Danger_Corridor1-02.ogg"
-  drx "From the top,{w=0.1} then. {w=1}I am Dr. Danger."
+  drx "From the top,{w=0.622} then. {w=1}I am Dr. Danger."
   voice "audio/voice/dr.danger/Danger_Corridor1-03.ogg"
   drs "You are here because you're under my temporary employment."
   "(Uh... {w}no?)"
@@ -97,9 +97,9 @@ label dr_danger_1:
   "(...{i}Was{/i} a sworn enemy.{w} She died {i}weeks{/i} ago,{w=0.1} caught in her own explosion while trying to wipe another STOP facility off the map.)"
   "(Wait.{w} Does this mean she survi—){p=0.5}{nw}"
   voice "audio/voice/dr.danger/Danger_Corridor1-04.ogg"
-  drs "Before you begin your task,{w=0.1} please listen carefully.{p=1.5}{nw}"
+  drs "Before you begin your task,{w=0.14} please listen carefully.{p=0.28}{nw}"
   voice sustain
-  drs "Due to my circumstances,{w=0.1} I cannot repeat my instructions.{p=1}{nw}"
+  drs "Due to my circumstances, I cannot repeat my instructions.{p=0.204}{nw}"
   voice sustain
   drs "Nor will I be able to answer any of your questions."
   "(...No.{w} Her death was {i}very thoroughly{/i} confirmed.{w} Which means...)" 

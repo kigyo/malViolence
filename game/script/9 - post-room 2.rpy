@@ -35,7 +35,7 @@ label post_room_2:
   with vpunch
   hide screen nodismiss
   voice "audio/voice/cautionne/postroom/Cautionne_Post Room 2-01.ogg"
-  c "{i}Snooping as usual,{w=0.1} {/i}I see?"
+  c "{i}Snooping as usual, {/i}I see?"
   "(...You spoke too soon.)"
   show cautionne lean eyeclosed
 

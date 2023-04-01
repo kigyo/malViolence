@@ -33,7 +33,7 @@ label dr_danger_2:
   $ play_sound(staticshort)
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor2-01.ogg"
-  dr "Good. {w=0.5}You made it through the experiment room."
+  dr "Good. {w=0.559}You made it through the experiment room."
   "(?!)" with small_shake
   "(Dr. Danger's on again!{w} What did you—)"
   "(No,{w=0.1} no{w=0.1} — calm down.{w} It's probably motion-activated.)"
@@ -56,12 +56,12 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_Corridor2-02.ogg"
   drs "I apologize for any distress that the previous room may have caused you. "
   voice "audio/voice/dr.danger/Danger_Corridor2-03.ogg"
-  drs "For whatever it's worth,{w=0.1} please know that I do not take pleasure in hurting others.{p=3}{nw}"
+  drs "For whatever it's worth,{w=0.359} please know that I do not take pleasure in hurting others.{p=0.288}{nw}"
   voice sustain
   drs "The sight of blood makes me quite ill."
   show drdanger sidestare
   voice "audio/voice/dr.danger/Danger_Corridor2-04.ogg"
-  drs "{size=-13}It...{w=0.5} always has.{/size}"
+  drs "{size=-13}It...{w=0.503} always has.{/size}"
   pause 0.5
   show drdanger stare
   $ play_music(backstorytheme, fadein=1.0, fadeout=1.0)
@@ -93,13 +93,13 @@ label dr_danger_2:
   pause 1
   show drdanger stare speaking
   voice "audio/voice/dr.danger/Danger_Corridor2-05.ogg"
-  drs "If you're looking for where to go next,{w=0.1} please take the door directly in front of you.{p=2}{nw}"
+  drs "If you're looking for where to go next,{w=0.065} please take the door directly in front of you.{p=1.175}{nw}"
   show drdanger sidestare
   voice sustain
   drs "The other doors are very much best left shut."
   show drdanger stare
   voice "audio/voice/dr.danger/Danger_Corridor2-06.ogg"
-  drs "Take care, now.{w=0.5} I'll see you in a week."
+  drs "Take care, now.{w=0.389} I'll see you in a week."
   #"{b}[{/b}{b}dr.{/b}{b} danger shuts off her recording]{/b}"
 
   show drdanger stare silent
