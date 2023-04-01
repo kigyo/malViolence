@@ -180,11 +180,11 @@ style puzzle_nav_button_text is main_menu_button_text
 transform alphashow(t=0.25, alph=1.0):
     on show:
         alpha 0 
-        easein t alpha alph
+        linear t alpha alph
     on hide:
         linear t alpha 0.0
     on replace:
         alpha 0 
-        easein t alpha alph
+        linear t alpha alph
     on replaced:
         linear t alpha 0.0
