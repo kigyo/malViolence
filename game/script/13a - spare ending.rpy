@@ -26,7 +26,7 @@ label spare_ending:
     "(Maybe you'll get a promotion.{w} A better salary.{w} Better benefits.{w} A better home.)"
     "(A better {i}life.{/i}{w} Something you've always wanted.)"
     "(...And...)"
-    "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole—){p=0.5}{nw}"
+    "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole—){w=1}{nw}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-01.ogg"
     xc "Finally going to take responsibility?"
     $ play_sound(quickfootsteps)
@@ -40,7 +40,7 @@ label spare_ending:
 
     scene cautionne gun far silent with fade
 
-    "(Not {i}now,{/i} kid!{w} The last thing you need is {i}him{/i} showing up and—){p=0.5}{nw}"
+    "(Not {i}now,{/i} kid!{w} The last thing you need is {i}him{/i} showing up and—){w=1}{nw}"
 
     scene cautionne gun cu with dissolve
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-02.ogg"
@@ -79,11 +79,11 @@ label spare_ending:
     #"{b}[{/b}{b}Cautionne{/b}{b} is yelling now]{/b}"
     scene cautionne gun ecu sob 
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-08.ogg"
-    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}{p=1}{nw}"
+    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}{w=1}{nw}"
     voice sustain
     cr "{sc}She {i}saved {/i}me!{w=1} She {i}raised {/i}me!{w=1} \nShe {i}stood up for me{/i} when no one else did!{/sc}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-09.ogg"
-    cr "{sc}And what did {i}STOP {/i}do?{/sc}{p=1}{nw}"
+    cr "{sc}And what did {i}STOP {/i}do?{/sc}{w=1}{nw}"
     voice sustain
     cr "{sc}They MADE her a villain!{w=1} They took EVERYTHING away from her!{w=1}\n They KILLED her!{/sc}"
     scene cautionne gun ecu sobsilent
@@ -161,7 +161,7 @@ label spare_ending:
     scene cautionne sit stunned:
         align (0.0,0.1)
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-15.ogg"
-    cr "No,{w=0.35} I couldn't have.{p=1}{nw}" 
+    cr "No,{w=0.35} I couldn't have.{w=1}{nw}" 
     voice sustain
     cr "Trying to kill you...{w=0.717} was a lot more tiring than I thought it would be."
     "Tiring?"
@@ -228,7 +228,7 @@ label spare_ending:
     scene bg garage with fade:
         zoom 1.4 align (0.5,0.55)
 
-    "(So, without another word,{w=0.1} you—){p=0.5}{nw}"
+    "(So, without another word,{w=0.1} you—){w=1}{nw}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-31.ogg"
     cr "...Hey lab rat."
     "(You turn back,"

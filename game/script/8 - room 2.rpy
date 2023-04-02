@@ -165,7 +165,7 @@ label room_2:
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
             "(Based on what you can make out of the caption — {w=0.1}it seems to be of some kind of commemorative occasion.)" 
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
-            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as—{w=0.3}{nw})"
+            "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as—){w=1}{nw}"
             hide room2_news with dissolve
             pause 1
             #"{b}[pause as the clippings disappear]{/b}"
@@ -283,7 +283,7 @@ label evidence_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 0.5
-    "(You carefully insert one more pin into the board,{w=0.1} which leaves—){p=0.3}{nw}"
+    "(You carefully insert one more pin into the board,{w=0.1} which leaves—){w=1}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Whoa, you {i}suck {/i}at this!"
     hide black onlayer screens
@@ -293,7 +293,7 @@ label evidence_game_over:
     "(Something about his unusually straightforward insult puts ice into your veins.)"
     cr "It's like you're solving this puzzle with your eyes closed and your nose plugged."
     cr "...There some reason you don't want to look at the truth in front of you,{w=0.1} lab rat?"
-    "(...No, no, it's just—){p=0.3}{nw}"
+    "(...No, no, it's just—){w=1}{nw}"
     cr "I know you're not taking this seriously.{w=0.5} Maybe we should just move on?"
     cr "You know what?{w=0.5} Yeah. "
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
@@ -339,7 +339,7 @@ label panopticon_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 0.5
-    "(You re-arrange another set of cells and—){p=0.3}{nw}"
+    "(You re-arrange another set of cells and—){w=1}{nw}"
     $ play_sound(error)
     "(—and suddenly,{w=0.1} your controls freeze up.{w} There's a notification in the corner.)"
     hide black onlayer screens
@@ -414,7 +414,7 @@ label recalibration_game_over:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} That person's own nervous system will rip their body apart with spasming."
     cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"
-    "(...Well,{w=0.1} uh—){p=0.3}{nw}"
+    "(...Well,{w=0.1} uh—){w=1}{nw}"
     cr "Don't worry,{w=0.1} I can fix this."
     cr "But I'm gonna need a hand."
 

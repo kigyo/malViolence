@@ -487,7 +487,7 @@ label scrapbook_game_over:
 
     "(You place the scrapbook down to get a fresh look at what you've got so far.)"
     "(But when you step back,{w=0.1} you feel like {i}something's{/i} out of place.)"
-    "(And if {i}you {/i}can tell,{w=0.1} then {i}he {/i}can tell.{w} Better—){p=0.3}{nw}"
+    "(And if {i}you {/i}can tell,{w=0.1} then {i}he {/i}can tell.{w} Better—){w=1}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "It's okay to suck at arts and crafts, lab rat.{w=0.5} Not everyone's born to make masterpieces."
     hide black onlayer screens
@@ -504,7 +504,7 @@ label scrapbook_game_over:
     pause 1
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
     $ play_sound(lazercharge)
-    cr "Whoopsie doopsie!{w=0.5} Looks like I pressed the wrong—{p=0.5}{nw}"
+    cr "Whoopsie doopsie!{w=0.5} Looks like I pressed the wrong—{w=1}{nw}"
     $ play_sound(lazerblast)
 
     scene black with small_shake
@@ -566,10 +566,10 @@ label quilt_game_over:
     with puzzle_hide
     pause 1
     cr "I'd like to think of myself as a lenient kinda guy... {w}But watching you butcher that sentimental quilt is {i}pretty painful.{/i}"
-    cr "Like,{w=0.1} a death by a thousand cuts...{p=0.5}{nw}"
+    cr "Like,{w=0.1} a death by a thousand cuts...{w=0.5}{nw}"
     cr "...or needles,{w=0.1} in this case."
     $ play_sound(switchon)
-    "(You hear a switch go off,{w=0.1} and—){p=0.5}{nw}"
+    "(You hear a switch go off,{w=0.1} and—){w=1}{nw}"
     $ play_sound(piercings)
     $ queue_sound(bodypierce)
     scene black
@@ -631,7 +631,7 @@ label toys_game_over:
     stop music fadeout 1.0
     $ play_sound(plushiesqueak)
     "(You set down the toys and pause to think.)"
-    "(The task is a lot harder than you thought it would be.{w} Maybe—){p=0.3}{nw}"
+    "(The task is a lot harder than you thought it would be.{w} Maybe—){w=1}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Having trouble organizing?{w=0.5} I get it."
     hide black onlayer screens
@@ -708,7 +708,7 @@ label cooking_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 1.0
-    "({i}There.{/i}{w} That should be the right ingredients for the pancakes.{w} Now if you pour the batter—){p=0.3}{nw}"
+    "({i}There.{/i}{w} That should be the right ingredients for the pancakes.{w} Now if you pour the batter—){w=1}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 1.ogg"
     cr "{i}Stop right there,{/i} lab rat.{w=0.5} I don't want that {i}affront{/i} to all things edible anywhere near my nice,{w=0.1} tasteful,{w=0.1} kitchen appliances."
     hide black onlayer screens
@@ -716,7 +716,7 @@ label cooking_game_over:
     with puzzle_hide
     pause 1
     cr "How the {i}hell{/i} do you screw up pancakes that bad?{w=0.5} Did STOP mangle your common sense as well as your brains?"
-    "(You open your mouth to protest and—){p=0.3}{nw}"
+    "(You open your mouth to protest and—){w=1}{nw}"
 
     $ play_sound(smash)
 

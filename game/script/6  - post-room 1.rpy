@@ -94,14 +94,14 @@ label post_room_1:
   pause 1
   show cautionne hairtwirl
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-  c "So,{w=0.1} what did you think of our—{p=0.5}{nw}"
+  c "So,{w=0.1} what did you think of our—{w=1}{nw}"
   c "{i}—my{/i} Research Lab?"
   show cautionne lean speaking
   c "It's awesome,{w=0.1} isn't it?"
   show cautionne think
   c "A little \"derivative\", maybe..."
   show cautionne lean speaking
-  c "...but any scientist worth their salt \nneeds a room filled with{p=0.5}{nw}"
+  c "...but any scientist worth their salt \nneeds a room filled with{w=1}{nw}"
   c "hi-tech computers and big fat source libraries."
   show cautionne lean eyeclosed
   c "Though,{w=0.1} there is {i}one{/i} thing that makes my lab better than the others."
@@ -123,10 +123,10 @@ label post_room_1:
   c "Disappointing,{w=0.1} I know. "
   c "But never fear!"
   show cautionne hairtwirl
-  c "The Great Cautionne,{w=0.1} Emperor of MalViolence,{p=0.5}{nw}" 
+  c "The Great Cautionne,{w=0.1} Emperor of MalViolence,{w=1}{nw}" 
   c "used his aptitude for adaptation to his advantage."
   show cautionne lean speaking
-  c "And so,{w=0.1} he constructed these quasi-deadly puzzle rooms,{p=0.5}{nw}"
+  c "And so,{w=0.1} he constructed these quasi-deadly puzzle rooms,{w=1}{nw}"
   c "sure to satisfy even the least imaginative of STOP agents."
   show cautionne lean eyeclosed
   c "Aren't I thoughtful,{w=0.1} lab rat?"

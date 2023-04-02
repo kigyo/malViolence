@@ -122,18 +122,18 @@ label start:
     "(You got locked up by a {i}kid?{/i})"
     show cautionne lean eyeclosed
     voice "audio/voice/cautionne/intro/Cautionne_Intro-13.ogg"
-    c "Oh, lab rat, that look on your face is {i}priceless.{/i}{p=0.5}{nw}"
+    c "Oh, lab rat, that look on your face is {i}priceless.{/i}{w=0.5}{nw}"
     voice sustain
     c "I wanna take a commemorative photo and tack it to my bedroom wall!"
     "(Ugh, please don't.{w} Everyone tells you that you have a resting bitch face.)"
     show cautionne lean speaking
     voice "audio/voice/cautionne/intro/Cautionne_Intro-14.ogg"
-    c "Sadly, my camera isn't with me right now...{p=0.3}{nw}"
+    c "Sadly, my camera isn't with me right now...{w=0.5}{nw}"
     voice sustain
     c "So, you'll have to make-do with me telling you why you're here."
     show cautionne hairtwirl at crt
     voice "audio/voice/cautionne/intro/Cautionne_Intro-15.ogg"
-    c "That's another thing you're wondering about, isn't it?{p=0.3}{nw}"
+    c "That's another thing you're wondering about, isn't it?{w=0.5}{nw}"
     c "Why {i}are{/i} you here?"
     "(...You think?)"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-16.ogg"
@@ -142,14 +142,14 @@ label start:
     voice "audio/voice/cautionne/intro/Cautionne_Intro-17.ogg"
     c "{i}You{/i} want something from {i}me.{/i}"
     voice "audio/voice/cautionne/intro/Cautionne_Intro-18.ogg"
-    c "That's why you came here, right?{p=0.3}{nw}"
+    c "That's why you came here, right?{p=0.5}{nw}"
     voice sustain
     c "Your boss told you to come here and get something."
     voice "audio/voice/cautionne/intro/Cautionne_Intro-19.ogg"
     c "But I can't let that happen.{w=0.062} No-siree!"
     show cautionne lean eyeclosed
     voice "audio/voice/cautionne/intro/Cautionne_Intro-20.ogg"
-    c "So, I'm gonna have fun with you instead.{p=0.3}{nw}"
+    c "So, I'm gonna have fun with you instead.{p=0.5}{nw}"
     voice sustain
     c " I'll learn what you're after, and you won't be bored!"
     show cautionne lean speaking
@@ -163,16 +163,16 @@ label start:
     c"You're a funny one, lab rat.{w=0.208} I like you already!"
     voice sustain
     voice "audio/voice/cautionne/intro/Cautionne_Intro-23.ogg"
-    c "So much so, that I've let you keep your gun.{p=0.7}{nw}"
+    c "So much so, that I've let you keep your gun.{w=0.7}{nw}"
     voice sustain
-    c "Feel free to shoot my screen anytime.{p=0.7}{nw}"
+    c "Feel free to shoot my screen anytime.{w=0.7}{nw}"
     voice sustain
     c "I promise I won't care!"
     "(The temptation's there,{w=0.1} but no thanks.)"
     "(You'd prefer to have some form of self-defense on-hand.)"
     show cautionne think
     voice "audio/voice/cautionne/intro/Cautionne_Intro-24.ogg"
-    c "Now,{w=0.031} I'm still tidying up a couple of things on my end.{p=0.5}{nw}"
+    c "Now,{w=0.031} I'm still tidying up a couple of things on my end.{w=0.5}{nw}"
     voice sustain
     c "So, before I get back to work..."
 

@@ -238,7 +238,7 @@ label bomb_game_over:
     "(Phew.{w} Looks like I've done what I was supposed to.)"
     $ play_sound(timeralarm)
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
-    cr "That said,{w=0.1} the timer—{p=1}{nw}"
+    cr "That said,{w=0.1} the timer—{w=1}{nw}"
     $ play_sound(bombexplosion1)
     scene black with small_shake
     pause 3
@@ -291,8 +291,8 @@ label hacking_game_over:
 
     $ play_sound(timeralarm2)
 
-    "(It's too late.{w} The counter-trace just found you and—){p=0.5}{nw}"
-    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){p=0.3}{nw}"
+    "(It's too late.{w} The counter-trace just found you and—){w=1}{nw}"
+    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){w=1}{nw}"
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
@@ -300,7 +300,7 @@ label hacking_game_over:
     cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     cr "Good news!{w=0.5} STOP found your computer."
     cr "Bad news!{w=0.5} Standard operating procedure is to overload the offending console ASAP."
-    cr "By the way,{w=0.1} you're standing very,{w=0.1} {i}very{/i} close to the computer.{w=0.5} I'll have you know that's bad for your eye—{p=0.3}{nw}"
+    cr "By the way,{w=0.1} you're standing very,{w=0.1} {i}very{/i} close to the computer.{w=0.5} I'll have you know that's bad for your eye—{w=1}{nw}"
 
     $ play_sound(bombexplosion2)
     scene black with small_shake
@@ -409,7 +409,7 @@ label marble_game_over:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Oof.{w=0.5} {i}Not quite.{/i} "
     cr "But it's okay!{w=0.5} I can fix this,{w=0.1} easy-peasy."
-    cr "Just, uh...{w=0.5} stand still...{w=0.5}{cps=20}foooooor oooone secoooooond aaaaand—{/cps}{p=0.3}{nw}"
+    cr "Just, uh...{w=0.5} stand still...{w=0.5}{cps=20}foooooor oooone secoooooond aaaaand—{/cps}{w=1}{nw}"
 
     #"{b}SPLAT{/b}
     #{b}[a giant marble comes and crushes the protag — screen cuts to black]{/b}"

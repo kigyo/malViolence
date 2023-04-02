@@ -45,7 +45,7 @@ label dr_danger_3:
     zoom 0.5 xalign 0.5 yalign 0.5
     ease 3 yalign 1.0 zoom 0.6
   pause 2
-  extend "{cps=20} then maybe the smart thing to do would be to—){/cps}{p=0.5}{nw}"
+  extend "{cps=20} then maybe the smart thing to do would be to—){/cps}{w=1}{nw}"
   $ play_sound(staticshort)
   voice "audio/voice/dr.danger/Danger_Corridor3-01.ogg"
   dr "Very tempting for a wooden floor,{w=0.287} isn't it?"
@@ -83,14 +83,14 @@ label dr_danger_3:
   voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "While I'm away on business,{w=0.1} it's important that you keep him on his daily routine."
   drs "7am to 9pm —{w=0.5} regularity is key."
-  drs "Remember that all his dietary habits,{w=0.1} health regimens{w=0.1} and study exercises{p=0.5}{nw}"
+  drs "Remember that all his dietary habits,{w=0.1} health regimens{w=0.1} and study exercises{w=1}{nw}"
   drs "are detailed in the files that we went over together."
   show drdanger sidestare
   voice "audio/voice/dr.danger/Danger_SB-I Apologize.ogg"
   drs "I apologize if you'll have to decrypt them again,{w=0.1} but..."
   drs "...Cautionne and I have made a habit of hiding our tracks for good reason."
   show drdanger smirk
-  drs "And when the day is over,{w=0.1} feel free to play games, watch movies or read comics together. "
+  drs "And when the day is over,{w=0.1} feel free to play games, watch movies or read comics together."
   drs "If you need a suggestion..."
   drs "...Cautionne told me that he loves the \"Cantaloupe Mall\" course on \"Marco Kart\"."
   show drdanger sidestare
@@ -122,7 +122,7 @@ label dr_danger_3:
 
   voice "audio/voice/dr.danger/Danger_Corridor3-05.ogg"
   #"{b}[{/b}{b}Dr.{/b}{b} Danger pauses, and her expression changes – showing {/b}{b}she's{/b}{b} {/b}{b}hold{/b}{b}ing something back]{/b}"
-  drs "{size=-13}Note to self, re-record instructions at earliest convenience.{p=3}{nw}{/size}"
+  drs "{size=-13}Note to self, re-record instructions at earliest convenience.{w=3}{nw}{/size}"
   voice sustain
   drs "{size=-13}Try not to be so...{w=0.5} {i}ominous{/i} next time.{/size}"
   $ play_sound(tvoff)

@@ -57,7 +57,7 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_Corridor2-02.ogg"
   drs "I apologize for any distress that the previous room may have caused you. "
   voice "audio/voice/dr.danger/Danger_Corridor2-03.ogg"
-  drs "For whatever it's worth,{w=0.359} please know that I do not take pleasure in hurting others.{p=3}{nw}"
+  drs "For whatever it's worth,{w=0.359} please know that I do not take pleasure in hurting others.{w=3}{nw}"
   voice sustain
   drs "The sight of blood makes me quite ill."
   show drdanger sidestare
@@ -68,7 +68,7 @@ label dr_danger_2:
   $ play_music(backstorytheme, fadein=1.0, fadeout=1.0)
   voice "audio/voice/dr.danger/Danger_SB-Allow Me To Explain.ogg"
   drs "No,{w=0.1} {i}that{/i} room belongs to my apprentice."
-  drs "Currently,{w=0.1} he is running an experiment —{p=0.5}{nw}"
+  drs "Currently,{w=0.1} he is running an experiment —{w=1}{nw}"
   show drdanger sidestare
   drs "even if he seems more interested in the process than the results."
   voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
@@ -94,7 +94,7 @@ label dr_danger_2:
   pause 1
   show drdanger stare speaking
   voice "audio/voice/dr.danger/Danger_Corridor2-05.ogg"
-  drs "If you're looking for where to go next,{w=0.065} please take the door directly in front of you.{p=3}{nw}"
+  drs "If you're looking for where to go next,{w=0.065} please take the door directly in front of you.{w=3}{nw}"
   show drdanger sidestare
   voice sustain
   drs "The other doors are very much {i}best left shut.{/i}"

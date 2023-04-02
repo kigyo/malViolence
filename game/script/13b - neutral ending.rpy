@@ -30,7 +30,7 @@ label neutral_ending:
     show bg garage with dissolve:
         zoom 0.5 align(0.5,0.5)
     "(...All that said,{w=0.1} you weren't expecting your escape to be so...{w=0.5} {i}straightforward.{/i})"
-    "(The exit's wide open.{w} If you walked through right now,{w=0.1} you'll—){p=0.5}{nw}"
+    "(The exit's wide open.{w} If you walked through right now,{w=0.1} you'll—){w=1}{nw}"
 
     $ play_sound(quickfootsteps)
     #"{b}[quick footsteps sound out]{/b}"
@@ -57,11 +57,11 @@ label neutral_ending:
     #"{b}[show {/b}{b}Cautionne{/b}{b} shooting CG]{/b}"
     "(A...{w=0.5} a {i}gun?{/i})"
     scene cautionne gun cu with dissolve
-    "(Why does he have a gun?{w} Someone his age shouldn't—){p=0.5}{nw}"
+    "(Why does he have a gun?{w} Someone his age shouldn't—){w=1}{nw}"
     "(No,{w=0.1} it's a fake,{w=0.1} isn't it?{w} Of course —{w=0.5} it's just a practical joke of his!)"
     pause 1
     "Um...{w=0.5} I'm glad you're having fun and all,{w=0.1} but I really should get going."
-    "See,{w=0.1} adults have these things called “jobs”,{w=0.1} and—{p=0.5}{nw}"
+    "See,{w=0.1} adults have these things called “jobs”,{w=0.1} and—{w=1}{nw}"
     $ play_sound(gunblast1)
     $ queue_sound(bulletimpact)
     scene black
@@ -92,7 +92,7 @@ label neutral_ending:
     "{si}(Shit.{w} Shit,{w=0.1} shit,{w=0.1} shit.){/si}"
     "{si}(I can't believe —{w} I made such a {i}rookie {/i}mistake!){/si}"
     "{si}(And I can't...{w} Haa...{w} I can't...{w} {i}stand{/i} any more!){/si}"
-    "{si}(Wha...{w} what am I gonna do?{w} How am I gonna get out of here {i}now?{/i}){/si}"
+    "{si}(Wha...{w} what am I gonna do?{w} How am I gonna get out\nof here {i}now?{/i}){/si}"
 
     $ play_sound(footsteps4)
     #"{b}[footsteps sounds as{/b}{b} Cautionn{/b}{b}e walks over.]{/b}"
