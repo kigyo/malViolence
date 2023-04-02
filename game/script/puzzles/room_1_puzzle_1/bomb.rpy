@@ -138,6 +138,10 @@ init python:
                 self.handles = list(map(list, list(zip(*self.handles[::-1]))))
                 self.shape = list(zip(*self.shape[::-1]))
                 self.handles = list(map(list, list(zip(*self.handles[::-1]))))
+            for y in range(len(self.handles)):
+                for x in range(len(self.handles[y])):
+                    if self.handles[y][x]:
+                        self.handles[y][x].snap(self.display.x+x*block_size, self.display.y+y*block_size, 0.0)
             self.display.child.rotate = self.rotation*90
             self.display.child.update()
             if self.last_filled:
