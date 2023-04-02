@@ -313,7 +313,7 @@ screen room1_bomb(b, interactable=True):
             textbutton "SUBMIT" style "confirm_button" action Function(b.verify)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
 
-    if "room1_1" in persistent.solved_puzzles:
+    if "room1_1" in persistent.solved_puzzles or ("dead3" in persistent.dead_ends and not preferences.hard_mode):
         textbutton "SKIP" style "confirm_button" action [SetDict(room1, "bomb", "solved"), Return()] pos (40,50)
 
     if config.developer:

@@ -449,7 +449,7 @@ screen cybernetics(cyb, interactable=True):
             textbutton "SUBMIT" style "confirm_button" action If(cyb.check_broken(), false=Function(cyb.verify)) sensitive not inspect xalign 0.5 yalign 0.5
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5
 
-    if "room2_3" in persistent.solved_puzzles:
+    if "room2_3" in persistent.solved_puzzles or ("dead9" in persistent.dead_ends and not preferences.hard_mode):
         textbutton "SKIP" style "confirm_button" action [SetDict(room2, "recalibration", "solved"), Return()] pos (40,50)
 
     if config.developer:

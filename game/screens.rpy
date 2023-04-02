@@ -840,9 +840,9 @@ screen preferences():
 
                 vbox:
                     style_prefix "radio"
-                    label _("Game Overs")
-                    textbutton _("Infinite") action SetField(preferences, "hard_mode", True) alt "Hard mode: Failing puzzles always results in a game over" 
-                    textbutton _("Once per Puzzle") action SetField(preferences, "hard_mode", False) alt "Easy mode: Have at most one game over per puzzle"
+                    label _("Puzzles")
+                    textbutton _("Mandatory") action SetField(preferences, "hard_mode", True) alt "Hard mode: Puzzles must be solved once in order to be skipped" 
+                    textbutton _("Skippable") action SetField(preferences, "hard_mode", False) alt "Easy mode: Puzzles can be skipped after failing once"
 
                 #vbox:
                 #    style_prefix "radio"

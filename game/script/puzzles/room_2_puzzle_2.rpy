@@ -110,7 +110,7 @@ screen room2_panopticon():
             frame xalign 1.0:
                 text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
 
-        if "room2_2" in persistent.solved_puzzles:
+        if "room2_2" in persistent.solved_puzzles or ("dead8" in persistent.dead_ends and not preferences.hard_mode):
             textbutton "SKIP" style "confirm_button" action [SetDict(room2, "panopticon", "solved"), Return()]
 
 

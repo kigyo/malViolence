@@ -203,7 +203,7 @@ screen toy_playspace(b, interactable=True):
                     textbutton "RESET" style "confirm_button" action Function(toy_board_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5
 
-        if "room3_2" in persistent.solved_puzzles:
+        if "room3_2" in persistent.solved_puzzles or ("dead12" in persistent.dead_ends and not preferences.hard_mode):
             textbutton "SKIP" style "confirm_button" action [SetDict(room3, "toys", "solved"), Return()]
 
     if config.developer:

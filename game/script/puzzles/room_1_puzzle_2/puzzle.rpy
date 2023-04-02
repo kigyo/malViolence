@@ -142,7 +142,7 @@ screen puzzle_playspace(b, interactable=True):
                     textbutton "RESET" style "confirm_button" action Function(puzzle_board_reset, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable at zoomed(0.75)
                 textbutton "RETURN" style "confirm_button" action [SetVariable("inspect", None), Hide(transition=puzzle_hide)] xalign 1.0 yalign 0.5 sensitive interactable
 
-    if "room1_2" in persistent.solved_puzzles:
+    if "room1_2" in persistent.solved_puzzles or ("dead4" in persistent.dead_ends and not preferences.hard_mode):
         textbutton "SKIP" style "confirm_button" action [SetDict(room1, "hacking", "solved"), Return()] pos (40,50)
 
     if config.developer:
