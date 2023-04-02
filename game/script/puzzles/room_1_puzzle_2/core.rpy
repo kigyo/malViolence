@@ -186,11 +186,18 @@ init -1 python:
                                  self.pieces[y][x+2]]
                         if None in match:
                             continue
-                        match = sorted(match)
+                        if self.shuffle_matches:
+                            match = sorted(match)
                         for m in self.matches:
-                            if not m.matched and m == match:
-                                lose = False
-                                break
+                            if self.shuffle_matches:
+                                if not m.matched and m == match:
+                                    lose = False
+                                    break
+                            else:
+                                if not m.matched and [p.type for p in match] == m.pieces:
+                                    lose = False
+                                    break
+
                 if lose and not ("dead4" in persistent.dead_ends and not preferences.hard_mode):
                     renpy.jump('hacking_game_over')
                 elif lose:
@@ -502,51 +509,54 @@ screen buttons(b, pos=(100, 100)):
         for y in range(b.height):
             for x in range(max(h_buffer, 1)):
                 if b.pieces[y][x]:
-                    imagebutton:
-                        pos (int(cw*h_buffer/2), y*ch)
-                        xysize(cw*(h_buffer+1), ch)
-                        anchor (0.5, 0.5)
-                        idle Null()
-                        # idle "#ff00ff88"
-                        if (x, y) == b.player:
-                            pass
-                        elif not b.just_cleared:
-                            action [Function(b.trigger_reticle)]
-                        else:
-                            action NullAction()
-                        hovered Function(b.set_reticle, h_buffer, y)
+                    if isinstance(b, ToyBoard) or (b.reticle_type == "default" and b.pieces[y][x+1] and b.pieces[y][x+2]):
+                        imagebutton:
+                            pos (int(cw*h_buffer/2), y*ch)
+                            xysize(cw*(h_buffer+1), ch)
+                            anchor (0.5, 0.5)
+                            idle Null()
+                            # idle "#ff00ff88"
+                            if (x, y) == b.player:
+                                pass
+                            elif not b.just_cleared:
+                                action [Function(b.trigger_reticle)]
+                            else:
+                                action NullAction()
+                            hovered Function(b.set_reticle, h_buffer, y)
         for y in range(b.height):
             for x in range(h_buffer+1, b.width-1-h_buffer):
                 if b.pieces[y][x]:
-                    imagebutton:
-                        pos (x*cw, y*ch)
-                        xysize(cw, ch)
-                        align (0.5, 0.5)
-                        idle Null()
-                        # idle "#ffffff88"
-                        if (x, y) == b.player:
-                            pass
-                        elif not b.just_cleared:
-                            action [Function(b.trigger_reticle)]
-                        else:
-                            action NullAction()
-                        hovered Function(b.set_reticle, x, y)
+                    if isinstance(b, ToyBoard) or (b.reticle_type == "default" and b.pieces[y][x+1] and b.pieces[y][x-1]):
+                        imagebutton:
+                            pos (x*cw, y*ch)
+                            xysize(cw, ch)
+                            align (0.5, 0.5)
+                            idle Null()
+                            # idle "#ffffff88"
+                            if (x, y) == b.player:
+                                pass
+                            elif not b.just_cleared:
+                                action [Function(b.trigger_reticle)]
+                            else:
+                                action NullAction()
+                            hovered Function(b.set_reticle, x, y)
         for y in range(b.height):
             for x in range(min(b.width-h_buffer, b.width-1), b.width):
                 if b.pieces[y][x]:
-                    imagebutton:
-                        pos (int(b.width*cw-(cw*(h_buffer+1))+(cw*h_buffer)/2), y*ch)
-                        xysize(cw*(h_buffer+1), ch)
-                        align (0.5, 0.5)
-                        idle Null()
-                        # idle "#ff00ff88"
-                        if (x, y) == b.player:
-                            pass
-                        elif not b.just_cleared:
-                            action [Function(b.trigger_reticle)]
-                        else:
-                            action NullAction()
-                        hovered Function(b.set_reticle, b.width-1-h_buffer, y)
+                    if isinstance(b, ToyBoard) or (b.reticle_type == "default" and b.pieces[y][x-1] and b.pieces[y][x-2]):
+                        imagebutton:
+                            pos (int(b.width*cw-(cw*(h_buffer+1))+(cw*h_buffer)/2), y*ch)
+                            xysize(cw*(h_buffer+1), ch)
+                            align (0.5, 0.5)
+                            idle Null()
+                            # idle "#ff00ff88"
+                            if (x, y) == b.player:
+                                pass
+                            elif not b.just_cleared:
+                                action [Function(b.trigger_reticle)]
+                            else:
+                                action NullAction()
+                            hovered Function(b.set_reticle, b.width-1-h_buffer, y)
 
 image tint:
     "#000"

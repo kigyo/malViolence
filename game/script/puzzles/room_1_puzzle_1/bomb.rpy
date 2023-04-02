@@ -138,13 +138,18 @@ init python:
                 self.handles = list(map(list, list(zip(*self.handles[::-1]))))
                 self.shape = list(zip(*self.shape[::-1]))
                 self.handles = list(map(list, list(zip(*self.handles[::-1]))))
+            for y in range(len(self.handles)):
+                for x in range(len(self.handles[y])):
+                    if self.handles[y][x]:
+                        self.handles[y][x].snap(int(self.display.x+x*block_size), int(self.display.y+y*block_size), 0.0)
             self.display.child.rotate = self.rotation*90
             self.display.child.update()
+            ox, oy = (math.floor((self.display.x-bomb.ox)/block_size),
+                      math.floor((self.display.y-bomb.oy)/block_size))
             if self.last_filled:
                 for (x, y) in self.last_filled:
                     bomb.data[y][x] -= 1
-            ox, oy = (math.floor((self.display.x-bomb.ox)/block_size),
-                      math.floor((self.display.y-bomb.oy)/block_size))
+                    self.display.snap(int(offset_x+ox*block_size), int(offset_y+oy*block_size), 0.0)
             self.last_filled = []
             not_filled = False
             for y in range(len(self.shape)):
@@ -160,6 +165,12 @@ init python:
             if not not_filled:
                 for (x, y) in self.last_filled:
                     bomb.data[y][x] += 1
+                self.display.snap(int(offset_x+ox*block_size), int(offset_y+oy*block_size), 0.0)
+                for y in range(len(self.handles)):
+                    for x in range(len(self.handles[y])):
+                        if self.handles[y][x]:
+                            self.handles[y][x].snap(int(offset_x+ox*block_size+x*block_size),
+                                                    int(offset_y+oy*block_size+y*block_size), 0.0)
             else:
                 self.last_filled = []
                 self.display.snap(self.display.x, self.display.y, 0.0)
@@ -196,11 +207,15 @@ init python:
                         if part.handles[py][px]:
                             part.handles[py][px].handle = (px, py) == (offx, offy)
             x, y = drop.drag_name
-            for py in range(len(part.handles)):
-                for px in range(len(part.handles[py])):
-                    if part.handles[py][px] and part.handles[py][px].handle:
-                        ox, oy = (px, py)
-                        break
+            handle = [d for d in drags if d and d.handle]
+            if handle:
+                for py in range(len(part.handles)):
+                    for px in range(len(part.handles[py])):
+                        if part.handles[py][px] and part.handles[py][px].handle:
+                            ox, oy = (px, py)
+                            break
+            else:
+                ox, oy = (1, 1)
             filled = []
             for py in range(len(part.handles)):
                 for px in range(len(part.handles[py])):
@@ -218,9 +233,9 @@ init python:
                 for px in range(len(part.handles[py])):
                     if part.handles[py][px]:
                         part.handles[py][px].snap(bomb.ox+x*block_size+px*block_size-ox*block_size,
-                                                  bomb.oy+y*block_size+py*block_size-oy*block_size, 0.25)
+                                                  bomb.oy+y*block_size+py*block_size-oy*block_size, 0.0)
             part.display.snap(bomb.ox+x*block_size-ox*block_size,
-                              bomb.oy+y*block_size-oy*block_size, 0.25)
+                              bomb.oy+y*block_size-oy*block_size, 0.0)
         renpy.retain_after_load()
         renpy.restart_interaction()
 

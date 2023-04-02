@@ -105,7 +105,7 @@ init python:
             renpy.retain_after_load()
 
     def puzzle_board_reset(txt=_("Invalid. Restarting...")):
-        store.pb = PuzzleBoard(width=6, height=10, move_cap=12)
+        store.pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False)
         store.adt = 0.5
         renpy.notify(txt)
         renpy.hide_screen("puzzle_playspace")
