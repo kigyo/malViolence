@@ -13,7 +13,7 @@ screen splash_settings():
 
     style_prefix "confirm"
 
-    frame:
+    frame at alphashow(0.5):
 
         xpadding 100
         ypadding 50
@@ -26,8 +26,8 @@ screen splash_settings():
             spacing 50
             xfill True
 
-            label _("Accessibility Settings") xalign 0.5
-            label _("These options can be adjusted at any time in the menu.") xalign 0.5 text_color "#fff" text_font "gui/font/TitilliumWeb-Regular.ttf" text_size 35
+            label _("Accessibility Settings") xalign 0.5 xoffset -37
+            label _("These options can be adjusted at any time in the menu.") xalign 0.5 text_color "#fff" text_font "gui/font/TitilliumWeb-Regular.ttf" text_size 35 xoffset -37
 
             hbox:
                 xalign 0.6
@@ -49,9 +49,9 @@ screen splash_settings():
 
                 vbox:
                     style_prefix "radio"
-                    label _("Game Overs")
-                    textbutton _("Infinite") action SetField(preferences, "hard_mode", True) alt "Hard mode: Failing puzzles always results in a game over" 
-                    textbutton _("Once per Puzzle") action SetField(preferences, "hard_mode", False) alt "Easy mode: Have at most one game over per puzzle"
+                    label _("Puzzles")
+                    textbutton _("Mandatory") action SetField(preferences, "hard_mode", True) alt "Hard mode: Puzzles must be solved once in order to be skipped" 
+                    textbutton _("Skippable") action SetField(preferences, "hard_mode", False) alt "Easy mode: Puzzles can be skipped after failing once"
 
                 vbox:
                     style_prefix "check"
@@ -64,7 +64,7 @@ screen splash_settings():
                         textbutton _("Self-Voicing") action Preference("self voicing", "toggle") alt "Toggle Self-Voicing"
                     textbutton "Screenshake" action ToggleField(persistent,"screenshake",true_value=True,false_value=False) alt "Toggle Screen Shake"
 
-            textbutton _("Confirm") action Return() xalign 0.5
+            textbutton _("Confirm") action Return() xalign 0.5 xoffset -37
 
 style presplash_label:
     top_margin gui.pref_spacing

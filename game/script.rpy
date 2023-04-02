@@ -15,6 +15,7 @@ label splashscreen:
     if not persistent.firstlaunch:
         call screen splash_settings
         $ persistent.firstlaunch = True
+        pause 0.5
     show splash_anim_1
     $ renpy.pause(3)
     scene black
