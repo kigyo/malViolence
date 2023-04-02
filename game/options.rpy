@@ -26,6 +26,8 @@ define gui.show_name = True
 
 define config.version = "1.0"
 
+define config.developer = False
+
 
 
 ## A short name for the game used for executables and directories in the built

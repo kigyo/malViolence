@@ -190,7 +190,7 @@ label start:
     cr "The vent dispenses LabScrip 4053."
     cr "Reviewers say its \"safe for human consumption,\"{w=0.1} so don't be shy.\n{w}It's got all the nutrients you need to live a good life!"
     pause 1
-    cr "...Well, what's the holdup?{w=0.5} Have a look around,{w=0.1} beg for mercy,{w=0.1} or make yourself comfortable."
+    cr "...Well, what's the holdup?{w=0.5} Have a look around,{w=0.1} check your dead device,{w=0.1} beg for mercy,{w=0.1} or make yourself comfortable."
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
     cr "After all...{w=0.5} you'll be here for a while!"
     pause 1
