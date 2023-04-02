@@ -525,7 +525,7 @@ screen credits(t):
         
     if persistent.credits_seen:
 
-        textbutton _("Skip Credits") action Jump("skip_credits") xalign 1.0 yalign 1.0 xoffset -20 yoffset -20 style "confirm_button"
+        textbutton _("Skip Credits") action Return() xalign 1.0 yalign 1.0 xoffset -20 yoffset -20 style "confirm_button"
 
     ## To use in script:
     ### call screen credits(t)

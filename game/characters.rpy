@@ -16,7 +16,7 @@ default testvar = ""
 init python:
     config.overlay_screens.append("debugging")
 
-    renpy.music.register_channel("beeps", mixer="sfx", loop=True, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True)
+    renpy.music.register_channel("beeps", mixer="bleeps", loop=True, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True)
 
     speaking = None
     # This returns speaking if the character is speaking, and done if the
