@@ -449,50 +449,49 @@ define credits_string = _p("""
 \n\n
 \n\n
 \n\n\n
-{size=+25}Director:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Director:{/color}{/font}{/size}\n
 Mado
 \n\n
-{size=+25}Writing:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Writing:{/color}{/font}{/size}\n
 Mado\n
 Brian Mulholland\n
 Z
 \n\n
-{size=+25}Puzzles & Programming:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Puzzles & Programming:{/color}{/font}{/size}\n
 speck\n
 KigyoDev
 \n\n
-{size=+25}Art & UI:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Art & UI:{/color}{/font}{/size}\n
 Mado\n
 Reina\n
 spicaze
 \n\n
-{size=+25}Music:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Music:{/color}{/font}{/size}\n
 Melo-dii\n
 Doran
 \n\n
-{size=+25}Voiceover:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Voiceover:{/color}{/font}{/size}\n
 Carrick Inabnett\n
 Vyn Vox
 \n\n
-{size=+25}Sound & Voice Direction:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Sound & Voice Direction:{/color}{/font}{/size}\n
 D.ray\n
 Phebe Fabacher
 \n\n
-{size=+25}Trailer:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Trailer:{/color}{/font}{/size}\n
 Jennymhulla
 \n\n
-{size=+25}Beta-Testing:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Beta-Testing:{/color}{/font}{/size}\n
 cluniies\n
 wBrian
 \n\n
-{size=+25}Special Thanks:{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Special Thanks:{/color}{/font}{/size}\n
 dmochas\n
 tofurocks\n
 wattson\n
 glsuoa\n
 npckc
-\n\n
-\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n
 {size=+100}Thanks for Playing!{/size}
 """)
 
@@ -521,19 +520,19 @@ screen credits(t):
     showif title_shown == False:
         add "gui/logo.png" xalign 0.5 yalign 0.5 at alphashow(0.5)
     else:
-        timer t-2 action [Return(), With(Dissolve(2))]
+        timer t-5 action [Return(), With(Dissolve(2))]
         text credits_string text_align 0.5 at credits_scroll(t)
         
     if persistent.credits_seen:
 
-        textbutton _("Skip Credits") action Jump("skip_credits") xalign 1.0 yalign 1.0
+        textbutton _("Skip Credits") action Jump("skip_credits") xalign 1.0 yalign 1.0 xoffset -20 yoffset -20 style "confirm_button"
 
     ## To use in script:
     ### call screen credits(t)
     ## Where t is the number of seconds it takes to scroll
 
 style credits_text:
-    size 40 outlines [(1.5, "#000000", 1, 1)]
+    size 50 outlines [(1.5, "#000000", 1, 1)]
     color "#ffffff"
 
 
