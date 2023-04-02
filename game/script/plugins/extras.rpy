@@ -369,7 +369,7 @@ screen dev_notes():
                 label "— " + _("{a=https://omelette.itch.io/}speck{/a}") + " (" + _("Puzzle Designer") + ")"
             frame:
                 has vbox
-                text _("Putting everyone's work together was a lot of fun, and I'm so happy with how it turned out! Huge thanks to Mado and speck for their coding contributions; they're responsible for the astonishing level of polish, and the cooler puzzles, respectively. \n\nNow that malViolence is done, I can't wait to put all the things I learned this month to good use in my own games. Also, please view my new son:")
+                text _("Putting everyone's work together was a lot of fun, and I'm so happy with how it turned out! Huge thanks to Mado and speck for their coding contributions; they're responsible for the astonishing level of polish, and the cooler puzzles, respectively. \n\nI learned so much this past month, and can't wait to put it to good use in my own games. Also, please view my new son:")
                 hbox xfill True:
                     add "gui/developer notes/kigyodev.png"
                     label "— " + _("{a=https://kigyodev.com/}KigyoDev{/a}") + " (" + _("Programmer") + ")"
