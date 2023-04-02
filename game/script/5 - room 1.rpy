@@ -296,9 +296,6 @@ label hacking_game_over:
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
-
-    "(It's too late.{w} The counter-trace just found you and—){p=0.5}{nw}"
-    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     cr "Good news!{w=0.5} STOP found your computer."
