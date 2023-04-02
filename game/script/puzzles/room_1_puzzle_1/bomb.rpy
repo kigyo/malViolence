@@ -200,11 +200,15 @@ init python:
                         if part.handles[py][px]:
                             part.handles[py][px].handle = (px, py) == (offx, offy)
             x, y = drop.drag_name
-            for py in range(len(part.handles)):
-                for px in range(len(part.handles[py])):
-                    if part.handles[py][px] and part.handles[py][px].handle:
-                        ox, oy = (px, py)
-                        break
+            handle = [d for d in drags if d and d.handle]
+            if handle:
+                for py in range(len(part.handles)):
+                    for px in range(len(part.handles[py])):
+                        if part.handles[py][px] and part.handles[py][px].handle:
+                            ox, oy = (px, py)
+                            break
+            else:
+                ox, oy = (1, 1)
             filled = []
             for py in range(len(part.handles)):
                 for px in range(len(part.handles[py])):
