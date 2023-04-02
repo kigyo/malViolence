@@ -128,7 +128,7 @@ screen room3_quilt():
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
         if "room3_1" in persistent.solved_puzzles or ("dead11" in persistent.dead_ends and not preferences.hard_mode):
-            textbutton "SKIP" style "confirm_button" action [SetDict(room3, "quilt", "solved"), Return()]
+            textbutton "SKIP" style "confirm_button" action [SetDict(room3, "quilt", "solved"), Return()] xalign 1.0
             
     fixed xoffset -400:
         add "puzzles/room_3_puzzle_1/quilt.png" align (0.5, 0.51) at zoomed(1.35)

@@ -910,6 +910,11 @@ screen preferences():
 
                             if config.sample_voice:
                                 textbutton _("Test") action Play("voice", config.sample_voice)
+                    
+                        label _("Text Beep Volume")
+
+                        hbox:
+                            bar value Preference("mixer bleeps volume")
                                 
             null height gui.pref_spacing
 
