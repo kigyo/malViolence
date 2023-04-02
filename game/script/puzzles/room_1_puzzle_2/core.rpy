@@ -186,11 +186,18 @@ init -1 python:
                                  self.pieces[y][x+2]]
                         if None in match:
                             continue
-                        match = sorted(match)
+                        if self.shuffle_matches:
+                            match = sorted(match)
                         for m in self.matches:
-                            if not m.matched and m == match:
-                                lose = False
-                                break
+                            if self.shuffle_matches:
+                                if not m.matched and m == match:
+                                    lose = False
+                                    break
+                            else:
+                                if not m.matched and [p.type for p in match] == m.pieces:
+                                    lose = False
+                                    break
+
                 if lose and not ("dead4" in persistent.dead_ends and not preferences.hard_mode):
                     renpy.jump('hacking_game_over')
                 elif lose:
