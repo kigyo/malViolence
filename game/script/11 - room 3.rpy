@@ -145,7 +145,7 @@ label room_3:
         else:
             show room3_sewingsetup with dissolve:
                 yalign 0.2 xalign 0.5
-            "(A superb sewing setup. {w}But what's with all the mittens? {w}It's not winter anymore.)"
+            "(A superb sewing setup.{w} But what's with all the mittens?{w} It's not winter anymore.)"
             hide room3_sewingsetup with dissolve
         $ room3["sewing_book"] += 1
 
@@ -446,7 +446,7 @@ label room_3:
                 "(Fridge seems well stocked too.{w} Let's see if Cautionne likes your take on Dr Danger's recipe.)"
             else:
                 show screen mise_en_place(False, _layer="master") with easeintop
-                "This recipe seems simple enough.{w=0.5} One more time..."
+                "This recipe seems simple enough.{w} One more time..."
             $ room3["cooking"] += 1
             $ inspect = None
             $renpy.hide_screen("mise_en_place", "master")
@@ -537,14 +537,14 @@ label quilt_solved:
     hide black onlayer screens
     hide screen room3_quilt
     with puzzle_hide
-    "(You notice that you can now lift up the quilt.{w} There is a photo underneath it.)"
+    "(You notice that you can now lift up the quilt.{w} There's a photo underneath it.)"
     "(Something is written on the back.)"
     nvl clear
     $ nvl_heading = ""
     n "There was all this heat and smoke and energy.{w} There were alarms blaring and people shouting.{w} \nThat's what she told me,{w=0.1} but I barely remember any of it."
-    n "Here's what I did remember.{w} When we stopped running,{w=0.1} she seemed more tired than I was.{w} She did carry me the entire time.{w=0.5} But she didn't seem any weaker than before.{w} Her hold on my body didn't loosen.{w=0.5} She was just looking at what was left of my shoulder."
+    n "Here's what I did remember.{w} When we stopped running,{w=0.1} she seemed more tired than I was.{w} She did carry me the entire time.{w=0.5} But she didn't seem any weaker than before.{w} Her hold on my body didn't loosen.{w} She was just looking at what was left of my shoulder."
     nvl clear
-    n "I was hurting like you wouldn't believe.{w=0.5} But I don't think I cared."
+    n "I was hurting like you wouldn't believe.{w} But I don't think I cared."
     n "Because,{w=0.1} that day,{w=0.5} I got to see the sky again."
     nvl clear
     hide memory1 with dissolve
@@ -612,7 +612,7 @@ label toys_solved:
     nvl clear
     $ nvl_heading = ""
     n "She told me to explore the place.{w} She said it was important that I adjust to my new environment,{w=0.1} but she's been holed up in the lab."
-    n "I don't know why she's so stressed about my surgeries.{w} She's the smartest person I know.{w=0.5} And I grew up surrounded by \"brilliant\" scientists,{w=0.1} so that's saying {i}something{/i}."
+    n "I don't know why she's so stressed about my surgeries.{w} She's the smartest person I know.{w} And I grew up surrounded by \"brilliant\" scientists,{w=0.1} so that's saying {i}something{/i}."
     nvl clear
     n "She says she's still concerned about making adjustments to my synthetic nerves.{w} That's she's worried she'll put me through even more pain.{w} But every time she's worked on me,{w=0.1} I haven't felt a thing."
     n "Last time,{w=0.1} I actually fell asleep."
@@ -689,7 +689,7 @@ label cooking_solved:
     $ nvl_heading = ""
     n "I don't remember what the food was like at the orphanage.{w} Probably bland."
     n "I wish I could forget what LabScrip tastes like…{w=0.5} but meals were usually the least painful part of my day in the lab,{w=0.1} so I've got a soft spot for the stuff."
-    n "But that wasn't food.{w} It was nutritious and edible and nothing more.{w} It didn't fill you up.{w=0.5} It wasn't warm.{w=0.5} There certainly was no thought in it at all."
+    n "But that wasn't food.{w} It was nutritious and edible and nothing more.{w} It didn't fill you up.{w} It wasn't warm.{w} There certainly was no thought in it at all."
     nvl clear
     n "Pancakes are food.{w=0.5} They sizzle in the pan and curl at the edges,{w=0.1} bubbling slightly when it's time to flip.{w} You can undercook them or burn them,{w=0.1} bury them in toppings or eat them with your hands.{w} They're filling,{w=0.1} and tasty,{w=0.1} and oh-so warm."
     n "With practice,{w=0.1} I could re-create her recipe with ease.{w} Compared to our regular experiments,{w=0.1} it's hardly rocket science."

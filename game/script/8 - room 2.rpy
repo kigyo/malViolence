@@ -94,7 +94,7 @@ label room_2:
         else:
             show room2_blueprintcollection with dissolve:
                 yalign 0.2 xalign 0.5
-            "(Blueprints for a variety of dangerous weapons. {w}Honestly,{w=0.1} they're pretty scary.)"
+            "(Blueprints for a variety of dangerous weapons.{w} Honestly,{w=0.1} they're pretty scary.)"
             hide room2_blueprintcollection with dissolve
             pass
         $ room2["blueprints"] += 1
@@ -111,7 +111,7 @@ label room_2:
         else:
             show room2_postitnotes with dissolve:
                 yalign 0.2 xalign 0.5
-            "(A wall of scrawled notes. {w}And they all talk about...{w=0.5} domestic tasks?)"
+            "(A wall of scrawled notes.{w} And they all talk about...{w=0.5} domestic tasks?)"
             hide room2_postitnotes with dissolve
             pass
         $ room2["post-its"] += 1
@@ -151,7 +151,7 @@ label room_2:
         else:
             show room2_evidenceboard with dissolve:
                 yalign 0.2 xalign 0.5
-            "(A sprawling web of photos,{w=0.1} documents,{w=0.1} and diagrams. {w}And they're all related to STOP...)"
+            "(A sprawling web of photos,{w=0.1} documents,{w=0.1} and diagrams.{w} And they're all related to STOP...)"
             hide room2_evidenceboard with dissolve
             pass
         $ room2["corkboard"] += 1
@@ -173,7 +173,7 @@ label room_2:
         else:
             show room2_news with dissolve:
                 yalign 0.2 xalign 0.5
-            "Newspaper printouts and clippings. {w}They all feature Dr. Danger...{w=0.5} as well as a {i}certain{/i} colorful sidekick."
+            "Newspaper printouts and clippings.{w} They all feature Dr. Danger...{w=0.5} as well as a {i}certain{/i} colorful sidekick."
             hide room2_news with dissolve
             pass
         $ room2["clippings"] += 1
@@ -208,7 +208,7 @@ label room_2:
                 "(The blackboard is covered in little doodles,{w=0.1} but they don't seem to be there just for decoration.)"
                 "(You hate to admit it,{w=0.1} but they're kind of cute.{w} Completely unlike their creator.)"
             else:
-                "(Time to string up some evidence!)"
+                "(Let's string up some evidence!)"
                 show screen room2_evidence(_layer="master") with easeintop
             $ room2["evidence"] += 1
             $ inspect = None
