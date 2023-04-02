@@ -48,7 +48,7 @@ define word_description = _("""Cautionne's a big fan of word games, so he wants 
 
 {color=#fff}...You might have to find some letters first!{/color}""")
 
-define word_lenient_failure_message = _("(Nope, not good enough.)")
+define word_lenient_failure_message = _("(Nope,{w=0.1} not good enough.)")
 
 label room_2:
     if inspect not in room2_investigated and inspect in ["blueprints", "limbs", "clippings", "post-its", "corkboard"]:
@@ -59,20 +59,24 @@ label room_2:
 
     if inspect == "note1":
         $room2["notes"].append(1)
-        "(You spot a note on the wall, and pick it up.)"
+        $ play_sound(paperpickup)
+        "(You spot a note on the wall,{w=0.1} and pick it up.)"
         "(It says: \"The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.\")"
     elif inspect == "note2":
         $room2["notes"].append(2)
+        $ play_sound(paperpickup)
         "(You pick up the note beneath the blackboard.)"
         "(It says: \"The red headed kid is certain they did not live in the city.\")"
     elif inspect == "note3":
         $room2["notes"].append(3)
+        $ play_sound(paperpickup)
         "(There's a note stuck to the front of the desk.)"
         "(It says: \"The bracelet is too big for the redhead.\")"
     elif inspect == "note4":
         $room2["notes"].append(4)
-        "(A note is stuck to the water cooler — which does not actually dispense any water.)"
-        "(It says: \"The blonde kid managed to play a tune on the harmonica when asked, but the other two children could not.\")"
+        $ play_sound(paperpickup)
+        "(A note is stuck to the water cooler —{w=0.5}  which doesn't actually dispense any water.)"
+        "(It says: \"The blonde kid managed to play a tune on the harmonica when asked,{w=0.1} but the other two children could not.\")"
 
     elif inspect == "blueprints":
         if room2["blueprints"] == 0:
@@ -147,7 +151,7 @@ label room_2:
         else:
             show room2_evidenceboard with dissolve:
                 yalign 0.2 xalign 0.5
-            "(A sprawling web of photos,{w=0.1} documents{w=0.1}  and diagrams. {w}And they're all related to STOP...)"
+            "(A sprawling web of photos,{w=0.1} documents,{w=0.1} and diagrams. {w}And they're all related to STOP...)"
             hide room2_evidenceboard with dissolve
             pass
         $ room2["corkboard"] += 1
@@ -180,9 +184,9 @@ label room_2:
         else:
             if room2["panopticon"] == 0:
                 $ panopticon_init(True)
-                "(A computer, and a small, strange... colosseum? What on earth is that?)"
+                "(A computer,{w=0.1} and a small,{w=0.1} strange...{w=0.5} colosseum?{w} What on {i}earth{/i} is that?)"
                 show screen room2_panopticon(_layer="master") with easeintop
-                "(...Of course. It's a puzzle.)"
+                "(...Of course.{w} It's a puzzle.)"
             else:
                 show screen room2_panopticon(_layer="master") with easeintop
             $ room2["panopticon"] += 1
@@ -199,8 +203,8 @@ label room_2:
             if room2["evidence"] == 0:
                 $ evidence_init(True)
                 show screen room2_evidence(_layer="master") with easeintop
-                "(The blackboard is covered in little doodles, but they don't seem to be there just for decoration.)"
-                "(You hate to admit it, but they're kind of cute. Completely unlike their creator.)"
+                "(The blackboard is covered in little doodles,{w=0.1} but they don't seem to be there just for decoration.)"
+                "(You hate to admit it,{w=0.1} but they're kind of cute.{w} Completely unlike their creator.)"
             else:
                 show screen room2_evidence(_layer="master") with easeintop
             $ room2["evidence"] += 1
@@ -216,7 +220,7 @@ label room_2:
         else:
             if room2["recalibration"] == 0:
                 call init_cybernetics
-                "(The monitor is displaying some kind of simulation. Better take a closer look...)"
+                "(The monitor is displaying some kind of simulation.{w} Better take a closer look...)"
             else:
                 #repeated investigation
                 pass
@@ -231,7 +235,7 @@ label room_2:
     elif inspect == "word":
         if room2["word"] == 0:
             $word_init()
-            "(There are five empty slots on the door's lock. Your best guess is that you need to fill them up somehow.)"
+            "(There are five empty slots on the door's lock.{w} Your best guess is that you need to fill them up somehow.)"
         else:
             #repeated investigation
             pass
@@ -256,15 +260,15 @@ label evidence_solved:
     $ room2["solved"].append("evidence")
     #obtain the "E"
     if len(room2["notes"]) < 4:
-        "(...You were mostly guessing, but somehow, this worked?)"
+        "(...You were mostly guessing,{w=0.1} but somehow, this worked?)"
     $ play_sound(puzzlesuccess)
     "You solved the puzzle!"
     hide black onlayer screens
     hide screen room2_evidence
     with puzzle_hide
-    "(A tiny blue tile falls to the ground. Upon closer inspection, it reads the letter \"E\", for... {i}evidence{/i}?)"
-    "(Or maybe for {i}end of puzzles — enough of these silly games{/i}. But that's just wishful thinking.)"
-    "(Either way, you decide to take it with you.)"
+    "(A tiny blue tile falls to the ground.{w} Upon closer inspection,{w=0.1} it reads the letter \"E\",{w=0.1} for...{w=0.5} {i}evidence{/i}?)"
+    "(Or maybe for {i}\"end of puzzles\", or \"enough of these silly games\"{/i}.{w} But that's just wishful thinking.)"
+    "(Either way,{w=0.1} you decide to take it with you.)"
     $ inspect = None
     call screen room2
 
@@ -275,7 +279,7 @@ label evidence_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 0.5
-    "(You carefully insert one more pin into the board, which leaves—){p=0.3}{nw}"
+    "(You carefully insert one more pin into the board,{w=0.1} which leaves—){p=0.3}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Whoa, you {i}suck {/i}at this!"
     hide black onlayer screens
@@ -318,8 +322,8 @@ label panopticon_solved:
     hide black onlayer screens
     hide screen room2_panopticon
     with puzzle_hide
-    "(In response to your hard-earned success, two little {i}Scraddle{/i}-like tiles pop out of the miniature panopticon.)"
-    "(They represent the letters \"A\" and \"S\". How quaint.)"
+    "(In response to your hard-earned success,{w=0.1} two little {i}Scraddle{/i}-like tiles pop out of the miniature panopticon.)"
+    "(They represent the letters \"A\" and \"S\".{w} How quaint.)"
     $ inspect = None
     call screen room2
 
@@ -330,9 +334,9 @@ label panopticon_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 0.5
-    "(You re-arrange another set of cells and—)"
+    "(You re-arrange another set of cells and—){p=0.3}{nw}"
     $ play_sound(error)
-    "(—and suddenly, your controls freeze up.{w} There's a notification in the corner.)"
+    "(—and suddenly,{w=0.1} your controls freeze up.{w} There's a notification in the corner.)"
     hide black onlayer screens
     hide screen room2_panopticon
     with puzzle_hide
@@ -380,8 +384,8 @@ label recalibration_solved:
     hide black onlayer screens
     hide screen cybernetics
     with puzzle_hide
-    "(The desk drawer juts open just a bit, and reveals two small tiles inside.)"
-    "(\"R\" and \"T\" are written on them, respectively. Now, where could you put them to use...?)"
+    "(The desk drawer juts open just a bit,{w=0.1} and reveals two small tiles inside.)"
+    "(\"R\" and \"T\" are written on them,{w=0.1} respectively.{w} Now,{w=0.1} where could you put them to use...?)"
     $ inspect = None
     call screen room2
 

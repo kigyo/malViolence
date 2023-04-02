@@ -81,7 +81,7 @@ define quilt_colors = ["blue", "red", "yellow"]
 define quilt_shapes = ["bolt", "pill", "swirl", "x"]
 define quilt_fills = ["empty", "full", "striped"]
 
-define quilt_description = _("""This quilt's unfinished, and {color=#fff}you need to make it complete!{/color}\n\nEach tile has {color=#fff}three qualities (color, shape, and fill).\n\n{/color}In order to finish the intended pattern, each adjacent tile must share {color=#fff}exactly 2 out of 3 qualities with the next tile.{/color}
+define quilt_description = _("""This quilt's unfinished, and {color=#fff}you need to make it complete!{/color}\n\nEach tile has {color=#fff}three traits (color, shape, and fill).\n\n{/color}In order to finish the intended pattern, each adjacent tile must share {color=#fff}exactly 2 out of 3 traits with the next tile.{/color}
 
 Below, {color=#fff}construct the next motif{/color} you want to place by{color=#fff} adjusting the color, shape, and fill with the arrows:{/color}""")
 

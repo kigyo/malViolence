@@ -265,8 +265,8 @@ screen mise_en_place(interactable=True):
                 label "Instructions" xalign 0.5
                 text "- Always begin cooking with {i}{b}~mise en place~.{/i}{/b}"
                 text "- {b}Drag items onto the board to arrange them.{/b} Look at the ingredients list to figure out how many of each item should be laid out on the counter."
-                text "- {b}All items of the same type{/b} should touch each other {b}orthagonally.{/b}"
-                text "- {b}Items of different types{/b} should not touch orthagonally, but can touch {b}diagonally.{/b}"
+                text "- {b}All items of the same type{/b} should touch each other {b}at right angles{/b}"
+                text "- {b}Items of different types{/b} should not touch at right angles, but can touch {b}diagonally.{/b}"
                 text "- {b}Drag uneeded items{/b} to the {b}trash.{/b}"
 
                 null height 30

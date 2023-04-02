@@ -399,11 +399,12 @@ label room_3:
                 "(Ouch!)" with vpunch
                 "(Seems like you stepped on a rogue sewing pin.)"
                 show screen room3_quilt(_layer="master") with easeintop
-                "(Looking around more attentively you realize there is a large, unfinished sewing project spread out on the floor. A quilt. Must have been to big for the little sewing desk.)"
-                "(Hmm...it looks like Cationne was following a pattern with the appliques...maybe you can help them finish it up?)"
+                "(What's a large, unfinished sewing project doing, all spread out on the floor?)"
+                "(Looks like a quilt.{w} Must've been too big for the little sewing desk.)"
+                "(Hmm...{w} For some reason, you want to finish it.)"
             else:
                 show screen room3_quilt(_layer="master") with easeintop
-                "(You carefully step around any loose pins on the floor before sitting down with the unfinished quilt again.)"
+                "(Before you sit down with the quilt,{w=0.1} you carefully inch your way around the stray pins on the floor.)"
             $ room3["quilt"] += 1
             $ inspect = None
             $renpy.hide_screen("room3_quilt", "master")
@@ -417,15 +418,15 @@ label room_3:
         else:
             if room3["toys"] == 0:
                 call init_toy_board
-                "(There are a few plushies sitting on the shelf above the bed that appears to be Cautionne's. They're suprisingly soft!)"
-                "(You investigate the cuppard below the plusies where— woah!)"
+                "(There are a few plushies sitting on the shelf.{w} They're suprisingly soft!)"
+                "(You investigate the cupboard below the plushies where—{w=0.5} {i}woah!{/i})"
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
-                "(A wave of plushies spills out, makeing a messy pile all around you.)"
-                "(This would be a comfy way to be smothered, but perhaps you should give Cationne a hand in tidying his toy storage.)"
+                "(An avalanche of plushies spills out,{w=0.1} burying you in a soft, fuzzy pile.)"
+                "(This {i}would{/i} be a comfy way to go out,{w=0.1} but you should probably put everything back.)"
             else:
-                "(A pile of plushies sprawl out on Cautionne's bed, right where you left them.)"
+                "(A pile of plushies sprawl out on the bed, right where you left them.)"
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
-                "(Okay, lets try one more time, we can get a handle on this mess! Just gotta neatly sort the toys neatly into sets...)"
+                "(Okay,{w=0.1} one more time.{w} Just gotta neatly sort the toys neatly into sets...)"
             $ room3["toys"] += 1
             $ inspect = None
             $renpy.hide_screen("toy_playspace", "master")
@@ -439,13 +440,13 @@ label room_3:
         else:
             if room3["cooking"] == 0:
                 call init_mise_en_place
-                "(There's a small kitchenette. It looks like it hasn't been used recently... Does Cautionne even cook or did Dr Danger take care of all the cooking for the both of them?)"
+                "(There's a small kitchenette.{w} It looks like it hasn't been used recently...{w} Did Dr Danger take care of all the cooking?)"
                 show screen mise_en_place(False, _layer="master") with easeintop
-                "(A handwritten note sits on the counter. Looks like...a recipe for pancakes?)"
-                "(Fridge seems well stocked too. Let's see if Cautionne likes your take on Dr Danger's recipe.)"
+                "(A handwritten note sits on the counter.{w} Looks like...{w=0.5}a recipe for pancakes?)"
+                "(Fridge seems well stocked too.{w} Let's see if Cautionne likes your take on Dr Danger's recipe.)"
             else:
                 show screen mise_en_place(False, _layer="master") with easeintop
-                "This recipe seems simple enough, let's try one more time..."
+                "This recipe seems simple enough.{w=0.5} One more time..."
             $ room3["cooking"] += 1
             $ inspect = None
             $renpy.hide_screen("mise_en_place", "master")
@@ -459,7 +460,7 @@ label room_3:
             $scrapbook_init()
             $ room3["scrapbook_new"] = 1
             show screen room3_meta(_layer="master") with easeintop
-            "(The \"lock\" for the door is a...{w=0.5} scrapbook?{w} Its pages are empty, though...)"
+            "(The \"lock\" for the door is a...{w=0.5} scrapbook?{w} Its pages are empty,{w=0.1} though...)"
             pass
         else:
             show screen room3_meta(_layer="master") with easeintop

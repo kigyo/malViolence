@@ -21,7 +21,7 @@ label dr_danger_2:
   pause 0.5
   "(The last corridor looked straight out of a sci-fi movie.{w} This one's practically mundane.)"
   "(It's got more in common with a basic STOP research building.)"
-  "(It brings back memories of your days as low-level agent,{w=0.1} trudging through halls,{w=0.1} delivering low-level intel to low-level researchers.)"
+  "(It brings back memories of your days as a low-level agent,{w=0.1} trudging through halls,{w=0.1} delivering low-level intel to low-level researchers.)"
   "(Your supervisor loved emphasizing the \"low-level\" part.)"
   "(Pressing your keycard to the reader,{w=0.1} hearing that little \"beep\" of approval,{w=0.1} seeing the doors click open...)"
   pause 0.5

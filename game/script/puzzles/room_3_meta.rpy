@@ -4,7 +4,7 @@ That's what she told me, but I barely remember any of it.
 
 Here's what I did remember. When we stopped running, she seemed more tired than I was. She did carry me the entire time. But she didn't seem any weaker than before. Her hold on my body didn't loosen. She was just looking at what was left of my shoulder. 
 
-I was hurting like you wouldn't believe. But I don't think I cared then. 
+I was hurting like you wouldn't believe. But I don't think I cared. 
 
 Because, that day, I got to see the sky again."""),
 
@@ -14,17 +14,17 @@ I wish I could forget what LabScrip tastes like... but meals were usually the le
 
 But that wasn't food. It was nutritious and edible and nothing more. It didn't fill you up. It wasn't warm. There certainly was no thought in it at all.
 
-Pancakes are food. They sizzle in the pan and curl at the edges, bubbling slightly when it's time to flip. You can undercook them or burn them, bury them in toppings or eat them with your hands. They're  filling, and tasty, and  oh-so warm.
+Pancakes are food. They sizzle in the pan and curl at the edges, bubbling slightly when it's time to flip. You can undercook them or burn them, bury them in toppings or eat them with your hands. They're filling, and tasty, and oh-so warm.
 
-I'm sure, with practice, I could re-create her recipe with ease. Compared to our regular experiments, it's hardly rocket science.
+With practice, I'm sure I could re-create her recipe with ease. Compared to our regular experiments, it's hardly rocket science.
 
-But I've never had someone cook for me before. 
+But I've never had someone cook for {i}me{/i} before. 
 
 ...I'd like to pretend I'm not capable for a little while longer."""),
 
     3: _("""She told me to explore the place. She said it was important that I adjust to my new environment, but she's been holed up in the lab. 
 
-I don't know why she's so stressed about my surgeries. She's the smartest person I know. And I grew up surrounded by  supposedly brilliant scientists, so that's saying something.
+I don't know why she's so stressed about my surgeries. She's the smartest person I know. And I grew up surrounded by \"brilliant\" scientists, so that's saying something.
 
 She says she's still concerned about making adjustments to my synthetic nerves. That's she's worried she'll put me through even more pain. But every time she's worked on me, I haven't felt a thing.
 
@@ -32,14 +32,14 @@ Last time, I actually fell asleep."""),
 
     4: _("""I like to watch her work. It's normally very calming.
 
-When she's making something explosive though, that's the most exciting thing of all!  
+But when she's making something explosive, it's really, really exciting!  
 
 The other day, I noticed that she'd forgotten her flash-welder. I brought it over to her, saying that I wanted to test out my grip strength. She saw through my excuse, but she let me help anyway.
 I even made a few suggestions of my own, and ... guess what? Guess what!!! She ended up using every single idea!
 
-She said it was impressive how quickly I'd picked up on what her design needed. She smiled at me with such pride. But all that time, there was this sad look in her eyes...
+She said it was impressive how quickly I'd picked up on what her design needed. She smiled at me with such pride. But at the same time, there was this sad look in her eyes...
 
-...She's sad a lot, I've noticed. I want to do something to change that.""")
+...I've noticed she's sad a lot. I want to do something to change that.""")
 }
 
 screen room3_meta():

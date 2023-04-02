@@ -16,7 +16,7 @@ label spare_ending:
     #"{b}[pause – walking sounds play as the exit BG appears]{/b}"
     scene bg garage with fade:
         zoom 0.5 align (0.5,0.5)
-    "(In a large garage filled to the brim with carboard boxes,{w=0.1} the exit waits for you,{w=0.1} wide open.)"
+    "(In a large garage filled to the brim with cardboard boxes,{w=0.1} the exit waits for you,{w=0.1} wide open.)"
     "(It's night already.{w} Outside, you hear the quiet rushing of a river.)"
     "(Just a few more steps,{w=0.1} and you're out of here.{w} Even more,{w=0.1} and you'll be on the bus back home.)"
     "(It'll take a couple of hours to get back to HQ.{w} You'll nap on the ride,{w=0.1} probably,{w=0.1} so that by the time you get to your stop,{w=0.1} you'll have enough energy to run up thousands of narrow stairs.)"
@@ -277,7 +277,6 @@ label spare_ending:
     voice sustain
     extend " But I know what I'm talking about."
 
-    stop music fadeout 1.0
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-24.ogg"
     cr "After all,{w=0.1} I {i}am{/i}{i} {/i}a supervillain."
 
@@ -337,9 +336,13 @@ label spare_ending:
 
     pause 5
 
-    hide text
+    hide text with dissolve
+
+    stop music fadeout 2.0
 
     pause 3
+
+
 
 
     #"{b}[pause as {/b}{b}Cautionne's{/b}{b} footsteps are heard slowly walking off]{/b}"

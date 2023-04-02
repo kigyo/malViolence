@@ -21,13 +21,13 @@ Be quick, though. {color=#fff}If the poison's disturbed too much, it'll give off
 Drag the vials in order to pour their contents into each other.""")
 
 
-define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the bomb casing!{/color} Use the mouse to drag pieces around. Left click to rotate things clockwise, right click to rotate things counterclockwise. \nBe sure to {color=#fff}give every piece its own space{/color}, or else things might get explosive...
+define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the bomb casing!{/color}\nUse {color=#fff}your mouse{/color} to drag pieces around. {color=#fff}Left click{/color} to rotate them {color=#fff}clockwise,{/color} {color=#fff}right click{/color} to rotate things {color=#fff}counterclockwise.{/color} \nBe sure to {color=#fff}give every piece its own space{/color}, or else things might get explosive...
 
 """)
 
-define marble_description = _("""Knock down the effigies of STOP officials in the same order you encountered them.
+define marble_description = _("""{color=#fff}Knock down{/color} these effigies of STOP officials {color=#fff}in the same order you encountered them.{/color}
 
-So far, you have found:""")
+{u}So far, you've found:{/u}""")
 
 
 screen room1():
@@ -124,9 +124,9 @@ label room_1:
             if room1["hacking"] == 0:
                 call init_puzzle_board
                 "(Four large monitors are displaying an intimidating wall of code.)"
-                "(You were hoping you didn't have to deal with them, but...)"
+                "(You were hoping you didn't have to deal with them,{w=0.1} but...)"
                 show screen puzzle_playspace(pb, False, _layer="master") with easeintop
-                "(You do.)"
+                "(...ah well. {w}Time for some good ol' computer wrangling.)"
             else:
                 pass
             show screen puzzle_playspace(pb, False, _layer="master") with easeintop
@@ -142,7 +142,7 @@ label room_1:
         else:
             if room1["decanting"] == 0:
                 $decanting_init()
-                "(Three differently-sized vials are placed on the table. There are instructions written next to them.)"
+                "(Three differently-sized vials are placed on the table.{w} There are instructions written next to them.)"
             else:
                 #repeated investigation
                 pass
@@ -160,9 +160,9 @@ label room_1:
         else:
             if room1["bomb"] == 0:
                 call init_bomb
-                "(It looks like there's an open... tool box? You approach it to take a closer look.)"
+                "(It looks like there's an open...{w=0.5} tool box?{w} You approach it to take a closer look.)"
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
-                "(Nope, not a tool box, but a bomb. No big deal. What could go wrong?)"
+                "(Nope!{w}It's a bomb.{w} No big deal.{w} What could possibly go wrong?)"
             else:
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
             $ room1["bomb"] += 1
@@ -176,7 +176,7 @@ label room_1:
         if room1["marble"] == 0:
             $ room1["marble"] = 1
             $marble_init()
-            "(You approach the strange, locked door.)"
+            "(You approach the strange,{w=0.1} locked door.)"
             show screen room1_marble(_layer="master") with easeintop
             "(Turns out it's even stranger from up close.)"
         else:
@@ -206,7 +206,7 @@ label bomb_solved:
     hide black onlayer screens
     hide screen room1_bomb
     with puzzle_hide
-    "(A marble rolls out of the bomb case. Attached to it is a note reading \"Colby Padilla\".)"
+    "(A marble rolls out of the bomb case.{w} Attached to it is a note reading \"Colby Padilla\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
     elif room1["marble"] == 0:
@@ -228,8 +228,8 @@ label bomb_game_over:
     hide screen room1_bomb
     with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-    cr "Well, well, well.{w=0.5} You\'ve successfully made a bomb."
-    cr "I can say with {i}100\% certainty{/i} that it\'ll make a fantastic explosion."
+    cr "Well, well, well.{w=0.5} You've successfully made a bomb."
+    cr "I can say with {i}100%% certainty{/i} that it'll make a fantastic explosion."
     "(Phew.{w} Looks like I've done what I was supposed to.)"
     $ play_sound(timeralarm)
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
@@ -265,7 +265,7 @@ label hacking_solved:
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
-    "(The computer ejects a marble, along with a note reading \"Asiya Bishop\".)"
+    "(The computer ejects a marble,{w=0.1} along with a note reading \"Asiya Bishop\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
     elif room1["marble"] == 0:
@@ -329,7 +329,7 @@ label decanting_solved:
     hide black onlayer screens
     hide screen room1_decanting
     with puzzle_hide
-    "(A small compartment opens up, revealing a marble. Underneath it is a note reading \"Brooke Yang\".)"
+    "(A small compartment opens up,{w=0.1} revealing a marble.{w} Underneath it is a note reading \"Brooke Yang\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
     elif room1["marble"] == 0:

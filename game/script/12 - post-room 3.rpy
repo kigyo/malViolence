@@ -45,7 +45,7 @@ label post_room_3:
     pause 2
 
     "(Huh.{w} The screen above you didn't turn on.)"
-    "(...Guess Cautionne really was serious about the whole \"silent treatment\ thing.)"
+    "(...Guess Cautionne really was serious about the whole \"silent treatment\" thing.)"
 
     if len(room3_investigated) == 7:
         "(Well,{w=0.1} you did what he asked you to do,{w=0.1} right?{w} You solved his puzzle.)"
@@ -106,7 +106,7 @@ label post_room_3:
     elif route == "neutral":
         "(Can't say you miss his nasally jabbering.)"
         "(And yet...{w=0.5} you'd take it over that strange,{w=0.1} baleful{w=0.1} unease that hums at the back of your mind.{w} Like the \"silent\" air conditioner in your boss's office.)"
-        "(It's not about your job.{w} You did what you were supposed to"
+        "(It's not about your job.{w} You did what you were supposed to.)"
         "(No,{w=0.1} rather...{w=0.5} you're bothered about the evidence itself.)"
 
         if most_explored == 1:
