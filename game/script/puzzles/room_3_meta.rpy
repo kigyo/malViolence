@@ -127,6 +127,9 @@ screen room3_meta():
             textbutton "SUBMIT" style "confirm_button" action Function(scrapbook_submit)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
 
+        if "room3_meta" in persistent.solved_puzzles:
+            textbutton "SKIP" style "confirm_button" action [SetDict(room3, "scrapbook_new", "solved"), Return()]
+
 define scrapbook_positions = [(450,570), (1100,490), (800,690,), (0,640)]
 define scrapbook_correct_order = [1,2,3,4]
 default scrapbook_input = [0,0,0,0]

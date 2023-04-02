@@ -197,6 +197,7 @@ label room_1:
 
 label bomb_solved:
     $renpy.block_rollback()
+    $clear_puzzle("room1_1")
     $ inspect = "bomb"
     show screen room1_bomb(bomb, False)
     show black onlayer screens with dissolve:
@@ -256,6 +257,7 @@ label bomb_game_over:
 
 label hacking_solved:
     $renpy.block_rollback()
+    $clear_puzzle("room1_2")
     $ inspect = "hacking"
     show screen puzzle_playspace(pb, False)
     show black onlayer screens with dissolve:
@@ -320,6 +322,7 @@ label hacking_game_over:
 
 label decanting_solved:
     $renpy.block_rollback()
+    $clear_puzzle("room1_3")
     $ inspect = "decanting"
     show screen room1_decanting
     show black onlayer screens with dissolve:

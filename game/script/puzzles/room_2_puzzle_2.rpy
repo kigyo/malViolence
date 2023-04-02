@@ -110,6 +110,9 @@ screen room2_panopticon():
             frame xalign 1.0:
                 text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
 
+        if "room2_2" in persistent.solved_puzzles:
+            textbutton "SKIP" style "confirm_button" action [SetDict(room2, "panopticon", "solved"), Return()]
+
 
     if config.developer:
         #vbox yalign 0.05 xalign 0.5:

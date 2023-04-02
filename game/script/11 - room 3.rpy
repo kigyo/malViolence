@@ -522,6 +522,7 @@ label scrapbook_game_over:
 
 label quilt_solved:
     $renpy.block_rollback()
+    $clear_puzzle("room3_1")
     $ inspect = "quilt"
     show screen room3_quilt
     show black onlayer screens with dissolve:
@@ -529,12 +530,25 @@ label quilt_solved:
     $ room3["solved"].append("quilt")
     $ room3["pages"].append(1)
     $ room3["pages"].append(5)
-    #Show a note/picture/memento
     $ play_sound(puzzlesuccess)
-    "(Congratulations! {w}You've solved the quilt puzzle.)"
+    "You solved the puzzle!"
+    show memory1:
+        xalign 0.5 yalign 0.3
     hide black onlayer screens
     hide screen room3_quilt
     with puzzle_hide
+    "(You notice that you can now lift up the quilt. There is a photo underneath it.)"
+    "(Something is written on the back.)"
+    nvl clear
+    $ nvl_heading = ""
+    n "There was all this heat and smoke and energy. There were alarms blaring and people shouting. \nThat's what she told me, but I barely remember any of it."
+    n "Here's what I did remember. When we stopped running, she seemed more tired than I was. She did carry me the entire time. But she didn't seem any weaker than before. Her hold on my body didn't loosen. She was just looking at what was left of my shoulder."
+    nvl clear
+    n "I was hurting like you wouldn't believe. But I don't think I cared then."
+    n "Because, that day, I got to see the sky again."
+    nvl clear
+    hide memory1 with dissolve
+    "(...)"
     $ inspect = None
     call screen room3
 
@@ -578,6 +592,7 @@ label quilt_game_over:
 
 label toys_solved:
     $renpy.block_rollback()
+    $clear_puzzle("room3_2")
     $ inspect = "toys"
     show screen toy_playspace(tb, False)
     show black onlayer screens with dissolve:
@@ -585,12 +600,25 @@ label toys_solved:
     $ room3["solved"].append("toys")
     $ room3["pages"].append(2)
     $ room3["pages"].append(4)
-    #Show a note/picture/memento
     $ play_sound(puzzlesuccess)
-    "(Congratulations! {w}You've solved the toys puzzle.)"
+    "You solved the puzzle!"
+    show memory3:
+        xalign 0.5 yalign 0.3
     hide black onlayer screens
     hide screen toy_playspace
     with puzzle_hide
+    "(One of the plushies rips open, revealing a photo inside.)"
+    "(Turning it around reveals text reminiscent of a diary entry.)"
+    nvl clear
+    $ nvl_heading = ""
+    n "She told me to explore the place. She said it was important that I adjust to my new environment, but she's been holed up in the lab."
+    n "I don't know why she's so stressed about my surgeries. She's the smartest person I know. And I grew up surrounded by  supposedly brilliant scientists, so that's saying {i}something{/i}."
+    nvl clear
+    n "She says she's still concerned about making adjustments to my synthetic nerves. That's she's worried she'll put me through even more pain. But every time she's worked on me, I haven't felt a thing."
+    n "Last time, I actually fell asleep."
+    nvl clear
+    hide memory3 with dissolve
+    "(...)"
     $ inspect = None
     call screen room3
 
@@ -640,6 +668,7 @@ label toys_game_over:
 
 label cooking_solved:
     $renpy.block_rollback()
+    $clear_puzzle("room3_3")
     $ inspect = "cooking"
     show screen mise_en_place(False)
     show black onlayer screens with dissolve:
@@ -647,12 +676,28 @@ label cooking_solved:
     $ room3["solved"].append("cooking")
     $ room3["pages"].append(3)
     $ room3["pages"].append(6)
-    #Show a note/picture/memento
     $ play_sound(puzzlesuccess)
-    "(Congratulations! {w}You've solved the {i}mise en place{/i} puzzle.)"
+    "You solved the puzzle!"
     hide black onlayer screens
     hide screen mise_en_place
     with puzzle_hide
+    "(Suddenly, the stove pops open.)"
+    show memory2 with dissolve:
+        xalign 0.5 yalign 0.3
+    "(There's a photo inside of it, with text written on the back.)"
+    nvl clear
+    $ nvl_heading = ""
+    n "I don't remember what the food was like at the orphanage. Probably bland."
+    n "I wish I could forget what LabScrip tastes like… but meals were usually the least painful part of my day in the lab, so I've got a soft spot for the stuff."
+    n "But that wasn't food. It was nutritious and edible and nothing more. It didn't fill you up. It wasn't warm. There certainly was no thought in it at all."
+    nvl clear
+    n "Pancakes are food. They sizzle in the pan and curl at the edges, bubbling slightly when it's time to flip. You can undercook them or burn them, bury them in toppings or eat them with your hands. They're  filling, and tasty, and  oh-so warm."
+    n "I'm sure, with practice, I could re-create her recipe with ease. Compared to our regular experiments, it's hardly rocket science."
+    n "But I've never had someone cook for me before."
+    n "...I'd like to pretend I'm not capable for a little while longer."
+    nvl clear
+    hide memory2 with dissolve
+    "(...)"
     $ inspect = None
     call screen room3
 

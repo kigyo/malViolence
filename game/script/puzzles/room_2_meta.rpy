@@ -125,6 +125,8 @@ screen room2_word():
                             frame background Solid(gui.accent_color) xysize(100,100) pos (i*110+205,495):
                                 text word_answer[i] color "#000" align (0.5,0.5)
 
+        if "room2_meta" in persistent.solved_puzzles:
+            textbutton "SKIP" style "confirm_button" action [SetDict(room2, "word", "solved"), Return()]
 
     if config.developer:
         #hbox xalign 0.5:
@@ -132,6 +134,6 @@ screen room2_word():
         #        text i + " "
         vbox:
             frame:
-                textbutton _("Skip Puzzle") action [SetDict(room3, "word", "solved"), Return()] style "main_menu_button"
+                textbutton _("Skip Puzzle") action [SetDict(room2, "word", "solved"), Return()] style "main_menu_button"
             frame:
                 textbutton _("Game Over") action [Jump("word_game_over")] style "main_menu_button"

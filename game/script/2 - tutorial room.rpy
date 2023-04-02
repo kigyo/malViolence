@@ -59,6 +59,9 @@ screen tutorial_lock():
     add "puzzles/tutorial_circle.png" align (0.5,0.5)
     for i in range(8):
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
+    
+    if "tutorial" in persistent.solved_puzzles:
+        textbutton "SKIP" style "confirm_button" action [Hide(), Jump("post_tutorial")] pos (40,50)
         
     if not inspect:
         textbutton "Return" action [Return()] style "confirm_button" xalign 0.8 yalign 0.5

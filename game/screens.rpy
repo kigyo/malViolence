@@ -136,7 +136,7 @@ screen subtitle(who, what):
 init python:
     config.character_id_prefixes.append('namebox')
 
-default persistent.say_window_alpha = 1.0
+default persistent.say_window_alpha = 0.8
 
 style window is default
 style say_label is default

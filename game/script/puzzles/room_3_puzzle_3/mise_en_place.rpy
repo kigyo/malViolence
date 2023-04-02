@@ -308,6 +308,9 @@ screen mise_en_place(interactable=True):
         if isinstance(cooking_error,list):
             add Solid("#d20000") pos (70+cooking_error[0]*100, 205+cooking_error[1]*100) xysize (100, 100) alpha 0.5
 
+    if "room3_3" in persistent.solved_puzzles:
+        textbutton "SKIP" style "confirm_button" action [SetDict(room3, "cooking", "solved"), Return()] pos (40,50)
+
     if config.developer:
         vbox:
             frame:

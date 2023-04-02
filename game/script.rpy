@@ -102,6 +102,10 @@ image room3_wig = "images/room3_wig.png"
 
 ################ reset some puzzles after loading a save (drags reset their positions)
 init python:
+    def clear_puzzle(name):
+        if name not in persistent.solved_puzzles:
+            persistent.solved_puzzles.append(name)
+            
     def reset_puzzles_after_load():
         #room1
 
@@ -113,3 +117,5 @@ init python:
         pass
 
     config.after_load_callbacks.append(reset_puzzles_after_load)
+
+default persistent.solved_puzzles = []

@@ -2,11 +2,11 @@ label post_room_1:
   $renpy.block_rollback()
   $ inspect = "post room"
   #"{b}[pause as the microphone turns on and {/b}{b}cautionne{/b}{b} appears on the screen]{/b}"
-
+  $clear_puzzle("room1_meta")
 #### confirmation sound - yay, you won room 1!
 
   stop music fadeout 1.0
-
+  pause 0.5
   $ play_sound(roomsuccess)
   pause 2
   $ play_sound(doorunlock)

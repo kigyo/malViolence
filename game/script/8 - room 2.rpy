@@ -256,6 +256,7 @@ label room_2:
 
 label evidence_solved:
     $renpy.block_rollback()
+    $clear_puzzle("room2_1")
     $ inspect = "evidence"
     show screen room2_evidence
     show black onlayer screens with dissolve:
@@ -314,6 +315,7 @@ label evidence_game_over:
 
 label panopticon_solved:
     $renpy.block_rollback()
+    $clear_puzzle("room2_2")
     $ inspect = "panopticon"
     show screen room2_panopticon
     show black onlayer screens with dissolve:
@@ -376,6 +378,7 @@ label panopticon_game_over:
 
 label recalibration_solved:
     $renpy.block_rollback()
+    $clear_puzzle("room2_3")
     $ inspect = "recalibration"
     show screen cybernetics(cyb, False)
     show black onlayer screens with dissolve:
