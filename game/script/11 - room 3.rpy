@@ -1,4 +1,4 @@
-default room3 = {"room":"down", "solved":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0, 
+default room3 = {"room":"down", "solved":[], "pages":[], "read_pages":[], "diary":0, "mannequin":0, "scrapbook":0, "health_record":0, "locked_container":0,
     "confidence_workbook":0, "sewing_book":0, "quilt":0, "cooking":0, "scrapbook_new":0, "toys":0}
 default room3_investigated = []
 
@@ -28,7 +28,7 @@ screen room3():
 
     elif room3["room"] == "up":
         fixed at zoomed(0.335):
-            add "bg room3_upstairs" 
+            add "bg room3_upstairs"
             imagebutton idle Null(994,272) action [SetVariable("inspect", "sewing_book"), Jump("room_3")] pos (1808, 1694) mouse "inspect"
             imagebutton idle Null() action [SetVariable("inspect", "mannequin"), Jump("room_3")] focus_mask Image("rooms/room3_mannequin_mask.png") pos (0, 2009) mouse "inspect"
             imagebutton idle Null(488,146) action [SetVariable("inspect", "health_record"), Jump("room_3")] pos (3156, 1560) mouse "inspect"
@@ -42,10 +42,10 @@ screen room3():
                 imagebutton idle "room3_note4" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 4), Jump("room_3")] pos (1356, 2968) mouse "inspect"
             if 5 in room3["pages"] and 5 not in room3["read_pages"]:
                 imagebutton idle "room3_note5" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 5), Jump("room_3")] pos (4900, 2456) mouse "inspect"
-        
+
         if not inspect:
             textbutton _("DOWN") action [SetDict(room3, "room", "down"), Play("sound", "audio/sfx/Room 3 SFX/Stairs 2.ogg"), With(Fade(1,0.5,1))] style "main_menu_button" xalign 0.97 yalign 0.97
-        
+
     if config.developer:
         frame:
             textbutton _("Skip Room") action [Jump("post_room_3")] style "main_menu_button"
@@ -310,7 +310,7 @@ label room_3:
             n "I need to check how he's coping with procedures.{w} I might need to test his reflexes.{w} Hell, he might need a snack to make him more cooperative."
             n "All my explanations are superficially believable at best."
             n "I'm no medical professional.{w} By all means, I should've been reprimanded for getting too involved."
-            n "But no such warnings have come my way.\"" 
+            n "But no such warnings have come my way.\""
             nvl hide
             pause 0.5
             nvl clear
@@ -396,11 +396,14 @@ label room_3:
         else:
             if room3["quilt"] == 0:
                 $quilt_reset()
-                #quilt introduction
+                "(Ouch!)" with vpunch
+                "(Seems like you stepped on a rogue sewing pin.)"
+                show screen room3_quilt(_layer="master") with easeintop
+                "(Looking around more attentively you realize there is a large, unfinished sewing project spread out on the floor. A quilt. Must have been to big for the little sewing desk.)"
+                "(Hmm...it looks like Cationne was following a pattern with the appliques...maybe you can help them finish it up?)"
             else:
-                #repeated investigation
-                pass
-            show screen room3_quilt(_layer="master") with easeintop
+                show screen room3_quilt(_layer="master") with easeintop
+                "(You carefully step around any loose pins on the floor before sitting down with the unfinished quilt again.)"
             $ room3["quilt"] += 1
             $ inspect = None
             $renpy.hide_screen("room3_quilt", "master")
@@ -414,11 +417,15 @@ label room_3:
         else:
             if room3["toys"] == 0:
                 call init_toy_board
-                #toys introduction
+                "(There are a few plushies sitting on the shelf above the bed that appears to be Cautionne's. They're suprisingly soft!)"
+                "(You investigate the cuppard below the plusies where— woah!)"
+                show screen toy_playspace(tb, False, _layer="master") with easeintop
+                "(A wave of plushies spills out, makeing a messy pile all around you.)"
+                "(This would be a comfy way to be smothered, but perhaps you should give Cationne a hand in tidying his toy storage.)"
             else:
-                #repeated investigation
-                pass
-            show screen toy_playspace(tb, False, _layer="master") with easeintop
+                "(A pile of plushies sprawl out on Cautionne's bed, right where you left them.)"
+                show screen toy_playspace(tb, False, _layer="master") with easeintop
+                "(Okay, lets try one more time, we can get a handle on this mess! Just gotta neatly sort the toys neatly into sets...)"
             $ room3["toys"] += 1
             $ inspect = None
             $renpy.hide_screen("toy_playspace", "master")
@@ -432,11 +439,13 @@ label room_3:
         else:
             if room3["cooking"] == 0:
                 call init_mise_en_place
-                #quilt introduction
+                "(There's a small kitchenette. It looks like it hasn't been used recently... Does Cautionne even cook or did Dr Danger take care of all the cooking for the both of them?)"
+                show screen mise_en_place(False, _layer="master") with easeintop
+                "(A handwritten note sits on the counter. Looks like...a recipe for pancakes?)"
+                "(Fridge seems well stocked too. Let's see if Cautionne likes your take on Dr Danger's recipe.)"
             else:
-                #repeated investigation
-                pass
-            show screen mise_en_place(False, _layer="master") with easeintop
+                show screen mise_en_place(False, _layer="master") with easeintop
+                "This recipe seems simple enough, let's try one more time..."
             $ room3["cooking"] += 1
             $ inspect = None
             $renpy.hide_screen("mise_en_place", "master")
@@ -523,7 +532,7 @@ label quilt_solved:
     $ play_sound(puzzlesuccess)
     "(Congratulations! {w}You've solved the quilt puzzle.)"
     hide black onlayer screens
-    hide screen room3_quilt 
+    hide screen room3_quilt
     with puzzle_hide
     $ inspect = None
     call screen room3
@@ -538,7 +547,7 @@ label quilt_game_over:
     stop music fadeout 1.0
     cr "{i}Wow.{/i}{w=0.5} You're far from delicate,{w=0.1} aren't you?"
     hide black onlayer screens
-    hide screen room3_quilt 
+    hide screen room3_quilt
     with puzzle_hide
     pause 1
     cr "I'd like to think of myself as a lenient kinda guy... {w}But watching you butcher that sentimental quilt is {i}pretty painful.{/i}"
@@ -565,7 +574,7 @@ label quilt_game_over:
     nvl clear
     $game_over(3)
     return
-    
+
 label toys_solved:
     $renpy.block_rollback()
     $ inspect = "toys"
