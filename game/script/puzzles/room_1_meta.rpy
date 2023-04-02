@@ -58,7 +58,7 @@ screen room1_marble():
     layer "puzzles"
     
     frame style "puzzle_frame":
-        fixed align (0.1,0.3) at zoomed(0.6):
+        fixed align (0.1,0.3):
             add "puzzles/room_1_meta/base_marble_maze.png"
 
             showif marble_selected != 0:
@@ -78,11 +78,11 @@ screen room1_marble():
                     label _("Instructions") yoffset -20
                     text marble_description
                     if "bomb" in room1["solved"]:
-                        text _("- \"Field Marshall Grad Rufos\" (Bomb)")
+                        text _("- \"Colby Padilla\" (Bomb)")
                     if "hacking" in room1["solved"]:
-                        text _("- \"Attorney General Zark Hundor\" (Hacking)")
+                        text _("- \"Asiya Bishop\" (Hacking)")
                     if "decanting" in room1["solved"]:
-                        text _("- \"Imperator Unnfer Progas\" (Poison)")
+                        text _("- \"Brooke Yang\" (Poison)")
                     if len(room1["solved"]) == 0:
                         text _("- Nobody :(")
 
@@ -91,17 +91,17 @@ screen room1_marble():
                 drag:
                     xpos 250
                     droppable False drag_name 1 dragged marble_dragged
-                    add "puzzles/room_1_meta/marble.png"
+                    add "puzzles/room_1_meta/marble1.png" zoom 0.25
             if "hacking" in room1["solved"] and 2 not in marble_used:
                 drag:
                     xpos 600
                     droppable False drag_name 2 dragged marble_dragged
-                    add "puzzles/room_1_meta/marble.png"
+                    add "puzzles/room_1_meta/marble2.png" zoom 0.25
             if "decanting" in room1["solved"] and 3 not in marble_used:
                 drag:
                     xpos 950
                     droppable False drag_name 3 dragged marble_dragged
-                    add "puzzles/room_1_meta/marble.png"
+                    add "puzzles/room_1_meta/marble3.png" zoom 0.25
             
             drag:
                 draggable False dropped marble_dropped
@@ -116,9 +116,9 @@ screen room1_marble():
                 pos (1035,160) drag_name 3
                 add Null(150,150)
         
-        text _("Field Marshall Grad Rufos") xalign 0.12 yalign 0.95 style "marble_name_text"
-        text _("Attorney General Zark Hundor") xalign 0.37 yalign 0.9 style "marble_name_text"
-        text _("Imperator Unnfer Progas") xalign 0.62 yalign 0.98 style "marble_name_text"
+        text _("Colby Padilla") xalign 0.12 yalign 0.95 style "marble_name_text"
+        text _("Asiya Bishop") xalign 0.37 yalign 0.91 style "marble_name_text"
+        text _("Brooke Yang") xalign 0.68 yalign 0.98 style "marble_name_text"
 
         if config.developer:
             vbox  xalign 0.5:

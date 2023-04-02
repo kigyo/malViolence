@@ -25,7 +25,7 @@ define bomb_description = _("""{color=#fff}Fit all of the bomb pieces inside the
 
 """)
 
-define marble_description = _("""Kill the STOP officials in the same order you encountered them.
+define marble_description = _("""Knock down the effigies of STOP officials in the same order you encountered them.
 
 So far, you have found:""")
 
@@ -123,6 +123,10 @@ label room_1:
         else:
             if room1["hacking"] == 0:
                 call init_puzzle_board
+                "(Four large monitors are displaying an intimidating wall of code.)"
+                "(You were hoping you didn't have to deal with them, but...)"
+                show screen puzzle_playspace(pb, False, _layer="master") with easeintop
+                "(You do.)"
             else:
                 pass
             show screen puzzle_playspace(pb, False, _layer="master") with easeintop
@@ -138,6 +142,7 @@ label room_1:
         else:
             if room1["decanting"] == 0:
                 $decanting_init()
+                "(Three differently-sized vials are placed on the table. There are instructions written next to them.)"
             else:
                 #repeated investigation
                 pass
@@ -155,10 +160,11 @@ label room_1:
         else:
             if room1["bomb"] == 0:
                 call init_bomb
+                "(It looks like there's an open... tool box? You approach it to take a closer look.)"
+                show screen room1_bomb(bomb, False, _layer="master") with easeintop
+                "(Nope, not a tool box, but a bomb. No big deal. What could go wrong?)"
             else:
-                #repeated investigation
-                pass
-            show screen room1_bomb(bomb, False, _layer="master") with easeintop
+                show screen room1_bomb(bomb, False, _layer="master") with easeintop
             $ room1["bomb"] += 1
             $ inspect = None
             $renpy.hide_screen("room1_bomb", "master")
@@ -170,10 +176,11 @@ label room_1:
         if room1["marble"] == 0:
             $ room1["marble"] = 1
             $marble_init()
+            "(You approach the strange, locked door.)"
+            show screen room1_marble(_layer="master") with easeintop
+            "(Turns out it's even stranger from up close.)"
         else:
-            #repeated investigation
-            pass
-        show screen room1_marble(_layer="master") with easeintop
+            show screen room1_marble(_layer="master") with easeintop
         $ inspect = None
         $renpy.hide_screen("room1_marble", "master")
         call screen room1_marble
@@ -191,20 +198,20 @@ label bomb_solved:
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room1["solved"].append("bomb")
-#####Show a marble 
     $ play_sound(puzzlesuccess)
     "You solved the puzzle!"
     $ play_sound(marbleroll)
-    "(You spot a marble, and a note reading \"Field Marshall Grad Rufos\".)"
+    show marble1:
+        xalign 0.5 yalign 0.4
+    hide black onlayer screens
+    hide screen room1_bomb
+    with puzzle_hide
+    "(A marble rolls out of the bomb case. Attached to it is a note reading \"Colby Padilla\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
     elif room1["marble"] == 0:
         "(You think you've seen that name somewhere before.)"
-
-
-    hide black onlayer screens
-    hide screen room1_bomb
-    with puzzle_hide
+    hide marble1 with dissolve
     $ inspect = None
     call screen room1
 
@@ -253,14 +260,17 @@ label hacking_solved:
     $ play_sound(puzzlesuccess)
     "You solved the puzzle!"
     $ play_sound(marbleroll)
-    "(You spot a marble, and a note reading \"Attorney General Zark Hundor\".)"
+    show marble2:
+        xalign 0.5 yalign 0.4
+    hide black onlayer screens
+    hide screen puzzle_playspace
+    with puzzle_hide
+    "(The computer ejects a marble, along with a note reading \"Asiya Bishop\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
     elif room1["marble"] == 0:
         "(You think you've seen that name somewhere before.)"
-    hide black onlayer screens
-    hide screen puzzle_playspace
-    with puzzle_hide
+    hide marble2 with dissolve
     $ inspect = None
     call screen room1
 
@@ -314,14 +324,17 @@ label decanting_solved:
     $ play_sound(puzzlesuccess)
     "You solved the puzzle!"
     $ play_sound(marbleroll)
-    "(You spot a marble, and a note reading \"Imperator Unnfer Progas\".)"
+    show marble3:
+        xalign 0.5 yalign 0.4
+    hide black onlayer screens
+    hide screen room1_decanting
+    with puzzle_hide
+    "(A small compartment opens up, revealing a marble. Underneath it is a note reading \"Brooke Yang\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
     elif room1["marble"] == 0:
         "(You think you've seen that name somewhere before.)"
-    hide black onlayer screens
-    hide screen room1_decanting
-    with puzzle_hide
+    hide marble3 with dissolve
     $ inspect = None
     call screen room1
 
