@@ -189,6 +189,8 @@ label room_2:
                 "(...Of course.{w} It's a puzzle.)"
             else:
                 show screen room2_panopticon(_layer="master") with easeintop
+                "(Riiiiiight.{w} That colosseum-thing is a {i}panopticon.{/i}{w} Off to puzzle-solving you go!)"
+
             $ room2["panopticon"] += 1
             $ inspect = None
             $renpy.hide_screen("room2_panopticon", "master")
@@ -206,6 +208,7 @@ label room_2:
                 "(The blackboard is covered in little doodles,{w=0.1} but they don't seem to be there just for decoration.)"
                 "(You hate to admit it,{w=0.1} but they're kind of cute.{w} Completely unlike their creator.)"
             else:
+                "(Time to string up some evidence!)"
                 show screen room2_evidence(_layer="master") with easeintop
             $ room2["evidence"] += 1
             $ inspect = None
@@ -222,7 +225,7 @@ label room_2:
                 call init_cybernetics
                 "(The monitor is displaying some kind of simulation.{w} Better take a closer look...)"
             else:
-                #repeated investigation
+                "(Time to re-enroll in that cybernetics crash-course.{w} Maybe it'll be less intimidating?)"
                 pass
             show screen cybernetics(cyb, _layer="master") with easeintop
             $ room2["recalibration"] += 1
@@ -235,9 +238,9 @@ label room_2:
     elif inspect == "word":
         if room2["word"] == 0:
             $word_init()
-            "(There are five empty slots on the door's lock.{w} Your best guess is that you need to fill them up somehow.)"
+            "(There are five empty slots on the door's lock.{w} Your best guess is that you need to fill them up,{w=0.1} somehow.)"
         else:
-            #repeated investigation
+            "(You're no {i}Scraddle{/i} expert,{w=0.1} but you've got this puzzle all under control.{w} Probably.)"
             pass
         show screen room2_word(_layer="master") with easeintop
         $ room2["word"] += 1

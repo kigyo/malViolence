@@ -128,6 +128,7 @@ label room_1:
                 show screen puzzle_playspace(pb, False, _layer="master") with easeintop
                 "(...ah well. {w}Time for some good ol' computer wrangling.)"
             else:
+                "(You {i}really{/i} wish you brought your rubber duck right now.)"
                 pass
             show screen puzzle_playspace(pb, False, _layer="master") with easeintop
             $ room1["hacking"] += 1
@@ -144,7 +145,7 @@ label room_1:
                 $decanting_init()
                 "(Three differently-sized vials are placed on the table.{w} There are instructions written next to them.)"
             else:
-                #repeated investigation
+                "(Dare you decant differently?{w} You dare.)"
                 pass
             show screen room1_decanting(_layer="master") with easeintop
             $ room1["decanting"] += 1
@@ -164,6 +165,7 @@ label room_1:
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
                 "(Nope!{w}It's a bomb.{w} No big deal.{w} What could possibly go wrong?)"
             else:
+                "(It's a bomb!{w} Again,{w=0.1} what could possibly go wrong?)"
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
             $ room1["bomb"] += 1
             $ inspect = None
@@ -178,9 +180,11 @@ label room_1:
             $marble_init()
             "(You approach the strange,{w=0.1} locked door.)"
             show screen room1_marble(_layer="master") with easeintop
-            "(Turns out it's even stranger from up close.)"
+            "(Turns out it's even stranger up close.)"
         else:
+            "(You decide to look at this marble-ous contraption once more...)"
             show screen room1_marble(_layer="master") with easeintop
+            "(Sorry.{w} You couldn't help yourself.)"
         $ inspect = None
         $renpy.hide_screen("room1_marble", "master")
         call screen room1_marble
@@ -222,7 +226,7 @@ label bomb_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 0.5
-    "(Carefully, you finish the assembly and set it down in front of you.)"
+    "(Carefully,{w=0.1} you finish the assembly and set it down in front of you.)"
     "(...Huh.{w} It doesn't seem like it's ticking.)"
     hide black onlayer screens
     hide screen room1_bomb
