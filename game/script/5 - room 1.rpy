@@ -126,7 +126,7 @@ label room_1:
                 "(Four large monitors are displaying an intimidating wall of code.)"
                 "(You were hoping you didn't have to deal with them,{w=0.1} but...)"
                 show screen puzzle_playspace(pb, False, _layer="master") with easeintop
-                "(...ah well. {w}Time for some good ol' computer wrangling.)"
+                "(...Ah well. {w}Time for some good ol' computer wrangling.)"
             else:
                 "(You {i}really{/i} wish you brought your rubber duck right now.)"
                 pass
