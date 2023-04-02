@@ -537,15 +537,15 @@ label quilt_solved:
     hide black onlayer screens
     hide screen room3_quilt
     with puzzle_hide
-    "(You notice that you can now lift up the quilt. There is a photo underneath it.)"
+    "(You notice that you can now lift up the quilt.{w} There is a photo underneath it.)"
     "(Something is written on the back.)"
     nvl clear
     $ nvl_heading = ""
-    n "There was all this heat and smoke and energy. There were alarms blaring and people shouting. \nThat's what she told me, but I barely remember any of it."
-    n "Here's what I did remember. When we stopped running, she seemed more tired than I was. She did carry me the entire time. But she didn't seem any weaker than before. Her hold on my body didn't loosen. She was just looking at what was left of my shoulder."
+    n "There was all this heat and smoke and energy.{w} There were alarms blaring and people shouting.{w} \nThat's what she told me,{w=0.1} but I barely remember any of it."
+    n "Here's what I did remember.{w} When we stopped running,{w=0.1} she seemed more tired than I was.{w} She did carry me the entire time.{w=0.5} But she didn't seem any weaker than before.{w} Her hold on my body didn't loosen.{w=0.5} She was just looking at what was left of my shoulder."
     nvl clear
-    n "I was hurting like you wouldn't believe. But I don't think I cared then."
-    n "Because, that day, I got to see the sky again."
+    n "I was hurting like you wouldn't believe.{w=0.5} But I don't think I cared."
+    n "Because,{w=0.1} that day,{w=0.5} I got to see the sky again."
     nvl clear
     hide memory1 with dissolve
     "(...)"
@@ -607,15 +607,15 @@ label toys_solved:
     hide black onlayer screens
     hide screen toy_playspace
     with puzzle_hide
-    "(One of the plushies rips open, revealing a photo inside.)"
+    "(One of the plushies rips open,{w=0.1} revealing a photo inside.)"
     "(Turning it around reveals text reminiscent of a diary entry.)"
     nvl clear
     $ nvl_heading = ""
-    n "She told me to explore the place. She said it was important that I adjust to my new environment, but she's been holed up in the lab."
-    n "I don't know why she's so stressed about my surgeries. She's the smartest person I know. And I grew up surrounded by  supposedly brilliant scientists, so that's saying {i}something{/i}."
+    n "She told me to explore the place.{w} She said it was important that I adjust to my new environment,{w=0.1} but she's been holed up in the lab."
+    n "I don't know why she's so stressed about my surgeries.{w} She's the smartest person I know.{w=0.5} And I grew up surrounded by \"brilliant\" scientists,{w=0.1} so that's saying {i}something{/i}."
     nvl clear
-    n "She says she's still concerned about making adjustments to my synthetic nerves. That's she's worried she'll put me through even more pain. But every time she's worked on me, I haven't felt a thing."
-    n "Last time, I actually fell asleep."
+    n "She says she's still concerned about making adjustments to my synthetic nerves.{w} That's she's worried she'll put me through even more pain.{w} But every time she's worked on me,{w=0.1} I haven't felt a thing."
+    n "Last time,{w=0.1} I actually fell asleep."
     nvl clear
     hide memory3 with dissolve
     "(...)"
@@ -681,19 +681,19 @@ label cooking_solved:
     hide black onlayer screens
     hide screen mise_en_place
     with puzzle_hide
-    "(Suddenly, the stove pops open.)"
+    "(Suddenly,{w=0.1} the stove pops open.)"
     show memory2 with dissolve:
         xalign 0.5 yalign 0.3
-    "(There's a photo inside of it, with text written on the back.)"
+    "(There's a photo inside of it,{w=0.1} with text written on the back.)"
     nvl clear
     $ nvl_heading = ""
-    n "I don't remember what the food was like at the orphanage. Probably bland."
-    n "I wish I could forget what LabScrip tastes like… but meals were usually the least painful part of my day in the lab, so I've got a soft spot for the stuff."
-    n "But that wasn't food. It was nutritious and edible and nothing more. It didn't fill you up. It wasn't warm. There certainly was no thought in it at all."
+    n "I don't remember what the food was like at the orphanage.{w} Probably bland."
+    n "I wish I could forget what LabScrip tastes like…{w=0.5} but meals were usually the least painful part of my day in the lab,{w=0.1} so I've got a soft spot for the stuff."
+    n "But that wasn't food.{w} It was nutritious and edible and nothing more.{w} It didn't fill you up.{w=0.5} It wasn't warm.{w=0.5} There certainly was no thought in it at all."
     nvl clear
-    n "Pancakes are food. They sizzle in the pan and curl at the edges, bubbling slightly when it's time to flip. You can undercook them or burn them, bury them in toppings or eat them with your hands. They're  filling, and tasty, and  oh-so warm."
-    n "I'm sure, with practice, I could re-create her recipe with ease. Compared to our regular experiments, it's hardly rocket science."
-    n "But I've never had someone cook for me before."
+    n "Pancakes are food.{w=0.5} They sizzle in the pan and curl at the edges,{w=0.1} bubbling slightly when it's time to flip.{w} You can undercook them or burn them,{w=0.1} bury them in toppings or eat them with your hands.{w} They're filling,{w=0.1} and tasty,{w=0.1} and oh-so warm."
+    n "With practice,{w=0.1} I could re-create her recipe with ease.{w} Compared to our regular experiments,{w=0.1} it's hardly rocket science."
+    n "But I've never had someone cook for {i}me{/i} before."
     n "...I'd like to pretend I'm not capable for a little while longer."
     nvl clear
     hide memory2 with dissolve
