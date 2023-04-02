@@ -17,7 +17,7 @@ label post_room_2:
 
   #"{b} [The TV {/b}{b}isn't{/b}{b} on yet]{/b}"
   "(No message from the kid yet.)"
-  "(Maybe if you're stealthy,{nw}"
+  "(Maybe if you're stealthy,{w=1}{nw}"
   show screen nodismiss
 
   $ play_sound(footsteps2)
@@ -45,7 +45,7 @@ label post_room_2:
 
   c "Yeah,{w=0.1} you're right in your element,{w=0.1} huh? "
   show cautionne lean speaking
-  c "Not that {i}you'd{/i} know it,{p=0.5}{nw}"
+  c "Not that {i}you'd{/i} know it,{w=1}{nw}"
   show cautionne lean eyeclosed
   extend "but I've got a good eye for this kind of thing!"
   c "I bet you've got that bubbly feeling buzzing under your skin..." 
@@ -58,11 +58,11 @@ label post_room_2:
   c "You must be {i}salivating {/i}at the mountain of evidence beneath your fingertips."
   c "Weapons,{w=0.1} corkboards,{w=0.1} secret evil plans..."
   show cautionne hairtwirl
-  c "All the classics are here,{p=0.5}{nw}"
+  c "All the classics are here,{w=1}{nw}"
   c "and {i}we both know{/i} you know you really, {i}really{/i} want to rub your grubby paws all over them."
   show cautionne think
-  c "Even if you copied half of one blueprint onto a bar napkin{p=0.5}{nw}"
-  c "and threw it through the washing machine,{p=0.5}{nw}"
+  c "Even if you copied half of one blueprint onto a bar napkin{w=1}{nw}"
+  c "and threw it through the washing machine,{w=1}{nw}"
   c "you'd {i}still{/i} have enough evidence to net you a promotion from HQ."
   show cautionne lean speaking
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Well Then.ogg"
@@ -70,7 +70,7 @@ label post_room_2:
   show cautionne lean eyeclosed
   c "I won't touch a hair on your head."
   show cautionne hairtwirl
-  c "After all,{w=0.1} The Great Cautionne,{w=0.05} Emperor of MalViolence,{p=0.5}{nw}"
+  c "After all,{w=0.1} The Great Cautionne,{w=0.05} Emperor of MalViolence,{w=1}{nw}"
   c "knows that you only care about the truth."
   show cautionne lean eyeclosed
   c "He shall let you indulge."
@@ -85,7 +85,7 @@ label post_room_2:
   c "You {i}are {/i}just getting evidence,{w=0.1} right?"
   if len(room2_investigated) == 5:
     "(...Does he not approve of your investigation style?)"
-    "(You're being thorough,{w=0.1} just to be cautio—){p=0.5}{nw}"
+    "(You're being thorough,{w=0.1} just to be cautio—){w=1}{nw}"
     pause 1
     "({i}...You're just being thorough.{/i})"
   elif len(room2_investigated) == 0:
