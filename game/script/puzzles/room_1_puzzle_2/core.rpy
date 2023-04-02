@@ -518,19 +518,20 @@ screen buttons(b, pos=(100, 100)):
         for y in range(b.height):
             for x in range(h_buffer+1, b.width-1-h_buffer):
                 if b.pieces[y][x]:
-                    imagebutton:
-                        pos (x*cw, y*ch)
-                        xysize(cw, ch)
-                        align (0.5, 0.5)
-                        idle Null()
-                        # idle "#ffffff88"
-                        if (x, y) == b.player:
-                            pass
-                        elif not b.just_cleared:
-                            action [Function(b.trigger_reticle)]
-                        else:
-                            action NullAction()
-                        hovered Function(b.set_reticle, x, y)
+                    if isinstance(b, ToyBoard) or (b.reticle_type == "default" and b.pieces[y][x+1] and b.pieces[y][x-1]):
+                        imagebutton:
+                            pos (x*cw, y*ch)
+                            xysize(cw, ch)
+                            align (0.5, 0.5)
+                            idle Null()
+                            # idle "#ffffff88"
+                            if (x, y) == b.player:
+                                pass
+                            elif not b.just_cleared:
+                                action [Function(b.trigger_reticle)]
+                            else:
+                                action NullAction()
+                            hovered Function(b.set_reticle, x, y)
         for y in range(b.height):
             for x in range(min(b.width-h_buffer, b.width-1), b.width):
                 if b.pieces[y][x]:
