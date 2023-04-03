@@ -199,11 +199,11 @@ screen toy_playspace(b, interactable=True):
                     label _("Instructions")
                     text toys_description
             hbox xalign 1.0 yalign 1.0 ysize 100 spacing 20 xfill True:
-                if ("dead12" in persistent.dead_ends and not preferences.hard_mode):
+                if "dead12" in persistent.dead_ends or not preferences.hard_mode:
                     textbutton "RESET" style "confirm_button" action Function(toy_board_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5
 
-        if "room3_2" in persistent.solved_puzzles or ("dead12" in persistent.dead_ends and not preferences.hard_mode):
+        if "room3_2" in persistent.solved_puzzles or not preferences.hard_mode:
             textbutton "SKIP" style "confirm_button" action [SetDict(room3, "toys", "solved"), Return()]
 
     if config.developer:

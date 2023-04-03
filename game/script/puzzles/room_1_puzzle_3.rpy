@@ -100,7 +100,7 @@ screen room1_decanting():
                 frame xalign 1.0:
                     text str(decanting_moves) + "/" + str(decanting_move_limit) style "main_menu_button"
     
-        if "room1_3" in persistent.solved_puzzles or ("dead5" in persistent.dead_ends and not preferences.hard_mode):
+        if "room1_3" in persistent.solved_puzzles or not preferences.hard_mode:
             textbutton "SKIP" style "confirm_button" action [SetDict(room1, "decanting", "solved"), Return()]
 
     if config.developer:

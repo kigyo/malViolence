@@ -33,7 +33,7 @@ screen room3():
             imagebutton idle Null() action [SetVariable("inspect", "mannequin"), Jump("room_3")] focus_mask Image("rooms/room3_mannequin_mask.png") pos (0, 2009) mouse "inspect"
             imagebutton idle Null(488,146) action [SetVariable("inspect", "health_record"), Jump("room_3")] pos (3156, 1560) mouse "inspect"
 
-            imagebutton idle Null() action [SetVariable("inspect", "quilt"), Jump("room_3")] focus_mask Image("rooms/room3_quilt_mask.png") pos (1086, 2819) mouse "puzzle"
+            imagebutton idle Null() action [SetVariable("inspect", "quilt"), Jump("room_3")] focus_mask Image("rooms/room3_quilt_mask.png") pos (1886, 2819) mouse "puzzle"
             imagebutton idle Null(928,242) action [SetVariable("inspect", "toys"), Jump("room_3")] pos (672, 1186) mouse "puzzle"
 
             if 3 in room3["pages"] and 3 not in room3["read_pages"]:

@@ -1,9 +1,11 @@
 init python:
-    def marble_init():
+    def marble_init(txt=None):
         store.marble_killed = []
         store.marble_used = []
         store.marble_killed_shown = [0,0,0]
         store.marble_selected = 0
+        if txt:
+            renpy.notify(txt)
 
     def marble_dragged(drags, drop):
         drag = drags[0]
@@ -33,8 +35,7 @@ init python:
                     store.room1["marble"] = "solved"
                     return True
                 elif ("dead2" in persistent.dead_ends and not preferences.hard_mode):
-                    marble_init()
-                    renpy.notify(_("Invalid. Restarting..."))
+                    marble_init(_("Invalid. Restarting..."))
                     renpy.retain_after_load()
                     renpy.restart_interaction()
                 else:
@@ -127,10 +128,12 @@ screen room1_marble():
                 for i in room1["solved"]:
                     text i xalign 0.5
         
-        hbox xfill True yalign 1.0 ysize 100:
-            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
+        hbox spacing 30 yalign 1.0 ysize 100 xalign 1.0:
+            if not preferences.hard_mode:
+                textbutton "RESET" style "confirm_button" action Function(marble_init, _("Restarting...")) text_color "#fff" sensitive not inspect yalign 0.5 at zoomed(0.75)
+            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] yalign 0.5
 
-        if "room1_meta" in persistent.solved_puzzles or ("dead2" in persistent.dead_ends and not preferences.hard_mode):
+        if len(room1["solved"]) == 3 and ("room1_meta" in persistent.solved_puzzles or ("dead2" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode):
             textbutton "SKIP" style "confirm_button" action [SetDict(room1, "marble", "solved"), Return()]
 
     if config.developer:
