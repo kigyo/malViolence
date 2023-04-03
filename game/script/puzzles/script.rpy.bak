@@ -14,7 +14,7 @@ label test_puzzles:
             jump room_3_puzzle_3
 
 label room_1_puzzle_1:
-    call init_bomb from _call_init_bomb_1
+    call init_bomb
     show screen room1_bomb(bomb, False)
     "<TODO: Insert intro script and rules.>"
     call screen room1_bomb(bomb)
@@ -32,7 +32,7 @@ label failed_room_1_puzzle_1:
     jump test_puzzles
 
 label room_1_puzzle_2:
-    call init_puzzle_board from _call_init_puzzle_board_3
+    call init_puzzle_board
     show screen puzzle_playspace(pb, False)
     "<TODO: Insert intro script and rules.>"
     call screen puzzle_playspace(pb)
@@ -50,7 +50,7 @@ label failed_room_1_puzzle_2:
     jump test_puzzles
 
 label room_2_puzzle_3:
-    call init_cybernetics from _call_init_cybernetics_1
+    call init_cybernetics
     show screen cybernetics(cyb, False)
     "<TODO: Insert intro script and rules.>"
     call screen cybernetics(cyb)
@@ -69,7 +69,7 @@ label failed_room_2_puzzle_3:
     jump test_puzzles
 
 label room_3_puzzle_2:
-    call init_toy_board from _call_init_toy_board_1
+    call init_toy_board
     show screen toy_playspace(tb, False)
     "<TODO: Insert intro script and rules.>"
     call screen toy_playspace(tb)
@@ -87,7 +87,7 @@ label failed_room_3_puzzle_2:
     jump test_puzzles
 
 label room_3_puzzle_3:
-    call init_mise_en_place from _call_init_mise_en_place_2
+    call init_mise_en_place
     show screen mise_en_place(False)
     "<TODO: Insert intro script and rules.>"
     pause 0.0

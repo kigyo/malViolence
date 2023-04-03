@@ -200,7 +200,7 @@ label init_mise_en_place:
     return
 
 label reset_cutting_board():
-    call init_mise_en_place from _call_init_mise_en_place_1
+    call init_mise_en_place
     hide screen mise_en_place
     call screen mise_en_place
 
