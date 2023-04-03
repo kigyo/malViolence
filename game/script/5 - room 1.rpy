@@ -214,7 +214,7 @@ label bomb_solved:
     "(A marble rolls out of the bomb case.{w} Attached to it is a note reading \"Colby Padilla\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
-    elif room1["marble"] == 0:
+    elif room1["marble"] > 0:
         "(You think you've seen that name somewhere before.)"
     hide marble1 with dissolve
     $ inspect = None
@@ -274,7 +274,7 @@ label hacking_solved:
     "(The computer ejects a marble,{w=0.1} along with a note reading \"Asiya Bishop\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
-    elif room1["marble"] == 0:
+    elif room1["marble"] > 0:
         "(You think you've seen that name somewhere before.)"
     hide marble2 with dissolve
     $ inspect = None
@@ -336,7 +336,7 @@ label decanting_solved:
     "(A small compartment opens up,{w=0.1} revealing a marble.{w} Underneath it is a note reading \"Brooke Yang\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
-    elif room1["marble"] == 0:
+    elif room1["marble"] > 0:
         "(You think you've seen that name somewhere before.)"
     hide marble3 with dissolve
     $ inspect = None

@@ -109,8 +109,8 @@ screen room2_evidence():
             textbutton "SUBMIT" style "confirm_button" action Function(evidence_submit) xalign 1.0 yalign 0.5
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
-        if "room2_1" in persistent.solved_puzzles or ("dead7" in persistent.dead_ends and not preferences.hard_mode):
-            textbutton "SKIP" style "confirm_button" action [SetDict(room2, "evidence", "solved"), Return()]
+        if "room2_1" in persistent.solved_puzzles or ("dead7" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+            textbutton "SKIP" style "confirm_button" action [SetDict(room2, "evidence", "solved"), Return()] yalign 1.0
 
     if config.developer:
         vbox:

@@ -125,7 +125,7 @@ screen room2_word():
                             frame background Solid(gui.accent_color) xysize(100,100) pos (i*110+205,495):
                                 text word_answer[i] color "#000" align (0.5,0.5)
 
-        if "room2_meta" in persistent.solved_puzzles or ("dead6" in persistent.dead_ends and not preferences.hard_mode):
+        if len(room2["solved"]) == 3 and ("room2_meta" in persistent.solved_puzzles or ("dead6" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode):
             textbutton "SKIP" style "confirm_button" action [SetDict(room2, "word", "solved"), Return()]
 
     if config.developer:
