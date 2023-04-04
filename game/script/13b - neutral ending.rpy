@@ -92,7 +92,8 @@ label neutral_ending:
     "{si}(Shit.{w} Shit,{w=0.1} shit,{w=0.1} shit.){/si}"
     "{si}(I can't believe —{w} I made such a {i}rookie {/i}mistake!){/si}"
     "{si}(And I can't...{w} Haa...{w} I can't...{w} {i}stand{/i} any more!){/si}"
-    "{si}(Wha...{w} what am I gonna do?{w} How am I gonna get out\nof here {i}now?{/i}){/si}"
+    "{si}(Wha...{w} what am I gonna do?){/si}"
+    "{si}(How am I gonna get out of here {i}now?{/i}){/si}"
 
     $ play_sound(footsteps4)
     #"{b}[footsteps sounds as{/b}{b} Cautionn{/b}{b}e walks over.]{/b}"

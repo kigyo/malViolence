@@ -26,7 +26,7 @@ define gui.show_name = True
 
 define config.version = "1.1"
 
-define config.developer = False
+define config.developer = True
 
 
 
