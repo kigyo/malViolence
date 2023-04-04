@@ -34,7 +34,7 @@ screen tutorial_introduction():
         textbutton "Let's get out of here.":
             xalign 0.5
             text_size 60
-            action Return()
+            action [Return(), With(dissolve)]
 
 screen tutorial_room():
     sensitive not inspect
