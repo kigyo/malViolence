@@ -247,7 +247,7 @@ label spare_ending:
     cr "Pretty devious idea, right?{w=1}{nw}"
     scene cautionne sit smug:
         align (0.0,0.1)
-    extend "Downright heinous."
+    extend " Downright heinous."
     "(He takes a deep breath.{w=0.5} Then exhales.)"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-27.ogg"
     cr "Alright.{w=0.833} Here's another world-class criminal scheme for you:"
@@ -259,7 +259,7 @@ label spare_ending:
     scene cautionne sit hope:
         align (0.0,0.1)
 
-    extend "Could make for a half-decent start to a villainous career."
+    extend " Could make for a half-decent start to a villainous career."
     #"{b}[pause]{/b}"
     scene cautionne sit hopesilent:
         align (0.0,0.1)

@@ -180,7 +180,7 @@ label room_3:
             "(Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
             $ play_sound(paperturn)
             "(But the more you flip back through the pages,{w=0.1} the more the writing grows negative in tone.)"
-            "(A second distinct set of handwriting accompanies the first,{w=0.1} leaving notes on how to aim the subject matter in a more positive direction)"
+            "(A second distinct set of handwriting accompanies the first,{w=0.1} leaving notes on how to aim the subject matter in a more positive direction.)"
             $ play_sound(paperturn)
             "(Even further back,{w=0.1} the spidery handwriting disappears altogether.{w} Instead,{w=0.1} there are grids and examples written with clean,{w=0.1} crisp penmanship.)"
             "(Shaky,{w=0.1} barely-legible scribbles sit below,{w=0.1} rounding out vague, letter-like shapes.)"
