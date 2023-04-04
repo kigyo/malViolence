@@ -198,4 +198,4 @@ label start:
     stop music
     pause 2
     $ play_music(tutroom, fadein=1.0, fadeout=0.1)
-    call screen tutorial_room with dissolve
+    jump tutorial_intro
