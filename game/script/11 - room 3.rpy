@@ -3,7 +3,7 @@ default room3 = {"room":"down", "solved":[], "pages":[], "read_pages":[], "diary
 default room3_investigated = []
 
 screen room3():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     layer "master"
     tag room
 

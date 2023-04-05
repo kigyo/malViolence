@@ -1,10 +1,6 @@
 default tutorial = {"vent":0, "investigated":[], "lock": [0,0,0,0,0,0,0,0]}
 
 
-
-
-
-
 screen tutorial_introduction():
     dismiss action Return()
     zorder 7
@@ -37,7 +33,7 @@ screen tutorial_introduction():
             action [Return(), With(dissolve)]
 
 screen tutorial_room():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     tag room
     zorder 5
 
@@ -80,7 +76,7 @@ init python:
         return result
 
 screen tutorial_lock():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     modal True
     layer "master"
     zorder 5

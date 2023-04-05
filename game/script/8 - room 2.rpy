@@ -2,7 +2,7 @@ default room2 = {"solved":[], "blueprints":0, "post-its":0, "limbs":0, "corkboar
 default room2_investigated = []
 
 screen room2():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     layer "master"
     tag room
 

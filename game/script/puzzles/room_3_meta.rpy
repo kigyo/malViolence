@@ -43,7 +43,7 @@ She said it was impressive how quickly I'd picked up on what her design needed. 
 }
 
 screen room3_meta():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

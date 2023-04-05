@@ -398,6 +398,7 @@ label init_cybernetics:
     return
 
 screen cybernetics(cyb, interactable=True):
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

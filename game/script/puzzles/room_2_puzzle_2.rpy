@@ -69,7 +69,7 @@ define panopticon_effects = {0:[1,3], 1:[2], 2:[0,4], 3:[2], 4:[1,3]}
 define panopticon_values = {0:[4,2,3,4,3], 1:[4,3,1,2,0], 2:[0,0,1,3,0], 3:[4,1,2,1,4], 4:[2,1,2,3,0]}
 
 screen room2_panopticon():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

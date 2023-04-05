@@ -220,6 +220,7 @@ style ingredients_button_text:
     hover_color "#C1C0BE"
 
 screen mise_en_place(interactable=True):
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

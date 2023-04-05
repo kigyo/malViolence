@@ -53,7 +53,7 @@ default marble_killed_shown = [0,0,0]
 default marble_selected = 0
 
 screen room1_marble():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

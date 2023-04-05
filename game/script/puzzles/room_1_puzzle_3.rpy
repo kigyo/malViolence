@@ -58,7 +58,7 @@ default decanting_vial2 = 0
 default decanting_vial3 = 0
 
 screen room1_decanting():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

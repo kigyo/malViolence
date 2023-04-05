@@ -296,7 +296,7 @@ label init_bomb:
     $ bomb = Bomb(len(bomb_mask[0]), len(bomb_mask), parts)
 
 screen room1_bomb(b, interactable=True):
-    sensitive interactable
+    sensitive (interactable and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

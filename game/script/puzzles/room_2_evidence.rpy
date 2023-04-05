@@ -68,7 +68,7 @@ define evidence_note_positions = {1:(0.11,0.45), 2:(0.4,0.0), 3:(0.96,0.72), 4:(
 define evidence_small = [2,3]
 
 screen room2_evidence():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

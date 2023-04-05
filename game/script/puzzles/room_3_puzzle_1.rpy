@@ -86,7 +86,7 @@ define quilt_description = _("""This quilt's unfinished, and {color=#fff}you nee
 Below, {color=#fff}construct the next motif{/color} you want to place by{color=#fff} adjusting the color, shape, and fill with the arrows:{/color}""")
 
 screen room3_quilt():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

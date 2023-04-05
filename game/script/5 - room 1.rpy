@@ -31,7 +31,7 @@ define marble_description = _("""{color=#fff}Knock down{/color} these effigies o
 
 
 screen room1():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     layer "master"
     tag room
 

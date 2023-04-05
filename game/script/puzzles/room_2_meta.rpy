@@ -43,7 +43,7 @@ define word_rival = "TASER"
 define word_accepted_answers = ["ASTER", "RATES", "TEARS", "STARE"]
 
 screen room2_word():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"

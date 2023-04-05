@@ -112,6 +112,7 @@ init python:
         renpy.show_screen("puzzle_playspace",pb)
 
 screen puzzle_playspace(b, interactable=True):
+    sensitive (not inspect and not _menu)
     tag puzzle
     layer "puzzles"
     modal True
