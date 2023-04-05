@@ -40,7 +40,7 @@ init python:
 
 default word_answer = ["","","","",""]
 define word_rival = "TASER"
-define word_accepted_answers = ["ASTER", "RATES", "TEARS", "STARE"]
+define word_accepted_answers = ["ASTER", "RATES", "TEARS", "STARE", "TARES", "RESAT"]
 
 screen room2_word():
     sensitive (not inspect and not _menu)
