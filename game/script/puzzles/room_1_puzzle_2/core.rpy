@@ -13,7 +13,6 @@ init:
 init -1 python:
     import math
     import random
-    # TODO: track seeds
 
     class Enum(object):
         def __init__(self, *items):
@@ -32,7 +31,6 @@ init -1 python:
             return self.items[:]
 
         def random(self, num=4):
-            # TODO: Num is a bad parameter name.
             return random.choice(self.items[:num])
 
         def get(self, num=4):
@@ -673,7 +671,12 @@ default pb = None
 default tb = None
 
 label init_puzzle_board():
-    $ pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False)
+    if difficulty_level == 1:
+        $ pb = PuzzleBoard(width=4, height=9, move_cap=12, shuffle_matches=False, weights=[8, 8, 1, 1], seed=6030284)
+    elif difficulty_level == 2:
+        $ pb = PuzzleBoard(width=6, height=8, move_cap=10, shuffle_matches=False, weights=[5, 5, 1, 1], seed=1487961)
+    else:
+        $ pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False, weights=[3, 3, 1, 1])
     $ adt = 0.5
     return
 

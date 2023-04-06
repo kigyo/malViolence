@@ -70,3 +70,45 @@ define shape_13 = [[0, 1],
 
 define shape_14 = [[1, 0],
                   [1, 1]]
+
+define long_shape = [[1, 1, 1, 1]]
+
+define square_shape = [[1, 1],
+                       [1, 1]]
+
+define z_shape = [[0, 1],
+                  [1, 1],
+                  [1, 0]]
+
+define o_z_shape = [[1, 0],
+                    [1, 1],
+                    [0, 1]]
+
+define l_shape = [[1, 1],
+                  [0, 1],
+                  [0, 1]]
+
+define t_shape = [[0, 1, 0],
+                  [1, 1, 1]]
+
+define corner_shape = [[1, 1],
+                       [0, 1]]
+
+define shape_2_1 = [[1, 1],
+                    [1, 0],
+                    [1, 0],
+                    [1, 1],
+                    [1, 0]]
+
+define shape_2_2 = [[1],
+                    [1],
+                    [1]]
+
+define shape_2_3 = [[1, 1],
+                    [0, 1],
+                    [0, 1],
+                    [0, 1]]
+
+image o_z_shape:
+    xzoom -1.0
+    "z_shape"
