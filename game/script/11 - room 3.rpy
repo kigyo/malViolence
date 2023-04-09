@@ -614,7 +614,7 @@ label toys_solved:
     n "She told me to explore the place.{w} She said it was important that I adjust to my new environment,{w=0.1} but she's been holed up in the lab."
     n "I don't know why she's so stressed about my surgeries.{w} She's the smartest person I know.{w} And I grew up surrounded by \"brilliant\" scientists,{w=0.1} so that's saying {i}something{/i}."
     nvl clear
-    n "She says she's still concerned about making adjustments to my synthetic nerves.{w} That's she's worried she'll put me through even more pain.{w} But every time she's worked on me,{w=0.1} I haven't felt a thing."
+    n "She says she's still concerned about making adjustments to my synthetic nerves.{w} That she's worried she'll put me through even more pain.{w} But every time she's worked on me,{w=0.1} I haven't felt a thing."
     n "Last time,{w=0.1} I actually fell asleep."
     nvl clear
     hide memory3 with dissolve

@@ -26,7 +26,7 @@ But I've never had someone cook for {i}me{/i} before.
 
 I don't know why she's so stressed about my surgeries. She's the smartest person I know. And I grew up surrounded by \"brilliant\" scientists, so that's saying something.
 
-She says she's still concerned about making adjustments to my synthetic nerves. That's she's worried she'll put me through even more pain. But every time she's worked on me, I haven't felt a thing.
+She says she's still concerned about making adjustments to my synthetic nerves. That she's worried she'll put me through even more pain. But every time she's worked on me, I haven't felt a thing.
 
 Last time, I actually fell asleep."""),
 
@@ -35,7 +35,7 @@ Last time, I actually fell asleep."""),
 But when she's making something explosive, it's really, really exciting!  
 
 The other day, I noticed that she'd forgotten her flash-welder. I brought it over to her, saying that I wanted to test out my grip strength. She saw through my excuse, but she let me help anyway.
-I even made a few suggestions of my own, and ... guess what? Guess what!!! She ended up using every single idea!
+I even made a few suggestions of my own, and... guess what? Guess what!!! She ended up using every single idea!
 
 She said it was impressive how quickly I'd picked up on what her design needed. She smiled at me with such pride. But at the same time, there was this sad look in her eyes...
 
