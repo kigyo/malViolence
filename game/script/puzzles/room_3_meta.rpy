@@ -16,7 +16,7 @@ But that wasn't food. It was nutritious and edible and nothing more. It didn't f
 
 Pancakes are food. They sizzle in the pan and curl at the edges, bubbling slightly when it's time to flip. You can undercook them or burn them, bury them in toppings or eat them with your hands. They're filling, and tasty, and oh-so warm.
 
-I'm sure I could easily re-create her recipe. It's hardly rocket science, even if I've only got one arm.
+I'm sure I could easily re-create her recipe. It's hardly rocket science, even with one arm.
 
 But I've never had someone cook for {i}me{/i} before. 
 
