@@ -692,7 +692,7 @@ label cooking_solved:
     n "But that wasn't food.{w} It was nutritious and edible and nothing more.{w} It didn't fill you up.{w} It wasn't warm.{w} There certainly was no thought in it at all."
     nvl clear
     n "Pancakes are food.{w=0.5} They sizzle in the pan and curl at the edges,{w=0.1} bubbling slightly when it's time to flip.{w} You can undercook them or burn them,{w=0.1} bury them in toppings or eat them with your hands.{w} They're filling,{w=0.1} and tasty,{w=0.1} and oh-so warm."
-    n "I'm sure I could easily re-create her recipe.{w} It's hardly rocket science, even with one arm left."
+    n "I'm sure I could easily re-create her recipe.{w} It's hardly rocket science, even if I've only got one arm."
     n "But I've never had someone cook for {i}me{/i} before."
     n "...I'd like to pretend I'm not capable for a little while longer."
     nvl clear
