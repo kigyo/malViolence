@@ -283,7 +283,7 @@ label room_3:
             nvl clear
             nvl show
             $ play_sound(paperturn)
-            n "\"I got a transfer to the YTDI.{w} No one even seemed ashamed to give me full access.\""
+            n "\"I got a transfer to the YTDI as a supervisor.{w} No one even seemed ashamed to give me full access.\""
             nvl hide
             pause 0.5
             nvl clear
@@ -307,9 +307,9 @@ label room_3:
             nvl show
             $ play_sound(paperturn)
             n "\"I'm getting better at coming up with excuses to visit him, at least.\n"
-            n "I need to check how he's coping with procedures.{w} I might need to test his reflexes.{w} Hell, he might need a snack to make him more cooperative."
+            n "I need to evaluate how he's coping with procedures - just like the other YTDI trainees.{w} I might need to test his reflexes.{w} Hell, he might need a snack to make him more cooperative."
             n "All my explanations are superficially believable at best."
-            n "I'm no medical professional.{w} By all means, I should've been reprimanded for getting too involved."
+            n "I'm no medical professional.{w} I'm a supervisor - I oversee things.{w} By all means, I should've been reprimanded for getting too involved."
             n "But no such warnings have come my way.\""
             nvl hide
             pause 0.5
@@ -614,7 +614,7 @@ label toys_solved:
     n "She told me to explore the place.{w} She said it was important that I adjust to my new environment,{w=0.1} but she's been holed up in the lab."
     n "I don't know why she's so stressed about my surgeries.{w} She's the smartest person I know.{w} And I grew up surrounded by \"brilliant\" scientists,{w=0.1} so that's saying {i}something{/i}."
     nvl clear
-    n "She says she's still concerned about making adjustments to my synthetic nerves.{w} That she's worried she'll put me through even more pain.{w} But every time she's worked on me,{w=0.1} I haven't felt a thing."
+    n "She says she's still concerned about making adjustments to my synthetic nerves.{w} That she's worried she'll put me through even more pain.{w} But every time she's worked on my new limbs,{w=0.1} I haven't felt a thing."
     n "Last time,{w=0.1} I actually fell asleep."
     nvl clear
     hide memory3 with dissolve
@@ -692,7 +692,7 @@ label cooking_solved:
     n "But that wasn't food.{w} It was nutritious and edible and nothing more.{w} It didn't fill you up.{w} It wasn't warm.{w} There certainly was no thought in it at all."
     nvl clear
     n "Pancakes are food.{w=0.5} They sizzle in the pan and curl at the edges,{w=0.1} bubbling slightly when it's time to flip.{w} You can undercook them or burn them,{w=0.1} bury them in toppings or eat them with your hands.{w} They're filling,{w=0.1} and tasty,{w=0.1} and oh-so warm."
-    n "With practice,{w=0.1} I could re-create her recipe with ease.{w} Compared to our regular experiments,{w=0.1} it's hardly rocket science."
+    n "I'm sure I could easily re-create her recipe.{w} It's hardly rocket science, even with one arm left."
     n "But I've never had someone cook for {i}me{/i} before."
     n "...I'd like to pretend I'm not capable for a little while longer."
     nvl clear

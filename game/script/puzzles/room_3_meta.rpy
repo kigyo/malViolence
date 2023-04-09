@@ -16,7 +16,7 @@ But that wasn't food. It was nutritious and edible and nothing more. It didn't f
 
 Pancakes are food. They sizzle in the pan and curl at the edges, bubbling slightly when it's time to flip. You can undercook them or burn them, bury them in toppings or eat them with your hands. They're filling, and tasty, and oh-so warm.
 
-With practice, I'm sure I could re-create her recipe with ease. Compared to our regular experiments, it's hardly rocket science.
+I'm sure I could easily re-create her recipe. It's hardly rocket science, even with one arm left.
 
 But I've never had someone cook for {i}me{/i} before. 
 
@@ -26,7 +26,7 @@ But I've never had someone cook for {i}me{/i} before.
 
 I don't know why she's so stressed about my surgeries. She's the smartest person I know. And I grew up surrounded by \"brilliant\" scientists, so that's saying something.
 
-She says she's still concerned about making adjustments to my synthetic nerves. That she's worried she'll put me through even more pain. But every time she's worked on me, I haven't felt a thing.
+She says she's still concerned about making adjustments to my synthetic nerves. That she's worried she'll put me through even more pain. But every time she's worked on my new limbs, I haven't felt a thing.
 
 Last time, I actually fell asleep."""),
 
@@ -34,7 +34,7 @@ Last time, I actually fell asleep."""),
 
 But when she's making something explosive, it's really, really exciting!  
 
-The other day, I noticed that she'd forgotten her flash-welder. I brought it over to her, saying that I wanted to test out my grip strength. She saw through my excuse, but she let me help anyway.
+The other day, I noticed that she'd forgotten her flash-welder. I brought it over to her, saying that I wanted to test out the grip strength of my new arm. She saw through my excuse, but she let me help anyway.
 I even made a few suggestions of my own, and... guess what? Guess what!!! She ended up using every single idea!
 
 She said it was impressive how quickly I'd picked up on what her design needed. She smiled at me with such pride. But at the same time, there was this sad look in her eyes...
