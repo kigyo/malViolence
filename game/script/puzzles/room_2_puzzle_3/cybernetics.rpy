@@ -1,6 +1,6 @@
 default cyb = None
 
-define cybernetic_mask = [
+define cybernetic_mask_1 = [
     [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
@@ -11,6 +11,17 @@ define cybernetic_mask = [
     [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
     [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+define cybernetic_mask_2 = [
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [1, 1, 0, 0, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 
 default loop_colors = ["#FFFFFF",
@@ -28,7 +39,7 @@ default loop_colors = ["#FFFFFF",
 default loop_data = None
 default loop_counter = 1
 
-define cybernetic_input = [
+define cybernetic_input_1 = [
     [None, None, None, None, None, None, None, None, None, None, None, None],
     [None, None, None, None, None, None, None, None, None, None, None, None],
     [None, None, None,    4, None, None, None, None, None, None, None, None],
@@ -38,8 +49,17 @@ define cybernetic_input = [
     [None, None, None, None,    2, None, None,    3, None, None, None, None],
     [None, None,    1, None, None, None, None, None, None, None, None, None],
     [None, None, None, None, None, None, None, None, None, None, None, None],
-    [None, None, None, None, None, None, None, None, None, None, None, None]
-]
+    [None, None, None, None, None, None, None, None, None, None, None, None]]
+
+define cybernetic_input_2 = [
+    [None, None, None, None, None, None, None, None, None, None],
+    [None, None, None, None, None, None, None, None, None, None],
+    [None, None, None, None, None, None, None, None, None, None],
+    [None, None, None, None,    2, None,    0, None,    0, None],
+    [None,    4, None, None, None,    2, None,    0, None, None],
+    [None, None, None,    5, None, None, None, None, None, None],
+    [None, None, None, None, None, None,    3, None, None, None],
+    [None, None, None, None, None, None, None, None, None, None]]
 
 define Pipe = Enum("cross",
                    "vertical",
@@ -113,12 +133,14 @@ init -1 python:
     import math
 
     class Cybernetic(renpy.Displayable, NoRollback):
-        def __init__(self, x=170, y=150, w=12, h=10):
+        def __init__(self, x=170, y=150, w=12, h=10, input=None, mask=None):
             super(Cybernetic, self).__init__(self)
             self.x = x
             self.y = y
             self.w = w
             self.h = h
+            self.input = input
+            self.mask = mask
             self.pw = w*int(z)
             self.ph = h*int(z)
             self.data = [[[0,0,0,0] for x in range(self.w)] for y in range(self.h)]
@@ -134,7 +156,7 @@ init -1 python:
             if x > self.x and x < self.x + self.pw and \
                y > self.y and y < self.y + self.ph:
                    coord = (int(math.floor(x/z-self.x/z)), int(math.floor(y/z-self.y/z)))
-                   if cybernetic_mask[coord[1]][coord[0]]:
+                   if self.mask[coord[1]][coord[0]]:
                        self.reticle = coord
                        return True
             return False
@@ -152,24 +174,24 @@ init -1 python:
                 dy = self.reticle[1]-self.cursor[1]
                 if (-1 <= dx <= 1 and not dy) or \
                    (-1 <= dy <= 1 and not dx):
-                       if cybernetic_input[self.reticle[1]][self.reticle[0]]:
-                           if not any([dx == 1 and Pipe.items[cybernetic_input[self.reticle[1]][self.reticle[0]]] in \
+                       if self.input[self.reticle[1]][self.reticle[0]]:
+                           if not any([dx == 1 and Pipe.items[self.input[self.reticle[1]][self.reticle[0]]] in \
                                        [Pipe.cross, Pipe.horizontal, Pipe.left_top_bent, Pipe.left_bottom_bent], \
-                                       dy == -1 and Pipe.items[cybernetic_input[self.reticle[1]][self.reticle[0]]] in \
+                                       dy == -1 and Pipe.items[self.input[self.reticle[1]][self.reticle[0]]] in \
                                        [Pipe.cross, Pipe.vertical, Pipe.left_bottom_bent, Pipe.right_bottom_bent], \
-                                       dx == -1 and Pipe.items[cybernetic_input[self.reticle[1]][self.reticle[0]]] in \
+                                       dx == -1 and Pipe.items[self.input[self.reticle[1]][self.reticle[0]]] in \
                                        [Pipe.cross, Pipe.horizontal, Pipe.right_top_bent, Pipe.right_bottom_bent], \
-                                       dy == 1 and Pipe.items[cybernetic_input[self.reticle[1]][self.reticle[0]]] in \
+                                       dy == 1 and Pipe.items[self.input[self.reticle[1]][self.reticle[0]]] in \
                                        [Pipe.cross, Pipe.vertical, Pipe.left_top_bent, Pipe.right_top_bent]]):
                                            return False
-                       if cybernetic_input[self.cursor[1]][self.cursor[0]]:
-                           if not any([dx == 1 and Pipe.items[cybernetic_input[self.cursor[1]][self.cursor[0]]] in \
+                       if self.input[self.cursor[1]][self.cursor[0]]:
+                           if not any([dx == 1 and Pipe.items[self.input[self.cursor[1]][self.cursor[0]]] in \
                                    [Pipe.cross, Pipe.horizontal, Pipe.right_top_bent, Pipe.right_bottom_bent], \
-                                   dy == -1 and Pipe.items[cybernetic_input[self.cursor[1]][self.cursor[0]]] in \
+                                   dy == -1 and Pipe.items[self.input[self.cursor[1]][self.cursor[0]]] in \
                                    [Pipe.cross, Pipe.vertical, Pipe.left_top_bent, Pipe.right_top_bent],
-                                  dx == -1 and Pipe.items[cybernetic_input[self.cursor[1]][self.cursor[0]]] in \
+                                  dx == -1 and Pipe.items[self.input[self.cursor[1]][self.cursor[0]]] in \
                                   [Pipe.cross, Pipe.horizontal, Pipe.left_top_bent, Pipe.left_bottom_bent], \
-                                  dy == 1 and Pipe.items[cybernetic_input[self.cursor[1]][self.cursor[0]]] in \
+                                  dy == 1 and Pipe.items[self.input[self.cursor[1]][self.cursor[0]]] in \
                                    [Pipe.cross, Pipe.vertical, Pipe.left_bottom_bent, Pipe.right_bottom_bent]]):
                                       return False
                        if dx == 1:
@@ -242,7 +264,7 @@ init -1 python:
             invalid = False
             for y in range(self.h):
                 for x in range(self.w):
-                    if cybernetic_mask[y][x] and sum(self.data[y][x]) in [0, 1, 3]:
+                    if self.mask[y][x] and sum(self.data[y][x]) in [0, 1, 3]:
                         invalid = True
                         break
                 if invalid: break
@@ -257,20 +279,25 @@ init -1 python:
 
             checked = []
             next = (0, 0)
-
+            if self.w == 10:
+                next = (0, 1)
             while next:
                 next, checked = self.check_trace(checked, next)
 
-            if len(set(checked)) == 74:
+            if self.w == 12:
+                thresh = 74
+            elif self.w == 10:
+                thresh = 60
+            if len(set(checked)) == thresh:
                 store.room2["recalibration"] = "solved"
                 return True
 
             else:
                 tally = set(checked)
                 loop_counter += 1
-                for y in range(10):
-                    for x in range(12):
-                        if cybernetic_mask[y][x] and (x, y) not in tally:
+                for y in range(self.h):
+                    for x in range(self.w):
+                        if self.mask[y][x] and (x, y) not in tally:
                             checked = []
                             next = (x, y)
                             while next:
@@ -365,8 +392,8 @@ init -1 python:
                not 0 < x2 < self.w or \
                not 0 < y1 < self.h or \
                not 0 < y2 < self.h or \
-               not cybernetic_mask[y1][x1] or \
-               not cybernetic_mask[y2][x2]:
+               not self.mask[y1][x1] or \
+               not self.mask[y2][x2]:
                    return True
 
             dx = x1 - x2
@@ -382,18 +409,29 @@ init -1 python:
                 return (d1[0] and d2[2]) or (not d1[0] and not d2[2])
             elif dy == 1:
                 return (d1[3] and d2[1]) or (not d1[3] and not d2[1])
-    
+
     def cybernetics_reset(txt=_("Invalid. Restarting...")):
-        store.cyb = Cybernetic()
-        store.loop_data = [[[0,0,0,0] for x in range(12)] for y in range(10)]
+        if difficulty_level == 1:
+            store.cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_1, mask=cybernetic_mask_1)
+        elif difficulty_level == 2:
+            store.cyb = Cybernetic(x=170, y=150, w=10, h=8, input=cybernetic_input_2, mask=cybernetic_mask_2)
+        elif difficulty_level == 3:
+            store.cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_1, mask=cybernetic_mask_1)
+        store.loop_data = [[[0,0,0,0] for x in range(cyb.w)] for y in range(cyb.h)]
         store.loop_counter = 1
+
         renpy.notify(txt)
         renpy.hide_screen("cybernetics")
         renpy.show_screen("cybernetics",cyb)
 
 label init_cybernetics:
-    $ cyb = Cybernetic()
-    $ loop_data = [[[0,0,0,0] for x in range(12)] for y in range(10)]
+    if difficulty_level == 1:
+        $ cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_1, mask=cybernetic_mask_1)
+    elif difficulty_level == 2:
+        $ cyb = Cybernetic(x=170, y=150, w=10, h=8, input=cybernetic_input_2, mask=cybernetic_mask_2)
+    elif difficulty_level == 3:
+        $ cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_1, mask=cybernetic_mask_1)
+    $ loop_data = [[[0,0,0,0] for x in range(cyb.w)] for y in range(cyb.h)]
     $ loop_counter = 1
     return
 
@@ -402,15 +440,15 @@ screen cybernetics(cyb, interactable=True):
     modal True
     tag puzzle
     layer "puzzles"
-    
+
     frame style "puzzle_frame" padding 0,0,50,40:
         if interactable:
             add cyb
-        grid 12 10:
+        grid cyb.w cyb.h:
             pos (170, 150)
-            for y in range(10):
-                for x in range(12):
-                    if cybernetic_mask[y][x]:
+            for y in range(cyb.h):
+                for x in range(cyb.w):
+                    if cyb.mask[y][x]:
                         frame:
                             xysize (65, 65)
                             if cyb.data[y][x][0]:
@@ -431,9 +469,9 @@ screen cybernetics(cyb, interactable=True):
                                     at colorify(loop_colors[loop_data[y][x][3]])
                             if cyb.tracing and cyb.cursor == (x, y):
                                 add "cursor" align (0.5, 0.5)
-                            if cybernetic_input[y][x] is not None:
+                            if cyb.input[y][x] is not None:
                                 add "#ffffff55" xysize (65, 65) align (0.5, 0.5)
-                                add "fixed_%s_piece" % Pipe.items[cybernetic_input[y][x]]:
+                                add "fixed_%s_piece" % Pipe.items[cyb.input[y][x]]:
                                     align (0.5, 0.5)
                     else:
                         null

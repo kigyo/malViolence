@@ -16,7 +16,8 @@ label test_puzzles:
 label room_1_puzzle_1:
     call init_bomb from _call_init_bomb_1
     show screen room1_bomb(bomb, False)
-    "<TODO: Insert intro script and rules.>"
+    # show screen room1_bomb(bomb, False)
+    # "<TODO: Insert intro script and rules.>"
     call screen room1_bomb(bomb)
 
 label solved_room_1_puzzle_1:
@@ -34,7 +35,8 @@ label failed_room_1_puzzle_1:
 label room_1_puzzle_2:
     call init_puzzle_board from _call_init_puzzle_board_3
     show screen puzzle_playspace(pb, False)
-    "<TODO: Insert intro script and rules.>"
+    # show screen puzzle_playspace(pb, False)
+    # "<TODO: Insert intro script and rules.>"
     call screen puzzle_playspace(pb)
 
 label solved_room_1_puzzle_2:

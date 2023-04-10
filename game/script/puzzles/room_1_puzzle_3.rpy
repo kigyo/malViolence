@@ -38,13 +38,27 @@ init python:
         return found == len(answer)
 
     def decanting_init():
-        store.decanting_moves = 0
-        store.decanting_vial1 = 12
-        store.decanting_vial2 = 0
-        store.decanting_vial3 = 0
+        if difficulty_level == 1:
+            store.decanting_moves = 0
+            store.decanting_vial1 = 8
+            store.decanting_vial2 = 0
+            store.decanting_vial3 = 0
+            store.decant_kwargs = {"v1":8, "v2":6, "v3":2, "answer":[4, 4, 0]}
+        if difficulty_level == 2:
+            store.decanting_moves = 0
+            store.decanting_vial1 = 12
+            store.decanting_vial2 = 0
+            store.decanting_vial3 = 0
+            store.decant_kwargs = {"v1":12, "v2":8, "v3":5, "answer":[6, 6, 0]}
+        if difficulty_level == 3:
+            store.decanting_moves = 0
+            store.decanting_vial1 = 18
+            store.decanting_vial2 = 0
+            store.decanting_vial3 = 0
+            store.decant_kwargs = {"v1":18, "v2":10, "v3":7, "answer":[9, 9, 0]}
 
 
-
+default decant_kwargs = {"v1":18, "v2":10, "v3":7, "answer":[9, 9, 0]}
 default decanting_moves = 0
 define decanting_move_limit = 20
 

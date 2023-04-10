@@ -147,11 +147,11 @@ label room_1:
             else:
                 "(Dare you decant differently?{w} You dare.)"
                 pass
-            show screen room1_decanting(_layer="master") with easeintop
+            show screen room1_decanting(_layer="master", **decant_kwargs) with easeintop
             $ room1["decanting"] += 1
             $ inspect = None
             $renpy.hide_screen("room1_decanting", "master")
-            call screen room1_decanting
+            call screen room1_decanting(**decant_kwargs)
             if room1["decanting"] == "solved":
                 jump decanting_solved
 

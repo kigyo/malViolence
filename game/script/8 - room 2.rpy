@@ -27,13 +27,13 @@ screen room2():
             imagebutton idle "rooms/room2_note3.png" action [SetVariable("inspect", "note3"), Jump("room_2")] pos (3870, 2217) mouse "inspect"
         if 4 not in room2["notes"]:
             imagebutton idle "rooms/room2_note3.png" action [SetVariable("inspect", "note4"), Jump("room_2")] pos (5500, 1987) mouse "inspect"
-        
+
     if config.developer:
         frame:
             textbutton _("Skip Room") action [Jump("post_room_2")] style "main_menu_button"
 
 
-define cybernetics_description = _("""It's time for a crash course in cybernetics! 
+define cybernetics_description = _("""It's time for a crash course in cybernetics!
 
 {color=#fff}Lay down new synthetic neural pathways — but be mindful of the original pieces that can't be moved.{/color}
 
@@ -163,7 +163,7 @@ label room_2:
             "(Printouts and clippings of various news articles —{w=0.1} all related to Dr. Danger's exploits...{w=0.5} with a {i}certain{/i} colorful sidekick occasionally breaking into the opening paragraphs.)"
             "(In fact,{w=0.1} when you look at them all together,{w=0.1} Cautionne seems to show up more over time.{w} Dr. Danger must've been pleased with her pupil's growth.)"
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
-            "(Based on what you can make out of the caption — {w=0.1}it seems to be of some kind of commemorative occasion.)" 
+            "(Based on what you can make out of the caption — {w=0.1}it seems to be of some kind of commemorative occasion.)"
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
             "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as—){w=1}{nw}"
             hide room2_news with dissolve
@@ -185,16 +185,16 @@ label room_2:
             if room2["panopticon"] == 0:
                 $ panopticon_init(True)
                 "(A computer,{w=0.1} and a small,{w=0.1} strange...{w=0.5} colosseum?{w} What on {i}earth{/i} is that?)"
-                show screen room2_panopticon(_layer="master") with easeintop
+                show screen room2_panopticon(_layer="master", interactable=False) with easeintop
                 "(...Of course.{w} It's a puzzle.)"
             else:
-                show screen room2_panopticon(_layer="master") with easeintop
+                show screen room2_panopticon(interactable=False, _layer="master") with easeintop
                 "(Riiiiiight.{w} That colosseum-thing is a {i}panopticon.{/i}{w} Off to puzzle-solving you go!)"
 
             $ room2["panopticon"] += 1
             $ inspect = None
             $renpy.hide_screen("room2_panopticon", "master")
-            call screen room2_panopticon 
+            call screen room2_panopticon()
             if room2["panopticon"] == "solved":
                 jump panopticon_solved
 
@@ -317,7 +317,7 @@ label panopticon_solved:
     $renpy.block_rollback()
     $clear_puzzle("room2_2")
     $ inspect = "panopticon"
-    show screen room2_panopticon
+    show screen room2_panopticon()
     show black onlayer screens with dissolve:
         alpha 0.5
     $ room2["solved"].append("panopticon")
@@ -359,7 +359,7 @@ label panopticon_game_over:
     cr "Now,{w=0.1} go sit in the corner and think about what you've done!" with small_shake
     ####### industrial lights power off sound here
     $ play_sound(switchoff)
-    scene black 
+    scene black
     pause 2
     cr "I'll come back for you when you're sorry enough."
 
@@ -409,7 +409,7 @@ label recalibration_game_over:
     cr "You're losing 'em,{w=0.1} Doc."
     "(...Wait.{w} That's...{w=0.5} an actual...?)"
     hide black onlayer screens
-    hide screen cybernetics 
+    hide screen cybernetics
     with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} That person's own nervous system will rip their body apart with spasming."
@@ -449,7 +449,7 @@ label recalibration_game_over:
     nvl clear
     $game_over(2)
     return
-    
+
 label word_game_over:
     $ inspect = "game over"
     show screen room2_word
