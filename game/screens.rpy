@@ -639,7 +639,7 @@ screen about():
                     text _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}") 
                 text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25 font gui.text_font yalign 1.0
                 hbox spacing 15:
-                    label _("Testing") + ":"
+                    label _("QA Testing") + ":"
                     text _("cluniies") + ", " + _("wBrian")
 
 

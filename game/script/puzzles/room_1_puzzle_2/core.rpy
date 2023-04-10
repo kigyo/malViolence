@@ -686,14 +686,14 @@ label init_toy_board():
     return
 
 label reset_puzzle_board:
-    call init_puzzle_board
+    call init_puzzle_board from _call_init_puzzle_board_1
     hide screen puzzle_playspace
     call screen puzzle_playspace(pb)
 
 label auto_reset_puzzle_board:
     show screen puzzle_playspace(pb, False)
     "No valid moves left. Restarting..."
-    call init_puzzle_board
+    call init_puzzle_board from _call_init_puzzle_board_2
     hide screen puzzle_playspace
     call screen puzzle_playspace(pb)
     call screen room1

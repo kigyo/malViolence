@@ -359,7 +359,7 @@ label init_bomb:
     return
 
 screen room1_bomb(b, interactable=True):
-    sensitive interactable
+    sensitive (interactable and not _menu)
     modal True
     tag puzzle
     layer "puzzles"
@@ -391,8 +391,8 @@ screen room1_bomb(b, interactable=True):
             textbutton "SUBMIT" style "confirm_button" action Function(b.verify)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
 
-    if "room1_1" in persistent.solved_puzzles or ("dead3" in persistent.dead_ends and not preferences.hard_mode):
-        textbutton "SKIP" style "confirm_button" action [SetDict(room1, "bomb", "solved"), Return()] pos (40,50)
+    if "room1_1" in persistent.solved_puzzles or not preferences.hard_mode:
+        textbutton "SKIP" style "confirm_button" action [SetDict(room1, "bomb", "solved"), Return()] ypos 50 xalign 1.0 xoffset -20
 
     if config.developer:
         vbox:

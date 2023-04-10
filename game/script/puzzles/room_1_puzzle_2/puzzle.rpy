@@ -118,6 +118,7 @@ init python:
         renpy.show_screen("puzzle_playspace",pb)
 
 screen puzzle_playspace(b, interactable=True):
+    sensitive (not inspect and not _menu)
     tag puzzle
     layer "puzzles"
     modal True
@@ -144,12 +145,12 @@ screen puzzle_playspace(b, interactable=True):
                     text hacking_description
 
             hbox xfill True yalign 1.0 ysize 100:
-                if ("dead4" in persistent.dead_ends and not preferences.hard_mode):
+                if not preferences.hard_mode:
                     textbutton "RESET" style "confirm_button" action Function(puzzle_board_reset, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable at zoomed(0.75)
                 textbutton "RETURN" style "confirm_button" action [SetVariable("inspect", None), Hide(transition=puzzle_hide)] xalign 1.0 yalign 0.5 sensitive interactable
 
-    if "room1_2" in persistent.solved_puzzles or ("dead4" in persistent.dead_ends and not preferences.hard_mode):
-        textbutton "SKIP" style "confirm_button" action [SetDict(room1, "hacking", "solved"), Return()] pos (40,50)
+        if "room1_2" in persistent.solved_puzzles or not preferences.hard_mode:
+            textbutton "SKIP" style "confirm_button" action [SetDict(room1, "hacking", "solved"), Return()] ypos 50 xalign 1.0
 
     if config.developer:
         vbox:

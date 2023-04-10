@@ -24,9 +24,9 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "1.0"
+define config.version = "1.1"
 
-define config.developer = False
+define config.developer = True
 
 
 
@@ -228,4 +228,4 @@ init python:
 ## The username and project name associated with an itch.io project, separated
 ## by a slash.
 
-# define build.itch_project = "renpytom/test-project"
+define build.itch_project = "madocallie/malviolence"

@@ -413,11 +413,11 @@ screen dev_notes():
             frame:
                 has vbox
                 text _("This is the best game ever made I know bc I am a gamer")
-                label "— " + _("cluniies") + " (" + _("Testing") + ")"
+                label "— " + _("cluniies") + " (" + _("QA Testing") + ")"
             frame:
                 has vbox
                 text _("I was here for one day and in that time I gained a crippling fear of panopticons and a crippling attraction to Cautionne. No regrets.")
-                label "— " + _("wBrian") + " (" + _("Testing") + ")"
+                label "— " + _("wBrian") + " (" + _("QA Testing") + ")"
             
 style developer_notes_frame is gui_frame:
     padding (40,40) xfill True
@@ -471,8 +471,8 @@ Melo-dii\n
 Doran
 \n\n
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Voiceover:{/color}{/font}{/size}\n
-Carrick Inabnett\n
-Vyn Vox
+Cautionne: Carrick Inabnett\n
+Dr. Danger: Vyn Vox
 \n\n
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Sound & Voice Direction:{/color}{/font}{/size}\n
 D.ray\n
@@ -481,7 +481,7 @@ Phebe Fabacher
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Trailer:{/color}{/font}{/size}\n
 Jennymhulla
 \n\n
-{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Beta-Testing:{/color}{/font}{/size}\n
+{size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Quality Assurance:{/color}{/font}{/size}\n
 cluniies\n
 wBrian
 \n\n

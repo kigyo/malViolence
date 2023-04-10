@@ -2,7 +2,7 @@ default room2 = {"solved":[], "blueprints":0, "post-its":0, "limbs":0, "corkboar
 default room2_investigated = []
 
 screen room2():
-    sensitive (not inspect and not _menu)
+    sensitive not inspect
     layer "master"
     tag room
 
@@ -222,7 +222,7 @@ label room_2:
             "(You've already solved the cybernetics puzzle.)"
         else:
             if room2["recalibration"] == 0:
-                call init_cybernetics from _call_init_cybernetics
+                call init_cybernetics
                 "(The monitor is displaying some kind of simulation.{w} Better take a closer look...)"
             else:
                 "(Time to re-enroll in that cybernetics crash-course.{w} Maybe it'll be less intimidating?)"

@@ -86,7 +86,7 @@ define quilt_description = _("""This quilt's unfinished, and {color=#fff}you nee
 Below, {color=#fff}construct the next motif{/color} you want to place by{color=#fff} adjusting the color, shape, and fill with the arrows:{/color}""")
 
 screen room3_quilt():
-    sensitive not inspect
+    sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"
@@ -127,7 +127,7 @@ screen room3_quilt():
                 textbutton "SUBMIT" style "confirm_button" action Function(quilt_submit) xalign 0.5 yalign 0.5
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
-        if "room3_1" in persistent.solved_puzzles or ("dead11" in persistent.dead_ends and not preferences.hard_mode):
+        if "room3_1" in persistent.solved_puzzles or ("dead11" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
             textbutton "SKIP" style "confirm_button" action [SetDict(room3, "quilt", "solved"), Return()] xalign 1.0
             
     fixed xoffset -400:
