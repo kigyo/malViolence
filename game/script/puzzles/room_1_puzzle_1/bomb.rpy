@@ -2,21 +2,37 @@ define block_size = 80
 default bomb = None
 define offset_x = 1100
 define offset_y = 100
-define bomb_mask = [[0, 0, 1, 1, 1, 1, 1, 0, 0],
-                    [0, 1, 1, 1, 1, 1, 1, 1, 0],
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 0, 0, 0, 1, 1, 1],
-                    [1, 1, 1, 0, 0, 0, 1, 1, 1],
-                    [1, 1, 1, 0, 0, 0, 1, 1, 1],
-                    [1, 1, 1, 0, 0, 0, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                    [0, 1, 1, 1, 1, 1, 1, 1, 0],
-                    [0, 0, 1, 1, 1, 1, 1, 0, 0]]
-# TODO center bound
+define bomb_mask_1 = [[0, 1, 1, 1, 1, 0],
+                      [1, 1, 1, 1, 1, 1],
+                      [1, 1, 1, 1, 1, 1],
+                      [1, 1, 1, 1, 1, 1],
+                      [0, 1, 1, 1, 1, 0]]
+define bomb_mask_2 = [[0, 0, 1, 1, 0, 0],
+                      [0, 1, 1, 1, 1, 0],
+                      [1, 1, 1, 1, 1, 1],
+                      [1, 1, 1, 1, 1, 1],
+                      [1, 1, 1, 1, 1, 1],
+                      [1, 1, 1, 1, 1, 1],
+                      [0, 1, 1, 1, 1, 0],
+                      [0, 0, 1, 1, 0, 0]]
+define bomb_mask_3 = [[0, 0, 1, 1, 1, 1, 1, 0, 0],
+                      [0, 1, 1, 1, 1, 1, 1, 1, 0],
+                      [1, 1, 1, 1, 1, 1, 1, 1, 1],
+                      [1, 1, 1, 0, 0, 0, 1, 1, 1],
+                      [1, 1, 1, 0, 0, 0, 1, 1, 1],
+                      [1, 1, 1, 0, 0, 0, 1, 1, 1],
+                      [1, 1, 1, 0, 0, 0, 1, 1, 1],
+                      [1, 1, 1, 1, 1, 1, 1, 1, 1],
+                      [0, 1, 1, 1, 1, 1, 1, 1, 0],
+                      [0, 0, 1, 1, 1, 1, 1, 0, 0]]
+
+default bomb_mask = bomb_mask_3
+
+define difficulty_level = 2
 
 init python:
     class Bomb(object):
-        def __init__(self, x, y, parts, block_size=block_size, ox=offset_x, oy=offset_y):
+        def __init__(self, x, y, parts, block_size=block_size, ox=offset_x, oy=offset_y, level=3, mask=None):
             self.group = DragGroup()
             self.parts = parts
             for p in self.parts: p.set_group(self.group)
@@ -25,14 +41,16 @@ init python:
             self.ox = ox
             self.oy = oy
             self.block_size = block_size
+            self.level = level
             self.board = []
             self.data = []
+            self.mask = mask
             for y in range(self.y):
                 self.board.append([])
                 self.data.append([])
                 for x in range(self.x):
                     self.data[y].append(0)
-                    if bomb_mask[y][x]:
+                    if self.mask[y][x]:
                         self.board[y].append(Drag(Fixed("#fff",
                                                         Fixed("#000", xysize=(self.block_size-2, self.block_size-2), align=(0.5, 0.5)),
                                                         xysize=(self.block_size, self.block_size)),
@@ -46,7 +64,7 @@ init python:
             failed = False
             for y in range(len(self.data)):
                 for x in range(len(self.data[y])):
-                    if bomb_mask[y][x] and self.data[y][x] != 1:
+                    if self.mask[y][x] and self.data[y][x] != 1:
                         failed = True
                         break
                 if failed: break
@@ -89,7 +107,6 @@ init python:
                                                   drag_joined=self.joined,
                                                   dragged=renpy.curry(dragged)(self),
                                                   dragging=renpy.curry(dragging)(self),
-                                                  activated=activated,
                                                   clicked=self.rotate,
                                                   alternate=renpy.curry(self.rotate)(False),
                                                   mouse_drop=True,
@@ -101,7 +118,6 @@ init python:
                                 droppable=False,
                                 dragged=renpy.curry(dragged)(self),
                                 dragging=renpy.curry(dragging)(self),
-                                activated=activated,
                                 drag_joined=self.joined,
                                 drag_handle=(0,0,0,0),
                                 clicked=self.rotate,
@@ -155,9 +171,9 @@ init python:
             for y in range(len(self.shape)):
                 for x in range(len(self.shape[y])):
                     if self.shape[y][x]:
-                        if not 0 <= ox+x < len(bomb_mask[0]) or \
-                           not 0 <= oy+y < len(bomb_mask) or \
-                           not bomb_mask[oy+y][ox+x]:
+                        if not 0 <= ox+x < len(bomb.mask[0]) or \
+                           not 0 <= oy+y < len(bomb.mask) or \
+                           not bomb.mask[oy+y][ox+x]:
                                not_filled = True
                                break
                         self.last_filled.append((ox+x, oy+y))
@@ -221,9 +237,9 @@ init python:
                 for px in range(len(part.handles[py])):
                     if part.handles[py][px]:
                         pox, poy = (x+px-ox, y+py-oy)
-                        if not 0 <= pox < len(bomb_mask[0]) or \
-                           not 0 <= poy < len(bomb_mask) or \
-                           not bomb_mask[poy][pox]:
+                        if not 0 <= pox < len(bomb.mask[0]) or \
+                           not 0 <= poy < len(bomb.mask) or \
+                           not bomb.mask[poy][pox]:
                                return
                         filled.append((pox, poy))
             for (fx, fy) in filled:
@@ -240,7 +256,6 @@ init python:
         renpy.restart_interaction()
 
     def dragging(part, drags):
-        # TODO: Stretch goal to add snap on dragging.
         if part.last_filled:
             for (x, y) in part.last_filled:
                 bomb.data[y][x] -= 1
@@ -249,25 +264,49 @@ init python:
             renpy.restart_interaction()
 
     def activated(drags):
-        pass
+        return
 
-    def init_bomb_function(txt=_("Invalid. Restarting...")):
+    def init_bomb_function(txt=_("Invalid. Restarting..."), level=None):
+        if level is None:
+            level = difficulty_level
         store.parts = []
-        store.parts.append(Part("shape_1", pos=(240, 220), color="#E3615A"))
-        store.parts.append(Part("shape_2", pos=(260, 40), color="#00E6E3"))
-        store.parts.append(Part("shape_3", pos=(420, 300), color="#52CD6A"))
-        store.parts.append(Part("shape_4", pos=(80, 300), color="#E97B9A"))
-        store.parts.append(Part("shape_5", pos=(800, 480), color="#E88D26"))
-        store.parts.append(Part("shape_6", pos=(640, 220), color="#0087E8"))
-        store.parts.append(Part("shape_7", pos=(920, 220), color="#51A35B"))
-        store.parts.append(Part("shape_8", pos=(590, 380), color="#F8EF46"))
-        store.parts.append(Part("shape_9", pos=(880, 40), color="#E88D25"))
-        store.parts.append(Part("shape_10", pos=(160, 540), color="#E88D25"))
-        store.parts.append(Part("shape_11", pos=(160, 40), color="#1DBCDB"))
-        store.parts.append(Part("shape_12", pos=(80, 40), color="#60B125"))
-        store.parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
-        store.parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
-        store.bomb = Bomb(len(bomb_mask[0]), len(bomb_mask), parts)
+        if level == 1:
+            store.parts.append(Part("z_shape", pos=(240, 220), color="#E3615A"))
+            store.parts.append(Part("corner_shape", pos=(260, 40), color="#00E6E3"))
+            store.parts.append(Part("square_shape", pos=(420, 300), color="#52CD6A"))
+            store.parts.append(Part("long_shape", pos=(80, 300), color="#E97B9A"))
+            store.parts.append(Part("o_z_shape", pos=(800, 480), color="#E88D26"))
+            store.parts.append(Part("corner_shape", pos=(640, 220), color="#0087E8"))
+            store.parts.append(Part("z_shape", pos=(920, 220), color="#51A35B"))
+            bm = bomb_mask_1
+        elif level == 2:
+            store.parts.append(Part("shape_2_1", pos=(240, 220), color="#E3615A"))
+            store.parts.append(Part("t_shape", pos=(260, 40), color="#00E6E3"))
+            store.parts.append(Part("shape_2_3", pos=(420, 300), color="#52CD6A"))
+            store.parts.append(Part("long_shape", pos=(80, 300), color="#E97B9A"))
+            store.parts.append(Part("shape_2_2", pos=(800, 480), color="#E88D26"))
+            store.parts.append(Part("shape_2_2", pos=(640, 220), color="#0087E8"))
+            store.parts.append(Part("corner_shape", pos=(920, 220), color="#51A35B"))
+            store.parts.append(Part("square_shape", pos=(590, 380), color="#F8EF46"))
+            store.parts.append(Part("corner_shape", pos=(880, 40), color="#E88D25"))
+            bm = bomb_mask_2
+        elif level == 3:
+            store.parts.append(Part("shape_1", pos=(240, 220), color="#E3615A"))
+            store.parts.append(Part("shape_2", pos=(260, 40), color="#00E6E3"))
+            store.parts.append(Part("shape_3", pos=(420, 300), color="#52CD6A"))
+            store.parts.append(Part("shape_4", pos=(80, 300), color="#E97B9A"))
+            store.parts.append(Part("shape_5", pos=(800, 480), color="#E88D26"))
+            store.parts.append(Part("shape_6", pos=(640, 220), color="#0087E8"))
+            store.parts.append(Part("shape_7", pos=(920, 220), color="#51A35B"))
+            store.parts.append(Part("shape_8", pos=(590, 380), color="#F8EF46"))
+            store.parts.append(Part("shape_9", pos=(880, 40), color="#E88D25"))
+            store.parts.append(Part("shape_10", pos=(160, 540), color="#E88D25"))
+            store.parts.append(Part("shape_11", pos=(160, 40), color="#1DBCDB"))
+            store.parts.append(Part("shape_12", pos=(80, 40), color="#60B125"))
+            store.parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
+            store.parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
+            bm = bomb_mask_3
+        store.bomb = Bomb(len(bm[0]), len(bm), parts, level=level, mask=bm)
         renpy.notify(txt)
         renpy.hide_screen("room1_bomb")
         renpy.show_screen("room1_bomb",bomb)
@@ -278,22 +317,46 @@ default c2 = "#d62a2a"
 default c3 = "#454545"
 
 label init_bomb:
+    $ level = difficulty_level
     $ parts = []
-    $ parts.append(Part("shape_1", pos=(240, 220), color="#E3615A"))
-    $ parts.append(Part("shape_2", pos=(260, 40), color="#00E6E3"))
-    $ parts.append(Part("shape_3", pos=(420, 300), color="#52CD6A"))
-    $ parts.append(Part("shape_4", pos=(80, 300), color="#E97B9A"))
-    $ parts.append(Part("shape_5", pos=(800, 480), color="#E88D26"))
-    $ parts.append(Part("shape_6", pos=(640, 220), color="#0087E8"))
-    $ parts.append(Part("shape_7", pos=(920, 220), color="#51A35B"))
-    $ parts.append(Part("shape_8", pos=(590, 380), color="#F8EF46"))
-    $ parts.append(Part("shape_9", pos=(880, 40), color="#E88D25"))
-    $ parts.append(Part("shape_10", pos=(160, 540), color="#E88D25"))
-    $ parts.append(Part("shape_11", pos=(160, 40), color="#1DBCDB"))
-    $ parts.append(Part("shape_12", pos=(80, 40), color="#60B125"))
-    $ parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
-    $ parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
-    $ bomb = Bomb(len(bomb_mask[0]), len(bomb_mask), parts)
+    if level == 1:
+        $ parts.append(Part("z_shape", pos=(240, 220), color="#E3615A"))
+        $ parts.append(Part("corner_shape", pos=(260, 40), color="#00E6E3"))
+        $ parts.append(Part("square_shape", pos=(420, 300), color="#52CD6A"))
+        $ parts.append(Part("long_shape", pos=(80, 300), color="#E97B9A"))
+        $ parts.append(Part("o_z_shape", pos=(800, 480), color="#E88D26"))
+        $ parts.append(Part("corner_shape", pos=(640, 220), color="#0087E8"))
+        $ parts.append(Part("z_shape", pos=(920, 220), color="#51A35B"))
+        $ bm = bomb_mask_1
+    elif level == 2:
+        $ parts.append(Part("shape_2_1", pos=(240, 220), color="#E3615A"))
+        $ parts.append(Part("t_shape", pos=(260, 40), color="#00E6E3"))
+        $ parts.append(Part("shape_2_3", pos=(420, 300), color="#52CD6A"))
+        $ parts.append(Part("long_shape", pos=(80, 300), color="#E97B9A"))
+        $ parts.append(Part("shape_2_2", pos=(800, 480), color="#E88D26"))
+        $ parts.append(Part("shape_2_2", pos=(640, 220), color="#0087E8"))
+        $ parts.append(Part("corner_shape", pos=(920, 220), color="#51A35B"))
+        $ parts.append(Part("square_shape", pos=(590, 380), color="#F8EF46"))
+        $ parts.append(Part("corner_shape", pos=(880, 40), color="#E88D25"))
+        $ bm = bomb_mask_2
+    elif level == 3:
+        $ parts.append(Part("shape_1", pos=(240, 220), color="#E3615A"))
+        $ parts.append(Part("shape_2", pos=(260, 40), color="#00E6E3"))
+        $ parts.append(Part("shape_3", pos=(420, 300), color="#52CD6A"))
+        $ parts.append(Part("shape_4", pos=(80, 300), color="#E97B9A"))
+        $ parts.append(Part("shape_5", pos=(800, 480), color="#E88D26"))
+        $ parts.append(Part("shape_6", pos=(640, 220), color="#0087E8"))
+        $ parts.append(Part("shape_7", pos=(920, 220), color="#51A35B"))
+        $ parts.append(Part("shape_8", pos=(590, 380), color="#F8EF46"))
+        $ parts.append(Part("shape_9", pos=(880, 40), color="#E88D25"))
+        $ parts.append(Part("shape_10", pos=(160, 540), color="#E88D25"))
+        $ parts.append(Part("shape_11", pos=(160, 40), color="#1DBCDB"))
+        $ parts.append(Part("shape_12", pos=(80, 40), color="#60B125"))
+        $ parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
+        $ parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
+        $ bm = bomb_mask_3
+    $ bomb = Bomb(len(bm[0]), len(bm), parts, level=level, mask=bm)
+    return
 
 screen room1_bomb(b, interactable=True):
     sensitive (interactable and not _menu)
@@ -303,8 +366,8 @@ screen room1_bomb(b, interactable=True):
 
     frame style "puzzle_frame" padding 0,0,40,50:
         fixed:
+            add "bomb_borders_%s" % b.level pos (b.ox-5, b.oy-5)
             add b.group
-            add "bomb_borders" pos (b.ox-5, b.oy-5)
             fixed:
                 pos (b.ox, b.oy)
                 for y in range(len(b.data)):

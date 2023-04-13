@@ -13,7 +13,6 @@ init:
 init -1 python:
     import math
     import random
-    # TODO: track seeds
 
     class Enum(object):
         def __init__(self, *items):
@@ -32,7 +31,6 @@ init -1 python:
             return self.items[:]
 
         def random(self, num=4):
-            # TODO: Num is a bad parameter name.
             return random.choice(self.items[:num])
 
         def get(self, num=4):
@@ -80,7 +78,7 @@ init -1 python:
             self.move_count = 0
 
             # TODO: Move this to reticle once that is implemented.
-            self.player = (-1, -1)
+            # self.player = (-1, -1)
         @property
         def square_meter(self):
             return self._square_meter
@@ -238,7 +236,7 @@ init -1 python:
                     return False
                 else:
                     path.append((x, y))
-                    if len(path) >= 4:
+                    if len(path) >= self.match_length:
                         return True
             else:
                 path = []
@@ -420,6 +418,16 @@ transform player_chomp(path, dt, dist, pdt):
     linear dt/4 pos (path[4][1][0]*cw, path[4][1][1]*ch)
     linear pdt pos (path[4][1][0]*cw, path[4][1][1]*ch+dist*ch)
 
+transform player_chomp_5(path, dt, dist, pdt):
+    # Path is 6 long.
+    pos (path[0][1][0]*cw, path[0][1][1]*ch)
+    linear dt/5 pos (path[1][1][0]*cw, path[1][1][1]*ch)
+    linear dt/5 pos (path[2][1][0]*cw, path[2][1][1]*ch)
+    linear dt/5 pos (path[3][1][0]*cw, path[3][1][1]*ch)
+    linear dt/5 pos (path[4][1][0]*cw, path[4][1][1]*ch)
+    linear dt/5 pos (path[5][1][0]*cw, path[5][1][1]*ch)
+    linear pdt pos (path[5][1][0]*cw, path[5][1][1]*ch+dist*ch)
+
 transform just_pathed(dt, i):
     alpha 1.0
     pause (dt/4)*(i+1)
@@ -464,7 +472,10 @@ screen board_piece(b, x, y):
     elif isinstance(b, ToyBoard):
         if b.just_cleared:
             if (x, y) == b.player:
-                $ transforms.append(player_chomp([('toy_walk_fast', b.last_player)]+b.just_pathed, dt=adt*0.75, dist=b.pieces[y][x].dist, pdt=adt*0.25))
+                if b.match_length == 4:
+                    $ transforms.append(player_chomp([('toy_walk_fast', b.last_player)]+b.just_pathed, dt=adt*0.75, dist=b.pieces[y][x].dist, pdt=adt*0.25))
+                elif b.match_length == 5:
+                    $ transforms.append(player_chomp_5([('toy_walk_fast', b.last_player)]+b.just_pathed, dt=adt*0.75, dist=b.pieces[y][x].dist, pdt=adt*0.25))
             elif b.pieces[y][x].last:
                 $ transforms.append(slide_down(x, y, dist=b.pieces[y][x].dist, dt=adt*0.25, d=adt*0.75))
         elif (x, y) in b.match:
@@ -499,9 +510,11 @@ screen piece(p, transforms=None):
         align (0.5, 0.5)
         if isinstance(b, PuzzleBoard):
             xysize (65, 65)
+default ret_pos = (-5, -1)
 
 screen buttons(b, pos=(100, 100)):
     default h_buffer = b.h_buffer
+    text "[ret_pos[0]], [ret_pos[1]]" pos (100, 100)
     if isinstance(b, ToyBoard):
         $ h_buffer = 0
     fixed:
@@ -522,7 +535,7 @@ screen buttons(b, pos=(100, 100)):
                                 action [Function(b.trigger_reticle)]
                             else:
                                 action NullAction()
-                            hovered Function(b.set_reticle, h_buffer, y)
+                            hovered [Function(b.set_reticle, h_buffer, y), SetVariable("ret_pos", (h_buffer, y))]
         for y in range(b.height):
             for x in range(h_buffer+1, b.width-1-h_buffer):
                 if b.pieces[y][x]:
@@ -539,7 +552,7 @@ screen buttons(b, pos=(100, 100)):
                                 action [Function(b.trigger_reticle)]
                             else:
                                 action NullAction()
-                            hovered Function(b.set_reticle, x, y)
+                            hovered [Function(b.set_reticle, x, y), SetVariable("ret_pos", (x, y))]
         for y in range(b.height):
             for x in range(min(b.width-h_buffer, b.width-1), b.width):
                 if b.pieces[y][x]:
@@ -556,7 +569,7 @@ screen buttons(b, pos=(100, 100)):
                                 action [Function(b.trigger_reticle)]
                             else:
                                 action NullAction()
-                            hovered Function(b.set_reticle, b.width-1-h_buffer, y)
+                            hovered [Function(b.set_reticle, b.width-1-h_buffer, y), SetVariable("ret_pos", (b.width-1-h_buffer, y))]
 
 image tint:
     "#000"
@@ -673,13 +686,38 @@ default pb = None
 default tb = None
 
 label init_puzzle_board():
-    $ pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False)
+    if difficulty_level == 1:
+        $ pb = PuzzleBoard(width=4, height=9, move_cap=12, shuffle_matches=False, weights=[8, 8, 1, 1], seed=6030284)
+    elif difficulty_level == 2:
+        $ pb = PuzzleBoard(width=6, height=8, move_cap=10, shuffle_matches=False, weights=[5, 5, 1, 1], seed=1487961)
+    else:
+        $ pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False, weights=[3, 3, 1, 1])
     $ adt = 0.5
     return
 
 label init_toy_board():
-    $ tb = ToyBoard(width=5, height=5)
-    $ adt = 1.0
+    if difficulty_level == 1:
+        $ tb = ToyBoard(width=4, height=4, player=(1, 2),
+                        init=[[3, 2, 1, 4],
+                              [4, 1, 2, 5],
+                              [5, 0, 3, 1],
+                              [3, 5, 4, 2]])
+        $ adt = 1.0
+    elif difficulty_level == 2:
+        $ tb = ToyBoard(width=5, height=5)
+        $ adt = 1.0
+    elif difficulty_level == 3:
+        $ adt = 1.25
+        $ tb = ToyBoard(width=6, height=6,
+                        match_length=5,
+                        player=(3, 3),
+                        init=[[2, 3, 3, 1, 2, 1],
+                              [5, 4, 2, 5, 2, 5],
+                              [1, 1, 1, 5, 1, 3],
+                              [1, 5, 3, 0, 4, 4],
+                              [4, 4, 2, 5, 4, 3],
+                              [2, 5, 3, 2, 4, 3]])
+    $ adt = 1.25
     return
 
 label reset_puzzle_board:

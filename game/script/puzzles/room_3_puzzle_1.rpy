@@ -1,3 +1,11 @@
+default quilt_x = 6
+default quilt_y = 11
+default quilt_bg = "puzzles/room_3_puzzle_1/quilt.png"
+
+image quilt_idle_button:
+    Null(104,61)
+    # "puzzles/room_3_puzzle_1/tile.png"
+
 init python:
     def quilt_reset():
         store.quilt_input = {}
@@ -8,26 +16,37 @@ init python:
         store.quilt_eraser = False
         store.quilt_moves = 0
 
+        if difficulty_level == 1:
+            store.quilt_bg = "puzzles/room_3_puzzle_1/quilt_1.png"
+            store.quilt_y = 5
+        elif difficulty_level == 2:
+            store.quilt_bg = "puzzles/room_3_puzzle_1/quilt_2.png"
+            store.quilt_y = 7
+        elif difficulty_level == 2:
+            store.quilt_bg = "puzzles/room_3_puzzle_1/quilt.png"
+            store.quilt_y = 11
+
+
     def quilt_valid():
         quilts = quilt_presets.copy()
         quilts.update(quilt_input)
 
-        for i in range(6*11):
+        for i in range(quilt_x*quilt_y):
             if i not in quilts:
                 store.quilt_error = i
                 return False
-        
-        for row in range(11):
-            for col in range(6):
-                i = row*6 + col
+
+        for row in range(quilt_y):
+            for col in range(quilt_x):
+                i = row*quilt_x + col
                 if i in quilts:
-                    if row < 10 and ((row+1)*6 + col) in quilts and not quilt_shared(quilts[i], quilts[(row+1)*6 + col]):
+                    if row < quilt_y-1 and ((row+1)*quilt_x + col) in quilts and not quilt_shared(quilts[i], quilts[(row+1)*quilt_x + col]):
                         store.quilt_error = i
                         return False
-                    if col < 5 and row%2 == 0 and i%2 == 0 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
+                    if col < quilt_x-1 and row%2 == 0 and i%2 == 0 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
                         store.quilt_error = i
                         return False
-                    if col < 5 and row%2 == 1 and i%2 == 1 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
+                    if col < quilt_x-1 and row%2 == 1 and i%2 == 1 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
                         store.quilt_error = i
                         return False
         return True
@@ -45,7 +64,7 @@ init python:
         if idx not in quilt_presets:
             quilt_input[idx] = [quilt_color, quilt_shape, quilt_fill]
         renpy.retain_after_load()
-    
+
     def quilt_erase(idx):
         global quilt_input
         if idx not in quilt_presets:
@@ -63,7 +82,7 @@ init python:
             return True
 
 
-define quilt_presets = {0:[1,2,2], 2:[2,1,1], 4:[1,2,0], 7:[1,1,1], 11:[1,1,1], 12:[2,1,2], 15:[0,0,0], 16:[2,2,1], 20:[1,0,1], 23:[0,2,1], 24:[2,0,2], 34:[2,1,1], 
+define quilt_presets = {0:[1,2,2], 2:[2,1,1], 4:[1,2,0], 7:[1,1,1], 11:[1,1,1], 12:[2,1,2], 15:[0,0,0], 16:[2,2,1], 20:[1,0,1], 23:[0,2,1], 24:[2,0,2], 34:[2,1,1],
     35:[0,0,2], 36:[2,1,1], 41:[2,0,2], 42:[1,1,1], 44:[0,2,2], 45:[0,3,2], 54:[1,0,1], 57:[0,3,2], 59:[1,1,2], 61:[2,0,0], 62:[1,3,0], 64:[0,1,1]}
 default quilt_input = {}
 
@@ -119,7 +138,7 @@ screen room3_quilt():
                                     fixed ysize 50 xsize 95:
                                         text "fill" size 35 xalign 0.5
                                     textbutton ">" action If(quilt_fill==2, SetVariable("quilt_fill",0), SetVariable("quilt_fill", quilt_fill+1)) style "puzzle_nav_button"
-                
+
             hbox xfill True yalign 1.0 ysize 100:
                 vbox xalign 0. yalign 0.5 spacing 5:
                     textbutton "ERASER" style "confirm_button" action ToggleVariable("quilt_eraser") text_selected_idle_color gui.accent_color at zoomed(0.5)
@@ -129,27 +148,27 @@ screen room3_quilt():
 
         if "room3_1" in persistent.solved_puzzles or ("dead11" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
             textbutton "SKIP" style "confirm_button" action [SetDict(room3, "quilt", "solved"), Return()] xalign 1.0
-            
+
     fixed xoffset -400:
-        add "puzzles/room_3_puzzle_1/quilt.png" align (0.5, 0.51) at zoomed(1.35)
+        add quilt_bg align (0.5, 0.51) at zoomed(1.35)
         default testy = ""
-        
+
         if config.developer:
             vbox yalign 0.05 xalign 0.5:
                 text testy color "#000"
-        grid 6 11 align (0.5, 0.44) at zoomed(1.35):
-            for row in range(11):
-                for col in range(6):
-                    $ i = row*6 + col
+        grid quilt_x quilt_y xalign 0.5 ypos 75 at zoomed(1.35):
+            for row in range(quilt_y):
+                for col in range(quilt_x):
+                    $ i = row*quilt_x + col
                     fixed fit_first True:
                         if i in quilt_presets:
-                            add Null(104,61)
+                            add "quilt_idle_button"
                             if not row%2 and i%2 or row%2 and not i%2:
                                 add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.28,0.5) at zoomed(0.4)
                             else:
                                 add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_presets[i][0]]) + "/" + str(quilt_fills[quilt_presets[i][2]]) + "_" + str(quilt_shapes[quilt_presets[i][1]]) + ".png" align (0.75,0.5) at zoomed(0.4)
                         elif i in quilt_input:
-                            imagebutton idle Null(104,61) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
+                            imagebutton idle "quilt_idle_button" hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
                                 if quilt_eraser == True:
                                     action Function(quilt_erase, i) hover "puzzles/room_3_puzzle_1/error.png"
                             if not row%2 and i%2 or row%2 and not i%2:
@@ -157,7 +176,7 @@ screen room3_quilt():
                             else:
                                 add "puzzles/room_3_puzzle_1/" + str(quilt_colors[quilt_input[i][0]]) + "/" + str(quilt_fills[quilt_input[i][2]]) + "_" + str(quilt_shapes[quilt_input[i][1]]) + ".png" align (0.75,0.5) at zoomed(0.4)
                         else:
-                            imagebutton idle Null(104,61) hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
+                            imagebutton idle "quilt_idle_button" hover "puzzles/room_3_puzzle_1/tile.png" action Function(quilt_set, i):
                                 if quilt_eraser == True:
                                     action NullAction() hover "puzzles/room_3_puzzle_1/error.png"
                         showif quilt_error == i:
@@ -182,12 +201,12 @@ style puzzle_nav_button_text is main_menu_button_text
 
 transform alphashow(t=0.25, alph=1.0):
     on show:
-        alpha 0 
+        alpha 0
         linear t alpha alph
     on hide:
         linear t alpha 0.0
     on replace:
-        alpha 0 
+        alpha 0
         linear t alpha alph
     on replaced:
         linear t alpha 0.0

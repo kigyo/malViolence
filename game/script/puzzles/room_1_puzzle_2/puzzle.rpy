@@ -6,23 +6,24 @@ init python:
                      move_cap=12,
                      piece_limit=4,
                      shuffle_matches=True,
-                     show_next=False):
+                     show_next=False,
+                     level=3,
+                     seed=6107,
+                     weights=[3, 3, 1, 1]):
             self.move_cap = move_cap
             self.shuffle_matches = shuffle_matches
             self.show_next = show_next
             self.solution = []
+            self.seed = seed
+            self.weights = weights
             super(PuzzleBoard, self).__init__(width, height, piece_limit)
 
             self.show_solution = False
             self.player = (-1, -1)
+            self.level = level
 
         def populate_board(self):
-            seed = random.randint(0, 8000)
-            # seed = 7637
-            seed = 6107
-            # glog("Seed: %s" % seed)
-            random.seed(seed)
-            # NOTE: For normal reticle only.
+            random.seed(self.seed)
             moves = 0
             heights = []
             for x in range(self.width):
@@ -34,9 +35,7 @@ init python:
                 pos = random.choice(possible_positions)
                 local_heights = heights[pos-1:pos+2]
                 if max(local_heights) < self.height:
-                    # match = random_match(self.piece_limit, puzzle_pieces)
-                    # match = random.choices(["0, 1, carat, uwu"], cum_weights=[35, 35, 15, 15], k=3)
-                    match = random.choices(["0", "1", "carat", "uwu"], weights=[3, 3, 1, 1], k=3)
+                    match = random.choices(["0", "1", "carat", "uwu"], weights=self.weights, k=3)
                     pieces = [Piece(m) for m in match]
                     y = self.height-1-random.randint(0, min(local_heights))
                     for ny in range(0, y+1):
@@ -105,7 +104,14 @@ init python:
             renpy.retain_after_load()
 
     def puzzle_board_reset(txt=_("Invalid. Restarting...")):
-        store.pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False)
+        # seed = random.randint(0, 88888888)
+        # glog("Seed: %s" % seed)
+        if difficulty_level == 1:
+            store.pb = PuzzleBoard(width=4, height=9, move_cap=12, shuffle_matches=False, weights=[8, 8, 1, 1], seed=6030284)
+        elif difficulty_level == 2:
+            store.pb = PuzzleBoard(width=6, height=8, move_cap=10, shuffle_matches=False, weights=[5, 5, 1, 1], seed=1487961)
+        else:
+            store.pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False, weights=[3, 3, 1, 1])
         store.adt = 0.5
         renpy.notify(txt)
         renpy.hide_screen("puzzle_playspace")
