@@ -48,7 +48,7 @@ define word_description = _("""Cautionne's a big fan of word games, so he wants 
 
 {color=#fff}...You might have to find some letters first!{/color}""")
 
-define word_lenient_failure_message = _("(Nope,{w=0.1} not good enough.)")
+define word_lenient_failure_message = _("(Nope, not good enough.)")
 
 label room_2:
     if inspect not in room2_investigated and inspect in ["blueprints", "limbs", "clippings", "post-its", "corkboard"]:
