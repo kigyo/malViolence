@@ -3,8 +3,9 @@ default quilt_y = 11
 default quilt_bg = "puzzles/room_3_puzzle_1/quilt.png"
 
 image quilt_idle_button:
-    # Null(104,61)
-    "puzzles/room_3_puzzle_1/tile.png"
+    Null(104,61)
+    # "puzzles/room_3_puzzle_1/tile.png"
+
 init python:
     def quilt_reset():
         store.quilt_input = {}
@@ -39,13 +40,13 @@ init python:
             for col in range(quilt_x):
                 i = row*quilt_x + col
                 if i in quilts:
-                    if row < 10 and ((row+1)*quilt_x + col) in quilts and not quilt_shared(quilts[i], quilts[(row+1)*quilt_x + col]):
+                    if row < quilt_y-1 and ((row+1)*quilt_x + col) in quilts and not quilt_shared(quilts[i], quilts[(row+1)*quilt_x + col]):
                         store.quilt_error = i
                         return False
-                    if col < 5 and row%2 == 0 and i%2 == 0 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
+                    if col < quilt_x-1 and row%2 == 0 and i%2 == 0 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
                         store.quilt_error = i
                         return False
-                    if col < 5 and row%2 == 1 and i%2 == 1 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
+                    if col < quilt_x-1 and row%2 == 1 and i%2 == 1 and i+1 in quilts and not quilt_shared(quilts[i], quilts[i+1]):
                         store.quilt_error = i
                         return False
         return True
