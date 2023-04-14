@@ -1,4 +1,4 @@
-define toy_pieces = ["toy_1", "toy_2", "toy_3", "toy_4", "triangle"]
+define toy_pieces = ["toy_1", "toy_2", "toy_3", "toy_4", "toy_5"]
 
 define toys_description = _("""What a mess! You need to clean up all these toys by {color=#fff}sorting them into sets.{/color}
 

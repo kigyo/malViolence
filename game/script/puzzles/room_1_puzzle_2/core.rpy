@@ -463,7 +463,7 @@ screen board(b, pos=(100, 100)):
 
 
 screen board_piece(b, x, y):
-    $ transforms = [colorify(colors[b.pieces[y][x].type])]
+    $ transforms = [colorify(colors.get(b.pieces[y][x].type, "#fff"))]
     if isinstance(b, PuzzleBoard):
         if b.show_next and b.solution and (b.solution[0][0] == x and b.solution[0][1] == y):
             $ transforms.append(next)
@@ -514,7 +514,7 @@ default ret_pos = (-5, -1)
 
 screen buttons(b, pos=(100, 100)):
     default h_buffer = b.h_buffer
-    text "[ret_pos[0]], [ret_pos[1]]" pos (100, 100)
+    # text "[ret_pos[0]], [ret_pos[1]]" pos (100, 100)
     if isinstance(b, ToyBoard):
         $ h_buffer = 0
     fixed:
