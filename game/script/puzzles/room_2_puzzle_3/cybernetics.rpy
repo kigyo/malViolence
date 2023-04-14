@@ -286,7 +286,7 @@ init -1 python:
                         break
                 if invalid: break
             if invalid:
-                if "dead9" in persistent.dead_ends or not preferences.hard_mode:
+                if "dead9" in persistent.dead_ends and not preferences.hard_mode:
                     #cybernetics_reset()
                     renpy.notify(_("Not a valid solution."))
                     #TODO: some kind of error feedback
