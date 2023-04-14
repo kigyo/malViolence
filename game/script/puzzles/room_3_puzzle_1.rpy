@@ -22,7 +22,7 @@ init python:
         elif difficulty_level == 2:
             store.quilt_bg = "puzzles/room_3_puzzle_1/quilt_2.png"
             store.quilt_y = 7
-        elif difficulty_level == 2:
+        elif difficulty_level == 3:
             store.quilt_bg = "puzzles/room_3_puzzle_1/quilt.png"
             store.quilt_y = 11
 

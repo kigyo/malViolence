@@ -2,6 +2,7 @@ define block_size = 80
 default bomb = None
 define offset_x = 1100
 define offset_y = 100
+
 define bomb_mask_1 = [[0, 1, 1, 1, 1, 0],
                       [1, 1, 1, 1, 1, 1],
                       [1, 1, 1, 1, 1, 1],
@@ -28,7 +29,7 @@ define bomb_mask_3 = [[0, 0, 1, 1, 1, 1, 1, 0, 0],
 
 default bomb_mask = bomb_mask_3
 
-define difficulty_level = 2
+define difficulty_level = 3
 
 init python:
     class Bomb(object):

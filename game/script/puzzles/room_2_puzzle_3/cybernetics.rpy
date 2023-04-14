@@ -1,6 +1,6 @@
 default cyb = None
 
-define cybernetic_mask_1 = [
+define cybernetic_mask_3 = [
     [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
@@ -24,6 +24,15 @@ define cybernetic_mask_2 = [
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 
+define cybernetic_mask_1 = [
+    [0, 0, 1, 1, 1, 1, 0, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 0],
+]
+
 default loop_colors = ["#FFFFFF",
                        "#31AFFF",
                        "#FF2F53",
@@ -39,7 +48,7 @@ default loop_colors = ["#FFFFFF",
 default loop_data = None
 default loop_counter = 1
 
-define cybernetic_input_1 = [
+define cybernetic_input_3 = [
     [None, None, None, None, None, None, None, None, None, None, None, None],
     [None, None, None, None, None, None, None, None, None, None, None, None],
     [None, None, None,    4, None, None, None, None, None, None, None, None],
@@ -60,6 +69,14 @@ define cybernetic_input_2 = [
     [None, None, None,    5, None, None, None, None, None, None],
     [None, None, None, None, None, None,    3, None, None, None],
     [None, None, None, None, None, None, None, None, None, None]]
+
+define cybernetic_input_1 = [
+    [None, None, None, None, None, None, None, None],
+    [None, None, None, None, None, None, None, None],
+    [None,    0, None,    0, None, None, None, None],
+    [None, None, None, None, None, None, None, None],
+    [None, None, None, None, None, None,    0, None],
+    [None, None, None, None, None, None, None, None]]
 
 define Pipe = Enum("cross",
                    "vertical",
@@ -281,6 +298,8 @@ init -1 python:
             next = (0, 0)
             if self.w == 10:
                 next = (0, 1)
+            elif self.w == 8:
+                next = (1, 1)
             while next:
                 next, checked = self.check_trace(checked, next)
 
@@ -288,6 +307,9 @@ init -1 python:
                 thresh = 74
             elif self.w == 10:
                 thresh = 60
+            elif self.w == 8:
+                thresh = 35
+
             if len(set(checked)) == thresh:
                 store.room2["recalibration"] = "solved"
                 return True
@@ -412,11 +434,11 @@ init -1 python:
 
     def cybernetics_reset(txt=_("Invalid. Restarting...")):
         if difficulty_level == 1:
-            store.cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_1, mask=cybernetic_mask_1)
+            store.cyb = Cybernetic(x=170, y=150, w=8, h=6, input=cybernetic_input_1, mask=cybernetic_mask_1)
         elif difficulty_level == 2:
             store.cyb = Cybernetic(x=170, y=150, w=10, h=8, input=cybernetic_input_2, mask=cybernetic_mask_2)
         elif difficulty_level == 3:
-            store.cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_1, mask=cybernetic_mask_1)
+            store.cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_3, mask=cybernetic_mask_3)
         store.loop_data = [[[0,0,0,0] for x in range(cyb.w)] for y in range(cyb.h)]
         store.loop_counter = 1
 
@@ -426,11 +448,11 @@ init -1 python:
 
 label init_cybernetics:
     if difficulty_level == 1:
-        $ cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_1, mask=cybernetic_mask_1)
+        $ cyb = Cybernetic(x=170, y=150, w=8, h=6, input=cybernetic_input_1, mask=cybernetic_mask_1)
     elif difficulty_level == 2:
         $ cyb = Cybernetic(x=170, y=150, w=10, h=8, input=cybernetic_input_2, mask=cybernetic_mask_2)
     elif difficulty_level == 3:
-        $ cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_1, mask=cybernetic_mask_1)
+        $ cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_3, mask=cybernetic_mask_3)
     $ loop_data = [[[0,0,0,0] for x in range(cyb.w)] for y in range(cyb.h)]
     $ loop_counter = 1
     return
