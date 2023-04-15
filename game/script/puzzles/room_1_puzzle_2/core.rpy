@@ -172,6 +172,7 @@ init -1 python:
                             break
                 if win:
                     store.room1["hacking"] = "solved"
+                    clear_puzzle("room1_2")
                     return True
 
                 lose = True
@@ -693,6 +694,7 @@ label init_puzzle_board():
     else:
         $ pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False, weights=[3, 3, 1, 1])
     $ adt = 0.5
+    $ hacking_level = difficulty_level
     return
 
 label init_toy_board():
@@ -719,16 +721,3 @@ label init_toy_board():
                               [2, 5, 3, 2, 4, 3]])
     $ adt = 1.25
     return
-
-label reset_puzzle_board:
-    call init_puzzle_board from _call_init_puzzle_board_1
-    hide screen puzzle_playspace
-    call screen puzzle_playspace(pb)
-
-label auto_reset_puzzle_board:
-    show screen puzzle_playspace(pb, False)
-    "No valid moves left. Restarting..."
-    call init_puzzle_board from _call_init_puzzle_board_2
-    hide screen puzzle_playspace
-    call screen puzzle_playspace(pb)
-    call screen room1

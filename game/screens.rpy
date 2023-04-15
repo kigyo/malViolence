@@ -725,7 +725,10 @@ screen file_slots(title):
                         $ slot = i + 1
 
                         button:
-                            action FileAction(slot)
+                            if persistent.typeface == "Hyperlegible":
+                                action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 39), SetVariable("persistent.typeface", "TitilliumWeb"), FileAction(slot)]
+                            else:
+                                action FileAction(slot)
 
                             has vbox
 
@@ -794,14 +797,6 @@ screen preferences():
             hbox:
                 box_wrap True
 
-                if renpy.variant("pc") or renpy.variant("web"):
-
-                    vbox:
-                        style_prefix "radio"
-                        label _("Display")
-                        textbutton _("Window") action Preference("display", "window")
-                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
-
                 vbox:
                     style_prefix "check"
                     label _("Skip")
@@ -822,11 +817,30 @@ screen preferences():
                         textbutton _("Self-Voicing") action Preference("self voicing", "toggle") alt "Toggle Self-Voicing"
                     textbutton "Screenshake" action ToggleField(persistent,"screenshake",true_value=True,false_value=False) alt "Toggle Screen Shake"
 
-                vbox:
-                    style_prefix "radio"
-                    label _("Typeface")
-                    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 39), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
-                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 42), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
+                if not main_menu:
+                    vbox:
+                        style_prefix "radio"
+                        label _("Puzzle Difficulty")
+                        textbutton _("Easy") action Confirm(_("Are you sure you want to change the Difficulty? \nThis will {color=#00e7ff}reset your progress{/color} on started puzzles."), [SetVariable("difficulty_level", 1), Function(difficulty_change_reset)], NullAction())
+                        textbutton _("Medium") action Confirm(_("Are you sure you want to change the Difficulty? \nThis will {color=#00e7ff}reset your progress{/color} on started puzzles."), [SetVariable("difficulty_level", 2), Function(difficulty_change_reset)], NullAction())
+                        textbutton _("Hard") action Confirm(_("Are you sure you want to change the Difficulty? \nThis will {color=#00e7ff}reset your progress{/color} on started puzzles."), [SetVariable("difficulty_level", 3), Function(difficulty_change_reset)], NullAction())
+
+            hbox:
+                box_wrap True
+
+                if renpy.variant("pc") or renpy.variant("web"):
+
+                    vbox:
+                        style_prefix "radio"
+                        label _("Display")
+                        textbutton _("Window") action Preference("display", "window")
+                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
+
+                #vbox:
+                #    style_prefix "radio"
+                #    label _("Typeface")
+                #    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 39), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
+                #    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 42), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
 
                 vbox:
                     style_prefix "radio"
@@ -839,10 +853,10 @@ screen preferences():
                         textbutton _("Regular") action gui.SetPreference("size", 42) alt "Change to Regular Size Text"
 
                 vbox:
-                    style_prefix "radio"
-                    label _("Puzzles")
-                    textbutton _("Mandatory") action SetField(preferences, "hard_mode", True) alt "Hard mode: Puzzles must be solved once in order to be skipped" 
-                    textbutton _("Skippable") action SetField(preferences, "hard_mode", False) alt "Easy mode: Puzzles can be skipped after failing once"
+                    style_prefix "check"
+                    label _("Puzzle Skipper")
+                    textbutton _("Off") action SetField(preferences, "hard_mode", True) alt "Puzzle Skipper Off"
+                    textbutton _("On") action SetField(preferences, "hard_mode", False) alt "Puzzle Skipper On"
 
                 #vbox:
                 #    style_prefix "radio"
@@ -1347,7 +1361,7 @@ screen confirm(message, yes_action, no_action):
     frame:
         background Null()
 
-        vbox:
+        vbox xsize 530:
             xalign .5
             yalign .5
             spacing 45
@@ -1358,9 +1372,9 @@ screen confirm(message, yes_action, no_action):
                     style "confirm_prompt"
                     xalign 0.5 xsize 450 text_align 0.5
             else:
-                label _(message):
+                text _(message):
                     style "confirm_prompt"
-                    xalign 0.5
+                    xalign 0.5 text_align 0.5
 
             hbox:
                 xalign 0.5

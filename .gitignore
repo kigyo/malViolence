@@ -20,3 +20,4 @@ game/cache/shaders.txt
 project.json
 game/images/CG/.DS_Store
 game/script/puzzles/room_1_puzzle_2/core.rpy.bak
+*.bak

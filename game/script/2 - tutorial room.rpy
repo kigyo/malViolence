@@ -66,6 +66,7 @@ init python:
             store.tutorial["lock"][idx] = 0
         renpy.retain_after_load()
         if tutorial_valid_solution():
+            clear_puzzle("tutorial")
             renpy.jump("post_tutorial")
             
     def tutorial_valid_solution():
@@ -192,7 +193,6 @@ label tutorial_intro:
                             zoom 0.5 xalign 0.5 yalign 0.5
                             linear 0.1 yalign 1.0 xalign 0.5 zoom 0.75
 
-
                     scene bg tutorial2 at dizzy with dissolve:
                         parallel:
                             yalign 1.0 xalign 0.5 zoom 0.75
@@ -255,6 +255,7 @@ label tutorial_intro:
                 "(The wheel's just like the wheels on the vent cover!)"
                 "(With a little time and effort...{w} you think you can crack it.)"
                 $ inspect = None
+                $renpy.block_rollback()
                 call screen tutorial_lock
             elif tutorial["vent"] == 3:
                 $ inspect = None

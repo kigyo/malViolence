@@ -29,8 +29,6 @@ define bomb_mask_3 = [[0, 0, 1, 1, 1, 1, 1, 0, 0],
 
 default bomb_mask = bomb_mask_3
 
-define difficulty_level = 3
-
 init python:
     class Bomb(object):
         def __init__(self, x, y, parts, block_size=block_size, ox=offset_x, oy=offset_y, level=3, mask=None):
@@ -73,6 +71,7 @@ init python:
                 renpy.jump("bomb_game_over")
             else:
                 store.room1["bomb"] = "solved"
+                clear_puzzle("room1_1")
                 return True
 
     default_shape = [[1, 1],
@@ -267,11 +266,9 @@ init python:
     def activated(drags):
         return
 
-    def init_bomb_function(txt=_("Invalid. Restarting..."), level=None):
-        if level is None:
-            level = difficulty_level
+    def init_bomb_function(txt=_("Invalid. Restarting...")):
         store.parts = []
-        if level == 1:
+        if difficulty_level == 1:
             store.parts.append(Part("z_shape", pos=(240, 220), color="#E3615A"))
             store.parts.append(Part("corner_shape", pos=(260, 40), color="#00E6E3"))
             store.parts.append(Part("square_shape", pos=(420, 300), color="#52CD6A"))
@@ -280,7 +277,7 @@ init python:
             store.parts.append(Part("corner_shape", pos=(640, 220), color="#0087E8"))
             store.parts.append(Part("z_shape", pos=(920, 220), color="#51A35B"))
             bm = bomb_mask_1
-        elif level == 2:
+        elif difficulty_level == 2:
             store.parts.append(Part("shape_2_1", pos=(240, 220), color="#E3615A"))
             store.parts.append(Part("t_shape", pos=(260, 40), color="#00E6E3"))
             store.parts.append(Part("shape_2_3", pos=(420, 300), color="#52CD6A"))
@@ -291,7 +288,7 @@ init python:
             store.parts.append(Part("square_shape", pos=(590, 380), color="#F8EF46"))
             store.parts.append(Part("corner_shape", pos=(880, 40), color="#E88D25"))
             bm = bomb_mask_2
-        elif level == 3:
+        elif difficulty_level == 3:
             store.parts.append(Part("shape_1", pos=(240, 220), color="#E3615A"))
             store.parts.append(Part("shape_2", pos=(260, 40), color="#00E6E3"))
             store.parts.append(Part("shape_3", pos=(420, 300), color="#52CD6A"))
@@ -308,7 +305,10 @@ init python:
             store.parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
             bm = bomb_mask_3
         store.bomb = Bomb(len(bm[0]), len(bm), parts, level=level, mask=bm)
-        renpy.notify(txt)
+        #for whatever ungodly reason, this sets difficulty_level to bomb_level instead of the other way around
+        store.bomb_level = difficulty_level
+        if txt:
+            renpy.notify(txt)
         renpy.hide_screen("room1_bomb")
         renpy.show_screen("room1_bomb",bomb)
 
@@ -316,6 +316,8 @@ default parts = []
 default c1 = "#1d96db"
 default c2 = "#d62a2a"
 default c3 = "#454545"
+
+default bomb_level = 2
 
 label init_bomb:
     $ level = difficulty_level
@@ -357,6 +359,7 @@ label init_bomb:
         $ parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
         $ bm = bomb_mask_3
     $ bomb = Bomb(len(bm[0]), len(bm), parts, level=level, mask=bm)
+    $ bomb_level = difficulty_level
     return
 
 screen room1_bomb(b, interactable=True):
@@ -364,6 +367,9 @@ screen room1_bomb(b, interactable=True):
     modal True
     tag puzzle
     layer "puzzles"
+    
+    if difficulty_level != bomb_level:
+        timer 0.1 action Function(init_bomb_function, None)
 
     frame style "puzzle_frame" padding 0,0,40,50:
         fixed:

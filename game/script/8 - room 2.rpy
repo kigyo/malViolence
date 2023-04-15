@@ -190,7 +190,7 @@ label room_2:
             else:
                 show screen room2_panopticon(interactable=False, _layer="master") with easeintop
                 "(Riiiiiight.{w} That colosseum-thing is a {i}panopticon.{/i}{w} Off to puzzle-solving you go!)"
-
+            $renpy.block_rollback()
             $ room2["panopticon"] += 1
             $ inspect = None
             $renpy.hide_screen("room2_panopticon", "master")
@@ -210,6 +210,7 @@ label room_2:
             else:
                 "(Let's string up some evidence!)"
                 show screen room2_evidence(_layer="master") with easeintop
+            $renpy.block_rollback()
             $ room2["evidence"] += 1
             $ inspect = None
             $renpy.hide_screen("room2_evidence", "master")
@@ -226,7 +227,7 @@ label room_2:
                 "(The monitor is displaying some kind of simulation.{w} Better take a closer look...)"
             else:
                 "(Time to re-enroll in that cybernetics crash-course.{w} Maybe it'll be less intimidating?)"
-                pass
+            $renpy.block_rollback()
             show screen cybernetics(cyb, _layer="master") with easeintop
             $ room2["recalibration"] += 1
             $ inspect = None
@@ -241,7 +242,7 @@ label room_2:
             "(There are five empty slots on the door's lock.{w} Your best guess is that you need to fill them up,{w=0.1} somehow.)"
         else:
             "(You're no {i}Scraddle{/i} expert,{w=0.1} but you've got this puzzle all under control.{w} Probably.)"
-            pass
+        $renpy.block_rollback()
         show screen room2_word(_layer="master") with easeintop
         $ room2["word"] += 1
         $ inspect = None

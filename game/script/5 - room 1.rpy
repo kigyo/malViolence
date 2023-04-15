@@ -14,7 +14,7 @@ But be careful! If you don't use these codes at the right time, you might lock y
 
 define decanting_description = _("""Cautionne needs your help poisoning a top STOP official, {color=#fff}but his toxin of choice is pretty particular!{/color}
 
-Using three vials of {color=#fff}18cc, 10cc,{/color}  and {color=#fff}7cc{/color}  — {color=#fff}measure the poison into two equal doses of 9cc.{/color} Note that {color=#fff}the 18cc vial{/color} contains the poison itself.
+Using three vials of {color=#fff}[decanting_size_vial1]cc, [decanting_size_vial2]cc,{/color}  and {color=#fff}[decanting_size_vial3]cc{/color}  — {color=#fff}measure the poison into two equal doses of [decanting_solution]cc.{/color} Note that {color=#fff}the [decanting_size_vial1]cc vial{/color} contains the poison itself.
 
 Be quick, though. {color=#fff}If the poison's disturbed too much, it'll give off nasty vapors...{/color}
 
@@ -129,8 +129,9 @@ label room_1:
                 "(...Ah well. {w}Time for some good ol' computer wrangling.)"
             else:
                 "(You {i}really{/i} wish you brought your rubber duck right now.)"
-                pass
+            $renpy.block_rollback()
             show screen puzzle_playspace(pb, False, _layer="master") with easeintop
+            $ inspect = None
             $ room1["hacking"] += 1
             $renpy.hide_screen("puzzle_playspace", "master")
             call screen puzzle_playspace(pb)
@@ -146,7 +147,7 @@ label room_1:
                 "(Three differently-sized vials are placed on the table.{w} There are instructions written next to them.)"
             else:
                 "(Dare you decant differently?{w} You dare.)"
-                pass
+            $renpy.block_rollback()
             show screen room1_decanting(_layer="master", **decant_kwargs) with easeintop
             $ room1["decanting"] += 1
             $ inspect = None
@@ -166,7 +167,10 @@ label room_1:
                 "(Nope!{w} It's a bomb.{w} No big deal.{w} What could {i}possibly{/i} go wrong?)"
             else:
                 "(It's a bomb!{w} Again,{w=0.1} what could {i}possibly{/i} go wrong?)"
+                if bomb_level != difficulty_level:
+                    $init_bomb_function(None)
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
+            $renpy.block_rollback()
             $ room1["bomb"] += 1
             $ inspect = None
             $renpy.hide_screen("room1_bomb", "master")
@@ -185,6 +189,7 @@ label room_1:
             "(You decide to look at this marble-ous contraption once more...)"
             show screen room1_marble(_layer="master") with easeintop
             "(Sorry.{w} You couldn't help yourself.)"
+        $renpy.block_rollback()
         $ inspect = None
         $renpy.hide_screen("room1_marble", "master")
         call screen room1_marble
@@ -197,7 +202,6 @@ label room_1:
 
 label bomb_solved:
     $renpy.block_rollback()
-    $clear_puzzle("room1_1")
     $ inspect = "bomb"
     show screen room1_bomb(bomb, False)
     show black onlayer screens with dissolve:
@@ -257,7 +261,6 @@ label bomb_game_over:
 
 label hacking_solved:
     $renpy.block_rollback()
-    $clear_puzzle("room1_2")
     $ inspect = "hacking"
     show screen puzzle_playspace(pb, False)
     show black onlayer screens with dissolve:

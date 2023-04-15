@@ -113,9 +113,13 @@ init python:
         else:
             store.pb = PuzzleBoard(width=8, height=9, move_cap=17, shuffle_matches=False, weights=[3, 3, 1, 1])
         store.adt = 0.5
-        renpy.notify(txt)
+        if txt:
+            renpy.notify(txt)
+        store.hacking_level = difficulty_level
         renpy.hide_screen("puzzle_playspace")
         renpy.show_screen("puzzle_playspace",pb)
+
+default hacking_level = 2
 
 screen puzzle_playspace(b, interactable=True):
     sensitive (not inspect and not _menu)
@@ -123,6 +127,10 @@ screen puzzle_playspace(b, interactable=True):
     layer "puzzles"
     modal True
     add "#000"
+
+    if difficulty_level != hacking_level:
+        timer 0.1 action Function(puzzle_board_reset, None)
+
     frame style "puzzle_frame" padding 0,0,50,40:
         if b.just_cleared:
             use animated_board(b, (665, 150))
