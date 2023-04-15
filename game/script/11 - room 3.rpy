@@ -405,6 +405,7 @@ label room_3:
             else:
                 show screen room3_quilt(_layer="master") with easeintop
                 "(Before you sit down with the quilt,{w=0.1} you carefully inch your way around the stray pins on the floor.)"
+            $renpy.block_rollback()
             $ room3["quilt"] += 1
             $ inspect = None
             $renpy.hide_screen("room3_quilt", "master")
@@ -427,6 +428,7 @@ label room_3:
                 "(A pile of plushies sprawl out on the bed, right where you left them.)"
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
                 "(Okay,{w=0.1} one more time.{w} Just gotta neatly sort the toys neatly into sets...)"
+            $renpy.block_rollback()
             $ room3["toys"] += 1
             $ inspect = None
             $renpy.hide_screen("toy_playspace", "master")
@@ -447,6 +449,7 @@ label room_3:
             else:
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "This recipe seems simple enough.{w} One more time..."
+            $renpy.block_rollback()
             $ room3["cooking"] += 1
             $ inspect = None
             $renpy.hide_screen("mise_en_place", "master")
@@ -461,9 +464,9 @@ label room_3:
             $ room3["scrapbook_new"] = 1
             show screen room3_meta(_layer="master") with easeintop
             "(The \"lock\" for the door is a...{w=0.5} scrapbook?{w} Its pages are empty,{w=0.1} though...)"
-            pass
         else:
             show screen room3_meta(_layer="master") with easeintop
+        $renpy.block_rollback()
         $ inspect = None
         $renpy.hide_screen("room3_meta", "master")
         call screen room3_meta
@@ -522,7 +525,6 @@ label scrapbook_game_over:
 
 label quilt_solved:
     $renpy.block_rollback()
-    $clear_puzzle("room3_1")
     $ inspect = "quilt"
     show screen room3_quilt
     show black onlayer screens with dissolve:
@@ -592,7 +594,6 @@ label quilt_game_over:
 
 label toys_solved:
     $renpy.block_rollback()
-    $clear_puzzle("room3_2")
     $ inspect = "toys"
     show screen toy_playspace(tb, False)
     show black onlayer screens with dissolve:
@@ -668,7 +669,6 @@ label toys_game_over:
 
 label cooking_solved:
     $renpy.block_rollback()
-    $clear_puzzle("room3_3")
     $ inspect = "cooking"
     show screen mise_en_place(False)
     show black onlayer screens with dissolve:

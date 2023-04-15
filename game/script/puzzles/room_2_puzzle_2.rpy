@@ -319,6 +319,7 @@ init python:
 
         if room2_panopticon_valid_solution():
             store.room2["panopticon"] = "solved"
+            clear_puzzle("room2_2")
             return True
 
         if panopticon_moves >= panopticon_move_limit and not ("dead8" in persistent.dead_ends and not preferences.hard_mode):

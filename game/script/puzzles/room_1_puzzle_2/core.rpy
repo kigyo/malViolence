@@ -213,6 +213,7 @@ init -1 python:
                             break
                 if win:
                     store.room3["toys"] = "solved"
+                    clear_puzzle("room3_2")
                     return True
                 if not self.check_toy_path(self.player):
                     if not ("dead12" in persistent.dead_ends and not preferences.hard_mode):

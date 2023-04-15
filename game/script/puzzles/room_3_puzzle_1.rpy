@@ -2,6 +2,8 @@ default quilt_x = 6
 default quilt_y = 11
 default quilt_bg = "puzzles/room_3_puzzle_1/quilt.png"
 
+default quilt_level = 2
+
 image quilt_idle_button:
     Null(104,61)
     # "puzzles/room_3_puzzle_1/tile.png"
@@ -25,7 +27,8 @@ init python:
         elif difficulty_level == 3:
             store.quilt_bg = "puzzles/room_3_puzzle_1/quilt.png"
             store.quilt_y = 11
-
+        
+        store.quilt_level = difficulty_level
 
     def quilt_valid():
         quilts = quilt_presets.copy()
@@ -79,6 +82,7 @@ init python:
             pass
         else:
             store.room3["quilt"] = "solved"
+            clear_puzzle("room3_1")
             return True
 
 
@@ -109,6 +113,9 @@ screen room3_quilt():
     modal True
     tag puzzle
     layer "puzzles"
+
+    if difficulty_level != quilt_level:
+        timer 0.1 action Function(quilt_reset)
 
     frame style "puzzle_frame":
         fixed xsize 775 xalign 1.0:
@@ -150,6 +157,10 @@ screen room3_quilt():
             textbutton "SKIP" style "confirm_button" action [SetDict(room3, "quilt", "solved"), Return()] xalign 1.0
 
     fixed xoffset -400:
+        if difficulty_level == 1:
+            ypos 250
+        elif difficulty_level == 2:
+            ypos 170
         add quilt_bg align (0.5, 0.51) at zoomed(1.35)
         default testy = ""
 

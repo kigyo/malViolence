@@ -312,6 +312,7 @@ init -1 python:
 
             if len(set(checked)) == thresh:
                 store.room2["recalibration"] = "solved"
+                clear_puzzle("room2_3")
                 return True
 
             else:

@@ -107,6 +107,7 @@ init python:
 
         if win:
             store.room3["cooking"] = "solved"
+            clear_puzzle("room3_3")
             return True
         elif ("dead13" in persistent.dead_ends and not preferences.hard_mode):
             renpy.restart_interaction()

@@ -35,6 +35,7 @@ init python:
                 renpy.notify(word_lenient_failure_message)
                 return
         store.room2["word"] = "solved"
+        clear_puzzle("room2_meta")
         return True
 
 

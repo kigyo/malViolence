@@ -173,6 +173,7 @@ init python:
     def scrapbook_submit():
         if scrapbook_input == scrapbook_correct_order:
             store.room3["scrapbook_new"] = "solved"
+            clear_puzzle("room3_meta")
             return True
         elif ("dead10" in persistent.dead_ends and not preferences.hard_mode):
             renpy.notify(_("Invalid solution."))

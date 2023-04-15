@@ -45,6 +45,7 @@ init python:
     def evidence_submit():
         if evidence_valid():
             store.room2["evidence"] = "solved"
+            clear_puzzle("room2_1")
             return True
         elif ("dead7" in persistent.dead_ends and not preferences.hard_mode):
             evidence_init()

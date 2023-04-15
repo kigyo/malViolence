@@ -4,8 +4,6 @@ screen nodismiss(): #Our screen, while it is visible, no one can dismiss anythin
 label post_room_2:
   $renpy.block_rollback()
   $ inspect = "post room"
-  $clear_puzzle("room2_meta")
-
 
   stop music fadeout 1.0
 
