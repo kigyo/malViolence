@@ -44,6 +44,7 @@ init python:
             self.board = []
             self.data = []
             self.mask = mask
+            self.borders = "bomb_borders_%s" % self.level
             for y in range(self.y):
                 self.board.append([])
                 self.data.append([])
@@ -304,7 +305,7 @@ init python:
             store.parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
             store.parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
             bm = bomb_mask_3
-        store.bomb = Bomb(len(bm[0]), len(bm), parts, level=level, mask=bm)
+        store.bomb = Bomb(len(bm[0]), len(bm), parts, level=difficulty_level, mask=bm)
         #for whatever ungodly reason, this sets difficulty_level to bomb_level instead of the other way around
         store.bomb_level = difficulty_level
         if txt:
@@ -356,30 +357,30 @@ label init_bomb:
         $ parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
         $ parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
         $ bm = bomb_mask_3
-    $ bomb = Bomb(len(bm[0]), len(bm), parts, level=level, mask=bm)
+    $ bomb = Bomb(len(bm[0]), len(bm), parts, level=difficulty_level, mask=bm)
     $ bomb_level = difficulty_level
     return
 
-screen room1_bomb(b, interactable=True):
+screen room1_bomb(b=None, interactable=True):
     sensitive (interactable and not _menu)
     modal True
     tag puzzle
     layer "puzzles"
-    
+
     if difficulty_level != bomb_level:
         timer 0.1 action Function(init_bomb_function, None)
 
     frame style "puzzle_frame" padding 0,0,40,50:
         fixed:
-            add "bomb_borders_%s" % b.level pos (b.ox-5, b.oy-5)
-            add b.group
+            add bomb.borders pos (bomb.ox-5, bomb.oy-5)
+            add bomb.group
             fixed:
-                pos (b.ox, b.oy)
-                for y in range(len(b.data)):
-                    for x in range(len(b.data[0])):
-                        if b.data[y][x] == 1:
+                pos (bomb.ox, bomb.oy)
+                for y in range(len(bomb.data)):
+                    for x in range(len(bomb.data[0])):
+                        if bomb.data[y][x] == 1:
                             add "#ffffff55" xysize (block_size, block_size) pos (x*block_size, y*block_size)
-                        elif b.data[y][x] > 1:
+                        elif bomb.data[y][x] > 1:
                             add "#ff000088" xysize (block_size, block_size) pos (x*block_size, y*block_size)
         frame:
             align (0.0, 1.0) padding 30,30 offset (0, 30)
@@ -393,7 +394,7 @@ screen room1_bomb(b, interactable=True):
 
         hbox xalign 1.0 yalign 1.0 spacing 30:
             textbutton "RESET" style "confirm_button" action Function(init_bomb_function, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable at zoomed(0.75)
-            textbutton "SUBMIT" style "confirm_button" action Function(b.verify)
+            textbutton "SUBMIT" style "confirm_button" action Function(bomb.verify)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
 
     if "room1_1" in persistent.solved_puzzles or not preferences.hard_mode:

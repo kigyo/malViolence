@@ -63,7 +63,7 @@ init python:
                     temp_dict[k] = True
 
             persistent.solved_puzzles = temp_dict
-            
+
         if float(_version) < 1.2:
             #fix set difficulties of active puzzles
             store.bomb_level = old_puzzle_difficulty_mapper["room1_1"]
@@ -86,7 +86,7 @@ init python:
             renpy.scene("puzzles")
 
         store._version = config.version
-    
+
     config.after_load_callbacks.append(solved_puzzles_convert)
 
     def clear_puzzle(name):
@@ -98,7 +98,7 @@ init python:
                 persistent.solved_puzzles[difficulty_level].append(name)
 
             store.difficulties_cleared[name] = difficulty_level
-    
+
     def lowest_cleared_difficulty():
         lowest = 3
         for k,v in difficulties_cleared:
@@ -112,6 +112,8 @@ init python:
     #some drag puzzles reset their positions after load
     def reset_puzzles_after_load():
         #room1
+        init_bomb_function(None)
+        renpy.hide('room1_bomb')
 
         #room2
         word_init()
