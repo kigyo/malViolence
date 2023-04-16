@@ -76,8 +76,12 @@ init python:
             store.toy_level = old_puzzle_difficulty_mapper["room3_2"]
             store.cooking_level = old_puzzle_difficulty_mapper["room3_3"]
 
+            init_bomb_function(None)
+            puzzle_board_reset(None)
             panopticon_init(True)
             cybernetics_reset(None)
+            toy_board_reset(None)
+            reset_cutting_board()
 
             renpy.scene("puzzles")
 
