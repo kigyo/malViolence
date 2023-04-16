@@ -44,6 +44,7 @@ init python:
             self.board = []
             self.data = []
             self.mask = mask
+            self.borders = "bomb_borders_%s" % self.level
             for y in range(self.y):
                 self.board.append([])
                 self.data.append([])
@@ -157,7 +158,8 @@ init python:
             for y in range(len(self.handles)):
                 for x in range(len(self.handles[y])):
                     if self.handles[y][x]:
-                        self.handles[y][x].snap(int(self.display.x+x*block_size), int(self.display.y+y*block_size), 0.0)
+                        pass
+                        # self.handles[y][x].snap(int(self.display.x+x*block_size), int(self.display.y+y*block_size))
             self.display.child.rotate = self.rotation*90
             self.display.child.update()
             ox, oy = (math.floor((self.display.x-bomb.ox)/block_size),
@@ -165,7 +167,7 @@ init python:
             if self.last_filled:
                 for (x, y) in self.last_filled:
                     bomb.data[y][x] -= 1
-                    self.display.snap(int(offset_x+ox*block_size), int(offset_y+oy*block_size), 0.0)
+                    # self.display.snap(int(offset_x+ox*block_size), int(offset_y+oy*block_size))
             self.last_filled = []
             not_filled = False
             for y in range(len(self.shape)):
@@ -181,26 +183,18 @@ init python:
             if not not_filled:
                 for (x, y) in self.last_filled:
                     bomb.data[y][x] += 1
-                self.display.snap(int(offset_x+ox*block_size), int(offset_y+oy*block_size), 0.0)
+                # self.display.snap(int(offset_x+ox*block_size), int(offset_y+oy*block_size))
                 for y in range(len(self.handles)):
                     for x in range(len(self.handles[y])):
                         if self.handles[y][x]:
-                            self.handles[y][x].snap(int(offset_x+ox*block_size+x*block_size),
-                                                    int(offset_y+oy*block_size+y*block_size), 0.0)
+                            pass
+                            # self.handles[y][x].snap(int(offset_x+ox*block_size+x*block_size),
+                            # int(offset_y+oy*block_size+y*block_size))
             else:
                 self.last_filled = []
-                self.display.snap(self.display.x, self.display.y, 0.0)
+                #self.display.snap(self.display.x, self.display.y)
             renpy.retain_after_load()
             renpy.restart_interaction()
-
-        def tidy(self, drags, drops):
-            drag = drags[0]
-            self.snap(drag, drag.x, drag.y)
-
-        def snap(self, arg=None, x=None, y=None):
-            x = x or self.bench_x
-            y = y or self.bench_y
-            arg.snap(x, y, 0.25)
 
         def __eq__(self, other):
             return False
@@ -248,10 +242,11 @@ init python:
             for py in range(len(part.handles)):
                 for px in range(len(part.handles[py])):
                     if part.handles[py][px]:
-                        part.handles[py][px].snap(bomb.ox+x*block_size+px*block_size-ox*block_size,
-                                                  bomb.oy+y*block_size+py*block_size-oy*block_size, 0.0)
-            part.display.snap(bomb.ox+x*block_size-ox*block_size,
-                              bomb.oy+y*block_size-oy*block_size, 0.0)
+                        pass
+            #             part.handles[py][px].snap(bomb.ox+x*block_size+px*block_size-ox*block_size,
+            #                                       bomb.oy+y*block_size+py*block_size-oy*block_size)
+            # part.display.snap(bomb.ox+x*block_size-ox*block_size,
+            #                   bomb.oy+y*block_size-oy*block_size)
         renpy.retain_after_load()
         renpy.restart_interaction()
 
@@ -304,13 +299,13 @@ init python:
             store.parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
             store.parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
             bm = bomb_mask_3
-        store.bomb = Bomb(len(bm[0]), len(bm), parts, level=level, mask=bm)
+        store.bomb = Bomb(len(bm[0]), len(bm), parts, level=difficulty_level, mask=bm)
         #for whatever ungodly reason, this sets difficulty_level to bomb_level instead of the other way around
         store.bomb_level = difficulty_level
         if txt:
             renpy.notify(txt)
-        renpy.hide_screen("room1_bomb")
-        renpy.show_screen("room1_bomb",bomb)
+            renpy.hide_screen("room1_bomb")
+            renpy.show_screen("room1_bomb",bomb)
 
 default parts = []
 default c1 = "#1d96db"
@@ -356,30 +351,30 @@ label init_bomb:
         $ parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
         $ parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
         $ bm = bomb_mask_3
-    $ bomb = Bomb(len(bm[0]), len(bm), parts, level=level, mask=bm)
+    $ bomb = Bomb(len(bm[0]), len(bm), parts, level=difficulty_level, mask=bm)
     $ bomb_level = difficulty_level
     return
 
-screen room1_bomb(b, interactable=True):
+screen room1_bomb(b=None, interactable=True):
     sensitive (interactable and not _menu)
     modal True
     tag puzzle
     layer "puzzles"
-    
+
     if difficulty_level != bomb_level:
         timer 0.1 action Function(init_bomb_function, None)
 
     frame style "puzzle_frame" padding 0,0,40,50:
         fixed:
-            add "bomb_borders_%s" % b.level pos (b.ox-5, b.oy-5)
-            add b.group
+            add bomb.borders pos (bomb.ox-5, bomb.oy-5)
+            add bomb.group
             fixed:
-                pos (b.ox, b.oy)
-                for y in range(len(b.data)):
-                    for x in range(len(b.data[0])):
-                        if b.data[y][x] == 1:
+                pos (bomb.ox, bomb.oy)
+                for y in range(len(bomb.data)):
+                    for x in range(len(bomb.data[0])):
+                        if bomb.data[y][x] == 1:
                             add "#ffffff55" xysize (block_size, block_size) pos (x*block_size, y*block_size)
-                        elif b.data[y][x] > 1:
+                        elif bomb.data[y][x] > 1:
                             add "#ff000088" xysize (block_size, block_size) pos (x*block_size, y*block_size)
         frame:
             align (0.0, 1.0) padding 30,30 offset (0, 30)
@@ -393,7 +388,7 @@ screen room1_bomb(b, interactable=True):
 
         hbox xalign 1.0 yalign 1.0 spacing 30:
             textbutton "RESET" style "confirm_button" action Function(init_bomb_function, _("Restarting...")) xalign 0.0 yalign 0.5 sensitive interactable at zoomed(0.75)
-            textbutton "SUBMIT" style "confirm_button" action Function(b.verify)
+            textbutton "SUBMIT" style "confirm_button" action Function(bomb.verify)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
 
     if "room1_1" in persistent.solved_puzzles or not preferences.hard_mode:
