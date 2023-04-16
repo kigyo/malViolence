@@ -2,8 +2,6 @@ default quilt_x = 6
 default quilt_y = 11
 default quilt_bg = "puzzles/room_3_puzzle_1/quilt.png"
 
-default quilt_level = 2
-
 image quilt_idle_button:
     Null(104,61)
     # "puzzles/room_3_puzzle_1/tile.png"

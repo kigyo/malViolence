@@ -721,4 +721,5 @@ label init_toy_board():
                               [4, 4, 2, 5, 4, 3],
                               [2, 5, 3, 2, 4, 3]])
     $ adt = 1.25
+    $ toy_level = difficulty_level
     return

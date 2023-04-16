@@ -10,7 +10,7 @@ default ingredients = ["bacon",
                        "nut",
                        "milk"]
 
-define ingredient_counts = {"bacon": 5,
+default ingredient_counts = {"bacon": 5,
                             "strawberry": 7,
                             "flour": 5,
                             "snapper": 6,
@@ -152,118 +152,119 @@ init python:
                         store.cooking_error = [x,y]
                     return False
 
-label init_mise_en_place:
-    $ bacon_count = 1
-    $ strawberry_count = 1
-    $ flour_count = 1
-    $ snapper_count = 1
-    $ butter_count = 1
-    $ blueberry_count = 1
-    $ egg_count = 1
-    $ nut_count = 1
-    $ milk_count = 1
-    $ orange_count = 1
-    $ almond_count = 1
-    $ sprinkle_count = 1
-    $ chocolate_chip_count = 1
-    $ bread_count = 1
-    $ peach_count = 1
+    def init_mise_en_place():
+        store.bacon_count = 1
+        store.strawberry_count = 1
+        store.flour_count = 1
+        store.snapper_count = 1
+        store.butter_count = 1
+        store.blueberry_count = 1
+        store.egg_count = 1
+        store.nut_count = 1
+        store.milk_count = 1
+        store.orange_count = 1
+        store.almond_count = 1
+        store.sprinkle_count = 1
+        store.chocolate_chip_count = 1
+        store.bread_count = 1
+        store.peach_count = 1
 
-    $ cooking_error = None
+        store.cooking_error = None
 
-    $ cutting_board_group = DragGroup()
+        store.cutting_board_group = DragGroup()
 
-    if difficulty_level == 1:
-        $ cb_tile = 120
-        $ ingredients = ["bacon",
-                         "strawberry",
-                         "flour",
-                         "snapper",
-                         "butter",
-                         "blueberry",
-                         "egg"]
-        $ ingredient_counts = {"bacon": 5,
-                               "strawberry": 6,
-                               "flour": 2,
-                               "snapper": 7,
-                               "butter": 3,
-                               "blueberry": 6,
-                               "egg": 5}
-        $ cutting_board_input = [[0, 0, 0, 0, 1, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0, 2, 0, 0, 0],
-                                 [0, 6, 0, 0, 0, 0, 0, 0, 0],
-                                 [0, 0, 7, 0, 0, 0, 0, 4, 0],
-                                 [0, 0, 0, 0, 0, 0, 5, 0, 3],
-                                 [0, 0, 0, 0, 0, 0, 0, 0, 0]]
-    elif difficulty_level == 2:
-        $ cb_tile = 100
-        $ ingredients = ["bacon",
-                         "strawberry",
-                         "flour",
-                         "snapper",
-                         "butter",
-                         "blueberry",
-                         "egg",
-                         "nut",
-                         "milk"]
-        $ ingredient_counts = {"bacon": 5,
-                               "strawberry": 7,
-                               "flour": 5,
-                               "snapper": 6,
-                               "butter": 7,
-                               "blueberry": 9,
-                               "egg": 8,
-                               "nut": 2,
-                               "milk": 3}
-        $ cutting_board_input = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-                                 [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
-                                 [0, 0, 3, 0, 0, 0, 0, 6, 0, 0, 0],
-                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                 [4, 0, 0, 0, 0, 0, 0, 0, 9, 0, 8],
-                                 [0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0]]
-    elif difficulty_level == 3:
-        $ cb_tile = 80
-        $ ingredients = ["bacon",
-                         "strawberry",
-                         "flour",
-                         "snapper",
-                         "butter",
-                         "blueberry",
-                         "egg",
-                         "nut",
-                         "milk",
-                         "orange",
-                         "almond",
-                         "sprinkle",
-                         "chocolate_chip",
-                         "bread",
-                         "peach"]
-        $ ingredient_counts = {"bacon": 5,
-                               "strawberry": 6,
-                               "flour": 4,
-                               "snapper": 8,
-                               "butter": 7,
-                               "blueberry": 6,
-                               "egg": 4,
-                               "nut": 6,
-                               "milk": 7,
-                               "orange": 2,
-                               "almond": 5,
-                               "sprinkle": 9,
-                               "chocolate_chip": 2,
-                               "bread": 5,
-                               "peach": 3}
-        $ cutting_board_input = [[ 0,  0,  0,  3,  0,  0,  0,  0,  0,  0,  5,  0,  6,  0],
-                                 [ 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                                 [ 0,  0,  2,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0],
-                                 [ 0,  0,  0,  0, 12,  0,  0,  0,  0,  0,  0, 15,  0,  7],
-                                 [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                                 [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                                 [ 0, 13,  0,  0, 11,  0,  0,  0,  9,  0,  0,  0,  0,  0],
-                                 [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                                 [14,  0,  0,  0,  0,  0,  0, 10,  0,  0,  8,  0,  0,  0]]
-    python:
+        if difficulty_level == 1:
+            store.cb_tile = 120
+            store.ingredients = ["bacon",
+                            "strawberry",
+                            "flour",
+                            "snapper",
+                            "butter",
+                            "blueberry",
+                            "egg"]
+            store.ingredient_counts = {"bacon": 5,
+                                "strawberry": 6,
+                                "flour": 2,
+                                "snapper": 7,
+                                "butter": 3,
+                                "blueberry": 6,
+                                "egg": 5}
+            store.cutting_board_input = [[0, 0, 0, 0, 1, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 2, 0, 0, 0],
+                                    [0, 6, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 7, 0, 0, 0, 0, 4, 0],
+                                    [0, 0, 0, 0, 0, 0, 5, 0, 3],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        elif difficulty_level == 2:
+            store.cb_tile = 100
+            store.ingredients = ["bacon",
+                            "strawberry",
+                            "flour",
+                            "snapper",
+                            "butter",
+                            "blueberry",
+                            "egg",
+                            "nut",
+                            "milk"]
+            store.ingredient_counts = {"bacon": 5,
+                                "strawberry": 7,
+                                "flour": 5,
+                                "snapper": 6,
+                                "butter": 7,
+                                "blueberry": 9,
+                                "egg": 8,
+                                "nut": 2,
+                                "milk": 3}
+            store.cutting_board_input = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7],
+                                    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 3, 0, 0, 0, 0, 6, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [4, 0, 0, 0, 0, 0, 0, 0, 9, 0, 8],
+                                    [0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0]]
+        elif difficulty_level == 3:
+            store.cb_tile = 80
+            store.ingredients = ["bacon",
+                            "strawberry",
+                            "flour",
+                            "snapper",
+                            "butter",
+                            "blueberry",
+                            "egg",
+                            "nut",
+                            "milk",
+                            "orange",
+                            "almond",
+                            "sprinkle",
+                            "chocolate_chip",
+                            "bread",
+                            "peach"]
+            store.ingredient_counts = {"bacon": 5,
+                                "strawberry": 6,
+                                "flour": 4,
+                                "snapper": 8,
+                                "butter": 7,
+                                "blueberry": 6,
+                                "egg": 4,
+                                "nut": 6,
+                                "milk": 7,
+                                "orange": 2,
+                                "almond": 5,
+                                "sprinkle": 9,
+                                "chocolate_chip": 2,
+                                "bread": 5,
+                                "peach": 3}
+            store.cutting_board_input = [[ 0,  0,  0,  3,  0,  0,  0,  0,  0,  0,  5,  0,  6,  0],
+                                    [ 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                                    [ 0,  0,  2,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0],
+                                    [ 0,  0,  0,  0, 12,  0,  0,  0,  0,  0,  0, 15,  0,  7],
+                                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                                    [ 0, 13,  0,  0, 11,  0,  0,  0,  9,  0,  0,  0,  0,  0],
+                                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                                    [14,  0,  0,  0,  0,  0,  0, 10,  0,  0,  8,  0,  0,  0]]
+        store.cooking_level = difficulty_level
+        
         cutting_board_data = [row[:] for row in cutting_board_input]
 
         # x = 115-int(cb_tile/2)
@@ -293,12 +294,12 @@ label init_mise_en_place:
                                                  droppable=True,
                                                  draggable=False,
                                                  dropped=cutting_board_dropped))
-    return
+        return
 
-label reset_cutting_board():
-    call init_mise_en_place from _call_init_mise_en_place_1
-    hide screen mise_en_place
-    call screen mise_en_place
+    def reset_cutting_board():
+        init_mise_en_place()
+        renpy.hide_screen("mise_en_place")
+        renpy.show_screen("mise_en_place")
 
 style ingredients_text:
     color "#6f593d"
@@ -320,6 +321,9 @@ screen mise_en_place(interactable=True):
     modal True
     tag puzzle
     layer "puzzles"
+
+    if difficulty_level != cooking_level:
+        timer 0.1 action Function(reset_cutting_board)
 
     frame style "puzzle_frame" padding 0,0,50,40:
 
@@ -449,7 +453,7 @@ screen mise_en_place(interactable=True):
                 null height 30
 
         hbox xalign 1.0 yalign 1.0 ysize 100 spacing 112:
-            textbutton "RESET" style "confirm_button" action Call("reset_cutting_board") text_color "#fff" align (0.0, 0.5)
+            textbutton "RESET" style "confirm_button" action Function(reset_cutting_board) text_color "#fff" align (0.0, 0.5)
             textbutton "TRASH" style "confirm_button" text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5
             textbutton "SUBMIT" style "confirm_button" action Function(check_board) sensitive not inspect xalign 0.5 yalign 0.5 xoffset -40
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5

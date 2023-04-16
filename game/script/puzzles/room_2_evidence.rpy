@@ -4,6 +4,8 @@ init python:
         if not start:
             renpy.notify(_("Invalid. Restarting..."))
 
+        store.evidence_level = difficulty_level
+
     def evidence_dragged(drags, drop):
         drag = drags[0]
         drag.snap(evidence_positions[drag.drag_name][0], evidence_positions[drag.drag_name][1], 0.5)
@@ -73,6 +75,9 @@ screen room2_evidence():
     modal True
     tag puzzle
     layer "puzzles"
+
+    if difficulty_level != evidence_level:
+        timer 0.1 action Function(evidence_init, True)
 
     frame style "puzzle_frame":
 

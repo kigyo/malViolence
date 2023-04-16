@@ -26,16 +26,16 @@ screen splash_settings():
             spacing 50
             xfill True
 
-            label _("Accessibility Settings") xalign 0.5 xoffset -37
-            label _("These options can be adjusted at any time in the menu.") xalign 0.5 text_color "#fff" text_font "gui/font/TitilliumWeb-Regular.ttf" text_size 35 xoffset -37
+            label _("Accessibility Settings") xalign 0.5
+            label _("These options can be adjusted at any time in the menu.") xalign 0.5 text_color "#fff" text_font "gui/font/TitilliumWeb-Regular.ttf" text_size 35
 
             hbox:
-                xalign 0.6
-                vbox:
-                    style_prefix "radio"
-                    label _("Typeface")
-                    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 39), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
-                    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 42), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
+                xalign 0.8
+                #vbox:
+                #    style_prefix "radio"
+                #    label _("Typeface")
+                #    textbutton _("{font=gui/font/TitilliumWeb-Regular.ttf}{size=32}TitilliumWeb{/size}{/font}") action [gui.SetPreference("font", "gui/font/TitilliumWeb-Regular.ttf"), gui.SetPreference("size", 39), SetVariable("persistent.typeface", "TitilliumWeb")] alt "Change font to TitilliumWeb"
+                #    textbutton _("{font=gui/font/Atkinson-Hyperlegible-Regular-102.ttf}{size=32}Hyperlegible{/size}{/font}") action [gui.SetPreference("font", "gui/font/Atkinson-Hyperlegible-Regular-102.ttf"), gui.SetPreference("size", 42), SetVariable("persistent.typeface", "Hyperlegible")] alt "Change font to HyperLegible"
 
                 vbox:
                     style_prefix "radio"
@@ -48,10 +48,10 @@ screen splash_settings():
                         textbutton _("Regular") action gui.SetPreference("size", 42) alt "Change to Regular Size Text"
 
                 vbox:
-                    style_prefix "radio"
-                    label _("Puzzles")
-                    textbutton _("Mandatory") action SetField(preferences, "hard_mode", True) alt "Hard mode: Puzzles must be solved once in order to be skipped" 
-                    textbutton _("Skippable") action SetField(preferences, "hard_mode", False) alt "Easy mode: Puzzles can be skipped after failing once"
+                    style_prefix "check"
+                    label _("Puzzle Skipper")
+                    textbutton _("Off") action SetField(preferences, "hard_mode", True) alt "Puzzle Skipper Off"
+                    textbutton _("On") action SetField(preferences, "hard_mode", False) alt "Puzzle Skipper On"
 
                 vbox:
                     style_prefix "check"
@@ -64,7 +64,7 @@ screen splash_settings():
                         textbutton _("Self-Voicing") action Preference("self voicing", "toggle") alt "Toggle Self-Voicing"
                     textbutton "Screenshake" action ToggleField(persistent,"screenshake",true_value=True,false_value=False) alt "Toggle Screen Shake"
 
-            textbutton _("Confirm") action Return() xalign 0.5 xoffset -37
+            textbutton _("Confirm") action Return() xalign 0.5
 
 style presplash_label:
     top_margin gui.pref_spacing

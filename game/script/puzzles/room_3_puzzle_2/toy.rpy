@@ -6,7 +6,6 @@ define toys_description = _("""What a mess! You need to clean up all these toys 
 
 Plot your moves carefully! As the toys shift, they may get harder to reach...""")
 
-
 image toy_walk_fast:
     "toy_walk_1"
     pause 0.05
@@ -183,7 +182,9 @@ init python:
                                       [4, 4, 2, 5, 4, 3],
                                       [2, 5, 3, 2, 4, 3]])
 
-        renpy.notify(txt)
+        store.toy_level = difficulty_level
+        if txt:
+            renpy.notify(txt)
         renpy.hide_screen("toy_playspace")
         renpy.show_screen("toy_playspace",tb)
 
@@ -192,6 +193,10 @@ screen toy_playspace(b, interactable=True):
     tag puzzle
     layer "puzzles"
     modal True
+
+    if difficulty_level != toy_level:
+        timer 0.1 action Function(toy_board_reset, None)
+
     frame style "puzzle_frame":
         frame:
             xysize (400, 200)

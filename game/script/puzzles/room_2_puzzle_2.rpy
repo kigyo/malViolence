@@ -157,7 +157,6 @@ init python:
 image panopt_key:
     "key"
     zoom 0.5
-    offset (250, -20)
 
 transform panopticon_button():
     alpha 1.0
@@ -169,6 +168,9 @@ screen room2_panopticon(pan=None, interactable=True):
     tag puzzle
     layer "puzzles"
     zorder 5
+    
+    if difficulty_level != panopticon_level:
+        timer 0.1 action Function(panopticon_init, True)
 
     if panopt.state:
         timer 0.01 action If(panopt.state=="won", true=Return(), false=Jump("panopticon_game_over"))
@@ -221,7 +223,10 @@ screen room2_panopticon(pan=None, interactable=True):
                 style_prefix "puzzle_description"
                 null height 10
                 label _("Instructions")
-                text _("In a stealthy campaign, {color=#fff}Cautionne has managed to take control of a STOP holding center,{/color} where several young test subjects are being held in a futuristic panopticon.\n\nTo give them the best chance of survival, Cautionne needs to {color=#fff}rearrange the cells so that each group of escaping testees is balanced.{/color}\n\nThese groups are shown as {color=#fff}a circle, a triangle, a square{/color} and {color=#fff}an X.{/color}\n\nHowever, the bureaucratic systems have left only the bare minimum operating instructions on how to operate the panopticon.\n{image=panopt_key}\n{color=#fff}Help Cautionne properly arrange the cells according to the limitations of the system.{/color}")
+                text _("In a stealthy campaign, {color=#fff}Cautionne has managed to take control of a STOP holding center,{/color} where several young test subjects are being held in a futuristic panopticon.\n\nTo give them the best chance of survival, Cautionne needs to {color=#fff}rearrange the cells so that each group of escaping testees is balanced.{/color}\n\nThese groups are shown as {color=#fff}a circle, a triangle, a square{/color} and {color=#fff}an X.{/color}\n\nHowever, the bureaucratic systems have left only the bare minimum operating instructions on how to operate the panopticon.")
+                null height 50
+                text _("{color=#fff}Help Cautionne properly arrange the cells according to the limitations of the system.{/color}")
+            add "panopt_key" xalign 0.5 yoffset 680
             if ("dead8" in persistent.dead_ends and not preferences.hard_mode):
                 textbutton "RESTART" action [Function(panopticon_init), Function(renpy.restart_interaction), Hide("room2_panopticon"), Function(renpy.restart_interaction), Show("room2_panopticon")] style "confirm_button" xalign 0.0 yalign 1.0 at zoomed(0.75)
             textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return(), With(puzzle_hide)] style "confirm_button" xalign 1.0 yalign 1.0
@@ -286,6 +291,8 @@ init python:
         store.panopticon_config = [0,0,0,0,0]
         store.panopticon_pos = [0,0,0,0,0]
         store.panopticon_reverse = []
+
+        store.panopticon_level = difficulty_level
 
         if not start:
             renpy.notify(_("Restarting..."))

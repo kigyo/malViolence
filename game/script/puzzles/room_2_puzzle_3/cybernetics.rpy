@@ -443,9 +443,12 @@ init -1 python:
         store.loop_data = [[[0,0,0,0] for x in range(cyb.w)] for y in range(cyb.h)]
         store.loop_counter = 1
 
-        renpy.notify(txt)
+        if txt:
+            renpy.notify(txt)
         renpy.hide_screen("cybernetics")
         renpy.show_screen("cybernetics",cyb)
+
+        store.cybernetics_level = difficulty_level
 
 label init_cybernetics:
     if difficulty_level == 1:
@@ -456,6 +459,7 @@ label init_cybernetics:
         $ cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_3, mask=cybernetic_mask_3)
     $ loop_data = [[[0,0,0,0] for x in range(cyb.w)] for y in range(cyb.h)]
     $ loop_counter = 1
+    $ cybernetics_level = difficulty_level
     return
 
 screen cybernetics(cyb, interactable=True):
@@ -463,6 +467,9 @@ screen cybernetics(cyb, interactable=True):
     modal True
     tag puzzle
     layer "puzzles"
+    
+    if difficulty_level != cybernetics_level:
+        timer 0.1 action Function(cybernetics_reset, None)
 
     frame style "puzzle_frame" padding 0,0,50,40:
         if interactable:

@@ -27,6 +27,16 @@ default difficulties_cleared = {
     "room3_3": None,
 }
 
+default bomb_level = 3
+default hacking_level = 3
+default decanting_level = 3
+default evidence_level = 1
+default panopticon_level = 3
+default cybernetics_level = 3
+default quilt_level = 3
+default toy_level = 2
+default cooking_level = 2
+
 init python:
     def difficulty_change_reset():
         #room 1
@@ -53,6 +63,25 @@ init python:
                     temp_dict[k] = True
 
             persistent.solved_puzzles = temp_dict
+            
+        if float(_version) < 1.2:
+            #fix set difficulties of active puzzles
+            store.bomb_level = old_puzzle_difficulty_mapper["room1_1"]
+            store.hacking_level = old_puzzle_difficulty_mapper["room1_2"]
+            store.decanting_level = old_puzzle_difficulty_mapper["room1_3"]
+            store.evidence_level = old_puzzle_difficulty_mapper["room2_1"]
+            store.panopticon_level = old_puzzle_difficulty_mapper["room2_2"]
+            store.cybernetics_level = old_puzzle_difficulty_mapper["room2_3"]
+            store.quilt_level = old_puzzle_difficulty_mapper["room3_1"]
+            store.toy_level = old_puzzle_difficulty_mapper["room3_2"]
+            store.cooking_level = old_puzzle_difficulty_mapper["room3_3"]
+
+            panopticon_init(True)
+            cybernetics_reset(None)
+
+            renpy.scene("puzzles")
+
+        store._version = config.version
     
     config.after_load_callbacks.append(solved_puzzles_convert)
 

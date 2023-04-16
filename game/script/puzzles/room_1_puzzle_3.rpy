@@ -66,8 +66,6 @@ init python:
         
         store.decanting_level = difficulty_level
 
-default decanting_level = 2
-
 default decant_kwargs = {"v1":18, "v2":10, "v3":7, "answer":[9, 9, 0]}
 default decanting_moves = 0
 define decanting_move_limit = 20

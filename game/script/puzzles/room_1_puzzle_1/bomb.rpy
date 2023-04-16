@@ -317,8 +317,6 @@ default c1 = "#1d96db"
 default c2 = "#d62a2a"
 default c3 = "#454545"
 
-default bomb_level = 2
-
 label init_bomb:
     $ level = difficulty_level
     $ parts = []

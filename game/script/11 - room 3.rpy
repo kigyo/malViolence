@@ -441,7 +441,7 @@ label room_3:
             "(You've already solved the {i}mise en place{/i} puzzle.)"
         else:
             if room3["cooking"] == 0:
-                call init_mise_en_place from _call_init_mise_en_place
+                $init_mise_en_place()
                 "(There's a small kitchenette.{w} It looks like it hasn't been used recently...{w} Did Dr Danger take care of all the cooking?)"
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "(A handwritten note sits on the counter.{w} Looks like...{w=0.5}a recipe for pancakes?)"

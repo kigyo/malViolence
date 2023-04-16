@@ -119,8 +119,6 @@ init python:
         renpy.hide_screen("puzzle_playspace")
         renpy.show_screen("puzzle_playspace",pb)
 
-default hacking_level = 2
-
 screen puzzle_playspace(b, interactable=True):
     sensitive (not inspect and not _menu)
     tag puzzle
