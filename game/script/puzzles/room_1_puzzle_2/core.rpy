@@ -701,6 +701,7 @@ label init_puzzle_board():
 label init_toy_board():
     if difficulty_level == 1:
         $ tb = ToyBoard(width=4, height=4, player=(1, 2),
+                        match_length=5,
                         init=[[3, 2, 1, 4],
                               [4, 1, 2, 5],
                               [5, 0, 3, 1],
