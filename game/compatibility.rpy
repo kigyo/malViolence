@@ -42,7 +42,7 @@ init python:
         #room 1
         init_bomb_function(None)
         #room 2
-
+        cybernetics_reset()
         #room 3
         init_mise_en_place()
         renpy.retain_after_load()
@@ -115,6 +115,7 @@ init python:
         init_bomb_function(None)
 
         #room2
+        cybernetics_reset()
         word_init()
 
         #room3

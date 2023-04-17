@@ -445,8 +445,8 @@ init -1 python:
 
         if txt:
             renpy.notify(txt)
-        renpy.hide_screen("cybernetics")
-        renpy.show_screen("cybernetics",cyb)
+            renpy.hide_screen("cybernetics")
+            renpy.show_screen("cybernetics",cyb)
 
         store.cybernetics_level = difficulty_level
 
@@ -462,12 +462,12 @@ label init_cybernetics:
     $ cybernetics_level = difficulty_level
     return
 
-screen cybernetics(cyb, interactable=True):
+screen cybernetics(cyber=None, interactable=True):
     sensitive (not inspect and not _menu)
     modal True
     tag puzzle
     layer "puzzles"
-    
+
     if difficulty_level != cybernetics_level:
         timer 0.1 action Function(cybernetics_reset, None)
 
