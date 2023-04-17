@@ -259,7 +259,7 @@ init python:
     def activated(drags):
         return
 
-    def init_bomb_function(txt=_("Invalid. Restarting...")):
+    def init_bomb_function(txt=None):
         store.parts = []
         if difficulty_level == 1:
             store.parts.append(Part("z_shape", pos=(240, 220), color="#E3615A"))
@@ -298,7 +298,7 @@ init python:
             store.parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
             bm = bomb_mask_3
         store.bomb = Bomb(len(bm[0]), len(bm), parts, level=difficulty_level, mask=bm)
-        #for whatever ungodly reason, this sets difficulty_level to bomb_level instead of the other way around
+        
         store.bomb_level = difficulty_level
         if txt:
             renpy.notify(txt)
@@ -389,8 +389,8 @@ screen room1_bomb(b=None, interactable=True):
             textbutton "SUBMIT" style "confirm_button" action Function(bomb.verify)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
 
-    if "room1_1" in persistent.solved_puzzles or not preferences.hard_mode:
-        textbutton "SKIP" style "confirm_button" action [SetDict(room1, "bomb", "solved"), Return()] ypos 50 xalign 1.0 xoffset -20
+    if puzzle_cleared("room1_1") or not preferences.hard_mode:
+        use skip_button(room1, "bomb", "room1_1", yoffset=50, xalign=1.0, xoffset=-20)
 
     if config.developer:
         vbox:

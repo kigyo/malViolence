@@ -505,8 +505,8 @@ screen mise_en_place(interactable=True):
         if isinstance(cooking_error,list):
             add Solid("#d20000") pos (70+cooking_error[0]*cb_tile, 205+cooking_error[1]*cb_tile) xysize (cb_tile, cb_tile) alpha 0.5
 
-    if "room3_3" in persistent.solved_puzzles or not preferences.hard_mode:
-        textbutton "SKIP" style "confirm_button" action [SetDict(room3, "cooking", "solved"), Return()] xpos 40 yalign 1.0 yoffset -50
+    if puzzle_cleared("room3_3") or not preferences.hard_mode:
+            use skip_button(room3, "cooking", "room3_3", yalign=1.0, xoffset=40, yoffset=-50)
 
     if config.developer:
         hbox:

@@ -230,13 +230,13 @@ screen room2_panopticon(pan=None, interactable=True):
             if ("dead8" in persistent.dead_ends and not preferences.hard_mode):
                 textbutton "RESTART" action [Function(panopticon_init), Function(renpy.restart_interaction), Hide("room2_panopticon"), Function(renpy.restart_interaction), Show("room2_panopticon")] style "confirm_button" xalign 0.0 yalign 1.0 at zoomed(0.75)
             textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return(), With(puzzle_hide)] style "confirm_button" xalign 1.0 yalign 1.0
+        fixed xsize 1000:
+            if not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
+                frame xalign 1.0:
+                    text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
 
-        if not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
-            frame xalign 1.0:
-                text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
-
-        if "room2_2" in persistent.solved_puzzles or ("dead8" in persistent.dead_ends and not preferences.hard_mode):
-            textbutton "SKIP" style "confirm_button" action [SetDict(room2, "panopticon", "solved"), Return()]
+        if puzzle_cleared("room2_2") or ("dead8" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+            use skip_button(room2, "panopticon", "room2_2", xalign=1.0)
 
     if config.developer:
         vbox:
@@ -399,7 +399,7 @@ screen room2_panopticon_tmp():
                 frame xalign 1.0:
                     text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
 
-        if "room2_2" in persistent.solved_puzzles or ("dead8" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+        if puzzle_cleared("room2_2") or ("dead8" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
             textbutton "SKIP" style "confirm_button" action [SetDict(room2, "panopticon", "solved"), Return()]
 
 

@@ -151,8 +151,8 @@ screen room3_quilt():
                 textbutton "SUBMIT" style "confirm_button" action Function(quilt_submit) xalign 0.5 yalign 0.5
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
-        if "room3_1" in persistent.solved_puzzles or ("dead11" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
-            textbutton "SKIP" style "confirm_button" action [SetDict(room3, "quilt", "solved"), Return()] xalign 1.0
+        if puzzle_cleared("room3_1") or ("dead11" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+            use skip_button(room3, "quilt", "room3_1", xalign=1.0)
 
     fixed xoffset -400:
         if difficulty_level == 1:

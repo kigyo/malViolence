@@ -1,4 +1,4 @@
-
+default skip_used = False
 default difficulty_level = 2
 
 define single_difficulty_puzzles = ["tutorial", "room1_meta", "room2_meta", "room3_meta"]
@@ -42,14 +42,12 @@ init python:
         #room 1
         init_bomb_function(None)
         #room 2
-        cybernetics_reset()
+        cybernetics_reset(None)
         #room 3
         #toy_board_reset(None)
         init_mise_en_place()
         renpy.retain_after_load()
         renpy.restart_interaction()
-        #possibly necessary for speck's puzzles, for some reason they just won't update on their own:
-        #renpy.reload_script()
 
     def solved_puzzles_convert():
         if isinstance(persistent.solved_puzzles, list):
@@ -94,21 +92,41 @@ init python:
         if name in single_difficulty_puzzles and not persistent.solved_puzzles[name]:
             persistent.solved_puzzles[name] = True
 
-        else:
+        elif name not in single_difficulty_puzzles:
             if name not in persistent.solved_puzzles[difficulty_level]:
                 persistent.solved_puzzles[difficulty_level].append(name)
 
             store.difficulties_cleared[name] = difficulty_level
 
+    def puzzle_cleared(name):
+        if name in single_difficulty_puzzles and persistent.solved_puzzles[name]:
+            return True
+        if name in persistent.solved_puzzles[difficulty_level]:
+            return True
+        return False
+
     def lowest_cleared_difficulty():
+        if skip_used:
+            return 0
+
         lowest = 3
-        for k,v in difficulties_cleared:
+        for k,v in difficulties_cleared.items():
             if v == None:
                 lowest = 0
                 break
             elif v < lowest:
                 lowest = v
         return lowest
+    
+    def puzzle_achievements():
+        cleared = lowest_cleared_difficulty()
+        if cleared:
+            if cleared >= 1:
+                Achievement.add(achievement_difficulty1)
+            if cleared >= 2:
+                Achievement.add(achievement_difficulty2)
+            if cleared >= 3:
+                Achievement.add(achievement_difficulty3)
 
     #some drag puzzles reset their positions after load
     def reset_puzzles_after_load():
@@ -128,3 +146,9 @@ init python:
     config.after_load_callbacks.append(reset_puzzles_after_load)
 
 default persistent.solved_puzzles = {1:[], 2:[], 3:[], "tutorial":False, "room1_meta":False, "room2_meta":False, "room3_meta":False}
+
+screen skip_button(room, puzzle, puzzle_name, xalign=0.0, yalign=0.0, xoffset=0, yoffset=0):
+    textbutton "SKIP":
+        style "confirm_button" xalign xalign yalign yalign xoffset xoffset yoffset yoffset
+        action If(puzzle_cleared(puzzle_name), [SetDict(room, puzzle, "solved"), If(puzzle_name in single_difficulty_puzzles, SetDict(difficulties_cleared, puzzle_name, difficulty_level), NullAction()), Return()], 
+            Confirm(If(difficulty_level > 1, _("Are you sure you want to skip this puzzle? \nYou could also {color=#00e7ff}lower the difficulty{/color} instead."), _("Are you sure you want to skip this puzzle?")), [SetDict(room, puzzle, "solved"), SetVariable("skip_used",True), Return()], NullAction()))

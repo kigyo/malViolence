@@ -90,11 +90,13 @@ init python:
         "room3": [_("Housewarming"), _("Proceed past the villains' living quarters."), "gui/trophy_icon.png", None],
         "deadfirst": [_("Trial and Error"), _("Find out what happens when you make a mistake."), "gui/trophy_icon.png", None],
         "deadall": [_("A for Effort"), _("Make {i}all{/i} the mistakes. For science."), "gui/trophy_icon.png", None],
-        #"wrong": [_("Face, Meet Brick Wall"), _(""), "gui/trophy_icon.png", None], #No idea what this one is
         "end1": [_("Breakout Role"), _("Escape."), "gui/trophy_icon.png", None],
         "end2": [_("Mission Accomplished"), _("Finish your mission."), "gui/trophy_icon.png", None],
         "end3": [_("Failure to Communicate"), _("Get to the ending."), "gui/trophy_icon.png", None],
         "investigate": [_("Busybody"), _("Leave no stone unturned."), "gui/trophy_icon.png", None],
+        "difficulty1": [_("Diligent Puzzler"), _("Clear all puzzles without skipping them."), "gui/trophy_icon.png", "hidden"],
+        "difficulty2": [_("Skilled Puzzler"), _("Clear all puzzles on normal difficulty or harder."), "gui/trophy_icon.png", "hidden"],
+        "difficulty3": [_("Hardcore Puzzler"), _("Clear every puzzle on the hardest difficulty."), "gui/trophy_icon.png", "hidden"],
         "all": [_("Noble Laureate"), _("Earn all achievements."), "gui/trophy_icon.png", 'platinum'],
     }
 
@@ -131,6 +133,9 @@ default achievement_end1 = Achievement(name=achievement_name['end1'][0], message
 default achievement_end2 = Achievement(name=achievement_name['end2'][0], message=achievement_name['end2'][1], image=achievement_name['end2'][2])
 default achievement_end3 = Achievement(name=achievement_name['end3'][0], message=achievement_name['end3'][1], image=achievement_name['end3'][2])
 default achievement_investigate = Achievement(name=achievement_name['investigate'][0], message=achievement_name['investigate'][1], image=achievement_name['investigate'][2])
+default achievement_difficulty1 = Achievement(name=achievement_name['difficulty1'][0], message=achievement_name['difficulty1'][1], image=achievement_name['difficulty1'][2])
+default achievement_difficulty2 = Achievement(name=achievement_name['difficulty2'][0], message=achievement_name['difficulty2'][1], image=achievement_name['difficulty2'][2])
+default achievement_difficulty3 = Achievement(name=achievement_name['difficulty3'][0], message=achievement_name['difficulty3'][1], image=achievement_name['difficulty3'][2])
 default achievement_platinum = Achievement(name=achievement_name['all'][0], message=achievement_name['all'][1], image=achievement_name['all'][2])
 
 default achievement_dead1 = Achievement(name=death_name['dead1'][0], message=death_name['dead1'][1], image=death_name['dead1'][2])

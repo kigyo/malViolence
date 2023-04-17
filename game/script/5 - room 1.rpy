@@ -161,10 +161,10 @@ label room_1:
             "(You've already solved the bomb puzzle.)"
         else:
             if room1["bomb"] == 0:
-                call init_bomb from _call_init_bomb
                 "(It looks like there's an open...{w=0.5} tool box?{w} You approach it to take a closer look.)"
-                show screen room1_bomb(bomb, False, _layer="master") with easeintop
+                show bomb_puzzle with easeintop
                 "(Nope!{w} It's a bomb.{w} No big deal.{w} What could {i}possibly{/i} go wrong?)"
+                call init_bomb from _call_init_bomb
             else:
                 "(It's a bomb!{w} Again,{w=0.1} what could {i}possibly{/i} go wrong?)"
                 if bomb_level != difficulty_level:
@@ -173,6 +173,7 @@ label room_1:
             $renpy.block_rollback()
             $ room1["bomb"] += 1
             $ inspect = None
+            hide bomb_puzzle
             $renpy.hide_screen("room1_bomb", "master")
             call screen room1_bomb(bomb, True)
             if room1["bomb"] == "solved":

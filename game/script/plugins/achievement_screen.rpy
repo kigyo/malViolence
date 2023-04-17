@@ -58,7 +58,7 @@ screen achievement_menu():
                 ## Locked achievements
                 for v in achievement_name.values():
                     ## Index '0' is the name of the achievement.
-                    if not achievement.has(v[0]) and v[3] != 'dead':
+                    if not achievement.has(v[0]) and v[3] != 'dead' and v[3] != 'platinum':
 
                         ## We're doing a check for all achievements
                         ## that is not a 'platinum'.

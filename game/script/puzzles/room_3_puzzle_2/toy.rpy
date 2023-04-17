@@ -183,10 +183,11 @@ init python:
                                       [2, 5, 3, 2, 4, 3]])
 
         store.toy_level = difficulty_level
+        
         if txt:
             renpy.notify(txt)
-        renpy.hide_screen("toy_playspace")
-        renpy.show_screen("toy_playspace",tb)
+            renpy.hide_screen("toy_playspace")
+            renpy.show_screen("toy_playspace",tb)
 
 screen toy_playspace(tb=None, interactable=True):
     tag puzzle
@@ -233,8 +234,8 @@ screen toy_playspace(tb=None, interactable=True):
                     textbutton "RESET" style "confirm_button" action Function(toy_board_reset, _("Restarting...")) text_color "#fff" sensitive not inspect xalign 0.0 yalign 0.5 at zoomed(0.75)
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5
 
-        if "room3_2" in persistent.solved_puzzles or not preferences.hard_mode:
-            textbutton "SKIP" style "confirm_button" action [SetDict(room3, "toys", "solved"), Return()]
+        if puzzle_cleared("room3_2") or not preferences.hard_mode:
+            use skip_button(room3, "toys", "room3_2", xalign=1.0)
 
     if config.developer:
         vbox:
