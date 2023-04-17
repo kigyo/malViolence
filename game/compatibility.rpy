@@ -44,6 +44,7 @@ init python:
         #room 2
         cybernetics_reset()
         #room 3
+        #toy_board_reset(None)
         init_mise_en_place()
         renpy.retain_after_load()
         renpy.restart_interaction()
@@ -115,11 +116,12 @@ init python:
         init_bomb_function(None)
 
         #room2
-        cybernetics_reset()
+        # cybernetics_reset()
         word_init()
 
         #room3
         scrapbook_init()
+        # toy_board_reset(None)
         init_mise_en_place()
         pass
 

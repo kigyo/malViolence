@@ -188,12 +188,10 @@ init python:
         renpy.hide_screen("toy_playspace")
         renpy.show_screen("toy_playspace",tb)
 
-
-screen toy_playspace(b, interactable=True):
+screen toy_playspace(tb=None, interactable=True):
     tag puzzle
     layer "puzzles"
     modal True
-
     if difficulty_level != toy_level:
         timer 0.1 action Function(toy_board_reset, None)
 
@@ -206,23 +204,23 @@ screen toy_playspace(b, interactable=True):
             xalign 0.5
             label "Current Match" xalign 0.5
             null height 35
-            if not b.match_pic:
+            if not tb.match_pic:
                 pass
                 # text "None"
             else:
                 hbox:
                     xoffset 30
-                    for p in b.match_pic:
+                    for p in tb.match_pic:
                         add p
-        if b.just_cleared:
-            use animated_board(b, (550, 350))
+        if tb.just_cleared:
+            use animated_board(tb, (550, 350))
         else:
-            use board(b, (550, 350))
+            use board(tb, (550, 350))
         if interactable:
-            use buttons(b, (550, 350))
-        use reticle(b, (550, 350))
-        if b.just_cleared:
-            timer adt action Function(b.clear_anim)
+            use buttons(tb, (550, 350))
+        use reticle(tb, (550, 350))
+        if tb.just_cleared:
+            timer adt action Function(tb.clear_anim)
 
         fixed xsize 675 xalign 1.0:
             fixed ysize 880:
@@ -262,11 +260,11 @@ screen toy_matches(b):
             spacing 50
             vbox:
                 spacing 10
-                for m in b.matches[:6]:
+                for m in tb.matches[:6]:
                     use match(m)
-            if len(b.matches) > 6:
+            if len(tb.matches) > 6:
                 vbox:
-                    for m in b.matches[6:]:
+                    for m in tb.matches[6:]:
                         use match(m)
 
 transform found_match:
