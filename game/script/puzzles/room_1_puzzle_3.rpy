@@ -122,8 +122,8 @@ screen room1_decanting(v1=12, v2=8, v3=5, answer=[6, 6, 0]):
             if not ("dead5" in persistent.dead_ends and not preferences.hard_mode):
                 frame xalign 1.0:
                     text str(decanting_moves) + "/" + str(decanting_move_limit) style "main_menu_button"
-        if "room1_3" in persistent.solved_puzzles or not preferences.hard_mode:
-            textbutton "SKIP" style "confirm_button" action [SetDict(room1, "decanting", "solved"), Return()]
+        if puzzle_cleared("room1_3") or not preferences.hard_mode:
+            use skip_button(room1, "decanting", "room1_3")
 
     if config.developer:
         vbox:

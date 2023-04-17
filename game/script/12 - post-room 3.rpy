@@ -41,6 +41,9 @@ label post_room_3:
 
     $ play_sound(roomsuccess)
     pause 2
+
+    $puzzle_achievements()
+
     $ play_sound(doorunlock)
     pause 2
 

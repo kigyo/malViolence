@@ -127,8 +127,8 @@ screen room3_meta():
             textbutton "SUBMIT" style "confirm_button" action Function(scrapbook_submit)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)]
 
-        if len(room3["solved"]) == 3 and ("room3_meta" in persistent.solved_puzzles or ("dead10" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode):
-            textbutton "SKIP" style "confirm_button" action [SetDict(room3, "scrapbook_new", "solved"), Return()] xalign 1.0
+        if len(room3["solved"]) == 3 and (puzzle_cleared("room3_meta") or ("dead10" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode):
+            use skip_button(room3, "scrapbook_new", "room3_meta", xalign=1.0)
 
 define scrapbook_positions = [(450,570), (1100,490), (800,690,), (0,640)]
 define scrapbook_correct_order = [1,2,3,4]

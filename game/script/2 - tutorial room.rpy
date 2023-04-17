@@ -93,7 +93,7 @@ screen tutorial_lock():
     for i in range(8):
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
     
-    if "tutorial" in persistent.solved_puzzles or not preferences.hard_mode:
+    if puzzle_cleared("tutorial") or not preferences.hard_mode:
         textbutton "SKIP" style "confirm_button" action [Hide(), Jump("post_tutorial")] pos (40,50)
         
     if not inspect:

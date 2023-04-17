@@ -134,8 +134,8 @@ screen room1_marble():
                 textbutton "RESET" style "confirm_button" action Function(marble_init, _("Restarting...")) text_color "#fff" sensitive not inspect yalign 0.5 at zoomed(0.75)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] yalign 0.5
 
-        if len(room1["solved"]) == 3 and ("room1_meta" in persistent.solved_puzzles or ("dead2" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode):
-            textbutton "SKIP" style "confirm_button" action [SetDict(room1, "marble", "solved"), Return()]
+        if len(room1["solved"]) == 3 and (puzzle_cleared("room1_meta") or ("dead2" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode):
+            use skip_button(room1, "marble", "room1_meta")
 
     if config.developer:
         vbox:
