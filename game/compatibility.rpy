@@ -40,11 +40,11 @@ default cooking_level = 2
 init python:
     def difficulty_change_reset():
         #room 1
-
+        init_bomb_function(None)
         #room 2
 
         #room 3
-
+        init_mise_en_place()
         renpy.retain_after_load()
         renpy.restart_interaction()
         #possibly necessary for speck's puzzles, for some reason they just won't update on their own:
@@ -119,6 +119,7 @@ init python:
 
         #room3
         scrapbook_init()
+        init_mise_en_place()
         pass
 
     config.after_load_callbacks.append(reset_puzzles_after_load)

@@ -264,8 +264,8 @@ init python:
                                     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
                                     [14,  0,  0,  0,  0,  0,  0, 10,  0,  0,  8,  0,  0,  0]]
         store.cooking_level = difficulty_level
-        
-        cutting_board_data = [row[:] for row in cutting_board_input]
+
+        store.cutting_board_data = [row[:] for row in cutting_board_input]
 
         # x = 115-int(cb_tile/2)
         # for i in ingredients:

@@ -307,7 +307,7 @@ style quick_button:
 
 style quick_text is button_text:
     properties gui.button_text_properties("quick_button")
-    xpos 0.5 ypos 0.5 
+    xpos 0.5 ypos 0.5
     selected_color "#ffffff"
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
@@ -369,7 +369,7 @@ screen navigation():
             textbutton _("MAIN MENU") action MainMenu() at navigation_move
 
     textbutton _("RETURN") + "                             " action Return() xpos gui.navigation_xpos ypos 0.75 text_size 40 at navigation_move
-        
+
 
 
 style navigation_button is gui_button
@@ -402,7 +402,7 @@ screen main_menu():
     tag menu
     add gui.main_menu_background at bg(0.5)
     add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
-    
+
     add "gui/logo.png" xalign 0.5 yalign 0.15
 
     hbox pos (50,50) spacing 30:
@@ -603,40 +603,40 @@ screen about():
                 xspacing 0 yspacing 10 xoffset 50
                 hbox spacing 15:
                     label _("Director & CG Artist") + ":"
-                    text _("{a=https://madocallie.carrd.co/}Mado{/a}") 
+                    text _("{a=https://madocallie.carrd.co/}Mado{/a}")
                 hbox spacing 15:
                     label _("Writing") + ":"
-                    text _("{a=https://madocallie.carrd.co/}Mado{/a}") + ", " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}")  + ", " + _("{a=https://itch.io/profile/luoxyz}Z{/a}") 
+                    text _("{a=https://madocallie.carrd.co/}Mado{/a}") + ", " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}")  + ", " + _("{a=https://itch.io/profile/luoxyz}Z{/a}")
                 hbox spacing 15:
                     label _("Puzzle Designer") + ":"
-                    text _("{a=https://omelette.itch.io/}speck{/a}") 
+                    text _("{a=https://omelette.itch.io/}speck{/a}")
                 hbox spacing 15:
                     label _("Programmer") + ":"
-                    text _("{a=https://kigyodev.com/}KigyoDev{/a}") 
+                    text _("{a=https://kigyodev.com/}KigyoDev{/a}")
                 hbox spacing 15:
                     label _("UI & Logo") + ":"
-                    text _("{a=https://spicaze.itch.io/}spicaze{/a}") 
+                    text _("{a=https://spicaze.itch.io/}spicaze{/a}")
                 hbox spacing 15:
                     label _("Backgrounds") + ":"
-                    text _("{a=https://twitter.com/ReinaTensei}Reina{/a}") 
+                    text _("{a=https://twitter.com/ReinaTensei}Reina{/a}")
                 hbox spacing 15:
                     label _("Cautionne VA") + ":"
-                    text _("{a=https://www.carrickinabnett.com/}Carrick Inabnett{/a}") 
+                    text _("{a=https://www.carrickinabnett.com/}Carrick Inabnett{/a}")
                 hbox spacing 15:
                     label _("Dr. Danger VA") + ":"
-                    text _("{a=https://vynvox.com/}Vyn Vox{/a}") 
+                    text _("{a=https://vynvox.com/}Vyn Vox{/a}")
                 hbox spacing 15:
                     label _("Voice Direction") + ":"
-                    text _("{a=https://twitter.com/pheberryfab}Phebe Fabacher{/a}") 
+                    text _("{a=https://twitter.com/pheberryfab}Phebe Fabacher{/a}")
                 hbox spacing 15:
                     label _("Audio Mastering & SFX") + ":"
-                    text _("{a=https://twitter.com/DrayReedOFC}D.ray{/a}") 
+                    text _("{a=https://twitter.com/DrayReedOFC}D.ray{/a}")
                 hbox spacing 15:
                     label _("Music") + ":"
-                    text _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}") + ", " + _("{a=https://twitter.com/doranthedoran}Doran{/a}") 
+                    text _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}") + ", " + _("{a=https://twitter.com/doranthedoran}Doran{/a}")
                 hbox spacing 15:
                     label _("Trailer") + ":"
-                    text _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}") 
+                    text _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}")
                 text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25 font gui.text_font yalign 1.0
                 hbox spacing 15:
                     label _("QA Testing") + ":"
@@ -861,8 +861,8 @@ screen preferences():
                 #vbox:
                 #    style_prefix "radio"
                 #    label _("Text Color")
-                #    textbutton _("White") action gui.SetPreference("color", "#ffffff") alt "Change text color to white" 
-                #    textbutton _("Cream") action gui.SetPreference("color", "#FFFDD0") alt "Change text color to cream" 
+                #    textbutton _("White") action gui.SetPreference("color", "#ffffff") alt "Change text color to white"
+                #    textbutton _("Cream") action gui.SetPreference("color", "#FFFDD0") alt "Change text color to cream"
 
                 #vbox:
                 #    style_prefix "radio"
@@ -924,12 +924,12 @@ screen preferences():
 
                             if config.sample_voice:
                                 textbutton _("Test") action Play("voice", config.sample_voice)
-                    
+
                         label _("Text Beep Volume")
 
                         hbox:
                             bar value Preference("mixer bleeps volume")
-                                
+
             null height gui.pref_spacing
 
 
@@ -1043,7 +1043,7 @@ screen history():
         label _("History")
 
         ## Using margin properties will allow the screen to automatically adjust should
-        ## you choose to use a different resolution than 1080p, and will always be centered. 
+        ## you choose to use a different resolution than 1080p, and will always be centered.
         ## You can also resize the screen using "xmaximum", "ymaximum", or "maximum(x,y)"
         ## if desired, but you will need to use "align(x,y)" to manually position it.
 
@@ -1113,7 +1113,7 @@ screen history():
         textbutton "Return":
             style "history_return_button"
             action Return()
-            alt _("Return") 
+            alt _("Return")
 
 ## This determines what tags are allowed to be displayed on the history screen.
 
@@ -1631,10 +1631,10 @@ style nvl_button:
 style nvl_button_text:
     properties gui.button_text_properties("nvl_button")
 
-    
+
 
 screen gameover(lbl, track, anim=True):
-    
+
     add gui.main_menu_background at bg(0.5)
     if anim:
         add AlphaMask(At("gui/scroller.png",scroll_skew), "gui/grid_opacity.png")
