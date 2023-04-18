@@ -1,11 +1,5 @@
 label spare_ending:
 
-    show bg corridor_exit:
-        align (0.5,0.5) zoom 0.5
-        ease 4 zoom 1.0 align(0.5,0.6)
-
-    pause 4
-
     $ play_sound(dooropen)
     scene black with fade
 

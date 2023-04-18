@@ -5,9 +5,12 @@ label post_room_2:
   $renpy.block_rollback()
   $ inspect = "post room"
 
-  stop music fadeout 1.0
 
+  show screen room2_word with None
   $ play_sound(roomsuccess)
+  hide screen room2_word with puzzle_hide
+
+  stop music fadeout 1.0
   pause 2
   $ play_sound(doorunlock)
   pause 2
@@ -15,7 +18,7 @@ label post_room_2:
 
   #"{b} [The TV {/b}{b}isn't{/b}{b} on yet]{/b}"
   "(No message from the kid yet.)"
-  "(Maybe if you're stealthy,{w=1}{nw}"
+  "(Maybe if you're stealthy...{w=1}{nw}"
   show screen nodismiss
 
   $ play_sound(footsteps2)
@@ -24,6 +27,8 @@ label post_room_2:
   scene bg room2:
     zoom 0.335 align (0.0,0.0)
     ease 8 zoom 0.8 xalign 0.8 yalign 0.5
+
+  pause 3
 
   extend "{cps=15} you could sneak past without being subjected to another one of his stupid broadcasts.){nw}"
 

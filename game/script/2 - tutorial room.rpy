@@ -56,7 +56,7 @@ screen tutorial_room():
 
     if config.developer:
         frame:
-            textbutton _("Skip Room") action [Jump("post_tutorial")] style "main_menu_button"
+            textbutton _("Skip Room") action [Jump("post_tutorial"), Hide()] style "main_menu_button"
 
 
 init python:
@@ -88,13 +88,13 @@ screen tutorial_lock():
             for i in range(8):
                 text str(tutorial["lock"][i]) + " "
         frame:
-            textbutton _("Skip Puzzle") action [Hide(), Jump("post_tutorial")] style "main_menu_button"
+            textbutton _("Skip Puzzle") action [Hide(transition=dissolve), Jump("post_tutorial")] style "main_menu_button"
     add "puzzles/tutorial_circle.png" align (0.5,0.5)
     for i in range(8):
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
     
     if puzzle_cleared("tutorial") or not preferences.hard_mode:
-        textbutton "SKIP" style "confirm_button" action [Hide(), Jump("post_tutorial")] pos (40,50)
+        textbutton "SKIP" style "confirm_button" action [Hide(transition=dissolve), Jump("post_tutorial")] pos (40,50)
         
     if not inspect:
         textbutton "Return" action [Return()] style "confirm_button" xalign 0.8 yalign 0.5
@@ -256,10 +256,10 @@ label tutorial_intro:
                 "(With a little time and effort...{w} you think you can crack it.)"
                 $ inspect = None
                 $renpy.block_rollback()
-                call screen tutorial_lock
+                call screen tutorial_lock with dissolve
             elif tutorial["vent"] == 3:
                 $ inspect = None
-                call screen tutorial_lock
+                call screen tutorial_lock with dissolve
             else:
                 "(A door handle.)"
                 show screen tutorial_lock with dissolve

@@ -37,9 +37,11 @@ label post_room_3:
     $renpy.block_rollback()
     $ inspect = "post room"
 
-    stop music fadeout 1.0
-
+    show screen room3_meta with None
     $ play_sound(roomsuccess)
+    hide screen room3_meta with puzzle_hide
+
+    stop music fadeout 1.0
     pause 2
 
     $puzzle_achievements()
@@ -103,7 +105,13 @@ label post_room_3:
         "(And you think about yourself:{w=0.5} a tiny cog in a massive machine.{w} A sleek,{w=0.1} pristine,{w=0.1} reliable machine —{w=0.5} carefully cleansed of the blood it's spilt.)"
         "(A deep,{w=0.1} dark{w=0.1} pit hollows your stomach.)"
         $ play_sound(footsteps4)
+        show bg corridor_exit:
+            align (0.5,0.5) zoom 0.5
+            ease 4 zoom 1.0 align(0.5,0.6)
+
         "(Slowly,{w=0.1} you make your way forward —{w=0.5} each step heavier than the last.)"
+
+        pause 4
         jump spare_ending
 
     elif route == "neutral":

@@ -202,30 +202,36 @@ label room_3:
             $ play_sound(paperpickup)
             "(It's a loose page with handwriting on it.{w} Judging by the number in the corner and the fading ink,{w=0.1} it must be a small part of a much larger document.)"
             #"FIRST ENTRIES"
-            n "\"It's nice to have job security right out of school.{w} I had my doubts during junior year, of course, but I don't think anyone could've predicted how the sector's grown these past few months.{w} The developments in cybernetic technology have been explosive.{w} Sometimes {i}literally. {/i}"
-            n "It's troubling, but all great technology has the potential for misuse.{w} And now I'm going to be part of an organization that works to keep that tech under control. "
+            n "\"It's nice to have job security right out of school.{w} I had my doubts during junior year, of course, but I don't think anyone could've predicted how the sector's grown these past few months."
+            n "The developments in cybernetic technology have been explosive.\n{w}Sometimes {i}literally.{/i}"
+            n "It's troubling, but all great technology has the potential for misuse.\n{w}And now I'm going to be part of an organization that works to keep that tech under control. "
             n "Though I'll be honest, the name's pretty silly."
             n "Oh well.{w} They could always change the acronym later.\""
         elif room3["diary"] == 1:
             #"SUCCESS WITH LIMITING PROLIFERAITON OF TECH, PROMOTION, DISCOVERY OF POTENTIAL FOR YOUNGER SUBJECTS"
             $ play_sound(paperpickup)
-            n "\"I thought that things were moving fast before — but the growth we're seeing now makes those earlier years look glacial.{w} STOP is doing good work that needs to get done, and it's making countries put money where their mouths are when it comes to international cooperation efforts."
+            n "\"I thought that things were moving fast before — but the growth we're seeing now makes those earlier years look glacial."
+            n "STOP is doing good work that needs to get done, and it's making countries put money where their mouths are when it comes to international cooperation efforts."
             nvl clear
             $ play_sound(paperturn)
-            n "Last month we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to.{w} \nThis month we finalized our report on maximizing cybernetic synchronization for patients — confirming my earlier theory that the younger, the better. "
+            n "Last month, we managed to craft a Digital Data Management system that could tell us whenever a dangerous cybernetic schematic was downloaded and where it was downloaded to."
+            n "This month, we finalized our report on maximizing cybernetic synchronization for patients — confirming my earlier theory that the younger, the better. "
             n "The difference really was astounding.{w} And I must admit, it felt good to shove that 19\% performance increase right in that stuffy old bastard's smug face.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
-            n "\"Dr. Tan asked if the trend in performance would improve further if we started surgery any earlier.{w} A weird question, since this tech is only approved for anyone old enough to enlist, but I guess she was just being thorough.{w} The theory is sound.\""
+            n "\"Dr. Tan asked if the trend in performance would improve further if we started surgery any earlier."
+            n "A weird question, since this tech is only approved for anyone old enough to enlist, but I guess she was just being thorough."
+            n "The theory is sound.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
-            n "\"The promotion was nice.{w} I deserve it, and I was the only obvious choice, but still.{w} It felt nice to be recognized.\""
+            n "\"The promotion was nice."
+            n "I deserve it, and I was the only obvious choice, but still.{w} It felt nice to be recognized.\""
         elif room3["diary"] == 2:
             #"STAGNATION, LOTS OF RESEARCH WORK DISILLUSIONMENT, PARANOIA"
             $ play_sound(paperpickup)
@@ -234,157 +240,163 @@ label room_3:
             n "That's a good thing, even if it makes their job a little less\nexciting."
             n "Or maybe a little less secure.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
+            n "\"I requested another transfer.{w} My third in three years, but they didn't seem to mind."
+            n "I just can't find work as engrossing as I used to.{w} It probably doesn't help that I'm not sure what it is I do anymore. "
+            n "I mean, logically, I know what I do — I research cybernetics.{w} But I'm not sure what I do for STOP.\""
             $ play_sound(paperturn)
-            n "\"I requested another transfer.{w} My third in three years, but they didn't seem to mind.{w} I just can't find work as engrossing as I used to.{w} It probably doesn't help that I'm not sure what it is I do anymore. "
-            n "I mean, logically, I know what I do — I research cybernetics.{w} But I'm not sure what I do for STOP.{w} They haven't had a major security incident in months; the last \"incident\" they responded to was just a protest outside the building that got a little rowdy.\""
+            pause 2
+            nvl clear
+            nvl show
+            n "\"STOP hasn't had a major security incident in months."
+            n "The last \"incident\" they responded to was just a protest outside the building that got a little rowdy."
+            n "Staff morale's been down ever since.{w} A little controversy's to be expected, given the power STOP has nowadays."
+            n "They're being naive if they expect people to be grateful to the organization forever.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
-            n "\"Staff morale's been down ever since.{w} A little controversy's to be expected, given the power STOP has nowadays.{w} They're being naive if they expect people to be grateful to the organization forever.\""
-            nvl hide
-            pause 0.5
-            nvl clear
-            nvl show
-            $ play_sound(paperturn)
             n "\"I might've transferred a few times too many."
             n "I came into work today and clocked out without recognizing a single face the entire time.{w} New people, places, committees, projects, and always more acronyms. "
-            n "And, for the first time in years, I was denied access to internal data.{w} I didn't think anything could be above my paygrade anymore.\n"
+            n "And, for the first time in years, I was denied access to internal data."
+            n "I didn't think anything could be above my paygrade anymore."
             n "Note to self: look up \"YTDI \"."
         elif room3["diary"] == 3:
             #"Meeting CAUTIONNE"
             $ play_sound(paperpickup)
             n "\"\'I was very disappointed with the state of the Youth Training and Development Initiative.\'"
             n "That's how I put it in writing. "
-            n "I don't really have the right words to express my disgust with this program's existence.{w}\n\nThe idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline — assuming that we were talking about 18 vs 24. "
+            n "I don't really have the right words to express my disgust with this program's existence."
+            n "The idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline — assuming that we were talking about 18 vs 24. "
             n "It was never supposed to justify...{w} whatever the hell they're doing now.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
             n "\"They don't actually care about reducing rejection symptoms or making the cybernetics work more seamlessly."
-            n "They care about creating a product by experimenting on children.\n"
-            n "Children that no one else cares about."
+            n "They care about creating a product by experimenting on children.\n{p}Children that no one else cares about."
             if gui.text_size > 40:
-                nvl hide
-                pause 0.5
+                $ play_sound(paperturn)
                 nvl clear
-                nvl show
-            $ play_sound(paperturn)
-            n "They care about producing cybernetic \"Trainees\" that are powerful, unthinking, and unflinchingly obedient to authority. "
-            n "STOP cares about selling these trainees as a force to keep its donors on top.\""
+            else:
+                $ play_sound(paperturn)
+                nvl clear
+            n "They want to produce cybernetic \"Trainees\" that are powerful, unthinking, and unflinchingly obedient to authority. "
+            n "STOP plans to sell these trainees as a force to keep its donors on top.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
-            n "\"I got a transfer to the YTDI as a supervisor.{w} No one even seemed ashamed to give me full access.\""
-            nvl hide
-            pause 0.5
-            nvl clear
-            nvl show
-            $ play_sound(paperturn)
-            n "\"I get the sense that my superiors aren't paying attention to what is happening.{w} That might be the most infuriating part for me —{w} they don't even care that much about the success or failure of this program. "
+            n "\"I got a transfer to the YTDI as a supervisor.{w} No one even seemed ashamed to give me full access."
+            n "I get the sense that my superiors aren't paying attention to what is happening.{w} That might be the most infuriating part for me —{w=0.5} they don't care whether this program succeeds or fails. "
             n "The implication I'm getting is that this is far from the only program of its kind.{w} It might be one of many, many more.\""
             nvl hide
-            pause 0.5
             nvl clear
         elif room3["diary"] == 4:
             #"MEETING CAUTIONNE AND FLEEING"
             nvl show
             $ play_sound(paperpickup)
             n "\"He smiled at me. "
-            n "Even though everyone else he's seen here —{w} everyone dressed like me, acting like me, working for the same people as me —{w} has made him suffer. "
+            n "Even though everyone else he's seen here —{w=0.5} everyone dressed like me, acting like me, working for the same people as me —{w=0.5} has made him suffer. "
             n "He {i}smiled{/i} at me.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
+            n "\"I'm getting better at coming up with excuses to visit him, at least.{p}\nI need to evaluate how he's coping with procedures - just like the other YTDI trainees.{w} I might need to test his reflexes."
+            n "Hell, he might need a snack to make him more cooperative."
+            nvl clear
             $ play_sound(paperturn)
-            n "\"I'm getting better at coming up with excuses to visit him, at least.\n"
-            n "I need to evaluate how he's coping with procedures - just like the other YTDI trainees.{w} I might need to test his reflexes.{w} Hell, he might need a snack to make him more cooperative."
             n "All my explanations are superficially believable at best."
-            n "I'm no medical professional.{w} I'm a supervisor - I oversee things.{w} By all means, I should've been reprimanded for getting too involved."
+            n "I'm no medical professional.{w} I'm a supervisor - I oversee things."
+            n "By all means, I should've been reprimanded for getting too involved."
             n "But no such warnings have come my way.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
             n "\"I'm never going to be able to forget the look on his face when the convulsions started. "
             n "He knew it was coming, and he knew there was nothing he could do to even brace himself for the pain. "
             n "He's been through it countless times.{w} I don't want to see it ever again.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
             n "\"They claimed that it was a clerical error that he didn't receive his anti-seizure medications that morning. "
             n "I know that it was actually punishment.{w} He refused to obey during yesterday's mandatory exercises. "
-            n "You wouldn't treat an {i}animal{/i} like this, much less another human.\n"
-            n "To them, he's less than that.\""
+            n "You wouldn't treat an {i}animal{/i} like this, much less another human.\n{p}To them, he's less than that.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
             n "\"I triggered the false alarm right on schedule, down to the second.\n{w} My not-at-all false explosive followed suit. "
             n "I had always understood that the chemical reaction was very simple to set up.{w} But, I still expected my first felony to present more challenges than this.{w} Maybe I have a knack for this kind of thing. "
-            n "He didn't hesitate for one second when I asked him to come with me.{w} As I rushed him through the fire exit, the look on his face at that moment has stuck with me.{w} Could anyone have looked more relieved?\""
+            n "He didn't hesitate for one second when I asked him to come with me.{w} As I rushed him through the fire exit, the look on his face at that moment has stuck with me."
+            n "Could anyone have looked more relieved?\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
             n "\"Maybe he should have hesitated.{w} All that awaits him is a life in hiding."
+            n "..."
             n "...At least he'll have a choice from now on.\""
         elif room3["diary"] == 5:
             $ play_sound(paperpickup)
-            n "\"I've no right to call myself a parent, but even so —{w} parenthood is hard. "
+            n "\"I've no right to call myself a parent, but even so —{w=0.5} parenthood is hard. "
             n "His rehab is going as well as can be expected, but this is no way to raise a child."
             n "I can educate him, keep him fed, and care for him."
-            n "But I can't give him any kind of a future —{w} not while STOP is trying to erase our very existence.\""
+            n "But I can't give him any kind of a future —{w=0.5} not while STOP is trying to erase our very existence.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
             n "\"I managed to section away enough resources to last us a while, but all my internal records within STOP were destroyed by the fire. "
-            n "They still know I'm out here, but now I have no proof that I was ever as big a part of them as I say.{w} It's my word against theirs, and they have far larger, more powerful allies.\""
+            n "They still know I'm out here, but now I have no proof that I was ever as big a part of them as I say."
+            n "It's my word against theirs, and they have far larger, more powerful allies.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
             n "\"Bombs, sabotage, and cryptic messages on shady websites get much better traction than just sending my research notes to major news outlets."
             n "No one cares what Deirdre Destrange has to say.{w} But when \"Dr. Danger\" blows up an energy pipeline, people look up from their food and {i}watch.{/i}"
             n "He chose the name.{w} It's got a nice, old-world appeal to it.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
             n "\"Cautionne has always been eager to please and happy to spend time with me.{w} Is it any wonder he wants to help the nefarious Dr. Danger in her fight against STOP? "
             n "I should tell him no.{w} Revenge is poison, and he's already been through too much. "
-            n "But I still can't even bear to calculate how much of his suffering is my fault.{w} I don't have the heart to tell him no — and I'd sooner die than judge him for how much he hates STOP.\""
+            n "But I still can't bear to calculate how much of his suffering is my fault.{w} I don't have the heart to tell him no — and I'd sooner die than judge him for how much he hates STOP.\""
             nvl hide
-            pause 0.5
+            $ play_sound(paperturn)
+            pause 2
             nvl clear
             nvl show
-            $ play_sound(paperturn)
             n "\"Dr. Danger and Cautionne are becoming a household name, but that's about it. "
-            n "STOP is still in power.{w} People are still too scared to take them to task.{w} And there are still YTDI centers all over the world.\n{w}If I destroy one, they move the children to another. "
+            n "STOP is still in power.{w} People are still too scared to take them to task.{w} And there are still YTDI centers all over the world."
+            n "If I destroy one, they move the children to another."
+            $ play_sound(paperturn)
+            nvl clear
             n "That's horrible as-is, but what if they don't care enough to do even that?"
-            n "What if they just figure the YTDI is just not worth the cost?\n{w}What'll happen to those children then?"
+            n "What if they believe the YTDI is just not worth the cost?"
+            n "What'll happen to those children then?"
+            $ play_sound(paperturn)
             nvl clear
             n "Something needs to change, but I'm not sure it's something that Dr. Danger can do. "
-            if gui.text_size > 40:
-                nvl clear
             n "...And I'm not sure that Deirdre Destrange is enough for him.\""
             $room3_investigated.append("diary")
         $ room3["diary"] += 1
@@ -442,7 +454,7 @@ label room_3:
         else:
             if room3["cooking"] == 0:
                 $init_mise_en_place()
-                "(There's a small kitchenette.{w} It looks like it hasn't been used recently...{w} Did Dr Danger take care of all the cooking?)"
+                "(There's a small kitchenette.{w} It looks like it hasn't been used recently...\n{w}Did Dr Danger take care of all the cooking?)"
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "(A handwritten note sits on the counter.{w} Looks like...{w=0.5}a recipe for pancakes?)"
                 "(Fridge seems well stocked too.{w} Let's see if Cautionne likes your take on Dr Danger's recipe.)"
@@ -543,8 +555,12 @@ label quilt_solved:
     "(Something is written on the back.)"
     nvl clear
     $ nvl_heading = ""
-    n "There was all this heat and smoke and energy.{w} There were alarms blaring and people shouting.{w} \nThat's what she told me,{w=0.1} but I barely remember any of it."
-    n "Here's what I did remember.{w} When we stopped running,{w=0.1} she seemed more tired than I was.{w} She did carry me the entire time.{w=0.5} But she didn't seem any weaker than before.{w} Her hold on my body didn't loosen.{w} She was just looking at what was left of my shoulder."
+    n "There was all this heat and smoke and energy.{w} There were alarms blaring and people shouting."
+    n "That's what she told me,{w=0.1} but I barely remember any of it."
+    nvl clear
+    n "Here's what I did remember.{w} When we stopped running,{w=0.1} she seemed more tired than I was."
+    n "She did carry me the entire time.{w} But she didn't seem any weaker than before.{w} Her hold on my body didn't loosen."
+    n "She was just looking at what was left of my shoulder."
     nvl clear
     n "I was hurting like you wouldn't believe.{w} But I don't think I cared."
     n "Because,{w=0.1} that day,{w=0.5} I got to see the sky again."
@@ -612,10 +628,11 @@ label toys_solved:
     "(Turning it around reveals text reminiscent of a diary entry.)"
     nvl clear
     $ nvl_heading = ""
-    n "She told me to explore the place.{w} She said it was important that I adjust to my new environment,{w=0.1} but she's been holed up in the lab."
+    n "She told me to explore the place.{w} She said it was important that\nI adjust to my new environment, {w=0.1}but she's been holed up in the lab."
     n "I don't know why she's so stressed about my surgeries.{w} She's the smartest person I know.{w} And I grew up surrounded by \"brilliant\" scientists,{w=0.1} so that's saying {i}something{/i}."
     nvl clear
-    n "She says she's still concerned about making adjustments to my synthetic nerves.{w} That she's worried she'll put me through even more pain.{w} But every time she's worked on my new limbs,{w=0.1} I haven't felt a thing."
+    n "She says she's still concerned about making adjustments to my synthetic nerves.{w} That she's worried she'll put me through even more pain."
+    n "But every time she's worked on my new limbs,{w=0.1} I haven't felt a thing."
     n "Last time,{w=0.1} I actually fell asleep."
     nvl clear
     hide memory3 with dissolve
@@ -687,11 +704,12 @@ label cooking_solved:
     "(There's a photo inside of it,{w=0.1} with text written on the back.)"
     nvl clear
     $ nvl_heading = ""
-    n "I don't remember what the food was like at the orphanage.{w} Probably bland."
+    n "I don't remember what the food was like at the orphanage."
+    n "Probably bland."
     n "I wish I could forget what LabScrip tastes like…{w=0.5} but meals were usually the least painful part of my day in the lab,{w=0.1} so I've got a soft spot for the stuff."
     n "But that wasn't food.{w} It was nutritious and edible and nothing more.{w} It didn't fill you up.{w} It wasn't warm.{w} There certainly was no thought in it at all."
     nvl clear
-    n "Pancakes are food.{w=0.5} They sizzle in the pan and curl at the edges,{w=0.1} bubbling slightly when it's time to flip.{w} You can undercook them or burn them,{w=0.1} bury them in toppings or eat them with your hands.{w} They're filling,{w=0.1} and tasty,{w=0.1} and oh-so warm."
+    n "Pancakes are food.{w=0.5} They sizzle in the pan and curl at the edges,{w=0.1} bubbling slightly when it's time to flip.{w}\nYou can undercook them or burn them,{w=0.1} bury them in toppings or eat them with your hands.{w} They're filling,{w=0.1} and tasty,{w=0.1} and oh-so warm."
     n "I'm sure I could easily re-create her recipe.{w} It's hardly rocket science, even with one arm."
     n "But I've never had someone cook for {i}me{/i} before."
     n "...I'd like to pretend I'm not capable for a little while longer."
