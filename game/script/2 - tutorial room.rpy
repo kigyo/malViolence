@@ -108,6 +108,9 @@ label tutorial_intro:
         hide screen tutorial_lock
         $renpy.block_rollback()
 
+        ####quickly defining a transition bg for this scene. this is where the tutorial room has the vent open but no pellets on the floor
+        image bg tutorial1_5 = "images/BG/Tutorial room v1_5.png"
+
 
         if inspect == "painting":
             if tutorial["vent"] == 0:
@@ -115,6 +118,8 @@ label tutorial_intro:
                 "(Cautionne won't be winning any awards for home decor anytime soon.)"
                 $ play_sound(creakyvent)
                 $ tutorial["vent"] = 1
+                scene bg tutorial1_5:
+                    zoom 0.5
                 with fade
                 pause 0.5
                 show tutorial_bowl with dissolve:
@@ -135,9 +140,11 @@ label tutorial_intro:
                 pause 1
                 "(...Huh?{w} What's this?)"
                 "(There's something at the bottom of the bowl.{w} ...A pattern?)"
+                "(To get a better look,"
                 $ play_sound(pelletfall)
-                pause 1
-                "(To get a better look,{w=0.1} you dump the rest of the pellets on the floor.)"
+                scene bg tutorial2 with fade:
+                    zoom 0.5
+                extend " you dump the rest of the pellets on the floor.)"
                 #[sound of pellets falling]
                 show tutorial_diagram with dissolve:
                     zoom 0.3 yalign 0.2 xalign 0.5
@@ -145,6 +152,8 @@ label tutorial_intro:
                 "(Wonder if it means anything...)"
                 hide tutorial_diagram with dissolve
             else:
+                scene bg tutorial2:
+                    zoom 0.5
                 show tutorial_diagram with dissolve:
                     zoom 0.3 yalign 0.2 xalign 0.5
                 pause

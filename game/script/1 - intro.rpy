@@ -188,7 +188,7 @@ label start:
     cr "Quintessential five-star living,{w=0.1} just like the famous Milton Hotels."
     cr "Oh,{w=0.1} and if you get hungry,{w=0.1} just lift {color=#00e7ff}the painting in the middle of the room.{/color}"
     cr "The vent dispenses LabScrip 4053."
-    cr "Reviewers say its \"safe for human consumption,\"{w=0.1} so don't be shy.\n{w}It's got all the nutrients you need to live a good life!"
+    cr "Reviewers say its \"safe for human consumption,\"{w=0.1} so don't be shy.{p}It's got all the nutrients you need to live a good life!"
     pause 1
     cr "...Well, what's the holdup?{w=0.5} Have a look around,{w=0.1} check your dead device,{w=0.1} beg for mercy,{w=0.1} or make yourself comfortable."
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
