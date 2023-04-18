@@ -49,7 +49,7 @@ label post_room_3:
     $ play_sound(doorunlock)
     pause 2
 
-    "(Huh.{w} The screen above you didn't turn on.)"
+    "(Huh.{w} The screen behind you didn't turn on.)"
     "(...Guess Cautionne really was serious about the whole \"silent treatment\" thing.)"
 
     if len(room3_investigated) == 7:
