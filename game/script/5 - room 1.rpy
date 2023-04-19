@@ -212,10 +212,12 @@ label bomb_solved:
     "You solved the puzzle!"
     $ play_sound(marbleroll)
     show marble1:
-        xalign 0.5 yalign 0.4
+        xalign 0.8 yalign 0.4 alpha 0.0
+        ease 1.5 rotate 360 xalign 0.5 yalign 0.4 alpha 1.0
     hide black onlayer screens
     hide screen room1_bomb
     with puzzle_hide
+    pause 1
     "(A marble rolls out of the bomb case.{w} Attached to it is a note reading \"Colby Padilla\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
@@ -271,10 +273,12 @@ label hacking_solved:
     "You solved the puzzle!"
     $ play_sound(marbleroll)
     show marble2:
-        xalign 0.5 yalign 0.4
+        xalign 0.8 yalign 0.4 alpha 0.0
+        ease 1.5 rotate 360 xalign 0.5 yalign 0.4 alpha 1.0
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
+    pause 1
     "(The computer ejects a marble,{w=0.1} along with a note reading \"Asiya Bishop\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
@@ -296,7 +300,7 @@ label hacking_game_over:
     $ play_sound(timeralarm2)
 
     "(It's too late.{w} The counter-trace just found you and—){w=1}{nw}"
-    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){w=1}{nw}"
+    "(Wait.{w} Does that mean you've alerted STOP?{p}That rescue could be—){w=1}{nw}"
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
@@ -333,10 +337,12 @@ label decanting_solved:
     "You solved the puzzle!"
     $ play_sound(marbleroll)
     show marble3:
-        xalign 0.5 yalign 0.4
+        xalign 0.8 yalign 0.4 alpha 0.0
+        ease 1.5 rotate 360 xalign 0.5 yalign 0.4 alpha 1.0
     hide black onlayer screens
     hide screen room1_decanting
     with puzzle_hide
+    pause 1
     "(A small compartment opens up,{w=0.1} revealing a marble.{w} Underneath it is a note reading \"Brooke Yang\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
@@ -378,13 +384,12 @@ label decanting_game_over:
     extend " {cps=20}have your legs always been made of jelly?){/cps}"
     cr "...But if your bio signs are anything to go by...{w=0.5} it looks like overexposure to the vapors does the job too!"
 
-    $ play_sound(bodyfall)
 
     show bg room1 at dizzy:
         zoom 0.335 yalign 0.0
         easeout 0.3 zoom 1.0 xalign 0.2 yalign 1.0
     pause 0.3
-
+    $ play_sound(bodyfall)
     scene black with small_shake
 
     pause 3
@@ -404,16 +409,17 @@ label marble_game_over:
     $renpy.block_rollback()
     $ inspect = "game over"
     show screen room1_marble with None
+    stop music fadeout 0.5
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(You step back and pause.{w} Something about the order doesn't seem—)"
+    "(You step back and pause.{w} Something about the order doesn't seem—){w=1}{nw}"
     hide black onlayer screens
     hide screen room1_marble
     with puzzle_hide
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Oof.{w=0.5} {i}Not quite.{/i} "
     cr "But it's okay!{w=0.5} I can fix this,{w=0.1} easy-peasy."
-    cr "Just, uh...{w=0.5} stand still...{w=0.5}{cps=20}foooooor oooone secoooooond aaaaand—{/cps}{w=1}{nw}"
+    cr "Just, uh...{w=0.5} stand still...{w=0.5}{cps=20}foooooor oooone secoooooond aaaaand—{/cps}{w=0.5}{nw}"
 
     #"{b}SPLAT{/b}
     #{b}[a giant marble comes and crushes the protag — screen cuts to black]{/b}"

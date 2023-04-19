@@ -43,11 +43,11 @@ label dr_danger_1:
   pause 1
 
 
-  $ play_sound(singlefootstep)
-
   show bg corridor1:
     align (0.5,0.5) zoom 0.5
     ease 2.7 zoom 0.6
+
+  $ play_sound(singlefootstep)
 
 
   "(You take another cautious step ahead and—){w=1}{nw}"
@@ -123,9 +123,9 @@ label dr_danger_1:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
   pause 2
-  $ play_sound(creakyvent)
   scene black with fade
-  pause 1
+  $ play_sound(creakyvent)
+  pause 3
   show bg room1 with placeintro:
     zoom 0.6 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
@@ -167,9 +167,21 @@ label dr_danger_1:
   pause 1
   "(...Wait.{w} There's something else here.)"
 
+  ####quickly defining a transition bg for this scene. this is where the tutorial room has the vent open but no pellets on the floor
+  layeredimage marblemeta:
+    always "images/puzzles/room_1_meta/base_marble_maze.png"
+    always "images/puzzles/room_1_meta/marble_maze_effigy_1.png"
+    always "images/puzzles/room_1_meta/marble_maze_effigy_2.png"
+    always "images/puzzles/room_1_meta/marble_maze_effigy_3.png"
+
+  show marblemeta with dissolve:
+    xpos 200
+
   pause 2
   ### show meta puzzle image
   "(A lock with a strange puzzle. {w}Kinda like the one you found in your cell.)"
+
+  hide marblemeta with dissolve
   pause 1
   "(...Maybe you\'ll find the answer in this room?)"
   show bg room1:

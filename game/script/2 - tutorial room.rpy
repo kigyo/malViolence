@@ -142,6 +142,8 @@ label tutorial_intro:
                 "(There's something at the bottom of the bowl.{w} ...A pattern?)"
                 "(To get a better look,"
                 $ play_sound(pelletfall)
+                scene black with fade
+                pause 1
                 scene bg tutorial2 with fade:
                     zoom 0.5
                 extend " you dump the rest of the pellets on the floor.)"
