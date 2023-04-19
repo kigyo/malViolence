@@ -24,7 +24,7 @@ label dr_danger_1:
   $ play_sound(dooropen)
   scene black with fade
   pause 2
-  show bg corridor1 with placeintro:
+  show bg corridor1 tvoff with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
   $Achievement.add(achievement_tfng)
@@ -35,7 +35,7 @@ label dr_danger_1:
 
   pause 1
 
-  show bg corridor1 with dissolve:
+  show bg corridor1 tvoff with dissolve:
     align (0.5,0.5) zoom 0.5
 
 
@@ -43,7 +43,7 @@ label dr_danger_1:
   pause 1
 
 
-  show bg corridor1:
+  show bg corridor1 tvoff:
     align (0.5,0.5) zoom 0.5
     ease 2.7 zoom 0.6
 
@@ -55,6 +55,7 @@ label dr_danger_1:
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor1-01.ogg"
   #"{b}[the {/b}{b}dr.{/b}{b} danger screens go {/b}{b}on ]{/b}"
+  show bg corridor1
   "???" "Welcome.{w=0.52} I see you've arrived safely?"
 
   show bg corridor1:

@@ -82,6 +82,12 @@ style puzzle_frame is gui_frame:
     background "gui/puzzle.png"
     padding (50,40) xfill True yfill True
 
+
+################### for extra backgrounds ################
+image bg corridor1 tvoff = "images/BG/Corridor 1_TVOff.png"
+image bg corridor2 tvoff = "images/BG/Corridor 2_TVOff.png"
+image bg corridor3 tvoff = "images/BG/Corridor 3_TVOff.png"
+
 ################### for defining mini cgs in the game ################
 image tutorial_pellets = "images/tutorial_pellets.png"
 image room1_electricchair = "images/room1_electricchair.png"
