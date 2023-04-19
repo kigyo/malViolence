@@ -236,11 +236,12 @@ label bomb_game_over:
     stop music fadeout 0.5
     "(Carefully,{w=0.1} you finish the assembly and set it down in front of you.)"
     "(...Huh.{w} It doesn't seem like it's ticking.)"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+    cr "Well, well, well.{w=0.5} You've successfully made a bomb."
     hide black onlayer screens
     hide screen room1_bomb
     with puzzle_hide
-    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-    cr "Well, well, well.{w=0.5} You've successfully made a bomb."
+    pause 0.5
     cr "I can say with {i}100%% certainty{/i} that it'll make a fantastic explosion."
     "(Phew.{w} Looks like I've done what I was supposed to.)"
     $ play_sound(timeralarm)
@@ -248,7 +249,7 @@ label bomb_game_over:
     cr "That said,{w=0.1} the timer—{w=1}{nw}"
     $ play_sound(bombexplosion1)
     scene black with small_shake
-    pause 3
+    pause 2.75
     cr "...needs some work."
     pause 3
     nvl clear
@@ -301,11 +302,12 @@ label hacking_game_over:
 
     "(It's too late.{w} The counter-trace just found you and—){w=1}{nw}"
     "(Wait.{w} Does that mean you've alerted STOP?{p}That rescue could be—){w=1}{nw}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+    cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
-    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-    cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
+    pause 0.5
     cr "Good news!{w=0.5} STOP found your computer."
     cr "Bad news!{w=0.5} Standard operating procedure is to overload the offending console ASAP."
     cr "By the way,{w=0.1} you're standing very,{w=0.1} {i}very{/i} close to the computer.{w=0.5} I'll have you know that's bad for your eye—{w=1}{nw}"
@@ -371,6 +373,7 @@ label decanting_game_over:
     scene bg room1:
         parallel:
             yalign 0.0 xalign 0.0 zoom 0.335
+    pause 0.5
     "(Really?!{w} Did you find a solution that {i}he {/i}hadn't thought of?)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Y'know,{w=0.1} I {i}did {/i}say that two doses would be lethal..."
@@ -416,6 +419,7 @@ label marble_game_over:
     hide black onlayer screens
     hide screen room1_marble
     with puzzle_hide
+    pause 0.5
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Oof.{w=0.5} {i}Not quite.{/i} "
     cr "But it's okay!{w=0.5} I can fix this,{w=0.1} easy-peasy."

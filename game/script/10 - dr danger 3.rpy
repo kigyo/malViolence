@@ -134,8 +134,8 @@ label dr_danger_3:
   "(That message wasn't for you,{w=0.1} and it wasn't for one of Dr. Danger's goons either.)"
   "(But a {i}babysitter?{/i}{w} {i}Really?{/i})"
   "(Who in the world would be qualified to babysit {i}him?{/i})"
-  "(...)"
   pause 1
+  "(...)"
   "(...{i}C'mon.{/i}{w} Just focus on the task at hand.)"
 
   $ play_sound(footsteps3)

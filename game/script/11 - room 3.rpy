@@ -433,6 +433,8 @@ label room_3:
                 call init_toy_board from _call_init_toy_board
                 "(There are a few plushies sitting on the shelf.{w} They're suprisingly soft!)"
                 "(You investigate the cupboard below the plushies where—{w=0.5} {i}woah!{/i})"
+                $play_sound(plushiesqueak)
+                $queue_sound(plushiesqueak)
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
                 "(An avalanche of plushies spills out,{w=0.1} burying you in a soft, fuzzy pile.)"
                 "(This {i}would{/i} be a comfy way to go out,{w=0.1} but you should probably put everything back.)"
@@ -508,6 +510,7 @@ label scrapbook_game_over:
     hide black onlayer screens
     hide screen room3_meta
     with puzzle_hide
+    pause 1
     cr "But...{w=0.5} that scrapbook meant a lot to me."
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "If you were gonna screw up {i}that {/i}badly,{w=0.1} you could've at least used the {i}non-permanent{/i} glue."
@@ -546,11 +549,14 @@ label quilt_solved:
     $ room3["pages"].append(5)
     $ play_sound(puzzlesuccess)
     "You solved the puzzle!"
-    show memory1:
-        xalign 0.5 yalign 0.3
     hide black onlayer screens
     hide screen room3_quilt
     with puzzle_hide
+    pause 0.1
+    show memory1:
+        xalign 0.5 yalign 0.1 alpha 0
+        ease 1 xalign 0.5 yalign 0.3 alpha 1
+    pause 1
     "(You notice that you can now lift up the quilt.{w} There's a photo underneath it.)"
     "(Something is written on the back.)"
     nvl clear
@@ -565,7 +571,8 @@ label quilt_solved:
     n "I was hurting like you wouldn't believe.{w} But I don't think I cared."
     n "Because,{w=0.1} that day,{w=0.5} I got to see the sky again."
     nvl clear
-    hide memory1 with dissolve
+    hide memory1 
+    with dissolve
     "(...)"
     $ inspect = None
     call screen room3
@@ -589,8 +596,10 @@ label quilt_game_over:
     $ play_sound(switchon)
     "(You hear a switch go off,{w=0.1} and—){w=1}{nw}"
     $ play_sound(piercings)
-    $ queue_sound(bodypierce)
     scene black
+    pause 1
+    $ queue_sound(bodypierce)
+    scene black with small_shake
 
     #{i}{b}[sound of protag getting stabbed with needles]{/b}{/i}
 
@@ -619,11 +628,14 @@ label toys_solved:
     $ room3["pages"].append(4)
     $ play_sound(puzzlesuccess)
     "You solved the puzzle!"
-    show memory3:
-        xalign 0.5 yalign 0.3
     hide black onlayer screens
     hide screen toy_playspace
     with puzzle_hide
+    pause 0.1
+    show memory3:
+        xalign 0.5 yalign 0.1 alpha 0
+        ease 1 xalign 0.5 yalign 0.3 alpha 1
+    pause 1
     "(One of the plushies rips open,{w=0.1} revealing a photo inside.)"
     "(Turning it around reveals text reminiscent of a diary entry.)"
     nvl clear
@@ -669,7 +681,7 @@ label toys_game_over:
     $ queue_sound(falling)
     $ queue_sound(buzzsawgore)
 
-    scene black with small_shake
+    scene black with easeouttop
 
     pause 3
     #{i}{b}SLICING SFX, CUT TO BLACK{/b}{/i}"
@@ -699,8 +711,11 @@ label cooking_solved:
     hide screen mise_en_place
     with puzzle_hide
     "(Suddenly,{w=0.1} the stove pops open.)"
-    show memory2 with dissolve:
-        xalign 0.5 yalign 0.3
+    pause 0.1
+    show memory2:
+        xalign 0.5 yalign 0.1 alpha 0
+        ease 1 xalign 0.5 yalign 0.3 alpha 1
+    pause 1
     "(There's a photo inside of it,{w=0.1} with text written on the back.)"
     nvl clear
     $ nvl_heading = ""
@@ -738,7 +753,7 @@ label cooking_game_over:
 
     $ play_sound(smash)
 
-    scene black
+    scene black with small_shake
 
     # {b}[SPLAT sound]{/b}
     # {b}[death screen]{/b}

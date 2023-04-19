@@ -51,6 +51,15 @@ define word_description = _("""Cautionne's a big fan of word games, so he wants 
 define word_lenient_failure_message = _("(Nope, not good enough.)")
 
 label room_2:
+
+####defining the tile images here
+    image tile_t = "images/puzzles/room_2_meta/tile_t.png"
+    image tile_a = "images/puzzles/room_2_meta/tile_a.png"
+    image tile_s = "images/puzzles/room_2_meta/tile_s.png"
+    image tile_e = "images/puzzles/room_2_meta/tile_e.png"
+    image tile_r = "images/puzzles/room_2_meta/tile_r.png"
+
+#####
     if inspect not in room2_investigated and inspect in ["blueprints", "limbs", "clippings", "post-its", "corkboard"]:
         $room2_investigated.append(inspect)
     show screen room2
@@ -270,9 +279,16 @@ label evidence_solved:
     hide black onlayer screens
     hide screen room2_evidence
     with puzzle_hide
+    pause 0.1
+    show tile_e:
+        zoom 0.5 xalign 0.5 yalign 0.3 alpha 0
+        ease 1 xalign 0.5 yalign 0.5 alpha 1
+
+    pause 1
     "(A tiny blue tile falls to the ground.{w} Upon closer inspection,{w=0.1} it reads the letter \"E\",{w=0.1} for...{w=0.5} {i}evidence{/i}?)"
     "(Or maybe for {i}\"end of puzzles\", or \"enough of these silly games\"{/i}.{w} But that's just wishful thinking.)"
     "(Either way,{w=0.1} you decide to take it with you.)"
+    hide tile_e with dissolve
     $ inspect = None
     call screen room2
 
@@ -326,8 +342,20 @@ label panopticon_solved:
     hide black onlayer screens
     hide screen room2_panopticon
     with puzzle_hide
+    pause 0.1
+    show tile_a:
+        zoom 0.5 xalign 0.3 yalign 0.3 alpha 0
+        ease 1 xalign 0.3 yalign 0.5 alpha 1
+    show tile_s:
+        zoom 0.5 xalign 0.7 yalign 0.3 alpha 0
+        ease 1 xalign 0.7 yalign 0.5 alpha 1
+
+    pause 1
     "(In response to your hard-earned success,{w=0.1} two little {i}Scraddle{/i}-like tiles pop out of the miniature panopticon.)"
     "(They represent the letters \"A\" and \"S\".{w} How quaint.)"
+    hide tile_a
+    hide tile_s
+    with dissolve
     $ inspect = None
     call screen room2
 
@@ -341,11 +369,12 @@ label panopticon_game_over:
     "(You re-arrange another set of cells and—){w=1}{nw}"
     $ play_sound(error)
     "(—and suddenly,{w=0.1} your controls freeze up.{w} There's a notification in the corner.)"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+    cr "Seems like you've run out of time,{w=0.1} lab rat."
     hide black onlayer screens
     hide screen room2_panopticon
     with puzzle_hide
-    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
-    cr "Seems like you've run out of time,{w=0.1} lab rat."
+    pause 0.5
     cr "That's it.{w=0.5} The jailbreak is over.{w=0.5} You screwed up."
     "(So it {i}was {/i}a prison?{w} Then—)"
     cr "If this only concerned you and me,{w=0.1} I'd be \"whatever\" about it."
@@ -388,8 +417,20 @@ label recalibration_solved:
     hide black onlayer screens
     hide screen cybernetics
     with puzzle_hide
+    pause 0.1
+    show tile_t:
+        zoom 0.5 xalign 0.3 yalign 0.3 alpha 0
+        ease 1 xalign 0.3 yalign 0.5 alpha 1
+    show tile_r:
+        zoom 0.5 xalign 0.7 yalign 0.3 alpha 0
+        ease 1 xalign 0.7 yalign 0.5 alpha 1
+
+    pause 1
     "(The desk drawer juts open just a bit,{w=0.1} and reveals two small tiles inside.)"
     "(\"R\" and \"T\" are written on them,{w=0.1} respectively.{w} Now,{w=0.1} where could you put them to use...?)"
+    hide tile_t
+    hide tile_r
+    with dissolve
     $ inspect = None
     call screen room2
 
@@ -409,6 +450,7 @@ label recalibration_game_over:
     hide black onlayer screens
     hide screen cybernetics
     with puzzle_hide
+    pause 0.5
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} That person's own nervous system will rip their body apart with spasming."
     cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"
@@ -425,12 +467,12 @@ label recalibration_game_over:
     pause 1
     cr "And I'm gonna need them {cps=20}{i}right now.{/i}{/cps}"
 
-    $ play_sound(bodyfall)
-
     scene bg room2 at dizzy:
         zoom 0.335 yalign 0.0
         easeout 0.2 zoom 1.0 xalign 0.2 yalign 1.0
     pause 0.2
+
+    $ play_sound(bodyfall)
 
     scene black with small_shake
     #"{i}{b}COLLAPSE SFX{/b}"
@@ -458,23 +500,26 @@ label word_game_over:
     $renpy.block_rollback()
     if word_answer == ["","","","",""] or  word_answer == ["T","A","S","E","R"]:
         stop music fadeout 0.5
+        cr "..."
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Wow,{w=0.1} lab rat."
         cr "...Did you even {i}try?{/i}"
         $ play_sound(smash)
-        scene black
+        scene black with small_shake
         pause 3
     elif random_choice == 1:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
-        cr "Holy crap!{w=0.5} Did you just manage to guess that right on your first try?"
+        cr "Holy crap!{w=0.5} Did you just guess that right on your first try?"
         "(Huh?{w} Really?)"
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "{i}Kidding!{/i}"
         "(You—)"
@@ -494,11 +539,12 @@ label word_game_over:
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         cr "If so,{w=0.1} go complain in the comments."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
-        cr "You've just met a a dead end!"
+        cr "You've just met a dead end!"
         $ play_sound(smash)
-        scene black
+        scene black with small_shake
         pause 3
 
     elif random_choice == 3:
@@ -509,11 +555,12 @@ label word_game_over:
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "But next time,{w=0.1} {i}do{/i} look before you leap."
         $ play_sound(trapdoor)
-        $ queue_sound(falling)
-        scene black with easeoutbottom
+        $ queue_sound(bodyfall)
+        scene black with easeouttop
         pause 3
 
     elif random_choice == 4:
@@ -527,6 +574,7 @@ label word_game_over:
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         cr "But since you're here,{w=0.1} I've got another game for you to play."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "It's time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
@@ -544,12 +592,13 @@ label word_game_over:
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         cr "You'd have better luck smashing keys."
         "(You—)"
         cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}"
         $ play_sound(smash2)
         pause 0.6
-        scene black
+        scene black with small_shake
         pause 3
 
     $nvl_heading = "Lab Report #404"

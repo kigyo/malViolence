@@ -36,7 +36,7 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_Corridor2-01.ogg"
   dr "Good. {w=0.559}You made it through the experiment room."
   "(?!)" with small_shake
-  "(Dr. Danger's on again!{w} What did you—)"
+  "(Dr. Danger's on again!{w} What did you—){w=1}{nw}"
   "(No,{w=0.1} no{w=0.1} — calm down.{w} It's probably motion-activated.)"
   "(You should've listened to the last recording,{w=0.1} since it seemed pretty helpful.{w} This time,{w=0.1} you'll stay still and pay attention!)"
 
@@ -80,7 +80,7 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "...I suppose I can say this."
   drs "All his test subjects have a certain {i}unfortunate commonality.{/i}"
-  drs" A {i}terminal {/i}condition, as he sees it..."
+  drs" A {i}terminal {/i}condition, as he sees it...{w}{nw}"
   drs "...that makes it very difficult for him to...{w=0.5} {i}remain impartial.{/i}"
   voice "audio/voice/dr.danger/Danger_SB-I Apologize.ogg"
   drs "I apologize for being vague here."

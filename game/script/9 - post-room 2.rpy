@@ -50,7 +50,7 @@ label post_room_2:
   show cautionne lean speaking
   c "Not that {i}you'd{/i} know it,{w=1}{nw}"
   show cautionne lean eyeclosed
-  extend "but I've got a good eye for this kind of thing!"
+  extend " but I've got a good eye for this kind of thing!"
   c "I bet you've got that bubbly feeling buzzing under your skin..." 
   show cautionne lean speaking
   c "Like sweet,{w=0.1} sparkling lemonade in your veins?"
