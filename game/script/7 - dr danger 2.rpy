@@ -10,7 +10,8 @@ label dr_danger_2:
   $ play_sound(metaldoorclose)
   #"{b}[pause as {/b}{b}Cautionne's{/b}{b} screen shuts off, and walking sounds are heard – showing the player move to the next corridor]{/b}"
   "(...)"
-  "(This self-styled supervillain has got {i}world-class{/i} bad manners.{w} Where could he have picked up such a nasty personality,{w=0.1} anyway?)"
+  "(This self-styled supervillain has got {i}world-class{/i} bad manners.)"
+  "(Where could he have picked up such a nasty personality,{w=0.1} anyway?)"
   "(You know it's pointless to speculate,{w=0.1} but you can't help it..."
   pause 0.5
 
@@ -81,7 +82,7 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "...I suppose I can say this."
   drs "All his test subjects have a certain {i}unfortunate commonality.{/i}"
-  drs" A {i}terminal {/i}condition, as he sees it...{w}{nw}"
+  drs" A {i}terminal {/i}condition, as he sees it...{w=1}{nw}"
   drs "...that makes it very difficult for him to...{w=0.5} {i}remain impartial.{/i}"
   voice "audio/voice/dr.danger/Danger_SB-I Apologize.ogg"
   drs "I apologize for being vague here."
@@ -105,7 +106,7 @@ label dr_danger_2:
   #"{b}[{/b}{b}dr.{/b}{b} danger shuts off her recording]{/b}"
 
   show drdanger stare silent
-  pause 0.5
+  pause 1
   $ play_sound(tvoff)
   hide drdanger stare silent
   hide crt

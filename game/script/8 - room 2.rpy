@@ -115,7 +115,10 @@ label room_2:
             "(You eye over the mass of scrawled notes pinned in front of you.{w} There are two distinct sets of handwriting here,{w=0.1} but the contents are mostly the same...{w=0.5} and mostly {i}domestic?{/i}) "
             "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and what stories to read.)"
             "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and chores...)"
-            "(Whoever left these notes for each other weren't just sharing the same space.\n{w}They were {i}living{/i} together.)"
+            if gui.text_size > 40:
+                "(The two who wrote these notes weren't just sharing the same space. {w}They were {i}living{/i} together.)"
+            else:
+                "(The two who wrote these notes weren't just sharing the same space.\n{w}They were {i}living{/i} together.)"
             hide room2_postitnotes with dissolve
         else:
             show room2_postitnotes with dissolve:
@@ -170,7 +173,8 @@ label room_2:
             show room2_news with dissolve:
                 yalign 0.2 xalign 0.5
             "(Printouts and clippings of various news articles —{w=0.1} all related to Dr. Danger's exploits...{w=0.5} with a {i}certain{/i} colorful sidekick occasionally breaking into the opening paragraphs.)"
-            "(In fact,{w=0.1} when you look at them all together,{w=0.1} Cautionne seems to show up more over time.{w} Dr. Danger must've been pleased with her pupil's growth.)"
+            "(In fact,{w=0.1} when you look at them all together,{w=0.1} Cautionne seems to show up more over time.)"
+            "(Dr. Danger must've been pleased with her pupil's growth.)"
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
             "(Based on what you can make out of the caption — {w=0.1}it seems to be of some kind of commemorative occasion.)"
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
@@ -182,7 +186,7 @@ label room_2:
         else:
             show room2_news with dissolve:
                 yalign 0.2 xalign 0.5
-            "Newspaper printouts and clippings.{w} They all feature Dr. Danger...{w=0.5} as well as a {i}certain{/i} colorful sidekick."
+            "Newspaper printouts and clippings.{w} They all feature Dr. Danger...{w=0.5} as well as a certain colorful sidekick."
             hide room2_news with dissolve
             pass
         $ room2["clippings"] += 1
@@ -352,7 +356,7 @@ label panopticon_solved:
 
     pause 1
     "(In response to your hard-earned success,{w=0.1} two little {i}Scraddle{/i}-like tiles pop out of the miniature panopticon.)"
-    "(They represent the letters \"A\" and \"S\".{w} How quaint.)"
+    "(They show the letters \"A\" and \"S\".{w} How quaint.)"
     hide tile_a
     hide tile_s
     with dissolve
@@ -418,10 +422,10 @@ label recalibration_solved:
     hide screen cybernetics
     with puzzle_hide
     pause 0.1
-    show tile_t:
+    show tile_r:
         zoom 0.5 xalign 0.3 yalign 0.3 alpha 0
         ease 1 xalign 0.3 yalign 0.5 alpha 1
-    show tile_r:
+    show tile_t:
         zoom 0.5 xalign 0.7 yalign 0.3 alpha 0
         ease 1 xalign 0.7 yalign 0.5 alpha 1
 
@@ -513,7 +517,7 @@ label word_game_over:
         pause 3
     elif random_choice == 1:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
-        cr "Holy crap!{w=0.5} Did you just guess that right on your first try?"
+        cr "Holy crap!{w=0.5} Did you guess that right on your first try?"
         "(Huh?{w} Really?)"
         stop music fadeout 0.5
         hide black onlayer screens
@@ -522,7 +526,7 @@ label word_game_over:
         pause 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "{i}Kidding!{/i}"
-        "(You—)"
+        "(You—){w=1}{nw}"
         cr "C'mon,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
         #"{b}ZAP SFX, CUT TO BLACK{/b}"
         $ play_sound(zap)
@@ -534,7 +538,7 @@ label word_game_over:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Whoa...{w=0.5} You got it."
         cr "...Did someone write you a walkthrough online?"
-        "(You—)"
+        "(Huh?{w} How did you-){w=1}{nw}"
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word
@@ -551,7 +555,7 @@ label word_game_over:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
         stop music fadeout 0.5
         cr "You're a fast one,{w=0.1} aren't you?"
-        "(Huh?{w} What do you—)"
+        "(Huh?{w} What do you—){w=1}{nw}"
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
@@ -569,7 +573,7 @@ label word_game_over:
         cr "I see you're the type who likes to gamble."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Alas,{w=0.1} you didn't hit the jackpot.{w=0.5} Better luck next time!"
-        "(You—)"
+        "(You—){w=1}{nw}"
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word
@@ -578,7 +582,7 @@ label word_game_over:
         cr "But since you're here,{w=0.1} I've got another game for you to play."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "It's time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
-        "(What gu—)"
+        "(What gu—){w=1}{nw}"
         $ play_sound(gunshot)
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
         scene black
@@ -594,8 +598,8 @@ label word_game_over:
         with puzzle_hide
         pause 0.5
         cr "You'd have better luck smashing keys."
-        "(You—)"
-        cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}"
+        "(You—){w=1}{nw}"
+        cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}{w=1}{nw}"
         $ play_sound(smash2)
         pause 0.6
         scene black with small_shake

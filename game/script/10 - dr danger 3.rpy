@@ -34,7 +34,8 @@ label dr_danger_3:
   "(It's darker here —{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
   "(The wooden floorboards and the decorated wallpaper feel...{w=0.5} welcoming.{w} {i}Nostalgic,{/i} even.)"
   "(If you viewed this hall alone,{w=0.1} you'd assume it'd belong to a family household.{w} Not to a scheming terrorist and her kooky sidekick.)"
-  "(It's been a very long...{w=0.5} day?{w} Hard to tell how much time has passed.{p}But damn,{w=0.1} you are {i}exhausted.{/i})"
+  "(It's been a very long...{w=0.5} day?{w} Hard to tell how much time has passed.)"
+  "(But damn,{w=0.1} you are {i}exhausted.{/i})"
   "(The gentle heat tempts you to sit down on the floor.{w} Or maybe lie down.)"
   pause 1
   "(Um...{w} Would Cautionne allow you to take a quick breather?)"
@@ -133,7 +134,7 @@ label dr_danger_3:
   pause 2
 
   "(That message wasn't for you,{w=0.1} and it wasn't for one of Dr. Danger's goons either.)"
-  "(But a {i}babysitter?{/i}{w} {i}Really?{/i})"
+  "(But a {i}babysitter?{/i}{w} Really?)"
   "(Who in the world would be qualified to babysit {i}him?{/i})"
   pause 1
   "(...)"

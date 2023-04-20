@@ -243,7 +243,7 @@ label bomb_game_over:
     with puzzle_hide
     pause 0.5
     cr "I can say with {i}100%% certainty{/i} that it'll make a fantastic explosion."
-    "(Phew.{w} Looks like I've done what I was supposed to.)"
+    "({i}Phew.{/i}{w} Looks like you've done what you were supposed to.)"
     $ play_sound(timeralarm)
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "That said,{w=0.1} the timer—{w=1}{nw}"
@@ -255,7 +255,8 @@ label bomb_game_over:
     nvl clear
     $nvl_heading = "Lab Report #414"
     l "Subject passed away due to an overexposure to high-yield explosives."
-    l "{b}Contributing Factors to Death:{/b} A lack of detail-oriented problem solving skills. Nothing more, nothing less."
+    l "{b}Contributing Factors to Death:{/b} A lack of detail-oriented problem solving skills."
+    l "Nothing more, nothing less."
     $deadend("dead3")
     le "DEAD END 03: A Mindblowing Conclusion!"
     pause 2
@@ -318,7 +319,7 @@ label hacking_game_over:
     pause 3
 
     $nvl_heading = "Lab Report #615"
-    l "Subject died after computer shrapnel blew up into their face."
+    l "Subject died after computer shrapnel blew up into their face.\n"
     l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn't thorough enough with their background check."
     $deadend("dead4")
     le "DEAD END 04: Trouble-shooting?"
@@ -437,7 +438,8 @@ label marble_game_over:
     pause 3
 
     $nvl_heading = "Lab Report #909"
-    l "Subject was crushed by a comically large marble. Dropped just high enough for instantaneous death and perfect comedic timing."
+    l "Subject was crushed by a comically large marble."
+    l "Dropped just high enough for instantaneous death and perfect comedic timing."
     l "{b}Contributing Factors to Death:{/b} Didn't recognize good slapstick even when it hit them."
 
     $deadend("dead2")

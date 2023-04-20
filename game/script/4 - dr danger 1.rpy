@@ -7,10 +7,11 @@ label dr_danger_1:
   "Almost like he..."
   show bg tutorial2:
     ease 0.5 xalign 0.4
-    ease 0.3 xalign 0.5
-    ease 0.3 xalign 0.4
+    ease 0.5 xalign 0.6
+    ease 0.5 xalign 0.45
+    ease 0.5 xalign 0.55
     ease 0.5 xalign 0.5
-  pause 2
+  pause 3
   "(No.)"
   "(Remember your training. {w}Now's not the time to overthink things.)"
   "(You need to get out of here. {w}Detective work can come later.)"
@@ -86,7 +87,8 @@ label dr_danger_1:
   "({i}Everyone{/i} at STOP knows that face.)"
   "(They've seen her photos in newspaper articles.{w} Broadcasts.{w} Social media.)"
   "(For years,{w=0.1} this mysterious woman was the scourge of STOP.)"
-  "(A saboteur who terrorized the public with bombs and cryptic threats.\n{w}A supervillain,{w=0.1} through and through.)"
+  "(A saboteur who terrorized the public with bombs and cryptic threats.)"
+  "(A supervillain,{w=0.1} through and through.)"
   "(A supervillain by the name of...)"
   voice "audio/voice/dr.danger/Danger_Corridor1-02.ogg"
   drx "From the top,{w=0.622} then. {w=1}I am Dr. Danger."

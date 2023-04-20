@@ -202,11 +202,11 @@ label tutorial_intro:
                     scene bg tutorial2 with small_shake:
                         parallel:
                             zoom 0.5 xalign 0.5 yalign 0.5
-                            linear 0.1 yalign 1.0 xalign 0.5 zoom 0.75
+                            linear 0.1 yalign 1.0 xalign 0.6 zoom 2.5
 
                     scene bg tutorial2 at dizzy with dissolve:
                         parallel:
-                            yalign 1.0 xalign 0.5 zoom 0.75
+                            yalign 1.0 xalign 0.6 zoom 2.5
                     "{sc}({i}—HURK!{/i}){/sc}"
                     "{si}(...Aw,{w=0.1} crap.){/si}"
                     "{si}(Of {i}course{/i} there was something in the food.){/si}"
@@ -221,7 +221,8 @@ label tutorial_intro:
                     pause 3
                     $nvl_heading = "Lab Report #310"
                     l "Subject expired shortly after ingesting higher than recommended daily serving of cyanide-laced rodent feed."           
-                    l "{b}Contributing Factors to Death:{/b} Their stomach was bigger than their brain, evidently. \n{w}May need to re-evaluate STOP agents' dietary preferences."
+                    l "{b}Contributing Factors to Death:{/b} Evidently, their stomach was bigger than their brain."
+                    l "May need to re-evaluate STOP agents' dietary preferences.\n"
                     $deadend("dead1")
                     le "DEAD END 01: Cheers! It's Cyanide."
                     nvl hide

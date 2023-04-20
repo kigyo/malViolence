@@ -3,21 +3,25 @@ label spare_ending:
     $ play_sound(dooropen)
     scene black with fade
 
-    pause 2
+    pause 4
 
     $ play_sound(doorclose)
 
     #"{b}[pause – walking sounds play as the exit BG appears]{/b}"
     scene bg garage with fade:
         zoom 0.5 align (0.5,0.5)
+
+    pause 2
     "(In a large garage filled to the brim with cardboard boxes,{w=0.1} the exit waits for you,{w=0.1} wide open.)"
     "(It's night already.{w} Outside, you hear the quiet rushing of a river.)"
     "(Just a few more steps,{w=0.1} and you're out of here.{w} Even more,{w=0.1} and you'll be on the bus back home.)"
     "(It'll take a couple of hours to get back to HQ.{w} You'll nap on the ride,{w=0.1} probably,{w=0.1} so that by the time you get to your stop,{w=0.1} you'll have enough energy to run up thousands of narrow stairs.)"
     "(And you'll reach your boss's office,{w=0.1} and...)"
+    pause 0.5
     "(...Well,{w=0.1} what'll happen next?)"
     "(You'll {i}definitely {/i}get that bonus.{w} If this isn't going \"above and beyond...\")"
-    "(Maybe you'll get a promotion.{w} A better salary.{w} Better benefits.{w} A better home.)"
+    "(Maybe you'll get a promotion.)"
+    "(A better salary.{w} Better benefits.{w} A better home.)"
     "(A better {i}life.{/i}{w} Something you've always wanted.)"
     "(...And...)"
     "(And maybe that'll help you sort out the pit that's been growing in your stomach this whole—){w=1}{nw}"
@@ -73,7 +77,7 @@ label spare_ending:
     #"{b}[{/b}{b}Cautionne{/b}{b} is yelling now]{/b}"
     scene cautionne gun ecu sob 
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-08.ogg"
-    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}{w=1}{nw}"
+    cr "{sc}And I don't {i}want{/i} to forget Dr. Danger!{/sc}{w=1.5}{nw}"
     voice sustain
     cr "{sc}She {i}saved {/i}me!{w=1} She {i}raised {/i}me!{w=1} \nShe {i}stood up for me{/i} when no one else did!{/sc}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-09.ogg"
@@ -111,7 +115,7 @@ label spare_ending:
     scene cautionne gun cu cry
     #"{b}[pause as {/b}{b}Cautionne's{/b}{b} expression changes]{/b}"
     cr "You...{w=0.5} you're {i}not {/i}going to use your gun?"
-    cr "...Heh.{w=0.5} Haha.{w=0.5} {si}Hahahaha.{/si}"
+    cr "...Heh.{w=1} Haha.{w=1} {si}Hahahaha.{/si}"
 
     scene cautionne gun cu crysilent 
     stop music fadeout 1.0
@@ -119,7 +123,7 @@ label spare_ending:
     pause 1
     scene cautionne gun cu speaking 
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-10.ogg"
-    cr "{si}T-then,{w=0.434} on behalf of STOP...{/si}{w=1.5} {i}die.{/i}"
+    cr "{si}T-then,{w=0.434} on behalf of STOP...{/si}{w=2} {i}die.{/i}"
     $ play_sound(gunblast1)
     scene black
     pause 5
@@ -155,7 +159,7 @@ label spare_ending:
     scene cautionne sit stunned:
         align (0.0,0.1)
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-15.ogg"
-    cr "No,{w=0.35} I couldn't have.{w=1}{nw}" 
+    cr "No,{w=0.35} I couldn't have.{w=1.5}{nw}" 
     voice sustain
     cr "Trying to kill you...{w=0.717} was a lot more tiring than I thought it would be."
     "Tiring?"
@@ -171,7 +175,7 @@ label spare_ending:
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-18.ogg"
     cr "The exit's right there."
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-19.ogg"
-    cr "Go back to your home.{w=0.54} Your TV.{w=0.638} Your{i} money.{/i}"
+    cr "Go back to your home.{w=1} Your TV.{w=1} Your{i} money.{/i}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-20.ogg"
     cr "I was fooling myself,{w=0.458} thinking I could do what Dr. Danger did for me."
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-21.ogg"
@@ -236,7 +240,7 @@ label spare_ending:
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-32.ogg"
     cr "If you really feel that bad about it..."
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-25.ogg"
-    cr "I did sneak copies of everything you've seen here onto your device.{w=0.675} I found your address while you were looking around."
+    cr "I did sneak copies of everything you've seen here onto your device.{w=1} I found your address while you were looking around."
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-26.ogg"
     cr "Pretty devious idea, right?{w=1}{nw}"
     scene cautionne sit smug:
@@ -246,7 +250,7 @@ label spare_ending:
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-27.ogg"
     cr "Alright.{w=0.833} Here's another world-class criminal scheme for you:"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-28.ogg"
-    cr "{i}\"STOP agent stakes reputation,{w=0.1} credentials,{w=0.1} leaks internal docs{w=0.1} to all four corners of the net.\"{/i}"
+    cr "{i}\"STOP agent stakes reputation,{w=0.5} credentials,{w=0.5} leaks internal docs{w=0.5} to all four corners of the net.\"{/i}"
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-29.ogg"
     cr "Not a bad headline.{w=1}{nw}"
 
@@ -264,7 +268,7 @@ label spare_ending:
 
     voice "audio/voice/cautionne/Endings/Spare Ending/Cautionne_SpareEnding-30.ogg"
 
-    cr "Your choice,{w=0.1} obviously.{w=0.606}{nw}"
+    cr "Your choice,{w=0.1} obviously.{w=1}{nw}"
 
     scene cautionne sit smug:
         align (0.0,0.1)
@@ -312,7 +316,7 @@ label spare_ending:
     scene hairclip3 with slowfade:
         zoom 0.5
 
-    pause 4
+    pause 7
 
     define fadehold = Fade(5, 1.0, 0.5)
 

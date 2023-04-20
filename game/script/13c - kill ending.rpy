@@ -52,7 +52,7 @@ label kill_ending:
     cr "In another life,{w=0.1} you'd make {i}quite {/i}the sidekick."
     "...Well,{w=0.1} maybe if you'd free me—{w=1}{nw}"
     cr "{i}Hell{/i} no."
-    cr "You're {i}dangerous,{/i}{w=0.1} lab rat,{w=0.1} and I just can't let you go."
+    cr "You're dangerous,{w=0.1} lab rat,{w=0.1} and I just can't let you go."
     scene cautionne gun ecu silent
     "(The brat's got bravado —{w=0.5} you'll give him that.{w} He's keeping that revolver remarkably steady,{w=0.1} even though he's shaking all over.)"
     "(But he's still just a kid.{w} Might never have even wielded a weapon before,{w=0.1} for all his big talk.)"
@@ -106,7 +106,11 @@ label kill_ending:
     "(As you walk from the garage,{w=0.1} you do your best to ignore his lifeless body.)"
     "(From the corner of your eye,{w=0.1} you watch his blood ooze onto the floor.)"
     "(Once a better agent comes here to gather evidence,{w=0.1} they'll clean the stains and burn the corpse.)"
-    "(The sight of blood at the edge of your vision fills you with exhaustion.\n{w}You just want to get out of here and let someone higher up sort this shit out.)"
+    if gui.text_size > 40:
+        "(The sight of blood at the edge of your vision fills you with exhaustion.)"
+        "(You just want to get out of here and let someone higher up sort this shit out.)"
+    else:
+        "(The sight of blood at the edge of your vision fills you with exhaustion.\n{w}You just want to get out of here and let someone higher up sort this shit out.)"
     "(But as you leave,{w=0.1} you can't help but think to yourself...)"
     "(\"That was easy.\")"
     #"{b}[pause]{/b}"

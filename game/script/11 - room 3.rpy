@@ -159,7 +159,7 @@ label room_3:
             show room3_lockedbox with dissolve:
                 yalign 0.2 xalign 0.5
             "(You find a lab coat with an ID pinned above its breast pocket.{w} There's no photo,{w=0.1}  but the name \"Deirdre Destrange\" is clearly printed on the plastic card alongside a worn barcode.)"
-            "(The coat itself is high-quality,{w=0.1} but it's worn around the edges.{w} Deirdre must've worn it for a long time,{w=0.1}  taking good care of it all the while.)"
+            "(The coat itself is high-quality,{w=0.1} but it's worn around the edges.{w} Deirdre must've used it for a long time,{w=0.1}  taking good care of it all the while.)"
             "(You see framed photos,{w=0.1} diplomas,{w=0.1}  certificates and awards —{w=0.5} all of them belonging to this \"Deirdre Destrange\".)"
             "(In and of itself,{w=0.1} a doctorate in cybernetic biology is impressive,{w=0.1} but Destrange received this {i}years{/i} ago.)"
             "(To be {i}that {/i}experienced at a young age,{w=0.1}  and when the science was still so {i}new...{/i}{w=0.5} she must've been on the cutting edge of the field.)"
@@ -203,7 +203,13 @@ label room_3:
             "(It's a loose page with handwriting on it.{w} Judging by the number in the corner and the fading ink,{w=0.1} it must be a small part of a much larger document.)"
             #"FIRST ENTRIES"
             n "\"It's nice to have job security right out of school.{w} I had my doubts during junior year, of course, but I don't think anyone could've predicted how the sector's grown these past few months."
-            n "The developments in cybernetic technology have been explosive.\n{w}Sometimes {i}literally.{/i}"
+            if gui.text_size > 40:
+                n "The developments in cybernetic technology have been explosive."
+                n "Sometimes {i}literally.{/i}"
+            else:
+                n "The developments in cybernetic technology have been explosive.\n{w}Sometimes {i}literally.{/i}"
+            nvl clear
+            $ play_sound(paperturn)
             n "It's troubling, but all great technology has the potential for misuse.\n{w}And now I'm going to be part of an organization that works to keep that tech under control. "
             n "Though I'll be honest, the name's pretty silly."
             n "Oh well.{w} They could always change the acronym later.\""
@@ -246,7 +252,11 @@ label room_3:
             nvl show
             n "\"I requested another transfer.{w} My third in three years, but they didn't seem to mind."
             n "I just can't find work as engrossing as I used to.{w} It probably doesn't help that I'm not sure what it is I do anymore. "
-            n "I mean, logically, I know what I do — I research cybernetics.{w} But I'm not sure what I do for STOP.\""
+            if gui.text_size > 40:
+                n "I mean, logically, I know what I do — I research cybernetics.\n{w}But I'm not sure what I do for STOP.\""
+            else:
+                n "I mean, logically, I know what I do — I research cybernetics."
+                n "But I'm not sure what I do for STOP.\""
             $ play_sound(paperturn)
             pause 2
             nvl clear
@@ -263,15 +273,16 @@ label room_3:
             n "\"I might've transferred a few times too many."
             n "I came into work today and clocked out without recognizing a single face the entire time.{w} New people, places, committees, projects, and always more acronyms. "
             n "And, for the first time in years, I was denied access to internal data."
-            n "I didn't think anything could be above my paygrade anymore."
-            n "Note to self: look up \"YTDI \"."
+            n "I didn't think anything could be above my paygrade anymore.\n{w}Note to self: look up \"YTDI \"."
         elif room3["diary"] == 3:
             #"Meeting CAUTIONNE"
             $ play_sound(paperpickup)
             n "\"\'I was very disappointed with the state of the Youth Training and Development Initiative.\'"
             n "That's how I put it in writing. "
             n "I don't really have the right words to express my disgust with this program's existence."
-            n "The idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline — assuming that we were talking about 18 vs 24. "
+            nvl clear
+            $ play_sound(paperturn)
+            n "The idea that cybernetic sync rates increase the earlier in life treatment starts was based on a completely different timeline — assuming that we were talking about 18 vs 24.\n"
             n "It was never supposed to justify...{w} whatever the hell they're doing now.\""
             nvl hide
             $ play_sound(paperturn)
@@ -279,7 +290,7 @@ label room_3:
             nvl clear
             nvl show
             n "\"They don't actually care about reducing rejection symptoms or making the cybernetics work more seamlessly."
-            n "They care about creating a product by experimenting on children.\n{p}Children that no one else cares about."
+            n "They care about creating a product by experimenting on children.\n{w}Children that no one else cares about."
             if gui.text_size > 40:
                 $ play_sound(paperturn)
                 nvl clear
@@ -310,7 +321,9 @@ label room_3:
             pause 2
             nvl clear
             nvl show
-            n "\"I'm getting better at coming up with excuses to visit him, at least.{p}\nI need to evaluate how he's coping with procedures - just like the other YTDI trainees.{w} I might need to test his reflexes."
+            n "\"I'm getting better at coming up with excuses to visit him, at least."
+            n "I need to evaluate how he's coping with procedures - just like the other YTDI trainees."
+            n "I might need to test his reflexes."
             n "Hell, he might need a snack to make him more cooperative."
             nvl clear
             $ play_sound(paperturn)
@@ -333,14 +346,19 @@ label room_3:
             nvl show
             n "\"They claimed that it was a clerical error that he didn't receive his anti-seizure medications that morning. "
             n "I know that it was actually punishment.{w} He refused to obey during yesterday's mandatory exercises. "
-            n "You wouldn't treat an {i}animal{/i} like this, much less another human.\n{p}To them, he's less than that.\""
+            n "You wouldn't treat an {i}animal{/i} like this, much less another human."
+            n "To them, he's less than that.\""
             nvl hide
             $ play_sound(paperturn)
             pause 2
             nvl clear
             nvl show
-            n "\"I triggered the false alarm right on schedule, down to the second.\n{w} My not-at-all false explosive followed suit. "
-            n "I had always understood that the chemical reaction was very simple to set up.{w} But, I still expected my first felony to present more challenges than this.{w} Maybe I have a knack for this kind of thing. "
+            n "\"I triggered the false alarm right on schedule, down to the second."
+            n "My not-at-all false explosive followed suit."
+            n "I had always understood that the chemical reaction was very simple to set up."
+            n "But, I still expected my first felony to present more challenges than this.{w} Maybe I have a knack for this kind of thing."
+            nvl clear
+            $ play_sound(paperturn)
             n "He didn't hesitate for one second when I asked him to come with me.{w} As I rushed him through the fire exit, the look on his face at that moment has stuck with me."
             n "Could anyone have looked more relieved?\""
             nvl hide
@@ -372,13 +390,13 @@ label room_3:
             nvl show
             n "\"Bombs, sabotage, and cryptic messages on shady websites get much better traction than just sending my research notes to major news outlets."
             n "No one cares what Deirdre Destrange has to say.{w} But when \"Dr. Danger\" blows up an energy pipeline, people look up from their food and {i}watch.{/i}"
-            n "He chose the name.{w} It's got a nice, old-world appeal to it.\""
+            n "He chose the name.{w} It's got a nice, old-school appeal to it.\""
             nvl hide
             $ play_sound(paperturn)
             pause 2
             nvl clear
             nvl show
-            n "\"Cautionne has always been eager to please and happy to spend time with me.{w} Is it any wonder he wants to help the nefarious Dr. Danger in her fight against STOP? "
+            n "\"Cautionne has always been eager to please and happy to spend time with me.{w} Is it any wonder he wants to help the nefarious Dr. Danger in her fight?"
             n "I should tell him no.{w} Revenge is poison, and he's already been through too much. "
             n "But I still can't bear to calculate how much of his suffering is my fault.{w} I don't have the heart to tell him no — and I'd sooner die than judge him for how much he hates STOP.\""
             nvl hide
@@ -456,7 +474,8 @@ label room_3:
         else:
             if room3["cooking"] == 0:
                 $init_mise_en_place()
-                "(There's a small kitchenette.{w} It looks like it hasn't been used recently...\n{w}Did Dr Danger take care of all the cooking?)"
+                "(There's a small kitchenette.{w} It looks like it hasn't been used recently...)"
+                "(Did Dr Danger take care of all the cooking?)"
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "(A handwritten note sits on the counter.{w} Looks like...{w=0.5}a recipe for pancakes?)"
                 "(Fridge seems well stocked too.{w} Let's see if Cautionne likes your take on Dr Danger's recipe.)"
@@ -607,8 +626,11 @@ label quilt_game_over:
     nvl clear
 
     $nvl_heading = "Lab Report #112"
-    l "Subject failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles."
-    l "{i}(NB: It needed to be a square number for the triggering mechanism to hit its mark.){/i}"
+    if gui.text_size > 40:
+        l "Subject failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles.\n{p}{i}(NB: It needed to be a square number for the triggering mechanism to hit its mark.){/i}"
+    else:
+        l "Subject failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles."
+        l "{i}(NB: It needed to be a square number for the triggering mechanism to hit its mark.){/i}"
     l "{b}Contributing Factors to Death:{/b} Couldn't sew their way out of a wet paper bag."
     $deadend("dead11")
     le "DEAD END 11: Quilt In Action."
@@ -640,7 +662,10 @@ label toys_solved:
     "(Turning it around reveals text reminiscent of a diary entry.)"
     nvl clear
     $ nvl_heading = ""
-    n "She told me to explore the place.{w} She said it was important that\nI adjust to my new environment, {w=0.1}but she's been holed up in the lab."
+    if gui.text_size > 40:
+        n "She told me to explore the place.{w} She said it was important that I adjust to my new environment, {w=0.1}but she's been holed up in the lab."
+    else:
+        n "She told me to explore the place.{w} She said it was important that\nI adjust to my new environment, {w=0.1}but she's been holed up in the lab."
     n "I don't know why she's so stressed about my surgeries.{w} She's the smartest person I know.{w} And I grew up surrounded by \"brilliant\" scientists,{w=0.1} so that's saying {i}something{/i}."
     nvl clear
     n "She says she's still concerned about making adjustments to my synthetic nerves.{w} That she's worried she'll put me through even more pain."

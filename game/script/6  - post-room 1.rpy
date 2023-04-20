@@ -98,7 +98,7 @@ label post_room_1:
   show cautionne hairtwirl
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
   c "So,{w=0.1} what did you think of our—{w=1}{nw}"
-  c "{i}—my{/i} Research Lab?"
+  c "{i}my{/i} Research Lab?"
   show cautionne lean speaking
   c "It's awesome,{w=0.1} isn't it?"
   show cautionne think
@@ -123,7 +123,7 @@ label post_room_1:
   show cautionne oops
   c "...but the last experiment got so messy that I'm still cleaning the rafters."
   show cautionne lean eyeclosed
-  c "Disappointing,{w=0.1} I know. "
+  c "Disappointing,{w=0.1} I know."
   c "But never fear!"
   show cautionne hairtwirl
   c "The Great Cautionne,{w=0.1} Emperor of MalViolence,{w=1}{nw}" 
@@ -140,19 +140,21 @@ label post_room_1:
   c "{size=-13}{i}...Yeesh,{/i}{w=0.1} tough crowd.{/size}"
   c "{size=-13}You must be fun at parties.{/size}"
   show cautionne hairtwirl
-  c "Anyway,{w=0.1} enough dilly-dallying! "
+  c "Anyway,{w=0.1} enough dilly-dallying!"
   c "{i}Vamoose{/i} to the next room already.{w=0.5} There's more games for you to play!"
   c "Or {i}hell{/i},{w=0.1} take your sweet time."
   show cautionne laugh
   voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "I've {i}always{/i} wanted to see how motivating electrified floors can be!"
   "(He's clearly joking again.)"
-  pause 1
+  pause 0.5
   "(Probably.)"
   pause 1
   "(...Maybe.)"
-  pause 1
+  pause 0.5
   "(...No.{w} Better not tempt fate.)"
+
+  pause 1
 
   stop music 
 
