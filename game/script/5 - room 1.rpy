@@ -37,15 +37,15 @@ screen room1():
 
     fixed at zoomed(0.335):
         add "bg room1"
-        imagebutton idle Null() action [SetVariable("inspect", "oil"), Jump("room_1")] focus_mask Image("rooms/room1_oil_mask.png") pos (232, 2634) mouse "inspect"
-        imagebutton idle Null(618, 1000) action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (2610, 1166) mouse "inspect"
+        imagebutton idle Null() hover "rooms/room1/room1_selection_oil.png" action [SetVariable("inspect", "oil"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_oil_mask.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room1/room1_selection_megaphones.png" action [SetVariable("inspect", "megaphone"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_megaphones_mask.png" mouse "inspect" at room_hover
 
-        imagebutton idle Null(724, 1014) action [SetVariable("inspect", "marble"), Jump("room_1")] pos (1212, 1420) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "hacking"), Jump("room_1")] focus_mask Image("rooms/room1_hacking_mask.png") pos (3232, 1376) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "decanting"), Jump("room_1")] focus_mask Image("rooms/room1_decanting_mask.png") pos (1952, 2214) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "bomb"), Jump("room_1")] focus_mask Image("rooms/room1_bomb_mask.png") pos (68, 2160) mouse "puzzle"
+        imagebutton idle Null() hover "rooms/room1/room1_selection_marblepuzzle.png" action [SetVariable("inspect", "marble"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_marblepuzzle.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room1/room1_selection_hackingpuzzle.png" action [SetVariable("inspect", "hacking"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_hackingpuzzle_mask.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room1/room1_selection_decantingpuzzle.png" action [SetVariable("inspect", "decanting"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_decantingpuzzle_mask.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room1/room1_selection_bombpuzzle.png" action [SetVariable("inspect", "bomb"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_bombpuzzle.png" mouse "puzzle" at room_hover(0.5)
 
-        imagebutton idle Null() action [SetVariable("inspect", "chair"), Jump("room_1")] focus_mask Image("rooms/room1_chair_mask.png") pos (3682, 1519) mouse "inspect"
+        imagebutton idle Null() hover "rooms/room1/room1_selection_electricchair.png" action [SetVariable("inspect", "chair"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_electricchair.png" mouse "inspect" at room_hover
 
     if config.developer:
         frame:

@@ -10,38 +10,38 @@ screen room3():
     if room3["room"] == "down":
         fixed at zoomed(0.335):
             add "bg room3_downstairs"
-            imagebutton idle Null(250,290) action [SetVariable("inspect", "scrapbook"), Jump("room_3")] pos (222, 2260) mouse "inspect"
-            imagebutton idle Null(235,125) action [SetVariable("inspect", "confidence_workbook"), Jump("room_3")] pos (1450, 2090) mouse "inspect"
-            imagebutton idle Null(700,190) action [SetVariable("inspect", "locked_container"), Jump("room_3")] pos (2527, 3050) mouse "inspect"
+            imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_scrapbook.png" action [SetVariable("inspect", "scrapbook"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_scrapbook.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_workbook.png" action [SetVariable("inspect", "confidence_workbook"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_workbook.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_lockbox.png" action [SetVariable("inspect", "locked_container"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_lockbox.png" mouse "inspect" at room_hover
 
-            imagebutton idle Null(650,1320) action [SetVariable("inspect", "scrapbook_new"), Jump("room_3")] pos (3961, 1327) mouse "puzzle"
-            imagebutton idle Null() action [SetVariable("inspect", "cooking"), Jump("room_3")] focus_mask Image("rooms/room3_kitchen.png") pos (2755, 2013) mouse "puzzle"
+            imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_metapuzzle.png" action [SetVariable("inspect", "scrapbook_new"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_metapuzzle.png" mouse "puzzle" at room_hover(0.5)
+            imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_miseenplace.png" action [SetVariable("inspect", "cooking"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_miseenplace.png" mouse "puzzle" at room_hover(0.5)
 
             if 1 in room3["pages"] and 1 not in room3["read_pages"]:
-                imagebutton idle "room3_note1" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (834, 2859) mouse "inspect"
+                imagebutton idle "rooms/room3_note1.png" hover "rooms/room3/room3_note1.png" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 1), Jump("room_3")] pos (834, 2859) mouse "inspect"
             if 2 in room3["pages"] and 2 not in room3["read_pages"]:
-                imagebutton idle "room3_note2" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 2), Jump("room_3")] pos (4944, 2568) mouse "inspect"
+                imagebutton idle "rooms/room3_note2.png" hover "rooms/room3/room3_note2.png" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 2), Jump("room_3")] pos (4944, 2568) mouse "inspect"
             if 6 in room3["pages"] and 6 not in room3["read_pages"]:
-                imagebutton idle "room3_note6" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 6), Jump("room_3")] pos (4665, 3034) mouse "inspect"
+                imagebutton idle "rooms/room3_note6.png" hover "rooms/room3/room3_note6.png" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 6), Jump("room_3")] pos (4665, 3034) mouse "inspect"
         if not inspect:
             textbutton _("UP") action [SetDict(room3, "room", "up"), Play("sound", "audio/sfx/Room 3 SFX/Stairs 1.ogg"), With(Fade(1,0.5,1))] style "main_menu_button" xalign 0.94 yalign 0.4
 
     elif room3["room"] == "up":
         fixed at zoomed(0.335):
             add "bg room3_upstairs"
-            imagebutton idle Null(994,272) action [SetVariable("inspect", "sewing_book"), Jump("room_3")] pos (1808, 1694) mouse "inspect"
-            imagebutton idle Null() action [SetVariable("inspect", "mannequin"), Jump("room_3")] focus_mask Image("rooms/room3_mannequin_mask.png") pos (0, 2009) mouse "inspect"
-            imagebutton idle Null(488,146) action [SetVariable("inspect", "health_record"), Jump("room_3")] pos (3156, 1560) mouse "inspect"
+            imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_sewingkit.png" action [SetVariable("inspect", "sewing_book"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_sewingkit.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_wigmannequin.png" action [SetVariable("inspect", "mannequin"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_wigmannequin.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_healthrecord.png" action [SetVariable("inspect", "health_record"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_healthrecord.png" mouse "inspect" at room_hover
 
-            imagebutton idle Null() action [SetVariable("inspect", "quilt"), Jump("room_3")] focus_mask Image("rooms/room3_quilt_mask.png") pos (1886, 2819) mouse "puzzle"
-            imagebutton idle Null(928,242) action [SetVariable("inspect", "toys"), Jump("room_3")] pos (672, 1186) mouse "puzzle"
+            imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_quiltpuzzle.png" action [SetVariable("inspect", "quilt"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_quiltpuzzle.png" mouse "puzzle" at room_hover(0.5)
+            imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_plushpuzzle.png" action [SetVariable("inspect", "toys"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_plushpuzzle.png" mouse "puzzle" at room_hover(0.5)
 
             if 3 in room3["pages"] and 3 not in room3["read_pages"]:
-                imagebutton idle "room3_note3" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 3), Jump("room_3")] pos (4112, 2632) mouse "inspect"
+                imagebutton idle "rooms/room3_note3.png" hover "rooms/room3/room3_note3.png" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 3), Jump("room_3")] pos (4112, 2632) mouse "inspect"
             if 4 in room3["pages"] and 4 not in room3["read_pages"]:
-                imagebutton idle "room3_note4" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 4), Jump("room_3")] pos (1356, 2968) mouse "inspect"
+                imagebutton idle "rooms/room3_note4.png" hover "rooms/room3/room3_note4.png" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 4), Jump("room_3")] pos (1356, 2968) mouse "inspect"
             if 5 in room3["pages"] and 5 not in room3["read_pages"]:
-                imagebutton idle "room3_note5" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 5), Jump("room_3")] pos (4900, 2456) mouse "inspect"
+                imagebutton idle "rooms/room3_note5.png" hover "rooms/room3/room3_note5.png" action [SetVariable("inspect", "diary"), AddToSet(room3["read_pages"], 5), Jump("room_3")] pos (4900, 2456) mouse "inspect"
 
         if not inspect:
             textbutton _("DOWN") action [SetDict(room3, "room", "down"), Play("sound", "audio/sfx/Room 3 SFX/Stairs 2.ogg"), With(Fade(1,0.5,1))] style "main_menu_button" xalign 0.97 yalign 0.97

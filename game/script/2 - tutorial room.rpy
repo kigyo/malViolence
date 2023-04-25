@@ -38,21 +38,23 @@ screen tutorial_room():
     zorder 5
 
     fixed at zoomed:
-        imagebutton idle Null(700, 280) action [SetVariable("inspect", "desk"), Jump("tutorial_room")] pos (2315, 1370) mouse "inspect"
-        imagebutton idle Null(380, 800) action [SetVariable("inspect", "handle"), Jump("tutorial_room")] pos (1750, 680) mouse "inspect":
-            if tutorial["vent"] == 2:
-                mouse "puzzle"
-        imagebutton idle Null(880, 610) action [SetVariable("inspect", "tap"), Jump("tutorial_room")] pos (2960, 1550) mouse "inspect"
-
         if tutorial["vent"] == 0:
             add "bg tutorial1"
-            imagebutton idle Null(340, 560) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (840, 715) mouse "inspect"
         else:
             add "bg tutorial2"
-            imagebutton idle Null(540, 348) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1776, 1629) mouse "inspect"
-            imagebutton idle Null(270, 450) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (880, 780) mouse "inspect"
-            imagebutton idle Null(192,144) action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1254, 1782) mouse "inspect"
-        imagebutton idle Null() action [SetVariable("inspect", "bed"), Jump("tutorial_room")] pos (561, 1753) mouse "inspect" focus_mask Image("rooms/tutorial_bed_mask.png")
+        imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_desk.png" action [SetVariable("inspect", "desk"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_desk.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_doorlock.png" action [SetVariable("inspect", "handle"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_doorlock_mask.png" mouse "inspect" at room_hover:
+            if tutorial["vent"] >= 2:
+                mouse "puzzle" hover "rooms/tutorial/tutroom_selection_doorlock_puzzle.png" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_sink.png" action [SetVariable("inspect", "tap"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_sink.png" mouse "inspect" at room_hover
+
+        if tutorial["vent"] == 0:
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_frameonwall.png" action [SetVariable("inspect", "painting"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_frameonwall.png" mouse "inspect" at room_hover
+        else:
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_bowl.png" action [SetVariable("inspect", "vent"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_bowl.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_frame.png" action [SetVariable("inspect", "painting"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_frame.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_pellets.png" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_pellets_mask.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_bed.png" action [SetVariable("inspect", "bed"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_bed.png" mouse "inspect" at room_hover
 
     if config.developer:
         frame:

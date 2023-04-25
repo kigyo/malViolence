@@ -8,16 +8,16 @@ screen room2():
 
     fixed at zoomed(0.335):
         add "bg room2"
-        imagebutton idle Null(940, 805) action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (4800, 1085) mouse "inspect"
-        imagebutton idle Null() action [SetVariable("inspect", "blueprints"), Jump("room_2")] focus_mask Image("rooms/room2_blueprints_mask.png") pos (0, 1175) mouse "inspect"
-        imagebutton idle Null() action [SetVariable("inspect", "clippings"), Jump("room_2")] focus_mask Image("rooms/room2_clippings_mask.png") pos (2811, 1235) mouse "inspect"
-        imagebutton idle Null() action [SetVariable("inspect", "limbs"), Jump("room_2")] focus_mask Image("rooms/room2_limbs_mask.png") pos (0, 2766) mouse "inspect"
-        imagebutton idle Null(300,565) action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3460, 1285) mouse "inspect"
+        imagebutton idle Null() hover "rooms/room2/room2_selection_evidenceboard.png" action [SetVariable("inspect", "corkboard"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_evidenceboard.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room2/room2_selection_blueprints.png" action [SetVariable("inspect", "blueprints"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_blueprints.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room2/room2_selection_newspaperclippings.png" action [SetVariable("inspect", "clippings"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_newspaperclippings.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room2/room2_selection_armdesigns.png" action [SetVariable("inspect", "limbs"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_armdesigns.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room2/room2_selection_postits.png" action [SetVariable("inspect", "post-its"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_postits.png" mouse "inspect" at room_hover
 
-        imagebutton idle Null() action [SetVariable("inspect", "word"), Jump("room_2")] focus_mask Image("rooms/room2_word_mask.png") pos (3790, 1070) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "panopticon"), Jump("room_2")] focus_mask Image("rooms/room2_panopticon_mask.png") pos (4109, 1941) mouse "puzzle"
-        imagebutton idle Null(1563, 620) action [SetVariable("inspect", "evidence"), Jump("room_2")] pos (1175, 1194) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "recalibration"), Jump("room_2")] focus_mask Image("rooms/room2_recalibration_mask.png") pos (0, 2058) mouse "puzzle"
+        imagebutton idle Null() hover "rooms/room2/room2_selection_metapuzzle.png" action [SetVariable("inspect", "word"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_metapuzzle.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room2/room2_selection_panopticonpuzzle.png" action [SetVariable("inspect", "panopticon"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_panopticonpuzzle.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room2/room2_selection_evidencepuzzle.png" action [SetVariable("inspect", "evidence"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_evidencepuzzle.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room2/room2_selection_calibrationpuzzle.png" action [SetVariable("inspect", "recalibration"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_calibrationpuzzle.png" mouse "puzzle" at room_hover(0.5)
 
         if 1 not in room2["notes"]:
             imagebutton idle "rooms/room2_note1.png" action [SetVariable("inspect", "note1"), Jump("room_2")] pos (160, 1484) mouse "inspect"

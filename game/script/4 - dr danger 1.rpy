@@ -178,7 +178,7 @@ label dr_danger_1:
     always "images/puzzles/room_1_meta/marble_maze_effigy_3.png"
 
   show marblemeta with dissolve:
-    xpos 200
+    xpos 200 yoffset -100
 
   pause 2
   ### show meta puzzle image
