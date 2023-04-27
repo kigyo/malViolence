@@ -264,12 +264,12 @@ init python:
             store.panopt = Panopticon(dependencies={0: [1],
                                                     1: [2],
                                                     2: [0]},
-                                      solution=[[3, 3, 4]],
+                                      solution=[[3, 3, 4], [3, 1, 1]],
                                       rings=["panopticon_2_0",
                                              "panopticon_2_1",
                                              "panopticon_2_2"],
                                       core="panopticon_2_core",
-                                      overlay=Null(width=700, height=700),
+                                      # overlay=Null(width=700, height=700),
                                       center=(500,540))
         elif difficulty_level == 2:
             store.panopticon_move_limit = 15
@@ -282,7 +282,7 @@ init python:
                                              "panopt_2_1",
                                              "panopt_2_2",
                                              "panopt_2_3"],
-                                      overlay=Null(width=700, height=700),
+                                      # overlay=Null(width=700, height=700),
                                       core="panopt_2_core",
                                       center=(500,540))
         elif difficulty_level == 3:
