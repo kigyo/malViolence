@@ -168,7 +168,7 @@ screen room2_panopticon(pan=None, interactable=True):
     tag puzzle
     layer "puzzles"
     zorder 5
-    
+
     if difficulty_level != panopticon_level:
         timer 0.1 action Function(panopticon_init, True)
 
@@ -250,26 +250,27 @@ init python:
         store.panopticon_moves = 0
 
         if difficulty_level == 1:
-            store.panopticon_move_limit = 20
-            store.panopt = Panopticon(dependencies={0: [], 1: [], 2: []},
-                     solution = [[0, 1, 2]],
+            # store.panopticon_move_limit = 20
+            # store.panopt = Panopticon(dependencies={0: [], 1: [], 2: []},
+            #          solution = [[0, 1, 2]],
 
-                     rings=["panopt_1_0",
-                            "panopt_1_1",
-                            "panopt_1_2"],
-                                      core="panopt_1_core",
-                                      spokes=4,
+            #          rings=["panopt_1_0",
+            #                 "panopt_1_1",
+            #                 "panopt_1_2"],
+            #                           core="panopt_1_core",
+            #                           spokes=4,
+            #                           overlay=Null(width=700, height=700),
+            #                           center=(500,540))
+            store.panopt = Panopticon(dependencies={0: [1],
+                                                    1: [2],
+                                                    2: [0]},
+                                      solution=[[3, 3, 4]],
+                                      rings=["panopticon_2_0",
+                                             "panopticon_2_1",
+                                             "panopticon_2_2"],
+                                      core="panopticon_2_core",
                                       overlay=Null(width=700, height=700),
                                       center=(500,540))
-            # store.panopt = Panopticon(dependencies={0: [1],
-            #                                         1: [2],
-            #                                         2: [0]},
-            #                           solution=[[3, 1, 1]],
-            #                           rings=["panopticon_2_0",
-            #                                  "panopticon_2_1",
-            #                                  "panopticon_2_2"],
-            #                           core="panopticon_2_core",
-            #                           center=(500,540))
         elif difficulty_level == 2:
             store.panopticon_move_limit = 15
             store.panopt = Panopticon(dependencies={0: [1],
@@ -281,6 +282,7 @@ init python:
                                              "panopt_2_1",
                                              "panopt_2_2",
                                              "panopt_2_3"],
+                                      overlay=Null(width=700, height=700),
                                       core="panopt_2_core",
                                       center=(500,540))
         elif difficulty_level == 3:
