@@ -21,12 +21,12 @@ label dr_danger_3:
   $ play_sound(dooropen)
   scene black with fade
   pause 2
-  show bg corridor3 with placeintro:
+  show bg corridor3 tvoff with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
   $Achievement.add(achievement_room2)
   pause 4
-  show bg corridor3 with dissolve:
+  show bg corridor3 tvoff with dissolve:
     zoom 0.5
   $ play_sound(doorclose)
   pause 0.5
@@ -34,19 +34,20 @@ label dr_danger_3:
   "(It's darker here —{w=0.5} but not in an unpleasant way.{w} It's warmer than the previous rooms,{w=0.1} literally and figuratively.)"
   "(The wooden floorboards and the decorated wallpaper feel...{w=0.5} welcoming.{w} {i}Nostalgic,{/i} even.)"
   "(If you viewed this hall alone,{w=0.1} you'd assume it'd belong to a family household.{w} Not to a scheming terrorist and her kooky sidekick.)"
-  "(It's been a very long...{w=0.5} day?{w} Hard to tell how much time has passed.{p}But damn,{w=0.1} you are {i}exhausted.{/i})"
+  "(It's been a very long...{w=0.5} day?{w} Hard to tell how much time has passed.)"
+  "(But damn,{w=0.1} you are {i}exhausted.{/i})"
   "(The gentle heat tempts you to sit down on the floor.{w} Or maybe lie down.)"
   pause 1
   "(Um...{w} Would Cautionne allow you to take a quick breather?)"
   #"{b}[animate camera movements to simulate the protagonist slowly crouching down to the floor] {/b}"
   "(If he meant what he said about not harming a hair on your head,"
   $ play_sound(singlefootstep2)
-  show bg corridor3:
+  show bg corridor3 tvoff:
     zoom 0.5 xalign 0.5 yalign 0.5
     ease 3 yalign 1.0 zoom 0.6
-  pause 2
   extend "{cps=20} then maybe the smart thing to do would be to—){/cps}{w=1}{nw}"
   $ play_sound(staticshort)
+  show bg corridor3
   voice "audio/voice/dr.danger/Danger_Corridor3-01.ogg"
   dr "Very tempting for a wooden floor,{w=0.287} isn't it?"
   $ play_sound(bedsitup)
@@ -118,6 +119,7 @@ label dr_danger_3:
   pause 1
   $ play_sound(staticshort)
   hide drdanger sidestare silent
+  show drdangerframe off
   with screenoff
 
   voice "audio/voice/dr.danger/Danger_Corridor3-05.ogg"
@@ -127,20 +129,20 @@ label dr_danger_3:
   drs "{size=-13}Try not to be so...{w=0.5} {i}ominous{/i} next time.{/size}"
   $ play_sound(tvoff)
   pause 2
-  scene bg corridor3 with fade:
+  scene bg corridor3 tvoff with fade:
     zoom 0.5 align (0.5,0.5)
   pause 2
 
   "(That message wasn't for you,{w=0.1} and it wasn't for one of Dr. Danger's goons either.)"
-  "(But a {i}babysitter?{/i}{w} {i}Really?{/i})"
+  "(But a {i}babysitter?{/i}{w} Really?)"
   "(Who in the world would be qualified to babysit {i}him?{/i})"
-  "(...)"
   pause 1
+  "(...)"
   "(...{i}C'mon.{/i}{w} Just focus on the task at hand.)"
 
   $ play_sound(footsteps3)
 
-  scene bg corridor3:
+  scene bg corridor3 tvoff:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
   pause 3

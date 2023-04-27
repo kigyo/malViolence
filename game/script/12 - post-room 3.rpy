@@ -37,9 +37,11 @@ label post_room_3:
     $renpy.block_rollback()
     $ inspect = "post room"
 
-    stop music fadeout 1.0
-
+    show screen room3_meta with None
     $ play_sound(roomsuccess)
+    hide screen room3_meta with puzzle_hide
+
+    stop music fadeout 1.0
     pause 2
 
     $puzzle_achievements()
@@ -47,11 +49,11 @@ label post_room_3:
     $ play_sound(doorunlock)
     pause 2
 
-    "(Huh.{w} The screen above you didn't turn on.)"
+    "(Huh.{w} The screen behind you didn't turn on.)"
     "(...Guess Cautionne really was serious about the whole \"silent treatment\" thing.)"
 
     if len(room3_investigated) == 7:
-        "(Well,{w=0.1} you did what he asked you to do,{w=0.1} right?{w} You solved his puzzle.)"
+        "(Well,{w=0.1} you did what he asked you to do,{w=0.1} right?{w} You solved his puzzles.)"
         "(You've been over the whole room with a fine comb.)"
         "(And you haven't overlooked or {i}looked away{/i} from anything.)"
         "(There's not much left you can do.{w} Time to move forward.)"
@@ -94,16 +96,24 @@ label post_room_3:
     $ route_calculator()
 
     if route == "spare":
-        pause
+        pause 1
         "(...To be honest,{w=0.1} the lack of nasally jabbering...{w=0.5} kinda puts you on edge.)"
         "(Not that you {i}like {/i}that brat who called you a lab rat and trapped you in several rooms with lethal puzzles.)"
         "(But the silence forces you to focus on something much louder and much more disturbing.{w} Thoughts that are only now coming to the forefront of your mind.)"
         "(You think about Dr. Dan —{w=0.5} no.{i} Dr. Deidre Destrange.){/i}"
         "(You think about the results of your investigation.)"
-        "(And you think about yourself:{w=0.5} a tiny cog in a massive machine.{w} A sleek,{w=0.1} pristine,{w=0.1} reliable machine —{w=0.5} carefully cleansed of the blood it's spilt.)"
+        "(And you think about yourself:{w=0.5} a tiny cog in a massive machine.)"
+        "(A sleek,{w=0.1} pristine,{w=0.1} reliable machine —{w=0.5} carefully cleansed of the blood it's spilt.)"
         "(A deep,{w=0.1} dark{w=0.1} pit hollows your stomach.)"
         $ play_sound(footsteps4)
+        
+        show bg corridor_exit:
+            align (0.5,0.5) zoom 0.5
+            ease 4 zoom 1.0 align(0.5,0.6)
+
         "(Slowly,{w=0.1} you make your way forward —{w=0.5} each step heavier than the last.)"
+
+        pause 2
         jump spare_ending
 
     elif route == "neutral":

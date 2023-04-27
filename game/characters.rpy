@@ -80,6 +80,7 @@ define le = Character(kind=nvl, what_color="#00e7ff", what_prefix="{size=+2}{b}>
 
 image bg drdanger = "images/BG/drdanger_screenbg.png"
 image drdangerframe = "images/CG/drdanger_frame.png"
+image drdangerframe off = "images/CG/drdanger_frame_off.png"
 
 layeredimage drdanger sidestare:
     zoom 0.5

@@ -7,10 +7,11 @@ label dr_danger_1:
   "Almost like he..."
   show bg tutorial2:
     ease 0.5 xalign 0.4
-    ease 0.3 xalign 0.5
-    ease 0.3 xalign 0.4
+    ease 0.5 xalign 0.6
+    ease 0.5 xalign 0.45
+    ease 0.5 xalign 0.55
     ease 0.5 xalign 0.5
-  pause 2
+  pause 3
   "(No.)"
   "(Remember your training. {w}Now's not the time to overthink things.)"
   "(You need to get out of here. {w}Detective work can come later.)"
@@ -24,7 +25,7 @@ label dr_danger_1:
   $ play_sound(dooropen)
   scene black with fade
   pause 2
-  show bg corridor1 with placeintro:
+  show bg corridor1 tvoff with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
   $Achievement.add(achievement_tfng)
@@ -35,7 +36,7 @@ label dr_danger_1:
 
   pause 1
 
-  show bg corridor1 with dissolve:
+  show bg corridor1 tvoff with dissolve:
     align (0.5,0.5) zoom 0.5
 
 
@@ -43,11 +44,11 @@ label dr_danger_1:
   pause 1
 
 
-  $ play_sound(singlefootstep)
-
-  show bg corridor1:
+  show bg corridor1 tvoff:
     align (0.5,0.5) zoom 0.5
     ease 2.7 zoom 0.6
+
+  $ play_sound(singlefootstep)
 
 
   "(You take another cautious step ahead and—){w=1}{nw}"
@@ -55,6 +56,7 @@ label dr_danger_1:
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor1-01.ogg"
   #"{b}[the {/b}{b}dr.{/b}{b} danger screens go {/b}{b}on ]{/b}"
+  show bg corridor1
   "???" "Welcome.{w=0.52} I see you've arrived safely?"
 
   show bg corridor1:
@@ -85,7 +87,8 @@ label dr_danger_1:
   "({i}Everyone{/i} at STOP knows that face.)"
   "(They've seen her photos in newspaper articles.{w} Broadcasts.{w} Social media.)"
   "(For years,{w=0.1} this mysterious woman was the scourge of STOP.)"
-  "(A saboteur who terrorized the public with bombs and cryptic threats.\n{w}A supervillain,{w=0.1} through and through.)"
+  "(A saboteur who terrorized the public with bombs and cryptic threats.)"
+  "(A supervillain,{w=0.1} through and through.)"
   "(A supervillain by the name of...)"
   voice "audio/voice/dr.danger/Danger_Corridor1-02.ogg"
   drx "From the top,{w=0.622} then. {w=1}I am Dr. Danger."
@@ -123,9 +126,9 @@ label dr_danger_1:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
   pause 2
-  $ play_sound(creakyvent)
   scene black with fade
-  pause 1
+  $ play_sound(creakyvent)
+  pause 3
   show bg room1 with placeintro:
     zoom 0.6 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
@@ -167,9 +170,21 @@ label dr_danger_1:
   pause 1
   "(...Wait.{w} There's something else here.)"
 
+  ####quickly defining a transition bg for this scene. this is where the tutorial room has the vent open but no pellets on the floor
+  layeredimage marblemeta:
+    always "images/puzzles/room_1_meta/base_marble_maze.png"
+    always "images/puzzles/room_1_meta/marble_maze_effigy_1.png"
+    always "images/puzzles/room_1_meta/marble_maze_effigy_2.png"
+    always "images/puzzles/room_1_meta/marble_maze_effigy_3.png"
+
+  show marblemeta with dissolve:
+    xpos 200 yoffset -100
+
   pause 2
   ### show meta puzzle image
   "(A lock with a strange puzzle. {w}Kinda like the one you found in your cell.)"
+
+  hide marblemeta with dissolve
   pause 1
   "(...Maybe you\'ll find the answer in this room?)"
   show bg room1:

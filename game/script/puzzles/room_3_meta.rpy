@@ -1,14 +1,14 @@
 define scrapbook_memories = {
-    1: _("""There was all this heat and smoke and energy. There were alarms blaring and people shouting. 
+    1: _("""{color=#ffffff}There was all this heat and smoke and energy. There were alarms blaring and people shouting. 
 That's what she told me, but I barely remember any of it.
 
 Here's what I did remember. When we stopped running, she seemed more tired than I was. She did carry me the entire time. But she didn't seem any weaker than before. Her hold on my body didn't loosen. She was just looking at what was left of my shoulder. 
 
 I was hurting like you wouldn't believe. But I don't think I cared. 
 
-Because, that day, I got to see the sky again."""),
+Because, that day, I got to see the sky again.{/color}"""),
 
-    2: _("""I don't remember what the food was like at the orphanage. Probably bland.
+    2: _("""{color=#ffffff}I don't remember what the food was like at the orphanage. Probably bland.
 
 I wish I could forget what LabScrip tastes like... but meals were usually the least painful part of my day in the lab, so I've got a soft spot for the stuff. 
 
@@ -20,26 +20,27 @@ I'm sure I could easily re-create her recipe. It's hardly rocket science, even w
 
 But I've never had someone cook for {i}me{/i} before. 
 
-...I'd like to pretend I'm not capable for a little while longer."""),
+...I'd like to pretend I'm not capable for a little while longer.{/color}"""),
 
-    3: _("""She told me to explore the place. She said it was important that I adjust to my new environment, but she's been holed up in the lab. 
+    3: _("""{color=#ffffff}She told me to explore the place. She said it was important that I adjust to my new environment, but she's been holed up in the lab. 
 
 I don't know why she's so stressed about my surgeries. She's the smartest person I know. And I grew up surrounded by \"brilliant\" scientists, so that's saying something.
 
 She says she's still concerned about making adjustments to my synthetic nerves. That she's worried she'll put me through even more pain. But every time she's worked on my new limbs, I haven't felt a thing.
 
-Last time, I actually fell asleep."""),
+Last time, I actually fell asleep.{/color}"""),
 
-    4: _("""I like to watch her work. It's normally very calming.
+    4: _("""{color=#ffffff}I like to watch her work. It's normally very calming.
 
 But when she's making something explosive, it's really, really exciting!  
 
 The other day, I noticed that she'd forgotten her flash-welder. I brought it over to her, saying that I wanted to test out the grip strength of my new arm. She saw through my excuse, but she let me help anyway.
+
 I even made a few suggestions of my own, and... guess what? Guess what!!! She ended up using every single idea!
 
 She said it was impressive how quickly I'd picked up on what her design needed. She smiled at me with such pride. But at the same time, there was this sad look in her eyes...
 
-...I've noticed she's sad a lot. I want to do something to change that.""")
+...I've noticed she's sad a lot. I want to do something to change that.{/color}""")
 }
 
 screen room3_meta():

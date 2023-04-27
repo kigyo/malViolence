@@ -8,16 +8,16 @@ screen room2():
 
     fixed at zoomed(0.335):
         add "bg room2"
-        imagebutton idle Null(940, 805) action [SetVariable("inspect", "corkboard"), Jump("room_2")] pos (4800, 1085) mouse "inspect"
-        imagebutton idle Null() action [SetVariable("inspect", "blueprints"), Jump("room_2")] focus_mask Image("rooms/room2_blueprints_mask.png") pos (0, 1175) mouse "inspect"
-        imagebutton idle Null() action [SetVariable("inspect", "clippings"), Jump("room_2")] focus_mask Image("rooms/room2_clippings_mask.png") pos (2811, 1235) mouse "inspect"
-        imagebutton idle Null() action [SetVariable("inspect", "limbs"), Jump("room_2")] focus_mask Image("rooms/room2_limbs_mask.png") pos (0, 2766) mouse "inspect"
-        imagebutton idle Null(300,565) action [SetVariable("inspect", "post-its"), Jump("room_2")] pos (3460, 1285) mouse "inspect"
+        imagebutton idle Null() hover "rooms/room2/room2_selection_evidenceboard.png" action [SetVariable("inspect", "corkboard"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_evidenceboard.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room2/room2_selection_blueprints.png" action [SetVariable("inspect", "blueprints"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_blueprints.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room2/room2_selection_newspaperclippings.png" action [SetVariable("inspect", "clippings"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_newspaperclippings.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room2/room2_selection_armdesigns.png" action [SetVariable("inspect", "limbs"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_armdesigns.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room2/room2_selection_postits.png" action [SetVariable("inspect", "post-its"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_postits.png" mouse "inspect" at room_hover
 
-        imagebutton idle Null() action [SetVariable("inspect", "word"), Jump("room_2")] focus_mask Image("rooms/room2_word_mask.png") pos (3790, 1070) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "panopticon"), Jump("room_2")] focus_mask Image("rooms/room2_panopticon_mask.png") pos (4109, 1941) mouse "puzzle"
-        imagebutton idle Null(1563, 620) action [SetVariable("inspect", "evidence"), Jump("room_2")] pos (1175, 1194) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "recalibration"), Jump("room_2")] focus_mask Image("rooms/room2_recalibration_mask.png") pos (0, 2058) mouse "puzzle"
+        imagebutton idle Null() hover "rooms/room2/room2_selection_metapuzzle.png" action [SetVariable("inspect", "word"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_metapuzzle.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room2/room2_selection_panopticonpuzzle.png" action [SetVariable("inspect", "panopticon"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_panopticonpuzzle.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room2/room2_selection_evidencepuzzle.png" action [SetVariable("inspect", "evidence"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_evidencepuzzle.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room2/room2_selection_calibrationpuzzle.png" action [SetVariable("inspect", "recalibration"), Jump("room_2")] focus_mask "rooms/room2/room2_selection_calibrationpuzzle.png" mouse "puzzle" at room_hover(0.5)
 
         if 1 not in room2["notes"]:
             imagebutton idle "rooms/room2_note1.png" action [SetVariable("inspect", "note1"), Jump("room_2")] pos (160, 1484) mouse "inspect"
@@ -51,6 +51,15 @@ define word_description = _("""Cautionne's a big fan of word games, so he wants 
 define word_lenient_failure_message = _("(Nope, not good enough.)")
 
 label room_2:
+
+####defining the tile images here
+    image tile_t = "images/puzzles/room_2_meta/tile_t.png"
+    image tile_a = "images/puzzles/room_2_meta/tile_a.png"
+    image tile_s = "images/puzzles/room_2_meta/tile_s.png"
+    image tile_e = "images/puzzles/room_2_meta/tile_e.png"
+    image tile_r = "images/puzzles/room_2_meta/tile_r.png"
+
+#####
     if inspect not in room2_investigated and inspect in ["blueprints", "limbs", "clippings", "post-its", "corkboard"]:
         $room2_investigated.append(inspect)
     show screen room2
@@ -106,7 +115,10 @@ label room_2:
             "(You eye over the mass of scrawled notes pinned in front of you.{w} There are two distinct sets of handwriting here,{w=0.1} but the contents are mostly the same...{w=0.5} and mostly {i}domestic?{/i}) "
             "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and what stories to read.)"
             "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and chores...)"
-            "(Whoever left these notes for each other weren't just sharing the same space.\n{w}They were {i}living{/i} together.)"
+            if gui.text_size > 40:
+                "(The two who wrote these notes weren't just sharing the same space. {w}They were {i}living{/i} together.)"
+            else:
+                "(The two who wrote these notes weren't just sharing the same space.\n{w}They were {i}living{/i} together.)"
             hide room2_postitnotes with dissolve
         else:
             show room2_postitnotes with dissolve:
@@ -161,7 +173,8 @@ label room_2:
             show room2_news with dissolve:
                 yalign 0.2 xalign 0.5
             "(Printouts and clippings of various news articles —{w=0.1} all related to Dr. Danger's exploits...{w=0.5} with a {i}certain{/i} colorful sidekick occasionally breaking into the opening paragraphs.)"
-            "(In fact,{w=0.1} when you look at them all together,{w=0.1} Cautionne seems to show up more over time.{w} Dr. Danger must've been pleased with her pupil's growth.)"
+            "(In fact,{w=0.1} when you look at them all together,{w=0.1} Cautionne seems to show up more over time.)"
+            "(Dr. Danger must've been pleased with her pupil's growth.)"
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
             "(Based on what you can make out of the caption — {w=0.1}it seems to be of some kind of commemorative occasion.)"
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
@@ -173,7 +186,7 @@ label room_2:
         else:
             show room2_news with dissolve:
                 yalign 0.2 xalign 0.5
-            "Newspaper printouts and clippings.{w} They all feature Dr. Danger...{w=0.5} as well as a {i}certain{/i} colorful sidekick."
+            "Newspaper printouts and clippings.{w} They all feature Dr. Danger...{w=0.5} as well as a certain colorful sidekick."
             hide room2_news with dissolve
             pass
         $ room2["clippings"] += 1
@@ -270,9 +283,16 @@ label evidence_solved:
     hide black onlayer screens
     hide screen room2_evidence
     with puzzle_hide
+    pause 0.1
+    show tile_e:
+        zoom 0.5 xalign 0.5 yalign 0.3 alpha 0
+        ease 1 xalign 0.5 yalign 0.5 alpha 1
+
+    pause 1
     "(A tiny blue tile falls to the ground.{w} Upon closer inspection,{w=0.1} it reads the letter \"E\",{w=0.1} for...{w=0.5} {i}evidence{/i}?)"
     "(Or maybe for {i}\"end of puzzles\", or \"enough of these silly games\"{/i}.{w} But that's just wishful thinking.)"
     "(Either way,{w=0.1} you decide to take it with you.)"
+    hide tile_e with dissolve
     $ inspect = None
     call screen room2
 
@@ -326,8 +346,20 @@ label panopticon_solved:
     hide black onlayer screens
     hide screen room2_panopticon
     with puzzle_hide
+    pause 0.1
+    show tile_a:
+        zoom 0.5 xalign 0.3 yalign 0.3 alpha 0
+        ease 1 xalign 0.3 yalign 0.5 alpha 1
+    show tile_s:
+        zoom 0.5 xalign 0.7 yalign 0.3 alpha 0
+        ease 1 xalign 0.7 yalign 0.5 alpha 1
+
+    pause 1
     "(In response to your hard-earned success,{w=0.1} two little {i}Scraddle{/i}-like tiles pop out of the miniature panopticon.)"
-    "(They represent the letters \"A\" and \"S\".{w} How quaint.)"
+    "(They show the letters \"A\" and \"S\".{w} How quaint.)"
+    hide tile_a
+    hide tile_s
+    with dissolve
     $ inspect = None
     call screen room2
 
@@ -341,11 +373,12 @@ label panopticon_game_over:
     "(You re-arrange another set of cells and—){w=1}{nw}"
     $ play_sound(error)
     "(—and suddenly,{w=0.1} your controls freeze up.{w} There's a notification in the corner.)"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+    cr "Seems like you've run out of time,{w=0.1} lab rat."
     hide black onlayer screens
     hide screen room2_panopticon
     with puzzle_hide
-    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
-    cr "Seems like you've run out of time,{w=0.1} lab rat."
+    pause 0.5
     cr "That's it.{w=0.5} The jailbreak is over.{w=0.5} You screwed up."
     "(So it {i}was {/i}a prison?{w} Then—)"
     cr "If this only concerned you and me,{w=0.1} I'd be \"whatever\" about it."
@@ -388,8 +421,20 @@ label recalibration_solved:
     hide black onlayer screens
     hide screen cybernetics
     with puzzle_hide
+    pause 0.1
+    show tile_r:
+        zoom 0.5 xalign 0.3 yalign 0.3 alpha 0
+        ease 1 xalign 0.3 yalign 0.5 alpha 1
+    show tile_t:
+        zoom 0.5 xalign 0.7 yalign 0.3 alpha 0
+        ease 1 xalign 0.7 yalign 0.5 alpha 1
+
+    pause 1
     "(The desk drawer juts open just a bit,{w=0.1} and reveals two small tiles inside.)"
     "(\"R\" and \"T\" are written on them,{w=0.1} respectively.{w} Now,{w=0.1} where could you put them to use...?)"
+    hide tile_t
+    hide tile_r
+    with dissolve
     $ inspect = None
     call screen room2
 
@@ -409,6 +454,7 @@ label recalibration_game_over:
     hide black onlayer screens
     hide screen cybernetics
     with puzzle_hide
+    pause 0.5
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "As they are now,{w=0.1} they can't be re-stabilized.{w=0.5} That person's own nervous system will rip their body apart with spasming."
     cr "...But they shouldn't be punished for {i}your{/i} mistake,{w=0.1} right?"
@@ -425,12 +471,12 @@ label recalibration_game_over:
     pause 1
     cr "And I'm gonna need them {cps=20}{i}right now.{/i}{/cps}"
 
-    $ play_sound(bodyfall)
-
     scene bg room2 at dizzy:
         zoom 0.335 yalign 0.0
         easeout 0.2 zoom 1.0 xalign 0.2 yalign 1.0
     pause 0.2
+
+    $ play_sound(bodyfall)
 
     scene black with small_shake
     #"{i}{b}COLLAPSE SFX{/b}"
@@ -458,26 +504,29 @@ label word_game_over:
     $renpy.block_rollback()
     if word_answer == ["","","","",""] or  word_answer == ["T","A","S","E","R"]:
         stop music fadeout 0.5
+        cr "..."
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Wow,{w=0.1} lab rat."
         cr "...Did you even {i}try?{/i}"
         $ play_sound(smash)
-        scene black
+        scene black with small_shake
         pause 3
     elif random_choice == 1:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmm.ogg"
-        cr "Holy crap!{w=0.5} Did you just manage to guess that right on your first try?"
+        cr "Holy crap!{w=0.5} Did you guess that right on your first try?"
         "(Huh?{w} Really?)"
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "{i}Kidding!{/i}"
-        "(You—)"
+        "(You—){w=1}{nw}"
         cr "C'mon,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
         #"{b}ZAP SFX, CUT TO BLACK{/b}"
         $ play_sound(zap)
@@ -489,31 +538,33 @@ label word_game_over:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Whoa...{w=0.5} You got it."
         cr "...Did someone write you a walkthrough online?"
-        "(You—)"
+        "(Huh?{w} How did you-){w=1}{nw}"
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         cr "If so,{w=0.1} go complain in the comments."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
-        cr "You've just met a a dead end!"
+        cr "You've just met a dead end!"
         $ play_sound(smash)
-        scene black
+        scene black with small_shake
         pause 3
 
     elif random_choice == 3:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
         stop music fadeout 0.5
         cr "You're a fast one,{w=0.1} aren't you?"
-        "(Huh?{w} What do you—)"
+        "(Huh?{w} What do you—){w=1}{nw}"
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "But next time,{w=0.1} {i}do{/i} look before you leap."
         $ play_sound(trapdoor)
-        $ queue_sound(falling)
-        scene black with easeoutbottom
+        $ queue_sound(bodyfall)
+        scene black with easeouttop
         pause 3
 
     elif random_choice == 4:
@@ -522,15 +573,16 @@ label word_game_over:
         cr "I see you're the type who likes to gamble."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Alas,{w=0.1} you didn't hit the jackpot.{w=0.5} Better luck next time!"
-        "(You—)"
+        "(You—){w=1}{nw}"
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         cr "But since you're here,{w=0.1} I've got another game for you to play."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "It's time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
-        "(What gu—)"
+        "(What gu—){w=1}{nw}"
         $ play_sound(gunshot)
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
         scene black
@@ -544,12 +596,13 @@ label word_game_over:
         hide black onlayer screens
         hide screen room2_word
         with puzzle_hide
+        pause 0.5
         cr "You'd have better luck smashing keys."
-        "(You—)"
-        cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}"
+        "(You—){w=1}{nw}"
+        cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}{w=1}{nw}"
         $ play_sound(smash2)
         pause 0.6
-        scene black
+        scene black with small_shake
         pause 3
 
     $nvl_heading = "Lab Report #404"

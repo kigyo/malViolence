@@ -37,15 +37,15 @@ screen room1():
 
     fixed at zoomed(0.335):
         add "bg room1"
-        imagebutton idle Null() action [SetVariable("inspect", "oil"), Jump("room_1")] focus_mask Image("rooms/room1_oil_mask.png") pos (232, 2634) mouse "inspect"
-        imagebutton idle Null(618, 1000) action [SetVariable("inspect", "megaphone"), Jump("room_1")] pos (2610, 1166) mouse "inspect"
+        imagebutton idle Null() hover "rooms/room1/room1_selection_oil.png" action [SetVariable("inspect", "oil"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_oil_mask.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/room1/room1_selection_megaphones.png" action [SetVariable("inspect", "megaphone"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_megaphones_mask.png" mouse "inspect" at room_hover
 
-        imagebutton idle Null(724, 1014) action [SetVariable("inspect", "marble"), Jump("room_1")] pos (1212, 1420) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "hacking"), Jump("room_1")] focus_mask Image("rooms/room1_hacking_mask.png") pos (3232, 1376) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "decanting"), Jump("room_1")] focus_mask Image("rooms/room1_decanting_mask.png") pos (1952, 2214) mouse "puzzle"
-        imagebutton idle Null() action [SetVariable("inspect", "bomb"), Jump("room_1")] focus_mask Image("rooms/room1_bomb_mask.png") pos (68, 2160) mouse "puzzle"
+        imagebutton idle Null() hover "rooms/room1/room1_selection_marblepuzzle.png" action [SetVariable("inspect", "marble"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_marblepuzzle.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room1/room1_selection_hackingpuzzle.png" action [SetVariable("inspect", "hacking"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_hackingpuzzle_mask.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room1/room1_selection_decantingpuzzle.png" action [SetVariable("inspect", "decanting"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_decantingpuzzle_mask.png" mouse "puzzle" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/room1/room1_selection_bombpuzzle.png" action [SetVariable("inspect", "bomb"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_bombpuzzle.png" mouse "puzzle" at room_hover(0.5)
 
-        imagebutton idle Null() action [SetVariable("inspect", "chair"), Jump("room_1")] focus_mask Image("rooms/room1_chair_mask.png") pos (3682, 1519) mouse "inspect"
+        imagebutton idle Null() hover "rooms/room1/room1_selection_electricchair.png" action [SetVariable("inspect", "chair"), Jump("room_1")] focus_mask "rooms/room1/room1_selection_electricchair.png" mouse "inspect" at room_hover
 
     if config.developer:
         frame:
@@ -212,10 +212,12 @@ label bomb_solved:
     "You solved the puzzle!"
     $ play_sound(marbleroll)
     show marble1:
-        xalign 0.5 yalign 0.4
+        xalign 0.8 yalign 0.4 alpha 0.0
+        ease 1.5 rotate 360 xalign 0.5 yalign 0.4 alpha 1.0
     hide black onlayer screens
     hide screen room1_bomb
     with puzzle_hide
+    pause 1
     "(A marble rolls out of the bomb case.{w} Attached to it is a note reading \"Colby Padilla\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
@@ -234,25 +236,27 @@ label bomb_game_over:
     stop music fadeout 0.5
     "(Carefully,{w=0.1} you finish the assembly and set it down in front of you.)"
     "(...Huh.{w} It doesn't seem like it's ticking.)"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+    cr "Well, well, well.{w=0.5} You've successfully made a bomb."
     hide black onlayer screens
     hide screen room1_bomb
     with puzzle_hide
-    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-    cr "Well, well, well.{w=0.5} You've successfully made a bomb."
+    pause 0.5
     cr "I can say with {i}100%% certainty{/i} that it'll make a fantastic explosion."
-    "(Phew.{w} Looks like I've done what I was supposed to.)"
+    "({i}Phew.{/i}{w} Looks like you've done what you were supposed to.)"
     $ play_sound(timeralarm)
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "That said,{w=0.1} the timer—{w=1}{nw}"
     $ play_sound(bombexplosion1)
     scene black with small_shake
-    pause 3
+    pause 2.75
     cr "...needs some work."
     pause 3
     nvl clear
     $nvl_heading = "Lab Report #414"
     l "Subject passed away due to an overexposure to high-yield explosives."
-    l "{b}Contributing Factors to Death:{/b} A lack of detail-oriented problem solving skills. Nothing more, nothing less."
+    l "{b}Contributing Factors to Death:{/b} A lack of detail-oriented problem solving skills."
+    l "Nothing more, nothing less."
     $deadend("dead3")
     le "DEAD END 03: A Mindblowing Conclusion!"
     pause 2
@@ -271,10 +275,12 @@ label hacking_solved:
     "You solved the puzzle!"
     $ play_sound(marbleroll)
     show marble2:
-        xalign 0.5 yalign 0.4
+        xalign 0.8 yalign 0.4 alpha 0.0
+        ease 1.5 rotate 360 xalign 0.5 yalign 0.4 alpha 1.0
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
+    pause 1
     "(The computer ejects a marble,{w=0.1} along with a note reading \"Asiya Bishop\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
@@ -296,12 +302,13 @@ label hacking_game_over:
     $ play_sound(timeralarm2)
 
     "(It's too late.{w} The counter-trace just found you and—){w=1}{nw}"
-    "(Wait.{w} Does that mean you've alerted STOP?{w} That rescue could be—){w=1}{nw}"
+    "(Wait.{w} Does that mean you've alerted STOP?{p}That rescue could be—){w=1}{nw}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
+    cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
-    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
-    cr "Hey, lab rat!{w=0.5} I've got good news and bad news.{w=0.5} In that order,{w=0.1} 'cause time's short."
+    pause 0.5
     cr "Good news!{w=0.5} STOP found your computer."
     cr "Bad news!{w=0.5} Standard operating procedure is to overload the offending console ASAP."
     cr "By the way,{w=0.1} you're standing very,{w=0.1} {i}very{/i} close to the computer.{w=0.5} I'll have you know that's bad for your eye—{w=1}{nw}"
@@ -312,7 +319,7 @@ label hacking_game_over:
     pause 3
 
     $nvl_heading = "Lab Report #615"
-    l "Subject died after computer shrapnel blew up into their face."
+    l "Subject died after computer shrapnel blew up into their face.\n"
     l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn't thorough enough with their background check."
     $deadend("dead4")
     le "DEAD END 04: Trouble-shooting?"
@@ -333,10 +340,12 @@ label decanting_solved:
     "You solved the puzzle!"
     $ play_sound(marbleroll)
     show marble3:
-        xalign 0.5 yalign 0.4
+        xalign 0.8 yalign 0.4 alpha 0.0
+        ease 1.5 rotate 360 xalign 0.5 yalign 0.4 alpha 1.0
     hide black onlayer screens
     hide screen room1_decanting
     with puzzle_hide
+    pause 1
     "(A small compartment opens up,{w=0.1} revealing a marble.{w} Underneath it is a note reading \"Brooke Yang\".)"
     if len(room1["solved"]) == 1 and room1["marble"] == 0:
         "(You wonder what that could mean...)"
@@ -365,6 +374,7 @@ label decanting_game_over:
     scene bg room1:
         parallel:
             yalign 0.0 xalign 0.0 zoom 0.335
+    pause 0.5
     "(Really?!{w} Did you find a solution that {i}he {/i}hadn't thought of?)"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Y'know,{w=0.1} I {i}did {/i}say that two doses would be lethal..."
@@ -378,13 +388,12 @@ label decanting_game_over:
     extend " {cps=20}have your legs always been made of jelly?){/cps}"
     cr "...But if your bio signs are anything to go by...{w=0.5} it looks like overexposure to the vapors does the job too!"
 
-    $ play_sound(bodyfall)
 
     show bg room1 at dizzy:
         zoom 0.335 yalign 0.0
         easeout 0.3 zoom 1.0 xalign 0.2 yalign 1.0
     pause 0.3
-
+    $ play_sound(bodyfall)
     scene black with small_shake
 
     pause 3
@@ -404,16 +413,18 @@ label marble_game_over:
     $renpy.block_rollback()
     $ inspect = "game over"
     show screen room1_marble with None
+    stop music fadeout 0.5
     show black onlayer screens with dissolve:
         alpha 0.5
-    "(You step back and pause.{w} Something about the order doesn't seem—)"
+    "(You step back and pause.{w} Something about the order doesn't seem—){w=1}{nw}"
     hide black onlayer screens
     hide screen room1_marble
     with puzzle_hide
+    pause 0.5
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
     cr "Oof.{w=0.5} {i}Not quite.{/i} "
     cr "But it's okay!{w=0.5} I can fix this,{w=0.1} easy-peasy."
-    cr "Just, uh...{w=0.5} stand still...{w=0.5}{cps=20}foooooor oooone secoooooond aaaaand—{/cps}{w=1}{nw}"
+    cr "Just, uh...{w=0.5} stand still...{w=0.5}{cps=20}foooooor oooone secoooooond aaaaand—{/cps}{w=0.5}{nw}"
 
     #"{b}SPLAT{/b}
     #{b}[a giant marble comes and crushes the protag — screen cuts to black]{/b}"
@@ -427,7 +438,8 @@ label marble_game_over:
     pause 3
 
     $nvl_heading = "Lab Report #909"
-    l "Subject was crushed by a comically large marble. Dropped just high enough for instantaneous death and perfect comedic timing."
+    l "Subject was crushed by a comically large marble."
+    l "Dropped just high enough for instantaneous death and perfect comedic timing."
     l "{b}Contributing Factors to Death:{/b} Didn't recognize good slapstick even when it hit them."
 
     $deadend("dead2")

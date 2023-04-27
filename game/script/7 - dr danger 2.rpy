@@ -3,18 +3,19 @@ label dr_danger_2:
   scene black with fade
   $ play_sound(creakyvent)
   pause 2
-  show bg corridor2 with placeintro:
+  show bg corridor2 tvoff with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
   $Achievement.add(achievement_room1)
   $ play_sound(metaldoorclose)
   #"{b}[pause as {/b}{b}Cautionne's{/b}{b} screen shuts off, and walking sounds are heard – showing the player move to the next corridor]{/b}"
   "(...)"
-  "(This self-styled supervillain has got {i}world-class{/i} bad manners.{w} Where could he have picked up such a nasty personality,{w=0.1} anyway?)"
+  "(This self-styled supervillain has got {i}world-class{/i} bad manners.)"
+  "(Where could he have picked up such a nasty personality,{w=0.1} anyway?)"
   "(You know it's pointless to speculate,{w=0.1} but you can't help it..."
   pause 0.5
 
-  show bg corridor2 with dissolve:
+  show bg corridor2 tvoff with dissolve:
     align (0.5,0.5) zoom 0.5
 
   "...because your current surroundings are...{w=0.5} unusually ordinary.)"
@@ -32,11 +33,12 @@ label dr_danger_2:
   "(You pause.{w} Once again,{w=0.1} your fate is in your own hands.)"
   "(Is this {i}another{/i} one of his puzzles?)"
   $ play_sound(staticshort)
+  show bg corridor2
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor2-01.ogg"
   dr "Good. {w=0.559}You made it through the experiment room."
   "(?!)" with small_shake
-  "(Dr. Danger's on again!{w} What did you—)"
+  "(Dr. Danger's on again!{w} What did you—){w=1}{nw}"
   "(No,{w=0.1} no{w=0.1} — calm down.{w} It's probably motion-activated.)"
   "(You should've listened to the last recording,{w=0.1} since it seemed pretty helpful.{w} This time,{w=0.1} you'll stay still and pay attention!)"
 
@@ -80,7 +82,7 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "...I suppose I can say this."
   drs "All his test subjects have a certain {i}unfortunate commonality.{/i}"
-  drs" A {i}terminal {/i}condition, as he sees it..."
+  drs" A {i}terminal {/i}condition, as he sees it...{w=1}{nw}"
   drs "...that makes it very difficult for him to...{w=0.5} {i}remain impartial.{/i}"
   voice "audio/voice/dr.danger/Danger_SB-I Apologize.ogg"
   drs "I apologize for being vague here."
@@ -104,13 +106,14 @@ label dr_danger_2:
   #"{b}[{/b}{b}dr.{/b}{b} danger shuts off her recording]{/b}"
 
   show drdanger stare silent
-  pause 0.5
+  pause 1
   $ play_sound(tvoff)
   hide drdanger stare silent
   hide crt
+  show drdangerframe off
   with screenoff
   pause 2
-  scene bg corridor2 with fade:
+  scene bg corridor2 tvoff with fade:
     zoom 0.5 align (0.5,0.5)
   pause 2
 
@@ -119,7 +122,7 @@ label dr_danger_2:
   "(Better take the door she recommended.)"
   #"{b}[the door in front has an opening sound, and the {/b}{b}bg{/b}{b} changes to room 2]{/b}"
   $ play_sound(footsteps2)
-  scene bg corridor2:
+  scene bg corridor2 tvoff:
     xalign 0.5 yalign 0.5 zoom 0.5
     ease 4 zoom 1.0
   pause 4

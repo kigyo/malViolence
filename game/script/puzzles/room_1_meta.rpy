@@ -33,7 +33,6 @@ init python:
             if len(marble_killed) == 3:
                 if [marble_solution[room1["solved"][0]],marble_solution[room1["solved"][1]],marble_solution[room1["solved"][2]]] == marble_killed:
                     store.room1["marble"] = "solved"
-                    clear_puzzle("room1_meta")
                     return True
                 elif ("dead2" in persistent.dead_ends and not preferences.hard_mode):
                     marble_init(_("Invalid. Restarting..."))
@@ -140,7 +139,7 @@ screen room1_marble():
     if config.developer:
         vbox:
             frame:
-                textbutton _("Skip Puzzle") action [SetDict(room1, "marble", "solved"), Return()] style "main_menu_button"
+                textbutton _("Skip Puzzle") action [SetDict(room1, "marble", "solved"), Return(), With(puzzle_hide)] style "main_menu_button"
             frame:
                 textbutton _("Game Over") action [Jump("marble_game_over")] style "main_menu_button"
 

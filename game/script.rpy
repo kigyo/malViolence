@@ -47,6 +47,14 @@ transform crt_effects:
     parallel:
         function WaveShader(amp=0.05, period=17.219, speed=4, direction="vertical", damp=(0.043,1.0))
 
+transform room_hover(opac=0.3):
+    on show:
+        alpha 0.0
+    on hover:
+        ease 0.15 alpha opac
+    on idle:
+        ease 0.05 alpha 0.0 blend "add" 
+
 image crt = At("crt.png", crt_effects)
 
 image ctc:
@@ -81,6 +89,12 @@ style puzzle_description_text:
 style puzzle_frame is gui_frame:
     background "gui/puzzle.png"
     padding (50,40) xfill True yfill True
+
+
+################### for extra backgrounds ################
+image bg corridor1 tvoff = "images/BG/Corridor 1_TVOff.png"
+image bg corridor2 tvoff = "images/BG/Corridor 2_TVOff.png"
+image bg corridor3 tvoff = "images/BG/Corridor 3_TVOff.png"
 
 ################### for defining mini cgs in the game ################
 image tutorial_pellets = "images/tutorial_pellets.png"

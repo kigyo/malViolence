@@ -70,7 +70,7 @@ label neutral_ending:
     #"{b}[Pause – sound of {/b}{b}Cautionne{/b}{b} firing a bullet into your kneecap. Screen turns black for a pause. ]{/b}"
 
     scene cautionne gun far silent with fade
-    "(Oh.{w} My knee.)"
+    "(Oh.{w} It just hit your knee.)"
     pause 0.5
     "(Aah?)"
     pause 0.5
@@ -82,7 +82,7 @@ label neutral_ending:
 
     scene cautionne gun far silent with small_shake:
         zoom 1 xalign 0.5 yalign 0.5
-        linear 0.1 yalign 1.0 xalign 0.5 zoom 2
+        linear 0.1 yalign 1.0 xalign 0.5 zoom 3
 
     scene black
 
@@ -90,10 +90,10 @@ label neutral_ending:
 
     pause 3
     "{si}(Shit.{w} Shit,{w=0.1} shit,{w=0.1} shit.){/si}"
-    "{si}(I can't believe —{w} I made such a {i}rookie {/i}mistake!){/si}"
-    "{si}(And I can't...{w} Haa...{w} I can't...{w} {i}stand{/i} any more!){/si}"
-    "{si}(Wha...{w} what am I gonna do?){/si}"
-    "{si}(How am I gonna get out of here {i}now?{/i}){/si}"
+    "{si}(You can't believe —{w} you made such a {i}rookie {/i}mistake!){/si}"
+    "{si}(And you can't...{w} Haa...{w} you can't...{w} {i}stand{/i} any more!){/si}"
+    "{si}(Wha...{w} what are you gonna do?){/si}"
+    "{si}(How are you gonna get out of here {i}now?{/i}){/si}"
 
     $ play_sound(footsteps4)
     #"{b}[footsteps sounds as{/b}{b} Cautionn{/b}{b}e walks over.]{/b}"
@@ -106,9 +106,9 @@ label neutral_ending:
     $ play_music(neutralending, fadein=1.0, fadeout=1.0)
     cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} living a hand-to-mouth life."
     cr "That's why you did this mission,{w=0.1} right?{w=0.5} 'Cause you wanted a sweet,{w=0.1} fat,{w=0.1} paycheck?"
-    "{si}(...I...{w} I want...{w} to say something...){/si}"
-    "{si}(But,{w=0.1} haah...{w} I'm shaking...{w} and sweating...{w} everywhere...){/si}"
-    "{si}(All I can do...{w} is open my eyes...){/si}"
+    "{si}(...You...{w} you want...{w} to say something...){/si}"
+    "{si}(But,{w=0.1} haah...{w} you're shaking...{w} and sweating...{w} everywhere...){/si}"
+    "{si}(All you can do...{w} is open your eyes...){/si}"
 
     scene cautionne shoot with eyeopen:
         align(0.0,1.0) subpixel True
@@ -125,8 +125,8 @@ label neutral_ending:
         cr "If I let you go,{w=0.1} would your bosses even care?"
         cr "After all,{w=0.1} you're not much of an investigator."
         cr "So, how 'bout I save you all the exit interviews and put things to an end here."
-        "{si}(N-no...{w} I can still get up!){/si}"
-        "{si}(If I...{w} crawl all the way back...{w} they'll...{w} definitely forgive me...){/si}"
+        "{si}(N-no...{w} you can still get up!){/si}"
+        "{si}(If you...{w} crawl all the way back...{w} they'll...{w} definitely forgive you...){/si}"
         #"{b}[pan up to his face]{/b}"
         scene cautionne shoot grin with dissolve:
             align(0.0,0.0)
@@ -188,7 +188,8 @@ label neutral_ending:
         label neutral3:
             cr "Want a fun fact?{w=0.5} You'll {i}definitely {/i}find it interesting."
             cr "The pain you're feeling right now...{w=0.5} is only a thousandth of the pain I went through."
-            cr "I {i}wish{/i} I was exaggerating,{w=0.1} but they came up with very accurate,{w=0.1} scientific measurements for this kind of thing.{w=0.5} Only {i}one thousandth.{/i}"
+            cr "I {i}wish{/i} I was exaggerating,{w=0.1} but they came up with very accurate,{w=0.1} scientific measurements for this kind of thing."
+            cr "Only {i}one thousandth.{/i}"
             cr "You read Dr. Danger's diary,{w=0.1} right?{w=0.5} You {i}know{/i} what STOP did to me."
             cr "Getting up from my bed took weeks.{w=0.5} Walking with my new legs took months.{w=0.5} I still twitch and faint 'cause of the shit they put in my brain."
             cr "You'll never know what that's like.{w=0.5} Being a {i}real {/i}lab rat."
@@ -198,7 +199,7 @@ label neutral_ending:
             scene cautionne shoot angry:
                 align(0.0,0.0)
             voice "audio/voice/cautionne/Endings/Neutral Endings/NE 3/Cautionne_NeutralEnding3-05.ogg"
-            cr "I {i}won't{/i} let anyone else live through what I did."
+            cr "I won't let anyone else live through what I did."
             voice "audio/voice/cautionne/Endings/Neutral Endings/NE 3/Cautionne_NeutralEnding3-01.ogg"
             cr "You weren't there.{w=0.928} You weren't in charge. "
             scene cautionne shoot cry:

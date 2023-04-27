@@ -38,25 +38,27 @@ screen tutorial_room():
     zorder 5
 
     fixed at zoomed:
-        imagebutton idle Null(700, 280) action [SetVariable("inspect", "desk"), Jump("tutorial_room")] pos (2315, 1370) mouse "inspect"
-        imagebutton idle Null(380, 800) action [SetVariable("inspect", "handle"), Jump("tutorial_room")] pos (1750, 680) mouse "inspect":
-            if tutorial["vent"] == 2:
-                mouse "puzzle"
-        imagebutton idle Null(880, 610) action [SetVariable("inspect", "tap"), Jump("tutorial_room")] pos (2960, 1550) mouse "inspect"
-
         if tutorial["vent"] == 0:
             add "bg tutorial1"
-            imagebutton idle Null(340, 560) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (840, 715) mouse "inspect"
         else:
             add "bg tutorial2"
-            imagebutton idle Null(540, 348) action [SetVariable("inspect", "vent"), Jump("tutorial_room")] pos (1776, 1629) mouse "inspect"
-            imagebutton idle Null(270, 450) action [SetVariable("inspect", "painting"), Jump("tutorial_room")] pos (880, 780) mouse "inspect"
-            imagebutton idle Null(192,144) action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] pos (1254, 1782) mouse "inspect"
-        imagebutton idle Null() action [SetVariable("inspect", "bed"), Jump("tutorial_room")] pos (561, 1753) mouse "inspect" focus_mask Image("rooms/tutorial_bed_mask.png")
+        imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_desk.png" action [SetVariable("inspect", "desk"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_desk.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_doorlock.png" action [SetVariable("inspect", "handle"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_doorlock_mask.png" mouse "inspect" at room_hover:
+            if tutorial["vent"] >= 2:
+                mouse "puzzle" hover "rooms/tutorial/tutroom_selection_doorlock_puzzle.png" at room_hover(0.5)
+        imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_sink.png" action [SetVariable("inspect", "tap"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_sink.png" mouse "inspect" at room_hover
+
+        if tutorial["vent"] == 0:
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_frameonwall.png" action [SetVariable("inspect", "painting"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_frameonwall.png" mouse "inspect" at room_hover
+        else:
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_bowl.png" action [SetVariable("inspect", "vent"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_bowl.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_frame.png" action [SetVariable("inspect", "painting"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_frame.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_pellets.png" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_pellets_mask.png" mouse "inspect" at room_hover
+        imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_bed.png" action [SetVariable("inspect", "bed"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_bed.png" mouse "inspect" at room_hover
 
     if config.developer:
         frame:
-            textbutton _("Skip Room") action [Jump("post_tutorial")] style "main_menu_button"
+            textbutton _("Skip Room") action [Jump("post_tutorial"), Hide()] style "main_menu_button"
 
 
 init python:
@@ -88,13 +90,13 @@ screen tutorial_lock():
             for i in range(8):
                 text str(tutorial["lock"][i]) + " "
         frame:
-            textbutton _("Skip Puzzle") action [Hide(), Jump("post_tutorial")] style "main_menu_button"
+            textbutton _("Skip Puzzle") action [Hide(transition=dissolve), Jump("post_tutorial")] style "main_menu_button"
     add "puzzles/tutorial_circle.png" align (0.5,0.5)
     for i in range(8):
         imagebutton idle "puzzles/tutorial_"+ str(tutorial["lock"][i]) +".png" action Function(tutorial_set_lock, i) focus_mask True align (0.5,0.5) at rotated(i*45)
     
     if puzzle_cleared("tutorial") or not preferences.hard_mode:
-        textbutton "SKIP" style "confirm_button" action [Hide(), Jump("post_tutorial")] pos (40,50)
+        textbutton "SKIP" style "confirm_button" action [Hide(transition=dissolve), Jump("post_tutorial")] pos (40,50)
         
     if not inspect:
         textbutton "Return" action [Return()] style "confirm_button" xalign 0.8 yalign 0.5
@@ -108,6 +110,9 @@ label tutorial_intro:
         hide screen tutorial_lock
         $renpy.block_rollback()
 
+        ####quickly defining a transition bg for this scene. this is where the tutorial room has the vent open but no pellets on the floor
+        image bg tutorial1_5 = "images/BG/Tutorial room v1_5.png"
+
 
         if inspect == "painting":
             if tutorial["vent"] == 0:
@@ -115,6 +120,8 @@ label tutorial_intro:
                 "(Cautionne won't be winning any awards for home decor anytime soon.)"
                 $ play_sound(creakyvent)
                 $ tutorial["vent"] = 1
+                scene bg tutorial1_5:
+                    zoom 0.5
                 with fade
                 pause 0.5
                 show tutorial_bowl with dissolve:
@@ -135,9 +142,13 @@ label tutorial_intro:
                 pause 1
                 "(...Huh?{w} What's this?)"
                 "(There's something at the bottom of the bowl.{w} ...A pattern?)"
+                "(To get a better look,"
                 $ play_sound(pelletfall)
+                scene black with fade
                 pause 1
-                "(To get a better look,{w=0.1} you dump the rest of the pellets on the floor.)"
+                scene bg tutorial2 with fade:
+                    zoom 0.5
+                extend " you dump the rest of the pellets on the floor.)"
                 #[sound of pellets falling]
                 show tutorial_diagram with dissolve:
                     zoom 0.3 yalign 0.2 xalign 0.5
@@ -145,6 +156,8 @@ label tutorial_intro:
                 "(Wonder if it means anything...)"
                 hide tutorial_diagram with dissolve
             else:
+                scene bg tutorial2:
+                    zoom 0.5
                 show tutorial_diagram with dissolve:
                     zoom 0.3 yalign 0.2 xalign 0.5
                 pause
@@ -191,11 +204,11 @@ label tutorial_intro:
                     scene bg tutorial2 with small_shake:
                         parallel:
                             zoom 0.5 xalign 0.5 yalign 0.5
-                            linear 0.1 yalign 1.0 xalign 0.5 zoom 0.75
+                            linear 0.1 yalign 1.0 xalign 0.6 zoom 2.5
 
                     scene bg tutorial2 at dizzy with dissolve:
                         parallel:
-                            yalign 1.0 xalign 0.5 zoom 0.75
+                            yalign 1.0 xalign 0.6 zoom 2.5
                     "{sc}({i}—HURK!{/i}){/sc}"
                     "{si}(...Aw,{w=0.1} crap.){/si}"
                     "{si}(Of {i}course{/i} there was something in the food.){/si}"
@@ -210,7 +223,8 @@ label tutorial_intro:
                     pause 3
                     $nvl_heading = "Lab Report #310"
                     l "Subject expired shortly after ingesting higher than recommended daily serving of cyanide-laced rodent feed."           
-                    l "{b}Contributing Factors to Death:{/b} Their stomach was bigger than their brain, evidently. \n{w}May need to re-evaluate STOP agents' dietary preferences."
+                    l "{b}Contributing Factors to Death:{/b} Evidently, their stomach was bigger than their brain."
+                    l "May need to re-evaluate STOP agents' dietary preferences.\n"
                     $deadend("dead1")
                     le "DEAD END 01: Cheers! It's Cyanide."
                     nvl hide
@@ -256,10 +270,10 @@ label tutorial_intro:
                 "(With a little time and effort...{w} you think you can crack it.)"
                 $ inspect = None
                 $renpy.block_rollback()
-                call screen tutorial_lock
+                call screen tutorial_lock with dissolve
             elif tutorial["vent"] == 3:
                 $ inspect = None
-                call screen tutorial_lock
+                call screen tutorial_lock with dissolve
             else:
                 "(A door handle.)"
                 show screen tutorial_lock with dissolve

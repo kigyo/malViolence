@@ -199,6 +199,8 @@ init python:
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
     build.classify('**.rpy', None)
+    build.classify('**.save', None)
+    build.classify('**/persistent', None)
 
     ## To archive files, classify them as 'archive'.
 
