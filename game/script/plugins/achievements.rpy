@@ -100,21 +100,39 @@ init python:
         "all": [_("Noble Laureate"), _("Earn all achievements."), "gui/trophy_icon.png", 'platinum'],
     }
 
-    death_name = {
-        "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), "gui/dead_icon.png", 'dead'], #tutorial
-        "dead2": [_("DEAD END 02:"), _("Marbleous Slapstick!"), "gui/dead_icon.png", 'dead'], #room1 meta
-        "dead3": [_("DEAD END 03:"), _("A Mindblowing Conclusion!"), "gui/dead_icon.png", 'dead'], #room1 1
-        "dead4": [_("DEAD END 04:"), _("Trouble-shooting?"), "gui/dead_icon.png", 'dead'], #room1 2
-        "dead5": [_("DEAD END 05:"), _("A Venom-enal End!"), "gui/dead_icon.png", 'dead'], #room1 3
-        "dead6": [_("DEAD END 06:"), _("Stop Me If You Think You've Word This One Before..."), "gui/dead_icon.png", 'dead'], #room2 meta
-        "dead7": [_("DEAD END 07:"), _("Pinpricked"), "gui/dead_icon.png", 'dead'], #room2 1
-        "dead8": [_("DEAD END 08:"), _("A Taste of Sobering Punishment."), "gui/dead_icon.png", 'dead'], #room2 2
-        "dead9": [_("DEAD END 09:"), _("Didn't Make The Cut."), "gui/dead_icon.png", 'dead'], #room2 3
-        "dead10": [_("DEAD END 10:"), _("Holy Scrap!"), "gui/dead_icon.png", 'dead'], #room3 meta
-        "dead11": [_("DEAD END 11:"), _("Quilt In Action."), "gui/dead_icon.png", 'dead'], #room3 1
-        "dead12": [_("DEAD END 12:"), _("Get Stuffed."), "gui/dead_icon.png", 'dead'], #room3 2
-        "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "gui/dead_icon.png", 'dead'], #room3 3
-    }
+    if persistent.skullicon == True:
+        death_name = {
+            "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), "gui/dead_icon.png", 'dead'], #tutorial
+            "dead2": [_("DEAD END 02:"), _("Marbleous Slapstick!"), "gui/dead_icon.png", 'dead'], #room1 meta
+            "dead3": [_("DEAD END 03:"), _("A Mindblowing Conclusion!"), "gui/dead_icon.png", 'dead'], #room1 1
+            "dead4": [_("DEAD END 04:"), _("Trouble-shooting?"), "gui/dead_icon.png", 'dead'], #room1 2
+            "dead5": [_("DEAD END 05:"), _("A Venom-enal End!"), "gui/dead_icon.png", 'dead'], #room1 3
+            "dead6": [_("DEAD END 06:"), _("Stop Me If You Think You've Word This One Before..."), "gui/dead_icon.png", 'dead'], #room2 meta
+            "dead7": [_("DEAD END 07:"), _("Pinpricked"), "gui/dead_icon.png", 'dead'], #room2 1
+            "dead8": [_("DEAD END 08:"), _("A Taste of Sobering Punishment."), "gui/dead_icon.png", 'dead'], #room2 2
+            "dead9": [_("DEAD END 09:"), _("Didn't Make The Cut."), "gui/dead_icon.png", 'dead'], #room2 3
+            "dead10": [_("DEAD END 10:"), _("Holy Scrap!"), "gui/dead_icon.png", 'dead'], #room3 meta
+            "dead11": [_("DEAD END 11:"), _("Quilt In Action."), "gui/dead_icon.png", 'dead'], #room3 1
+            "dead12": [_("DEAD END 12:"), _("Get Stuffed."), "gui/dead_icon.png", 'dead'], #room3 2
+            "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "gui/dead_icon.png", 'dead'], #room3 3
+        }
+    elif persistent.skullicon == False:
+        death_name = {
+            "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), "gui/dead_icon_alt.png", 'dead'], #tutorial
+            "dead2": [_("DEAD END 02:"), _("Marbleous Slapstick!"), "gui/dead_icon_alt.png", 'dead'], #room1 meta
+            "dead3": [_("DEAD END 03:"), _("A Mindblowing Conclusion!"), "gui/dead_icon_alt.png", 'dead'], #room1 1
+            "dead4": [_("DEAD END 04:"), _("Trouble-shooting?"), "gui/dead_icon_alt.png", 'dead'], #room1 2
+            "dead5": [_("DEAD END 05:"), _("A Venom-enal End!"), "gui/dead_icon_alt.png", 'dead'], #room1 3
+            "dead6": [_("DEAD END 06:"), _("Stop Me If You Think You've Word This One Before..."), "gui/dead_icon_alt.png", 'dead'], #room2 meta
+            "dead7": [_("DEAD END 07:"), _("Pinpricked"), "gui/dead_icon_alt.png", 'dead'], #room2 1
+            "dead8": [_("DEAD END 08:"), _("A Taste of Sobering Punishment."), "gui/dead_icon_alt.png", 'dead'], #room2 2
+            "dead9": [_("DEAD END 09:"), _("Didn't Make The Cut."), "gui/dead_icon_alt.png", 'dead'], #room2 3
+            "dead10": [_("DEAD END 10:"), _("Holy Scrap!"), "gui/dead_icon_alt.png", 'dead'], #room3 meta
+            "dead11": [_("DEAD END 11:"), _("Quilt In Action."), "gui/dead_icon_alt.png", 'dead'], #room3 1
+            "dead12": [_("DEAD END 12:"), _("Get Stuffed."), "gui/dead_icon_alt.png", 'dead'], #room3 2
+            "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "gui/dead_icon_alt.png", 'dead'], #room3 3
+        }
+
 
     for k, v in achievement_name.items():
         achievement.register(v[0])

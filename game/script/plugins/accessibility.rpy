@@ -302,10 +302,10 @@ init python:
     endingintro: _("Conclusion"),
     spareending : _("Sudden Compassion."),
     neutralending : _("One Way Only."),
-    killending : _("Just Another Job."),
+    killending : _("Mission Accomplished."),
     tutroom : _("Tute or Real?"),
     room1theme : _("The Evil Lab, For Evil Lab Things."),
-    room2theme : _("Odd Office?"),
+    room2theme : _("Odd Office for Odder Jobs"),
     room3theme : _("Bittersweet Home.")
     }
 

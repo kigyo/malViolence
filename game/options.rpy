@@ -143,6 +143,10 @@ define config.default_voice_volume = 0.7
 
 default preferences.hard_mode = True
 
+### for turning the skull icon on and off for death-related achievements
+
+default persistent.skullicon = True
+
 
 ## Save directory ##############################################################
 ##

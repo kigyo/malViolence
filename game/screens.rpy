@@ -815,6 +815,7 @@ screen preferences():
                         ## option only shows if the user is playing on a PC.
                         textbutton _("Self-Voicing") action Preference("self voicing", "toggle") alt "Toggle Self-Voicing"
                     textbutton "Screenshake" action ToggleField(persistent,"screenshake",true_value=True,false_value=False) alt "Toggle Screen Shake"
+                    textbutton "Skull Icons" action ToggleField(persistent,"skullicon",true_value=True,false_value=False) alt "Toggle Screen Shake"
 
                 if not main_menu:
                     vbox:
@@ -856,6 +857,8 @@ screen preferences():
                     label _("Puzzle Skipper")
                     textbutton _("Off") action SetField(preferences, "hard_mode", True) alt "Puzzle Skipper Off"
                     textbutton _("On") action SetField(preferences, "hard_mode", False) alt "Puzzle Skipper On"
+
+
 
                 #vbox:
                 #    style_prefix "radio"
