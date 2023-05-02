@@ -184,7 +184,9 @@ init python:
     lazercharge = "audio/sfx/Room 3 SFX/Laser Charging 2.ogg"
     lazerblast = "audio/sfx/Room 3 SFX/Laser Blast.ogg"
     piercings = "audio/sfx/Room 3 SFX/Multiple Peircings3.ogg"
-    plushiesqueak = "audio/sfx/Room 3 SFX/Squeak2.ogg"
+    plushiesqueak = "audio/sfx/new malviolence sfx/plushsqueak.mp3"
+    plushiesqueak2 = "audio/sfx/new malviolence sfx/plushsqueak_2.mp3"
+    powerdown = "audio/sfx/new malviolence sfx/lightandpower.ogg"
     buzzsawgore = "audio/sfx/Room 3 SFX/Buzzsawgore1.ogg"
     gunblast1 = "audio/sfx/Ending sfx/Gun Blast 1.ogg"
     gunblast2 = "audio/sfx/Ending sfx/Gun Blast 2.ogg"
@@ -256,6 +258,8 @@ init python:
     piercings : _("Someone is pierced multiple times."),
     paperturn : _("A page is turned."),
     plushiesqueak : _("A soft toy squeaks."),
+    plushiesqueak2 : _("A soft toy squeaks."),
+    powerdown : _("The power shuts down."),
     buzzsawgore : _("Someone is torn apart by a buzzsaw."),
     gunblast1 : _("A gun fires."),
     gunblast2 : _("A gun fires."),

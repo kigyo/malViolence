@@ -452,14 +452,14 @@ label room_3:
                 "(There are a few plushies sitting on the shelf.{w} They're suprisingly soft!)"
                 "(You investigate the cupboard below the plushies where—{w=0.5} {i}woah!{/i})"
                 $play_sound(plushiesqueak)
-                $queue_sound(plushiesqueak)
+                $queue_sound(plushiesqueak2)
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
                 "(An avalanche of plushies spills out,{w=0.1} burying you in a soft, fuzzy pile.)"
                 "(This {i}would{/i} be a comfy way to go out,{w=0.1} but you should probably put everything back.)"
             else:
                 "(A pile of plushies sprawl out on the bed, right where you left them.)"
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
-                "(Okay,{w=0.1} one more time.{w} Just gotta neatly sort the toys neatly into sets...)"
+                "(Okay,{w=0.1} one more time.{w} Just gotta neatly sort the toys into sets...)"
             $renpy.block_rollback()
             $ room3["toys"] += 1
             $ inspect = None
@@ -703,7 +703,6 @@ label toys_game_over:
     cr "{i}Right.{/i}"
 
     $ play_sound(trapdoor)
-    $ queue_sound(falling)
     $ queue_sound(buzzsawgore)
 
     scene black with easeouttop
@@ -773,7 +772,7 @@ label cooking_game_over:
     hide screen mise_en_place
     with puzzle_hide
     pause 1
-    cr "How the {i}hell{/i} do you screw up pancakes that bad?{w=0.5} Did STOP mangle your common sense as well as your brains?"
+    cr "How the {i}hell{/i} do you screw up pancakes that badly?{w=0.5} Did STOP mangle your common sense as well as your brains?"
     "(You open your mouth to protest and—){w=1}{nw}"
 
     $ play_sound(smash)

@@ -407,7 +407,6 @@ screen main_menu():
 
     hbox pos (50,50) spacing 30:
         imagebutton idle "gui/Twitter.png" action OpenURL("https://twitter.com/madocactus") at quick_hover
-        imagebutton idle "gui/Itch.png" action OpenURL("https://madocallie.itch.io/malviolence") at quick_hover
 
     vbox xalign 0.5 yalign 0.6 spacing 15:
         style_prefix "main_menu"
