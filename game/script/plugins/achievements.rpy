@@ -136,8 +136,8 @@ init python:
 
     for k, v in achievement_name.items():
         achievement.register(k)
-    #for k, v in death_name.items():
-    #    achievement.register(v[0])
+    for k, v in death_name.items():
+        achievement.register(k)
 
 default achievement_start = Achievement(name=achievement_name['start'][0], message=achievement_name['start'][1], image=achievement_name['start'][2])
 default achievement_tfng = Achievement(name=achievement_name['tfng'][0], message=achievement_name['tfng'][1], image=achievement_name['tfng'][2])
