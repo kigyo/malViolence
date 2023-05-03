@@ -407,7 +407,6 @@ screen main_menu():
 
     hbox pos (50,50) spacing 30:
         imagebutton idle "gui/Twitter.png" action OpenURL("https://twitter.com/madocactus") at quick_hover
-        imagebutton idle "gui/Itch.png" action OpenURL("https://madocallie.itch.io/malviolence") at quick_hover
 
     vbox xalign 0.5 yalign 0.6 spacing 15:
         style_prefix "main_menu"
@@ -599,14 +598,14 @@ screen about():
 
             ## gui.about is usually set in options.rpy.
             text "This game was crafted with love within 31 days for NaNoRenO 2023, by:" size gui.label_text_size-10 font gui.text_font
-            grid 2 7:
+            grid 2 6:
                 xspacing 0 yspacing 10 xoffset 50
                 hbox spacing 15:
                     label _("Director & CG Artist") + ":"
                     text _("{a=https://madocallie.carrd.co/}Mado{/a}")
                 hbox spacing 15:
                     label _("Writing") + ":"
-                    text _("{a=https://madocallie.carrd.co/}Mado{/a}") + ", " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}")  + ", " + _("{a=https://itch.io/profile/luoxyz}Z{/a}")
+                    text _("{a=https://madocallie.carrd.co/}Mado{/a}") + ", " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}")  + " & " + _("{a=https://itch.io/profile/luoxyz}Z{/a}")
                 hbox spacing 15:
                     label _("Puzzle Designer") + ":"
                     text _("{a=https://omelette.itch.io/}speck{/a}")
@@ -633,14 +632,15 @@ screen about():
                     text _("{a=https://twitter.com/DrayReedOFC}D.ray{/a}")
                 hbox spacing 15:
                     label _("Music") + ":"
-                    text _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}") + ", " + _("{a=https://twitter.com/doranthedoran}Doran{/a}")
+                    text _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}") + " & " + _("{a=https://twitter.com/doranthedoran}Doran{/a}")
                 hbox spacing 15:
                     label _("Trailer") + ":"
                     text _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}")
+            hbox spacing 15 xoffset 50 yoffset -20:
+                label _("QA Testing") + ":"
+                text _("cluniies") + ", " + _("wBrian") + " & " + _("Whatever Productions")
+                null width 50
                 text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25 font gui.text_font yalign 1.0
-                hbox spacing 15:
-                    label _("QA Testing") + ":"
-                    text _("cluniies") + ", " + _("wBrian")
 
 
 style about_label is gui_label
@@ -816,6 +816,7 @@ screen preferences():
                         ## option only shows if the user is playing on a PC.
                         textbutton _("Self-Voicing") action Preference("self voicing", "toggle") alt "Toggle Self-Voicing"
                     textbutton "Screenshake" action ToggleField(persistent,"screenshake",true_value=True,false_value=False) alt "Toggle Screen Shake"
+                    textbutton "Skull Icons" action ToggleField(persistent,"skullicon",true_value=True,false_value=False) alt "Toggle Screen Shake"
 
                 if not main_menu:
                     vbox:
@@ -857,6 +858,8 @@ screen preferences():
                     label _("Puzzle Skipper")
                     textbutton _("Off") action SetField(preferences, "hard_mode", True) alt "Puzzle Skipper Off"
                     textbutton _("On") action SetField(preferences, "hard_mode", False) alt "Puzzle Skipper On"
+
+
 
                 #vbox:
                 #    style_prefix "radio"

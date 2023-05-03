@@ -320,7 +320,7 @@ label evidence_game_over:
     cr "{i}Let's put a pin in it.{/i}"
     #"{i}{b}PIERCING SFX, CUT TO BLACK.{/b}{/i}"
     $ play_sound(bodypierce)
-    scene black
+    scene black with small_shake
     pause 3
     $nvl_heading = "Lab Report #273"
     l "Subject experienced permanent loss of life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
@@ -390,7 +390,7 @@ label panopticon_game_over:
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Shut Up 1.ogg"
     cr "Now,{w=0.1} go sit in the corner and think about what you've done!" with small_shake
     ####### industrial lights power off sound here
-    $ play_sound(switchoff)
+    $ play_sound(powerdown)
     scene black
     pause 2
     cr "I'll come back for you when you're sorry enough."
@@ -563,7 +563,7 @@ label word_game_over:
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "But next time,{w=0.1} {i}do{/i} look before you leap."
         $ play_sound(trapdoor)
-        $ queue_sound(bodyfall)
+        $ queue_sound(buzzsawgore)
         scene black with easeouttop
         pause 3
 
@@ -571,7 +571,6 @@ label word_game_over:
         stop music fadeout 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
         cr "I see you're the type who likes to gamble."
-        voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
         cr "Alas,{w=0.1} you didn't hit the jackpot.{w=0.5} Better luck next time!"
         "(You—){w=1}{nw}"
         stop music fadeout 0.5
@@ -581,7 +580,7 @@ label word_game_over:
         pause 0.5
         cr "But since you're here,{w=0.1} I've got another game for you to play."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
-        cr "It's time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
+        cr "Time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
         "(What gu—){w=1}{nw}"
         $ play_sound(gunshot)
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"

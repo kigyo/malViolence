@@ -110,7 +110,7 @@ init python:
             self.match_pic.append(self.pieces[self.match[-1][1]][self.match[-1][0]].type)
             if len(self.match) < self.match_length:
                 return
-            renpy.sound.play("audio/sfx/Room 3 SFX/Squeak2.ogg")
+            renpy.sound.play("audio/sfx/new malviolence sfx/plushsqueak.mp3")
             self.just_pathed = [(self.pieces[y][x].type, (x, y)) for (x, y) in self.match]
 
             self.pieces[self.player[1]][self.player[0]] = None
