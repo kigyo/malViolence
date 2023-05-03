@@ -2,14 +2,16 @@ python early:
 
 
     class Achievement(NoRollback):
-        def __init__(self, name='', image='', message='', **kwargs):
-            self.name = name
-            if image == '':
-                ## If image is None, we will give a default image.
-                self.image = Transform('gui/gui/trophy_icon.png.png', fit='contain')
-            else:
-                self.image = Transform(image, fit='contain')
-            self.message = message
+        def __init__(self, id='', kind="normal", **kwargs):
+            self.id = id
+            if kind == "normal" and id in achievement_name:
+                self.name = achievement_name[id][0]
+                self.message = achievement_name[id][1]
+                self.image = Transform(achievement_name[id][2], fit='contain')
+            elif id in death_name:
+                self.name = death_name[id][0]
+                self.message = death_name[id][1]
+                self.image = Transform(death_name[id][2], fit='contain')
 
 
         def __eq__(self, value):
@@ -28,8 +30,8 @@ python early:
             As a standard python expression  ::  Achievement.add( <trophy> )
             As a screen action  ::  Function( Achievement.add, <trophy> )
             """
-            if not achievement.has(trophy.name):
-                achievement.grant(trophy.name)
+            if not achievement.has(trophy.id):
+                achievement.grant(trophy.id)
                 store.achievement_notification_list.append(trophy)
 
             if trophy not in persistent.my_achievements:
@@ -42,6 +44,9 @@ python early:
                 store.achievement_notification_list.append(trophy)
                 ## New acheievements will appear first in the list.
                 persistent.dead_ends.insert(0, trophy)
+
+            if not achievement.has(trophy):
+                achievement.grant(trophy)
 
         def purge(self):
             """
@@ -139,33 +144,33 @@ init python:
     for k, v in death_name.items():
         achievement.register(k)
 
-default achievement_start = Achievement(name=achievement_name['start'][0], message=achievement_name['start'][1], image=achievement_name['start'][2])
-default achievement_tfng = Achievement(name=achievement_name['tfng'][0], message=achievement_name['tfng'][1], image=achievement_name['tfng'][2])
-default achievement_room1 = Achievement(name=achievement_name['room1'][0], message=achievement_name['room1'][1], image=achievement_name['room1'][2])
-default achievement_room2 = Achievement(name=achievement_name['room2'][0], message=achievement_name['room2'][1], image=achievement_name['room2'][2])
-default achievement_room3 = Achievement(name=achievement_name['room3'][0], message=achievement_name['room3'][1], image=achievement_name['room3'][2])
-default achievement_deadfirst = Achievement(name=achievement_name['deadfirst'][0], message=achievement_name['deadfirst'][1], image=achievement_name['deadfirst'][2])
-default achievement_deadall = Achievement(name=achievement_name['deadall'][0], message=achievement_name['deadall'][1], image=achievement_name['deadall'][2])
-#default achievement_wrong = Achievement(name=achievement_name['wrong'][0], message=achievement_name['wrong'][1], image=achievement_name['wrong'][2])
-default achievement_end1 = Achievement(name=achievement_name['end1'][0], message=achievement_name['end1'][1], image=achievement_name['end1'][2])
-default achievement_end2 = Achievement(name=achievement_name['end2'][0], message=achievement_name['end2'][1], image=achievement_name['end2'][2])
-default achievement_end3 = Achievement(name=achievement_name['end3'][0], message=achievement_name['end3'][1], image=achievement_name['end3'][2])
-default achievement_investigate = Achievement(name=achievement_name['investigate'][0], message=achievement_name['investigate'][1], image=achievement_name['investigate'][2])
-default achievement_difficulty1 = Achievement(name=achievement_name['difficulty1'][0], message=achievement_name['difficulty1'][1], image=achievement_name['difficulty1'][2])
-default achievement_difficulty2 = Achievement(name=achievement_name['difficulty2'][0], message=achievement_name['difficulty2'][1], image=achievement_name['difficulty2'][2])
-default achievement_difficulty3 = Achievement(name=achievement_name['difficulty3'][0], message=achievement_name['difficulty3'][1], image=achievement_name['difficulty3'][2])
-default achievement_platinum = Achievement(name=achievement_name['all'][0], message=achievement_name['all'][1], image=achievement_name['all'][2])
+default achievement_start = Achievement('start')
+default achievement_tfng = Achievement('tfng')
+default achievement_room1 = Achievement('room1')
+default achievement_room2 = Achievement('room2')
+default achievement_room3 = Achievement('room3')
+default achievement_deadfirst = Achievement('deadfirst')
+default achievement_deadall = Achievement('deadall')
+#default achievement_wrong = Achievement('wrong')
+default achievement_end1 = Achievement('end1')
+default achievement_end2 = Achievement('end2')
+default achievement_end3 = Achievement('end3')
+default achievement_investigate = Achievement('investigate')
+default achievement_difficulty1 = Achievement('difficulty1')
+default achievement_difficulty2 = Achievement('difficulty2')
+default achievement_difficulty3 = Achievement('difficulty3')
+default achievement_platinum = Achievement('all')
 
-default achievement_dead1 = Achievement(name=death_name['dead1'][0], message=death_name['dead1'][1], image=death_name['dead1'][2])
-default achievement_dead2 = Achievement(name=death_name['dead2'][0], message=death_name['dead2'][1], image=death_name['dead2'][2])
-default achievement_dead3 = Achievement(name=death_name['dead3'][0], message=death_name['dead3'][1], image=death_name['dead3'][2])
-default achievement_dead4 = Achievement(name=death_name['dead4'][0], message=death_name['dead4'][1], image=death_name['dead4'][2])
-default achievement_dead5 = Achievement(name=death_name['dead5'][0], message=death_name['dead5'][1], image=death_name['dead5'][2])
-default achievement_dead6 = Achievement(name=death_name['dead6'][0], message=death_name['dead6'][1], image=death_name['dead6'][2])
-default achievement_dead7 = Achievement(name=death_name['dead7'][0], message=death_name['dead7'][1], image=death_name['dead7'][2])
-default achievement_dead8 = Achievement(name=death_name['dead8'][0], message=death_name['dead8'][1], image=death_name['dead8'][2])
-default achievement_dead9 = Achievement(name=death_name['dead9'][0], message=death_name['dead9'][1], image=death_name['dead9'][2])
-default achievement_dead10 = Achievement(name=death_name['dead10'][0], message=death_name['dead10'][1], image=death_name['dead10'][2])
-default achievement_dead11 = Achievement(name=death_name['dead11'][0], message=death_name['dead11'][1], image=death_name['dead11'][2])
-default achievement_dead12 = Achievement(name=death_name['dead12'][0], message=death_name['dead12'][1], image=death_name['dead12'][2])
-default achievement_dead13 = Achievement(name=death_name['dead13'][0], message=death_name['dead13'][1], image=death_name['dead13'][2])
+default achievement_dead1 = Achievement('dead1')
+default achievement_dead2 = Achievement('dead2')
+default achievement_dead3 = Achievement('dead3')
+default achievement_dead4 = Achievement('dead4')
+default achievement_dead5 = Achievement('dead5')
+default achievement_dead6 = Achievement('dead6')
+default achievement_dead7 = Achievement('dead7')
+default achievement_dead8 = Achievement('dead8')
+default achievement_dead9 = Achievement('dead9')
+default achievement_dead10 = Achievement('dead10')
+default achievement_dead11 = Achievement('dead11')
+default achievement_dead12 = Achievement('dead12')
+default achievement_dead13 = Achievement('dead13')
