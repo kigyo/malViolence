@@ -133,7 +133,7 @@ init python:
             "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "gui/dead_icon_alt.png", 'dead'], #room3 3
         }
 
-
+    achievement.sync()
     for k, v in achievement_name.items():
         achievement.register(k)
     for k, v in death_name.items():
