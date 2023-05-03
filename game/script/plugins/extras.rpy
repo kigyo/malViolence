@@ -484,7 +484,8 @@ Jennymhulla
 \n\n
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Quality Assurance:{/color}{/font}{/size}\n
 cluniies\n
-wBrian
+wBrian\n
+Muzozavr
 \n\n
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Special Thanks:{/color}{/font}{/size}\n
 dmochas\n

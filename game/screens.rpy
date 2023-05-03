@@ -605,7 +605,7 @@ screen about():
                     text _("{a=https://madocallie.carrd.co/}Mado{/a}")
                 hbox spacing 15:
                     label _("Writing") + ":"
-                    text _("{a=https://madocallie.carrd.co/}Mado{/a}") + ", " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}")  + ", " + _("{a=https://itch.io/profile/luoxyz}Z{/a}")
+                    text _("{a=https://madocallie.carrd.co/}Mado{/a}") + ", " + _("{a=https://ofthedevilgame.itch.io/}Brian Mulholland{/a}")  + "& " + _("{a=https://itch.io/profile/luoxyz}Z{/a}")
                 hbox spacing 15:
                     label _("Puzzle Designer") + ":"
                     text _("{a=https://omelette.itch.io/}speck{/a}")
@@ -632,14 +632,14 @@ screen about():
                     text _("{a=https://twitter.com/DrayReedOFC}D.ray{/a}")
                 hbox spacing 15:
                     label _("Music") + ":"
-                    text _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}") + ", " + _("{a=https://twitter.com/doranthedoran}Doran{/a}")
+                    text _("{a=https://melo-dii.carrd.co/}Melo-dii{/a}") + "& " + _("{a=https://twitter.com/doranthedoran}Doran{/a}")
                 hbox spacing 15:
                     label _("Trailer") + ":"
                     text _("{a=https://twitter.com/HarborSealDev}Jennymhulla{/a}")
                 text _("Made with {a=https://www.renpy.org/}Ren'Py{/a}.") size 25 font gui.text_font yalign 1.0
                 hbox spacing 15:
                     label _("QA Testing") + ":"
-                    text _("cluniies") + ", " + _("wBrian")
+                    text _("cluniies") + ", " + _("wBrian") + "& " + _("Muzozavr")
 
 
 style about_label is gui_label

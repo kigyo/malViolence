@@ -406,7 +406,7 @@ transform slide_in(x, y, d=0):
     linear adt pos (x*cw, y*ch) alpha 1.0
 
 # For pieces sliding to refill.
-transform slide_down(x, y, d=0, dist=1, dt=adt):
+transform slide_down(x, y, d=0, dist=1, dt=0.5):
     pos (x*cw, (y-dist)*ch)
     pause d
     linear dt pos (x*cw, y*ch)
@@ -470,7 +470,7 @@ screen board_piece(b, x, y):
         if b.show_next and b.solution and (b.solution[0][0] == x and b.solution[0][1] == y):
             $ transforms.append(next)
         if b.just_cleared and b.pieces[y][x].last:
-            $ transforms.append(slide_down(x, y))
+            $ transforms.append(slide_down(x, y, dt=adt))
     elif isinstance(b, ToyBoard):
         if b.just_cleared:
             if (x, y) == b.player:
@@ -487,7 +487,7 @@ screen board_piece(b, x, y):
             if y == 0:
                 $ transforms.append(slide_in(x, y))
             else:
-                $ transforms.append(slide_down(x, y))
+                $ transforms.append(slide_down(x, y, dt=adt))
     if (x, y) == b.player and b.just_cleared:
         add "toy_walk_fast":
             at transforms
