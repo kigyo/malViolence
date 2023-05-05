@@ -88,38 +88,38 @@ init python:
         ##        'hidden' = Achievements with this label will be displayed as hidden.
         ##      'platinum' = The final achievement to be granted once all other achievements have been granted.
 
-        "start": [_("Rude Awakening"), _("Find yourself trapped under Cautionne's thumb."), "gui/trophy_icon.png", None],
-        "tfng": [_("TFNG"), _("Get past the first of Cautionne's traps."), "gui/trophy_icon.png", None],
-        "room1": [_("Lab Partner"), _("Escape from Cautionne's evil lab."), "gui/trophy_icon.png", None],
-        "room2": [_("Private Study"), _("Get past the villains' workshop."), "gui/trophy_icon.png", None],
-        "room3": [_("Housewarming"), _("Proceed past the villains' living quarters."), "gui/trophy_icon.png", None],
-        "deadfirst": [_("Trial and Error"), _("Find out what happens when you make a mistake."), "gui/trophy_icon.png", None],
-        "deadall": [_("A for Effort"), _("Make {i}all{/i} the mistakes. For science."), "gui/trophy_icon.png", None],
-        "end1": [_("Breakout Role"), _("Escape."), "gui/trophy_icon.png", None],
-        "end2": [_("Mission Accomplished"), _("Finish the job."), "gui/trophy_icon.png", None],
-        "end3": [_("Communication Error"), _("Meet an ending."), "gui/trophy_icon.png", None],
-        "investigate": [_("Busybody"), _("Leave no stone unturned."), "gui/trophy_icon.png", None],
-        "difficulty1": [_("Diligent Puzzler"), _("Clear all puzzles without skipping them."), "gui/trophy_icon.png", "hidden"],
-        "difficulty2": [_("Skilled Puzzler"), _("Clear all puzzles on normal difficulty or harder."), "gui/trophy_icon.png", "hidden"],
-        "difficulty3": [_("Hardcore Puzzler"), _("Clear every puzzle on the hardest difficulty."), "gui/trophy_icon.png", "hidden"],
-        "all": [_("Noble Laureate"), _("Earn all achievements."), "gui/trophy_icon.png", 'platinum'],
+        "start": [_("Rude Awakening"), _("Find yourself trapped under Cautionne's thumb."), "achievement_start", None],
+        "tfng": [_("TFNG"), _("Get past the first of Cautionne's traps."), "achievement_tfng", None],
+        "room1": [_("Lab Partner"), _("Escape from Cautionne's evil lab."), "achievement_room1", None],
+        "room2": [_("Private Study"), _("Get past the villains' workshop."), "achievement_room2", None],
+        "room3": [_("Housewarming"), _("Proceed past the villains' living quarters."), "achievement_room3", None],
+        "deadfirst": [_("Trial and Error"), _("Find out what happens when you make a mistake."), "achievement_deadfirst", None],
+        "deadall": [_("A for Effort"), _("Make {i}all{/i} the mistakes. For science."), "achievement_deadall", None],
+        "end1": [_("Breakout Role"), _("Escape."), "achievement_end1", None],
+        "end2": [_("Mission Accomplished"), _("Finish the job."), "achievement_end2", None],
+        "end3": [_("Communication Error"), _("Meet an ending."), "achievement_end3", None],
+        "investigate": [_("Busybody"), _("Leave no stone unturned."), "achievement_investigate", None],
+        "difficulty1": [_("Diligent Puzzler"), _("Clear all puzzles without skipping them."), "achievement_difficulty1", "hidden"],
+        "difficulty2": [_("Skilled Puzzler"), _("Clear all puzzles on normal difficulty or harder."), "achievement_difficulty2", "hidden"],
+        "difficulty3": [_("Hardcore Puzzler"), _("Clear every puzzle on the hardest difficulty."), "achievement_difficulty3", "hidden"],
+        "all": [_("Noble Laureate"), _("Earn all achievements."), "achievement_all", 'platinum'],
     }
 
     if persistent.skullicon == True:
         death_name = {
-            "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), "gui/dead_icon.png", 'dead'], #tutorial
-            "dead2": [_("DEAD END 02:"), _("Marbleous Slapstick!"), "gui/dead_icon.png", 'dead'], #room1 meta
-            "dead3": [_("DEAD END 03:"), _("A Mindblowing Conclusion!"), "gui/dead_icon.png", 'dead'], #room1 1
-            "dead4": [_("DEAD END 04:"), _("Trouble-shooting?"), "gui/dead_icon.png", 'dead'], #room1 2
-            "dead5": [_("DEAD END 05:"), _("A Venom-enal End!"), "gui/dead_icon.png", 'dead'], #room1 3
-            "dead6": [_("DEAD END 06:"), _("Stop Me If You Think You've Word This One Before..."), "gui/dead_icon.png", 'dead'], #room2 meta
-            "dead7": [_("DEAD END 07:"), _("Pinpricked."), "gui/dead_icon.png", 'dead'], #room2 1
-            "dead8": [_("DEAD END 08:"), _("A Taste of Sobering Punishment."), "gui/dead_icon.png", 'dead'], #room2 2
-            "dead9": [_("DEAD END 09:"), _("Didn't Make The Cut."), "gui/dead_icon.png", 'dead'], #room2 3
-            "dead10": [_("DEAD END 10:"), _("Holy Scrap!"), "gui/dead_icon.png", 'dead'], #room3 meta
-            "dead11": [_("DEAD END 11:"), _("Quilt In Action."), "gui/dead_icon.png", 'dead'], #room3 1
-            "dead12": [_("DEAD END 12:"), _("Get Stuffed."), "gui/dead_icon.png", 'dead'], #room3 2
-            "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "gui/dead_icon.png", 'dead'], #room3 3
+            "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), "death1", 'dead'], #tutorial
+            "dead2": [_("DEAD END 02:"), _("Marbleous Slapstick!"), "death2", 'dead'], #room1 meta
+            "dead3": [_("DEAD END 03:"), _("A Mindblowing Conclusion!"), "death3", 'dead'], #room1 1
+            "dead4": [_("DEAD END 04:"), _("Trouble-shooting?"), "death4", 'dead'], #room1 2
+            "dead5": [_("DEAD END 05:"), _("A Venom-enal End!"), "death5", 'dead'], #room1 3
+            "dead6": [_("DEAD END 06:"), _("Stop Me If You Think You've Word This One Before..."), "death6", 'dead'], #room2 meta
+            "dead7": [_("DEAD END 07:"), _("Pinpricked."), "death7", 'dead'], #room2 1
+            "dead8": [_("DEAD END 08:"), _("A Taste of Sobering Punishment."), "death8", 'dead'], #room2 2
+            "dead9": [_("DEAD END 09:"), _("Didn't Make The Cut."), "death9", 'dead'], #room2 3
+            "dead10": [_("DEAD END 10:"), _("Holy Scrap!"), "death10", 'dead'], #room3 meta
+            "dead11": [_("DEAD END 11:"), _("Quilt In Action."), "death11", 'dead'], #room3 1
+            "dead12": [_("DEAD END 12:"), _("Get Stuffed."), "death12", 'dead'], #room3 2
+            "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "death13", 'dead'], #room3 3
         }
     elif persistent.skullicon == False:
         death_name = {

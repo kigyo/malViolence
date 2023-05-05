@@ -816,7 +816,7 @@ screen preferences():
                         ## option only shows if the user is playing on a PC.
                         textbutton _("Self-Voicing") action Preference("self voicing", "toggle") alt "Toggle Self-Voicing"
                     textbutton "Screenshake" action ToggleField(persistent,"screenshake",true_value=True,false_value=False) alt "Toggle Screen Shake"
-                    textbutton "Skull Icons" action ToggleField(persistent,"skullicon",true_value=True,false_value=False) alt "Toggle Screen Shake"
+                    textbutton "Graphic Icons" action ToggleField(persistent,"skullicon",true_value=True,false_value=False) alt "Toggle Screen Shake"
 
                 if not main_menu:
                     vbox:

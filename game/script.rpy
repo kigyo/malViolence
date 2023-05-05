@@ -75,6 +75,125 @@ image ctc:
     #    
     #    repeat
 
+################### for death and achievement icons in the game ################
+
+################### deaths 
+
+image death1:
+    "gui/deaths/death_obtained/death1.png"
+    zoom 0.5
+
+image death2:
+    "gui/deaths/death_obtained/death2.png"
+    zoom 0.5
+
+image death3:
+    "gui/deaths/death_obtained/death3.png"
+    zoom 0.5
+
+image death4:
+    "gui/deaths/death_obtained/death4.png"
+    zoom 0.5
+
+image death5:
+    "gui/deaths/death_obtained/death5.png"
+    zoom 0.5
+
+image death6:
+    "gui/deaths/death_obtained/death6.png"
+    zoom 0.5
+
+image death7:
+    "gui/deaths/death_obtained/death7.png"
+    zoom 0.5
+
+image death8:
+    "gui/deaths/death_obtained/death8.png"
+    zoom 0.5
+
+image death9:
+    "gui/deaths/death_obtained/death9.png"
+    zoom 0.5
+
+image death10:
+    "gui/deaths/death_obtained/death10.png"
+    zoom 0.5
+
+image death11:
+    "gui/deaths/death_obtained/death11.png"
+    zoom 0.5
+
+image death12:
+    "gui/deaths/death_obtained/death12.png"
+    zoom 0.5
+
+image death13:
+    "gui/deaths/death_obtained/death13.png"
+    zoom 0.5
+
+################### achievements
+
+image achievement_start:
+    "gui/achievement_received/achievement_start.png"
+    zoom 0.5
+
+image achievement_tfng:
+    "gui/achievement_received/achievement_tfng.png"
+    zoom 0.5
+
+image achievement_room1:
+    "gui/achievement_received/achievement_room1.png"
+    zoom 0.5
+
+image achievement_room2:
+    "gui/achievement_received/achievement_room2.png"
+    zoom 0.5
+
+image achievement_room3:
+    "gui/achievement_received/achievement_room3.png"
+    zoom 0.5
+
+image achievement_deadfirst:
+    "gui/achievement_received/achievement_deadfirst.png"
+    zoom 0.5
+
+image achievement_deadall:
+    "gui/achievement_received/achievement_deadall.png"
+    zoom 0.5
+
+image achievement_end1:
+    "gui/achievement_received/achievement_end1.png"
+    zoom 0.5
+
+image achievement_end2:
+    "gui/achievement_received/achievement_end2.png"
+    zoom 0.5
+
+image achievement_end3:
+    "gui/achievement_received/achievement_end3.png"
+    zoom 0.5
+
+image achievement_investigate:
+    "gui/achievement_received/achievement_investigate.png"
+    zoom 0.5
+
+image achievement_difficulty1:
+    "gui/achievement_received/achievement_difficulty1.png"
+    zoom 0.5
+
+image achievement_difficulty2:
+    "gui/achievement_received/achievement_difficulty2.png"
+    zoom 0.5
+
+image achievement_difficulty3:
+    "gui/achievement_received/achievement_difficulty3.png"
+    zoom 0.5
+
+image achievement_all:
+    "gui/achievement_received/achievement_all.png"
+    zoom 0.5
+
+
 ################### puzzle styles ################
 
 style puzzle_description_label is gui_label:
