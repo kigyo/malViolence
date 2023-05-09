@@ -44,7 +44,7 @@ init python:
                      notes=[[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.\n\nClick on notes to examine them. Drag the pins around to make connections.{/color}")], (626, 349)],
                             [[_("- The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.")], (0, 0)],
                             [[_("- The red-headed child is certain they did not live in the city.")], (108, 496)],
-                            [[_("- The bracelet is too big for the redhead.")], (1088, 182)],
+                            [[_("- The bracelet is too big for the red-headed child.")], (1088, 182)],
                             [[_("- The blonde child managed to play a tune on the harmonica when asked, but the other two children could not.")], (1320, 600)]]):
                                    self.evidence = evidence
                                    self.connections = []
@@ -335,16 +335,16 @@ define medium_notes = [[[_("During our last operation, we only managed to save t
 
 define hard_notes = [[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.")], (434, 555)],
                      [[_("- The child with the harmonica arrived first."),
-                       _("- The child in cell 3 arrived in November."),
-                       _("- The child with the bracelet was not in cell 0, 1, or 3."),
+                       _("- The child in Cell 3 arrived in November."),
+                       _("- The child with the bracelet was not in Cell 0, 1, or 3."),
                        _("- Subject R did not receive cybernetic legs or perspicacious processing implants."),
                        _("- The child that received the lethal legs implant arrived in February.")], (305, -52)],
-                       [[_("- The cell of the child with the lethal legs implant was between the subject who came with the knife, and the subject who came with a yo-yo."),
-                       _("- The cell of the child who received the perspicacious processing implant was between the cells of the child who arrived in July and the subject who arrived in February."),
+                       [[_("- The cell of the child with the lethal legs implant was between the cells of the child who came with the knife, and the child who came with a yo-yo."),
+                       _("- The cell of the child who received the perspicacious processing implant was between the cells of the child who arrived in July and the child who arrived in February."),
                        _("- The child who received the heightened hearing implant arrived one month apart from the child who came with the yo-yo."),
-                       _("- The child with the yo-yo stayed in cell 2.")], (-27, 475)],
+                       _("- The child with the yo-yo stayed in Cell 2.")], (-27, 475)],
                     [[_("- Subject D received the eyes implant."),
-                      _("- 2 children arrived before Subject G did and 2 children arrived after."),
+                      _("- 2 children arrived before Subject G did, and 2 children arrived after."),
                       _("- The child with the toy plane was in a higher cell number than the child who came with a yo-yo."),
                       _("- The bracelet was found in the cell directly to the right of the child who received the hearing implant. To their left was the cell that remained empty the longest."),
                       _("- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in."),
