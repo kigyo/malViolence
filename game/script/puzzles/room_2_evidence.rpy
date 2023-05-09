@@ -2,7 +2,12 @@ define description_color = "#fff"
 define note_color = "#ccc"
 
 style evidence_note_text:
-    color "#000000" font "gui/font/TitilliumWeb-Regular.ttf" size 22 line_spacing -10 justify True 
+    color "#000000" font "gui/font/TitilliumWeb-Regular.ttf" size 22 line_spacing -10 justify True
+    outlines [(absolute(0), "#00000000", absolute(0), absolute(0))]
+
+style evidence_explination_text:
+    color "#000000" font "gui/font/TitilliumWeb-Regular.ttf" size 22 line_spacing -10 justify True
+    outlines [(absolute(1), "#cc444488", absolute(0), absolute(0))]
 
 
 label test:
@@ -115,24 +120,26 @@ init python:
 
     def note_dragged(drags, drop):
         drag = drags[0]
-        # if isinstance(drag.drag_name, tuple):
-        #     if len(drag.drag_name) >= 3:
-        #         glog((drag.drag_name[0], (drag.x, drag.y), drag.drag_name[2]))
-        #     else:
-        #         glog((drag.drag_name[0], (drag.x, drag.y)))
-        # else:
-        #     glog((drag.drag_name, (drag.x, drag.y)))
+        if isinstance(drag.drag_name, tuple):
+            if len(drag.drag_name) >= 3:
+                glog((drag.drag_name[0], (drag.x, drag.y), drag.drag_name[2]))
+            else:
+                glog((drag.drag_name[0], (drag.x, drag.y)))
+        else:
+            glog((drag.drag_name, (drag.x, drag.y)))
 
     def evidence_dragged(board, drags, drop):
         drag = drags[0]
         board.current = None
         board.pin = None
         if place_pins:
-            # glog((drag.drag_name[0], drag.drag_name[1], (drag.x-drag.drag_name[1][0]+pin_half, drag.y-drag.drag_name[1][1]+pin_half)))
+            glog((drag.drag_name[0], drag.drag_name[1], (drag.x-drag.drag_name[1][0]+pin_half, drag.y-drag.drag_name[1][1]+pin_half)))
             pass
         else:
             drag.snap(drag.drag_name[1][0]+drag.drag_name[2][0]-pin_half, drag.drag_name[1][1]+drag.drag_name[2][1]-pin_half)
         if drop:
+            glog(drag.drag_name)
+            glog(drop.drag_name)
             conn = sorted((drag.drag_name[0], drop.drag_name[0]))
             if conn in board.connections:
                 board.connections.remove(conn)
@@ -170,109 +177,113 @@ screen room2_evidence(interactable=True):
         timer 0.1 action Function(evidence_init, True)
 
     frame style "puzzle_frame":
-        default description = ""
-        textbutton "check" action Function(evidence_board.validate)
-        if not place_notes:
-            for n in [0]+room2["notes"]:
-                frame:
-                    background Solid("#0000004a")
-                    offset (20, 20)
-                    pos evidence_board.notes[n][1]
-                    xsize 500
-                    padding (50, 50)
-                    yminimum 400
-                    has vbox
-                    for t in range(len(evidence_board.notes[n][0])):
-                        text evidence_board.notes[n][0][t] align (0.5,0.5) style "evidence_note_text" strikethrough getattr(evidence_board, "note_striked_%s_%s" % (n, t)) xalign 0.0
-                button:
-                    pos evidence_board.notes[n][1]
-                    action Show("enhance_note", note=evidence_board.notes[n], n_i=n)
+        padding (0, 0)
+        viewport:
+            default description = ""
+            textbutton "check" action Function(evidence_board.validate)
+            if not place_notes:
+                for n in [0]+room2["notes"]:
                     frame:
-                        background Solid(note_color if n else description_color)
+                        background Solid("#0000004a")
+                        offset (20, 20)
+                        pos evidence_board.notes[n][1]
                         xsize 500
                         padding (50, 50)
-                        yminimum 200
+                        yminimum 400
                         has vbox
                         for t in range(len(evidence_board.notes[n][0])):
-                            text evidence_board.notes[n][0][t] align (0.5,0.5) style "evidence_note_text" strikethrough getattr(evidence_board, "note_striked_%s_%s" % (n, t)) xalign 0.0
-        if not place_evidence:
-            for e in evidence_board.evidence:
-                frame:
-                    at evidence_zoom(evidence_board.zoom), evidence_alpha
-                    background Solid("#0000004a")
-                    offset (10, 10)
-                    pos e[1]
-                    add "evi_%s" % e[0].lower()
-                fixed:
-                    pos e[1]
-                    fit_first True
-                    at evidence_zoom(evidence_board.zoom)
-                    add "evi_%s" % e[0].lower()
-                # if len(e) >= 3:
-                #     add "big_pin" pos (e[1][0]+e[2][0], e[1][1]+e[2][1]) anchor(0.5, 0.5)
-        add evidence_board
-        draggroup:
-            if place_notes:
-                for n in range(5):
-                    drag:
-                        drag_offscreen True
-                        dragged note_dragged
-                        # draggable False
-                        drag_name n
+                            text evidence_board.notes[n][0][t] align (0.5,0.5) style ("evidence_note_text" if n else "evidence_explination_text") strikethrough getattr(evidence_board, "note_striked_%s_%s" % (n, t)) xalign 0.0
+                    button:
                         pos evidence_board.notes[n][1]
+                        action Show("enhance_note", note=evidence_board.notes[n], n_i=n)
                         frame:
                             background Solid(note_color if n else description_color)
                             xsize 500
                             padding (50, 50)
-                            yminimum 400
+                            yminimum 200
                             has vbox
-                            for t in evidence_board.notes[n][0]:
-                                text t align (0.5,0.5) style "evidence_note_text"
-            for e in evidence_board.evidence:
-                if len(e) >= 3 or place_evidence:
-                    drag:
+                            for t in range(len(evidence_board.notes[n][0])):
+                                text evidence_board.notes[n][0][t] align (0.5,0.5) style ("evidence_note_text" if n else "evidence_explination_text") strikethrough getattr(evidence_board, "note_striked_%s_%s" % (n, t)) xalign 0.0
+            if not place_evidence:
+                for e in evidence_board.evidence:
+                    frame:
+                        at evidence_zoom(evidence_board.zoom), evidence_alpha
+                        background Solid("#0000004a")
+                        offset (10, 10)
                         pos e[1]
-                        fixed:
-                            if not place_evidence:
-                                at evidence_alpha, evidence_zoom(evidence_board.zoom)
-                            else:
-                                at evidence_zoom(evidence_board.zoom)
-                            fit_first True
-                            imagebutton:
-                                idle "evi_%s" % e[0].lower()
-                                focus_mask True
-                                if not place_evidence and len(e) >= 3:
-                                    hovered SetScreenVariable("description", e[0].replace("_", " "))
-                                    unhovered SetScreenVariable("description", "")
-                                    action Show("enhance", dissolve, evidence=e[0])
-                        drag_name e
-                        mouse_drop True
-                        dragged note_dragged
-                        draggable place_evidence
-                        drag_offscreen True
-                        droppable not place_evidence
-                    if len(e) >= 3:
+                        add "evi_%s" % e[0].lower()
+                    fixed:
+                        pos e[1]
+                        fit_first True
+                        at evidence_zoom(evidence_board.zoom)
+                        add "evi_%s" % e[0].lower()
+                    # if len(e) >= 3:
+                    #     add "big_pin" pos (e[1][0]+e[2][0], e[1][1]+e[2][1]) anchor(0.5, 0.5)
+            add evidence_board
+            draggroup:
+                if place_notes:
+                    for n in range(5):
                         drag:
-                            pos (e[1][0]+e[2][0]-pin_half, e[1][1]+e[2][1]-pin_half)
-                            add "big_pin"
+                            drag_offscreen True
+                            dragged note_dragged
+                            # draggable False
+                            drag_name n
+                            pos evidence_board.notes[n][1]
+                            frame:
+                                background Solid(note_color if n else description_color)
+                                xsize 500
+                                padding (50, 50)
+                                yminimum 400
+                                has vbox
+                                for t in evidence_board.notes[n][0]:
+                                    text t align (0.5,0.5) style "evidence_note_text"
+                for e in evidence_board.evidence:
+                    if len(e) >= 3 or place_evidence:
+                        drag:
+                            pos e[1]
+                            fixed:
+                                if not place_evidence:
+                                    at evidence_alpha, evidence_zoom(evidence_board.zoom)
+                                else:
+                                    at evidence_zoom(evidence_board.zoom)
+                                fit_first True
+                                imagebutton:
+                                    idle "evi_%s" % e[0].lower()
+                                    focus_mask True
+                                    if not place_evidence and len(e) >= 3:
+                                        hovered SetScreenVariable("description", e[0].replace("_", " "))
+                                        unhovered SetScreenVariable("description", "")
+                                        action Show("enhance", dissolve, evidence=e[0])
                             drag_name e
                             mouse_drop True
-                            drag_raise True
-                            dragged renpy.curry(evidence_dragged)(evidence_board)
-                            dragging renpy.curry(evidence_dragging)(evidence_board)
-        text description xalign 0.5 offset (-50, -100) at mouse_pos outlines [(absolute(6), "#000", absolute(0), absolute(0))]
+                            dragged note_dragged
+                            draggable place_evidence
+                            drag_offscreen True
+                            focus_mask True
+                            droppable not place_evidence
+                        if len(e) >= 3:
+                            drag:
+                                pos (e[1][0]+e[2][0]-pin_half, e[1][1]+e[2][1]-pin_half)
+                                add "big_pin"
+                                drag_name e
+                                drag_raise True
+                                focus_mask True
+                                mouse_drop True
+                                dragged renpy.curry(evidence_dragged)(evidence_board)
+                                dragging renpy.curry(evidence_dragging)(evidence_board)
+            text description xalign 0.5 offset (-50, -100) at mouse_pos outlines [(absolute(6), "#000", absolute(0), absolute(0))]
 
-        vbox xfill True yalign 1.0 ysize 100 spacing 30:
-            textbutton "SUBMIT" style "confirm_button" action Function(evidence_board.validate) xalign 1.0 yalign 0.5
-            textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
+            vbox xfill True yalign 1.0 ysize 100 spacing 30:
+                textbutton "SUBMIT" style "confirm_button" action Function(evidence_board.validate) xalign 1.0 yalign 0.5
+                textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
-        if puzzle_cleared("room2_1") or ("dead7" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
-            use skip_button(room2, "evidence", "room2_1", yalign=1.0)
+            if puzzle_cleared("room2_1") or ("dead7" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+                use skip_button(room2, "evidence", "room2_1", yalign=1.0)
 
-    if config.developer:
-        vbox:
-            textbutton _("Skip Puzzle") action [SetDict(room2, "evidence", "solved"), Return()] style "confirm_button"
-            textbutton _("Game Over") action [Jump("evidence_game_over")] style "confirm_button"
+        if config.developer:
+            vbox:
+                textbutton _("Skip Puzzle") action [SetDict(room2, "evidence", "solved"), Return()] style "confirm_button"
+                textbutton _("Game Over") action [Jump("evidence_game_over")] style "confirm_button"
 image big_pin:
     "pin"
     zoom 1.5
@@ -324,67 +335,68 @@ define medium_notes = [[[_("{color=#27718f}During our last operation, we only ma
                          "- Subject R arrived in June.",
                          "- The child wearing a bracelet arrived in September."], (1087, 186)]]
 
-define hard_notes = [[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.{/color}")], (386, 555)],
+define hard_notes = [[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.{/color}")], (434, 555)],
                      [[_("- The child with the harmonica arrived first."),
                        _("- The child in cell 3 arrived in November."),
                        _("- The child with the bracelet was not in cell 0, 1, or 3."),
                        _("- Subject R did not receive cybernetic legs or perspicacious processing implants."),
-                       _("- The child that received the lethal legs implant arrived in February.")], (246, -81)],
+                       _("- The child that received the lethal legs implant arrived in February.")], (305, -52)],
                        [[_("- The cell of the child with the lethal legs implant was between the subject who came with the knife, and the subject who came with a yo-yo."),
                        _("- The cell of the child who received the perspicacious processing implant was between the cells of the child who arrived in July and the subject who arrived in February."),
                        _("- The child who received the heightened hearing implant arrived one month apart from the child who came with the yo-yo."),
-                       _("- The child with the yo-yo stayed in cell 2.")], (-89, 387)],
+                       _("- The child with the yo-yo stayed in cell 2.")], (-27, 475)],
                     [[_("- Subject D received the eyes implant."),
                       _("- 2 children arrived before Subject G did and 2 children arrived after."),
                       _("- The child with the toy plane was in a higher cell number than the child who came with a yo-yo."),
                       _("- The bracelet was found in the cell directly to the right of the child who received the hearing implant. To their left was the cell that remained empty the longest."),
                       _("- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in."),
-                      _("- Subject R came with a toy plane.")], (949, 314)],
+                      _("- Subject R came with a toy plane.")], (1023, 607)],
                      [[_("- The child who came with a kite also received the perspicacious processing implant."),
                        _("- The child who received the armed arms implant arrived last."),
                        _("- The toy plane could've belonged to the child with heightened hearing or the child who received new eyes."),
                        _("- The yo-yo belonged either to Subject F or the child who received cybernetic legs."),
-                       _("- The child who got new eyes came 1 month before the child who came with a knife.")], (1404, -71)]]
+                       _("- The child who got new eyes came 1 month before the child who came with a knife.")], (1476, -45)]]
 
 
-define hard_evidence = [('yo-yo', (1052, 169), (10, 10)),
-                        ('perspicacious_processing', (444, 361), (10, 10)),
-                        ('lethal_legs', (591, 409), (10, 10)),
-                        ('armed_arms', (849, 642), (10, 10)),
-                        ('heightened_hearing', (844, 844), (10, 10)),
-                        ('super_sight', (978, -25), (10, 10)),
-                        ('pocket_knife', (1422, 569), (10, 10)),
-                        ('harmonica', (1724, 527), (10, 10)),
-                        ('toy_plane', (1567, 564), (10, 10)),
-                        ('bracelet', (1426, 807), (10, 10)),
-                        ('subject_D', (162, 225), (10, 10)),
-                        ('subject_F', (-20, 225), (10, 10)),
-                        ('subject_A', (1599, 769), (10, 10)),
-                        ('subject_R', (1735, 743), (10, 10)),
-                        ('subject_G', (44, 7), (10, 10)),
+define hard_evidence = [('bracelet', (1482, 741), (95, 93)),
+                        ('subject_A', (1716, 702), (21, 130)),
+                        ('lethal_legs', (1710, 390), (157, 120)),
+                        ('harmonica', (1466, 389), (90, 213)),
+                        ('yo-yo', (1294, 35), (29, 181)),
+                        ('super_sight', (1014, 20), (170, 167)),
+                        ('subject_F', (874, 546), (18, 21)),
+                        ('subject_R', (793, 841), (164, 101)),
+                        ('heightened_hearing', (517, 870), (29, 162)),
+                        ('subject_D', (244, 887), (167, 114)),
+                        ('armed_arms', (6, 883), (39, 34)),
+                        ('perspicacious_processing', (317, 265), (162, 175)),
+                        ('pocket_knife', (537, 313), (50, 53)),
+                        ('subject_G', (98, 254), (181, 159)),
+                        ('toy_plane', (31, 26), (82, 39)),
 
-                        ('panopticon', (1194, 135)),
+                        ('panopticon', (1116, 332)),
 
-                        ('cell_4', (1194, 135), (204, 36)),
-                        ('cell_3', (1194, 135), (111, -11)),
-                        ('cell_2', (1194, 135), (82, 125)),
-                        ('cell_1', (1194, 135), (61, 215)),
-                        ('cell_0', (1194, 135), (207, 199)),
+                        ('cell_4', (1116, 332), (204, 36)),
+                        ('cell_3', (1116, 332), (111, -11)),
+                        ('cell_2', (1116, 332), (-16, 109)),
+                        ('cell_1', (1116, 332), (61, 215)),
+                        ('cell_0', (1116, 332), (207, 199)),
 
-                        ('calendar', (742, 111)),
+                        ('calendar', (770, 36)),
 
-                        ('December', (742, 111), (29, 471)),
-                        ('November', (742, 111), (204, 434)),
-                        ('October', (742, 111), (28, 389)),
-                        ('September', (742, 111), (197, 348)),
-                        ('August', (742, 111), (26, 309)),
-                        ('July', (742, 111), (202, 272)),
-                        ('June', (742, 111), (31, 229)),
-                        ('May', (742, 111), (208, 194)),
-                        ('April', (742, 111), (20, 149)),
-                        ('March', (742, 111), (210, 111)),
-                        ('February', (742, 111), (23, 69)),
-                        ('January', (742, 111), (208, 29))]
+                        ('December', (770, 36), (29, 471)),
+                        ('November', (770, 36), (204, 434)),
+                        ('October', (770, 36), (28, 389)),
+                        ('September', (770, 36), (197, 348)),
+                        ('August', (770, 36), (26, 309)),
+                        ('July', (770, 36), (202, 272)),
+                        ('June', (770, 36), (31, 229)),
+                        ('May', (770, 36), (208, 194)),
+                        ('April', (770, 36), (20, 149)),
+                        ('March', (770, 36), (210, 111)),
+                        ('February', (770, 36), (23, 69)),
+                        ('January', (770, 36), (208, 29))
+                        ]
 
 define medium_evidence = [('lethal_legs', (481, 255), (10, 10)),
                           ('heightened_hearing', (265, 231), (10, 10)),
