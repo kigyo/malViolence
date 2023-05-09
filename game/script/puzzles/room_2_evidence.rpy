@@ -315,11 +315,11 @@ screen enhance_note(note, n_i):
 screen enhance(evidence):
     modal True
     imagebutton idle "#000000aa" action Hide("enhance", dissolve)
-    add "evi_%s" % evidence.lower() align (0.5, 0.5) zoom 3.0
+    add "evi_%s" % evidence.lower() align (0.5, 0.5) zoom 2.0
     text evidence.replace("_", " ") align (0.5, 1.0) outlines [(absolute(6), "#000", absolute(0), absolute(0))] size 64
 
 
-define medium_notes = [[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.{/color}")], (626, 349)],
+define medium_notes = [[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.")], (626, 349)],
                        [["- The blonde child seems to have a musical inclination.",
                         "- The bracelet has a notable tarnish. Upon sampling it seems to be a coating of coastal salt.",
                         "- The city-dweller was abducted in the Spring.",], (-73, -68)],
@@ -333,7 +333,7 @@ define medium_notes = [[[_("{color=#27718f}During our last operation, we only ma
                          "- Subject R arrived in June.",
                          "- The child wearing a bracelet arrived in September."], (1087, 186)]]
 
-define hard_notes = [[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.{/color}")], (434, 555)],
+define hard_notes = [[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.")], (434, 555)],
                      [[_("- The child with the harmonica arrived first."),
                        _("- The child in cell 3 arrived in November."),
                        _("- The child with the bracelet was not in cell 0, 1, or 3."),
