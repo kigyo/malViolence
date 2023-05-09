@@ -51,8 +51,8 @@ screen tutorial_room():
         if tutorial["vent"] == 0:
             imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_frameonwall.png" action [SetVariable("inspect", "painting"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_frameonwall.png" mouse "inspect" at room_hover
         else:
-            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_bowl.png" action [SetVariable("inspect", "vent"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_bowl.png" mouse "inspect" at room_hover
-            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_frame.png" action [SetVariable("inspect", "painting"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_frame.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_bowl.png" action [SetVariable("inspect", "painting"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_bowl.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_frame.png" action [SetVariable("inspect", "vent"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_frame.png" mouse "inspect" at room_hover
             imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_pellets.png" action [SetVariable("inspect", "pellets"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_pellets_mask.png" mouse "inspect" at room_hover
         imagebutton idle Null() hover "rooms/tutorial/tutroom_selection_bed.png" action [SetVariable("inspect", "bed"), Jump("tutorial_room")] focus_mask "rooms/tutorial/tutroom_selection_bed.png" mouse "inspect" at room_hover
 
@@ -166,8 +166,8 @@ label tutorial_intro:
         elif inspect == "vent":
             if tutorial["vent"] < 2:
                 $ tutorial["vent"] = 2
-                "(Again,{w=0.1} it's just your average vent—){w=1}{nw}"
-                "(—wait.{w} Something's on the back side of that cover.)"
+                "(Again,{w=0.1} it's just your average vent cover—){w=1}{nw}"
+                "(—wait.{w} Something's on the back side.)"
                 $ play_sound(creakyvent)
                 show tutorial_painting with dissolve:
                     zoom 0.3 yalign 0.2 xalign 0.5
