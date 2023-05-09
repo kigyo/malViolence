@@ -70,22 +70,75 @@ label room_2:
         $room2["notes"].append(1)
         $ play_sound(paperpickup)
         "(You spot a note on the wall,{w=0.1} and pick it up.)"
-        "(It says: \"The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.\")"
+        if difficulty_level == 1:
+            "(It says: \"The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.\")"
+        elif difficulty_level == 2:
+            "(It says: \"- The blonde child seems to have a musical inclination.\")"
+            "(\"- The bracelet has a notable tarnish.{w} Upon sampling,{w=0.1} it seems to be a coating of coastal salt.\")"
+            "(\"- The city-dweller was abducted in the Spring.\")"
+        elif difficulty_level == 3:
+            "(It says: \"- The child with the harmonica arrived first.\")"
+            "(\"- The child in Cell 3 arrived in November.\")"
+            "(\"- The child with the bracelet was not in Cell 0, 1, or 3.\")"
+            "(\"- Subject R did not receive cybernetic legs or perspicacious processing implants.\")"
+            "(\"- The child that received the lethal legs implant arrived in February.\")"
+        else: 
+            "Whoops! This message SHOULDN'T appear, but it has! Might need to bugcheck."
     elif inspect == "note2":
         $room2["notes"].append(2)
         $ play_sound(paperpickup)
         "(You pick up the note beneath the blackboard.)"
-        "(It says: \"The red headed kid is certain they did not live in the city.\")"
+        if difficulty_level == 1:
+            "(It says: \"The red-headed child is certain they did not live in the city.\")"
+        elif difficulty_level == 2:
+            "(It says: \"- The red-headed child said they have never been to the suburbs or to open water.\")"
+            "(\"- Whoever lived in the mountains arrived in either June or December.\")"
+            "(\"- The child from the suburbs was processed before the subject from the mountains.\")"
+        elif difficulty_level == 3:
+            "(It says: \"- The cell of the child with the lethal legs implant was between the cells of the child who came with the knife and the child who came with a yo-yo.\")"
+            "(\"- The cell of the child who received the perspicacious processing implant was between the cells of the child who arrived in July and the child who arrived in February.\")"
+            "(\"- The child who received the heightened hearing implant arrived one month apart from the child who came with the yo-yo.\")"
+            "(\"- The child with the yo-yo stayed in Cell 2.\")"
+        else: 
+            "Whoops! This message SHOULDN'T appear, but it has! Might need to bugcheck."
     elif inspect == "note3":
         $room2["notes"].append(3)
         $ play_sound(paperpickup)
         "(There's a note stuck to the front of the desk.)"
-        "(It says: \"The bracelet is too big for the redhead.\")"
+        if difficulty_level == 1:
+            "(It says: \"The bracelet is too big for the red-headed child.\")"
+        elif difficulty_level == 2:
+            "(It says: \"- The bracelet arrived at the facility before the toy plane.\")"
+            "(\"- Subject G does not how to use a yo-yo.\")"
+            "(\"- The yo-yo trickster did not arrive first.\")"
+        elif difficulty_level == 3:
+            "(It says: \"- Subject D received the eyes implant.\")"
+            "(\"- 2 children arrived before Subject G did, and 2 children arrived after.\")"
+            "(\"- The child with the toy plane was in a higher cell number than the child who came with a yo-yo.\")"
+            "(\"- The bracelet was found in the cell directly to the right of the child who received the hearing implant.{w} To their left was the cell that remained empty the longest.\")"
+            "(\"- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in.\")"
+            "(\"- Subject R came with a toy plane.\")"
+        else: 
+            "Whoops! This message SHOULDN'T appear, but it has! Might need to bugcheck."
     elif inspect == "note4":
         $room2["notes"].append(4)
         $ play_sound(paperpickup)
-        "(A note is stuck to the water cooler —{w=0.5}  which doesn't actually dispense any water.)"
-        "(It says: \"The blonde kid managed to play a tune on the harmonica when asked,{w=0.1} but the other two children could not.\")"
+        "(A note is stuck to the water cooler —{w=0.5} which doesn't actually dispense any water.)"
+        if difficulty_level == 1:
+            "(It says: \"The blonde child managed to play a tune on the harmonica when asked,{w=0.1} but the other two children could not.\")"
+        elif difficulty_level == 2:
+            "(It says: \"- The bracelet arrived at the facility before the toy plane.\")"
+            "(\"- Subject G does not how to use a yo-yo.\")"
+            "(\"- The yo-yo trickster did not arrive first.\")"
+        elif difficulty_level == 3:
+            "(It says: \"- The child who came with a kite also received the perspicacious processing implant.\")"
+            "(\"- The child who received the armed arms implant arrived last.\")"
+            "(\"- The toy plane could've belonged to the child with heightened hearing or the child who received new eyes.\")"
+            "(\"- The yo-yo belonged either to Subject F or the child who received cybernetic legs.\")"
+            "(\"- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in.\")"
+            "(\"- The child who got new eyes came 1 month before the child who came with a knife.\")"
+        else: 
+            "Whoops! This message SHOULDN'T appear, but it has! Might need to bugcheck."
 
     elif inspect == "blueprints":
         if room2["blueprints"] == 0:
