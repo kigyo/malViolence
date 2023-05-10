@@ -53,10 +53,10 @@ label dr_danger_1:
 
   "(You take another cautious step ahead and—){w=1}{nw}"
   $ play_sound(staticshort)
+  show bg corridor1
   pause 0.5
   voice "audio/voice/dr.danger/Danger_Corridor1-01.ogg"
   #"{b}[the {/b}{b}dr.{/b}{b} danger screens go {/b}{b}on ]{/b}"
-  show bg corridor1
   "???" "Welcome.{w=0.52} I see you've arrived safely?"
 
   show bg corridor1:

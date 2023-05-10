@@ -8,12 +8,12 @@ label post_tutorial:
   pause 2
   $ play_sound(doorunlock)
   pause 2
-  $ play_sound(staticshort)
   scene black 
   show cautionne_frame_glow at bg
   with dissolve
   show cautionne annoyed behind cautionne_frame_glow at crt
   show crt behind cautionne_frame_glow
+  $ play_sound(staticshort)
   with screenon
   voice "audio/voice/cautionne/posttutorial/Cautionne_Post Tutorial-01.ogg"
   #"{b}[static as {/b}{b}Cautionne{/b}{b} gets back on screen. {/b}{b}Maybe an{/b}{b} ATL animation that makes it look like his CRT screen's turning on again?]{/b}
