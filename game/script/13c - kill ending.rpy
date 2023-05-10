@@ -130,7 +130,7 @@ label kill_ending:
     pause 3
 
     scene black with fade
-    pause 3
+    pause 5
 
 
     call screen credits(60) with Dissolve(2)

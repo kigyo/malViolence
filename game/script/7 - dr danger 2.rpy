@@ -124,7 +124,7 @@ label dr_danger_2:
   $ play_sound(footsteps2)
   scene bg corridor2 tvoff:
     xalign 0.5 yalign 0.5 zoom 0.5
-    ease 4 zoom 1.0
+    ease 4 zoom 1.5 yalign 0.55
   pause 4
   scene black with fade
   $ play_sound(dooropen)

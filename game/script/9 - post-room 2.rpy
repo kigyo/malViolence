@@ -100,7 +100,7 @@ label post_room_2:
     "(Well, {i}screw him.{/i}{w} You'll snoop as much or as little as you please.)"
   show cautionne serious
   c "I've watched you with my drones..."
-  c "Tailored these puzzles to your specific,{w=0.1} sub-par problem-solving skills..."
+  c "Tailored these puzzles to your specific,{w=0.1} subpar problem-solving skills..."
   c "Carried out quasi-legal research on your identity..."
   show cautionne lean frown
   c "So,{w=0.1} I know what you are."

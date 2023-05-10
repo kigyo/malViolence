@@ -83,6 +83,7 @@ label room_3:
             "(You pick up what appears to be a generic scrapbook,{w=0.1} like those shoved to the back shelves of charity stores.{w} Looking closely, you can still see remnants of price sticker glue.)"
             "(It feels normal.{w} {i}Too{/i} normal.{w} The book's clearly hiding some deep,{w=0.1} dark{w=0.1} secret.)"
             $ play_sound(paperturn)
+            pause 2
             "(But the inner contents are equally...{w=0.5} {i}normal.{/i})"
             "(All you find are photographs of a woman who looks a lot like Dr. Danger,{w=0.1} and a young boy with a crooked,{w=0.1} toothy{w=0.1} grin.)"
             "(The craftsmanship on display isn't anything remarkable,{w=0.1} with poorly cut edges and tacky glitter glue smeared across the cheap cardstock.)"
@@ -99,7 +100,7 @@ label room_3:
             "(The later photos are self-explanatory.{w} Each moment is carefully dated and annotated.{w} Playing videogames,{w=0.1} reading bedtime stories...{w=0.5} and what seems to be a movie night.)"
             "(You know the film they're watching.{w} It's that one cartoon about an alien supervillain;{w=0.5} one with a very big brain,{w=0.1} but very little common sense.)"
             pause 0.5
-            "(...Hold on.{w} Wasn't the film released in cinemas three months after the time written down?)"
+            "(...Hold on.{w} Wasn't this film released three months after this photo was taken?)"
             "(...)"
             "(Looks like STOP will have to add digital piracy to Dr. Danger's long list of crimes.)"
             hide room3_scrapbookcg with dissolve
@@ -114,10 +115,10 @@ label room_3:
                 yalign 0.2 xalign 0.5
             $ play_sound(paperpickup)
             "(You pick up a clipboard with a thick stack of charts and diagrams pinned to the front.)"
-            "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh,{w=0.1} black{w=0.1} lettering.{w} At the bottom of the page,{w=0.1} you spot an acronym:{w=0.5} \"YTDI\".)"
+            "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh,\n{w=0.1} black{w=0.1} lettering.{w} At the bottom of the page,{w=0.1} you spot an acronym:{w=0.5} \"YTDI\".)"
             $ play_sound(paperturn)
             "(You flip through the log.{w} The recuperation described here is difficult to read.)"
-            "(Seizures,{w=0.1}  phantom pain,{w=0.1}  memory loss{w=0.1}  and brain damage are all expected results,{w=0.1} not side effects.)"
+            "(Seizures,{w=0.1} phantom pain,{w=0.1} memory loss,{w=0.1} and brain damage are all expected results,{w=0.1} not side effects.)"
             "(Scrawled notes speculate that these symptoms would last for several years or decades —{w=0.5}  perhaps even permanently.)"
             "(Implanting cybernetics in individuals under 18 isn't illegal,{w=0.1} but it {i}is {/i} frowned upon.)"
             "(And from the logbook,{w=0.1} a lot of children were implanted.{w=0.5} Children well under the age of 18.)"
@@ -179,13 +180,13 @@ label room_3:
             "(It's a crumpled,{w=0.1} heavily worked-over notebook filled with grandiose ramblings in the third person.)"
             "(Lots of exclamation points and capital letters and ego-massaging in spidery handwriting.)"
             $ play_sound(paperturn)
-            "(But the more you flip back through the pages,{w=0.1} the more the writing grows negative in tone.)"
-            "(A second distinct set of handwriting accompanies the first,{w=0.1} leaving notes on how to aim the subject matter in a more positive direction.)"
+            "(But the more you flip back through the pages,{w=0.1} the more the writing grows negative.)"
+            "(Another, neater set of handwriting appears, leaving words of encouragement.)"
             $ play_sound(paperturn)
-            "(Even further back,{w=0.1} the spidery handwriting disappears altogether.{w} Instead,{w=0.1} there are grids and examples written with clean,{w=0.1} crisp penmanship.)"
+            "(Even further back,{w=0.1} the spidery handwriting disappears.{w} The neater writer takes over, marking the wrinkled paper with crisp grids and clear lessons.)"
             "(Shaky,{w=0.1} barely-legible scribbles sit below,{w=0.1} rounding out vague, letter-like shapes.)"
             "(It almost looks like a therapeutic exercise —{w=0.5} or a homework assignment.{w} Maybe it's both.)"
-            "(What's clear is that the notebook's author hasn't used it for a long,{w=0.1} long{w=0.1} time.)"
+            "(But it's obvious that the notebook's author hasn't used it for a long,{w=0.1} long{w=0.1} time.)"
             hide room3_notebook with dissolve
             "(Personally,{w=0.1} you wouldn't be caught dead using the third person.)"
             "({i}You{/i} only use the second person.{w} And even then,{w=0.1} only for gathering your thoughts in high-stakes scenarios.)"
@@ -433,8 +434,8 @@ label room_3:
                 "(Looks like a quilt.{w} Must've been too big for the little sewing desk.)"
                 "(Hmm...{w} For some reason, you want to finish it.)"
             else:
-                show screen room3_quilt(_layer="master") with easeintop
                 "(Before you sit down with the quilt,{w=0.1} you carefully inch your way around the stray pins on the floor.)"
+                show screen room3_quilt(_layer="master") with easeintop
             $renpy.block_rollback()
             $ room3["quilt"] += 1
             $ inspect = None
@@ -453,6 +454,7 @@ label room_3:
                 "(You investigate the cupboard below the plushies where—{w=0.5} {i}woah!{/i})"
                 $play_sound(plushiesqueak)
                 $queue_sound(plushiesqueak2)
+                $queue_sound(plushiesqueak)
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
                 "(An avalanche of plushies spills out,{w=0.1} burying you in a soft, fuzzy pile.)"
                 "(This {i}would{/i} be a comfy way to go out,{w=0.1} but you should probably put everything back.)"
@@ -477,8 +479,8 @@ label room_3:
                 "(There's a small kitchenette.{w} It looks like it hasn't been used recently...)"
                 "(Did Dr Danger take care of all the cooking?)"
                 show screen mise_en_place(False, _layer="master") with easeintop
-                "(A handwritten note sits on the counter.{w} Looks like...{w=0.5}a recipe for pancakes?)"
-                "(Fridge seems well stocked too.{w} Let's see if Cautionne likes your take on Dr Danger's recipe.)"
+                "(A handwritten note sits on the counter.{w} Looks like...{w=0.5} a recipe for pancakes?)"
+                "(Fridge seems well-stocked too.{w} Let's see if Cautionne likes your take on Dr Danger's recipe.)"
             else:
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "This recipe seems simple enough.{w} One more time..."
@@ -659,7 +661,7 @@ label toys_solved:
         ease 1 xalign 0.5 yalign 0.3 alpha 1
     pause 1
     "(One of the plushies rips open,{w=0.1} revealing a photo inside.)"
-    "(Turning it around reveals text reminiscent of a diary entry.)"
+    "(The back of the photo is black with words.)"
     nvl clear
     $ nvl_heading = ""
     if gui.text_size > 40:
@@ -684,7 +686,7 @@ label toys_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     stop music fadeout 1.0
-    $ play_sound(plushiesqueak)
+    $ play_sound(plushiesqueak2)
     "(You set down the toys and pause to think.)"
     "(The task is a lot harder than you thought it would be.{w} Maybe—){w=1}{nw}"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
@@ -746,9 +748,9 @@ label cooking_solved:
     n "I don't remember what the food was like at the orphanage."
     n "Probably bland."
     n "I wish I could forget what LabScrip tastes like…{w=0.5} but meals were usually the least painful part of my day in the lab,{w=0.1} so I've got a soft spot for the stuff."
-    n "But that wasn't food.{w} It was nutritious and edible and nothing more.{w} It didn't fill you up.{w} It wasn't warm.{w} There certainly was no thought in it at all."
+    n "But that wasn't food.{w} It was nutritious and edible and nothing more.{w} It didn't fill you up.{w} It wasn't warm.{w} There wasn't any thought in it at all."
     nvl clear
-    n "Pancakes are food.{w=0.5} They sizzle in the pan and curl at the edges,{w=0.1} bubbling slightly when it's time to flip.{w}\nYou can undercook them or burn them,{w=0.1} bury them in toppings or eat them with your hands.{w} They're filling,{w=0.1} and tasty,{w=0.1} and oh-so warm."
+    n "Pancakes are food.{w=0.5} They sizzle in the pan, and curl at the edges,{w=0.1} and they make little bubbles when they need flipping.{w}\nYou can undercook them or burn them,{w=0.1} bury them in toppings or eat them with your hands.{w} They're filling,{w=0.1} and tasty,{w=0.1} and oh-so warm."
     n "I'm sure I could easily re-create her recipe.{w} It's hardly rocket science, even with one arm."
     n "But I've never had someone cook for {i}me{/i} before."
     n "...I'd like to pretend I'm not capable for a little while longer."

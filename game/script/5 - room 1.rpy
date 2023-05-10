@@ -83,7 +83,8 @@ label room_1:
             show room1_electricchair with dissolve:
                 yalign 0.2 xalign 0.5
             "(From a comfortable distance,{w=0.1} you eye over the \"Primary Source Extractor\".{w} You approach carefully,{w=0.1} listening closely for any hints of it roaring to life.)"
-            "(Agents are expected to keep their wits about them and not jump to conclusions...{w} but it's hard to see the device in front of you as anything but an electric chair.)"
+            "(Agents are expected to keep their wits about them and not jump to conclusions..."
+            "...but it's hard to see the device in front of you as anything but an electric chair.)"
             "(It looks crude and cruel,{w=0.1} like a child's re-imagining of something scary from a history book.)"
             "(That may be exactly what it is.{w} Whatever its purpose,{w=0.1} you give quiet thanks that it seems to be out of commission.)"
             hide room1_electricchair with dissolve
@@ -365,7 +366,7 @@ label decanting_game_over:
     stop music fadeout 0.5
     "(You're getting close, now...{w=0.5} Right?)"
     $ play_sound(liquidpour)
-    "(If you just pour {i}this{/i}{i} {/i}into {i}that—){/i}"
+    "(If you just pour {i}this{/i}{i} {/i}into {i}that—{/i})"
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hey Lab Rat.ogg"
     cr "Wow, lab rat — you've made {i}quite{/i} the concoction!"
     hide black onlayer screens
@@ -417,12 +418,12 @@ label marble_game_over:
     show black onlayer screens with dissolve:
         alpha 0.5
     "(You step back and pause.{w} Something about the order doesn't seem—){w=1}{nw}"
+    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
+    cr "Oof.{w=0.5} {i}Not quite.{/i} "
     hide black onlayer screens
     hide screen room1_marble
     with puzzle_hide
     pause 0.5
-    voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
-    cr "Oof.{w=0.5} {i}Not quite.{/i} "
     cr "But it's okay!{w=0.5} I can fix this,{w=0.1} easy-peasy."
     cr "Just, uh...{w=0.5} stand still...{w=0.5}{cps=20}foooooor oooone secoooooond aaaaand—{/cps}{w=0.5}{nw}"
 

@@ -149,7 +149,7 @@ label room_2:
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
             "(That said,{w=0.1} poor penmanship hasn't dulled the designs themselves.{w} The {i}least{/i} dangerous of these would be devastating out in the field.)"
-            "(The oldest of the blueprints —{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
+            "(The oldest of the blueprints —{w=0.1} the ones hidden at the bottom of the\npile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
             "(In fact,{w=0.1} if you squint...{w=0.5} you can still find the signatures at the bottom.)"
             "(\"Destrange,\"{w=0.1} they say.{w} They're dated more than 15 years ago.)"
             hide room2_blueprintcollection with dissolve
@@ -167,7 +167,7 @@ label room_2:
                 yalign 0.2 xalign 0.5
             "(You eye over the mass of scrawled notes pinned in front of you.{w} There are two distinct sets of handwriting here,{w=0.1} but the contents are mostly the same...{w=0.5} and mostly {i}domestic?{/i}) "
             "(Notes on what to eat for breakfast and when to start preparing it.{w} Notes on how much sleep to get and what stories to read.)"
-            "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans{w=0.1} and chores...)"
+            "(Birthdays,{w=0.1} exercises,{w=0.1} meal plans,{w=0.1} and chores...)"
             if gui.text_size > 40:
                 "(The two who wrote these notes weren't just sharing the same space. {w}They were {i}living{/i} together.)"
             else:
@@ -208,7 +208,7 @@ label room_2:
             "(These are the notes of a hunter,{w=0.1} and STOP was their prey.)"
             "(You recognize dozens of names,{w=0.1} operations,{w=0.1} and places;{w=0.5} vital parts of STOP's organization that had suffered heavy blows in the last few years.)"
             "(But you're disturbed by how many places you {i}don't{/i} recognize.)"
-            "(Laboratories,{w=0.1} factories{w=0.1} and armories that must be high above your clearance level —{w=0.5} crossed out like someone was just going down a checklist.)"
+            "(Laboratories,{w=0.1} factories,{w=0.1} and armories that must be high above your clearance level —{w=0.5} crossed out like someone was just going down a checklist.)"
             "(All these top-secret sites share the same acronym:{w=0.5} \"YTDI.\")"
             "(...No,{w=0.1} you {i}don't{/i} recognize it.)"
             hide room2_evidenceboard with dissolve
@@ -229,7 +229,7 @@ label room_2:
             "(In fact,{w=0.1} when you look at them all together,{w=0.1} Cautionne seems to show up more over time.)"
             "(Dr. Danger must've been pleased with her pupil's growth.)"
             "(At the bottom of the pile,{w=0.1} a heavily weathered photo peeks out.)"
-            "(Based on what you can make out of the caption — {w=0.1}it seems to be of some kind of commemorative occasion.)"
+            "(Based on what you can make out of the caption — {w=0.1}it looks like some kind of commemorative occasion.)"
             "(\"__rdre Des__ge, et al. celebr_e breakthr__ in cyb_netics, sec_ity\".)"
             "(You can't recognize any of the faces,{w=0.1} but you do recognize the logo as—){w=1}{nw}"
             hide room2_news with dissolve
@@ -583,7 +583,7 @@ label word_game_over:
         cr "C'mon,{w=0.1} {i}lighten up.{/i}{w=0.5} Here,{w=0.1} let me help!"
         #"{b}ZAP SFX, CUT TO BLACK{/b}"
         $ play_sound(zap)
-        scene black
+        scene black with small_shake
         pause 3
 
     elif random_choice == 2:
@@ -600,7 +600,8 @@ label word_game_over:
         cr "If so,{w=0.1} go complain in the comments."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "You've just met a dead end!"
-        $ play_sound(smash)
+        $ play_sound(smash2)
+        pause 0.6
         scene black with small_shake
         pause 3
 
@@ -631,13 +632,13 @@ label word_game_over:
         hide screen room2_word
         with puzzle_hide
         pause 0.5
-        cr "But since you're here,{w=0.1} I've got another game for you to play."
+        cr "But since you're here,{w=0.1} I'd like to play another game."
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
         cr "Time for a round of Russian Roulette!{w=0.5} Is the gun next to you loaded or not?"
         "(What gu—){w=1}{nw}"
         $ play_sound(gunshot)
         #"{b}GUNSHOT SFX, CUT TO BLACK{/b}"
-        scene black
+        scene black with small_shake
         pause 3
 
     else:
@@ -652,15 +653,14 @@ label word_game_over:
         cr "You'd have better luck smashing keys."
         "(You—){w=1}{nw}"
         cr "Just. {w=0.5}Like. {w=0.5}{i}This.{/i}{w=1}{nw}"
-        $ play_sound(smash2)
-        pause 0.6
+        $ play_sound(smash)
         scene black with small_shake
         pause 3
 
     $nvl_heading = "Lab Report #404"
     l "Not much to say here."
     l "The lab rat just sucks at word games!"
-    l "{b}Contributing Factors to Death:{/b} Should've dipped their toes into a few wordy titles before they met me. Personally, I reccommend {i}Scraddle.{/i}"
+    l "{b}Contributing Factors to Death:{/b} Should've dipped their toes into a few titles before meeting me. Personally, I recommend {i}Scraddle.{/i}"
     $deadend("dead6")
     le "DEAD END 06: Stop Me If You Think You've Word This One Before..."
     pause 2

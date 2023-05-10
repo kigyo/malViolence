@@ -12,9 +12,9 @@ Because, that day, I got to see the sky again.{/color}"""),
 
 I wish I could forget what LabScrip tastes like... but meals were usually the least painful part of my day in the lab, so I've got a soft spot for the stuff. 
 
-But that wasn't food. It was nutritious and edible and nothing more. It didn't fill you up. It wasn't warm. There certainly was no thought in it at all.
+But that wasn't food. It was nutritious and edible and nothing more. It didn't fill you up. It wasn't warm. There wasn't any thought in it at all.
 
-Pancakes are food. They sizzle in the pan and curl at the edges, bubbling slightly when it's time to flip. You can undercook them or burn them, bury them in toppings or eat them with your hands. They're filling, and tasty, and oh-so warm.
+Pancakes are food. They sizzle in the pan and curl at the edges, and they make little bubbles when they need flipping. You can undercook them or burn them, bury them in toppings or eat them with your hands. They're filling, and tasty, and oh-so warm.
 
 I'm sure I could easily re-create her recipe. It's hardly rocket science, even with one arm.
 
@@ -36,7 +36,7 @@ But when she's making something explosive, it's really, really exciting!
 
 The other day, I noticed that she'd forgotten her flash-welder. I brought it over to her, saying that I wanted to test out the grip strength of my new arm. She saw through my excuse, but she let me help anyway.
 
-I even made a few suggestions of my own, and... guess what? Guess what!!! She ended up using every single idea!
+I even made a few suggestions of my own, and... guess what? Guess what!! She ended up using every single idea!!!
 
 She said it was impressive how quickly I'd picked up on what her design needed. She smiled at me with such pride. But at the same time, there was this sad look in her eyes...
 

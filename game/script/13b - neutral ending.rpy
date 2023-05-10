@@ -82,7 +82,7 @@ label neutral_ending:
 
     scene cautionne gun far silent with small_shake:
         zoom 1 xalign 0.5 yalign 0.5
-        linear 0.1 yalign 1.0 xalign 0.5 zoom 3
+        linear 0.05 yalign 1.0 xalign 0.5 zoom 3
 
     scene black
 
@@ -237,7 +237,7 @@ label neutral_ending:
 
     scene black
 
-    pause 3
+    pause 5
     call screen credits(60) with Dissolve(2)
     hide text
     pause 3

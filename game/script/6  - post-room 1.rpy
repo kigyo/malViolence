@@ -21,7 +21,8 @@ label post_room_1:
   with fade
   pause 1
   
-  $ queue_sound([staticshort, tvon])
+  $ play_sound(staticshort)
+  $ queue_sound(tvon)
   pause 0.4
 
   show cautionne hairtwirl at crt
@@ -36,11 +37,11 @@ label post_room_1:
   c "And you know what?{w=0.5} You should be. "
   c "By getting {i}this {/i}far,{w=0.1} you're statistically proven to have more brains than 96\% of STOP employees."
   show cautionne lean eyeclosed
-  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hehehehehe.ogg"
   c "So congrats!"
   show cautionne leaneyeclosed pause
   pause 1
   show cautionne think
+  voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
   c "...That said,{w=0.1} I actually expected you to die by now."
   c "I'm not sure how to reward you for your success..."
   show cautionne lean speaking
