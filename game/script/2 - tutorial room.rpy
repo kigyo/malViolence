@@ -204,11 +204,11 @@ label tutorial_intro:
                     scene bg tutorial2 with small_shake:
                         parallel:
                             zoom 0.5 xalign 0.5 yalign 0.5
-                            linear 0.1 yalign 1.0 xalign 0.6 zoom 2.5
+                            linear 0.1 yalign 1.0 xalign 0.6 zoom 2.4
 
                     scene bg tutorial2 at dizzy with dissolve:
                         parallel:
-                            yalign 1.0 xalign 0.6 zoom 2.5
+                            yalign 1.0 xalign 0.6 zoom 2.4
                     "{sc}({i}—HURK!{/i}){/sc}"
                     "{si}(...Aw,{w=0.1} crap.){/si}"
                     "{si}(Of {i}course{/i} there was something in the food.){/si}"
