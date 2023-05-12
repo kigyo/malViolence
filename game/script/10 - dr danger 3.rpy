@@ -6,10 +6,10 @@ label dr_danger_3:
   "(Seriously,{w=0.1} why's he so pissed off at you?)"
   "(He and Dr. Danger have fought against STOP field agents in the past,{w=0.1} but that's not your department.)"
   "(Hell,{w=0.1} {i}before{/i} this,{w=0.1} you've never met either of them face-to-face.)"
-  "(What right does he have to act all high and mighty towards {i}you?{/i})"
+  "(What right does he have to act all high-and-mighty at {i}you?{/i})"
   pause 1
   "(...)"
-  "(Right — {i}supervillain.{/i})"
+  "(Right —{w=0.5} {i}supervillain.{/i})"
   "(Big ego,{w=0.1} no self-awareness.{w} Don't overthink it.)"
 
   $ play_sound(footsteps3)
@@ -75,6 +75,7 @@ label dr_danger_3:
   drs "But before then,{w=0.1} you've got dishes to clean,{w=0.1} washes to run,{w=0.1} bedrooms to vacuum..."
   show drdanger sidestare
   drs "...and of course,{w=0.1} Cautionne to take care of."
+  pause 1
   voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
   $ play_music(backstorytheme, fadein=1.0, fadeout=1.0)
   drs "He represents a unique challenge,{w=0.1} I know."
@@ -91,7 +92,7 @@ label dr_danger_3:
   drs "I apologize if you'll have to decrypt them again,{w=0.1} but..."
   drs "...Cautionne and I have made a habit of hiding our tracks for good reason."
   show drdanger smirk
-  drs "And when the day is over,{w=0.1} feel free to play games, watch movies or read comics together."
+  drs "And when the day is over,{w=0.1} feel free to play games, watch movies, or read comics together."
   drs "If you need a suggestion..."
   drs "...Cautionne told me that he loves the \"Cantaloupe Mall\" course on \"Marco Kart\"."
   show drdanger sidestare

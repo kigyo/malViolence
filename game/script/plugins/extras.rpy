@@ -480,6 +480,7 @@ D.ray\n
 Phebe Fabacher
 \n\n
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Trailer:{/color}{/font}{/size}\n
+Mado
 Jennymhulla
 \n\n
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Quality Assurance:{/color}{/font}{/size}\n
@@ -494,7 +495,7 @@ wattson\n
 glsuoa\n
 npckc
 \n\n\n\n\n\n
-{size=+100}Thanks for Playing!{/size}
+
 """)
 
 ## This controls the position and speed of your end credits.
