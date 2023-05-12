@@ -46,6 +46,7 @@ init python:
         #room 3
         #toy_board_reset(None)
         init_mise_en_place()
+        evidence_init()
         renpy.retain_after_load()
         renpy.restart_interaction()
 
@@ -76,6 +77,7 @@ init python:
             store.cooking_level = old_puzzle_difficulty_mapper["room3_3"]
 
             init_bomb_function(None)
+            evidence_init()
             puzzle_board_reset(None)
             panopticon_init(True)
             cybernetics_reset(None)
@@ -117,7 +119,7 @@ init python:
             elif v < lowest:
                 lowest = v
         return lowest
-    
+
     def puzzle_achievements():
         cleared = lowest_cleared_difficulty()
         if cleared:
@@ -150,5 +152,5 @@ default persistent.solved_puzzles = {1:[], 2:[], 3:[], "tutorial":False, "room1_
 screen skip_button(room, puzzle, puzzle_name, xalign=0.0, yalign=0.0, xoffset=0, yoffset=0):
     textbutton "SKIP":
         style "confirm_button" xalign xalign yalign yalign xoffset xoffset yoffset yoffset
-        action If(puzzle_cleared(puzzle_name), [SetDict(room, puzzle, "solved"), If(puzzle_name in single_difficulty_puzzles, SetDict(difficulties_cleared, puzzle_name, difficulty_level), NullAction()), Return()], 
+        action If(puzzle_cleared(puzzle_name), [SetDict(room, puzzle, "solved"), If(puzzle_name in single_difficulty_puzzles, SetDict(difficulties_cleared, puzzle_name, difficulty_level), NullAction()), Return()],
             Confirm(If(difficulty_level > 1, _("Are you sure you want to skip this puzzle? \nYou could also {color=#00e7ff}lower the difficulty{/color} instead."), _("Are you sure you want to skip this puzzle?")), [SetDict(room, puzzle, "solved"), SetVariable("skip_used",True), Return()], NullAction()))

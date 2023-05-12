@@ -27,6 +27,9 @@ init python:
 
         store.evidence_level = difficulty_level
 
+        renpy.retain_after_load()
+        renpy.restart_interaction()
+
     class EvidenceBoard(renpy.Displayable):
         def __init__(self, zoom=1.0,
                      evidence=[('toy_plane', (42, 652), (40, 44)),
@@ -165,7 +168,7 @@ transform evidence_alpha:
 transform evidence_zoom(z):
     zoom z
 
-screen room2_evidence(interactable=True):
+screen room2_evidence():
     sensitive (not inspect and not _menu)
     modal True
     tag puzzle
@@ -177,6 +180,7 @@ screen room2_evidence(interactable=True):
     frame style "puzzle_frame":
         padding (0, 0)
         viewport:
+            yoffset -1
             default description = ""
             textbutton "check" action Function(evidence_board.validate)
             if not place_notes:
