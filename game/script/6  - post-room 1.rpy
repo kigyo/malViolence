@@ -1,11 +1,13 @@
 label post_room_1:
   $renpy.block_rollback()
   $ inspect = "post room"
-
-
   show screen room1_marble with None
-  $ play_sound(roomsuccess)
   hide screen room1_marble with puzzle_hide
+
+  $ queue_sound(roomsuccess)
+  pause 0.1
+
+
   #"{b}[pause as the microphone turns on and {/b}{b}cautionne{/b}{b} appears on the screen]{/b}"
 
 #### confirmation sound - yay, you won room 1!
