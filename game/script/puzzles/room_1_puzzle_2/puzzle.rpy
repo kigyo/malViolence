@@ -130,17 +130,17 @@ screen puzzle_playspace(b, interactable=True):
         timer 0.1 action Function(puzzle_board_reset, None)
 
     frame style "puzzle_frame" padding 0,0,50,40:
-        if b.just_cleared:
-            use animated_board(b, (665, 150))
+        if pb.just_cleared:
+            use animated_board(pb, (665, 150))
         else:
-            use board(b, (665, 150))
-        use puzzle_matches(b)
+            use board(pb, (665, 150))
+        use puzzle_matches(pb)
         if interactable:
-            use buttons(b, (665, 150))
-        use reticle(b, (665, 150))
+            use buttons(pb, (665, 150))
+        use reticle(pb, (665, 150))
         use menu
-        if b.just_cleared:
-            timer adt action Function(b.clear_anim)
+        if pb.just_cleared:
+            timer adt action Function(pb.clear_anim)
 
         fixed xsize 580 xalign 1.0:
             fixed ysize 880:
@@ -187,11 +187,11 @@ screen puzzle_matches(b):
                 spacing 50
                 vbox:
                     spacing 10
-                    for m in b.matches[:8]:
+                    for m in pb.matches[:8]:
                         use p_match(m)
-                if len(b.matches) > 8:
+                if len(pb.matches) > 8:
                     vbox:
-                        for m in b.matches[8:]:
+                        for m in pb.matches[8:]:
                             use p_match(m)
 
 transform found_match:

@@ -47,6 +47,7 @@ init python:
         #toy_board_reset(None)
         init_mise_en_place()
         evidence_init()
+
         renpy.retain_after_load()
         renpy.restart_interaction()
 
