@@ -184,13 +184,13 @@ init python:
                                       [2, 5, 3, 2, 4, 3]])
 
         store.toy_level = difficulty_level
-        
+
         if txt:
             renpy.notify(txt)
             renpy.hide_screen("toy_playspace")
             renpy.show_screen("toy_playspace",tb)
 
-screen toy_playspace(tb=None, interactable=True):
+screen toy_playspace(b=None, interactable=True):
     tag puzzle
     layer "puzzles"
     modal True

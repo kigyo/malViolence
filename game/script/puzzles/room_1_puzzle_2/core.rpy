@@ -463,6 +463,23 @@ screen board(b, pos=(100, 100)):
                     at [just_pathed(adt/2, i)]
                     align (0.5, 0.5)
 
+screen pboard(b, pos=(100, 100)):
+    tag board
+    fixed:
+        pos pos
+        for y in range(tb.height):
+            for x in range(tb.width):
+                if tb.pieces[y][x]:
+                    use board_piece(tb, x, y)
+        if tb.just_cleared and isinstance(tb, ToyBoard):
+            for i in range(len(tb.just_pathed)):
+                $ (p, (cx, cy)) = tb.just_pathed[i]
+                add p:
+                    pos (cx*ch, cy*cw)
+                    # at [colorify("#fff"), just_pathed(adt/2, i)]
+                    at [just_pathed(adt/2, i)]
+                    align (0.5, 0.5)
+
 
 screen board_piece(b, x, y):
     $ transforms = [colorify(colors.get(b.pieces[y][x].type, "#fff"))]
