@@ -167,7 +167,7 @@ label tutorial_intro:
             if tutorial["vent"] < 2:
                 $ tutorial["vent"] = 2
                 "(Again,{w=0.1} it's just your average vent cover—){w=1}{nw}"
-                "(—wait.{w} Something's on the back side.)"
+                "(—wait.{w} Something's taped to the back side.)"
                 $ play_sound(creakyvent)
                 show tutorial_painting with dissolve:
                     zoom 0.3 yalign 0.2 xalign 0.5
