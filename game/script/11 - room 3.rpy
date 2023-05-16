@@ -2,6 +2,12 @@ default room3 = {"room":"down", "solved":[], "pages":[], "read_pages":[], "diary
     "confidence_workbook":0, "sewing_book":0, "quilt":0, "cooking":0, "scrapbook_new":0, "toys":0}
 default room3_investigated = []
 
+define toys_description = _("""What a mess! You need to clean up all these toys by {color=#fff}sorting them into sets.{/color}
+
+{color=#fff}A set{/color} is made up of {color=#fff}[toynumber!u] unique toys.{/color} You can reach toys {color=#fff}by moving up, down, left, or right.{/color} You {color=#fff}can't move diagonally.{/color}
+
+Plot your moves carefully! As the toys shift, they may get harder to reach...""")
+
 screen room3():
     sensitive (not inspect and not _menu)
     layer "master"

@@ -1,4 +1,13 @@
+default toynumber = 0
 
+#if difficulty_level == 1:
+#    $ toynumber = 5
+#elif difficulty_level == 2:
+#    $ toynumber = 4
+#elif difficulty_level == 3:
+#    $ toynumber = 5
+#else:
+#    $ toynumber = 999
 
 
 define toy_pieces = ["toy_1", "toy_2", "toy_3", "toy_4", "toy_5"]
