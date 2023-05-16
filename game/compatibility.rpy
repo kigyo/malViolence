@@ -46,7 +46,7 @@ init python:
         #room 3
         #toy_board_reset(None)
         init_mise_en_place()
-        evidence_init()
+        evidence_init(True)
 
         renpy.retain_after_load()
         renpy.restart_interaction()

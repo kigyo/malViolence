@@ -298,7 +298,7 @@ init python:
             store.parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
             bm = bomb_mask_3
         store.bomb = Bomb(len(bm[0]), len(bm), parts, level=difficulty_level, mask=bm)
-        
+
         store.bomb_level = difficulty_level
         if txt:
             renpy.notify(txt)
@@ -359,7 +359,7 @@ screen room1_bomb(b=None, interactable=True):
     tag puzzle
     layer "puzzles"
 
-    if difficulty_level != bomb_level:
+    if difficulty_level != bomb.level:
         timer 0.1 action Function(init_bomb_function, None)
 
     frame style "puzzle_frame" padding 0,0,40,50:

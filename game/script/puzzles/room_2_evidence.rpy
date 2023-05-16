@@ -126,20 +126,20 @@ init python:
 
     def note_dragged(drags, drop):
         drag = drags[0]
-        if isinstance(drag.drag_name, tuple):
-            if len(drag.drag_name) >= 3:
-                glog((drag.drag_name[0], (drag.x, drag.y), drag.drag_name[2]))
-            else:
-                glog((drag.drag_name[0], (drag.x, drag.y)))
-        else:
-            glog((drag.drag_name, (drag.x, drag.y)))
+        # if isinstance(drag.drag_name, tuple):
+        #     if len(drag.drag_name) >= 3:
+        #         glog((drag.drag_name[0], (drag.x, drag.y), drag.drag_name[2]))
+        #     else:
+        #         glog((drag.drag_name[0], (drag.x, drag.y)))
+        # else:
+        #     glog((drag.drag_name, (drag.x, drag.y)))
 
     def evidence_dragged(board, drags, drop):
         drag = drags[0]
         board.current = None
         board.pin = None
         if place_pins:
-            glog((drag.drag_name[0], drag.drag_name[1], (drag.x-drag.drag_name[1][0]+pin_half, drag.y-drag.drag_name[1][1]+pin_half)))
+            # glog((drag.drag_name[0], drag.drag_name[1], (drag.x-drag.drag_name[1][0]+pin_half, drag.y-drag.drag_name[1][1]+pin_half)))
             pass
         else:
             drag.snap(drag.drag_name[1][0]+drag.drag_name[2][0]-pin_half, drag.drag_name[1][1]+drag.drag_name[2][1]-pin_half)
