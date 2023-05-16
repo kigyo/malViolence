@@ -53,6 +53,13 @@ init python:
                             [[_("- The bracelet is too big for the red-headed child.")], (1088, 182)],
                             [[_("- The blonde child managed to play a tune on the harmonica when asked, but the other two children could not.")], (1387, 683)]]):
                                    self.evidence = evidence
+                                   self.split_evidence = []
+                                   for e in self.evidence:
+                                       if len(e[2]) > 2:
+                                           for s in e[2]:
+                                               self.split_evidence.append((s[0], e[1], s[1]))
+                                       else:
+                                           self.split_evidence.append(e)
                                    self.connections = []
                                    self.notes = notes
                                    self.zoom = zoom
@@ -70,8 +77,8 @@ init python:
             can = render.canvas()
 
             for (start, end) in self.connections:
-                start_e = [e for e in self.evidence if e[0] == start][0]
-                end_e = [e for e in self.evidence if e[0] == end][0]
+                start_e = [e for e in self.split_evidence if e[0] == start][0]
+                end_e = [e for e in self.split_evidence if e[0] == end][0]
                 can.line((255, 0, 0, 180),
                          (start_e[1][0]+start_e[2][0], start_e[1][1]+start_e[2][1]),
                          (end_e[1][0]+end_e[2][0], end_e[1][1]+end_e[2][1]), 8)
@@ -144,11 +151,24 @@ init python:
         else:
             drag.snap(drag.drag_name[1][0]+drag.drag_name[2][0]-pin_half, drag.drag_name[1][1]+drag.drag_name[2][1]-pin_half)
         if drop:
-            conn = sorted((drag.drag_name[0], drop.drag_name[0]))
-            if conn in board.connections:
-                board.connections.remove(conn)
+            conn = None
+            if len(drop.drag_name[2]) == 2:
+                conn = sorted((drag.drag_name[0], drop.drag_name[0]))
             else:
-                board.connections.append(conn)
+                pass
+                for sub in drop.drag_name[2]:
+                    rv = renpy.render(Image("images/puzzles/room_2_puzzle_1/refactor/evi_%s.png" % sub[0].lower()), config.screen_width, config.screen_height, 0.0, 0.0)
+                    (x, y) = renpy.get_mouse_pos()
+                    x -=  drop.drag_name[1][0]
+                    y -=  drop.drag_name[1][1]
+                    if rv.is_pixel_opaque(x, y):
+                        conn = sorted((drag.drag_name[0], sub[0]))
+            if conn:
+                if conn in board.connections:
+                    board.connections.remove(conn)
+                else:
+                    board.connections.append(conn)
+
         renpy.retain_after_load()
         renpy.restart_interaction()
 
@@ -161,7 +181,7 @@ init python:
         t.pos = renpy.get_mouse_pos()
         return 0.0
 
-define mouse_pos = Transform(function=mouse_pos)
+define mouse_pos = Transform(function=mouse_pos, xanchor=0.5)
 
 define pin_half = 45
 
@@ -246,7 +266,7 @@ screen room2_evidence():
                                 for t in range(len(evidence_board.notes[n][0])):
                                     text evidence_board.notes[n][0][t] align (0.5,0.5) style ("evidence_note_text" if n else "evidence_explination_text") strikethrough getattr(evidence_board, "note_striked_%s_%s" % (n, t)) xalign 0.0
                 for e in evidence_board.evidence:
-                    if len(e) >= 3 or place_evidence:
+                    if len(e[2]) == 2 or place_evidence:
                         drag:
                             pos e[1]
                             fixed:
@@ -258,7 +278,7 @@ screen room2_evidence():
                                 imagebutton:
                                     idle "evi_%s" % e[0].lower()
                                     focus_mask True
-                                    if not place_evidence and len(e) >= 3:
+                                    if not place_evidence and len(e[2]) == 2:
                                         hovered SetScreenVariable("description", e[0].replace("_", " "))
                                         unhovered SetScreenVariable("description", "")
                                         action Show("enhance", dissolve, evidence=e[0])
@@ -269,17 +289,31 @@ screen room2_evidence():
                             drag_offscreen True
                             focus_mask True
                             droppable not place_evidence
-                        if len(e) >= 3:
-                            drag:
-                                pos (e[1][0]+e[2][0]-pin_half, e[1][1]+e[2][1]-pin_half)
-                                add "big_pin"
-                                drag_name e
-                                drag_raise True
-                                focus_mask True
-                                mouse_drop True
-                                drag_offscreen True
-                                dragged renpy.curry(evidence_dragged)(evidence_board)
-                                dragging renpy.curry(evidence_dragging)(evidence_board)
+                        use pin(*e)
+                    elif not place_evidence:
+                        drag:
+                            drag_name e
+                            mouse_drop True
+                            # dragged note_dragged
+                            draggable place_evidence
+                            drag_offscreen True
+                            focus_mask True
+                            droppable not place_evidence
+                            pos e[1]
+                            fixed:
+                                at evidence_zoom(evidence_board.zoom)
+                                fit_first True
+                                for s in e[2]:
+                                    imagebutton:
+                                        at evidence_alpha
+                                        idle "evi_%s" % s[0].lower()
+                                        focus_mask True
+                                        if not place_evidence:
+                                            hovered SetScreenVariable("description", s[0].replace("_", " "))
+                                            unhovered SetScreenVariable("description", "")
+                                            action Show("enhance", dissolve, evidence=s[0])
+                        for s in e[2]:
+                            use pin(s[0], e[1], s[1])
             text description xalign 0.5 offset (-50, -100) at mouse_pos outlines [(absolute(6), "#000", absolute(0), absolute(0))]
 
             vbox xfill True yalign 1.0 ysize 100 spacing 30:
@@ -383,28 +417,24 @@ define hard_evidence = [('toy_plane', (48, 12), (82, 39)),
                         ('subject_A', (1731, 659), (21, 130)),
                         ('heightened_hearing', (1526, 843), (29, 162)),
 
-                        ('panopticon', (1116, 332)),
+                        ('panopticon', (1116, 332), (('cell_4', (204, 36)),
+                                                     ('cell_3', (111, -11)),
+                                                     ('cell_2', (-16, 109)),
+                                                     ('cell_1', (61, 215)),
+                                                     ('cell_0', (207, 199)))),
 
-                        ('cell_4', (1116, 332), (204, 36)),
-                        ('cell_3', (1116, 332), (111, -11)),
-                        ('cell_2', (1116, 332), (-16, 109)),
-                        ('cell_1', (1116, 332), (61, 215)),
-                        ('cell_0', (1116, 332), (207, 199)),
-
-                        ('calendar', (780, 36)),
-
-                        ('December', (770, 36), (29, 471)),
-                        ('November', (770, 36), (204, 434)),
-                        ('October', (770, 36), (28, 389)),
-                        ('September', (770, 36), (197, 348)),
-                        ('August', (770, 36), (26, 309)),
-                        ('July', (770, 36), (202, 272)),
-                        ('June', (770, 36), (31, 229)),
-                        ('May', (770, 36), (208, 194)),
-                        ('April', (770, 36), (20, 149)),
-                        ('March', (770, 36), (210, 111)),
-                        ('February', (770, 36), (23, 69)),
-                        ('January', (770, 36), (208, 29))
+                        ('calendar', (780, 36), (('December', (29, 471)),
+                                                 ('November', (204, 434)),
+                                                 ('October', (28, 389)),
+                                                 ('September', (197, 348)),
+                                                 ('August', (26, 309)),
+                                                 ('July', (202, 272)),
+                                                 ('June', (31, 229)),
+                                                 ('May', (208, 194)),
+                                                 ('April', (20, 149)),
+                                                 ('March', (210, 111)),
+                                                 ('February', (23, 69)),
+                                                 ('January', (208, 29))))
                         ]
 
 define medium_evidence = [('suburbs', (-26, 809), (122, 257)),
@@ -418,18 +448,13 @@ define medium_evidence = [('suburbs', (-26, 809), (122, 257)),
                           ('toy_plane', (1705, 269), (71, 51)),
                           ('mountains', (1693, 17), (102, 100)),
                           ('subject_F', (1474, 52), (177, 271)),
-                          ('armed_arms', (1256, -23), (35, 64)),
                           ('coast', (1004, 40), (138, 244)),
-                          ('lethal_legs', (333, 281), (176, 116)),
-                          ('heightened_hearing', (105, 207), (48, 209)),
-                          ('super_sight', (-27, 495), (186, 200)),
 
-                          ('intake_dates', (668, 20)),
-
-                          ('March_', (668, 20), (24, 77)),
-                          ('June_', (668, 20), (252, 141)),
-                          ('September_', (668, 20), (-14, 208)),
-                          ('December_', (668, 20), (254, 257))]
+                          ('intake_dates', (668, 20), (('March_', (24, 77)),
+                                                       ('June_', (252, 141)),
+                                                       ('September_', (-14, 208)),
+                                                       ('December_', (254, 257))))
+                          ]
 
 define medium_solution = [["subject_G", "plane", "December", "mountains"],
                           ["subject_R", "diablo", "June", "suburbs"],
@@ -446,3 +471,15 @@ define hard_solution = [["subject_G," "June", "cell_0", "kite", "processing"],
 default place_notes = False
 default place_evidence = False
 default place_pins = False
+
+screen pin(name, n_pos, p_pos):
+    drag:
+        pos (n_pos[0]+p_pos[0]-pin_half, n_pos[1]+p_pos[1]-pin_half)
+        add "big_pin"
+        drag_name (name, n_pos, p_pos)
+        drag_raise True
+        focus_mask True
+        mouse_drop True
+        drag_offscreen True
+        dragged renpy.curry(evidence_dragged)(evidence_board)
+        dragging renpy.curry(evidence_dragging)(evidence_board)
