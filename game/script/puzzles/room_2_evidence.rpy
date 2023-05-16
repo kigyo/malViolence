@@ -47,7 +47,7 @@ init python:
                      solution=[["blonde_haired_kid", "harmonica", "mountains"],
                                ["red_haired_kid", "toy_plane", "suburbs"],
                                ["brown_haired_kid", "bracelet", "city"]],
-                     notes=[[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view, in the defailed view click on written notes to {s}stike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.\n\nClick on notes to examine them. Drag the pins around to make connections.{/color}")], (626, 349)],
+                     notes=[[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view, in the detailed view click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.\n\nClick on notes to examine them. Drag the pins around to make connections.{/color}")], (626, 349)],
                             [[_("- The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.")], (0, 0)],
                             [[_("- The red-headed child is certain they did not live in the city.")], (108, 496)],
                             [[_("- The bracelet is too big for the red-headed child.")], (1088, 182)],
@@ -364,7 +364,7 @@ screen enhance(evidence):
     text evidence.replace("_", " ") align (0.5, 1.0) outlines [(absolute(6), "#000", absolute(0), absolute(0))] size 64
 
 
-define medium_notes = [[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}stike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, when each subject arrived at the facility, and who grew up where{/i}.")], (626, 300)],
+define medium_notes = [[[_("During our last operation, we only managed to save four test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, when each subject arrived at the facility, and who grew up where{/i}.")], (626, 300)],
                        [["- The blonde child seems to have a musical inclination.",
                          "- The bracelet has a notable tarnish. Upon sampling it seems to be a coating of coastal salt.",
                          "- The city-dweller was abducted in the Spring.",], (-28, -138)],
@@ -378,7 +378,7 @@ define medium_notes = [[[_("During our last operation, we only managed to save t
                          "- Subject R arrived in June.",
                          "- The child wearing a bracelet arrived in September."], (1087, 186)]]
 
-define hard_notes = [[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}stike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, which cell each subject stayed in, and who grew up where{/i}.")], (434, 555)],
+define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found some incomplete records indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, which cell each subject stayed in, and who grew up where{/i}.")], (434, 555)],
                      [[_("- The child with the harmonica arrived first."),
                        _("- The child in Cell 3 arrived in November."),
                        _("- The child with the bracelet was not in Cell 0, 1, or 3."),
