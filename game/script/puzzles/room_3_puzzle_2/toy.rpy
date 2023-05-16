@@ -1,10 +1,13 @@
+
+
+
 define toy_pieces = ["toy_1", "toy_2", "toy_3", "toy_4", "toy_5"]
 
-define toys_description = _("""What a mess! You need to clean up all these toys by {color=#fff}sorting them into sets.{/color}
+#define toys_description = _("""What a mess! You need to clean up all these toys by {color=#fff}sorting them into sets.{/color}
 
-{color=#fff}A set{/color} is made up of {color=#fff}four unique toys.{/color} You can reach toys {color=#fff}by moving up, down, left, or right.{/color} You {color=#fff}can't move diagonally.{/color}
+#{color=#fff}A set{/color} is made up of {color=#fff}[toynumber!u] unique toys.{/color} You can reach toys {color=#fff}by moving up, down, left, or right.{/color} You {color=#fff}can't move diagonally.{/color}
 
-Plot your moves carefully! As the toys shift, they may get harder to reach...""")
+#Plot your moves carefully! As the toys shift, they may get harder to reach...""")
 
 image toy_walk_fast:
     "toy_walk_1"
@@ -21,6 +24,8 @@ image toy_walk_slow:
     repeat
 
 init python:
+
+
     import random
     class ToyBoard(Board):
         def __init__(self, width=7, height=7,
@@ -148,6 +153,17 @@ init python:
             self.just_cleared = True
 
             renpy.retain_after_load()
+
+    def toy_init():
+
+        if difficulty_level == 1:
+            store.toynumber = 5
+        elif difficulty_level == 2:
+            store.toynumber = 4
+        elif difficulty_level == 3:
+            store.toynumber = 5
+        else:
+            store.toynumber = 999
 
     def sort_matches(tup):
         lst = len(tup)
