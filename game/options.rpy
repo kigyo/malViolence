@@ -37,7 +37,7 @@ define config.developer = True
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "malViolence"
+define build.name = "malViolence_testbuild"
 
 
 ## Sounds and music ############################################################
