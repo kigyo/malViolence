@@ -308,8 +308,7 @@ init -1 python:
             elif self.w == 10:
                 thresh = 60
             elif self.w == 8:
-                thresh = 35
-
+                thresh = 41
             if len(set(checked)) == thresh:
                 store.room2["recalibration"] = "solved"
                 clear_puzzle("room2_3")
