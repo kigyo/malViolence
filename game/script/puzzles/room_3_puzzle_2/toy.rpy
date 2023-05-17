@@ -1,10 +1,22 @@
+
+
+#if difficulty_level == 1:
+#    $ toynumber = 5
+#elif difficulty_level == 2:
+#    $ toynumber = 4
+#elif difficulty_level == 3:
+#    $ toynumber = 5
+#else:
+#    $ toynumber = 999
+
+
 define toy_pieces = ["toy_1", "toy_2", "toy_3", "toy_4", "toy_5"]
 
-define toys_description = _("""What a mess! You need to clean up all these toys by {color=#fff}sorting them into sets.{/color}
+#define toys_description = _("""What a mess! You need to clean up all these toys by {color=#fff}sorting them into sets.{/color}
 
-{color=#fff}A set{/color} is made up of {color=#fff}four unique toys.{/color} You can reach toys {color=#fff}by moving up, down, left, or right.{/color} You {color=#fff}can't move diagonally.{/color}
+#{color=#fff}A set{/color} is made up of {color=#fff}[toynumber!u] unique toys.{/color} You can reach toys {color=#fff}by moving up, down, left, or right.{/color} You {color=#fff}can't move diagonally.{/color}
 
-Plot your moves carefully! As the toys shift, they may get harder to reach...""")
+#Plot your moves carefully! As the toys shift, they may get harder to reach...""")
 
 image toy_walk_fast:
     "toy_walk_1"
@@ -21,6 +33,8 @@ image toy_walk_slow:
     repeat
 
 init python:
+
+
     import random
     class ToyBoard(Board):
         def __init__(self, width=7, height=7,
@@ -149,6 +163,17 @@ init python:
 
             renpy.retain_after_load()
 
+ #   def toy_init():
+#
+#        if difficulty_level == 1:
+#            store.toynumber = 5
+#        elif difficulty_level == 2:
+#            store.toynumber = 4
+#        elif difficulty_level == 3:
+#            store.toynumber = 5
+#        else:
+#            store.toynumber = 999
+
     def sort_matches(tup):
         lst = len(tup)
         for i in range(0, lst):
@@ -161,6 +186,7 @@ init python:
 
     def toy_board_reset(txt=_("Invalid. Restarting...")):
         if difficulty_level == 1:
+            store.toynumber = "five"
             store.tb = ToyBoard(width=4, height=4, player=(1, 2),
                                 match_length=5,
                                 init=[[3, 2, 1, 4],
@@ -169,9 +195,11 @@ init python:
                                       [3, 5, 4, 2]])
             store.adt = 1.25
         elif difficulty_level == 2:
+            store.toynumber = "four"
             store.tb = ToyBoard(width=5, height=5)
             store.adt = 1.0
         elif difficulty_level == 3:
+            store.toynumber = "five"
             store.adt = 1.25
             store.tb = ToyBoard(width=6, height=6,
                                 match_length=5,
@@ -199,7 +227,10 @@ screen toy_playspace(b=None, interactable=True):
 
     frame style "puzzle_frame":
         frame:
-            xysize (400, 200)
+            if difficulty_level == 2:
+                xysize (400, 200)
+            else:
+                xysize (475, 200)
             align 0.0,0.5
             has vbox
             xfill True
@@ -214,13 +245,31 @@ screen toy_playspace(b=None, interactable=True):
                     xoffset 30
                     for p in tb.match_pic:
                         add p
-        if tb.just_cleared:
-            use animated_board(tb, (550, 350))
+
+        if difficulty_level == 1:
+            if tb.just_cleared:
+                use animated_board(tb, (700, 375))
+            else:
+                use board(tb, (700, 375))
+            if interactable:
+                use buttons(tb, (700, 375))
+            use reticle(tb, (700, 375))
+        elif difficulty_level == 2:
+            if tb.just_cleared:
+                use animated_board(tb, (600, 350))
+            else:
+                use board(tb, (600, 350))
+            if interactable:
+                use buttons(tb, (600, 350))
+            use reticle(tb, (600, 350))
         else:
-            use board(tb, (550, 350))
-        if interactable:
-            use buttons(tb, (550, 350))
-        use reticle(tb, (550, 350))
+            if tb.just_cleared:
+                use animated_board(tb, (600, 350))
+            else:
+                use board(tb, (600, 350))
+            if interactable:
+                use buttons(tb, (600, 350))
+            use reticle(tb, (600, 350))
         if tb.just_cleared:
             timer adt action Function(tb.clear_anim)
 

@@ -32,12 +32,11 @@ define config.version = "1.2"
 define config.developer = True
 
 
-
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "malViolence"
+define build.name = "malViolence_testbuild"
 
 
 ## Sounds and music ############################################################

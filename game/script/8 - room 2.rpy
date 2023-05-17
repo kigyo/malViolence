@@ -112,7 +112,7 @@ label room_2:
             "(\"- Subject G does not how to use a yo-yo.\")"
             "(\"- The yo-yo trickster did not arrive first.\")"
         elif difficulty_level == 3:
-            "(It says: \"- Subject D received the eyes implant.\")"
+            "(It says: \"- Subject D received the eye implants.\")"
             "(\"- 2 children arrived before Subject G did, and 2 children arrived after.\")"
             "(\"- The child with the toy plane was in a higher cell number than the child who came with a yo-yo.\")"
             "(\"- The bracelet was found in the cell directly to the right of the child who received the hearing implant.{w} To their left was the cell that remained empty the longest.\")"
@@ -127,14 +127,14 @@ label room_2:
         if difficulty_level == 1:
             "(It says: \"The blonde child managed to play a tune on the harmonica when asked,{w=0.1} but the other two children could not.\")"
         elif difficulty_level == 2:
-            "(It says: \"- The bracelet arrived at the facility before the toy plane.\")"
-            "(\"- Subject G does not how to use a yo-yo.\")"
-            "(\"- The yo-yo trickster did not arrive first.\")"
+            "(It says: \"- The child whose designation comes first in the alphabet was the second-to-last arrival.\")"
+            "(\"- Subject R arrived in June.\")"
+            "(\"- The child wearing a bracelet arrived in September.\")"
         elif difficulty_level == 3:
             "(It says: \"- The child who came with a kite also received the perspicacious processing implant.\")"
             "(\"- The child who received the armed arms implant arrived last.\")"
             "(\"- The toy plane could've belonged to the child with heightened hearing or the child who received new eyes.\")"
-            "(\"- The yo-yo belonged either to Subject F or the child who received cybernetic legs.\")"
+            "(\"- The yo-yo belonged either to Subject F or the subject who received cybernetic legs.\")"
             "(\"- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in.\")"
             "(\"- The child who got new eyes came 1 month before the child who came with a knife.\")"
         else: 

@@ -47,7 +47,7 @@ init python:
                      solution=[["blonde_haired_kid", "harmonica", "mountains"],
                                ["red_haired_kid", "toy_plane", "suburbs"],
                                ["brown_haired_kid", "bracelet", "city"]],
-                     notes=[[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view, in the defailed view click on written notes to {s}stike{/s} them out. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.\n\nClick on notes to examine them. Drag the pins around to make connections.{/color}")], (626, 349)],
+                     notes=[[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view, in the detailed view click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.\n\nClick on notes to examine them. Drag the pins around to make connections.{/color}")], (626, 349)],
                             [[_("- The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.")], (0, 0)],
                             [[_("- The red-headed child is certain they did not live in the city.")], (108, 496)],
                             [[_("- The bracelet is too big for the red-headed child.")], (1088, 182)],
@@ -365,7 +365,7 @@ screen enhance(evidence, label):
     text (label or evidence).replace("_", " ") align (0.5, 1.0) outlines [(absolute(6), "#000", absolute(0), absolute(0))] size 64
 
 
-define medium_notes = [[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view, in the defailed view click on written notes to {s}stike{/s} them out. \n\nUsing what information we have, {i}figure out which item belongs to who, when each subject arrived at the facility, and who grew up where{/i}.")], (626, 300)],
+define medium_notes = [[[_("During our last operation, we only managed to save four test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, when each subject arrived at the facility, and who grew up where{/i}.")], (626, 300)],
                        [["- The blonde child seems to have a musical inclination.",
                          "- The bracelet has a notable tarnish. Upon sampling it seems to be a coating of coastal salt.",
                          "- The city-dweller was abducted in the Spring.",], (-28, -138)],
@@ -375,11 +375,11 @@ define medium_notes = [[[_("During our last operation, we only managed to save t
                        [["- The bracelet arrived at the facility before the toy plane.",
                          "- Subject G does not how to use a yo-yo.",
                          "- The yo-yo trickster did not arrive first.",], (1461, 561)],
-                       [["- The child who's designation comes first in the alphabet was the second-to-last arrival.",
+                       [["- The child whose designation comes first in the alphabet was the second-to-last arrival.",
                          "- Subject R arrived in June.",
                          "- The child wearing a bracelet arrived in September."], (1087, 186)]]
 
-define hard_notes = [[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view, in the defailed view click on written notes to {s}stike{/s} them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, which cell each subject stayed in, and who grew up where{/i}.")], (434, 555)],
+define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found some incomplete records indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, which cell each subject stayed in, and who grew up where{/i}.")], (434, 555)],
                      [[_("- The child with the harmonica arrived first."),
                        _("- The child in Cell 3 arrived in November."),
                        _("- The child with the bracelet was not in Cell 0, 1, or 3."),
@@ -389,7 +389,7 @@ define hard_notes = [[[_("During our last operation, we only managed to save thr
                        _("- The cell of the child who received the perspicacious processing implant was between the cells of the child who arrived in July and the child who arrived in February."),
                        _("- The child who received the heightened hearing implant arrived one month apart from the child who came with the yo-yo."),
                        _("- The child with the yo-yo stayed in Cell 2.")], (-27, 475)],
-                    [[_("- Subject D received the eyes implant."),
+                    [[_("- Subject D received the eye implants."),
                       _("- 2 children arrived before Subject G did, and 2 children arrived after."),
                       _("- The child with the toy plane was in a higher cell number than the child who came with a yo-yo."),
                       _("- The bracelet was found in the cell directly to the right of the child who received the hearing implant. To their left was the cell that remained empty the longest."),
@@ -398,7 +398,7 @@ define hard_notes = [[[_("During our last operation, we only managed to save thr
                      [[_("- The child who came with a kite also received the perspicacious processing implant."),
                        _("- The child who received the armed arms implant arrived last."),
                        _("- The toy plane could've belonged to the child with heightened hearing or the child who received new eyes."),
-                       _("- The yo-yo belonged either to Subject F or the child who received cybernetic legs."),
+                       _("- The yo-yo belonged either to Subject F or the subject who received cybernetic legs."),
                        _("- The child who got new eyes came 1 month before the child who came with a knife.")], (1458, -50)]]
 
 
