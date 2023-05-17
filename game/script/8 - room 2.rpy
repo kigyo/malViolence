@@ -134,7 +134,7 @@ label room_2:
             "(It says: \"- The child who came with a kite also received the perspicacious processing implant.\")"
             "(\"- The child who received the armed arms implant arrived last.\")"
             "(\"- The toy plane could've belonged to the child with heightened hearing or the child who received new eyes.\")"
-            "(\"- The yo-yo belonged either to Subject F or the child who received cybernetic legs.\")"
+            "(\"- The yo-yo belonged either to Subject F or the subject who received cybernetic legs.\")"
             "(\"- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in.\")"
             "(\"- The child who got new eyes came 1 month before the child who came with a knife.\")"
         else: 

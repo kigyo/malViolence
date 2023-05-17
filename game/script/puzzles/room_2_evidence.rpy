@@ -397,7 +397,7 @@ define hard_notes = [[[_("During our last operation, we only managed to save fiv
                      [[_("- The child who came with a kite also received the perspicacious processing implant."),
                        _("- The child who received the armed arms implant arrived last."),
                        _("- The toy plane could've belonged to the child with heightened hearing or the child who received new eyes."),
-                       _("- The yo-yo belonged either to Subject F or the child who received cybernetic legs."),
+                       _("- The yo-yo belonged either to Subject F or the subject who received cybernetic legs."),
                        _("- The child who got new eyes came 1 month before the child who came with a knife.")], (1458, -50)]]
 
 
