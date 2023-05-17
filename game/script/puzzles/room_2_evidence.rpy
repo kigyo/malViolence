@@ -374,14 +374,12 @@ define medium_notes = [[[_("During our last operation, we only managed to save f
                          "- Whoever lived in the mountains arrived in either June or December.",
                          "- The child from the suburbs was processed before the subject from the mountains."], (1200, 690), 400],
                        [["- The bracelet arrived at the facility before the toy plane.",
-                         "- Subject G does not how to use a yo-yo.",
+                         "- Subject G does not know how to use a yo-yo.",
                          "- The yo-yo trickster did not arrive first.",], (245, 374), 310],
                        [["- The child whose designation comes first in the alphabet was the second-to-last arrival.",
                          "- Subject R arrived in June.",
                          "- The child wearing a bracelet arrived in September."], (1157, 100), 350]]
 
-
-define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found some incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, which cell each subject stayed in, and who grew up where{/i}.")], (434, 555)],
 
 define medium_evidence = [('suburbs', (16, 449), (105,20)),
                           ('subject_R', (180, 770), (105,20)),
@@ -402,7 +400,7 @@ define medium_evidence = [('suburbs', (16, 449), (105,20)),
                                                        ('December_', (264, 267))))
                           ]
 
-define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found some incomplete records indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, which cell each subject stayed in, and who grew up where{/i}.")], (434, 555), 500],
+define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found some incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, which cell each subject stayed in, and who grew up where{/i}.")], (434, 555), 500],
 
                      [[_("- The child with the harmonica arrived first."),
                        _("- The child in Cell 3 arrived in November."),
@@ -469,20 +467,6 @@ define medium_solution = [["subject_G", "toy_plane", "December_", "mountains"],
                           ["subject_R", "yo-yo", "June_", "suburbs"],
                           ["subject_A", "bracelet", "September_", "coast"],
                           ["subject_F", "harmonica", "March_", "city"]]
-
-
-                          ('intake_dates', (668, 20), (('March_', (24, 77)),
-                                                       ('June_', (252, 141)),
-                                                       ('September_', (-14, 208)),
-                                                       ('December_', (254, 257))))
-                          ]
-
-define medium_solution = [["subject_G", "plane", "December", "mountains"],
-                          ["subject_R", "yo-yo", "June", "suburbs"],
-                          ["subject_A", "bracelet", "September", "coast"],
-                          ["subject_F", "harmonica", "March", "city"]]
-
-
 
 define hard_solution = [["subject_G", "June", "cell_0", "pocket_knife", "perspicacious_processing"],
                         ["subject_R", "September", "cell_3", "toy_plane", "heightened_hearing"],
