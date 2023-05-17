@@ -128,8 +128,9 @@ init python:
             seen.append(node)
             paths = [c for c in self.connections if node in c]
             for p in paths:
-                if [n for n in p if n != node][0] not in seen and not [n for n in p if n != node][0] in queue:
-                    queue.append(p[1])
+                n = [n for n in p if n != node][0]
+                if n not in seen and not n in queue:
+                    queue.append(n)
 
     def note_dragged(drags, drop):
         drag = drags[0]
@@ -311,7 +312,7 @@ screen room2_evidence():
                                         if not place_evidence:
                                             hovered SetScreenVariable("description", s[0].replace("_", " "))
                                             unhovered SetScreenVariable("description", "")
-                                            action Show("enhance", dissolve, evidence=s[0])
+                                            action Show("enhance", dissolve, evidence=e[0], label=s[0])
                         for s in e[2]:
                             use pin(s[0], e[1], s[1])
             text description xalign 0.5 offset (-50, -100) at mouse_pos outlines [(absolute(6), "#000", absolute(0), absolute(0))]
@@ -357,11 +358,11 @@ screen enhance_note(note, n_i):
                             if n_i:
                                 action ToggleField(evidence_board, "note_striked_%s_%s" % (n_i, i))
 
-screen enhance(evidence):
+screen enhance(evidence, label):
     modal True
     imagebutton idle "#000000aa" action Hide("enhance", dissolve)
     add "evi_%s" % evidence.lower() align (0.5, 0.5) zoom 2.0
-    text evidence.replace("_", " ") align (0.5, 1.0) outlines [(absolute(6), "#000", absolute(0), absolute(0))] size 64
+    text (label or evidence).replace("_", " ") align (0.5, 1.0) outlines [(absolute(6), "#000", absolute(0), absolute(0))] size 64
 
 
 define medium_notes = [[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view, in the defailed view click on written notes to {s}stike{/s} them out. \n\nUsing what information we have, {i}figure out which item belongs to who, when each subject arrived at the facility, and who grew up where{/i}.")], (626, 300)],
@@ -456,16 +457,16 @@ define medium_evidence = [('suburbs', (-26, 809), (122, 257)),
                                                        ('December_', (254, 257))))
                           ]
 
-define medium_solution = [["subject_G", "plane", "December", "mountains"],
-                          ["subject_R", "diablo", "June", "suburbs"],
-                          ["subject_A", "bracelet", "September", "coast"],
-                          ["subject_F", "harmonica", "March", "city"]]
+define medium_solution = [["subject_G", "toy_plane", "December_", "mountains"],
+                          ["subject_R", "yo-yo", "June_", "suburbs"],
+                          ["subject_A", "bracelet", "September_", "coast"],
+                          ["subject_F", "harmonica", "March_", "city"]]
 
-define hard_solution = [["subject_G," "June", "cell_0", "kite", "processing"],
-                        ["subject_R," "September", "cell_3", "plane", "hearing"],
-                        ["subject_A," "March", "cell_1", "harmonica", "legs"],
-                        ["subject_F," "December", "cell_2", "yo-yo", "arms"],
-                        ["subject_D," "May", "cell_4", "bracelet", "eyes"]]
+define hard_solution = [["subject_G", "June", "cell_0", "pocket_knife", "perspicacious_processing"],
+                        ["subject_R", "September", "cell_3", "toy_plane", "heightened_hearing"],
+                        ["subject_A", "March", "cell_1", "harmonica", "lethal_legs"],
+                        ["subject_F", "December", "cell_2", "yo-yo", "armed_arms"],
+                        ["subject_D", "May", "cell_4", "bracelet", "super_sight"]]
 
 
 default place_notes = False
