@@ -131,7 +131,7 @@ label room_2:
             "(\"- Subject R arrived in June.\")"
             "(\"- The child wearing a bracelet arrived in September.\")"
         elif difficulty_level == 3:
-            "(It says: \"- The child who came with a kite also received the perspicacious processing implant.\")"
+            "(It says: \"- The child who came with a knife also received the perspicacious processing implant.\")"
             "(\"- The child who received the armed arms implant arrived last.\")"
             "(\"- The toy plane could've belonged to the child with heightened hearing or the child who received new eyes.\")"
             "(\"- The yo-yo belonged either to Subject F or the subject who received cybernetic legs.\")"
