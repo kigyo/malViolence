@@ -156,14 +156,14 @@ init python:
             if len(drop.drag_name[2]) == 2:
                 conn = sorted((drag.drag_name[0], drop.drag_name[0]))
             else:
-                pass
+                (x, y) = renpy.get_mouse_pos()
+                x -=  drop.drag_name[1][0]
+                y -=  drop.drag_name[1][1]
                 for sub in drop.drag_name[2]:
-                    rv = renpy.render(Image("images/puzzles/room_2_puzzle_1/refactor/evi_%s.png" % sub[0].lower()), config.screen_width, config.screen_height, 0.0, 0.0)
-                    (x, y) = renpy.get_mouse_pos()
-                    x -=  drop.drag_name[1][0]
-                    y -=  drop.drag_name[1][1]
+                    rv = renpy.render(Transform("images/puzzles/room_2_puzzle_1/refactor/evi_%s.png" % sub[0].lower(), zoom=evidence_board.zoom), config.screen_width, config.screen_height, 0.0, 0.0)
                     if rv.is_pixel_opaque(x, y):
                         conn = sorted((drag.drag_name[0], sub[0]))
+                        continue
             if conn:
                 if conn in board.connections:
                     board.connections.remove(conn)
