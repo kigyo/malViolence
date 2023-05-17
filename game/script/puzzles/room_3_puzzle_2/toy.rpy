@@ -186,6 +186,7 @@ init python:
 
     def toy_board_reset(txt=_("Invalid. Restarting...")):
         if difficulty_level == 1:
+            store.toynumber = "five"
             store.tb = ToyBoard(width=4, height=4, player=(1, 2),
                                 match_length=5,
                                 init=[[3, 2, 1, 4],
@@ -194,9 +195,11 @@ init python:
                                       [3, 5, 4, 2]])
             store.adt = 1.25
         elif difficulty_level == 2:
+            store.toynumber = "four"
             store.tb = ToyBoard(width=5, height=5)
             store.adt = 1.0
         elif difficulty_level == 3:
+            store.toynumber = "five"
             store.adt = 1.25
             store.tb = ToyBoard(width=6, height=6,
                                 match_length=5,

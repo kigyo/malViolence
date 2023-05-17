@@ -2,20 +2,7 @@ default room3 = {"room":"down", "solved":[], "pages":[], "read_pages":[], "diary
     "confidence_workbook":0, "sewing_book":0, "quilt":0, "cooking":0, "scrapbook_new":0, "toys":0}
 default room3_investigated = []
 
-
-
-init python:
-    def toynumber_check():
-        if difficulty_level == 2:
-            store.toynumber = "four"
-            return toynumber
-        elif difficulty_level == 3 or difficulty_level == 1:
-            store.toynumber = "five"
-
-        else:
-            store.toynumber = "nine hundred"
-
-
+default toynumber = "four"
 
 define toys_description = _("""What a mess! You need to clean up all these toys by {color=#fff}sorting them into sets.{/color}
 
