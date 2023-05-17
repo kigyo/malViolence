@@ -374,7 +374,7 @@ define medium_notes = [[[_("During our last operation, we only managed to save f
                          "- Whoever lived in the mountains arrived in either June or December.",
                          "- The child from the suburbs was processed before the subject from the mountains."], (1200, 690), 400],
                        [["- The bracelet arrived at the facility before the toy plane.",
-                         "- Subject G does not how to use a yo-yo.",
+                         "- Subject G does not know how to use a yo-yo.",
                          "- The yo-yo trickster did not arrive first.",], (245, 374), 310],
                        [["- The child whose designation comes first in the alphabet was the second-to-last arrival.",
                          "- Subject R arrived in June.",
