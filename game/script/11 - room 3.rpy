@@ -488,10 +488,10 @@ label room_3:
             if room3["cooking"] == 0:
                 $init_mise_en_place()
                 "(There's a small kitchenette.{w} It looks like it hasn't been used recently...)"
-                "(Did Dr Danger take care of all the cooking?)"
+                "(Did Dr. Danger take care of all the cooking?)"
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "(A handwritten note sits on the counter.{w} Looks like...{w=0.5} a recipe for pancakes?)"
-                "(Fridge seems well-stocked too.{w} Let's see if Cautionne likes your take on Dr Danger's recipe.)"
+                "(Fridge seems well-stocked too.{w} Let's see if Cautionne likes your take on Dr. Danger's recipe.)"
             else:
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "This recipe seems simple enough.{w} One more time..."

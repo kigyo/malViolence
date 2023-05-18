@@ -47,7 +47,7 @@ init python:
                      solution=[["blonde_haired_kid", "harmonica", "mountains"],
                                ["red_haired_kid", "toy_plane", "suburbs"],
                                ["brown_haired_kid", "bracelet", "city"]],
-                     notes=[[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings. \n\nClick on notes for a detailed view, in the detailed view click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.\n\nClick on notes to examine them. Drag the pins around to make connections.")], (612, 349), 500],
+                     notes=[[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}stike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.\n\nClick on notes to examine them. Drag the pins around to make connections.")], (612, 349), 500],
                             [[_("The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.")], (330, 20), 300],
                             [[_("The red-headed child is certain they did not live in the city.")], (108, 496), 250],
                             [[_("The bracelet is too big for the red-headed child.")], (1118, 387), 250],
@@ -369,7 +369,7 @@ screen enhance(evidence, label=None):
     text (label or evidence).replace("_", " ") align (0.5, 1.0) outlines [(absolute(6), "#000", absolute(0), absolute(0))] size 64
 
 
-define medium_notes = [[[_("During our last operation, we only managed to save four test subjects.\n\nWe also found some incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, when each subject arrived at the facility, and who grew up where{/i}.")], (616, 300), 520],
+define medium_notes = [[[_("During our last operation, we only managed to save four test subjects.\n\nWe also found some incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}stike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, when each subject arrived at the facility, and who grew up where{/i}.")], (616, 300), 520],
 
                        [["- The blonde child seems to have a musical inclination.",
                          "- The bracelet has a notable tarnish. Upon sampling it seems to be a coating of coastal salt.",
@@ -404,7 +404,7 @@ define medium_evidence = [('suburbs', (16, 449), (105,20)),
                                                        ('December_', (264, 267))))
                           ]
 
-define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, and which cell each subject stayed in{/i}.")], (434, 515), 500],
+define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}stike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, and which cell each subject stayed in{/i}.")], (434, 515), 500],
 
                      [[_("- The harmonica's owner arrived first."),
                        _("- Cell 3 was occupied in November."),
