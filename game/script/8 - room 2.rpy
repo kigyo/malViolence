@@ -149,7 +149,10 @@ label room_2:
             "(From a distance,{w=0.1} they seem to be your average blueprints.{w} Blueprints for weapons of all makes,{w=0.1} shapes{w=0.1} and sizes.)"
             "(But on closer inspection,{w=0.1} they reveal a certain {i}quirkiness{/i} that doesn't belong on a technical document.{w} The handwriting is also... {w=0.5}{i}distinct,{/i}{w=0.1} for lack of a better word.)"
             "(That said,{w=0.1} poor penmanship hasn't dulled the designs themselves.{w} The {i}least{/i} dangerous of these would be devastating out in the field.)"
-            "(The oldest of the blueprints —{w=0.1} the ones hidden at the bottom of the\npile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
+            if gui.text_size > 40:
+                "(The oldest of the blueprints —{w=0.1} the ones hidden at the bottom of the pile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
+            else:
+                "(The oldest of the blueprints —{w=0.1} the ones hidden at the bottom of the\npile,{w=0.1} look wildly different.{w} Clearly,{w=0.1} another person was behind them.)"
             "(In fact,{w=0.1} if you squint...{w=0.5} you can still find the signatures at the bottom.)"
             "(\"Destrange,\"{w=0.1} they say.{w} They're dated more than 15 years ago.)"
             hide room2_blueprintcollection with dissolve
