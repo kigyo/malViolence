@@ -13,7 +13,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("malViolence")
+define config.name = _("malViolence - Definitive Edition")
 
 #### for steam app IDs - mainly for configuring achievements
 
@@ -22,21 +22,21 @@ define config.steam_appid = 2403570
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## The version of the game.
 
 define config.version = "1.2"
 
-define config.developer = True
+define config.developer = False
 
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "malViolence_testbuild2"
+define build.name = "malViolence"
 
 
 ## Sounds and music ############################################################
@@ -139,9 +139,9 @@ default preferences.afm_time = 15
 
 ## The default volume for the audio channels.
 
-define config.default_music_volume = 0.6
-define config.default_sfx_volume = 0.7
-define config.default_voice_volume = 0.7
+define config.default_music_volume = 0.7
+define config.default_sfx_volume = 0.85
+define config.default_voice_volume = 0.9
 
 default preferences.hard_mode = True
 
