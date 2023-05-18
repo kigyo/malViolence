@@ -23,7 +23,7 @@ init python:
         elif difficulty_level == 2:
             store.evidence_board = EvidenceBoard(notes=medium_notes, evidence=medium_evidence, solution=medium_solution, zoom=0.75)
         elif difficulty_level == 3:
-            store.evidence_board = EvidenceBoard(notes=hard_notes, evidence=hard_evidence, solution=hard_solution, zoom=0.65)
+            store.evidence_board = EvidenceBoard(notes=hard_notes, evidence=hard_evidence, solution=hard_solution, zoom=0.6)
         if not start:
             renpy.notify(_("Invalid. Restarting..."))
 
@@ -34,24 +34,24 @@ init python:
 
     class EvidenceBoard(renpy.Displayable):
         def __init__(self, zoom=0.85,
-                     evidence=[('toy_plane', (19, 214), (125,20)),
+                     evidence=[('toy_plane', (75, 214), (125,20)),
                                ('suburbs', (395, 292), (125,20)),
                                ('harmonica', (20, 720), (125,20)),
                                ('red_haired_kid', (360, 683), (125,20)),
                                ('bracelet', (708, 40), (125,20)),
                                ('blonde_haired_kid', (1209, 30), (125,20)),
-                               ('brown_haired_kid', (1369, 482), (125,20)),
-                               ('mountains', (1562, 138), (125,20)),
+                               ('brown_haired_kid', (1369, 539), (125,20)),
+                               ('mountains', (1562, 128), (125,20)),
                                ('city', (1097, 706), (125,20)),
                                ],
                      solution=[["blonde_haired_kid", "harmonica", "mountains"],
                                ["red_haired_kid", "toy_plane", "suburbs"],
                                ["brown_haired_kid", "bracelet", "city"]],
-                     notes=[[[_("{color=#27718f}During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view, in the detailed view click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.\n\nClick on notes to examine them. Drag the pins around to make connections.{/color}")], (626, 349), 500],
-                            [[_("The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.")], (240, 20), 300],
+                     notes=[[[_("During our last operation, we only managed to save three test subjects.\n\nWe also found some incomplete records and a box of their personal belongings. \n\nClick on notes for a detailed view, in the detailed view click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, and who grew up where{/i}.\n\nClick on notes to examine them. Drag the pins around to make connections.")], (612, 349), 500],
+                            [[_("The harmonica has traces of wild pollen found only in remote regions that have yet to be extensively developed.")], (330, 20), 300],
                             [[_("The red-headed child is certain they did not live in the city.")], (108, 496), 250],
                             [[_("The bracelet is too big for the red-headed child.")], (1118, 387), 250],
-                            [[_("The blonde child managed to play a tune on the harmonica when asked, but the other two children could not.")], (1577, 563), 300]]):
+                            [[_("The blonde child managed to play a tune on the harmonica when asked, but the other two children could not.")], (1597, 503), 300]]):
                                    self.evidence = evidence
                                    self.split_evidence = []
                                    for e in self.evidence:
@@ -321,12 +321,12 @@ screen room2_evidence():
                             use pin(s[0], e[1], s[1])
             text description xalign 0.5 offset (-50, -100) at mouse_pos outlines [(absolute(6), "#000", absolute(0), absolute(0))]
 
-            vbox xfill True yalign 1.0 ysize 100 spacing 30:
+            vbox xfill True yalign 1.0 ysize 100 spacing 30 xoffset -25 yoffset -20:
                 textbutton "SUBMIT" style "confirm_button" action Function(evidence_board.validate) xalign 1.0 yalign 0.5
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
             if puzzle_cleared("room2_1") or ("dead7" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
-                use skip_button(room2, "evidence", "room2_1", yalign=1.0)
+                use skip_button(room2, "evidence", "room2_1", xalign=1.0, xoffset=-25, yoffset=20)
 
         if config.developer:
             vbox:
@@ -369,7 +369,7 @@ screen enhance(evidence, label=None):
     text (label or evidence).replace("_", " ") align (0.5, 1.0) outlines [(absolute(6), "#000", absolute(0), absolute(0))] size 64
 
 
-define medium_notes = [[[_("During our last operation, we only managed to save four test subjects.\n\nWe also found some incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, when each subject arrived at the facility, and who grew up where{/i}.")], (626, 300), 500],
+define medium_notes = [[[_("During our last operation, we only managed to save four test subjects.\n\nWe also found some incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, when each subject arrived at the facility, and who grew up where{/i}.")], (616, 300), 520],
 
                        [["- The blonde child seems to have a musical inclination.",
                          "- The bracelet has a notable tarnish. Upon sampling it seems to be a coating of coastal salt.",
@@ -382,89 +382,86 @@ define medium_notes = [[[_("During our last operation, we only managed to save f
                          "- The yo-yo trickster did not arrive first.",], (245, 374), 310],
                        [["- The child whose designation comes first in the alphabet was the second-to-last arrival.",
                          "- Subject R arrived in June.",
-                         "- The child wearing a bracelet arrived in September."], (1157, 100), 350]]
+                         "- The child wearing a bracelet arrived in September."], (1130, 100), 350]]
 
 
 define medium_evidence = [('suburbs', (16, 449), (105,20)),
                           ('subject_R', (180, 770), (105,20)),
                           ('city', (960, 775), (105,20)),
-                          ('harmonica', (385, 40),(105,20)),
+                          ('harmonica', (375, 40),(105,20)),
                           ('subject_A', (700, 760), (105,20)),
                           ('yo-yo', (1693, 217),(105,20)),
                           ('subject_G', (1117, 460),(105,20)),
                           ('bracelet', (442, 655),(105,20)),
-                          ('toy_plane', (1375, 405), (105,20)),
+                          ('toy_plane', (1375, 385), (105,20)),
                           ('mountains', (1625, 565), (105,20)),
-                          ('subject_F', (1464, 20), (105,20)),
-                          ('coast', (975, 65), (105,20)),
+                          ('subject_F', (1434, 20), (105,20)),
+                          ('coast', (950, 65), (105,20)),
 
-                          ('intake_dates', (668, 20), (('March_', (24, 67)),
+                          ('intake_dates', (650, 20), (('March_', (24, 67)),
                                                        ('June_', (222, 115)),
                                                        ('September_', (-14, 168)),
                                                        ('December_', (264, 267))))
                           ]
 
-define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found some incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings from the subjects on-site. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, which cell each subject stayed in, and who grew up where{/i}.")], (434, 555), 500],
+define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, and which cell each subject stayed in{/i}.")], (434, 515), 500],
 
-                     [[_("- The child with the harmonica arrived first."),
-                       _("- The child in Cell 3 arrived in November."),
+                     [[_("- The harmonica's owner arrived first."),
+                       _("- Cell 3 was occupied in November."),
                        _("- The child with the bracelet was not in Cell 0, 1, or 3."),
                        _("- Subject R did not receive cybernetic legs or perspicacious processing implants."),
-                       _("- The child that received the lethal legs implant arrived in February.")], (308, -111), 500],
+                       _("- The child that received the lethal legs implant arrived in February.")], (268, -81), 455],
                        [[_("- The cell of the child with the lethal legs implant was between the cells of the child who came with the knife, and the child who came with a yo-yo."),
-                       _("- The cell of the child who received the perspicacious processing implant was between the cells of the child who arrived in July and the child who arrived in February."),
+                       _("- The cell of the child who received the perspicacious processing implant was between the cells of the children who arrived in July and February."),
                        _("- The child who received the heightened hearing implant arrived one month apart from the child who came with the yo-yo."),
-                       _("- The child with the yo-yo stayed in Cell 2.")], (-27, 475), 500],
+                       _("- The child with the yo-yo stayed in Cell 2.")], (-32, 445), 500],
                     [[_("- Subject D received the eye implants."),
                       _("- 2 children arrived before Subject G did, and 2 children arrived after."),
                       _("- The child with the toy plane was in a higher cell number than the child who came with a yo-yo."),
-                      _("- The bracelet was found in the cell directly to the right of the child who received the hearing implant. To their left was the cell that remained empty the longest."),
+                      _("- The bracelet was found in the cell directly to the right of the child who received the hearing implant. The cell to their left remained empty the longest."),
                       _("- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in."),
-
-                      _("- Subject R came with a toy plane.")], (1053, 607), 500],
+                      _("- Subject R came with a toy plane.")], (1033, 597), 500],
                      [[_("- The child who came with a knife also received the perspicacious processing implant."),
-
-
                        _("- The child who received the armed arms implant arrived last."),
                        _("- The toy plane could've belonged to the child with heightened hearing or the child who received new eyes."),
                        _("- The yo-yo belonged either to Subject F or the subject who received cybernetic legs."),
-                       _("- The child who got new eyes came 1 month before the child who came with a knife.")], (1458, -50), 500]]
+                       _("- The child who got new eyes came 1 month before the child who came with a knife.")], (1428, -75), 520]]
 
 
-define hard_evidence = [('toy_plane', (48, 12), (95,20)),
-                        ('subject_G', (26, 292), (95,20)),
-                        ('perspicacious_processing', (272, 282), (95,20)),
-                        ('pocket_knife', (511, 323), (95,20)),
-                        ('armed_arms', (9, 909), (95,20)),
-                        ('subject_D', (270, 916), (95,20)),
-                        ('subject_R', (899, 819), (95,20)),
-                        ('subject_F', (909, 544), (95,20)),
-                        ('super_sight', (1048, 19), (95,20)),
-                        ('yo-yo', (1279, 34), (95,20)),
-                        ('harmonica', (1386, 393), (95,20)),
-                        ('bracelet', (1528, 580), (95,20)),
-                        ('lethal_legs', (1682, 386), (95,20)),
-                        ('subject_A', (1731, 659), (95,20)),
-                        ('heightened_hearing', (1526, 843), (95,20)),
+define hard_evidence = [('toy_plane', (78, 18), (90,20)),
+                        ('subject_G', (1330, 359), (90,20)),
+                        ('perspicacious_processing', (9, 880), (90,20)),
+                        ('pocket_knife', (1712, 370), (90,20)),
+                        ('armed_arms', (1028, 23), (90,20)),
+                        ('subject_D', (511, 323), (90,20)),
+                        ('subject_R', (21, 275), (90,20)),
+                        ('subject_F', (909, 544), (90,20)),
+                        ('super_sight', (225, 292), (90,20)),
+                        ('yo-yo', (1279, 54), (90,20)),
+                        ('harmonica', (250, 885), (90,20)),
+                        ('bracelet', (1496, 833), (90,20)),
+                        ('lethal_legs', (899, 819), (90,20)),
+                        ('subject_A', (1731, 630), (90,20)),
+                        ('heightened_hearing', (1521, 535), (90,20)),
 
-                        ('panopticon', (1116, 332), (('cell_4', (204, 36)),
-                                                     ('cell_3', (111, -11)),
-                                                     ('cell_2', (-16, 109)),
-                                                     ('cell_1', (61, 215)),
-                                                     ('cell_0', (207, 199)))),
+                        ('panopticon', (1061, 317), (('cell_4', (203, 33)),
+                                                     ('cell_3', (60, -10)),
+                                                     ('cell_2', (-15, 112)),
+                                                     ('cell_1', (86, 235)),
+                                                     ('cell_0', (223, 155)))),
 
-                        ('calendar', (780, 36), (('December', (29, 471)),
-                                                 ('November', (204, 434)),
-                                                 ('October', (28, 389)),
-                                                 ('September', (197, 348)),
-                                                 ('August', (26, 309)),
-                                                 ('July', (202, 272)),
-                                                 ('June', (31, 229)),
-                                                 ('May', (208, 194)),
-                                                 ('April', (20, 149)),
-                                                 ('March', (210, 111)),
-                                                 ('February', (23, 69)),
-                                                 ('January', (208, 29))))
+                        ('calendar', (760, 36), (('December', (16, 427)),
+                                                 ('November', (194, 386)),
+                                                 ('October', (18, 351)),
+                                                 ('September', (197, 314)),
+                                                 ('August', (15, 275)),
+                                                 ('July', (192, 239)),
+                                                 ('June', (21, 199)),
+                                                 ('May', (198, 163)),
+                                                 ('April', (12, 123)),
+                                                 ('March', (190, 90)),
+                                                 ('February', (15, 47)),
+                                                 ('January', (198, 9))))
                         ]
 
 define medium_solution = [["subject_G", "toy_plane", "December_", "mountains"],

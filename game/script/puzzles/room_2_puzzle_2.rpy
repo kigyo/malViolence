@@ -84,7 +84,6 @@ init python:
                         self.rings[d].rotate = self.ends[d]
                         self.rings[d].update()
                     if self.slots in self.solutions:
-                        store.room2["panopticon"] = "solved"
                         self.state = "won"
                     elif panopticon_moves >= panopticon_move_limit and not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
                         self.state = "lost"
