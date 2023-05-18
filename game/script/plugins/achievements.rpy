@@ -99,9 +99,9 @@ init python:
         "end2": [_("Mission Accomplished"), _("Finish the job."), "achievement_end2", None],
         "end3": [_("Communication Error"), _("Meet an ending."), "achievement_end3", None],
         "investigate": [_("Busybody"), _("Leave no stone unturned."), "achievement_investigate", None],
-        "difficulty1": [_("Diligent Puzzler"), _("Clear all puzzles without skipping them."), "achievement_difficulty1", "hidden"],
-        "difficulty2": [_("Skilled Puzzler"), _("Clear all puzzles on normal difficulty or harder."), "achievement_difficulty2", "hidden"],
-        "difficulty3": [_("Hardcore Puzzler"), _("Clear every puzzle on the hardest difficulty."), "achievement_difficulty3", "hidden"],
+        "difficulty1": [_("Diligent Puzzler"), _("Clear all puzzles without skipping them."), "achievement_difficulty1", None],
+        "difficulty2": [_("Skilled Puzzler"), _("Clear all puzzles on normal difficulty or harder."), "achievement_difficulty2", None],
+        "difficulty3": [_("Hardcore Puzzler"), _("Clear every puzzle on the hardest difficulty."), "achievement_difficulty3", None],
         "all": [_("Noble Laureate"), _("Earn all achievements."), "achievement_all", 'platinum'],
     }
 
@@ -151,7 +151,6 @@ default achievement_room2 = Achievement('room2')
 default achievement_room3 = Achievement('room3')
 default achievement_deadfirst = Achievement('deadfirst')
 default achievement_deadall = Achievement('deadall')
-#default achievement_wrong = Achievement('wrong')
 default achievement_end1 = Achievement('end1')
 default achievement_end2 = Achievement('end2')
 default achievement_end3 = Achievement('end3')
