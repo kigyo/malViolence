@@ -86,6 +86,7 @@ init python:
                     if self.slots in self.solutions:
                         self.state = "won"
                         store.room2["panopticon"] = "solved"
+                        clear_puzzle("room2_2")
                     elif panopticon_moves >= panopticon_move_limit and not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
                         self.state = "lost"
                     else:
