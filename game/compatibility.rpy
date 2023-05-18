@@ -44,7 +44,7 @@ init python:
         #room 2
         cybernetics_reset(None)
         #room 3
-        #toy_board_reset(None)
+        toy_board_reset(None)
         init_mise_en_place()
         evidence_init(True)
 
