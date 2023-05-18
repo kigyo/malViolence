@@ -128,6 +128,7 @@ init python:
             seen.append(node)
             paths = [c for c in self.connections if node in c]
             for p in paths:
+                if p[0] == node and p[1] == node: continue
                 n = [n for n in p if n != node][0]
                 if n not in seen and not n in queue:
                     queue.append(n)
