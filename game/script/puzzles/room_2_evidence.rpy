@@ -207,7 +207,8 @@ screen room2_evidence():
         viewport:
             yoffset -1
             default description = ""
-            textbutton "check" action Function(evidence_board.validate)
+            if config.developer:
+                textbutton "check" action Function(evidence_board.validate)
             if not place_notes:
                 for n in [0]+room2["notes"]:
                     frame:
