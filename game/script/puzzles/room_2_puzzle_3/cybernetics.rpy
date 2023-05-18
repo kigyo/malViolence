@@ -434,11 +434,11 @@ init -1 python:
 
     def cybernetics_reset(txt=_("Invalid. Restarting...")):
         if difficulty_level == 1:
-            store.cyb = Cybernetic(x=170, y=150, w=8, h=6, input=cybernetic_input_1, mask=cybernetic_mask_1)
+            store.cyb = Cybernetic(x=250, y=350, w=8, h=6, input=cybernetic_input_1, mask=cybernetic_mask_1)
         elif difficulty_level == 2:
-            store.cyb = Cybernetic(x=170, y=150, w=10, h=8, input=cybernetic_input_2, mask=cybernetic_mask_2)
+            store.cyb = Cybernetic(x=220, y=250, w=10, h=8, input=cybernetic_input_2, mask=cybernetic_mask_2)
         elif difficulty_level == 3:
-            store.cyb = Cybernetic(x=170, y=150, w=12, h=10, input=cybernetic_input_3, mask=cybernetic_mask_3)
+            store.cyb = Cybernetic(x=170, y=220, w=12, h=10, input=cybernetic_input_3, mask=cybernetic_mask_3)
         store.loop_data = [[[0,0,0,0] for x in range(cyb.w)] for y in range(cyb.h)]
         store.loop_counter = 1
 
@@ -474,7 +474,7 @@ screen cybernetics(cyber=None, interactable=True):
         if interactable:
             add cyb
         grid cyb.w cyb.h:
-            pos (170, 150)
+            pos (cyb.x, cyb.y)
             for y in range(cyb.h):
                 for x in range(cyb.w):
                     if cyb.mask[y][x]:
