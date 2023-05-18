@@ -100,8 +100,8 @@ label neutral_ending:
     pause 3
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
     cr "Patronize me at your own risk."
-    cr "...Is what I should've said before firing,{w=0.1} but I'm still new at this."
-    cr "Kind of like you at your job,{w=0.1} {i}lab rat.{/i}"
+    cr "...Is what I should've said before firing,{w=0.1} but I'm still new to this."
+    cr "Kind of like you and your job,{w=0.1} {i}lab rat.{/i}"
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Hmph!.ogg"
     $ play_music(neutralending, fadein=1.0, fadeout=1.0)
     cr "It's why you don't scare me.{w=0.5} You're just a {i}low-level nobody{/i} living a hand-to-mouth life."
@@ -116,7 +116,7 @@ label neutral_ending:
 
     pause 3
     #"{b}[Show the bottom of his shooting CG]{/b}"
-    cr "Struggling just to open your mouth?{w=0.5} That's almost pitiful,{w=0.1} in a gross kind of way."
+    cr "Struggling just to open your mouth?{w=0.5} That'd earn you plenty of pity points...{w=0.5} if you weren't so gross about it."
     cr "You've never experienced this much pain before,{w=0.1} have you?"
     if most_explored == 1:
 

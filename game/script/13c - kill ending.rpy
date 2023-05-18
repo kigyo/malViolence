@@ -48,7 +48,7 @@ label kill_ending:
     voice "audio/voice/cautionne/soundbites/Normal/Cautionne_SBN-Shut Up 1.ogg"
     cr "Shut up and {i}let me talk,{/i}{w=0.1} lab rat."
     cr "I didn't {i}actually {/i}think you'd make it this far."
-    cr "But alas,{w=0.1} as it turns out...{w=0.5} your puzzle-solving skills are...{w=0.6} decent."
+    cr "But alas,{w=0.1} your puzzle-solving skills were...{w=0.6} decent."
     cr "In another life,{w=0.1} you'd make {i}quite {/i}the sidekick."
     "...Well,{w=0.1} maybe if you'd free me—{w=1}{nw}"
     cr "{i}Hell{/i} no."
@@ -66,7 +66,7 @@ label kill_ending:
     scene black
     pause 3
     #"{b}[bang – with a cut to black]{/b}"
-    "(You half expected that freak to go down cackling,{w=0.1} like a scene out of a movie.)"
+    "(You half expected that freak to go down cackling,{w=0.1} like a scene out of a superhero movie.)"
     "(A villain shrieking with laughter,{w=0.1} even as they're plugged with thousands of rounds.)"
     #"{b}[show bleeding {/b}{b}cautionne{/b}{b} cg with a slow fade]{/b}"
     scene cautionne gun ecu dead with fade:
