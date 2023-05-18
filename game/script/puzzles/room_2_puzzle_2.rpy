@@ -85,6 +85,7 @@ init python:
                         self.rings[d].update()
                     if self.slots in self.solutions:
                         self.state = "won"
+                        store.room2["panopticon"] = "solved"
                     elif panopticon_moves >= panopticon_move_limit and not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
                         self.state = "lost"
                     else:
