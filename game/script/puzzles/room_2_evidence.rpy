@@ -246,8 +246,11 @@ screen room2_evidence():
                         fit_first True
                         at evidence_zoom(evidence_board.zoom)
                         add "evi_%s" % e[0].lower()
-                    # if len(e) >= 3:
-                    #     add "big_pin" pos (e[1][0]+e[2][0], e[1][1]+e[2][1]) anchor(0.5, 0.5)
+                    if len(e[2]) == 2:
+                        add "big_pin" pos (e[1][0]+e[2][0], e[1][1]+e[2][1]) anchor(0.5, 0.5)
+                    else:
+                        for s in e[2]:
+                            add "big_pin" pos (e[1][0]+s[1][0], e[1][1]+s[1][1]) anchor(0.5, 0.5)
             add evidence_board
             draggroup:
                 if place_notes:
@@ -489,6 +492,6 @@ screen pin(name, n_pos, p_pos):
         drag_raise True
         focus_mask True
         mouse_drop True
-        drag_offscreen True
+        # drag_offscreen True
         dragged renpy.curry(evidence_dragged)(evidence_board)
         dragging renpy.curry(evidence_dragging)(evidence_board)
