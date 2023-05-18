@@ -126,7 +126,7 @@ label room_3:
                 yalign 0.2 xalign 0.5
             $ play_sound(paperpickup)
             "(You pick up a clipboard with a thick stack of charts and diagrams pinned to the front.)"
-            "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh,\n{w=0.1} black{w=0.1} lettering.{w} At the bottom of the page,{w=0.1} you spot an acronym:{w=0.5} \"YTDI\".)"
+            "(\"SUBJECT RECUPERATION LOG\" is printed at the top in a harsh,{w=0.1} black{w=0.1} lettering.{w} At the bottom of the page,{w=0.1} you spot an acronym:{w=0.5} \"YTDI\".)"
             $ play_sound(paperturn)
             "(You flip through the log.{w} The recuperation described here is difficult to read.)"
             "(Seizures,{w=0.1} phantom pain,{w=0.1} memory loss,{w=0.1} and brain damage are all expected results,{w=0.1} not side effects.)"
