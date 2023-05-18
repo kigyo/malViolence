@@ -155,3 +155,36 @@ screen skip_button(room, puzzle, puzzle_name, xalign=0.0, yalign=0.0, xoffset=0,
         style "confirm_button" xalign xalign yalign yalign xoffset xoffset yoffset yoffset
         action If(puzzle_cleared(puzzle_name), [SetDict(room, puzzle, "solved"), If(puzzle_name in single_difficulty_puzzles, SetDict(difficulties_cleared, puzzle_name, difficulty_level), NullAction()), Return()],
             Confirm(If(difficulty_level > 1, _("Are you sure you want to skip this puzzle? \nYou could also {color=#00e7ff}lower the difficulty{/color} instead."), _("Are you sure you want to skip this puzzle?")), [SetDict(room, puzzle, "solved"), SetVariable("skip_used",True), Return()], NullAction()))
+
+label after_load:
+    if not hasattr(achievement_start, "id"):
+        $ achievement_start = Achievement('start')
+        $ achievement_tfng = Achievement('tfng')
+        $ achievement_room1 = Achievement('room1')
+        $ achievement_room2 = Achievement('room2')
+        $ achievement_room3 = Achievement('room3')
+        $ achievement_deadfirst = Achievement('deadfirst')
+        $ achievement_deadall = Achievement('deadall')
+        # $ achievement_wrong = Achievement('wrong')
+        $ achievement_end1 = Achievement('end1')
+        $ achievement_end2 = Achievement('end2')
+        $ achievement_end3 = Achievement('end3')
+        $ achievement_investigate = Achievement('investigate')
+        $ achievement_difficulty1 = Achievement('difficulty1')
+        $ achievement_difficulty2 = Achievement('difficulty2')
+        $ achievement_difficulty3 = Achievement('difficulty3')
+        $ achievement_platinum = Achievement('all')
+
+        $ achievement_dead1 = Achievement('dead1')
+        $ achievement_dead2 = Achievement('dead2')
+        $ achievement_dead3 = Achievement('dead3')
+        $ achievement_dead4 = Achievement('dead4')
+        $ achievement_dead5 = Achievement('dead5')
+        $ achievement_dead6 = Achievement('dead6')
+        $ achievement_dead7 = Achievement('dead7')
+        $ achievement_dead8 = Achievement('dead8')
+        $ achievement_dead9 = Achievement('dead9')
+        $ achievement_dead10 = Achievement('dead10')
+        $ achievement_dead11 = Achievement('dead11')
+        $ achievement_dead12 = Achievement('dead12')
+        $ achievement_dead13 = Achievement('dead13')
