@@ -117,6 +117,10 @@ init python:
         else:
             renpy.jump("cooking_game_over")
 
+    def reset_cutting_board_drags():
+        for d in cutting_board_group.children:
+            d.target_at = 0.0
+
     def check_sprawl(x, y, checked=None):
         if checked is None:
             checked = [(x, y)]

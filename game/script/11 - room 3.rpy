@@ -500,9 +500,7 @@ label room_3:
             $ inspect = None
             $ renpy.hide_screen("mise_en_place", "master")
             $ renpy.retain_after_load()
-            $ renpy.block_rollback()
-            $ renpy.restart_interaction()
-            $ renpy.restart_interaction()
+            $ reset_cutting_board_drags()
             call screen mise_en_place(True)
             if room3["cooking"] == "solved":
                 jump cooking_solved
