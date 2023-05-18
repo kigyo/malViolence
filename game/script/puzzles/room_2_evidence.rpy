@@ -469,11 +469,11 @@ define medium_solution = [["subject_G", "toy_plane", "December_", "mountains"],
                           ["subject_A", "bracelet", "September_", "coast"],
                           ["subject_F", "harmonica", "March_", "city"]]
 
-define hard_solution = [["subject_G", "June", "cell_0", "pocket_knife", "perspicacious_processing"],
-                        ["subject_R", "September", "cell_3", "toy_plane", "heightened_hearing"],
-                        ["subject_A", "March", "cell_1", "harmonica", "lethal_legs"],
+define hard_solution = [["subject_G", "August", "cell_0", "pocket_knife", "perspicacious_processing"],
+                        ["subject_R", "November", "cell_3", "toy_plane", "heightened_hearing"],
+                        ["subject_A", "February", "cell_1", "harmonica", "lethal_legs"],
                         ["subject_F", "December", "cell_2", "yo-yo", "armed_arms"],
-                        ["subject_D", "May", "cell_4", "bracelet", "super_sight"]]
+                        ["subject_D", "July", "cell_4", "bracelet", "super_sight"]]
 
 
 

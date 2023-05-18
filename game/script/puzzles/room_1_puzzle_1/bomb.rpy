@@ -246,8 +246,6 @@ init python:
                                                   bomb.oy+y*block_size+py*block_size-oy*block_size)
             part.display.snap(bomb.ox+x*block_size-ox*block_size,
                               bomb.oy+y*block_size-oy*block_size)
-        else:
-            glog("store.parts.append(Part(\"%s\", pos=(%i, %i), color=\"%s\"))" % (part.shape_name, drag.x, drag.y, part.color))
         renpy.retain_after_load()
         renpy.restart_interaction()
 
