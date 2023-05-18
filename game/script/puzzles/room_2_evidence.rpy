@@ -198,7 +198,7 @@ screen room2_evidence():
     modal True
     tag puzzle
     layer "puzzles"
-
+    key ["focus_left", "focus_right", "focus_up", "focus_down"] action NullAction()
     if difficulty_level != evidence_level:
         timer 0.1 action Function(evidence_init, True)
 
