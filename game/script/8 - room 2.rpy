@@ -40,7 +40,7 @@ define cybernetics_description = _("""It's time for a crash course in cybernetic
 Here's some basic recalibration rules:
 -{color=#fff} Neural pathways must form one continuous loop and occupy every available space.{/color}
 -{color=#fff} Pathways can cross over themselves, but they can't retrace themselves{/color} (so no T intersections).
--{color=#fff} At any 4-way intersection, a neuron will always go straight though.{/color} It'll never turn.
+-{color=#fff} At any 4-way intersection, a neuron will always go straight through.{/color} It'll never turn.
 -You can only submit possible solutions {color=#fff}where there are no open-ended pathways{/color} (including T intersections).""")
 
 
