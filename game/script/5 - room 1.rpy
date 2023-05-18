@@ -171,12 +171,14 @@ label room_1:
                 "(It's a bomb!{w} Again,{w=0.1} what could {i}possibly{/i} go wrong?)"
                 if bomb_level != difficulty_level:
                     $ init_bomb_function(None)
+                $ bomb.reset_drags()
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
             $renpy.block_rollback()
             $ room1["bomb"] += 1
             $ inspect = None
             hide bomb_puzzle
             $renpy.hide_screen("room1_bomb", "master")
+            $ bomb.reset_drags()
             call screen room1_bomb(bomb, True)
             if room1["bomb"] == "solved":
                 jump bomb_solved

@@ -47,8 +47,6 @@ init python:
         toy_board_reset(None)
         init_mise_en_place()
         evidence_init(True)
-        renpy.hide_screen("enhance")
-        renpy.hide_screen("enhance_note")
 
         renpy.retain_after_load()
         renpy.restart_interaction()

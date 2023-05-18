@@ -486,20 +486,23 @@ label room_3:
             "(You've already solved the {i}mise en place{/i} puzzle.)"
         else:
             if room3["cooking"] == 0:
-                $init_mise_en_place()
                 "(There's a small kitchenette.{w} It looks like it hasn't been used recently...)"
                 "(Did Dr. Danger take care of all the cooking?)"
+                $init_mise_en_place()
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "(A handwritten note sits on the counter.{w} Looks like...{w=0.5} a recipe for pancakes?)"
                 "(Fridge seems well-stocked too.{w} Let's see if Cautionne likes your take on Dr. Danger's recipe.)"
             else:
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "This recipe seems simple enough.{w} One more time..."
-            $renpy.block_rollback()
+            $ renpy.block_rollback()
             $ room3["cooking"] += 1
             $ inspect = None
-            $renpy.hide_screen("mise_en_place", "master")
+            $ renpy.hide_screen("mise_en_place", "master")
             $ renpy.retain_after_load()
+            $ renpy.block_rollback()
+            $ renpy.restart_interaction()
+            $ renpy.restart_interaction()
             call screen mise_en_place(True)
             if room3["cooking"] == "solved":
                 jump cooking_solved
@@ -603,7 +606,7 @@ label quilt_solved:
     n "I was hurting like you wouldn't believe.{w} But I don't think I cared."
     n "Because,{w=0.1} that day,{w=0.5} I got to see the sky again."
     nvl clear
-    hide memory1 
+    hide memory1
     with dissolve
     "(...)"
     $ inspect = None

@@ -74,6 +74,17 @@ init python:
                 store.room1["bomb"] = "solved"
                 clear_puzzle("room1_1")
                 return True
+        def reset_drags(self):
+            for p in parts:
+                p.display.target_at = 0.0
+                for h in p.handles:
+                    for d in h:
+                        if d:
+                            d.target_at = 0.0
+            for y in bomb.board:
+                for x in y:
+                    if x:
+                        x.target_at = 0.0
 
     default_shape = [[1, 1],
                      [0, 1]]
