@@ -152,6 +152,7 @@ init python:
         else:
             drag.snap(drag.drag_name[1][0]+drag.drag_name[2][0]-pin_half, drag.drag_name[1][1]+drag.drag_name[2][1]-pin_half)
         if drop:
+            if drag.drag_name[0] == drop.drag_name[0]: return
             conn = None
             if len(drop.drag_name[2]) == 2:
                 conn = sorted((drag.drag_name[0], drop.drag_name[0]))
@@ -358,7 +359,7 @@ screen enhance_note(note, n_i):
                             if n_i:
                                 action ToggleField(evidence_board, "note_striked_%s_%s" % (n_i, i))
 
-screen enhance(evidence, label):
+screen enhance(evidence, label=None):
     modal True
     imagebutton idle "#000000aa" action Hide("enhance", dissolve)
     add "evi_%s" % evidence.lower() align (0.5, 0.5) zoom 2.0
