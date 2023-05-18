@@ -112,7 +112,7 @@ init python:
                                                   clicked=self.rotate,
                                                   alternate=renpy.curry(self.rotate)(False),
                                                   mouse_drop=True,
-                                                  drag_offscreen=True)
+                                                  drag_offscreen=False)
             self.display = Drag(Transform(self.img, rotate_pad=False),
                                 pos=(self.x, self.y),
                                 drag_name=(self.bench_x, self.bench_y),
@@ -246,6 +246,13 @@ init python:
                                                   bomb.oy+y*block_size+py*block_size-oy*block_size)
             part.display.snap(bomb.ox+x*block_size-ox*block_size,
                               bomb.oy+y*block_size-oy*block_size)
+        else:
+            for py in range(len(part.handles)):
+                for px in range(len(part.handles[py])):
+                    if part.handles[py][px]:
+                        part.handles[py][px].snap(part.display.x+px*block_size,
+                                                  part.display.y+py*block_size)
+
         renpy.retain_after_load()
         renpy.restart_interaction()
 
