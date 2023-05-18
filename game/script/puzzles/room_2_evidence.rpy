@@ -23,7 +23,7 @@ init python:
         elif difficulty_level == 2:
             store.evidence_board = EvidenceBoard(notes=medium_notes, evidence=medium_evidence, solution=medium_solution, zoom=0.75)
         elif difficulty_level == 3:
-            store.evidence_board = EvidenceBoard(notes=hard_notes, evidence=hard_evidence, solution=hard_solution, zoom=0.65)
+            store.evidence_board = EvidenceBoard(notes=hard_notes, evidence=hard_evidence, solution=hard_solution, zoom=0.6)
         if not start:
             renpy.notify(_("Invalid. Restarting..."))
 
@@ -198,7 +198,7 @@ screen room2_evidence():
     modal True
     tag puzzle
     layer "puzzles"
-
+    key ["focus_left", "focus_right", "focus_up", "focus_down"] action NullAction()
     if difficulty_level != evidence_level:
         timer 0.1 action Function(evidence_init, True)
 
@@ -246,8 +246,11 @@ screen room2_evidence():
                         fit_first True
                         at evidence_zoom(evidence_board.zoom)
                         add "evi_%s" % e[0].lower()
-                    # if len(e) >= 3:
-                    #     add "big_pin" pos (e[1][0]+e[2][0], e[1][1]+e[2][1]) anchor(0.5, 0.5)
+                    if len(e[2]) == 2:
+                        add "big_pin" pos (e[1][0]+e[2][0], e[1][1]+e[2][1]) anchor(0.5, 0.5)
+                    else:
+                        for s in e[2]:
+                            add "big_pin" pos (e[1][0]+s[1][0], e[1][1]+s[1][1]) anchor(0.5, 0.5)
             add evidence_board
             draggroup:
                 if place_notes:
@@ -390,75 +393,75 @@ define medium_evidence = [('suburbs', (16, 449), (105,20)),
                           ('yo-yo', (1693, 217),(105,20)),
                           ('subject_G', (1117, 460),(105,20)),
                           ('bracelet', (442, 655),(105,20)),
-                          ('toy_plane', (1375, 405), (105,20)),
+                          ('toy_plane', (1375, 385), (105,20)),
                           ('mountains', (1625, 565), (105,20)),
                           ('subject_F', (1434, 20), (105,20)),
                           ('coast', (950, 65), (105,20)),
 
-                          ('intake_dates', (658, 20), (('March_', (24, 67)),
+                          ('intake_dates', (650, 20), (('March_', (24, 67)),
                                                        ('June_', (222, 115)),
                                                        ('September_', (-14, 168)),
                                                        ('December_', (264, 267))))
                           ]
 
-define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found some incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, which cell each subject stayed in, and who grew up where{/i}.")], (434, 555), 500],
+define hard_notes = [[[_("During our last operation, we only managed to save five test subjects.\n\nWe also found incomplete records that indicated all the subjects at this facility arrived within the same calendar year, and a box of their personal belongings. \n\nClick on notes for a detailed view. In the detailed view, click on written notes to {s}strike{/s} strike them out. \n\nUsing what information we have, {i}figure out which item belongs to who, which cybernetic implant each subject received, when each subject arrived at the facility, and which cell each subject stayed in{/i}.")], (434, 515), 500],
 
-                     [[_("- The child with the harmonica arrived first."),
-                       _("- The child in Cell 3 arrived in November."),
+                     [[_("- The harmonica's owner arrived first."),
+                       _("- Cell 3 was occupied in November."),
                        _("- The child with the bracelet was not in Cell 0, 1, or 3."),
                        _("- Subject R did not receive cybernetic legs or perspicacious processing implants."),
-                       _("- The child that received the lethal legs implant arrived in February.")], (308, -111), 500],
+                       _("- The child that received the lethal legs implant arrived in February.")], (268, -81), 455],
                        [[_("- The cell of the child with the lethal legs implant was between the cells of the child who came with the knife, and the child who came with a yo-yo."),
-                       _("- The cell of the child who received the perspicacious processing implant was between the cells of the child who arrived in July and the child who arrived in February."),
+                       _("- The cell of the child who received the perspicacious processing implant was between the cells of the children who arrived in July and February."),
                        _("- The child who received the heightened hearing implant arrived one month apart from the child who came with the yo-yo."),
-                       _("- The child with the yo-yo stayed in Cell 2.")], (-27, 475), 500],
+                       _("- The child with the yo-yo stayed in Cell 2.")], (-32, 445), 500],
                     [[_("- Subject D received the eye implants."),
                       _("- 2 children arrived before Subject G did, and 2 children arrived after."),
                       _("- The child with the toy plane was in a higher cell number than the child who came with a yo-yo."),
-                      _("- The bracelet was found in the cell directly to the right of the child who received the hearing implant. To their left was the cell that remained empty the longest."),
+                      _("- The bracelet was found in the cell directly to the right of the child who received the hearing implant. The cell to their left remained empty the longest."),
                       _("- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in."),
-                      _("- Subject R came with a toy plane.")], (1053, 607), 500],
+                      _("- Subject R came with a toy plane.")], (1033, 597), 500],
                      [[_("- The child who came with a knife also received the perspicacious processing implant."),
                        _("- The child who received the armed arms implant arrived last."),
                        _("- The toy plane could've belonged to the child with heightened hearing or the child who received new eyes."),
                        _("- The yo-yo belonged either to Subject F or the subject who received cybernetic legs."),
-                       _("- The child who got new eyes came 1 month before the child who came with a knife.")], (1448, -50), 500]]
+                       _("- The child who got new eyes came 1 month before the child who came with a knife.")], (1428, -75), 520]]
 
 
-define hard_evidence = [('toy_plane', (48, 12), (95,20)),
-                        ('subject_G', (26, 292), (95,20)),
-                        ('perspicacious_processing', (272, 282), (95,20)),
-                        ('pocket_knife', (511, 323), (95,20)),
-                        ('armed_arms', (9, 909), (95,20)),
-                        ('subject_D', (270, 916), (95,20)),
-                        ('subject_R', (899, 819), (95,20)),
-                        ('subject_F', (909, 544), (95,20)),
-                        ('super_sight', (1048, 19), (95,20)),
-                        ('yo-yo', (1279, 34), (95,20)),
-                        ('harmonica', (1386, 393), (95,20)),
-                        ('bracelet', (1528, 580), (95,20)),
-                        ('lethal_legs', (1682, 386), (95,20)),
-                        ('subject_A', (1731, 659), (95,20)),
-                        ('heightened_hearing', (1526, 843), (95,20)),
+define hard_evidence = [('toy_plane', (78, 18), (90,20)),
+                        ('subject_G', (1330, 359), (90,20)),
+                        ('perspicacious_processing', (9, 880), (90,20)),
+                        ('pocket_knife', (1712, 370), (90,20)),
+                        ('armed_arms', (1028, 23), (90,20)),
+                        ('subject_D', (511, 323), (90,20)),
+                        ('subject_R', (21, 275), (90,20)),
+                        ('subject_F', (909, 544), (90,20)),
+                        ('super_sight', (225, 292), (90,20)),
+                        ('yo-yo', (1279, 54), (90,20)),
+                        ('harmonica', (250, 885), (90,20)),
+                        ('bracelet', (1496, 833), (90,20)),
+                        ('lethal_legs', (899, 819), (90,20)),
+                        ('subject_A', (1731, 630), (90,20)),
+                        ('heightened_hearing', (1521, 535), (90,20)),
 
-                        ('panopticon', (1116, 332), (('cell_4', (204, 36)),
-                                                     ('cell_3', (111, -11)),
-                                                     ('cell_2', (-16, 109)),
-                                                     ('cell_1', (61, 215)),
-                                                     ('cell_0', (207, 199)))),
+                        ('panopticon', (1061, 317), (('cell_4', (203, 33)),
+                                                     ('cell_3', (60, -10)),
+                                                     ('cell_2', (-15, 112)),
+                                                     ('cell_1', (86, 235)),
+                                                     ('cell_0', (223, 155)))),
 
-                        ('calendar', (780, 36), (('December', (29, 471)),
-                                                 ('November', (204, 434)),
-                                                 ('October', (28, 389)),
-                                                 ('September', (197, 348)),
-                                                 ('August', (26, 309)),
-                                                 ('July', (202, 272)),
-                                                 ('June', (31, 229)),
-                                                 ('May', (208, 194)),
-                                                 ('April', (20, 149)),
-                                                 ('March', (210, 111)),
-                                                 ('February', (23, 69)),
-                                                 ('January', (208, 29))))
+                        ('calendar', (760, 36), (('December', (16, 427)),
+                                                 ('November', (194, 386)),
+                                                 ('October', (18, 351)),
+                                                 ('September', (197, 314)),
+                                                 ('August', (15, 275)),
+                                                 ('July', (192, 239)),
+                                                 ('June', (21, 199)),
+                                                 ('May', (198, 163)),
+                                                 ('April', (12, 123)),
+                                                 ('March', (190, 90)),
+                                                 ('February', (15, 47)),
+                                                 ('January', (198, 9))))
                         ]
 
 define medium_solution = [["subject_G", "toy_plane", "December_", "mountains"],
@@ -486,6 +489,6 @@ screen pin(name, n_pos, p_pos):
         drag_raise True
         focus_mask True
         mouse_drop True
-        drag_offscreen True
+        # drag_offscreen True
         dragged renpy.curry(evidence_dragged)(evidence_board)
         dragging renpy.curry(evidence_dragging)(evidence_board)
