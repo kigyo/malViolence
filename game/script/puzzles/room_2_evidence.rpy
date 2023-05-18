@@ -223,7 +223,7 @@ screen room2_evidence():
                             text evidence_board.notes[n][0][t] align (0.5,0.5) style ("evidence_note_text" if n else "evidence_explination_text") strikethrough getattr(evidence_board, "note_striked_%s_%s" % (n, t)) xalign 0.0
                     button:
                         pos evidence_board.notes[n][1]
-                        action Show("enhance_note", note=evidence_board.notes[n], n_i=n)
+                        action ShowTransient("enhance_note", note=evidence_board.notes[n], n_i=n)
                         frame:
                             background Solid(note_color if n else description_color)
                             xsize evidence_board.notes[n][2]
@@ -286,7 +286,7 @@ screen room2_evidence():
                                     if not place_evidence and len(e[2]) == 2:
                                         hovered SetScreenVariable("description", e[0].replace("_", " "))
                                         unhovered SetScreenVariable("description", "")
-                                        action Show("enhance", dissolve, evidence=e[0])
+                                        action ShowTransient("enhance", dissolve, evidence=e[0])
                             drag_name e
                             mouse_drop True
                             dragged note_dragged
@@ -316,7 +316,7 @@ screen room2_evidence():
                                         if not place_evidence:
                                             hovered SetScreenVariable("description", s[0].replace("_", " "))
                                             unhovered SetScreenVariable("description", "")
-                                            action Show("enhance", dissolve, evidence=e[0], label=s[0])
+                                            action ShowTransient("enhance", dissolve, evidence=e[0], label=s[0])
                         for s in e[2]:
                             use pin(s[0], e[1], s[1])
             text description xalign 0.5 offset (-50, -100) at mouse_pos outlines [(absolute(6), "#000", absolute(0), absolute(0))]
@@ -358,8 +358,8 @@ screen enhance_note(note, n_i):
                         button:
                             frame:
                                 background None
-                                text note[0][i] style "evidence_note_text" size 35 strikethrough getattr(evidence_board, "note_striked_%s_%s" % (n_i, i))
-                            if n_i:
+                                text note[0][i] style "evidence_note_text" size 35 strikethrough getattr(evidence_board, "note_striked_%s_%s" % (n_i, i), False)
+                            if n_i and getattr(evidence_board, "note_striked_%s_%s" % (n_i, i), None) is not None:
                                 action ToggleField(evidence_board, "note_striked_%s_%s" % (n_i, i))
 
 screen enhance(evidence, label=None):

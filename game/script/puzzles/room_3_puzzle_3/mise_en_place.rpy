@@ -82,7 +82,8 @@ init python:
                  drag_name=(drag.drag_name[0], x, y, "obj"),
                  droppable=True,
                  dragged=ingredient_dragged,
-                 dropped=cutting_board_dropped)
+                 dropped=cutting_board_dropped,
+                 drag_offscreen=False)
         cutting_board_group.add(d)
         d.snap(70+x*cb_tile, 205+y*cb_tile)
 
@@ -281,11 +282,13 @@ init python:
                     cutting_board_group.add(Drag(Fixed(Transform("fixed_cutting_board_tile", zoom=cb_tile/100), Transform(ingredients[cutting_board_input[y][x]-1], zoom=cb_tile/100), fit_first=True),
                                                  pos=(70+x*cb_tile, 205+y*cb_tile),
                                                  droppable=True,
-                                                 draggable=False))
+                                                 draggable=False,
+                                                 drag_offscreen=False))
                     cutting_board_group.add(Drag(Transform(ingredients[cutting_board_input[y][x]-1], zoom=cb_tile/100),
                                                  pos=(70+x*cb_tile, 205+y*cb_tile),
                                                  drag_name=(ingredients[cutting_board_input[y][x]-1], 70+x*cb_tile, 205+y*cb_tile),
-                                                 dragged=ingredient_dragged))
+                                                 dragged=ingredient_dragged,
+                                                 drag_offscreen=False))
                 else:
                     cutting_board_group.add(Drag(Transform("cutting_board_tile", zoom=cb_tile/100),
                                                  pos=(70+x*cb_tile, 205+y*cb_tile),
@@ -293,7 +296,9 @@ init python:
                                                  drag_name=(x, y),
                                                  droppable=True,
                                                  draggable=False,
-                                                 dropped=cutting_board_dropped))
+                                                 dropped=cutting_board_dropped,
+                                                 drag_offscreen=False))
+        renpy.restart_interaction()
         return
 
     def reset_cutting_board():
