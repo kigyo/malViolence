@@ -93,6 +93,7 @@ init python:
             self.bench_x = pos[0]
             self.bench_y = pos[1]
             # self.img = Transform("%s_%s" % (bond, shape), matrixcolor=TintMatrix(color))
+            self.color = color
             self.img = Transform(shape, matrixcolor=TintMatrix(color))
             self.last_filled = []
 
@@ -205,8 +206,8 @@ init python:
 
 
     def dragged(part, drags, drop):
+        drag = drags[0]
         if drop:
-            drag = drags[0]
             if drag == part.display:
                 mx, my = renpy.get_mouse_pos()
                 offx, offy = (int(math.floor((mx-drag.x)/block_size)),
@@ -245,6 +246,8 @@ init python:
                                                   bomb.oy+y*block_size+py*block_size-oy*block_size)
             part.display.snap(bomb.ox+x*block_size-ox*block_size,
                               bomb.oy+y*block_size-oy*block_size)
+        else:
+            glog("store.parts.append(Part(\"%s\", pos=(%i, %i), color=\"%s\"))" % (part.shape_name, drag.x, drag.y, part.color))
         renpy.retain_after_load()
         renpy.restart_interaction()
 
@@ -262,40 +265,40 @@ init python:
     def init_bomb_function(txt=None):
         store.parts = []
         if difficulty_level == 1:
-            store.parts.append(Part("z_shape", pos=(240, 220), color="#E3615A"))
-            store.parts.append(Part("corner_shape", pos=(260, 40), color="#00E6E3"))
-            store.parts.append(Part("square_shape", pos=(420, 300), color="#52CD6A"))
-            store.parts.append(Part("long_shape", pos=(80, 300), color="#E97B9A"))
-            store.parts.append(Part("o_z_shape", pos=(800, 480), color="#E88D26"))
-            store.parts.append(Part("corner_shape", pos=(640, 220), color="#0087E8"))
-            store.parts.append(Part("z_shape", pos=(920, 220), color="#51A35B"))
+            store.parts.append(Part("long_shape", pos=(363, 173), color="#E97B9A"))
+            store.parts.append(Part("corner_shape", pos=(679, 171), color="#00E6E3"))
+            store.parts.append(Part("square_shape", pos=(606, 246), color="#52CD6A"))
+            store.parts.append(Part("z_shape", pos=(762, 251), color="#E3615A"))
+            store.parts.append(Part("corner_shape", pos=(451, 249), color="#0087E8"))
+            store.parts.append(Part("o_z_shape", pos=(372, 250), color="#E88D26"))
+            store.parts.append(Part("z_shape", pos=(211, 252), color="#51A35B"))
             bm = bomb_mask_1
         elif difficulty_level == 2:
-            store.parts.append(Part("shape_2_1", pos=(240, 220), color="#E3615A"))
-            store.parts.append(Part("t_shape", pos=(260, 40), color="#00E6E3"))
-            store.parts.append(Part("shape_2_3", pos=(420, 300), color="#52CD6A"))
-            store.parts.append(Part("long_shape", pos=(80, 300), color="#E97B9A"))
-            store.parts.append(Part("shape_2_2", pos=(800, 480), color="#E88D26"))
-            store.parts.append(Part("shape_2_2", pos=(640, 220), color="#0087E8"))
-            store.parts.append(Part("corner_shape", pos=(920, 220), color="#51A35B"))
-            store.parts.append(Part("square_shape", pos=(590, 380), color="#F8EF46"))
-            store.parts.append(Part("corner_shape", pos=(880, 40), color="#E88D25"))
+            store.parts.append(Part("corner_shape", pos=(585, 41), color="#E88D25"))
+            store.parts.append(Part("shape_2_2", pos=(661, 197), color="#0087E8"))
+            store.parts.append(Part("shape_2_2", pos=(658, 439), color="#E88D26"))
+            store.parts.append(Part("long_shape", pos=(349, 123), color="#E97B9A"))
+            store.parts.append(Part("shape_2_3", pos=(501, 200), color="#52CD6A"))
+            store.parts.append(Part("t_shape", pos=(423, 441), color="#00E6E3"))
+            store.parts.append(Part("square_shape", pos=(423, 281), color="#F8EF46"))
+            store.parts.append(Part("shape_2_1", pos=(343, 202), color="#E3615A"))
+            store.parts.append(Part("corner_shape", pos=(186, 282), color="#51A35B"))
             bm = bomb_mask_2
         elif difficulty_level == 3:
-            store.parts.append(Part("shape_1", pos=(240, 220), color="#E3615A"))
-            store.parts.append(Part("shape_2", pos=(260, 40), color="#00E6E3"))
-            store.parts.append(Part("shape_3", pos=(420, 300), color="#52CD6A"))
-            store.parts.append(Part("shape_4", pos=(80, 300), color="#E97B9A"))
-            store.parts.append(Part("shape_5", pos=(800, 480), color="#E88D26"))
-            store.parts.append(Part("shape_6", pos=(640, 220), color="#0087E8"))
-            store.parts.append(Part("shape_7", pos=(920, 220), color="#51A35B"))
-            store.parts.append(Part("shape_8", pos=(590, 380), color="#F8EF46"))
-            store.parts.append(Part("shape_9", pos=(880, 40), color="#E88D25"))
-            store.parts.append(Part("shape_10", pos=(160, 540), color="#E88D25"))
-            store.parts.append(Part("shape_11", pos=(160, 40), color="#1DBCDB"))
-            store.parts.append(Part("shape_12", pos=(80, 40), color="#60B125"))
-            store.parts.append(Part("shape_13", pos=(500, 200), color="#D17EE7"))
-            store.parts.append(Part("shape_14", pos=(680, 40), color="#D1CB69"))
+            store.parts.append(Part("shape_7", pos=(644, 470), color="#51A35B"))
+            store.parts.append(Part("shape_5", pos=(632, 397), color="#E88D26"))
+            store.parts.append(Part("shape_13", pos=(790, 243), color="#D17EE7"))
+            store.parts.append(Part("shape_2", pos=(712, 80), color="#00E6E3"))
+            store.parts.append(Part("shape_6", pos=(556, 237), color="#0087E8"))
+            store.parts.append(Part("shape_8", pos=(478, 318), color="#F8EF46"))
+            store.parts.append(Part("shape_3", pos=(404, 315), color="#52CD6A"))
+            store.parts.append(Part("shape_9", pos=(321, 162), color="#E88D25"))
+            store.parts.append(Part("shape_14", pos=(402, 6), color="#D1CB69"))
+            store.parts.append(Part("shape_11", pos=(323, 85), color="#1DBCDB"))
+            store.parts.append(Part("shape_1", pos=(251, 239), color="#E3615A"))
+            store.parts.append(Part("shape_10", pos=(175, 393), color="#E88D25"))
+            store.parts.append(Part("shape_4", pos=(100, 157), color="#E97B9A"))
+            store.parts.append(Part("shape_12", pos=(103, 466), color="#60B125"))
             bm = bomb_mask_3
         store.bomb = Bomb(len(bm[0]), len(bm), parts, level=difficulty_level, mask=bm)
 
