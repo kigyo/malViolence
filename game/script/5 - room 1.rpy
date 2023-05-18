@@ -164,9 +164,9 @@ label room_1:
             if room1["bomb"] == 0:
                 "(It looks like there's an open...{w=0.5} tool box?{w} You approach it to take a closer look.)"
                 # show bomb_puzzle with easeintop
+                $ init_bomb_function(None)
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
                 "(Nope!{w} It's a bomb.{w} No big deal.{w} What could {i}possibly{/i} go wrong?)"
-                $ init_bomb_function(None)
             else:
                 "(It's a bomb!{w} Again,{w=0.1} what could {i}possibly{/i} go wrong?)"
                 if bomb_level != difficulty_level:

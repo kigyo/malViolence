@@ -82,7 +82,7 @@ label room_2:
             "(\"- The child with the bracelet was not in Cell 0, 1, or 3.\")"
             "(\"- Subject R did not receive cybernetic legs or perspicacious processing implants.\")"
             "(\"- The child that received the lethal legs implant arrived in February.\")"
-        else: 
+        else:
             "Whoops! This message SHOULDN'T appear, but it has! Might need to bugcheck."
     elif inspect == "note2":
         $room2["notes"].append(2)
@@ -99,7 +99,7 @@ label room_2:
             "(\"- The cell of the child who received the perspicacious processing implant was between the cells of the child who arrived in July and the child who arrived in February.\")"
             "(\"- The child who received the heightened hearing implant arrived one month apart from the child who came with the yo-yo.\")"
             "(\"- The child with the yo-yo stayed in Cell 2.\")"
-        else: 
+        else:
             "Whoops! This message SHOULDN'T appear, but it has! Might need to bugcheck."
     elif inspect == "note3":
         $room2["notes"].append(3)
@@ -118,7 +118,7 @@ label room_2:
             "(\"- The bracelet was found in the cell directly to the right of the child who received the hearing implant.{w} To their left was the cell that remained empty the longest.\")"
             "(\"- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in.\")"
             "(\"- Subject R came with a toy plane.\")"
-        else: 
+        else:
             "Whoops! This message SHOULDN'T appear, but it has! Might need to bugcheck."
     elif inspect == "note4":
         $room2["notes"].append(4)
@@ -137,7 +137,7 @@ label room_2:
             "(\"- The yo-yo belonged either to Subject F or the subject who received cybernetic legs.\")"
             "(\"- The cell number of the subject with cybernetic arms is half of the cell number that Subject D stayed in.\")"
             "(\"- The child who got new eyes came 1 month before the child who came with a knife.\")"
-        else: 
+        else:
             "Whoops! This message SHOULDN'T appear, but it has! Might need to bugcheck."
 
     elif inspect == "blueprints":
@@ -257,7 +257,8 @@ label room_2:
                 show screen room2_panopticon(interactable=False, _layer="master") with easeintop
                 "(Riiiiiight.{w} That colosseum-thing is a {i}panopticon.{/i}{w} Off to puzzle-solving you go!)"
             $renpy.block_rollback()
-            $ room2["panopticon"] += 1
+            if room2["panopticon"] != "solved":
+                $ room2["panopticon"] += 1
             $ inspect = None
             $renpy.hide_screen("room2_panopticon", "master")
             call screen room2_panopticon()
