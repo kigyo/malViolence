@@ -38,6 +38,19 @@ default toy_level = 2
 default cooking_level = 2
 
 init python:
+    if isinstance(persistent.solved_puzzles, list):
+        temp_dict = {1:[], 2:[], 3:[], "tutorial":False, "room1_meta":False, "room2_meta":False, "room3_meta":False}
+
+        for k in old_puzzle_difficulty_mapper:
+            if k in persistent.solved_puzzles:
+                temp_dict[old_puzzle_difficulty_mapper[k]].append(k)
+
+        for k in single_difficulty_puzzles:
+            if k in persistent.solved_puzzles:
+                temp_dict[k] = True
+
+        persistent.solved_puzzles = temp_dict
+
     def difficulty_change_reset():
         #room 1
         init_bomb_function(None)
@@ -52,19 +65,6 @@ init python:
         renpy.restart_interaction()
 
     def solved_puzzles_convert():
-        if isinstance(persistent.solved_puzzles, list):
-            temp_dict = {1:[], 2:[], 3:[], "tutorial":False, "room1_meta":False, "room2_meta":False, "room3_meta":False}
-
-            for k in old_puzzle_difficulty_mapper:
-                if k in persistent.solved_puzzles:
-                    temp_dict[old_puzzle_difficulty_mapper[k]].append(k)
-
-            for k in single_difficulty_puzzles:
-                if k in persistent.solved_puzzles:
-                    temp_dict[k] = True
-
-            persistent.solved_puzzles = temp_dict
-
         if float(_version) < 1.2:
             #fix set difficulties of active puzzles
             store.bomb_level = old_puzzle_difficulty_mapper["room1_1"]
