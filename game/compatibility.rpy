@@ -134,16 +134,12 @@ init python:
     #some drag puzzles reset their positions after load
     def reset_puzzles_after_load():
         #room1
-        init_bomb_function(None)
 
         #room2
-        # cybernetics_reset()
         word_init()
 
         #room3
         scrapbook_init()
-        # toy_board_reset(None)
-        init_mise_en_place()
         pass
 
     config.after_load_callbacks.append(reset_puzzles_after_load)
