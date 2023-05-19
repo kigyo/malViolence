@@ -165,6 +165,7 @@ label room_1:
                 "(It looks like there's an open...{w=0.5} tool box?{w} You approach it to take a closer look.)"
                 # show bomb_puzzle with easeintop
                 $ init_bomb_function(None)
+                $ bomb.reset_drags()
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
                 "(Nope!{w} It's a bomb.{w} No big deal.{w} What could {i}possibly{/i} go wrong?)"
             else:
@@ -208,6 +209,7 @@ label room_1:
 label bomb_solved:
     $renpy.block_rollback()
     $ inspect = "bomb"
+    $ bomb.reset_drags()
     show screen room1_bomb(bomb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
@@ -234,6 +236,7 @@ label bomb_solved:
 label bomb_game_over:
     $renpy.block_rollback()
     $ inspect = "game over"
+    $ bomb.reset_drags()
     show screen room1_bomb(bomb, False)
     show black onlayer screens with dissolve:
         alpha 0.5
