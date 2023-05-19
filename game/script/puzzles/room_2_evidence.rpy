@@ -208,8 +208,6 @@ screen room2_evidence():
         viewport:
             yoffset -1
             default description = ""
-            if config.developer:
-                textbutton "check" action Function(evidence_board.validate)
             if not place_notes:
                 for n in [0]+room2["notes"]:
                     frame:
@@ -324,6 +322,7 @@ screen room2_evidence():
             text description xalign 0.5 offset (-50, -100) at mouse_pos outlines [(absolute(6), "#000", absolute(0), absolute(0))]
 
             vbox xfill True yalign 1.0 ysize 100 spacing 30 xoffset -25 yoffset -20:
+                textbutton "RESET" style "confirm_button" action SetField(evidence_board, "connections", []) xalign 1.0 yalign 0.5
                 textbutton "SUBMIT" style "confirm_button" action Function(evidence_board.validate) xalign 1.0 yalign 0.5
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
