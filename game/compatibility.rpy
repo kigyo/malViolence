@@ -184,3 +184,8 @@ label after_load:
         $ achievement_dead11 = Achievement('dead11')
         $ achievement_dead12 = Achievement('dead12')
         $ achievement_dead13 = Achievement('dead13')
+    if cutting_board_group:
+        $ reset_cutting_board_drags()
+    if bomb:
+        $ bomb.reset_drags()
+    return
