@@ -85,7 +85,7 @@ label dr_danger_3:
   voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "While I'm away on business,{w=0.1} it's important that you keep him on his daily routine."
   drs "7am to 9pm —{w=0.5} regularity is key."
-  drs "Remember that all his dietary habits,{w=0.1} health regimens{w=0.1} and study exercises{w=1}{nw}"
+  drs "Remember that all his dietary habits,{w=0.1} health regimens{w=0.1} and study exercises{w=1.25}{nw}"
   drs "are detailed in the files that we went over together."
   show drdanger sidestare
   voice "audio/voice/dr.danger/Danger_SB-I Apologize.ogg"

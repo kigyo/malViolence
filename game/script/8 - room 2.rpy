@@ -648,7 +648,7 @@ label word_game_over:
     else:
         stop music fadeout 0.5
         voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
-        cr "...Wow.{w=0.5} That wasn't even {i}close. {/i}"
+        cr "...Wow.{w=0.5} That wasn't even {i}close.{/i}"
         stop music fadeout 0.5
         hide black onlayer screens
         hide screen room2_word

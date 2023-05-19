@@ -250,7 +250,7 @@ label bomb_game_over:
     "({i}Phew.{/i}{w} Looks like you've done what you were supposed to.)"
     $ play_sound(timeralarm)
     voice "audio/voice/cautionne/soundbites/Effected/Cautionne_SBE-Hmph!.ogg"
-    cr "That said,{w=0.1} the timer—{w=1}{nw}"
+    cr "That said,{w=0.1} the timer—{w=1.25}{nw}"
     $ play_sound(bombexplosion1)
     scene black with small_shake
     pause 2.75
