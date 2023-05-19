@@ -626,7 +626,7 @@ label quilt_game_over:
     with puzzle_hide
     pause 1
     cr "I'd like to think of myself as a lenient kinda guy... {w}But watching you butcher that sentimental quilt is {i}pretty painful.{/i}"
-    cr "Like,{w=0.1} a death by a thousand cuts...{w=0.5}{nw}"
+    cr "Like,{w=0.1} a death by a thousand cuts...{w=1}{nw}"
     cr "...or needles,{w=0.1} in this case."
     $ play_sound(switchon)
     "(You hear a switch go off,{w=0.1} and—){w=1}{nw}"

@@ -70,7 +70,7 @@ label dr_danger_2:
   $ play_music(backstorytheme, fadein=1.0, fadeout=1.0)
   voice "audio/voice/dr.danger/Danger_SB-Allow Me To Explain.ogg"
   drs "No,{w=0.1} {i}that{/i} room belongs to my apprentice."
-  drs "Currently,{w=0.1} he is running an experiment —{w=1}{nw}"
+  drs "Currently,{w=0.1} he is running an experiment —{w=1.25}{nw}"
   show drdanger sidestare
   drs "even if he seems more interested in the process than the results."
   voice "audio/voice/dr.danger/Danger_SB-Sigh.ogg"
@@ -82,7 +82,7 @@ label dr_danger_2:
   voice "audio/voice/dr.danger/Danger_SB Please Listen Carefully.ogg"
   drs "...I suppose I can say this."
   drs "All his test subjects have a certain {i}unfortunate commonality.{/i}"
-  drs" A {i}terminal {/i}condition, as he sees it...{w=1}{nw}"
+  drs" A {i}terminal {/i}condition, as he sees it...{w=1.25}{nw}"
   drs "...that makes it very difficult for him to...{w=0.5} {i}remain impartial.{/i}"
   voice "audio/voice/dr.danger/Danger_SB-I Apologize.ogg"
   drs "I apologize for being vague here."

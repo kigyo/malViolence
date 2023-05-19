@@ -100,7 +100,7 @@ label post_room_3:
         "(...To be honest,{w=0.1} the lack of nasally jabbering...{w=0.5} kinda puts you on edge.)"
         "(Not that you {i}like {/i}that brat who called you a lab rat and trapped you in several rooms with lethal puzzles.)"
         "(But the silence forces you to focus on something much louder and much more disturbing.{w} Thoughts that are only now coming to the forefront of your mind.)"
-        "(You think about Dr. Dan —{w=0.5} no.{i} Dr. Deidre Destrange.){/i}"
+        "(You think about Dr. Dan —{w=0.5} no.{i} Dr. Deidre Destrange.{/i})"
         "(You think about the results of your investigation.)"
         "(And you think about yourself:{w=0.5} a tiny cog in a massive machine.)"
         "(A sleek,{w=0.1} pristine,{w=0.1} reliable machine —{w=0.5} carefully cleansed of the blood it's spilt.)"
@@ -118,7 +118,11 @@ label post_room_3:
 
     elif route == "neutral":
         "(Can't say you miss his nasally jabbering.)"
-        "(And yet...{w=0.5} you'd take it over that strange,{w=0.1} baleful{w=0.1} unease that hums at\nthe back of your mind.{w} Like the \"silent\" air conditioner in your boss's office.)"
+        if gui.text_size > 40:
+            "(And yet...{w=0.5} you'd take it over that strange,{w=0.1} baleful{w=0.1} unease that hums at the back of your mind.)"
+            "(Like the \"silent\" air conditioner in your boss's office.)"
+        else:
+            "(And yet...{w=0.5} you'd take it over that strange,{w=0.1} baleful{w=0.1} unease that hums at\nthe back of your mind.{w} Like the \"silent\" air conditioner in your boss's office.)"
         "(It's not about your job.{w} You did what you were supposed to.)"
         "(No,{w=0.1} rather...{w=0.5} you're bothered about the evidence itself.)"
 
