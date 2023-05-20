@@ -461,7 +461,7 @@ label room_3:
         else:
             if room3["toys"] == 0:
                 call init_toy_board from _call_init_toy_board
-                "(There are a few plushies sitting on the shelf.{w} They're suprisingly soft!)"
+                "(There are a few plushies sitting on the shelf.{w} They're surprisingly soft!)"
                 "(You investigate the cupboard below the plushies where—{w=0.5} {i}woah!{/i})"
                 $play_sound(plushiesqueak)
                 $queue_sound(plushiesqueak2)
