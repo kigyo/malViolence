@@ -176,7 +176,7 @@ init python:
             store.room3["scrapbook_new"] = "solved"
             clear_puzzle("room3_meta")
             return True
-        elif ("dead10" in persistent.dead_ends and not preferences.hard_mode):
-            renpy.notify(_("Invalid solution."))
+        elif preferences.puzzle_resets:
+            renpy.notify(_("Not a valid solution."))
         else:
             renpy.jump("scrapbook_game_over")

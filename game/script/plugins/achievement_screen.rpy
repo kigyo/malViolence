@@ -34,7 +34,7 @@ screen achievement_menu():
                 ## Granted achievements
                 for t in persistent.my_achievements:
                     
-                    if achievement.has(t.name) and "DEAD" not in t.name:
+                    if achievement.has(t.id) and "DEAD" not in t.name:
                         
                         frame:
                             
@@ -44,7 +44,7 @@ screen achievement_menu():
                                 yalign 0.5
                                 xysize (100, 100)
                                 
-                                add t.image size (100, 100) yalign 0.5
+                                add achievement_name[t.id][2] size (100, 100) yalign 0.5
 
                                 null width 20
 
@@ -52,13 +52,13 @@ screen achievement_menu():
                                     spacing 0
                                     yfill False
                                     
-                                    text t.name style 'achievements_label' color '#000000'
-                                    text t.message color '#000000'
+                                    text achievement_name[t.id][0] style 'achievements_label' color '#000000'
+                                    text achievement_name[t.id][1] color '#000000'
 
                 ## Locked achievements
-                for v in achievement_name.values():
+                for k,v in achievement_name.items():
                     ## Index '0' is the name of the achievement.
-                    if not achievement.has(v[0]) and v[3] != 'dead' and v[3] != 'platinum':
+                    if not achievement.has(k) and v[3] != 'dead':
 
                         ## We're doing a check for all achievements
                         ## that is not a 'platinum'.

@@ -69,7 +69,11 @@ init python:
                         break
                 if failed: break
             if failed:
-                renpy.jump("bomb_game_over")
+                if preferences.puzzle_resets:
+                    renpy.notify(_("Not a valid solution."))
+                    return
+                else:
+                    renpy.jump("bomb_game_over")
             else:
                 store.room1["bomb"] = "solved"
                 clear_puzzle("room1_1")

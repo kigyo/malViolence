@@ -197,7 +197,7 @@ init -1 python:
                                     lose = False
                                     break
 
-                if lose and not ("dead4" in persistent.dead_ends and not preferences.hard_mode):
+                if lose and not preferences.puzzle_resets:
                     renpy.jump('hacking_game_over')
                 elif lose:
                     puzzle_board_reset()
@@ -216,7 +216,7 @@ init -1 python:
                     clear_puzzle("room3_2")
                     return True
                 if not self.check_toy_path(self.player):
-                    if not ("dead12" in persistent.dead_ends and not preferences.hard_mode):
+                    if not preferences.puzzle_resets:
                         renpy.jump('toys_game_over')
                     else:
                         toy_board_reset()

@@ -98,8 +98,8 @@ init python:
             return True
 
         def game_over(self):
-            if ("dead7" in persistent.dead_ends and not preferences.hard_mode):
-                evidence_init()
+            if preferences.puzzle_resets:
+                renpy.notify(_("Not a valid solution."))
                 renpy.retain_after_load()
                 renpy.restart_interaction()
             else:
@@ -322,7 +322,7 @@ screen room2_evidence():
             text description xalign 0.5 offset (-50, -100) at mouse_pos outlines [(absolute(6), "#000", absolute(0), absolute(0))]
 
             vbox xfill True yalign 1.0 ysize 100 spacing 30 xoffset -25 yoffset -20:
-                textbutton "RESET" style "confirm_button" action SetField(evidence_board, "connections", []) xalign 1.0 yalign 0.5
+                textbutton "RESET" style "confirm_button" action SetField(evidence_board, "connections", []) xalign 1.0 yalign 0.5 at zoomed(0.75)
                 textbutton "SUBMIT" style "confirm_button" action Function(evidence_board.validate) xalign 1.0 yalign 0.5
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 

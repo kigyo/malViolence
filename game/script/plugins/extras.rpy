@@ -49,9 +49,9 @@ screen splash_settings():
 
                 vbox:
                     style_prefix "check"
-                    label _("Puzzle Skipper")
-                    textbutton _("Off") action SetField(preferences, "hard_mode", True) alt "Puzzle Skipper Off"
-                    textbutton _("On") action SetField(preferences, "hard_mode", False) alt "Puzzle Skipper On"
+                    label _("Puzzle Tools")
+                    textbutton _("Skip Button") action ToggleField(preferences, "hard_mode", true_value=False, false_value=True) alt "Puzzle Skipper"
+                    textbutton _("Failsafes") action ToggleField(preferences, "puzzle_resets") alt "Puzzle Failsafes"
 
                 vbox:
                     style_prefix "check"
