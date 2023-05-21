@@ -29,7 +29,7 @@ define gui.show_name = False
 
 define config.version = "1.2"
 
-define config.developer = True
+define config.developer = False
 
 
 ## A short name for the game used for executables and directories in the built
