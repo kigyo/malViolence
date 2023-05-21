@@ -448,7 +448,8 @@ label room_3:
                 "(Before you sit down with the quilt,{w=0.1} you carefully inch your way around the stray pins on the floor.)"
                 show screen room3_quilt(_layer="master") with easeintop
             $renpy.block_rollback()
-            $ room3["quilt"] += 1
+            if room3["quilt"] != "solved":
+                $ room3["quilt"] += 1
             $ inspect = None
             $renpy.hide_screen("room3_quilt", "master")
             call screen room3_quilt
@@ -474,7 +475,8 @@ label room_3:
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
                 "(Okay,{w=0.1} one more time.{w} Just gotta neatly sort the toys into sets...)"
             $renpy.block_rollback()
-            $ room3["toys"] += 1
+            if room3["toys"] != "solved":
+                $ room3["toys"] += 1
             $ inspect = None
             $renpy.hide_screen("toy_playspace", "master")
             call screen toy_playspace(tb)
@@ -498,7 +500,8 @@ label room_3:
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "This recipe seems simple enough.{w} One more time..."
             $ renpy.block_rollback()
-            $ room3["cooking"] += 1
+            if room3["cooking"] != "solved":
+                $ room3["cooking"] += 1
             $ inspect = None
             $ renpy.hide_screen("mise_en_place", "master")
             $ renpy.retain_after_load()

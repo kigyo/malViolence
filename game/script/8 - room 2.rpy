@@ -281,7 +281,8 @@ label room_2:
                 "(Let's string up some evidence!)"
                 show screen room2_evidence(_layer="master") with easeintop
             $renpy.block_rollback()
-            $ room2["evidence"] += 1
+            if room2["evidence"] != "solved":
+                $ room2["evidence"] += 1
             $ inspect = None
             $renpy.hide_screen("room2_evidence", "master")
             call screen room2_evidence
@@ -299,7 +300,8 @@ label room_2:
                 "(Time to re-enroll in that cybernetics crash-course.{w} Maybe it'll be less intimidating?)"
             $renpy.block_rollback()
             show screen cybernetics(cyb, _layer="master") with easeintop
-            $ room2["recalibration"] += 1
+            if room2["recalibration"] != "solved":
+                $ room2["recalibration"] += 1
             $ inspect = None
             $renpy.hide_screen("cybernetics", "master")
             call screen cybernetics(cyb)

@@ -133,7 +133,8 @@ label room_1:
             $renpy.block_rollback()
             show screen puzzle_playspace(pb, False, _layer="master") with easeintop
             $ inspect = None
-            $ room1["hacking"] += 1
+            if room1["hacking"] != "solved":
+                $ room1["hacking"] += 1
             $renpy.hide_screen("puzzle_playspace", "master")
             call screen puzzle_playspace(pb)
             if room1["hacking"] == "solved":
@@ -150,7 +151,8 @@ label room_1:
                 "(Dare you decant differently?{w} You dare.)"
             $renpy.block_rollback()
             show screen room1_decanting(_layer="master", **decant_kwargs) with easeintop
-            $ room1["decanting"] += 1
+            if room1["decanting"] != "solved":
+                $ room1["decanting"] += 1
             $ inspect = None
             $renpy.hide_screen("room1_decanting", "master")
             call screen room1_decanting(**decant_kwargs)
@@ -174,7 +176,8 @@ label room_1:
                 $ bomb.reset_drags()
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
             $renpy.block_rollback()
-            $ room1["bomb"] += 1
+            if room1["bomb"] != "solved":
+                $ room1["bomb"] += 1
             $ inspect = None
             $renpy.hide_screen("room1_bomb", "master")
             $ bomb.reset_drags()
