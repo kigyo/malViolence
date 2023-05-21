@@ -219,7 +219,7 @@ label bomb_solved:
     $ play_sound(marbleroll)
     show marble1:
         xalign 0.8 yalign 0.4 alpha 0.0
-        ease 1.5 rotate 360 xalign 0.5 yalign 0.4 alpha 1.0
+        ease 1.5 rotate -360 xalign 0.5 yalign 0.4 alpha 1.0
     hide black onlayer screens
     hide screen room1_bomb
     with puzzle_hide
@@ -283,7 +283,7 @@ label hacking_solved:
     $ play_sound(marbleroll)
     show marble2:
         xalign 0.8 yalign 0.4 alpha 0.0
-        ease 1.5 rotate 360 xalign 0.5 yalign 0.4 alpha 1.0
+        ease 1.5 rotate -360 xalign 0.5 yalign 0.4 alpha 1.0
     hide black onlayer screens
     hide screen puzzle_playspace
     with puzzle_hide
@@ -348,7 +348,7 @@ label decanting_solved:
     $ play_sound(marbleroll)
     show marble3:
         xalign 0.8 yalign 0.4 alpha 0.0
-        ease 1.5 rotate 360 xalign 0.5 yalign 0.4 alpha 1.0
+        ease 1.5 rotate -360 xalign 0.5 yalign 0.4 alpha 1.0
     hide black onlayer screens
     hide screen room1_decanting
     with puzzle_hide

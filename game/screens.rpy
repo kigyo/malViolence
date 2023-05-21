@@ -855,9 +855,9 @@ screen preferences():
 
                 vbox:
                     style_prefix "check"
-                    label _("Puzzle Skipper")
-                    textbutton _("Off") action SetField(preferences, "hard_mode", True) alt "Puzzle Skipper Off"
-                    textbutton _("On") action SetField(preferences, "hard_mode", False) alt "Puzzle Skipper On"
+                    label _("Puzzle Tools")
+                    textbutton _("Skip Button") action ToggleField(preferences, "hard_mode", true_value=False, false_value=True) alt "Puzzle Skipper"
+                    textbutton _("Failsafes") action ToggleField(preferences, "puzzle_resets") alt "Puzzle Failsafes"
 
 
 
@@ -1414,7 +1414,7 @@ style confirm_button:
 style confirm_button_text:
     properties gui.button_text_properties("confirm_button")
     color gui.interface_text_color size 55 text_align 0.5 yalign 0.5
-    hover_color gui.hover_color
+    hover_color gui.hover_color outlines [(2, "#000000", 0, 1)]
 
 
 ## Skip indicator screen #######################################################

@@ -27,7 +27,7 @@ define gui.show_name = False
 
 ## The version of the game.
 
-define config.version = "1.2"
+define config.version = "1.3"
 
 define config.developer = False
 
@@ -144,6 +144,7 @@ define config.default_sfx_volume = 0.85
 define config.default_voice_volume = 0.9
 
 default preferences.hard_mode = True
+default preferences.puzzle_resets = False
 
 ### for turning the skull icon on and off for death-related achievements
 

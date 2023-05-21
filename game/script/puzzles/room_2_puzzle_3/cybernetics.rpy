@@ -286,7 +286,7 @@ init -1 python:
                         break
                 if invalid: break
             if invalid:
-                if "dead9" in persistent.dead_ends and not preferences.hard_mode:
+                if preferences.puzzle_resets:
                     #cybernetics_reset()
                     renpy.notify(_("Not a valid solution."))
                     #TODO: some kind of error feedback
@@ -518,7 +518,7 @@ screen cybernetics(cyber=None, interactable=True):
             textbutton "SUBMIT" style "confirm_button" action If(cyb.check_broken(), false=Function(cyb.verify)) sensitive not inspect xalign 0.5 yalign 0.5
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] sensitive not inspect xalign 1.0 yalign 0.5
 
-    if puzzle_cleared("room2_3") or ("dead9" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+    if puzzle_cleared("room2_3") or not preferences.hard_mode:
         textbutton "SKIP" style "confirm_button" action [SetDict(room2, "recalibration", "solved"), Return()] pos (40,50)
 
     if config.developer:

@@ -34,7 +34,7 @@ init python:
                 if [marble_solution[room1["solved"][0]],marble_solution[room1["solved"][1]],marble_solution[room1["solved"][2]]] == marble_killed:
                     store.room1["marble"] = "solved"
                     return True
-                elif ("dead2" in persistent.dead_ends and not preferences.hard_mode):
+                elif preferences.puzzle_resets:
                     marble_init(_("Invalid. Restarting..."))
                     renpy.retain_after_load()
                     renpy.restart_interaction()
@@ -129,12 +129,12 @@ screen room1_marble():
                     text i xalign 0.5
         
         hbox spacing 30 yalign 1.0 ysize 100 xalign 1.0:
-            if not preferences.hard_mode:
+            if preferences.puzzle_resets:
                 textbutton "RESET" style "confirm_button" action Function(marble_init, _("Restarting...")) text_color "#fff" sensitive not inspect yalign 0.5 at zoomed(0.75)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] yalign 0.5
 
         if len(room1["solved"]) == 3 and (puzzle_cleared("room1_meta") or ("dead2" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode):
-            use skip_button(room1, "marble", "room1_meta")
+            use skip_button(room1, "marble", "room1_meta", xalign=1.0)
 
     if config.developer:
         vbox:

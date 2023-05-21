@@ -25,7 +25,7 @@ init python:
                 clear_puzzle("room1_3")
                 return True
 
-            if decanting_moves >= decanting_move_limit and not ("dead5" in persistent.dead_ends and not preferences.hard_mode):
+            if decanting_moves >= decanting_move_limit and not preferences.puzzle_resets:
                 renpy.jump("decanting_game_over")
 
     def decanting_valid(answer):
@@ -119,7 +119,7 @@ screen room1_decanting(v1=12, v2=8, v3=5, answer=[6, 6, 0]):
                 hbox xsize 150:
                     text str(decanting_vial3) + "/" + str(decanting_size_vial3) xalign 0.5
 
-            if not ("dead5" in persistent.dead_ends and not preferences.hard_mode):
+            if not preferences.puzzle_resets:
                 frame xalign 1.0:
                     text str(decanting_moves) + "/" + str(decanting_move_limit) style "main_menu_button"
         if puzzle_cleared("room1_3") or not preferences.hard_mode:

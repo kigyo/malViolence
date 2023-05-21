@@ -73,11 +73,10 @@ init python:
         renpy.retain_after_load()
 
     def quilt_submit():
-        if not quilt_valid() and not ("dead11" in persistent.dead_ends and not preferences.hard_mode):
+        if not quilt_valid() and not preferences.puzzle_resets:
             renpy.jump("quilt_game_over")
-        elif not quilt_valid() and ("dead11" in persistent.dead_ends and not preferences.hard_mode):
-            #TODO: error sound
-            pass
+        elif not quilt_valid():
+            renpy.notify(_("Not a valid solution."))
         else:
             store.room3["quilt"] = "solved"
             clear_puzzle("room3_1")
@@ -151,7 +150,7 @@ screen room3_quilt():
                 textbutton "SUBMIT" style "confirm_button" action Function(quilt_submit) xalign 0.5 yalign 0.5
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
-        if puzzle_cleared("room3_1") or ("dead11" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+        if puzzle_cleared("room3_1") or not preferences.hard_mode:
             use skip_button(room3, "quilt", "room3_1", xalign=1.0)
 
     fixed xoffset -400:

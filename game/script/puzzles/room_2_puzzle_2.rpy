@@ -87,7 +87,7 @@ init python:
                         self.state = "won"
                         store.room2["panopticon"] = "solved"
                         clear_puzzle("room2_2")
-                    elif panopticon_moves >= panopticon_move_limit and not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
+                    elif panopticon_moves >= panopticon_move_limit and not preferences.puzzle_resets:
                         self.state = "lost"
                     else:
                         self.interactable = True
@@ -228,11 +228,12 @@ screen room2_panopticon(pan=None, interactable=True):
                 null height 50
                 text _("{color=#fff}Help Cautionne properly arrange the cells according to the limitations of the system.{/color}")
             add "panopt_key" xalign 0.5 yoffset 680
-            if ("dead8" in persistent.dead_ends and not preferences.hard_mode):
-                textbutton "RESTART" action [Function(panopticon_init), Function(renpy.restart_interaction), Hide("room2_panopticon"), Function(renpy.restart_interaction), Show("room2_panopticon")] style "confirm_button" xalign 0.0 yalign 1.0 at zoomed(0.75)
-            textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return(), With(puzzle_hide)] style "confirm_button" xalign 1.0 yalign 1.0
+            hbox xalign 1.0 yalign 1.0 spacing 20:
+                if preferences.puzzle_resets:
+                    textbutton "RESET" action [Function(panopticon_init), Function(renpy.restart_interaction), Hide("room2_panopticon"), Function(renpy.restart_interaction), Show("room2_panopticon")] style "confirm_button" yalign 0.5 at zoomed(0.75)
+                textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return(), With(puzzle_hide)] style "confirm_button"
         fixed xsize 1000:
-            if not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
+            if not preferences.puzzle_resets:
                 frame xalign 1.0:
                     text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
 
