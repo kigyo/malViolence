@@ -163,7 +163,6 @@ label room_1:
         else:
             if room1["bomb"] == 0:
                 "(It looks like there's an open...{w=0.5} tool box?{w} You approach it to take a closer look.)"
-                # show bomb_puzzle with easeintop
                 $ init_bomb_function(None)
                 $ bomb.reset_drags()
                 show screen room1_bomb(bomb, False, _layer="master") with easeintop
@@ -177,7 +176,6 @@ label room_1:
             $renpy.block_rollback()
             $ room1["bomb"] += 1
             $ inspect = None
-            hide bomb_puzzle
             $renpy.hide_screen("room1_bomb", "master")
             $ bomb.reset_drags()
             call screen room1_bomb(bomb, True)
