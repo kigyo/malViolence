@@ -790,6 +790,7 @@ screen preferences():
 
     tag menu
 
+
     use game_menu(_("Options"), scroll="viewport"):
 
         vbox xoffset 30:
@@ -800,7 +801,7 @@ screen preferences():
                 vbox:
                     style_prefix "check"
                     label _("Skip")
-                    textbutton _("Unseen Text") action Preference("skip", "toggle")
+                    textbutton _("Unseen Text") action Preference("skip", "toggle") 
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
 
@@ -856,8 +857,12 @@ screen preferences():
                 vbox:
                     style_prefix "check"
                     label _("Puzzle Tools")
-                    textbutton _("Skip Button") action ToggleField(preferences, "hard_mode", true_value=False, false_value=True) alt "Puzzle Skipper"
-                    textbutton _("Failsafes") action ToggleField(preferences, "puzzle_resets") alt "Puzzle Failsafes"
+                    textbutton _("Skip Button"):
+                        action ToggleField(preferences, "hard_mode", true_value=False, false_value=True) alt "Puzzle Skipper"
+                        tooltip "{size=30}Adds a skip button to all puzzles.{/size}"
+                    textbutton _("Failsafes"):
+                        action ToggleField(preferences, "puzzle_resets") alt "Puzzle Failsafes"
+                        tooltip "{size=30}Adds a reset button to most\npuzzles and prevents game\novers in puzzles.{/size}"
 
 
 
@@ -934,6 +939,17 @@ screen preferences():
                             bar value Preference("mixer bleeps volume")
 
             null height gui.pref_spacing
+
+    $ tooltip = GetTooltip()
+    if tooltip:
+
+        nearrect:
+            focus "tooltip"
+            prefer_top True
+
+            frame:
+                xalign 0.3
+                text tooltip           
 
 
 style pref_label is gui_label
