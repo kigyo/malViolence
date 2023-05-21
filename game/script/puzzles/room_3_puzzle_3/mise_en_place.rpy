@@ -110,10 +110,8 @@ init python:
             store.room3["cooking"] = "solved"
             clear_puzzle("room3_3")
             return True
-        elif ("dead13" in persistent.dead_ends and not preferences.hard_mode):
+        elif preferences.puzzle_resets:
             renpy.restart_interaction()
-            #TODO: some kind of error feedback
-            pass
         else:
             renpy.jump("cooking_game_over")
 
@@ -342,7 +340,7 @@ screen mise_en_place(interactable=True):
             vbox:
                 xalign 0.5
 
-                label "Ingredients" xalign 0.5
+                label _("Ingredients") xalign 0.5
                 if difficulty_level == 1:
                     text "- 5 pieces of bacon" strikethrough bacon_count == ingredient_counts["bacon"]:
                         if cooking_error == "bacon":
@@ -369,7 +367,7 @@ screen mise_en_place(interactable=True):
                 elif difficulty_level == 2:
                     hbox:
                         spacing 20
-                        vbox:
+                        vbox xsize 240:
                             text "- 5 pieces of bacon" strikethrough bacon_count == ingredient_counts["bacon"]:
                                 if cooking_error == "bacon":
                                     color "#d20000" bold True

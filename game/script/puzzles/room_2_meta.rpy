@@ -29,7 +29,7 @@ init python:
             string_answer += i
 
         if len(string_answer) < 5 or string_answer not in word_accepted_answers:
-            if not ("dead6" in persistent.dead_ends and not preferences.hard_mode):
+            if not preferences.puzzle_resets:
                 renpy.jump("word_game_over")
             else:
                 renpy.notify(word_lenient_failure_message)

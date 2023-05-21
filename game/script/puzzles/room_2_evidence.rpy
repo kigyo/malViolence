@@ -92,10 +92,12 @@ init python:
             solution = self.solution[:]
             while len(solution) > 0:
                 self.check_solution(solution.pop())
-                if self.fail: self.game_over()
-            store.room2["evidence"] = "solved"
-            clear_puzzle("room2_1")
-            return True
+            if self.fail: 
+                self.game_over()
+            else:
+                store.room2["evidence"] = "solved"
+                clear_puzzle("room2_1")
+                return True
 
         def game_over(self):
             if preferences.puzzle_resets:
