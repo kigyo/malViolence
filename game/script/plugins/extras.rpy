@@ -24,12 +24,11 @@ screen splash_settings():
             yalign .5
             xalign 0.5
             spacing 50
-            xfill True
 
             label _("Accessibility Settings") xalign 0.5
             label _("These options can be adjusted at any time in the menu.") xalign 0.5 text_color "#fff" text_font "gui/font/TitilliumWeb-Regular.ttf" text_size 35
 
-            hbox:
+            hbox xfill True:
                 xalign 0.8
                 #vbox:
                 #    style_prefix "radio"
@@ -49,12 +48,6 @@ screen splash_settings():
 
                 vbox:
                     style_prefix "check"
-                    label _("Puzzle Tools")
-                    textbutton _("Skip Button") action ToggleField(preferences, "hard_mode", true_value=False, false_value=True) alt "Puzzle Skipper"
-                    textbutton _("Failsafes") action ToggleField(preferences, "puzzle_resets") alt "Puzzle Failsafes"
-
-                vbox:
-                    style_prefix "check"
                     label _("Toggles") 
                     #textbutton _("Image Descriptions") action ToggleVariable("persistent.image_captions") alt "Toggle Image Descriptions"
                     textbutton _("Audio Titles") action ToggleVariable("persistent.sound_captions") alt "Toggle Sound Captions"
@@ -65,8 +58,35 @@ screen splash_settings():
                     textbutton "Screenshake" action ToggleField(persistent,"screenshake",true_value=True,false_value=False) alt "Toggle Screen Shake"
                     textbutton "Graphic Icons" action ToggleField(persistent,"skullicon",true_value=True,false_value=False) alt "Toggle Screen Shake"
 
+                vbox:
+                    style_prefix "radio"
+                    label _("Puzzle Difficulty")
+                    textbutton _("Easy") action SetField(persistent, "difficulty", 1)
+                    textbutton _("Medium") action SetField(persistent, "difficulty", 2)
+                    textbutton _("Hard") action SetField(persistent, "difficulty", 3)
+
+                vbox:
+                    style_prefix "check"
+                    label _("Puzzle Tools")
+                    textbutton _("Skip Button"):
+                        action ToggleField(preferences, "hard_mode", true_value=False, false_value=True) alt "Puzzle Skipper"
+                        tooltip "{size=30}Adds a skip button to all puzzles.{/size}"
+                    textbutton _("Failsafes"):
+                        action ToggleField(preferences, "puzzle_resets") alt "Puzzle Failsafes"
+                        tooltip "{size=30}Prevents game overs and adds \na reset button to most puzzles.{/size}"
+
             textbutton _("Confirm") action Return() xalign 0.5
 
+    $ tooltip = GetTooltip()
+    if tooltip:
+
+        nearrect:
+            focus "tooltip"
+            prefer_top True
+
+            frame padding 15,5,15,5:
+                xalign 0.3
+                text tooltip
 style presplash_label:
     top_margin gui.pref_spacing
     bottom_margin 3

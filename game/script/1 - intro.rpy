@@ -1,5 +1,6 @@
 
 label start:
+    $ difficulty_level = persistent.difficulty
     # Uncomment to test puzzles.
     stop music
     # jump test_puzzles

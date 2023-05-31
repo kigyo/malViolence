@@ -1,6 +1,8 @@
 default skip_used = False
 default difficulty_level = 2
 
+default persistent.difficulty = 2
+
 define single_difficulty_puzzles = ["tutorial", "room1_meta", "room2_meta", "room3_meta"]
 
 define old_puzzle_difficulty_mapper = {
@@ -51,7 +53,10 @@ init python:
 
         persistent.solved_puzzles = temp_dict
 
-    def difficulty_change_reset():
+    def difficulty_change():
+        # set variables
+        persistent.difficulty = difficulty_level
+
         #room 1
         init_bomb_function(None)
         #room 2

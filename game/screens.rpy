@@ -663,6 +663,20 @@ style about_text:
 ## https://www.renpy.org/doc/html/screen_special.html#save https://
 ## www.renpy.org/doc/html/screen_special.html#load
 
+init 2 python:
+
+    def save_data(d):
+        dif = ""
+        if difficulty_level == 1:
+            dif = _("Easy")
+        elif difficulty_level == 2:
+            dif = _("Medium")
+        else:
+            dif = _("Hard")
+        d["difficulty"] = dif
+
+    config.save_json_callbacks = [save_data]
+
 screen save():
 
     tag menu
@@ -723,6 +737,7 @@ screen file_slots(title):
                     for i in range(gui.file_slot_cols * gui.file_slot_rows):
 
                         $ slot = i + 1
+                        $ file_difficulty = FileJson(slot, "difficulty", empty="", missing="")
 
                         button:
                             if persistent.typeface == "Hyperlegible":
@@ -730,15 +745,18 @@ screen file_slots(title):
                             else:
                                 action FileAction(slot)
 
-                            has vbox
+                            vbox:
 
-                            add FileScreenshot(slot, empty="gui/button/save_empty.png") xalign 0.5
+                                add FileScreenshot(slot, empty="gui/button/save_empty.png") xalign 0.5
 
-                            text FileTime(slot, format=_("{#file_time}%d/%m/%Y, %H:%M"), empty=""):
-                                style "slot_time_text"
+                                text FileTime(slot, format=_("{#file_time}%d/%m/%Y, %H:%M"), empty=""):
+                                    style "slot_time_text"
 
-                            text FileSaveName(slot):
-                                style "slot_name_text"
+                                text FileSaveName(slot):
+                                    style "slot_name_text"
+                            
+                            text file_difficulty.upper() xalign 1.0 xoffset -5:
+                                outlines [(1, "#000000", 0, 0)] size 26 font gui.interface_text_font color gui.accent_color
 
                             key ["save_delete"] action FileDelete(slot)
 
@@ -823,9 +841,16 @@ screen preferences():
                     vbox:
                         style_prefix "radio"
                         label _("Puzzle Difficulty")
-                        textbutton _("Easy") action Confirm(_("Are you sure you want to change the Difficulty? \nThis will {color=#00e7ff}reset your progress{/color} on started puzzles."), [SetVariable("difficulty_level", 1), Function(difficulty_change_reset)], NullAction())
-                        textbutton _("Medium") action Confirm(_("Are you sure you want to change the Difficulty? \nThis will {color=#00e7ff}reset your progress{/color} on started puzzles."), [SetVariable("difficulty_level", 2), Function(difficulty_change_reset)], NullAction())
-                        textbutton _("Hard") action Confirm(_("Are you sure you want to change the Difficulty? \nThis will {color=#00e7ff}reset your progress{/color} on started puzzles."), [SetVariable("difficulty_level", 3), Function(difficulty_change_reset)], NullAction())
+                        textbutton _("Easy") action Confirm(_("Are you sure you want to change the Difficulty? \nThis will {color=#00e7ff}reset your progress{/color} on started puzzles."), [SetVariable("difficulty_level", 1), Function(difficulty_change)], NullAction())
+                        textbutton _("Medium") action Confirm(_("Are you sure you want to change the Difficulty? \nThis will {color=#00e7ff}reset your progress{/color} on started puzzles."), [SetVariable("difficulty_level", 2), Function(difficulty_change)], NullAction())
+                        textbutton _("Hard") action Confirm(_("Are you sure you want to change the Difficulty? \nThis will {color=#00e7ff}reset your progress{/color} on started puzzles."), [SetVariable("difficulty_level", 3), Function(difficulty_change)], NullAction())
+                else:
+                    vbox:
+                        style_prefix "radio"
+                        label _("Puzzle Difficulty")
+                        textbutton _("Easy") action SetField(persistent, "difficulty", 1)
+                        textbutton _("Medium") action SetField(persistent, "difficulty", 2)
+                        textbutton _("Hard") action SetField(persistent, "difficulty", 3)
 
             hbox:
                 box_wrap True
@@ -862,7 +887,7 @@ screen preferences():
                         tooltip "{size=30}Adds a skip button to all puzzles.{/size}"
                     textbutton _("Failsafes"):
                         action ToggleField(preferences, "puzzle_resets") alt "Puzzle Failsafes"
-                        tooltip "{size=30}Adds a reset button to most\npuzzles and prevents game\novers in puzzles.{/size}"
+                        tooltip "{size=30}Prevents game overs and adds \na reset button to most puzzles.{/size}"
 
 
 
@@ -947,7 +972,7 @@ screen preferences():
             focus "tooltip"
             prefer_top True
 
-            frame:
+            frame padding 15,5,15,5:
                 xalign 0.3
                 text tooltip           
 
