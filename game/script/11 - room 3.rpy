@@ -23,7 +23,7 @@ screen room3():
             add "bg room3_downstairs"
             imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_scrapbook.png" action [SetVariable("inspect", "scrapbook"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_scrapbook.png" mouse "inspect" at room_hover
             imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_workbook.png" action [SetVariable("inspect", "confidence_workbook"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_workbook.png" mouse "inspect" at room_hover
-            imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_lockbox.png" action [SetVariable("inspect", "locked_container"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_lockbox.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/room3/downstairs/lockbox_hitbox.png" action [SetVariable("inspect", "locked_container"), Jump("room_3")] focus_mask "rooms/room3/downstairs/lockbox_hitbox.png" mouse "inspect" at room_hover
 
             imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_metapuzzle.png" action [SetVariable("inspect", "scrapbook_new"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_metapuzzle.png" mouse "puzzle" at room_hover(0.5)
             imagebutton idle Null() hover "rooms/room3/downstairs/room3_downstairs_selection_miseenplace.png" action [SetVariable("inspect", "cooking"), Jump("room_3")] focus_mask "rooms/room3/downstairs/room3_downstairs_selection_miseenplace.png" mouse "puzzle" at room_hover(0.5)
@@ -42,7 +42,7 @@ screen room3():
             add "bg room3_upstairs"
             imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_sewingkit.png" action [SetVariable("inspect", "sewing_book"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_sewingkit.png" mouse "inspect" at room_hover
             imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_wigmannequin.png" action [SetVariable("inspect", "mannequin"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_wigmannequin.png" mouse "inspect" at room_hover
-            imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_healthrecord.png" action [SetVariable("inspect", "health_record"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_healthrecord.png" mouse "inspect" at room_hover
+            imagebutton idle Null() hover "rooms/room3/upstairs/medicalrecord_hitbox.png" action [SetVariable("inspect", "health_record"), Jump("room_3")] focus_mask "rooms/room3/upstairs/medicalrecord_hitbox.png" mouse "inspect" at room_hover
 
             imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_quiltpuzzle.png" action [SetVariable("inspect", "quilt"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_quiltpuzzle.png" mouse "puzzle" at room_hover(0.5)
             imagebutton idle Null() hover "rooms/room3/upstairs/room3_upstairs_selection_plushpuzzle.png" action [SetVariable("inspect", "toys"), Jump("room_3")] focus_mask "rooms/room3/upstairs/room3_upstairs_selection_plushpuzzle.png" mouse "puzzle" at room_hover(0.5)
