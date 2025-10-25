@@ -225,6 +225,8 @@ label room_3:
             n "It's troubling, but all great technology has the potential for misuse.\n{w}And now I'm going to be part of an organization that works to keep that tech under control. "
             n "Though I'll be honest, the name's pretty silly."
             n "Oh well.{w} They could always change the acronym later.\""
+            nvl hide
+            nvl clear
         elif room3["diary"] == 1:
             #"SUCCESS WITH LIMITING PROLIFERAITON OF TECH, PROMOTION, DISCOVERY OF POTENTIAL FOR YOUNGER SUBJECTS"
             $ play_sound(paperpickup)
@@ -250,6 +252,8 @@ label room_3:
             nvl show
             n "\"The promotion was nice."
             n "I deserve it, and I was the only obvious choice, but still.{w} It felt nice to be recognized.\""
+            nvl hide
+            nvl clear
         elif room3["diary"] == 2:
             #"STAGNATION, LOTS OF RESEARCH WORK DISILLUSIONMENT, PARANOIA"
             $ play_sound(paperpickup)
@@ -286,6 +290,8 @@ label room_3:
             n "I came into work today and clocked out without recognizing a single face the entire time.{w} New people, places, committees, projects, and always more acronyms. "
             n "And, for the first time in years, I was denied access to internal data."
             n "I didn't think anything could be above my paygrade anymore.\n{w}Note to self: look up \"YTDI \"."
+            nvl hide
+            nvl clear
         elif room3["diary"] == 3:
             #"Meeting CAUTIONNE"
             $ play_sound(paperpickup)
@@ -381,6 +387,8 @@ label room_3:
             n "\"Maybe he should have hesitated.{w} All that awaits him is a life in hiding."
             n "..."
             n "...At least he'll have a choice from now on.\""
+            nvl hide
+            nvl clear
         elif room3["diary"] == 5:
             $ play_sound(paperpickup)
             n "\"I've no right to call myself a parent, but even so —{w=0.5} parenthood is hard. "
@@ -429,6 +437,8 @@ label room_3:
             n "Something needs to change, but I'm not sure it's something that Dr. Danger can do. "
             n "...And I'm not sure that Deirdre Destrange is enough for him.\""
             $room3_investigated.append("diary")
+            nvl hide
+            nvl clear
         $ room3["diary"] += 1
         nvl clear
 
@@ -444,9 +454,11 @@ label room_3:
                 "(What's a large, unfinished sewing project doing, all spread out on the floor?)"
                 "(Looks like a quilt.{w} Must've been too big for the little sewing desk.)"
                 "(Hmm...{w} For some reason, you want to finish it.)"
+                window hide
             else:
                 "(Before you sit down with the quilt,{w=0.1} you carefully inch your way around the stray pins on the floor.)"
                 show screen room3_quilt(_layer="master") with easeintop
+                window hide
             $renpy.block_rollback()
             if room3["quilt"] != "solved":
                 $ room3["quilt"] += 1
@@ -470,10 +482,12 @@ label room_3:
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
                 "(An avalanche of plushies spills out,{w=0.1} burying you in a soft, fuzzy pile.)"
                 "(This {i}would{/i} be a comfy way to go out,{w=0.1} but you should probably put everything back.)"
+                window hide
             else:
                 "(A pile of plushies sprawl out on the bed, right where you left them.)"
                 show screen toy_playspace(tb, False, _layer="master") with easeintop
                 "(Okay,{w=0.1} one more time.{w} Just gotta neatly sort the toys into sets...)"
+                window hide
             $renpy.block_rollback()
             if room3["toys"] != "solved":
                 $ room3["toys"] += 1
@@ -495,10 +509,12 @@ label room_3:
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "(A handwritten note sits on the counter.{w} Looks like...{w=0.5} a recipe for pancakes?)"
                 "(Fridge seems well-stocked too.{w} Let's see if Cautionne likes your take on Dr. Danger's recipe.)"
+                window hide
             else:
                 $ reset_cutting_board_drags()
                 show screen mise_en_place(False, _layer="master") with easeintop
                 "This recipe seems simple enough.{w} One more time..."
+                window hide
             $ renpy.block_rollback()
             if room3["cooking"] != "solved":
                 $ room3["cooking"] += 1
@@ -516,6 +532,7 @@ label room_3:
             $ room3["scrapbook_new"] = 1
             show screen room3_meta(_layer="master") with easeintop
             "(The \"lock\" for the door is a...{w=0.5} scrapbook?{w} Its pages are empty,{w=0.1} though...)"
+            window hide
         else:
             show screen room3_meta(_layer="master") with easeintop
         $renpy.block_rollback()
@@ -587,6 +604,7 @@ label quilt_solved:
     $ room3["pages"].append(5)
     $ play_sound(puzzlesuccess)
     "You solved the puzzle!"
+    window hide
     hide black onlayer screens
     hide screen room3_quilt
     with puzzle_hide
@@ -612,6 +630,7 @@ label quilt_solved:
     hide memory1
     with dissolve
     "(...)"
+    window hide
     $ inspect = None
     call screen room3
 
@@ -651,7 +670,8 @@ label quilt_game_over:
         l "Subject failed to appreciate the value of good stitchwork, and so was impaled by a thousand and twenty-four needles."
         l "{i}(NB: It needed to be a square number for the triggering mechanism to hit its mark.){/i}"
     l "{b}Contributing Factors to Death:{/b} Couldn't sew their way out of a wet paper bag."
-    $deadend("dead11")
+    $ deadend("dead11")
+    $ achievement.grant("dead11")
     le "DEAD END 11: Quilt In Action."
     pause 2
     nvl clear
@@ -669,6 +689,7 @@ label toys_solved:
     $ room3["pages"].append(4)
     $ play_sound(puzzlesuccess)
     "You solved the puzzle!"
+    window hide
     hide black onlayer screens
     hide screen toy_playspace
     with puzzle_hide
@@ -693,6 +714,7 @@ label toys_solved:
     nvl clear
     hide memory3 with dissolve
     "(...)"
+    window hide
     $ inspect = None
     call screen room3
 
@@ -732,7 +754,8 @@ label toys_game_over:
     $nvl_heading = "Lab Report #414"
     l "Subject was transported to the automated disposal unit via trap door, whereupon the automated disposal department did what it does best."
     l "{b}Contributing Factors to Death:{/b} Expected leniency where there was none to be found."
-    $deadend("dead12")
+    $ deadend("dead12")
+    $ achievement.grant("dead12")
     le "DEAD END 12: Get Stuffed."
     pause 2
     nvl clear
@@ -753,6 +776,7 @@ label cooking_solved:
     "You solved the puzzle!"
     hide black onlayer screens
     hide screen mise_en_place
+    window hide
     with puzzle_hide
     "(Suddenly,{w=0.1} the stove pops open.)"
     pause 0.1
@@ -775,6 +799,7 @@ label cooking_solved:
     nvl clear
     hide memory2 with dissolve
     "(...)"
+    window hide
     $ inspect = None
     call screen room3
 
@@ -810,7 +835,8 @@ label cooking_game_over:
     l "Subject perished soon (but not soon enough) after being plastered against the wall by a gigantic frying pan-shaped mallet."
     l "Good riddance, although I have to admit, I was looking for an opportunity to get a use out of that particular trap."
     l "{b}Contributing Factors to Death:{/b} Committed sacrilege against breakfast food."
-    $deadend("dead13")
+    $ deadend("dead13")
+    $ achievement.grant("dead13")
     le "DEAD END 13: Flipping Miserable!"
     pause 2
     nvl clear

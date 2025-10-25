@@ -27,16 +27,16 @@ define gui.show_name = False
 
 ## The version of the game.
 
-define config.version = "1.4"
+define config.version = "1.416"
 
-define config.developer = False
+define config.developer = True
 
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "malViolence"
+define build.name = "malViolence-DefinitiveEdition"
 
 
 ## Sounds and music ############################################################
@@ -111,16 +111,16 @@ define config.choice_empty_window = extend
 
 define config.end_splash_transition = Dissolve(2.5)
 
-define config.enter_yesno_transition = Dissolve(.5)
-define config.exit_yesno_transition  = Dissolve(.5)
+define config.enter_yesno_transition = easeintop
+define config.exit_yesno_transition  = easeinbottom
 
 define config.nvl_adv_transition = Dissolve(.5)
 define config.adv_nvl_transition = Dissolve(.5)
 
 define config.end_game_transition = Fade(1,0.1,1)
 
-define config.window_show_transition = Dissolve(.2)
-define config.window_hide_transition = Dissolve(.2)
+define config.window_show_transition = Dissolve(.5)
+define config.window_hide_transition = Dissolve(.5)
 
 
 ## Preference defaults #########################################################

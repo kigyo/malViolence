@@ -24,7 +24,8 @@ label dr_danger_3:
   show bg corridor3 tvoff with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
-  $Achievement.add(achievement_room2)
+  $ Achievement.add(achievement_room2)
+  $ achievement.grant(room2)
   pause 4
   show bg corridor3 tvoff with dissolve:
     zoom 0.5

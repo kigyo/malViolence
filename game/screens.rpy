@@ -406,7 +406,7 @@ screen main_menu():
     add "gui/logo.png" xalign 0.5 yalign 0.15
 
     hbox pos (50,50) spacing 30:
-        imagebutton idle "gui/Twitter.png" action OpenURL("https://twitter.com/madocactus") at quick_hover
+        imagebutton idle "gui/Twitter.png" action OpenURL("https://linktr.ee/violenceseries") at quick_hover
 
     vbox xalign 0.5 yalign 0.6 spacing 15:
         style_prefix "main_menu"

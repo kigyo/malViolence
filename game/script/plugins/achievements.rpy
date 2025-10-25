@@ -47,6 +47,7 @@ python early:
 
             if not achievement.has(trophy):
                 achievement.grant(trophy)
+                
 
         def purge(self):
             """

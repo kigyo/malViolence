@@ -242,7 +242,8 @@ label neutral_ending:
     hide text
     pause 3
     $persistent.credits_seen = True
-    $Achievement.add(achievement_end3)
+    $ Achievement.add(achievement_end3)
+    $ achievement.grant("end3")
 
     show text "{size=90}{color=#ffffff}END{/color}{/size}" with dissolve:
             xalign 0.5 yalign 0.5

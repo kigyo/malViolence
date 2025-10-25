@@ -28,7 +28,8 @@ label dr_danger_1:
   show bg corridor1 tvoff with placeintro:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
-  $Achievement.add(achievement_tfng)
+  $ Achievement.add(achievement_tfng)
+  $ achievement.grant("tfng")
 
   $ play_sound(doorclose)
   pause 2

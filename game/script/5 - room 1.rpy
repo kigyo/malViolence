@@ -265,7 +265,8 @@ label bomb_game_over:
     l "Subject passed away due to an overexposure to high-yield explosives."
     l "{b}Contributing Factors to Death:{/b} A lack of detail-oriented problem solving skills."
     l "Nothing more, nothing less."
-    $deadend("dead3")
+    $ deadend("dead3")
+    $ achievement.grant("dead3")
     le "DEAD END 03: A Mindblowing Conclusion!"
     pause 2
     nvl clear
@@ -330,6 +331,7 @@ label hacking_game_over:
     l "Subject died after computer shrapnel blew up into their face.\n"
     l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn't thorough enough with their background check."
     $deadend("dead4")
+    $ achievement.grant("dead4")
     le "DEAD END 04: Trouble-shooting?"
     pause 2
     nvl clear
@@ -411,6 +413,7 @@ label decanting_game_over:
     l "{b}Contributing Factors to Death:{/b} Didn't perform their duties under a fume hood."
     l "STOP will have to screen its employees for basic lab safety if they're gonna keep sending them my way."
     $deadend("dead5")
+    $ achievement.grant("dead5")
     le "DEAD END 05: A Venom-enal End!"
     pause 2
     nvl clear
@@ -451,6 +454,7 @@ label marble_game_over:
     l "{b}Contributing Factors to Death:{/b} Didn't recognize good slapstick even when it hit them."
 
     $deadend("dead2")
+    $ achievement.grant("dead2")
     le "DEAD END 02: Marble-ous Slapstick!"
     pause 2
     nvl clear
