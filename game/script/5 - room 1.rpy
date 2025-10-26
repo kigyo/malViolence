@@ -190,11 +190,11 @@ label room_1:
             $ room1["marble"] = 1
             $marble_init()
             "(You approach the strange,{w=0.1} locked door.)"
-            show screen room1_marble(_layer="master") with easeintop
+            show screen room1_marble() with easeintop
             "(Turns out it's even stranger up close.)"
         else:
             "(You decide to look at this marble-ous contraption once more...)"
-            show screen room1_marble(_layer="master") with easeintop
+            show screen room1_marble() with easeintop
             "(Sorry.{w} You couldn't help yourself.)"
         $renpy.block_rollback()
         $ inspect = None
@@ -265,7 +265,7 @@ label bomb_game_over:
     l "Subject passed away due to an overexposure to high-yield explosives."
     l "{b}Contributing Factors to Death:{/b} A lack of detail-oriented problem solving skills."
     l "Nothing more, nothing less."
-    $ deadend(achievement_dead3)
+    $ Achievement.add(achievement_dead3)
     le "DEAD END 03: A Mindblowing Conclusion!"
     pause 2
     nvl clear
@@ -329,7 +329,7 @@ label hacking_game_over:
     $nvl_heading = "Lab Report #615"
     l "Subject died after computer shrapnel blew up into their face.\n"
     l "{b}Contributing Factors to Death:{/b} “Tech-savvy”? On {i}their{/i} resumé? Guess STOP wasn't thorough enough with their background check."
-    $ deadend(achievement_dead4)
+    $ Achievement.add(achievement_dead4)
     le "DEAD END 04: Trouble-shooting?"
     pause 2
     nvl clear
@@ -410,7 +410,7 @@ label decanting_game_over:
     l "Subject experienced cardiac arrest after extended exposure to fumes in the workplace."
     l "{b}Contributing Factors to Death:{/b} Didn't perform their duties under a fume hood."
     l "STOP will have to screen its employees for basic lab safety if they're gonna keep sending them my way."
-    $ deadend(achievement_dead5)
+    $ Achievement.add(achievement_dead5)
     le "DEAD END 05: A Venom-enal End!"
     pause 2
     nvl clear
@@ -450,7 +450,7 @@ label marble_game_over:
     l "Dropped just high enough for instantaneous death and perfect comedic timing."
     l "{b}Contributing Factors to Death:{/b} Didn't recognize good slapstick even when it hit them."
 
-    $ deadend(achievement_dead2)
+    $ Achievement.add(achievement_dead2)
     le "DEAD END 02: Marble-ous Slapstick!"
     pause 2
     nvl clear

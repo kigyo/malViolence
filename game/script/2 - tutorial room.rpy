@@ -225,7 +225,7 @@ label tutorial_intro:
                     l "Subject expired shortly after ingesting higher than recommended daily serving of cyanide-laced rodent feed."           
                     l "{b}Contributing Factors to Death:{/b} Evidently, their stomach was bigger than their brain."
                     l "May need to re-evaluate STOP agents' dietary preferences.\n"
-                    $ deadend(achievement_dead1)
+                    $ Achievement.add(achievement_dead1)
                     le "DEAD END 01: Cheers! It's Cyanide."
                     nvl hide
                     pause 2
