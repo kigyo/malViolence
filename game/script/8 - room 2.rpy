@@ -274,7 +274,7 @@ label room_2:
         else:
             if room2["evidence"] == 0:
                 $ evidence_init(True)
-                show screen room2_evidence(_layer="master") with easeintop
+                show screen room2_evidence() with easeintop
                 "(The blackboard is covered in little doodles,{w=0.1} but they don't seem to be there just for decoration.)"
                 "(You hate to admit it,{w=0.1} but they're kind of cute.{w} Completely unlike their creator.)"
             else:
