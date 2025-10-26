@@ -7,7 +7,6 @@ label dr_danger_2:
     zoom 0.8 xalign 0.0 yalign 0.5
     linear 20 xalign 1.0
   $ Achievement.add(achievement_room1)
-  $ achievement.grant(room1)
   $ play_sound(metaldoorclose)
   #"{b}[pause as {/b}{b}Cautionne's{/b}{b} screen shuts off, and walking sounds are heard – showing the player move to the next corridor]{/b}"
   "(...)"

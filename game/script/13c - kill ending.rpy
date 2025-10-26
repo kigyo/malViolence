@@ -137,7 +137,6 @@ label kill_ending:
     hide text
     pause 3
     $persistent.credits_seen = True
-    $ achievement.grant("end2")
     $ Achievement.add(achievement_end2)
 
     pause 3

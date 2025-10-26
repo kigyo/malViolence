@@ -328,7 +328,7 @@ screen room2_evidence():
                 textbutton "SUBMIT" style "confirm_button" action Function(evidence_board.validate) xalign 1.0 yalign 0.5
                 textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] xalign 1.0 yalign 0.5
 
-            if puzzle_cleared("room2_1") or ("dead7" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+            if puzzle_cleared("room2_1") or (has_death("dead7") and not preferences.hard_mode) or not preferences.hard_mode:
                 use skip_button(room2, "evidence", "room2_1", xalign=1.0, xoffset=-25, yoffset=20)
 
         if config.developer:

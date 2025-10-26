@@ -117,8 +117,8 @@ screen failchievement_menu():
                 
                 cols 2 ## You can change this number depending on the width of your achievements.
                 spacing 10
-                for v in death_name:
-                    if v in persistent.dead_ends:
+                for v in death_name.keys():
+                    if achievement.has(v):
                     
                         frame:
                             

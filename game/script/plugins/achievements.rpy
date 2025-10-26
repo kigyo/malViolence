@@ -35,7 +35,7 @@ python early:
                 store.achievement_notification_list.append(trophy)
 
             if trophy not in persistent.my_achievements:
-                ## New acheievements will appear first in the list.
+                ## New achievements will appear first in the list.
                 persistent.my_achievements.insert(0, trophy)
 
         def add_death(trophy):
@@ -45,8 +45,8 @@ python early:
                 ## New acheievements will appear first in the list.
                 persistent.dead_ends.insert(0, trophy)
 
-            if not achievement.has(trophy):
-                achievement.grant(trophy)
+            if not achievement.has(trophy.id):
+                achievement.grant(trophy.id)
                 
 
         def purge(self):
@@ -144,6 +144,12 @@ init python:
         achievement.register(k)
     for k, v in death_name.items():
         achievement.register(k)
+    
+    def has_death(id):
+        for i in persistent.dead_ends:
+            if id == i.id:
+                return True
+        return False
 
 default achievement_start = Achievement('start')
 default achievement_tfng = Achievement('tfng')

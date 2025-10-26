@@ -237,7 +237,7 @@ screen room2_panopticon(pan=None, interactable=True):
                 frame xalign 1.0:
                     text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
 
-        if puzzle_cleared("room2_2") or ("dead8" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+        if puzzle_cleared("room2_2") or (has_death("dead8") and not preferences.hard_mode) or not preferences.hard_mode:
             use skip_button(room2, "panopticon", "room2_2", xalign=1.0)
 
     if config.developer:
@@ -333,7 +333,7 @@ init python:
             clear_puzzle("room2_2")
             return True
 
-        if panopticon_moves >= panopticon_move_limit and not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
+        if panopticon_moves >= panopticon_move_limit and not (has_death("dead8") and not preferences.hard_mode):
             renpy.jump("panopticon_game_over")
 
         return
@@ -376,7 +376,7 @@ screen room2_panopticon_tmp():
                 null height 10
                 label _("Instructions")
                 text _("In a stealthy campaign, {color=#fff}Cautionne has managed to take control of a STOP holding center,{/color} where several young test subjects are being held in a futuristic panopticon.\n\nTo give them the best chance of survival, Cautionne needs to {color=#fff}rearrange the cells so that each group of escaping testees is balanced.{/color}\n\nThese groups are shown as {color=#fff}a circle, a triangle, a square{/color} and {color=#fff}an X.{/color}\n\nHowever, the bureaucratic systems have left only the bare minimum operating instructions on how to operate the panopticon.\n\n{color=#fff}Help Cautionne properly arrange the cells according to the limitations of the system.{/color}")
-            if "dead8" in persistent.dead_ends or not preferences.hard_mode:
+            if has_death("dead8") or not preferences.hard_mode:
                 textbutton "RESTART" action [Function(panopticon_init), Hide("room2_panopticon"), Function(renpy.restart_interaction)] style "confirm_button" xalign 0.0 yalign 1.0 at zoomed(0.75)
             textbutton "RETURN" action [SetVariable("panopticon_selected", None), Return(), With(puzzle_hide)] style "confirm_button" xalign 1.0 yalign 1.0
 
@@ -399,11 +399,11 @@ screen room2_panopticon_tmp():
                         textbutton "COUNTERCLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "l")]
                     frame:
                         textbutton "CLOCKWISE" xysize (370, 64) text_size 60 action [Function(room2_panopticon_set, "r")]
-            if not ("dead8" in persistent.dead_ends and not preferences.hard_mode):
+            if not (has_death("dead8") and not preferences.hard_mode):
                 frame xalign 1.0:
                     text str(panopticon_moves) + "/" + str(panopticon_move_limit) style "main_menu_button"
 
-        if puzzle_cleared("room2_2") or ("dead8" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode:
+        if puzzle_cleared("room2_2") or (has_death("dead8") and not preferences.hard_mode) or not preferences.hard_mode:
             textbutton "SKIP" style "confirm_button" action [SetDict(room2, "panopticon", "solved"), Return()]
 
 

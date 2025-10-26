@@ -329,7 +329,6 @@ label spare_ending:
     pause 3
     $persistent.credits_seen = True
     $ Achievement.add(achievement_end1)
-    $ achievement.grant("end1")
     show text "{size=90}{color=#ffffff}END{/color}{/size}":
             xalign 0.5 yalign 0.5
 

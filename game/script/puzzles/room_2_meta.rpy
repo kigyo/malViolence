@@ -126,7 +126,7 @@ screen room2_word():
                             frame background Solid(gui.accent_color) xysize(100,100) pos (i*110+205,495):
                                 text word_answer[i] color "#000" align (0.5,0.5)
 
-        if len(room2["solved"]) == 3 and (puzzle_cleared("room2_meta") or ("dead6" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode):
+        if len(room2["solved"]) == 3 and (puzzle_cleared("room2_meta") or (has_death("dead6") and not preferences.hard_mode) or not preferences.hard_mode):
             use skip_button(room2, "word", "room2_meta")
 
     if config.developer:

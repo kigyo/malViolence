@@ -27,7 +27,6 @@ label start:
         zoom 1.2 yalign 1.2 xalign 0.5
         ease 0.4 zoom 1 yalign 0.5
     $ Achievement.add(achievement_start)
-    $ achievement.grant("start")
     "(GAH! {w}What the—)"
     "(...Huh? {w}Where {i}are{/i} you?)"
     scene bg tutorial1:

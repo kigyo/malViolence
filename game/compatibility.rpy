@@ -131,14 +131,12 @@ init python:
         if cleared:
             if cleared >= 1:
                 Achievement.add(achievement_difficulty1)
-                achievement.grant("difficulty1")
 
             if cleared >= 2:
                 Achievement.add(achievement_difficulty2)
-                achievement.grant("difficulty2")
+                
             if cleared >= 3:
                 Achievement.add(achievement_difficulty3)
-                achievement.grant("difficulty3")
 
     #some drag puzzles reset their positions after load
     def reset_puzzles_after_load():
@@ -193,6 +191,7 @@ label after_load:
         $ achievement_dead11 = Achievement('dead11')
         $ achievement_dead12 = Achievement('dead12')
         $ achievement_dead13 = Achievement('dead13')
+
     if cutting_board_group:
         $ reset_cutting_board_drags()
     if bomb:

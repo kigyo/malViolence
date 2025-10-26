@@ -7,8 +7,7 @@ init python:
 
     def inspector_achievement():
         if inspection_sum() >= 15:
-            Achievement.add(achievement_room3)
-            achievement.grant("investigate")
+            Achievement.add(achievement_investigate)
 
     def route_calculator():
         global route, most_explored
@@ -84,7 +83,6 @@ label post_room_3:
         zoom 0.8 xalign 0.0 yalign 0.5
         linear 20 xalign 1.0
     $ Achievement.add(achievement_room3)
-    $ achievement.grant("room3")
     pause 3
     $ play_sound(doorclose)
     "(Looks like there are no screens in this corridor.{w} You don't think you'll see any of Dr. Danger either.)"

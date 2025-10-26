@@ -133,7 +133,7 @@ screen room1_marble():
                 textbutton "RESET" style "confirm_button" action Function(marble_init, _("Restarting...")) text_color "#fff" sensitive not inspect yalign 0.5 at zoomed(0.75)
             textbutton "RETURN" style "confirm_button" action [Return(), With(puzzle_hide)] yalign 0.5
 
-        if len(room1["solved"]) == 3 and (puzzle_cleared("room1_meta") or ("dead2" in persistent.dead_ends and not preferences.hard_mode) or not preferences.hard_mode):
+        if len(room1["solved"]) == 3 and (puzzle_cleared("room1_meta") or (has_death("dead2") and not preferences.hard_mode) or not preferences.hard_mode):
             use skip_button(room1, "marble", "room1_meta", xalign=1.0)
 
     if config.developer:
