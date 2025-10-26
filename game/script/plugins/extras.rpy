@@ -500,7 +500,7 @@ D.ray\n
 Phebe Fabacher
 \n\n
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Trailer:{/color}{/font}{/size}\n
-Mado
+Mado\n
 Jennymhulla
 \n\n
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Quality Assurance:{/color}{/font}{/size}\n
