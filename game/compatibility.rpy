@@ -39,41 +39,47 @@ default quilt_level = 3
 default toy_level = 2
 default cooking_level = 2
 
-init python:
-    persistent.unknown_achievements = persistent.unknown_achievements or []
-
+init -1 python:
     if persistent.dead_ends:
         new_deadends = []
         for d in persistent.dead_ends:
             if isinstance(d, str):
                 # It's a string not an Achievement, we need to convert it.
-                if not d.startswith("achievement_"):
-                    d = "achievement_%s" % d
-                d = getattr(renpy.store, d, None)
-                if not d:
-                    # We don't know what this achievemnt is.
-                    persistent.unknown_achievements.insert(0, d)
+                if d.startswith("achievement_"):
+                    #  Trim unecessary achievement prefix if present.
+                    d = d[12:]
+                d = Achievement(d)
+                if not getattr(d, "name", None):
+                    # Not a valid achievement.
                     continue
-            new_deadends.append(a)
-
-        persistent.dead_ends = new_deadends
+            new_deadends.append(d)
+        # Filter out duplicates just in case.
+        persistent.dead_ends = []
+        for d in new_deadends:
+            if d not in  persistent.dead_ends:
+                 persistent.dead_ends.append(d)
 
     if persistent.my_achievements:
         new_achievements = []
         for a in persistent.my_achievements:
             if isinstance(a, str):
                 # It's a string not an Achievement, we need to convert it.
-                if not a.startswith("achievement_"):
-                    a = "achievement_%s" % a
-                a = getattr(renpy.store, a, None)
-                if not a:
-                     # We don't know what this achievement is.
-                    persistent.unknown_achievements.insert(0, a)
+                if a.startswith("achievement_"):
+                    a = a[12:]
+                a = Achievement(a)
+                if not getattr(a, "name", None):
+                    # Not a valid achievement.
                     continue
             new_achievements.append(a)
+        glog("test")
+        glog(new_achievements)
+        # Filter out duplicates just in case.
+        persistent.my_achievements = []
+        for a in new_achievements:
+            if a not in persistent.my_achievements:
+                 persistent.my_achievements.append(a)
 
-        persistent.my_achievements = new_achievements
-
+init python:
     if isinstance(persistent.solved_puzzles, list):
         temp_dict = {1:[], 2:[], 3:[], "tutorial":False, "room1_meta":False, "room2_meta":False, "room3_meta":False}
 

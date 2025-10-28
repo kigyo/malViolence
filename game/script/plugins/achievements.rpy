@@ -47,7 +47,7 @@ python early:
 
             if not achievement.has(trophy.id):
                 achievement.grant(trophy.id)
-                
+
 
         def purge(self):
             """
@@ -67,7 +67,7 @@ default persistent.my_achievements = []
 default persistent.dead_ends = []
 default achievements = Achievement()
 
-init python:
+init -5 python:
 
     achievement.steam_position = "top right"
 
@@ -144,7 +144,7 @@ init python:
         achievement.register(k)
     for k, v in death_name.items():
         achievement.register(k)
-    
+
     def has_death(id):
         for i in persistent.dead_ends:
             if id == i.id:
