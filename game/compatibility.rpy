@@ -43,13 +43,13 @@ init python:
     persistent.unknown_achievements = persistent.unknown_achievements or []
 
     if persistent.dead_ends:
-
+        new_deadends = []
         for d in persistent.dead_ends:
             if isinstance(d, str):
                 # It's a string not an Achievement, we need to convert it.
-                if not d.starts_with("achievement_"):
-                    d = "achievement_%s" % s
-                d = getattr(renpy.store, s, None)
+                if not d.startswith("achievement_"):
+                    d = "achievement_%s" % d
+                d = getattr(renpy.store, d, None)
                 if not d:
                     # We don't know what this achievemnt is.
                     persistent.unknown_achievements.insert(0, d)
@@ -63,7 +63,7 @@ init python:
         for a in persistent.my_achievements:
             if isinstance(a, str):
                 # It's a string not an Achievement, we need to convert it.
-                if not a.starts_with("achievement_"):
+                if not a.startswith("achievement_"):
                     a = "achievement_%s" % a
                 a = getattr(renpy.store, a, None)
                 if not a:
