@@ -40,6 +40,40 @@ default toy_level = 2
 default cooking_level = 2
 
 init python:
+    persistent.unknown_achievements = persistent.unknown_achievements or []
+
+    if persistent.dead_ends:
+
+        for d in persistent.dead_ends:
+            if isinstance(d, str):
+                # It's a string not an Achievement, we need to convert it.
+                if not d.starts_with("achievement_"):
+                    d = "achievement_%s" % s
+                d = getattr(renpy.store, s, None)
+                if not d:
+                    # We don't know what this achievemnt is.
+                    persistent.unknown_achievements.insert(0, d)
+                    continue
+            new_deadends.append(a)
+
+        persistent.dead_ends = new_deadends
+
+    if persistent.my_achievements:
+        new_achievements = []
+        for a in persistent.my_achievements:
+            if isinstance(a, str):
+                # It's a string not an Achievement, we need to convert it.
+                if not a.starts_with("achievement_"):
+                    a = "achievement_%s" % a
+                a = getattr(renpy.store, a, None)
+                if not a:
+                     # We don't know what this achievement is.
+                    persistent.unknown_achievements.insert(0, a)
+                    continue
+            new_achievements.append(a)
+
+        persistent.my_achievements = new_achievements
+
     if isinstance(persistent.solved_puzzles, list):
         temp_dict = {1:[], 2:[], 3:[], "tutorial":False, "room1_meta":False, "room2_meta":False, "room3_meta":False}
 
@@ -134,7 +168,7 @@ init python:
 
             if cleared >= 2:
                 Achievement.add(achievement_difficulty2)
-                
+
             if cleared >= 3:
                 Achievement.add(achievement_difficulty3)
 
