@@ -20,7 +20,12 @@ python early:
             check.
 
             Below we are simply checking 'self.name == value.name, self.message == value.message'
+
+            Because of how persistent storage checks for differences, we also need to filter out any non Achievement objects to start with.
             """
+            if not isinstance(value, Achievement):
+                return False
+
             return all((self.name == value.name, self.message == value.message))
 
         def add(trophy):
@@ -122,7 +127,7 @@ init -5 python:
             "dead12": [_("DEAD END 12:"), _("Get Stuffed."), "death12", 'dead'], #room3 2
             "dead13": [_("DEAD END 13:"), _("Flipping Miserable!"), "death13", 'dead'], #room3 3
         }
-    elif persistent.skullicon == False:
+    elif not persistent.skullicon:
         death_name = {
             "dead1": [_("DEAD END 01:"), _("Cheers! It's Cyanide."), "gui/dead_icon_alt.png", 'dead'], #tutorial
             "dead2": [_("DEAD END 02:"), _("Marbleous Slapstick!"), "gui/dead_icon_alt.png", 'dead'], #room1 meta

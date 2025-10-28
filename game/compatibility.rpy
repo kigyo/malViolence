@@ -57,7 +57,7 @@ init -1 python:
         persistent.dead_ends = []
         for d in new_deadends:
             if d not in  persistent.dead_ends:
-                 persistent.dead_ends.append(d)
+                persistent.dead_ends.append(d)
 
     if persistent.my_achievements:
         new_achievements = []
@@ -71,13 +71,13 @@ init -1 python:
                     # Not a valid achievement.
                     continue
             new_achievements.append(a)
-        glog("test")
-        glog(new_achievements)
         # Filter out duplicates just in case.
         persistent.my_achievements = []
         for a in new_achievements:
             if a not in persistent.my_achievements:
-                 persistent.my_achievements.append(a)
+                persistent.my_achievements.append(a)
+
+    renpy.save_persistent()
 
 init python:
     if isinstance(persistent.solved_puzzles, list):
