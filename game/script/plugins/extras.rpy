@@ -506,6 +506,7 @@ Jennymhulla
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Quality Assurance:{/color}{/font}{/size}\n
 cluniies\n
 wBrian\n
+Chi Chimernyan\n
 Whatever Productions
 \n\n
 {size=+15}{font=gui/font/kenyan coffee rg.otf}{color=#00e7ff}Special Thanks:{/color}{/font}{/size}\n
