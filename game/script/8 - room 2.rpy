@@ -385,6 +385,7 @@ label evidence_game_over:
     l "Subject experienced permanent loss of life after one of the facility's reconfigurable nano-stakes jetted out of the floor and impaled them to the ceiling."
     l "Guess they were worth the trouble of installation!"
     l "{b}Contributing Factors to Death:{/b} Couldn't put progress on the board."
+    $ deadend(achievement_dead7)
     $ Achievement.add(achievement_dead7)
     le "DEAD END 07: Pinpricked!"
     pause 2
@@ -460,6 +461,7 @@ label panopticon_game_over:
     l "Subject expired after 3 days due to lack of water, light, food, and mental stimulation."
     l "Scratched their nails to bleeding point on the exit door before losing consciousness, so I'll have to clean {i}that{/i} mess up."
     l "{b}Contributing Factors to Death:{/b} Didn't take the consequences of imprisonment very seriously."
+    $ deadend(achievement_dead8)
     $ Achievement.add(achievement_dead8)
     le "DEAD END 08: A Taste of Sobering Punishment."
     pause 2
@@ -546,6 +548,7 @@ label recalibration_game_over:
     l "On the other hand, the lab rat won't get up ever again. They're missing a few too many critical parts."
     l "{b}Contributing Factors to Death:{/b} They gave too much of themselves to my cause."
 
+    $ deadend(achievement_dead9)
     $ Achievement.add(achievement_dead9)
     le "DEAD END 09: Didn't Make The Cut."
     pause 2
@@ -667,6 +670,7 @@ label word_game_over:
     l "Not much to say here."
     l "The lab rat just sucks at word games!"
     l "{b}Contributing Factors to Death:{/b} Should've dipped their toes into a few titles before meeting me. Personally, I recommend {i}Scraddle.{/i}"
+    $ deadend(achievement_dead6)
     $ Achievement.add(achievement_dead6)
     le "DEAD END 06: Stop Me If You Think You've Word This One Before..."
     pause 2

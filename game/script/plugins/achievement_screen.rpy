@@ -200,14 +200,16 @@ init python:
     def passive_function():
         ## This code here will grant the platinum achievement.
         all_endings()
-        if len(persistent.my_achievements) >= (len(achievement_name) - 1):
+        if len(persistent.my_achievements) >= (len(achievement_name) + len(death_name) - 1):
             Achievement.add(achievement_platinum)
     
     def deadend(cheevo):
-        if len(persistent.dead_ends) == 0:
-            Achievement.add(achievement_deadfirst)
-        Achievement.add_death(cheevo)
-        if len(persistent.dead_ends) >= (len(death_name)):
+        Achievement.add(achievement_deadfirst)
+        unique_deaths = []
+        for i in persistent.my_achievements:
+            if "dead" in i.id and i.id not in ["deadfirst", "deadall"]:
+                unique_deaths.append(i.id)
+        if len(unique_deaths) >= (len(death_name)):
             Achievement.add(achievement_deadall)
 
 define config.periodic_callback = passive_function
